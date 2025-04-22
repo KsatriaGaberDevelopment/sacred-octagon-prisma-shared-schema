@@ -1,0 +1,636 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Province {
+  id               String             @id @default(cuid())
+  name             String
+  longitude        Float
+  latitude         Float
+  geoId            String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  cities           City[]
+  schools          School[]
+  users            User[]
+  bannerOnProvince BannerOnProvince[]
+  adminAuthority   AdminAuthority[]
+}
+
+model City {
+  id           String         @id @default(cuid())
+  name         String
+  longitude    Float
+  latitude     Float
+  geoId        String
+  provinceId   String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  province     Province       @relation(fields: [provinceId], references: [id])
+  schools      School[]
+  users        User[]
+  authOnCity   AuthOnCity[]
+  bannerOnCity BannerOnCity[]
+
+  @@index([provinceId])
+}
+
+model School {
+  id           String         @id @default(cuid())
+  identity     String
+  name         String
+  longitude    Float
+  latitude     Float
+  cityId       String
+  provinceId   String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  city         City           @relation(fields: [cityId], references: [id])
+  province     Province       @relation(fields: [provinceId], references: [id])
+  users        User[]
+  authOnSchool AuthOnSchool[]
+
+  @@index([cityId])
+}
+
+model AccessContent {
+  id           String                @id @default(cuid())
+  expired      DateTime
+  quota        Int
+  currentQuota Int
+  ownerId      String?
+  zones        String[]
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  owner        User?                 @relation("AccessOwner", fields: [ownerId], references: [id])
+  userAccesses UserOnAccessContent[]
+  redemeers    User[]                @relation("AccessRedemeers")
+}
+
+model User {
+  id                     String                   @id @default(cuid())
+  authId                 String                   @unique
+  email                  String                   @unique
+  role                   Role                     @default(User)
+  suspend                Boolean                  @default(false)
+  accountType            AccountType              @default(Self)
+  firstTest              Boolean                  @default(false)
+  fullname               String                   @default("")
+  birthDate              DateTime?
+  grade                  Int                      @default(0)
+  lastGradeUpdateAt      DateTime?
+  schoolIdentity         String                   @default("")
+  loginAt                DateTime?
+  logoutAt               DateTime?
+  playTime               Int                      @default(0)
+  characterUsed          Int                      @default(0)
+  inventory              Int[]                    @default([0, 0, 0])
+  schoolId               String?                  @unique
+  cityId                 String?                  @unique
+  provinceId             String?                  @unique
+  adminId                String?                  @unique
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  username               String
+  device                 Device?
+  storageId              String?
+  lastIdZoneUnlocked     String                   @default("")
+  lastIdZonePosition     String                   @default("")
+  ownedAccesses          AccessContent[]          @relation("AccessOwner")
+  city                   City?                    @relation(fields: [cityId], references: [id])
+  province               Province?                @relation(fields: [provinceId], references: [id])
+  school                 School?                  @relation(fields: [schoolId], references: [id])
+  admin                  Admin?                   @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  userAccesses           UserOnAccessContent[]
+  zones                  Zone[]
+  redeemedAccesses       AccessContent[]          @relation("AccessRedemeers")
+  UserLogin              UserLogin[]
+  bannerVisitor          BannerVisitor[]
+  testParticipant        TestParticipant[]
+  voucherRedemeer        VoucherRedemeer[]
+  userTransactionArchive UserTransactionArchive[]
+  userTransaction        UserTransaction[]
+  multiPlayerMember      MultiPlayerMember[]
+  testRecords            TestParticipantRecord[]
+
+  @@index([authId])
+}
+
+model Device {
+  id         String @id @default(cuid())
+  uuid       String
+  model      String
+  manufactur String
+  os         String
+  ramSize    Int
+  gpuName    String
+  cpuType    String
+  cpuCores   Int
+  userId     String @unique
+  user       User   @relation(fields: [userId], references: [id])
+}
+
+model Zone {
+  id               String        @id @default(cuid())
+  zoneId           String
+  userId           String
+  user             User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isComplete       Boolean       @default(false)
+  completedAt      DateTime?
+  lastLevelId      String        @default("")
+  lastSubLevelId   String        @default("")
+  lastInnerLevelId String        @default("")
+  lastLevelUnlock  String        @default("")
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  levels           Level[]
+  gempo            Gempo?
+  championship     Championship?
+
+  @@unique([userId, zoneId])
+  @@index([userId])
+}
+
+model Level {
+  id          String     @id @default(cuid())
+  levelId     String
+  zoneId      String
+  zone        Zone       @relation(fields: [zoneId], references: [id], onDelete: Cascade)
+  isUnlock    Boolean    @default(false)
+  unlockedAt  DateTime?
+  isComplete  Boolean    @default(false)
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  subLevels   SubLevel[]
+
+  @@unique([zoneId, levelId])
+  @@index([levelId])
+  @@index([zoneId])
+}
+
+model SubLevel {
+  id          String       @id @default(cuid())
+  subLevelId  String
+  levelId     String
+  level       Level        @relation(fields: [levelId], references: [id], onDelete: Cascade)
+  isUnlock    Boolean      @default(false)
+  unlockedAt  DateTime?
+  isComplete  Boolean      @default(false)
+  completedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  innerLevels InnerLevel[]
+
+  @@unique([levelId, subLevelId])
+  @@index([levelId])
+  @@index([subLevelId])
+}
+
+model InnerLevel {
+  id           String    @id @default(cuid())
+  innerLevelId String
+  subLevelId   String
+  subLevel     SubLevel  @relation(fields: [subLevelId], references: [id], onDelete: Cascade)
+  isUnlock     Boolean   @default(false)
+  unlockedAt   DateTime?
+  isComplete   Boolean   @default(false)
+  completedAt  DateTime?
+  point        Int       @default(0)
+  played       Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([subLevelId, innerLevelId])
+  @@index([innerLevelId])
+  @@index([subLevelId])
+}
+
+model Gempo {
+  id         String        @id @default(cuid())
+  isUnlock   Boolean       @default(false)
+  unlockedAt DateTime?
+  gempoId    String
+  zoneId     String        @unique
+  zone       Zone          @relation(fields: [zoneId], references: [id], onDelete: Cascade)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  records    GempoRecord[]
+
+  @@unique([zoneId, gempoId])
+  @@index([gempoId])
+}
+
+model Championship {
+  id             String               @id @default(cuid())
+  isUnlock       Boolean              @default(false)
+  unlockedAt     DateTime?
+  championshipId String
+  zoneId         String               @unique
+  zone           Zone                 @relation(fields: [zoneId], references: [id], onDelete: Cascade)
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  records        ChampionshipRecord[]
+
+  @@unique([zoneId, championshipId])
+  @@index([championshipId])
+}
+
+model GempoRecord {
+  id           String    @id @default(cuid())
+  recordId     String // in-game id ex: G02
+  gempoId      String
+  gempo        Gempo     @relation(fields: [gempoId], references: [id], onDelete: Cascade)
+  played       Int       @default(0)
+  point        Int       @default(0)
+  lastPlayedAt DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([gempoId, recordId])
+  @@index([recordId])
+}
+
+model ChampionshipRecord {
+  id               String       @id @default(cuid())
+  recordId         String // in-game id
+  championshipId   String
+  championship     Championship @relation(fields: [championshipId], references: [id], onDelete: Cascade)
+  teamWin          Int          @default(0)
+  teamLose         Int          @default(0)
+  teamPlayed       Int          @default(0)
+  teamPoint        Int          @default(0)
+  teamLastPlayedAt DateTime?
+  soloWin          Int          @default(0)
+  soloLose         Int          @default(0)
+  soloPlayed       Int          @default(0)
+  soloPoint        Int          @default(0)
+  soloLastPlayedAt DateTime?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  @@unique([championshipId, recordId])
+  @@index([recordId])
+}
+
+model UserLogin {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+  loginDate  DateTime
+  logoutDate DateTime?
+
+  @@index([userId])
+}
+
+model Admin {
+  id                      String                    @id @default(cuid())
+  authId                  String                    @unique
+  googleId                String?                   @unique
+  name                    String
+  role                    Role
+  user                    User?
+  authority               AdminAuthority[]
+  createdAt               DateTime                  @default(now())
+  updatedAt               DateTime                  @updatedAt
+  operationHistories      AdminOperationHistory[]
+  banner                  Banner[]
+  adminTransaction        AdminTransaction[]
+  adminTransactionArchive AdminTransactionArchive[]
+}
+
+model AdminOperationHistory {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  admin     Admin?    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  adminId   String?
+  operation Operation @default(None)
+}
+
+model AdminAuthority {
+  id             String         @id @default(cuid())
+  adminId        String         @unique
+  admin          Admin          @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  authProvinceId String
+  province       Province       @relation(fields: [authProvinceId], references: [id])
+  authOnCity     AuthOnCity[]
+  authOnSchool   AuthOnSchool[]
+  grades         Int[]
+
+  @@index([authProvinceId])
+}
+
+model Banner {
+  id               String             @id @default(cuid())
+  thumbnail        String
+  link             String?
+  startedAt        DateTime?
+  endedAt          DateTime?
+  isHide           Boolean            @default(false)
+  bannerOnProvince BannerOnProvince[]
+  bannerOnCity     BannerOnCity[]
+  visitors         BannerVisitor[]
+  adminId          String
+  admin            Admin              @relation(fields: [adminId], references: [id])
+}
+
+model BannerVisitor {
+  id        String   @id @default(cuid())
+  bannerId  String
+  banner    Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  traffic   Int      @default(0)
+}
+
+model Test {
+  id            String            @id @default(cuid())
+  name          String            @default("")
+  category      TestCategory
+  question      QuestionType
+  duration      Int               @default(0)
+  passedPoint   Int               @default(0)
+  remidialCount Int               @default(-1)
+  type          TestType
+  quota         Int               @default(-1)
+  currentQuota  Int               @default(-1)
+  code          String?
+  zoneId        String?
+  startedAt     DateTime
+  endedAt       DateTime?
+  description   String?
+  participants  TestParticipant[]
+}
+
+model TestParticipant {
+  id          String                  @id @default(cuid())
+  testId      String
+  test        Test                    @relation(fields: [testId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstTimeAt DateTime?
+  lastTestAt  DateTime?
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+  highscore   Float                   @default(0)
+  average     Float                   @default(0)
+  lowscore    Float                   @default(0)
+  records     TestParticipantRecord[]
+
+  @@unique([testId, userId])
+}
+
+model TestParticipantRecord {
+  id            String          @id @default(cuid())
+  participantId String
+  participant   TestParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  startedAt     DateTime?
+  endedAt       DateTime?
+  score         Float           @default(0)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  userId        String
+  user          User            @relation(fields: [userId], references: [id])
+  answers       Json
+
+  @@index([participantId])
+  @@index([userId])
+  @@index([participantId, userId])
+}
+
+model Background {
+  id        String   @id @default(cuid())
+  name      String
+  thumbnail String
+  isUse     Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  name      String
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Voucher {
+  id           Int               @id @default(autoincrement())
+  code         String            @unique
+  quota        Int               @default(0)
+  currentQuota Int               @default(0)
+  startedAt    DateTime
+  endedAt      DateTime?
+  type         VoucherType       @default(Discount)
+  zones        String[]
+  redemeers    VoucherRedemeer[]
+}
+
+model VoucherRedemeer {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  voucherId Int
+  voucher   Voucher  @relation(fields: [voucherId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model AdminTransaction {
+  id              String   @id @default(cuid())
+  transactionName String
+  status          String
+  createdAt       DateTime @default(now())
+  expiredAt       DateTime
+  updatedAt       DateTime @updatedAt
+  customerEmail   String
+  customerName    String
+  customerId      String
+  customer        Admin    @relation(fields: [customerId], references: [id])
+  quantity        Int      @default(0)
+  zones           String[]
+}
+
+model AdminTransactionArchive {
+  id              String   @id @default(cuid())
+  transactionName String
+  status          String
+  createdAt       DateTime @default(now())
+  expiredAt       DateTime
+  updatedAt       DateTime @updatedAt
+  customerEmail   String
+  customerName    String
+  customerId      String
+  customer        Admin    @relation(fields: [customerId], references: [id])
+  quantity        Int      @default(0)
+  zones           String[]
+}
+
+model UserTransaction {
+  id              String   @id @default(cuid())
+  transactionName String
+  status          String
+  createdAt       DateTime @default(now())
+  expiredAt       DateTime
+  updatedAt       DateTime @updatedAt
+  customerEmail   String
+  customerName    String
+  customerId      String
+  customer        User     @relation(fields: [customerId], references: [id])
+  quantity        Int      @default(0)
+  zones           String[]
+}
+
+model UserTransactionArchive {
+  id              String   @id @default(cuid())
+  transactionName String
+  status          String
+  createdAt       DateTime @default(now())
+  expiredAt       DateTime
+  updatedAt       DateTime @updatedAt
+  customerEmail   String
+  customerName    String
+  customerId      String
+  customer        User     @relation(fields: [customerId], references: [id])
+  quantity        Int      @default(0)
+  zones           String[]
+}
+
+model MultiplayerRoom {
+  id         String              @id @default(cuid())
+  max        Int                 @default(2)
+  gameplayId String              @unique
+  botOwner   String
+  startedAt  DateTime?
+  endedAt    DateTime?
+  expiredAt  DateTime?
+  isStarted  Boolean             @default(false)
+  isEnded    Boolean             @default(false)
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  members    MultiPlayerMember[]
+}
+
+model MultiPlayerMember {
+  id           String    @id @default(cuid())
+  roomId       String
+  userId       String?
+  point        Int       @default(0)
+  bonusPoint   Int       @default(0)
+  isReady      Boolean   @default(false)
+  isComplete   Boolean   @default(false)
+  isBot        Boolean   @default(false)
+  joinedAt     DateTime  @default(now())
+  finishedAt   DateTime?
+  isDisconnect Boolean   @default(false)
+
+  user User?           @relation(fields: [userId], references: [id])
+  room MultiplayerRoom @relation(fields: [roomId], references: [id])
+}
+
+//----------------- Start Table Junction ----------------//
+
+model UserOnAccessContent {
+  userId          String
+  accessContentId String
+  accessContent   AccessContent @relation(fields: [accessContentId], references: [id], onDelete: Cascade)
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, accessContentId])
+}
+
+model AuthOnCity {
+  authId String
+  cityId String
+
+  auth AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
+  city City           @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@id([authId, cityId])
+}
+
+model AuthOnSchool {
+  authId   String
+  schoolId String
+
+  auth   AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
+  school School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@id([authId, schoolId])
+}
+
+model BannerOnProvince {
+  bannerId   String
+  provinceId String
+
+  banner   Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  province Province @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+
+  @@id([bannerId, provinceId])
+}
+
+model BannerOnCity {
+  bannerId String
+  cityId   String
+
+  banner Banner @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  city   City   @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@id([bannerId, cityId])
+}
+
+//----------------- End Table Junction ----------------//
+
+enum Role {
+  Developer
+  SuperAdmin
+  Admin
+  SchoolAdmin
+  Teacher
+  User
+}
+
+enum AccountType {
+  LMS
+  Self
+}
+
+enum VoucherType {
+  Discount
+  FixedPrice
+}
+
+enum QuestionType {
+  Addition
+  Multiplication
+  Subtraction
+  Division
+  Bakalkubagi
+}
+
+enum TestType {
+  PreTest
+  PostTest
+  FirstPreTest
+  Contest
+}
+
+enum TestCategory {
+  Teacher
+  Student
+}
+
+enum Operation {
+  None
+  Create
+  Update
+  Delete
+}

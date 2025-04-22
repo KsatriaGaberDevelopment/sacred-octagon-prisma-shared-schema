@@ -1,0 +1,19 @@
+{
+  "name": "@sacred-octagon/prisma-schema",
+  "version": "0.0.1",
+  "description": "Shared Prisma Client for multiple projects",
+  "main": "src/index.ts",
+  "keywords": [],
+  "author": "Sacred Octagon Developer",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "build": "prisma generate"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.6.0",
+    "prisma": "^6.6.0"
+  }
+}
