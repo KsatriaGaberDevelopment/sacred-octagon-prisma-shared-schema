@@ -1,0 +1,37 @@
+name: Publish to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main # Ganti jika kamu ingin menggunakan branch lain
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout kode dari repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Node.js dengan versi yang diinginkan
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Ganti dengan versi Node.js yang kamu gunakan
+          registry-url: https://npm.pkg.github.com/ # URL untuk GitHub Packages
+          scope: '@sacred-octagon' # Scope untuk package kamu
+
+      # Install dependensi
+      - name: Install dependencies
+        run: npm ci
+
+      # Build dan generate Prisma
+      - name: Build package and generate Prisma client
+        run: npm run prepare
+
+      # Publish package ke GitHub Packages
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }} # Menggunakan token dari GitHub Secrets
