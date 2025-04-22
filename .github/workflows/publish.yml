@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18 # Ganti dengan versi Node.js yang kamu gunakan
           registry-url: https://npm.pkg.github.com/ # URL untuk GitHub Packages
-          scope: '@sacred-octagon' # Scope untuk package kamu
+          scope: '@KsatriaGaberDevelopment' # Scope untuk package kamu
 
       # Install dependensi
       - name: Install dependencies
