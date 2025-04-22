@@ -30,6 +30,9 @@ jobs:
       - name: Build package and generate Prisma client
         run: npm run prepare
 
+      - name: Check Github Token
+        run: echo ${{ secrets.GH_TOKEN }}
+
       # Publish package ke GitHub Packages
       - name: Publish to GitHub Packages
         run: npm publish
