@@ -9,6 +9,7 @@
   },
   "files": [
     "dist",
+    "generated",
     "prisma"
   ],
   "publishConfig": {
