@@ -1,10 +1,10 @@
 {
   "name": "@KsatriaGaberDevelopment/prisma-shared-schema",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "fix typescrip module",
   "scripts": {
     "build": "tsc",
-    "generate": "prisma generate",
+    "generate": "dotenv -e ../.env -- prisma generate",
     "prepare": "npm run generate && npm run build"
   },
   "files": [
