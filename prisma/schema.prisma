@@ -309,7 +309,8 @@ model Admin {
   authority               AdminAuthority[]
   createdAt               DateTime                  @default(now())
   updatedAt               DateTime                  @updatedAt
-  operationHistories      AdminOperationHistory[]
+  operationHistories      AdminOperationHistory[]   @relation("OperationHistory")
+  operations              AdminOperationHistory[]   @relation("Operations")
   banner                  Banner[]
   adminTransaction        AdminTransaction[]
   adminTransactionArchive AdminTransactionArchive[]
@@ -318,8 +319,10 @@ model Admin {
 model AdminOperationHistory {
   id        String    @id @default(cuid())
   createdAt DateTime  @default(now())
-  admin     Admin?    @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  adminId   String?
+  adminId   String
+  admin     Admin     @relation("OperationHistory", fields: [adminId], references: [id], onDelete: Cascade)
+  opAdminId String
+  opAdmin   Admin     @relation("Operations", fields: [opAdminId], references: [id], onDelete: Cascade)
   operation Operation @default(None)
 }
 

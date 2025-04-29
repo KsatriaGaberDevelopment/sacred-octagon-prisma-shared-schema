@@ -326,6 +326,7 @@ exports.Prisma.AdminOperationHistoryScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   adminId: 'adminId',
+  opAdminId: 'opAdminId',
   operation: 'operation'
 };
 

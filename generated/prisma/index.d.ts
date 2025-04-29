@@ -4464,6 +4464,7 @@ export namespace Prisma {
   export type AdminCountOutputType = {
     authority: number
     operationHistories: number
+    operations: number
     banner: number
     adminTransaction: number
     adminTransactionArchive: number
@@ -4472,6 +4473,7 @@ export namespace Prisma {
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     authority?: boolean | AdminCountOutputTypeCountAuthorityArgs
     operationHistories?: boolean | AdminCountOutputTypeCountOperationHistoriesArgs
+    operations?: boolean | AdminCountOutputTypeCountOperationsArgs
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
     adminTransaction?: boolean | AdminCountOutputTypeCountAdminTransactionArgs
     adminTransactionArchive?: boolean | AdminCountOutputTypeCountAdminTransactionArchiveArgs
@@ -4499,6 +4501,13 @@ export namespace Prisma {
    * AdminCountOutputType without action
    */
   export type AdminCountOutputTypeCountOperationHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminOperationHistoryWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountOperationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AdminOperationHistoryWhereInput
   }
 
@@ -23195,6 +23204,7 @@ export namespace Prisma {
     user?: boolean | Admin$userArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
+    operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
     adminTransactionArchive?: boolean | Admin$adminTransactionArchiveArgs<ExtArgs>
@@ -23236,6 +23246,7 @@ export namespace Prisma {
     user?: boolean | Admin$userArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
+    operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
     adminTransactionArchive?: boolean | Admin$adminTransactionArchiveArgs<ExtArgs>
@@ -23250,6 +23261,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs> | null
       authority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       operationHistories: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
+      operations: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       banner: Prisma.$BannerPayload<ExtArgs>[]
       adminTransaction: Prisma.$AdminTransactionPayload<ExtArgs>[]
       adminTransactionArchive: Prisma.$AdminTransactionArchivePayload<ExtArgs>[]
@@ -23659,6 +23671,7 @@ export namespace Prisma {
     user<T extends Admin$userArgs<ExtArgs> = {}>(args?: Subset<T, Admin$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     authority<T extends Admin$authorityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$authorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     operationHistories<T extends Admin$operationHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operations<T extends Admin$operationsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     banner<T extends Admin$bannerArgs<ExtArgs> = {}>(args?: Subset<T, Admin$bannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminTransaction<T extends Admin$adminTransactionArgs<ExtArgs> = {}>(args?: Subset<T, Admin$adminTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminTransactionArchive<T extends Admin$adminTransactionArchiveArgs<ExtArgs> = {}>(args?: Subset<T, Admin$adminTransactionArchiveArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -24153,6 +24166,30 @@ export namespace Prisma {
   }
 
   /**
+   * Admin.operations
+   */
+  export type Admin$operationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminOperationHistory
+     */
+    select?: AdminOperationHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminOperationHistory
+     */
+    omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    where?: AdminOperationHistoryWhereInput
+    orderBy?: AdminOperationHistoryOrderByWithRelationInput | AdminOperationHistoryOrderByWithRelationInput[]
+    cursor?: AdminOperationHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminOperationHistoryScalarFieldEnum | AdminOperationHistoryScalarFieldEnum[]
+  }
+
+  /**
    * Admin.banner
    */
   export type Admin$bannerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -24257,6 +24294,7 @@ export namespace Prisma {
     id: string | null
     createdAt: Date | null
     adminId: string | null
+    opAdminId: string | null
     operation: $Enums.Operation | null
   }
 
@@ -24264,6 +24302,7 @@ export namespace Prisma {
     id: string | null
     createdAt: Date | null
     adminId: string | null
+    opAdminId: string | null
     operation: $Enums.Operation | null
   }
 
@@ -24271,6 +24310,7 @@ export namespace Prisma {
     id: number
     createdAt: number
     adminId: number
+    opAdminId: number
     operation: number
     _all: number
   }
@@ -24280,6 +24320,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     adminId?: true
+    opAdminId?: true
     operation?: true
   }
 
@@ -24287,6 +24328,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     adminId?: true
+    opAdminId?: true
     operation?: true
   }
 
@@ -24294,6 +24336,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     adminId?: true
+    opAdminId?: true
     operation?: true
     _all?: true
   }
@@ -24373,7 +24416,8 @@ export namespace Prisma {
   export type AdminOperationHistoryGroupByOutputType = {
     id: string
     createdAt: Date
-    adminId: string | null
+    adminId: string
+    opAdminId: string
     operation: $Enums.Operation
     _count: AdminOperationHistoryCountAggregateOutputType | null
     _min: AdminOperationHistoryMinAggregateOutputType | null
@@ -24398,53 +24442,65 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     adminId?: boolean
+    opAdminId?: boolean
     operation?: boolean
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     createdAt?: boolean
     adminId?: boolean
+    opAdminId?: boolean
     operation?: boolean
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     createdAt?: boolean
     adminId?: boolean
+    opAdminId?: boolean
     operation?: boolean
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectScalar = {
     id?: boolean
     createdAt?: boolean
     adminId?: boolean
+    opAdminId?: boolean
     operation?: boolean
   }
 
-  export type AdminOperationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "adminId" | "operation", ExtArgs["result"]["adminOperationHistory"]>
+  export type AdminOperationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "adminId" | "opAdminId" | "operation", ExtArgs["result"]["adminOperationHistory"]>
   export type AdminOperationHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type AdminOperationHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type AdminOperationHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    admin?: boolean | AdminOperationHistory$adminArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }
 
   export type $AdminOperationHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AdminOperationHistory"
     objects: {
-      admin: Prisma.$AdminPayload<ExtArgs> | null
+      admin: Prisma.$AdminPayload<ExtArgs>
+      opAdmin: Prisma.$AdminPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       createdAt: Date
-      adminId: string | null
+      adminId: string
+      opAdminId: string
       operation: $Enums.Operation
     }, ExtArgs["result"]["adminOperationHistory"]>
     composites: {}
@@ -24840,7 +24896,8 @@ export namespace Prisma {
    */
   export interface Prisma__AdminOperationHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    admin<T extends AdminOperationHistory$adminArgs<ExtArgs> = {}>(args?: Subset<T, AdminOperationHistory$adminArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    opAdmin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -24873,6 +24930,7 @@ export namespace Prisma {
     readonly id: FieldRef<"AdminOperationHistory", 'String'>
     readonly createdAt: FieldRef<"AdminOperationHistory", 'DateTime'>
     readonly adminId: FieldRef<"AdminOperationHistory", 'String'>
+    readonly opAdminId: FieldRef<"AdminOperationHistory", 'String'>
     readonly operation: FieldRef<"AdminOperationHistory", 'Operation'>
   }
     
@@ -25092,7 +25150,7 @@ export namespace Prisma {
     /**
      * The data needed to create a AdminOperationHistory.
      */
-    data?: XOR<AdminOperationHistoryCreateInput, AdminOperationHistoryUncheckedCreateInput>
+    data: XOR<AdminOperationHistoryCreateInput, AdminOperationHistoryUncheckedCreateInput>
   }
 
   /**
@@ -25267,25 +25325,6 @@ export namespace Prisma {
      * Limit how many AdminOperationHistories to delete.
      */
     limit?: number
-  }
-
-  /**
-   * AdminOperationHistory.admin
-   */
-  export type AdminOperationHistory$adminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Admin
-     */
-    select?: AdminSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Admin
-     */
-    omit?: AdminOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    where?: AdminWhereInput
   }
 
   /**
@@ -44946,6 +44985,7 @@ export namespace Prisma {
     id: 'id',
     createdAt: 'createdAt',
     adminId: 'adminId',
+    opAdminId: 'opAdminId',
     operation: 'operation'
   };
 
@@ -46769,6 +46809,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     operationHistories?: AdminOperationHistoryListRelationFilter
+    operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
     adminTransaction?: AdminTransactionListRelationFilter
     adminTransactionArchive?: AdminTransactionArchiveListRelationFilter
@@ -46785,6 +46826,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     authority?: AdminAuthorityOrderByRelationAggregateInput
     operationHistories?: AdminOperationHistoryOrderByRelationAggregateInput
+    operations?: AdminOperationHistoryOrderByRelationAggregateInput
     banner?: BannerOrderByRelationAggregateInput
     adminTransaction?: AdminTransactionOrderByRelationAggregateInput
     adminTransactionArchive?: AdminTransactionArchiveOrderByRelationAggregateInput
@@ -46804,6 +46846,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     operationHistories?: AdminOperationHistoryListRelationFilter
+    operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
     adminTransaction?: AdminTransactionListRelationFilter
     adminTransactionArchive?: AdminTransactionArchiveListRelationFilter
@@ -46841,17 +46884,21 @@ export namespace Prisma {
     NOT?: AdminOperationHistoryWhereInput | AdminOperationHistoryWhereInput[]
     id?: StringFilter<"AdminOperationHistory"> | string
     createdAt?: DateTimeFilter<"AdminOperationHistory"> | Date | string
-    adminId?: StringNullableFilter<"AdminOperationHistory"> | string | null
+    adminId?: StringFilter<"AdminOperationHistory"> | string
+    opAdminId?: StringFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
-    admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    opAdmin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }
 
   export type AdminOperationHistoryOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
-    adminId?: SortOrderInput | SortOrder
+    adminId?: SortOrder
+    opAdminId?: SortOrder
     operation?: SortOrder
     admin?: AdminOrderByWithRelationInput
+    opAdmin?: AdminOrderByWithRelationInput
   }
 
   export type AdminOperationHistoryWhereUniqueInput = Prisma.AtLeast<{
@@ -46860,15 +46907,18 @@ export namespace Prisma {
     OR?: AdminOperationHistoryWhereInput[]
     NOT?: AdminOperationHistoryWhereInput | AdminOperationHistoryWhereInput[]
     createdAt?: DateTimeFilter<"AdminOperationHistory"> | Date | string
-    adminId?: StringNullableFilter<"AdminOperationHistory"> | string | null
+    adminId?: StringFilter<"AdminOperationHistory"> | string
+    opAdminId?: StringFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
-    admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    opAdmin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }, "id">
 
   export type AdminOperationHistoryOrderByWithAggregationInput = {
     id?: SortOrder
     createdAt?: SortOrder
-    adminId?: SortOrderInput | SortOrder
+    adminId?: SortOrder
+    opAdminId?: SortOrder
     operation?: SortOrder
     _count?: AdminOperationHistoryCountOrderByAggregateInput
     _max?: AdminOperationHistoryMaxOrderByAggregateInput
@@ -46881,7 +46931,8 @@ export namespace Prisma {
     NOT?: AdminOperationHistoryScalarWhereWithAggregatesInput | AdminOperationHistoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AdminOperationHistory"> | string
     createdAt?: DateTimeWithAggregatesFilter<"AdminOperationHistory"> | Date | string
-    adminId?: StringNullableWithAggregatesFilter<"AdminOperationHistory"> | string | null
+    adminId?: StringWithAggregatesFilter<"AdminOperationHistory"> | string
+    opAdminId?: StringWithAggregatesFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationWithAggregatesFilter<"AdminOperationHistory"> | $Enums.Operation
   }
 
@@ -49665,6 +49716,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -49681,6 +49733,7 @@ export namespace Prisma {
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -49697,6 +49750,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -49713,6 +49767,7 @@ export namespace Prisma {
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -49752,13 +49807,15 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     operation?: $Enums.Operation
-    admin?: AdminCreateNestedOneWithoutOperationHistoriesInput
+    admin: AdminCreateNestedOneWithoutOperationHistoriesInput
+    opAdmin: AdminCreateNestedOneWithoutOperationsInput
   }
 
   export type AdminOperationHistoryUncheckedCreateInput = {
     id?: string
     createdAt?: Date | string
-    adminId?: string | null
+    adminId: string
+    opAdminId: string
     operation?: $Enums.Operation
   }
 
@@ -49766,20 +49823,23 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
-    admin?: AdminUpdateOneWithoutOperationHistoriesNestedInput
+    admin?: AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput
+    opAdmin?: AdminUpdateOneRequiredWithoutOperationsNestedInput
   }
 
   export type AdminOperationHistoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: StringFieldUpdateOperationsInput | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
   export type AdminOperationHistoryCreateManyInput = {
     id?: string
     createdAt?: Date | string
-    adminId?: string | null
+    adminId: string
+    opAdminId: string
     operation?: $Enums.Operation
   }
 
@@ -49792,7 +49852,8 @@ export namespace Prisma {
   export type AdminOperationHistoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: StringFieldUpdateOperationsInput | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
@@ -52511,10 +52572,16 @@ export namespace Prisma {
     not?: NestedEnumOperationFilter<$PrismaModel> | $Enums.Operation
   }
 
+  export type AdminScalarRelationFilter = {
+    is?: AdminWhereInput
+    isNot?: AdminWhereInput
+  }
+
   export type AdminOperationHistoryCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     adminId?: SortOrder
+    opAdminId?: SortOrder
     operation?: SortOrder
   }
 
@@ -52522,6 +52589,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     adminId?: SortOrder
+    opAdminId?: SortOrder
     operation?: SortOrder
   }
 
@@ -52529,6 +52597,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     adminId?: SortOrder
+    opAdminId?: SortOrder
     operation?: SortOrder
   }
 
@@ -52540,11 +52609,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumOperationFilter<$PrismaModel>
     _max?: NestedEnumOperationFilter<$PrismaModel>
-  }
-
-  export type AdminScalarRelationFilter = {
-    is?: AdminWhereInput
-    isNot?: AdminWhereInput
   }
 
   export type AdminAuthorityCountOrderByAggregateInput = {
@@ -55061,6 +55125,13 @@ export namespace Prisma {
     connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
   }
 
+  export type AdminOperationHistoryCreateNestedManyWithoutOpAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+  }
+
   export type BannerCreateNestedManyWithoutAdminInput = {
     create?: XOR<BannerCreateWithoutAdminInput, BannerUncheckedCreateWithoutAdminInput> | BannerCreateWithoutAdminInput[] | BannerUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: BannerCreateOrConnectWithoutAdminInput | BannerCreateOrConnectWithoutAdminInput[]
@@ -55099,6 +55170,13 @@ export namespace Prisma {
     create?: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput> | AdminOperationHistoryCreateWithoutAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutAdminInput | AdminOperationHistoryCreateOrConnectWithoutAdminInput[]
     createMany?: AdminOperationHistoryCreateManyAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+  }
+
+  export type AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
     connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
   }
 
@@ -55162,6 +55240,20 @@ export namespace Prisma {
     connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
     update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+  }
+
+  export type AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput[]
     deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
   }
 
@@ -55245,6 +55337,20 @@ export namespace Prisma {
     deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
   }
 
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+  }
+
   export type BannerUncheckedUpdateManyWithoutAdminNestedInput = {
     create?: XOR<BannerCreateWithoutAdminInput, BannerUncheckedCreateWithoutAdminInput> | BannerCreateWithoutAdminInput[] | BannerUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: BannerCreateOrConnectWithoutAdminInput | BannerCreateOrConnectWithoutAdminInput[]
@@ -55293,18 +55399,30 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
+  export type AdminCreateNestedOneWithoutOperationsInput = {
+    create?: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationsInput
+    connect?: AdminWhereUniqueInput
+  }
+
   export type EnumOperationFieldUpdateOperationsInput = {
     set?: $Enums.Operation
   }
 
-  export type AdminUpdateOneWithoutOperationHistoriesNestedInput = {
+  export type AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput = {
     create?: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
     connectOrCreate?: AdminCreateOrConnectWithoutOperationHistoriesInput
     upsert?: AdminUpsertWithoutOperationHistoriesInput
-    disconnect?: AdminWhereInput | boolean
-    delete?: AdminWhereInput | boolean
     connect?: AdminWhereUniqueInput
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutOperationHistoriesInput, AdminUpdateWithoutOperationHistoriesInput>, AdminUncheckedUpdateWithoutOperationHistoriesInput>
+  }
+
+  export type AdminUpdateOneRequiredWithoutOperationsNestedInput = {
+    create?: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationsInput
+    upsert?: AdminUpsertWithoutOperationsInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutOperationsInput, AdminUpdateWithoutOperationsInput>, AdminUncheckedUpdateWithoutOperationsInput>
   }
 
   export type AdminAuthorityCreategradesInput = {
@@ -57896,6 +58014,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -57911,6 +58030,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -58467,6 +58587,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -58482,6 +58603,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -60397,11 +60519,13 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     operation?: $Enums.Operation
+    opAdmin: AdminCreateNestedOneWithoutOperationsInput
   }
 
   export type AdminOperationHistoryUncheckedCreateWithoutAdminInput = {
     id?: string
     createdAt?: Date | string
+    opAdminId: string
     operation?: $Enums.Operation
   }
 
@@ -60412,6 +60536,30 @@ export namespace Prisma {
 
   export type AdminOperationHistoryCreateManyAdminInputEnvelope = {
     data: AdminOperationHistoryCreateManyAdminInput | AdminOperationHistoryCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminOperationHistoryCreateWithoutOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    operation?: $Enums.Operation
+    admin: AdminCreateNestedOneWithoutOperationHistoriesInput
+  }
+
+  export type AdminOperationHistoryUncheckedCreateWithoutOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    adminId: string
+    operation?: $Enums.Operation
+  }
+
+  export type AdminOperationHistoryCreateOrConnectWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    create: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryCreateManyOpAdminInputEnvelope = {
+    data: AdminOperationHistoryCreateManyOpAdminInput | AdminOperationHistoryCreateManyOpAdminInput[]
     skipDuplicates?: boolean
   }
 
@@ -60652,8 +60800,25 @@ export namespace Prisma {
     NOT?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
     id?: StringFilter<"AdminOperationHistory"> | string
     createdAt?: DateTimeFilter<"AdminOperationHistory"> | Date | string
-    adminId?: StringNullableFilter<"AdminOperationHistory"> | string | null
+    adminId?: StringFilter<"AdminOperationHistory"> | string
+    opAdminId?: StringFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    update: XOR<AdminOperationHistoryUpdateWithoutOpAdminInput, AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput>
+    create: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    data: XOR<AdminOperationHistoryUpdateWithoutOpAdminInput, AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput = {
+    where: AdminOperationHistoryScalarWhereInput
+    data: XOR<AdminOperationHistoryUpdateManyMutationInput, AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminInput>
   }
 
   export type BannerUpsertWithWhereUniqueWithoutAdminInput = {
@@ -60761,6 +60926,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -60776,6 +60942,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -60784,6 +60951,43 @@ export namespace Prisma {
   export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
     where: AdminWhereUniqueInput
     create: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
+  }
+
+  export type AdminCreateWithoutOperationsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminUncheckedCreateWithoutOperationsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminCreateOrConnectWithoutOperationsInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
   }
 
   export type AdminUpsertWithoutOperationHistoriesInput = {
@@ -60807,6 +61011,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -60822,6 +61027,50 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUpsertWithoutOperationsInput = {
+    update: XOR<AdminUpdateWithoutOperationsInput, AdminUncheckedUpdateWithoutOperationsInput>
+    create: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutOperationsInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutOperationsInput, AdminUncheckedUpdateWithoutOperationsInput>
+  }
+
+  export type AdminUpdateWithoutOperationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutOperationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -60837,6 +61086,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -60852,6 +61102,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -60980,6 +61231,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -60995,6 +61247,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -61108,6 +61361,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
   }
@@ -61123,6 +61377,7 @@ export namespace Prisma {
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
   }
@@ -61192,6 +61447,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
   }
@@ -61207,6 +61463,7 @@ export namespace Prisma {
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
   }
@@ -62566,6 +62823,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
   }
@@ -62581,6 +62839,7 @@ export namespace Prisma {
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
   }
@@ -62612,6 +62871,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
   }
@@ -62627,6 +62887,7 @@ export namespace Prisma {
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
   }
@@ -62642,6 +62903,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
   }
@@ -62657,6 +62919,7 @@ export namespace Prisma {
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
   }
@@ -62688,6 +62951,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
   }
@@ -62703,6 +62967,7 @@ export namespace Prisma {
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
   }
@@ -65057,6 +65322,14 @@ export namespace Prisma {
   export type AdminOperationHistoryCreateManyAdminInput = {
     id?: string
     createdAt?: Date | string
+    opAdminId: string
+    operation?: $Enums.Operation
+  }
+
+  export type AdminOperationHistoryCreateManyOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    adminId: string
     operation?: $Enums.Operation
   }
 
@@ -65121,17 +65394,41 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+    opAdmin?: AdminUpdateOneRequiredWithoutOperationsNestedInput
   }
 
   export type AdminOperationHistoryUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
   export type AdminOperationHistoryUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUpdateWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+    admin?: AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
