@@ -304,6 +304,7 @@ model Admin {
   authId                  String                    @unique
   email                   String                    @unique
   name                    String
+  suspend                 Boolean                   @default(false)
   role                    Role?
   user                    User?
   authority               AdminAuthority[]

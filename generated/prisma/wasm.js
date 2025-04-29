@@ -317,6 +317,7 @@ exports.Prisma.AdminScalarFieldEnum = {
   authId: 'authId',
   email: 'email',
   name: 'name',
+  suspend: 'suspend',
   role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

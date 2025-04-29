@@ -23036,6 +23036,7 @@ export namespace Prisma {
     authId: string | null
     email: string | null
     name: string | null
+    suspend: boolean | null
     role: $Enums.Role | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -23046,6 +23047,7 @@ export namespace Prisma {
     authId: string | null
     email: string | null
     name: string | null
+    suspend: boolean | null
     role: $Enums.Role | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -23056,6 +23058,7 @@ export namespace Prisma {
     authId: number
     email: number
     name: number
+    suspend: number
     role: number
     createdAt: number
     updatedAt: number
@@ -23068,6 +23071,7 @@ export namespace Prisma {
     authId?: true
     email?: true
     name?: true
+    suspend?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -23078,6 +23082,7 @@ export namespace Prisma {
     authId?: true
     email?: true
     name?: true
+    suspend?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -23088,6 +23093,7 @@ export namespace Prisma {
     authId?: true
     email?: true
     name?: true
+    suspend?: true
     role?: true
     createdAt?: true
     updatedAt?: true
@@ -23171,6 +23177,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend: boolean
     role: $Enums.Role | null
     createdAt: Date
     updatedAt: Date
@@ -23198,6 +23205,7 @@ export namespace Prisma {
     authId?: boolean
     email?: boolean
     name?: boolean
+    suspend?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -23216,6 +23224,7 @@ export namespace Prisma {
     authId?: boolean
     email?: boolean
     name?: boolean
+    suspend?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -23226,6 +23235,7 @@ export namespace Prisma {
     authId?: boolean
     email?: boolean
     name?: boolean
+    suspend?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -23236,12 +23246,13 @@ export namespace Prisma {
     authId?: boolean
     email?: boolean
     name?: boolean
+    suspend?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Admin$userArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
@@ -23271,6 +23282,7 @@ export namespace Prisma {
       authId: string
       email: string
       name: string
+      suspend: boolean
       role: $Enums.Role | null
       createdAt: Date
       updatedAt: Date
@@ -23708,6 +23720,7 @@ export namespace Prisma {
     readonly authId: FieldRef<"Admin", 'String'>
     readonly email: FieldRef<"Admin", 'String'>
     readonly name: FieldRef<"Admin", 'String'>
+    readonly suspend: FieldRef<"Admin", 'Boolean'>
     readonly role: FieldRef<"Admin", 'Role'>
     readonly createdAt: FieldRef<"Admin", 'DateTime'>
     readonly updatedAt: FieldRef<"Admin", 'DateTime'>
@@ -44973,6 +44986,7 @@ export namespace Prisma {
     authId: 'authId',
     email: 'email',
     name: 'name',
+    suspend: 'suspend',
     role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -46803,6 +46817,7 @@ export namespace Prisma {
     authId?: StringFilter<"Admin"> | string
     email?: StringFilter<"Admin"> | string
     name?: StringFilter<"Admin"> | string
+    suspend?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
@@ -46820,6 +46835,7 @@ export namespace Prisma {
     authId?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    suspend?: SortOrder
     role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46840,6 +46856,7 @@ export namespace Prisma {
     OR?: AdminWhereInput[]
     NOT?: AdminWhereInput | AdminWhereInput[]
     name?: StringFilter<"Admin"> | string
+    suspend?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
@@ -46857,6 +46874,7 @@ export namespace Prisma {
     authId?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    suspend?: SortOrder
     role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46873,6 +46891,7 @@ export namespace Prisma {
     authId?: StringWithAggregatesFilter<"Admin"> | string
     email?: StringWithAggregatesFilter<"Admin"> | string
     name?: StringWithAggregatesFilter<"Admin"> | string
+    suspend?: BoolWithAggregatesFilter<"Admin"> | boolean
     role?: EnumRoleNullableWithAggregatesFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
@@ -49710,6 +49729,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49727,6 +49747,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49744,6 +49765,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49761,6 +49783,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49778,6 +49801,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49788,6 +49812,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49798,6 +49823,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52530,6 +52556,7 @@ export namespace Prisma {
     authId?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    suspend?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -52540,6 +52567,7 @@ export namespace Prisma {
     authId?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    suspend?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -52550,6 +52578,7 @@ export namespace Prisma {
     authId?: SortOrder
     email?: SortOrder
     name?: SortOrder
+    suspend?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -58009,6 +58038,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58025,6 +58055,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58582,6 +58613,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58598,6 +58630,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60921,6 +60954,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60937,6 +60971,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60958,6 +60993,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60974,6 +61010,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61006,6 +61043,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61022,6 +61060,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61049,6 +61088,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61065,6 +61105,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61081,6 +61122,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61097,6 +61139,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61226,6 +61269,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61242,6 +61286,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61355,6 +61400,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61371,6 +61417,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61441,6 +61488,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61457,6 +61505,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62817,6 +62866,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62833,6 +62883,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62865,6 +62916,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62881,6 +62933,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62897,6 +62950,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62913,6 +62967,7 @@ export namespace Prisma {
     authId: string
     email: string
     name: string
+    suspend?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62945,6 +63000,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62961,6 +63017,7 @@ export namespace Prisma {
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
