@@ -15,68 +15,72 @@ datasource db {
 }
 
 model Province {
-  id               String             @id @default(cuid())
-  name             String
-  longitude        Float
-  latitude         Float
-  geoId            String
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
-  cities           City[]
-  schools          School[]
-  users            User[]
-  bannerOnProvince BannerOnProvince[]
-  adminAuthority   AdminAuthority[]
+  id             String           @id @default(cuid())
+  name           String
+  longitude      Float
+  latitude       Float
+  geoId          String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  cities         City[]
+  schools        School[]
+  users          User[]
+  adminAuthority AdminAuthority[]
+  bannerLocation BannerLocation[]
+
+  @@index([id])
+  @@index([name])
+  @@index([id, name])
 }
 
 model City {
-  id           String         @id @default(cuid())
-  name         String
-  longitude    Float
-  latitude     Float
-  geoId        String
-  provinceId   String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  province     Province       @relation(fields: [provinceId], references: [id])
-  schools      School[]
-  users        User[]
-  authOnCity   AuthOnCity[]
-  bannerOnCity BannerOnCity[]
+  id             String           @id @default(cuid())
+  name           String
+  longitude      Float
+  latitude       Float
+  geoId          String
+  provinceId     String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  province       Province         @relation(fields: [provinceId], references: [id])
+  schools        School[]
+  users          User[]
+  adminAuthority AdminAuthority[]
+  bannerLocation BannerLocation[]
 
   @@index([provinceId])
 }
 
 model School {
-  id           String         @id @default(cuid())
-  identity     String
-  name         String
-  longitude    Float
-  latitude     Float
-  cityId       String
-  provinceId   String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  city         City           @relation(fields: [cityId], references: [id])
-  province     Province       @relation(fields: [provinceId], references: [id])
-  users        User[]
-  authOnSchool AuthOnSchool[]
+  id             String           @id @default(cuid())
+  identity       String
+  name           String
+  longitude      Float
+  latitude       Float
+  cityId         String
+  provinceId     String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  city           City             @relation(fields: [cityId], references: [id])
+  province       Province         @relation(fields: [provinceId], references: [id])
+  users          User[]
+  adminAuthority AdminAuthority[]
 
   @@index([cityId])
 }
 
 model AccessContent {
-  id           String                @id @default(cuid())
+  id           String   @id @default(cuid())
   expired      DateTime
   quota        Int
   currentQuota Int
   ownerId      String?
   zones        String[]
-  createdAt    DateTime              @default(now())
-  updatedAt    DateTime              @updatedAt
-  owner        User?                 @relation("AccessOwner", fields: [ownerId], references: [id])
-  userAccesses UserOnAccessContent[]
-  redemeers    User[]                @relation("AccessRedemeers")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  owner        User?    @relation("AccessOwner", fields: [ownerId], references: [id])
+  userAccesses User[]
+  redemeers    User[]   @relation("AccessRedemeers")
 }
 
 model User {
@@ -113,7 +117,7 @@ model User {
   province               Province?                @relation(fields: [provinceId], references: [id])
   school                 School?                  @relation(fields: [schoolId], references: [id])
   admin                  Admin?                   @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  userAccesses           UserOnAccessContent[]
+  userAccesses           AccessContent[]
   zones                  Zone[]
   redeemedAccesses       AccessContent[]          @relation("AccessRedemeers")
   UserLogin              UserLogin[]
@@ -298,9 +302,9 @@ model UserLogin {
 model Admin {
   id                      String                    @id @default(cuid())
   authId                  String                    @unique
-  googleId                String?                   @unique
+  email                   String                    @unique
   name                    String
-  role                    Role
+  role                    Role?
   user                    User?
   authority               AdminAuthority[]
   createdAt               DateTime                  @default(now())
@@ -320,37 +324,46 @@ model AdminOperationHistory {
 }
 
 model AdminAuthority {
-  id             String         @id @default(cuid())
-  adminId        String         @unique
-  admin          Admin          @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  authProvinceId String
-  province       Province       @relation(fields: [authProvinceId], references: [id])
-  authOnCity     AuthOnCity[]
-  authOnSchool   AuthOnSchool[]
-  grades         Int[]
+  id         String   @id @default(cuid())
+  adminId    String
+  admin      Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  provinceId String
+  province   Province @relation(fields: [provinceId], references: [id])
+  cities     City[]
+  schools    School[]
+  grades     Int[]
 
-  @@index([authProvinceId])
+  @@index([provinceId])
 }
 
 model Banner {
-  id               String             @id @default(cuid())
-  thumbnail        String
-  link             String?
-  startedAt        DateTime?
-  endedAt          DateTime?
-  isHide           Boolean            @default(false)
-  bannerOnProvince BannerOnProvince[]
-  bannerOnCity     BannerOnCity[]
-  visitors         BannerVisitor[]
-  adminId          String
-  admin            Admin              @relation(fields: [adminId], references: [id])
+  id        String    @id @default(cuid())
+  thumbnail String
+  link      String?
+  startedAt DateTime?
+  endedAt   DateTime?
+  isHide    Boolean   @default(false)
+
+  visitors       BannerVisitor[]
+  adminId        String
+  admin          Admin            @relation(fields: [adminId], references: [id])
+  bannerLocation BannerLocation[]
+}
+
+model BannerLocation {
+  id         String   @id @default(cuid())
+  bannerId   String
+  banner     Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  provinceId String
+  province   Province @relation(fields: [provinceId], references: [id])
+  cities     City[]
 }
 
 model BannerVisitor {
   id        String   @id @default(cuid())
-  bannerId  String
+  bannerId  String   @unique
   banner    Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  userId    String
+  userId    String   @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -540,59 +553,59 @@ model MultiPlayerMember {
   isDisconnect Boolean   @default(false)
 
   user User?           @relation(fields: [userId], references: [id])
-  room MultiplayerRoom @relation(fields: [roomId], references: [id])
+  room MultiplayerRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
 }
 
 //----------------- Start Table Junction ----------------//
 
-model UserOnAccessContent {
-  userId          String
-  accessContentId String
-  accessContent   AccessContent @relation(fields: [accessContentId], references: [id], onDelete: Cascade)
-  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+// model UserOnAccessContent {
+//   userId          String
+//   accessContentId String
+//   accessContent   AccessContent @relation(fields: [accessContentId], references: [id], onDelete: Cascade)
+//   user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+//
+//   @@id([userId, accessContentId])
+// }
 
-  @@id([userId, accessContentId])
-}
+// model AuthOnCity {
+//   authId String
+//   cityId String
+//
+//   auth AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
+//   city City           @relation(fields: [cityId], references: [id], onDelete: Cascade)
+//
+//   @@id([authId, cityId])
+// }
+//
+// model AuthOnSchool {
+//   authId   String
+//   schoolId String
+//
+//   auth   AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
+//   school School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+//
+//   @@id([authId, schoolId])
+// }
 
-model AuthOnCity {
-  authId String
-  cityId String
-
-  auth AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
-  city City           @relation(fields: [cityId], references: [id], onDelete: Cascade)
-
-  @@id([authId, cityId])
-}
-
-model AuthOnSchool {
-  authId   String
-  schoolId String
-
-  auth   AdminAuthority @relation(fields: [authId], references: [id], onDelete: Cascade)
-  school School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-
-  @@id([authId, schoolId])
-}
-
-model BannerOnProvince {
-  bannerId   String
-  provinceId String
-
-  banner   Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  province Province @relation(fields: [provinceId], references: [id], onDelete: Cascade)
-
-  @@id([bannerId, provinceId])
-}
-
-model BannerOnCity {
-  bannerId String
-  cityId   String
-
-  banner Banner @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  city   City   @relation(fields: [cityId], references: [id], onDelete: Cascade)
-
-  @@id([bannerId, cityId])
-}
+// model BannerOnProvince {
+//   bannerId   String
+//   provinceId String
+//
+//   banner   Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+//   province Province @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+//
+//   @@id([bannerId, provinceId])
+// }
+//
+// model BannerOnCity {
+//   bannerId String
+//   cityId   String
+//
+//   banner Banner @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+//   city   City   @relation(fields: [cityId], references: [id], onDelete: Cascade)
+//
+//   @@id([bannerId, cityId])
+// }
 
 //----------------- End Table Junction ----------------//
 

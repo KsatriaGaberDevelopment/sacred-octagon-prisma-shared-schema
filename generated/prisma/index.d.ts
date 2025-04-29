@@ -109,6 +109,11 @@ export type AdminAuthority = $Result.DefaultSelection<Prisma.$AdminAuthorityPayl
  */
 export type Banner = $Result.DefaultSelection<Prisma.$BannerPayload>
 /**
+ * Model BannerLocation
+ * 
+ */
+export type BannerLocation = $Result.DefaultSelection<Prisma.$BannerLocationPayload>
+/**
  * Model BannerVisitor
  * 
  */
@@ -178,31 +183,6 @@ export type MultiplayerRoom = $Result.DefaultSelection<Prisma.$MultiplayerRoomPa
  * 
  */
 export type MultiPlayerMember = $Result.DefaultSelection<Prisma.$MultiPlayerMemberPayload>
-/**
- * Model UserOnAccessContent
- * 
- */
-export type UserOnAccessContent = $Result.DefaultSelection<Prisma.$UserOnAccessContentPayload>
-/**
- * Model AuthOnCity
- * 
- */
-export type AuthOnCity = $Result.DefaultSelection<Prisma.$AuthOnCityPayload>
-/**
- * Model AuthOnSchool
- * 
- */
-export type AuthOnSchool = $Result.DefaultSelection<Prisma.$AuthOnSchoolPayload>
-/**
- * Model BannerOnProvince
- * 
- */
-export type BannerOnProvince = $Result.DefaultSelection<Prisma.$BannerOnProvincePayload>
-/**
- * Model BannerOnCity
- * 
- */
-export type BannerOnCity = $Result.DefaultSelection<Prisma.$BannerOnCityPayload>
 
 /**
  * Enums
@@ -620,6 +600,16 @@ export class PrismaClient<
   get banner(): Prisma.BannerDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.bannerLocation`: Exposes CRUD operations for the **BannerLocation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BannerLocations
+    * const bannerLocations = await prisma.bannerLocation.findMany()
+    * ```
+    */
+  get bannerLocation(): Prisma.BannerLocationDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.bannerVisitor`: Exposes CRUD operations for the **BannerVisitor** model.
     * Example usage:
     * ```ts
@@ -758,56 +748,6 @@ export class PrismaClient<
     * ```
     */
   get multiPlayerMember(): Prisma.MultiPlayerMemberDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.userOnAccessContent`: Exposes CRUD operations for the **UserOnAccessContent** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more UserOnAccessContents
-    * const userOnAccessContents = await prisma.userOnAccessContent.findMany()
-    * ```
-    */
-  get userOnAccessContent(): Prisma.UserOnAccessContentDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.authOnCity`: Exposes CRUD operations for the **AuthOnCity** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more AuthOnCities
-    * const authOnCities = await prisma.authOnCity.findMany()
-    * ```
-    */
-  get authOnCity(): Prisma.AuthOnCityDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.authOnSchool`: Exposes CRUD operations for the **AuthOnSchool** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more AuthOnSchools
-    * const authOnSchools = await prisma.authOnSchool.findMany()
-    * ```
-    */
-  get authOnSchool(): Prisma.AuthOnSchoolDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.bannerOnProvince`: Exposes CRUD operations for the **BannerOnProvince** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BannerOnProvinces
-    * const bannerOnProvinces = await prisma.bannerOnProvince.findMany()
-    * ```
-    */
-  get bannerOnProvince(): Prisma.BannerOnProvinceDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.bannerOnCity`: Exposes CRUD operations for the **BannerOnCity** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BannerOnCities
-    * const bannerOnCities = await prisma.bannerOnCity.findMany()
-    * ```
-    */
-  get bannerOnCity(): Prisma.BannerOnCityDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1267,6 +1207,7 @@ export namespace Prisma {
     AdminOperationHistory: 'AdminOperationHistory',
     AdminAuthority: 'AdminAuthority',
     Banner: 'Banner',
+    BannerLocation: 'BannerLocation',
     BannerVisitor: 'BannerVisitor',
     Test: 'Test',
     TestParticipant: 'TestParticipant',
@@ -1280,12 +1221,7 @@ export namespace Prisma {
     UserTransaction: 'UserTransaction',
     UserTransactionArchive: 'UserTransactionArchive',
     MultiplayerRoom: 'MultiplayerRoom',
-    MultiPlayerMember: 'MultiPlayerMember',
-    UserOnAccessContent: 'UserOnAccessContent',
-    AuthOnCity: 'AuthOnCity',
-    AuthOnSchool: 'AuthOnSchool',
-    BannerOnProvince: 'BannerOnProvince',
-    BannerOnCity: 'BannerOnCity'
+    MultiPlayerMember: 'MultiPlayerMember'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1304,7 +1240,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "device" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember" | "userOnAccessContent" | "authOnCity" | "authOnSchool" | "bannerOnProvince" | "bannerOnCity"
+      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "device" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2714,6 +2650,80 @@ export namespace Prisma {
           }
         }
       }
+      BannerLocation: {
+        payload: Prisma.$BannerLocationPayload<ExtArgs>
+        fields: Prisma.BannerLocationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BannerLocationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BannerLocationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          findFirst: {
+            args: Prisma.BannerLocationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BannerLocationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          findMany: {
+            args: Prisma.BannerLocationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
+          }
+          create: {
+            args: Prisma.BannerLocationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          createMany: {
+            args: Prisma.BannerLocationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BannerLocationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
+          }
+          delete: {
+            args: Prisma.BannerLocationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          update: {
+            args: Prisma.BannerLocationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          deleteMany: {
+            args: Prisma.BannerLocationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BannerLocationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BannerLocationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
+          }
+          upsert: {
+            args: Prisma.BannerLocationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
+          }
+          aggregate: {
+            args: Prisma.BannerLocationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBannerLocation>
+          }
+          groupBy: {
+            args: Prisma.BannerLocationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BannerLocationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BannerLocationCountArgs<ExtArgs>
+            result: $Utils.Optional<BannerLocationCountAggregateOutputType> | number
+          }
+        }
+      }
       BannerVisitor: {
         payload: Prisma.$BannerVisitorPayload<ExtArgs>
         fields: Prisma.BannerVisitorFieldRefs
@@ -3750,376 +3760,6 @@ export namespace Prisma {
           }
         }
       }
-      UserOnAccessContent: {
-        payload: Prisma.$UserOnAccessContentPayload<ExtArgs>
-        fields: Prisma.UserOnAccessContentFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.UserOnAccessContentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.UserOnAccessContentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          findFirst: {
-            args: Prisma.UserOnAccessContentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.UserOnAccessContentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          findMany: {
-            args: Prisma.UserOnAccessContentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>[]
-          }
-          create: {
-            args: Prisma.UserOnAccessContentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          createMany: {
-            args: Prisma.UserOnAccessContentCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.UserOnAccessContentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>[]
-          }
-          delete: {
-            args: Prisma.UserOnAccessContentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          update: {
-            args: Prisma.UserOnAccessContentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          deleteMany: {
-            args: Prisma.UserOnAccessContentDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.UserOnAccessContentUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.UserOnAccessContentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>[]
-          }
-          upsert: {
-            args: Prisma.UserOnAccessContentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserOnAccessContentPayload>
-          }
-          aggregate: {
-            args: Prisma.UserOnAccessContentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserOnAccessContent>
-          }
-          groupBy: {
-            args: Prisma.UserOnAccessContentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserOnAccessContentGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.UserOnAccessContentCountArgs<ExtArgs>
-            result: $Utils.Optional<UserOnAccessContentCountAggregateOutputType> | number
-          }
-        }
-      }
-      AuthOnCity: {
-        payload: Prisma.$AuthOnCityPayload<ExtArgs>
-        fields: Prisma.AuthOnCityFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.AuthOnCityFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.AuthOnCityFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          findFirst: {
-            args: Prisma.AuthOnCityFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.AuthOnCityFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          findMany: {
-            args: Prisma.AuthOnCityFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>[]
-          }
-          create: {
-            args: Prisma.AuthOnCityCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          createMany: {
-            args: Prisma.AuthOnCityCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.AuthOnCityCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>[]
-          }
-          delete: {
-            args: Prisma.AuthOnCityDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          update: {
-            args: Prisma.AuthOnCityUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          deleteMany: {
-            args: Prisma.AuthOnCityDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.AuthOnCityUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.AuthOnCityUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>[]
-          }
-          upsert: {
-            args: Prisma.AuthOnCityUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnCityPayload>
-          }
-          aggregate: {
-            args: Prisma.AuthOnCityAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAuthOnCity>
-          }
-          groupBy: {
-            args: Prisma.AuthOnCityGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AuthOnCityGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.AuthOnCityCountArgs<ExtArgs>
-            result: $Utils.Optional<AuthOnCityCountAggregateOutputType> | number
-          }
-        }
-      }
-      AuthOnSchool: {
-        payload: Prisma.$AuthOnSchoolPayload<ExtArgs>
-        fields: Prisma.AuthOnSchoolFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.AuthOnSchoolFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.AuthOnSchoolFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          findFirst: {
-            args: Prisma.AuthOnSchoolFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.AuthOnSchoolFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          findMany: {
-            args: Prisma.AuthOnSchoolFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>[]
-          }
-          create: {
-            args: Prisma.AuthOnSchoolCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          createMany: {
-            args: Prisma.AuthOnSchoolCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.AuthOnSchoolCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>[]
-          }
-          delete: {
-            args: Prisma.AuthOnSchoolDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          update: {
-            args: Prisma.AuthOnSchoolUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          deleteMany: {
-            args: Prisma.AuthOnSchoolDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.AuthOnSchoolUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.AuthOnSchoolUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>[]
-          }
-          upsert: {
-            args: Prisma.AuthOnSchoolUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AuthOnSchoolPayload>
-          }
-          aggregate: {
-            args: Prisma.AuthOnSchoolAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAuthOnSchool>
-          }
-          groupBy: {
-            args: Prisma.AuthOnSchoolGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AuthOnSchoolGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.AuthOnSchoolCountArgs<ExtArgs>
-            result: $Utils.Optional<AuthOnSchoolCountAggregateOutputType> | number
-          }
-        }
-      }
-      BannerOnProvince: {
-        payload: Prisma.$BannerOnProvincePayload<ExtArgs>
-        fields: Prisma.BannerOnProvinceFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BannerOnProvinceFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BannerOnProvinceFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          findFirst: {
-            args: Prisma.BannerOnProvinceFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BannerOnProvinceFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          findMany: {
-            args: Prisma.BannerOnProvinceFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>[]
-          }
-          create: {
-            args: Prisma.BannerOnProvinceCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          createMany: {
-            args: Prisma.BannerOnProvinceCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.BannerOnProvinceCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>[]
-          }
-          delete: {
-            args: Prisma.BannerOnProvinceDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          update: {
-            args: Prisma.BannerOnProvinceUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          deleteMany: {
-            args: Prisma.BannerOnProvinceDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BannerOnProvinceUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.BannerOnProvinceUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>[]
-          }
-          upsert: {
-            args: Prisma.BannerOnProvinceUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnProvincePayload>
-          }
-          aggregate: {
-            args: Prisma.BannerOnProvinceAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBannerOnProvince>
-          }
-          groupBy: {
-            args: Prisma.BannerOnProvinceGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BannerOnProvinceGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BannerOnProvinceCountArgs<ExtArgs>
-            result: $Utils.Optional<BannerOnProvinceCountAggregateOutputType> | number
-          }
-        }
-      }
-      BannerOnCity: {
-        payload: Prisma.$BannerOnCityPayload<ExtArgs>
-        fields: Prisma.BannerOnCityFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BannerOnCityFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BannerOnCityFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          findFirst: {
-            args: Prisma.BannerOnCityFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BannerOnCityFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          findMany: {
-            args: Prisma.BannerOnCityFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>[]
-          }
-          create: {
-            args: Prisma.BannerOnCityCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          createMany: {
-            args: Prisma.BannerOnCityCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.BannerOnCityCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>[]
-          }
-          delete: {
-            args: Prisma.BannerOnCityDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          update: {
-            args: Prisma.BannerOnCityUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          deleteMany: {
-            args: Prisma.BannerOnCityDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BannerOnCityUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.BannerOnCityUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>[]
-          }
-          upsert: {
-            args: Prisma.BannerOnCityUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerOnCityPayload>
-          }
-          aggregate: {
-            args: Prisma.BannerOnCityAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBannerOnCity>
-          }
-          groupBy: {
-            args: Prisma.BannerOnCityGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BannerOnCityGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BannerOnCityCountArgs<ExtArgs>
-            result: $Utils.Optional<BannerOnCityCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -4223,6 +3863,7 @@ export namespace Prisma {
     adminOperationHistory?: AdminOperationHistoryOmit
     adminAuthority?: AdminAuthorityOmit
     banner?: BannerOmit
+    bannerLocation?: BannerLocationOmit
     bannerVisitor?: BannerVisitorOmit
     test?: TestOmit
     testParticipant?: TestParticipantOmit
@@ -4237,11 +3878,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveOmit
     multiplayerRoom?: MultiplayerRoomOmit
     multiPlayerMember?: MultiPlayerMemberOmit
-    userOnAccessContent?: UserOnAccessContentOmit
-    authOnCity?: AuthOnCityOmit
-    authOnSchool?: AuthOnSchoolOmit
-    bannerOnProvince?: BannerOnProvinceOmit
-    bannerOnCity?: BannerOnCityOmit
   }
 
   /* Types for Logging */
@@ -4339,16 +3975,16 @@ export namespace Prisma {
     cities: number
     schools: number
     users: number
-    bannerOnProvince: number
     adminAuthority: number
+    bannerLocation: number
   }
 
   export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cities?: boolean | ProvinceCountOutputTypeCountCitiesArgs
     schools?: boolean | ProvinceCountOutputTypeCountSchoolsArgs
     users?: boolean | ProvinceCountOutputTypeCountUsersArgs
-    bannerOnProvince?: boolean | ProvinceCountOutputTypeCountBannerOnProvinceArgs
     adminAuthority?: boolean | ProvinceCountOutputTypeCountAdminAuthorityArgs
+    bannerLocation?: boolean | ProvinceCountOutputTypeCountBannerLocationArgs
   }
 
   // Custom InputTypes
@@ -4386,15 +4022,15 @@ export namespace Prisma {
   /**
    * ProvinceCountOutputType without action
    */
-  export type ProvinceCountOutputTypeCountBannerOnProvinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnProvinceWhereInput
+  export type ProvinceCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuthorityWhereInput
   }
 
   /**
    * ProvinceCountOutputType without action
    */
-  export type ProvinceCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AdminAuthorityWhereInput
+  export type ProvinceCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerLocationWhereInput
   }
 
 
@@ -4405,15 +4041,15 @@ export namespace Prisma {
   export type CityCountOutputType = {
     schools: number
     users: number
-    authOnCity: number
-    bannerOnCity: number
+    adminAuthority: number
+    bannerLocation: number
   }
 
   export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schools?: boolean | CityCountOutputTypeCountSchoolsArgs
     users?: boolean | CityCountOutputTypeCountUsersArgs
-    authOnCity?: boolean | CityCountOutputTypeCountAuthOnCityArgs
-    bannerOnCity?: boolean | CityCountOutputTypeCountBannerOnCityArgs
+    adminAuthority?: boolean | CityCountOutputTypeCountAdminAuthorityArgs
+    bannerLocation?: boolean | CityCountOutputTypeCountBannerLocationArgs
   }
 
   // Custom InputTypes
@@ -4444,15 +4080,15 @@ export namespace Prisma {
   /**
    * CityCountOutputType without action
    */
-  export type CityCountOutputTypeCountAuthOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnCityWhereInput
+  export type CityCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuthorityWhereInput
   }
 
   /**
    * CityCountOutputType without action
    */
-  export type CityCountOutputTypeCountBannerOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnCityWhereInput
+  export type CityCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerLocationWhereInput
   }
 
 
@@ -4462,12 +4098,12 @@ export namespace Prisma {
 
   export type SchoolCountOutputType = {
     users: number
-    authOnSchool: number
+    adminAuthority: number
   }
 
   export type SchoolCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | SchoolCountOutputTypeCountUsersArgs
-    authOnSchool?: boolean | SchoolCountOutputTypeCountAuthOnSchoolArgs
+    adminAuthority?: boolean | SchoolCountOutputTypeCountAdminAuthorityArgs
   }
 
   // Custom InputTypes
@@ -4491,8 +4127,8 @@ export namespace Prisma {
   /**
    * SchoolCountOutputType without action
    */
-  export type SchoolCountOutputTypeCountAuthOnSchoolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnSchoolWhereInput
+  export type SchoolCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuthorityWhereInput
   }
 
 
@@ -4525,7 +4161,7 @@ export namespace Prisma {
    * AccessContentCountOutputType without action
    */
   export type AccessContentCountOutputTypeCountUserAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserOnAccessContentWhereInput
+    where?: UserWhereInput
   }
 
   /**
@@ -4592,7 +4228,7 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountUserAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserOnAccessContentWhereInput
+    where?: AccessContentWhereInput
   }
 
   /**
@@ -4893,13 +4529,13 @@ export namespace Prisma {
    */
 
   export type AdminAuthorityCountOutputType = {
-    authOnCity: number
-    authOnSchool: number
+    cities: number
+    schools: number
   }
 
   export type AdminAuthorityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    authOnCity?: boolean | AdminAuthorityCountOutputTypeCountAuthOnCityArgs
-    authOnSchool?: boolean | AdminAuthorityCountOutputTypeCountAuthOnSchoolArgs
+    cities?: boolean | AdminAuthorityCountOutputTypeCountCitiesArgs
+    schools?: boolean | AdminAuthorityCountOutputTypeCountSchoolsArgs
   }
 
   // Custom InputTypes
@@ -4916,15 +4552,15 @@ export namespace Prisma {
   /**
    * AdminAuthorityCountOutputType without action
    */
-  export type AdminAuthorityCountOutputTypeCountAuthOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnCityWhereInput
+  export type AdminAuthorityCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CityWhereInput
   }
 
   /**
    * AdminAuthorityCountOutputType without action
    */
-  export type AdminAuthorityCountOutputTypeCountAuthOnSchoolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnSchoolWhereInput
+  export type AdminAuthorityCountOutputTypeCountSchoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SchoolWhereInput
   }
 
 
@@ -4933,15 +4569,13 @@ export namespace Prisma {
    */
 
   export type BannerCountOutputType = {
-    bannerOnProvince: number
-    bannerOnCity: number
     visitors: number
+    bannerLocation: number
   }
 
   export type BannerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bannerOnProvince?: boolean | BannerCountOutputTypeCountBannerOnProvinceArgs
-    bannerOnCity?: boolean | BannerCountOutputTypeCountBannerOnCityArgs
     visitors?: boolean | BannerCountOutputTypeCountVisitorsArgs
+    bannerLocation?: boolean | BannerCountOutputTypeCountBannerLocationArgs
   }
 
   // Custom InputTypes
@@ -4958,22 +4592,46 @@ export namespace Prisma {
   /**
    * BannerCountOutputType without action
    */
-  export type BannerCountOutputTypeCountBannerOnProvinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnProvinceWhereInput
-  }
-
-  /**
-   * BannerCountOutputType without action
-   */
-  export type BannerCountOutputTypeCountBannerOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnCityWhereInput
-  }
-
-  /**
-   * BannerCountOutputType without action
-   */
   export type BannerCountOutputTypeCountVisitorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BannerVisitorWhereInput
+  }
+
+  /**
+   * BannerCountOutputType without action
+   */
+  export type BannerCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerLocationWhereInput
+  }
+
+
+  /**
+   * Count Type BannerLocationCountOutputType
+   */
+
+  export type BannerLocationCountOutputType = {
+    cities: number
+  }
+
+  export type BannerLocationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cities?: boolean | BannerLocationCountOutputTypeCountCitiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BannerLocationCountOutputType without action
+   */
+  export type BannerLocationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocationCountOutputType
+     */
+    select?: BannerLocationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BannerLocationCountOutputType without action
+   */
+  export type BannerLocationCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CityWhereInput
   }
 
 
@@ -5326,8 +4984,8 @@ export namespace Prisma {
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
-    bannerOnProvince?: boolean | Province$bannerOnProvinceArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["province"]>
 
@@ -5366,8 +5024,8 @@ export namespace Prisma {
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
-    bannerOnProvince?: boolean | Province$bannerOnProvinceArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5379,8 +5037,8 @@ export namespace Prisma {
       cities: Prisma.$CityPayload<ExtArgs>[]
       schools: Prisma.$SchoolPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
-      bannerOnProvince: Prisma.$BannerOnProvincePayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
+      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5787,8 +5445,8 @@ export namespace Prisma {
     cities<T extends Province$citiesArgs<ExtArgs> = {}>(args?: Subset<T, Province$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schools<T extends Province$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, Province$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Province$usersArgs<ExtArgs> = {}>(args?: Subset<T, Province$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerOnProvince<T extends Province$bannerOnProvinceArgs<ExtArgs> = {}>(args?: Subset<T, Province$bannerOnProvinceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends Province$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, Province$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bannerLocation<T extends Province$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Province$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6285,30 +5943,6 @@ export namespace Prisma {
   }
 
   /**
-   * Province.bannerOnProvince
-   */
-  export type Province$bannerOnProvinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    where?: BannerOnProvinceWhereInput
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    cursor?: BannerOnProvinceWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BannerOnProvinceScalarFieldEnum | BannerOnProvinceScalarFieldEnum[]
-  }
-
-  /**
    * Province.adminAuthority
    */
   export type Province$adminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6330,6 +5964,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AdminAuthorityScalarFieldEnum | AdminAuthorityScalarFieldEnum[]
+  }
+
+  /**
+   * Province.bannerLocation
+   */
+  export type Province$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    where?: BannerLocationWhereInput
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    cursor?: BannerLocationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
   }
 
   /**
@@ -6580,8 +6238,8 @@ export namespace Prisma {
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     schools?: boolean | City$schoolsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
-    authOnCity?: boolean | City$authOnCityArgs<ExtArgs>
-    bannerOnCity?: boolean | City$bannerOnCityArgs<ExtArgs>
+    adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["city"]>
 
@@ -6625,8 +6283,8 @@ export namespace Prisma {
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     schools?: boolean | City$schoolsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
-    authOnCity?: boolean | City$authOnCityArgs<ExtArgs>
-    bannerOnCity?: boolean | City$bannerOnCityArgs<ExtArgs>
+    adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6642,8 +6300,8 @@ export namespace Prisma {
       province: Prisma.$ProvincePayload<ExtArgs>
       schools: Prisma.$SchoolPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
-      authOnCity: Prisma.$AuthOnCityPayload<ExtArgs>[]
-      bannerOnCity: Prisma.$BannerOnCityPayload<ExtArgs>[]
+      adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
+      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7051,8 +6709,8 @@ export namespace Prisma {
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     schools<T extends City$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, City$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends City$usersArgs<ExtArgs> = {}>(args?: Subset<T, City$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authOnCity<T extends City$authOnCityArgs<ExtArgs> = {}>(args?: Subset<T, City$authOnCityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerOnCity<T extends City$bannerOnCityArgs<ExtArgs> = {}>(args?: Subset<T, City$bannerOnCityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminAuthority<T extends City$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, City$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bannerLocation<T extends City$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, City$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7534,51 +7192,51 @@ export namespace Prisma {
   }
 
   /**
-   * City.authOnCity
+   * City.adminAuthority
    */
-  export type City$authOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type City$adminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AuthOnCity
+     * Select specific fields to fetch from the AdminAuthority
      */
-    select?: AuthOnCitySelect<ExtArgs> | null
+    select?: AdminAuthoritySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AuthOnCity
+     * Omit specific fields from the AdminAuthority
      */
-    omit?: AuthOnCityOmit<ExtArgs> | null
+    omit?: AdminAuthorityOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    where?: AuthOnCityWhereInput
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    cursor?: AuthOnCityWhereUniqueInput
+    include?: AdminAuthorityInclude<ExtArgs> | null
+    where?: AdminAuthorityWhereInput
+    orderBy?: AdminAuthorityOrderByWithRelationInput | AdminAuthorityOrderByWithRelationInput[]
+    cursor?: AdminAuthorityWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AuthOnCityScalarFieldEnum | AuthOnCityScalarFieldEnum[]
+    distinct?: AdminAuthorityScalarFieldEnum | AdminAuthorityScalarFieldEnum[]
   }
 
   /**
-   * City.bannerOnCity
+   * City.bannerLocation
    */
-  export type City$bannerOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type City$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BannerOnCity
+     * Select specific fields to fetch from the BannerLocation
      */
-    select?: BannerOnCitySelect<ExtArgs> | null
+    select?: BannerLocationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the BannerOnCity
+     * Omit specific fields from the BannerLocation
      */
-    omit?: BannerOnCityOmit<ExtArgs> | null
+    omit?: BannerLocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    where?: BannerOnCityWhereInput
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    cursor?: BannerOnCityWhereUniqueInput
+    include?: BannerLocationInclude<ExtArgs> | null
+    where?: BannerLocationWhereInput
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    cursor?: BannerLocationWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BannerOnCityScalarFieldEnum | BannerOnCityScalarFieldEnum[]
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
   }
 
   /**
@@ -7837,7 +7495,7 @@ export namespace Prisma {
     city?: boolean | CityDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
-    authOnSchool?: boolean | School$authOnSchoolArgs<ExtArgs>
+    adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["school"]>
 
@@ -7886,7 +7544,7 @@ export namespace Prisma {
     city?: boolean | CityDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
-    authOnSchool?: boolean | School$authOnSchoolArgs<ExtArgs>
+    adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SchoolIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7904,7 +7562,7 @@ export namespace Prisma {
       city: Prisma.$CityPayload<ExtArgs>
       province: Prisma.$ProvincePayload<ExtArgs>
       users: Prisma.$UserPayload<ExtArgs>[]
-      authOnSchool: Prisma.$AuthOnSchoolPayload<ExtArgs>[]
+      adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8313,7 +7971,7 @@ export namespace Prisma {
     city<T extends CityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CityDefaultArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     users<T extends School$usersArgs<ExtArgs> = {}>(args?: Subset<T, School$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authOnSchool<T extends School$authOnSchoolArgs<ExtArgs> = {}>(args?: Subset<T, School$authOnSchoolArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminAuthority<T extends School$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, School$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8772,27 +8430,27 @@ export namespace Prisma {
   }
 
   /**
-   * School.authOnSchool
+   * School.adminAuthority
    */
-  export type School$authOnSchoolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type School$adminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AuthOnSchool
+     * Select specific fields to fetch from the AdminAuthority
      */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
+    select?: AdminAuthoritySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AuthOnSchool
+     * Omit specific fields from the AdminAuthority
      */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
+    omit?: AdminAuthorityOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    where?: AuthOnSchoolWhereInput
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    cursor?: AuthOnSchoolWhereUniqueInput
+    include?: AdminAuthorityInclude<ExtArgs> | null
+    where?: AdminAuthorityWhereInput
+    orderBy?: AdminAuthorityOrderByWithRelationInput | AdminAuthorityOrderByWithRelationInput[]
+    cursor?: AdminAuthorityWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AuthOnSchoolScalarFieldEnum | AuthOnSchoolScalarFieldEnum[]
+    distinct?: AdminAuthorityScalarFieldEnum | AdminAuthorityScalarFieldEnum[]
   }
 
   /**
@@ -9095,7 +8753,7 @@ export namespace Prisma {
     name: "AccessContent"
     objects: {
       owner: Prisma.$UserPayload<ExtArgs> | null
-      userAccesses: Prisma.$UserOnAccessContentPayload<ExtArgs>[]
+      userAccesses: Prisma.$UserPayload<ExtArgs>[]
       redemeers: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9502,7 +9160,7 @@ export namespace Prisma {
   export interface Prisma__AccessContentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     owner<T extends AccessContent$ownerArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$ownerArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    userAccesses<T extends AccessContent$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userAccesses<T extends AccessContent$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     redemeers<T extends AccessContent$redemeersArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$redemeersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9960,23 +9618,23 @@ export namespace Prisma {
    */
   export type AccessContent$userAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserOnAccessContent
+     * Select specific fields to fetch from the User
      */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
+    select?: UserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserOnAccessContent
+     * Omit specific fields from the User
      */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
+    omit?: UserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    where?: UserOnAccessContentWhereInput
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    cursor?: UserOnAccessContentWhereUniqueInput
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserOnAccessContentScalarFieldEnum | UserOnAccessContentScalarFieldEnum[]
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
   /**
@@ -10565,7 +10223,7 @@ export namespace Prisma {
       province: Prisma.$ProvincePayload<ExtArgs> | null
       school: Prisma.$SchoolPayload<ExtArgs> | null
       admin: Prisma.$AdminPayload<ExtArgs> | null
-      userAccesses: Prisma.$UserOnAccessContentPayload<ExtArgs>[]
+      userAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       zones: Prisma.$ZonePayload<ExtArgs>[]
       redeemedAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       UserLogin: Prisma.$UserLoginPayload<ExtArgs>[]
@@ -11005,7 +10663,7 @@ export namespace Prisma {
     province<T extends User$provinceArgs<ExtArgs> = {}>(args?: Subset<T, User$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     school<T extends User$schoolArgs<ExtArgs> = {}>(args?: Subset<T, User$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     admin<T extends User$adminArgs<ExtArgs> = {}>(args?: Subset<T, User$adminArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    userAccesses<T extends User$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userAccesses<T extends User$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     zones<T extends User$zonesArgs<ExtArgs> = {}>(args?: Subset<T, User$zonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     redeemedAccesses<T extends User$redeemedAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$redeemedAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     UserLogin<T extends User$UserLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$UserLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11591,23 +11249,23 @@ export namespace Prisma {
    */
   export type User$userAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserOnAccessContent
+     * Select specific fields to fetch from the AccessContent
      */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
+    select?: AccessContentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserOnAccessContent
+     * Omit specific fields from the AccessContent
      */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
+    omit?: AccessContentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    where?: UserOnAccessContentWhereInput
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    cursor?: UserOnAccessContentWhereUniqueInput
+    include?: AccessContentInclude<ExtArgs> | null
+    where?: AccessContentWhereInput
+    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
+    cursor?: AccessContentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserOnAccessContentScalarFieldEnum | UserOnAccessContentScalarFieldEnum[]
+    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
   }
 
   /**
@@ -23367,7 +23025,7 @@ export namespace Prisma {
   export type AdminMinAggregateOutputType = {
     id: string | null
     authId: string | null
-    googleId: string | null
+    email: string | null
     name: string | null
     role: $Enums.Role | null
     createdAt: Date | null
@@ -23377,7 +23035,7 @@ export namespace Prisma {
   export type AdminMaxAggregateOutputType = {
     id: string | null
     authId: string | null
-    googleId: string | null
+    email: string | null
     name: string | null
     role: $Enums.Role | null
     createdAt: Date | null
@@ -23387,7 +23045,7 @@ export namespace Prisma {
   export type AdminCountAggregateOutputType = {
     id: number
     authId: number
-    googleId: number
+    email: number
     name: number
     role: number
     createdAt: number
@@ -23399,7 +23057,7 @@ export namespace Prisma {
   export type AdminMinAggregateInputType = {
     id?: true
     authId?: true
-    googleId?: true
+    email?: true
     name?: true
     role?: true
     createdAt?: true
@@ -23409,7 +23067,7 @@ export namespace Prisma {
   export type AdminMaxAggregateInputType = {
     id?: true
     authId?: true
-    googleId?: true
+    email?: true
     name?: true
     role?: true
     createdAt?: true
@@ -23419,7 +23077,7 @@ export namespace Prisma {
   export type AdminCountAggregateInputType = {
     id?: true
     authId?: true
-    googleId?: true
+    email?: true
     name?: true
     role?: true
     createdAt?: true
@@ -23502,9 +23160,9 @@ export namespace Prisma {
   export type AdminGroupByOutputType = {
     id: string
     authId: string
-    googleId: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role: $Enums.Role | null
     createdAt: Date
     updatedAt: Date
     _count: AdminCountAggregateOutputType | null
@@ -23529,7 +23187,7 @@ export namespace Prisma {
   export type AdminSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     authId?: boolean
-    googleId?: boolean
+    email?: boolean
     name?: boolean
     role?: boolean
     createdAt?: boolean
@@ -23546,7 +23204,7 @@ export namespace Prisma {
   export type AdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     authId?: boolean
-    googleId?: boolean
+    email?: boolean
     name?: boolean
     role?: boolean
     createdAt?: boolean
@@ -23556,7 +23214,7 @@ export namespace Prisma {
   export type AdminSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     authId?: boolean
-    googleId?: boolean
+    email?: boolean
     name?: boolean
     role?: boolean
     createdAt?: boolean
@@ -23566,14 +23224,14 @@ export namespace Prisma {
   export type AdminSelectScalar = {
     id?: boolean
     authId?: boolean
-    googleId?: boolean
+    email?: boolean
     name?: boolean
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "googleId" | "name" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Admin$userArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
@@ -23599,9 +23257,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       authId: string
-      googleId: string | null
+      email: string
       name: string
-      role: $Enums.Role
+      role: $Enums.Role | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["admin"]>
@@ -24035,7 +23693,7 @@ export namespace Prisma {
   interface AdminFieldRefs {
     readonly id: FieldRef<"Admin", 'String'>
     readonly authId: FieldRef<"Admin", 'String'>
-    readonly googleId: FieldRef<"Admin", 'String'>
+    readonly email: FieldRef<"Admin", 'String'>
     readonly name: FieldRef<"Admin", 'String'>
     readonly role: FieldRef<"Admin", 'Role'>
     readonly createdAt: FieldRef<"Admin", 'DateTime'>
@@ -25672,19 +25330,19 @@ export namespace Prisma {
   export type AdminAuthorityMinAggregateOutputType = {
     id: string | null
     adminId: string | null
-    authProvinceId: string | null
+    provinceId: string | null
   }
 
   export type AdminAuthorityMaxAggregateOutputType = {
     id: string | null
     adminId: string | null
-    authProvinceId: string | null
+    provinceId: string | null
   }
 
   export type AdminAuthorityCountAggregateOutputType = {
     id: number
     adminId: number
-    authProvinceId: number
+    provinceId: number
     grades: number
     _all: number
   }
@@ -25701,19 +25359,19 @@ export namespace Prisma {
   export type AdminAuthorityMinAggregateInputType = {
     id?: true
     adminId?: true
-    authProvinceId?: true
+    provinceId?: true
   }
 
   export type AdminAuthorityMaxAggregateInputType = {
     id?: true
     adminId?: true
-    authProvinceId?: true
+    provinceId?: true
   }
 
   export type AdminAuthorityCountAggregateInputType = {
     id?: true
     adminId?: true
-    authProvinceId?: true
+    provinceId?: true
     grades?: true
     _all?: true
   }
@@ -25807,7 +25465,7 @@ export namespace Prisma {
   export type AdminAuthorityGroupByOutputType = {
     id: string
     adminId: string
-    authProvinceId: string
+    provinceId: string
     grades: number[]
     _count: AdminAuthorityCountAggregateOutputType | null
     _avg: AdminAuthorityAvgAggregateOutputType | null
@@ -25833,19 +25491,19 @@ export namespace Prisma {
   export type AdminAuthoritySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     adminId?: boolean
-    authProvinceId?: boolean
+    provinceId?: boolean
     grades?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
-    authOnCity?: boolean | AdminAuthority$authOnCityArgs<ExtArgs>
-    authOnSchool?: boolean | AdminAuthority$authOnSchoolArgs<ExtArgs>
+    cities?: boolean | AdminAuthority$citiesArgs<ExtArgs>
+    schools?: boolean | AdminAuthority$schoolsArgs<ExtArgs>
     _count?: boolean | AdminAuthorityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuthority"]>
 
   export type AdminAuthoritySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     adminId?: boolean
-    authProvinceId?: boolean
+    provinceId?: boolean
     grades?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -25854,7 +25512,7 @@ export namespace Prisma {
   export type AdminAuthoritySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     adminId?: boolean
-    authProvinceId?: boolean
+    provinceId?: boolean
     grades?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -25863,16 +25521,16 @@ export namespace Prisma {
   export type AdminAuthoritySelectScalar = {
     id?: boolean
     adminId?: boolean
-    authProvinceId?: boolean
+    provinceId?: boolean
     grades?: boolean
   }
 
-  export type AdminAuthorityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "authProvinceId" | "grades", ExtArgs["result"]["adminAuthority"]>
+  export type AdminAuthorityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "provinceId" | "grades", ExtArgs["result"]["adminAuthority"]>
   export type AdminAuthorityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
-    authOnCity?: boolean | AdminAuthority$authOnCityArgs<ExtArgs>
-    authOnSchool?: boolean | AdminAuthority$authOnSchoolArgs<ExtArgs>
+    cities?: boolean | AdminAuthority$citiesArgs<ExtArgs>
+    schools?: boolean | AdminAuthority$schoolsArgs<ExtArgs>
     _count?: boolean | AdminAuthorityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminAuthorityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -25889,13 +25547,13 @@ export namespace Prisma {
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>
       province: Prisma.$ProvincePayload<ExtArgs>
-      authOnCity: Prisma.$AuthOnCityPayload<ExtArgs>[]
-      authOnSchool: Prisma.$AuthOnSchoolPayload<ExtArgs>[]
+      cities: Prisma.$CityPayload<ExtArgs>[]
+      schools: Prisma.$SchoolPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       adminId: string
-      authProvinceId: string
+      provinceId: string
       grades: number[]
     }, ExtArgs["result"]["adminAuthority"]>
     composites: {}
@@ -26293,8 +25951,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    authOnCity<T extends AdminAuthority$authOnCityArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$authOnCityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authOnSchool<T extends AdminAuthority$authOnSchoolArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$authOnSchoolArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cities<T extends AdminAuthority$citiesArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    schools<T extends AdminAuthority$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -26326,7 +25984,7 @@ export namespace Prisma {
   interface AdminAuthorityFieldRefs {
     readonly id: FieldRef<"AdminAuthority", 'String'>
     readonly adminId: FieldRef<"AdminAuthority", 'String'>
-    readonly authProvinceId: FieldRef<"AdminAuthority", 'String'>
+    readonly provinceId: FieldRef<"AdminAuthority", 'String'>
     readonly grades: FieldRef<"AdminAuthority", 'Int[]'>
   }
     
@@ -26724,51 +26382,51 @@ export namespace Prisma {
   }
 
   /**
-   * AdminAuthority.authOnCity
+   * AdminAuthority.cities
    */
-  export type AdminAuthority$authOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AdminAuthority$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AuthOnCity
+     * Select specific fields to fetch from the City
      */
-    select?: AuthOnCitySelect<ExtArgs> | null
+    select?: CitySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AuthOnCity
+     * Omit specific fields from the City
      */
-    omit?: AuthOnCityOmit<ExtArgs> | null
+    omit?: CityOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    where?: AuthOnCityWhereInput
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    cursor?: AuthOnCityWhereUniqueInput
+    include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    cursor?: CityWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AuthOnCityScalarFieldEnum | AuthOnCityScalarFieldEnum[]
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
   }
 
   /**
-   * AdminAuthority.authOnSchool
+   * AdminAuthority.schools
    */
-  export type AdminAuthority$authOnSchoolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AdminAuthority$schoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AuthOnSchool
+     * Select specific fields to fetch from the School
      */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
+    select?: SchoolSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AuthOnSchool
+     * Omit specific fields from the School
      */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
+    omit?: SchoolOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    where?: AuthOnSchoolWhereInput
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    cursor?: AuthOnSchoolWhereUniqueInput
+    include?: SchoolInclude<ExtArgs> | null
+    where?: SchoolWhereInput
+    orderBy?: SchoolOrderByWithRelationInput | SchoolOrderByWithRelationInput[]
+    cursor?: SchoolWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AuthOnSchoolScalarFieldEnum | AuthOnSchoolScalarFieldEnum[]
+    distinct?: SchoolScalarFieldEnum | SchoolScalarFieldEnum[]
   }
 
   /**
@@ -26970,10 +26628,9 @@ export namespace Prisma {
     endedAt?: boolean
     isHide?: boolean
     adminId?: boolean
-    bannerOnProvince?: boolean | Banner$bannerOnProvinceArgs<ExtArgs>
-    bannerOnCity?: boolean | Banner$bannerOnCityArgs<ExtArgs>
     visitors?: boolean | Banner$visitorsArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    bannerLocation?: boolean | Banner$bannerLocationArgs<ExtArgs>
     _count?: boolean | BannerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["banner"]>
 
@@ -27011,10 +26668,9 @@ export namespace Prisma {
 
   export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "adminId", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bannerOnProvince?: boolean | Banner$bannerOnProvinceArgs<ExtArgs>
-    bannerOnCity?: boolean | Banner$bannerOnCityArgs<ExtArgs>
     visitors?: boolean | Banner$visitorsArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    bannerLocation?: boolean | Banner$bannerLocationArgs<ExtArgs>
     _count?: boolean | BannerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BannerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27027,10 +26683,9 @@ export namespace Prisma {
   export type $BannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Banner"
     objects: {
-      bannerOnProvince: Prisma.$BannerOnProvincePayload<ExtArgs>[]
-      bannerOnCity: Prisma.$BannerOnCityPayload<ExtArgs>[]
       visitors: Prisma.$BannerVisitorPayload<ExtArgs>[]
       admin: Prisma.$AdminPayload<ExtArgs>
+      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -27434,10 +27089,9 @@ export namespace Prisma {
    */
   export interface Prisma__BannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    bannerOnProvince<T extends Banner$bannerOnProvinceArgs<ExtArgs> = {}>(args?: Subset<T, Banner$bannerOnProvinceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerOnCity<T extends Banner$bannerOnCityArgs<ExtArgs> = {}>(args?: Subset<T, Banner$bannerOnCityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     visitors<T extends Banner$visitorsArgs<ExtArgs> = {}>(args?: Subset<T, Banner$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    bannerLocation<T extends Banner$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Banner$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -27870,54 +27524,6 @@ export namespace Prisma {
   }
 
   /**
-   * Banner.bannerOnProvince
-   */
-  export type Banner$bannerOnProvinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    where?: BannerOnProvinceWhereInput
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    cursor?: BannerOnProvinceWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BannerOnProvinceScalarFieldEnum | BannerOnProvinceScalarFieldEnum[]
-  }
-
-  /**
-   * Banner.bannerOnCity
-   */
-  export type Banner$bannerOnCityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    where?: BannerOnCityWhereInput
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    cursor?: BannerOnCityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BannerOnCityScalarFieldEnum | BannerOnCityScalarFieldEnum[]
-  }
-
-  /**
    * Banner.visitors
    */
   export type Banner$visitorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27942,6 +27548,30 @@ export namespace Prisma {
   }
 
   /**
+   * Banner.bannerLocation
+   */
+  export type Banner$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    where?: BannerLocationWhereInput
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    cursor?: BannerLocationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+  }
+
+  /**
    * Banner without action
    */
   export type BannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27957,6 +27587,1076 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: BannerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BannerLocation
+   */
+
+  export type AggregateBannerLocation = {
+    _count: BannerLocationCountAggregateOutputType | null
+    _min: BannerLocationMinAggregateOutputType | null
+    _max: BannerLocationMaxAggregateOutputType | null
+  }
+
+  export type BannerLocationMinAggregateOutputType = {
+    id: string | null
+    bannerId: string | null
+    provinceId: string | null
+  }
+
+  export type BannerLocationMaxAggregateOutputType = {
+    id: string | null
+    bannerId: string | null
+    provinceId: string | null
+  }
+
+  export type BannerLocationCountAggregateOutputType = {
+    id: number
+    bannerId: number
+    provinceId: number
+    _all: number
+  }
+
+
+  export type BannerLocationMinAggregateInputType = {
+    id?: true
+    bannerId?: true
+    provinceId?: true
+  }
+
+  export type BannerLocationMaxAggregateInputType = {
+    id?: true
+    bannerId?: true
+    provinceId?: true
+  }
+
+  export type BannerLocationCountAggregateInputType = {
+    id?: true
+    bannerId?: true
+    provinceId?: true
+    _all?: true
+  }
+
+  export type BannerLocationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BannerLocation to aggregate.
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BannerLocations to fetch.
+     */
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BannerLocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BannerLocations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BannerLocations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BannerLocations
+    **/
+    _count?: true | BannerLocationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BannerLocationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BannerLocationMaxAggregateInputType
+  }
+
+  export type GetBannerLocationAggregateType<T extends BannerLocationAggregateArgs> = {
+        [P in keyof T & keyof AggregateBannerLocation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBannerLocation[P]>
+      : GetScalarType<T[P], AggregateBannerLocation[P]>
+  }
+
+
+
+
+  export type BannerLocationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerLocationWhereInput
+    orderBy?: BannerLocationOrderByWithAggregationInput | BannerLocationOrderByWithAggregationInput[]
+    by: BannerLocationScalarFieldEnum[] | BannerLocationScalarFieldEnum
+    having?: BannerLocationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BannerLocationCountAggregateInputType | true
+    _min?: BannerLocationMinAggregateInputType
+    _max?: BannerLocationMaxAggregateInputType
+  }
+
+  export type BannerLocationGroupByOutputType = {
+    id: string
+    bannerId: string
+    provinceId: string
+    _count: BannerLocationCountAggregateOutputType | null
+    _min: BannerLocationMinAggregateOutputType | null
+    _max: BannerLocationMaxAggregateOutputType | null
+  }
+
+  type GetBannerLocationGroupByPayload<T extends BannerLocationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BannerLocationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BannerLocationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BannerLocationGroupByOutputType[P]>
+            : GetScalarType<T[P], BannerLocationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BannerLocationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bannerId?: boolean
+    provinceId?: boolean
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
+    _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bannerLocation"]>
+
+  export type BannerLocationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bannerId?: boolean
+    provinceId?: boolean
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bannerLocation"]>
+
+  export type BannerLocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bannerId?: boolean
+    provinceId?: boolean
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bannerLocation"]>
+
+  export type BannerLocationSelectScalar = {
+    id?: boolean
+    bannerId?: boolean
+    provinceId?: boolean
+  }
+
+  export type BannerLocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bannerId" | "provinceId", ExtArgs["result"]["bannerLocation"]>
+  export type BannerLocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
+    _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BannerLocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }
+  export type BannerLocationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    banner?: boolean | BannerDefaultArgs<ExtArgs>
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+  }
+
+  export type $BannerLocationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BannerLocation"
+    objects: {
+      banner: Prisma.$BannerPayload<ExtArgs>
+      province: Prisma.$ProvincePayload<ExtArgs>
+      cities: Prisma.$CityPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bannerId: string
+      provinceId: string
+    }, ExtArgs["result"]["bannerLocation"]>
+    composites: {}
+  }
+
+  type BannerLocationGetPayload<S extends boolean | null | undefined | BannerLocationDefaultArgs> = $Result.GetResult<Prisma.$BannerLocationPayload, S>
+
+  type BannerLocationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BannerLocationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BannerLocationCountAggregateInputType | true
+    }
+
+  export interface BannerLocationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BannerLocation'], meta: { name: 'BannerLocation' } }
+    /**
+     * Find zero or one BannerLocation that matches the filter.
+     * @param {BannerLocationFindUniqueArgs} args - Arguments to find a BannerLocation
+     * @example
+     * // Get one BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BannerLocationFindUniqueArgs>(args: SelectSubset<T, BannerLocationFindUniqueArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BannerLocation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BannerLocationFindUniqueOrThrowArgs} args - Arguments to find a BannerLocation
+     * @example
+     * // Get one BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BannerLocationFindUniqueOrThrowArgs>(args: SelectSubset<T, BannerLocationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BannerLocation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationFindFirstArgs} args - Arguments to find a BannerLocation
+     * @example
+     * // Get one BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BannerLocationFindFirstArgs>(args?: SelectSubset<T, BannerLocationFindFirstArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BannerLocation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationFindFirstOrThrowArgs} args - Arguments to find a BannerLocation
+     * @example
+     * // Get one BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BannerLocationFindFirstOrThrowArgs>(args?: SelectSubset<T, BannerLocationFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BannerLocations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BannerLocations
+     * const bannerLocations = await prisma.bannerLocation.findMany()
+     * 
+     * // Get first 10 BannerLocations
+     * const bannerLocations = await prisma.bannerLocation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bannerLocationWithIdOnly = await prisma.bannerLocation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BannerLocationFindManyArgs>(args?: SelectSubset<T, BannerLocationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BannerLocation.
+     * @param {BannerLocationCreateArgs} args - Arguments to create a BannerLocation.
+     * @example
+     * // Create one BannerLocation
+     * const BannerLocation = await prisma.bannerLocation.create({
+     *   data: {
+     *     // ... data to create a BannerLocation
+     *   }
+     * })
+     * 
+     */
+    create<T extends BannerLocationCreateArgs>(args: SelectSubset<T, BannerLocationCreateArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BannerLocations.
+     * @param {BannerLocationCreateManyArgs} args - Arguments to create many BannerLocations.
+     * @example
+     * // Create many BannerLocations
+     * const bannerLocation = await prisma.bannerLocation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BannerLocationCreateManyArgs>(args?: SelectSubset<T, BannerLocationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BannerLocations and returns the data saved in the database.
+     * @param {BannerLocationCreateManyAndReturnArgs} args - Arguments to create many BannerLocations.
+     * @example
+     * // Create many BannerLocations
+     * const bannerLocation = await prisma.bannerLocation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BannerLocations and only return the `id`
+     * const bannerLocationWithIdOnly = await prisma.bannerLocation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BannerLocationCreateManyAndReturnArgs>(args?: SelectSubset<T, BannerLocationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BannerLocation.
+     * @param {BannerLocationDeleteArgs} args - Arguments to delete one BannerLocation.
+     * @example
+     * // Delete one BannerLocation
+     * const BannerLocation = await prisma.bannerLocation.delete({
+     *   where: {
+     *     // ... filter to delete one BannerLocation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BannerLocationDeleteArgs>(args: SelectSubset<T, BannerLocationDeleteArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BannerLocation.
+     * @param {BannerLocationUpdateArgs} args - Arguments to update one BannerLocation.
+     * @example
+     * // Update one BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BannerLocationUpdateArgs>(args: SelectSubset<T, BannerLocationUpdateArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BannerLocations.
+     * @param {BannerLocationDeleteManyArgs} args - Arguments to filter BannerLocations to delete.
+     * @example
+     * // Delete a few BannerLocations
+     * const { count } = await prisma.bannerLocation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BannerLocationDeleteManyArgs>(args?: SelectSubset<T, BannerLocationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BannerLocations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BannerLocations
+     * const bannerLocation = await prisma.bannerLocation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BannerLocationUpdateManyArgs>(args: SelectSubset<T, BannerLocationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BannerLocations and returns the data updated in the database.
+     * @param {BannerLocationUpdateManyAndReturnArgs} args - Arguments to update many BannerLocations.
+     * @example
+     * // Update many BannerLocations
+     * const bannerLocation = await prisma.bannerLocation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BannerLocations and only return the `id`
+     * const bannerLocationWithIdOnly = await prisma.bannerLocation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BannerLocationUpdateManyAndReturnArgs>(args: SelectSubset<T, BannerLocationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BannerLocation.
+     * @param {BannerLocationUpsertArgs} args - Arguments to update or create a BannerLocation.
+     * @example
+     * // Update or create a BannerLocation
+     * const bannerLocation = await prisma.bannerLocation.upsert({
+     *   create: {
+     *     // ... data to create a BannerLocation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BannerLocation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BannerLocationUpsertArgs>(args: SelectSubset<T, BannerLocationUpsertArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BannerLocations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationCountArgs} args - Arguments to filter BannerLocations to count.
+     * @example
+     * // Count the number of BannerLocations
+     * const count = await prisma.bannerLocation.count({
+     *   where: {
+     *     // ... the filter for the BannerLocations we want to count
+     *   }
+     * })
+    **/
+    count<T extends BannerLocationCountArgs>(
+      args?: Subset<T, BannerLocationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BannerLocationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BannerLocation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BannerLocationAggregateArgs>(args: Subset<T, BannerLocationAggregateArgs>): Prisma.PrismaPromise<GetBannerLocationAggregateType<T>>
+
+    /**
+     * Group by BannerLocation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerLocationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BannerLocationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BannerLocationGroupByArgs['orderBy'] }
+        : { orderBy?: BannerLocationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BannerLocationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannerLocationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BannerLocation model
+   */
+  readonly fields: BannerLocationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BannerLocation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BannerLocationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    banner<T extends BannerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BannerDefaultArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cities<T extends BannerLocation$citiesArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BannerLocation model
+   */
+  interface BannerLocationFieldRefs {
+    readonly id: FieldRef<"BannerLocation", 'String'>
+    readonly bannerId: FieldRef<"BannerLocation", 'String'>
+    readonly provinceId: FieldRef<"BannerLocation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BannerLocation findUnique
+   */
+  export type BannerLocationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter, which BannerLocation to fetch.
+     */
+    where: BannerLocationWhereUniqueInput
+  }
+
+  /**
+   * BannerLocation findUniqueOrThrow
+   */
+  export type BannerLocationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter, which BannerLocation to fetch.
+     */
+    where: BannerLocationWhereUniqueInput
+  }
+
+  /**
+   * BannerLocation findFirst
+   */
+  export type BannerLocationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter, which BannerLocation to fetch.
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BannerLocations to fetch.
+     */
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BannerLocations.
+     */
+    cursor?: BannerLocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BannerLocations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BannerLocations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BannerLocations.
+     */
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+  }
+
+  /**
+   * BannerLocation findFirstOrThrow
+   */
+  export type BannerLocationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter, which BannerLocation to fetch.
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BannerLocations to fetch.
+     */
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BannerLocations.
+     */
+    cursor?: BannerLocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BannerLocations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BannerLocations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BannerLocations.
+     */
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+  }
+
+  /**
+   * BannerLocation findMany
+   */
+  export type BannerLocationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter, which BannerLocations to fetch.
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BannerLocations to fetch.
+     */
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BannerLocations.
+     */
+    cursor?: BannerLocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BannerLocations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BannerLocations.
+     */
+    skip?: number
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+  }
+
+  /**
+   * BannerLocation create
+   */
+  export type BannerLocationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BannerLocation.
+     */
+    data: XOR<BannerLocationCreateInput, BannerLocationUncheckedCreateInput>
+  }
+
+  /**
+   * BannerLocation createMany
+   */
+  export type BannerLocationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BannerLocations.
+     */
+    data: BannerLocationCreateManyInput | BannerLocationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BannerLocation createManyAndReturn
+   */
+  export type BannerLocationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * The data used to create many BannerLocations.
+     */
+    data: BannerLocationCreateManyInput | BannerLocationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BannerLocation update
+   */
+  export type BannerLocationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BannerLocation.
+     */
+    data: XOR<BannerLocationUpdateInput, BannerLocationUncheckedUpdateInput>
+    /**
+     * Choose, which BannerLocation to update.
+     */
+    where: BannerLocationWhereUniqueInput
+  }
+
+  /**
+   * BannerLocation updateMany
+   */
+  export type BannerLocationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BannerLocations.
+     */
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyInput>
+    /**
+     * Filter which BannerLocations to update
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * Limit how many BannerLocations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BannerLocation updateManyAndReturn
+   */
+  export type BannerLocationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * The data used to update BannerLocations.
+     */
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyInput>
+    /**
+     * Filter which BannerLocations to update
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * Limit how many BannerLocations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BannerLocation upsert
+   */
+  export type BannerLocationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BannerLocation to update in case it exists.
+     */
+    where: BannerLocationWhereUniqueInput
+    /**
+     * In case the BannerLocation found by the `where` argument doesn't exist, create a new BannerLocation with this data.
+     */
+    create: XOR<BannerLocationCreateInput, BannerLocationUncheckedCreateInput>
+    /**
+     * In case the BannerLocation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BannerLocationUpdateInput, BannerLocationUncheckedUpdateInput>
+  }
+
+  /**
+   * BannerLocation delete
+   */
+  export type BannerLocationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    /**
+     * Filter which BannerLocation to delete.
+     */
+    where: BannerLocationWhereUniqueInput
+  }
+
+  /**
+   * BannerLocation deleteMany
+   */
+  export type BannerLocationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BannerLocations to delete
+     */
+    where?: BannerLocationWhereInput
+    /**
+     * Limit how many BannerLocations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BannerLocation.cities
+   */
+  export type BannerLocation$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the City
+     */
+    omit?: CityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    cursor?: CityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * BannerLocation without action
+   */
+  export type BannerLocationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
   }
 
 
@@ -43976,5141 +44676,6 @@ export namespace Prisma {
 
 
   /**
-   * Model UserOnAccessContent
-   */
-
-  export type AggregateUserOnAccessContent = {
-    _count: UserOnAccessContentCountAggregateOutputType | null
-    _min: UserOnAccessContentMinAggregateOutputType | null
-    _max: UserOnAccessContentMaxAggregateOutputType | null
-  }
-
-  export type UserOnAccessContentMinAggregateOutputType = {
-    userId: string | null
-    accessContentId: string | null
-  }
-
-  export type UserOnAccessContentMaxAggregateOutputType = {
-    userId: string | null
-    accessContentId: string | null
-  }
-
-  export type UserOnAccessContentCountAggregateOutputType = {
-    userId: number
-    accessContentId: number
-    _all: number
-  }
-
-
-  export type UserOnAccessContentMinAggregateInputType = {
-    userId?: true
-    accessContentId?: true
-  }
-
-  export type UserOnAccessContentMaxAggregateInputType = {
-    userId?: true
-    accessContentId?: true
-  }
-
-  export type UserOnAccessContentCountAggregateInputType = {
-    userId?: true
-    accessContentId?: true
-    _all?: true
-  }
-
-  export type UserOnAccessContentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which UserOnAccessContent to aggregate.
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserOnAccessContents to fetch.
-     */
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: UserOnAccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserOnAccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserOnAccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned UserOnAccessContents
-    **/
-    _count?: true | UserOnAccessContentCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: UserOnAccessContentMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: UserOnAccessContentMaxAggregateInputType
-  }
-
-  export type GetUserOnAccessContentAggregateType<T extends UserOnAccessContentAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserOnAccessContent]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUserOnAccessContent[P]>
-      : GetScalarType<T[P], AggregateUserOnAccessContent[P]>
-  }
-
-
-
-
-  export type UserOnAccessContentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserOnAccessContentWhereInput
-    orderBy?: UserOnAccessContentOrderByWithAggregationInput | UserOnAccessContentOrderByWithAggregationInput[]
-    by: UserOnAccessContentScalarFieldEnum[] | UserOnAccessContentScalarFieldEnum
-    having?: UserOnAccessContentScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: UserOnAccessContentCountAggregateInputType | true
-    _min?: UserOnAccessContentMinAggregateInputType
-    _max?: UserOnAccessContentMaxAggregateInputType
-  }
-
-  export type UserOnAccessContentGroupByOutputType = {
-    userId: string
-    accessContentId: string
-    _count: UserOnAccessContentCountAggregateOutputType | null
-    _min: UserOnAccessContentMinAggregateOutputType | null
-    _max: UserOnAccessContentMaxAggregateOutputType | null
-  }
-
-  type GetUserOnAccessContentGroupByPayload<T extends UserOnAccessContentGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UserOnAccessContentGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserOnAccessContentGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserOnAccessContentGroupByOutputType[P]>
-            : GetScalarType<T[P], UserOnAccessContentGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type UserOnAccessContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userId?: boolean
-    accessContentId?: boolean
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userOnAccessContent"]>
-
-  export type UserOnAccessContentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userId?: boolean
-    accessContentId?: boolean
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userOnAccessContent"]>
-
-  export type UserOnAccessContentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    userId?: boolean
-    accessContentId?: boolean
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userOnAccessContent"]>
-
-  export type UserOnAccessContentSelectScalar = {
-    userId?: boolean
-    accessContentId?: boolean
-  }
-
-  export type UserOnAccessContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "accessContentId", ExtArgs["result"]["userOnAccessContent"]>
-  export type UserOnAccessContentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserOnAccessContentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserOnAccessContentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accessContent?: boolean | AccessContentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $UserOnAccessContentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserOnAccessContent"
-    objects: {
-      accessContent: Prisma.$AccessContentPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      userId: string
-      accessContentId: string
-    }, ExtArgs["result"]["userOnAccessContent"]>
-    composites: {}
-  }
-
-  type UserOnAccessContentGetPayload<S extends boolean | null | undefined | UserOnAccessContentDefaultArgs> = $Result.GetResult<Prisma.$UserOnAccessContentPayload, S>
-
-  type UserOnAccessContentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserOnAccessContentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserOnAccessContentCountAggregateInputType | true
-    }
-
-  export interface UserOnAccessContentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserOnAccessContent'], meta: { name: 'UserOnAccessContent' } }
-    /**
-     * Find zero or one UserOnAccessContent that matches the filter.
-     * @param {UserOnAccessContentFindUniqueArgs} args - Arguments to find a UserOnAccessContent
-     * @example
-     * // Get one UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends UserOnAccessContentFindUniqueArgs>(args: SelectSubset<T, UserOnAccessContentFindUniqueArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one UserOnAccessContent that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {UserOnAccessContentFindUniqueOrThrowArgs} args - Arguments to find a UserOnAccessContent
-     * @example
-     * // Get one UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends UserOnAccessContentFindUniqueOrThrowArgs>(args: SelectSubset<T, UserOnAccessContentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first UserOnAccessContent that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentFindFirstArgs} args - Arguments to find a UserOnAccessContent
-     * @example
-     * // Get one UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends UserOnAccessContentFindFirstArgs>(args?: SelectSubset<T, UserOnAccessContentFindFirstArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first UserOnAccessContent that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentFindFirstOrThrowArgs} args - Arguments to find a UserOnAccessContent
-     * @example
-     * // Get one UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends UserOnAccessContentFindFirstOrThrowArgs>(args?: SelectSubset<T, UserOnAccessContentFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more UserOnAccessContents that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all UserOnAccessContents
-     * const userOnAccessContents = await prisma.userOnAccessContent.findMany()
-     * 
-     * // Get first 10 UserOnAccessContents
-     * const userOnAccessContents = await prisma.userOnAccessContent.findMany({ take: 10 })
-     * 
-     * // Only select the `userId`
-     * const userOnAccessContentWithUserIdOnly = await prisma.userOnAccessContent.findMany({ select: { userId: true } })
-     * 
-     */
-    findMany<T extends UserOnAccessContentFindManyArgs>(args?: SelectSubset<T, UserOnAccessContentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a UserOnAccessContent.
-     * @param {UserOnAccessContentCreateArgs} args - Arguments to create a UserOnAccessContent.
-     * @example
-     * // Create one UserOnAccessContent
-     * const UserOnAccessContent = await prisma.userOnAccessContent.create({
-     *   data: {
-     *     // ... data to create a UserOnAccessContent
-     *   }
-     * })
-     * 
-     */
-    create<T extends UserOnAccessContentCreateArgs>(args: SelectSubset<T, UserOnAccessContentCreateArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many UserOnAccessContents.
-     * @param {UserOnAccessContentCreateManyArgs} args - Arguments to create many UserOnAccessContents.
-     * @example
-     * // Create many UserOnAccessContents
-     * const userOnAccessContent = await prisma.userOnAccessContent.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends UserOnAccessContentCreateManyArgs>(args?: SelectSubset<T, UserOnAccessContentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many UserOnAccessContents and returns the data saved in the database.
-     * @param {UserOnAccessContentCreateManyAndReturnArgs} args - Arguments to create many UserOnAccessContents.
-     * @example
-     * // Create many UserOnAccessContents
-     * const userOnAccessContent = await prisma.userOnAccessContent.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many UserOnAccessContents and only return the `userId`
-     * const userOnAccessContentWithUserIdOnly = await prisma.userOnAccessContent.createManyAndReturn({
-     *   select: { userId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends UserOnAccessContentCreateManyAndReturnArgs>(args?: SelectSubset<T, UserOnAccessContentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a UserOnAccessContent.
-     * @param {UserOnAccessContentDeleteArgs} args - Arguments to delete one UserOnAccessContent.
-     * @example
-     * // Delete one UserOnAccessContent
-     * const UserOnAccessContent = await prisma.userOnAccessContent.delete({
-     *   where: {
-     *     // ... filter to delete one UserOnAccessContent
-     *   }
-     * })
-     * 
-     */
-    delete<T extends UserOnAccessContentDeleteArgs>(args: SelectSubset<T, UserOnAccessContentDeleteArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one UserOnAccessContent.
-     * @param {UserOnAccessContentUpdateArgs} args - Arguments to update one UserOnAccessContent.
-     * @example
-     * // Update one UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends UserOnAccessContentUpdateArgs>(args: SelectSubset<T, UserOnAccessContentUpdateArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more UserOnAccessContents.
-     * @param {UserOnAccessContentDeleteManyArgs} args - Arguments to filter UserOnAccessContents to delete.
-     * @example
-     * // Delete a few UserOnAccessContents
-     * const { count } = await prisma.userOnAccessContent.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends UserOnAccessContentDeleteManyArgs>(args?: SelectSubset<T, UserOnAccessContentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more UserOnAccessContents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many UserOnAccessContents
-     * const userOnAccessContent = await prisma.userOnAccessContent.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends UserOnAccessContentUpdateManyArgs>(args: SelectSubset<T, UserOnAccessContentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more UserOnAccessContents and returns the data updated in the database.
-     * @param {UserOnAccessContentUpdateManyAndReturnArgs} args - Arguments to update many UserOnAccessContents.
-     * @example
-     * // Update many UserOnAccessContents
-     * const userOnAccessContent = await prisma.userOnAccessContent.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more UserOnAccessContents and only return the `userId`
-     * const userOnAccessContentWithUserIdOnly = await prisma.userOnAccessContent.updateManyAndReturn({
-     *   select: { userId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserOnAccessContentUpdateManyAndReturnArgs>(args: SelectSubset<T, UserOnAccessContentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one UserOnAccessContent.
-     * @param {UserOnAccessContentUpsertArgs} args - Arguments to update or create a UserOnAccessContent.
-     * @example
-     * // Update or create a UserOnAccessContent
-     * const userOnAccessContent = await prisma.userOnAccessContent.upsert({
-     *   create: {
-     *     // ... data to create a UserOnAccessContent
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the UserOnAccessContent we want to update
-     *   }
-     * })
-     */
-    upsert<T extends UserOnAccessContentUpsertArgs>(args: SelectSubset<T, UserOnAccessContentUpsertArgs<ExtArgs>>): Prisma__UserOnAccessContentClient<$Result.GetResult<Prisma.$UserOnAccessContentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of UserOnAccessContents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentCountArgs} args - Arguments to filter UserOnAccessContents to count.
-     * @example
-     * // Count the number of UserOnAccessContents
-     * const count = await prisma.userOnAccessContent.count({
-     *   where: {
-     *     // ... the filter for the UserOnAccessContents we want to count
-     *   }
-     * })
-    **/
-    count<T extends UserOnAccessContentCountArgs>(
-      args?: Subset<T, UserOnAccessContentCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserOnAccessContentCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a UserOnAccessContent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends UserOnAccessContentAggregateArgs>(args: Subset<T, UserOnAccessContentAggregateArgs>): Prisma.PrismaPromise<GetUserOnAccessContentAggregateType<T>>
-
-    /**
-     * Group by UserOnAccessContent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserOnAccessContentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends UserOnAccessContentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserOnAccessContentGroupByArgs['orderBy'] }
-        : { orderBy?: UserOnAccessContentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, UserOnAccessContentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserOnAccessContentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the UserOnAccessContent model
-   */
-  readonly fields: UserOnAccessContentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for UserOnAccessContent.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__UserOnAccessContentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    accessContent<T extends AccessContentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AccessContentDefaultArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the UserOnAccessContent model
-   */
-  interface UserOnAccessContentFieldRefs {
-    readonly userId: FieldRef<"UserOnAccessContent", 'String'>
-    readonly accessContentId: FieldRef<"UserOnAccessContent", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * UserOnAccessContent findUnique
-   */
-  export type UserOnAccessContentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which UserOnAccessContent to fetch.
-     */
-    where: UserOnAccessContentWhereUniqueInput
-  }
-
-  /**
-   * UserOnAccessContent findUniqueOrThrow
-   */
-  export type UserOnAccessContentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which UserOnAccessContent to fetch.
-     */
-    where: UserOnAccessContentWhereUniqueInput
-  }
-
-  /**
-   * UserOnAccessContent findFirst
-   */
-  export type UserOnAccessContentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which UserOnAccessContent to fetch.
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserOnAccessContents to fetch.
-     */
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for UserOnAccessContents.
-     */
-    cursor?: UserOnAccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserOnAccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserOnAccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of UserOnAccessContents.
-     */
-    distinct?: UserOnAccessContentScalarFieldEnum | UserOnAccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * UserOnAccessContent findFirstOrThrow
-   */
-  export type UserOnAccessContentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which UserOnAccessContent to fetch.
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserOnAccessContents to fetch.
-     */
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for UserOnAccessContents.
-     */
-    cursor?: UserOnAccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserOnAccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserOnAccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of UserOnAccessContents.
-     */
-    distinct?: UserOnAccessContentScalarFieldEnum | UserOnAccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * UserOnAccessContent findMany
-   */
-  export type UserOnAccessContentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which UserOnAccessContents to fetch.
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserOnAccessContents to fetch.
-     */
-    orderBy?: UserOnAccessContentOrderByWithRelationInput | UserOnAccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing UserOnAccessContents.
-     */
-    cursor?: UserOnAccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserOnAccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserOnAccessContents.
-     */
-    skip?: number
-    distinct?: UserOnAccessContentScalarFieldEnum | UserOnAccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * UserOnAccessContent create
-   */
-  export type UserOnAccessContentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * The data needed to create a UserOnAccessContent.
-     */
-    data: XOR<UserOnAccessContentCreateInput, UserOnAccessContentUncheckedCreateInput>
-  }
-
-  /**
-   * UserOnAccessContent createMany
-   */
-  export type UserOnAccessContentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many UserOnAccessContents.
-     */
-    data: UserOnAccessContentCreateManyInput | UserOnAccessContentCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * UserOnAccessContent createManyAndReturn
-   */
-  export type UserOnAccessContentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * The data used to create many UserOnAccessContents.
-     */
-    data: UserOnAccessContentCreateManyInput | UserOnAccessContentCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * UserOnAccessContent update
-   */
-  export type UserOnAccessContentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * The data needed to update a UserOnAccessContent.
-     */
-    data: XOR<UserOnAccessContentUpdateInput, UserOnAccessContentUncheckedUpdateInput>
-    /**
-     * Choose, which UserOnAccessContent to update.
-     */
-    where: UserOnAccessContentWhereUniqueInput
-  }
-
-  /**
-   * UserOnAccessContent updateMany
-   */
-  export type UserOnAccessContentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update UserOnAccessContents.
-     */
-    data: XOR<UserOnAccessContentUpdateManyMutationInput, UserOnAccessContentUncheckedUpdateManyInput>
-    /**
-     * Filter which UserOnAccessContents to update
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * Limit how many UserOnAccessContents to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * UserOnAccessContent updateManyAndReturn
-   */
-  export type UserOnAccessContentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * The data used to update UserOnAccessContents.
-     */
-    data: XOR<UserOnAccessContentUpdateManyMutationInput, UserOnAccessContentUncheckedUpdateManyInput>
-    /**
-     * Filter which UserOnAccessContents to update
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * Limit how many UserOnAccessContents to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * UserOnAccessContent upsert
-   */
-  export type UserOnAccessContentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * The filter to search for the UserOnAccessContent to update in case it exists.
-     */
-    where: UserOnAccessContentWhereUniqueInput
-    /**
-     * In case the UserOnAccessContent found by the `where` argument doesn't exist, create a new UserOnAccessContent with this data.
-     */
-    create: XOR<UserOnAccessContentCreateInput, UserOnAccessContentUncheckedCreateInput>
-    /**
-     * In case the UserOnAccessContent was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<UserOnAccessContentUpdateInput, UserOnAccessContentUncheckedUpdateInput>
-  }
-
-  /**
-   * UserOnAccessContent delete
-   */
-  export type UserOnAccessContentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-    /**
-     * Filter which UserOnAccessContent to delete.
-     */
-    where: UserOnAccessContentWhereUniqueInput
-  }
-
-  /**
-   * UserOnAccessContent deleteMany
-   */
-  export type UserOnAccessContentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which UserOnAccessContents to delete
-     */
-    where?: UserOnAccessContentWhereInput
-    /**
-     * Limit how many UserOnAccessContents to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * UserOnAccessContent without action
-   */
-  export type UserOnAccessContentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserOnAccessContent
-     */
-    select?: UserOnAccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserOnAccessContent
-     */
-    omit?: UserOnAccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserOnAccessContentInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model AuthOnCity
-   */
-
-  export type AggregateAuthOnCity = {
-    _count: AuthOnCityCountAggregateOutputType | null
-    _min: AuthOnCityMinAggregateOutputType | null
-    _max: AuthOnCityMaxAggregateOutputType | null
-  }
-
-  export type AuthOnCityMinAggregateOutputType = {
-    authId: string | null
-    cityId: string | null
-  }
-
-  export type AuthOnCityMaxAggregateOutputType = {
-    authId: string | null
-    cityId: string | null
-  }
-
-  export type AuthOnCityCountAggregateOutputType = {
-    authId: number
-    cityId: number
-    _all: number
-  }
-
-
-  export type AuthOnCityMinAggregateInputType = {
-    authId?: true
-    cityId?: true
-  }
-
-  export type AuthOnCityMaxAggregateInputType = {
-    authId?: true
-    cityId?: true
-  }
-
-  export type AuthOnCityCountAggregateInputType = {
-    authId?: true
-    cityId?: true
-    _all?: true
-  }
-
-  export type AuthOnCityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AuthOnCity to aggregate.
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnCities to fetch.
-     */
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: AuthOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned AuthOnCities
-    **/
-    _count?: true | AuthOnCityCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AuthOnCityMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AuthOnCityMaxAggregateInputType
-  }
-
-  export type GetAuthOnCityAggregateType<T extends AuthOnCityAggregateArgs> = {
-        [P in keyof T & keyof AggregateAuthOnCity]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAuthOnCity[P]>
-      : GetScalarType<T[P], AggregateAuthOnCity[P]>
-  }
-
-
-
-
-  export type AuthOnCityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnCityWhereInput
-    orderBy?: AuthOnCityOrderByWithAggregationInput | AuthOnCityOrderByWithAggregationInput[]
-    by: AuthOnCityScalarFieldEnum[] | AuthOnCityScalarFieldEnum
-    having?: AuthOnCityScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AuthOnCityCountAggregateInputType | true
-    _min?: AuthOnCityMinAggregateInputType
-    _max?: AuthOnCityMaxAggregateInputType
-  }
-
-  export type AuthOnCityGroupByOutputType = {
-    authId: string
-    cityId: string
-    _count: AuthOnCityCountAggregateOutputType | null
-    _min: AuthOnCityMinAggregateOutputType | null
-    _max: AuthOnCityMaxAggregateOutputType | null
-  }
-
-  type GetAuthOnCityGroupByPayload<T extends AuthOnCityGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AuthOnCityGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AuthOnCityGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AuthOnCityGroupByOutputType[P]>
-            : GetScalarType<T[P], AuthOnCityGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type AuthOnCitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    cityId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnCity"]>
-
-  export type AuthOnCitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    cityId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnCity"]>
-
-  export type AuthOnCitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    cityId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnCity"]>
-
-  export type AuthOnCitySelectScalar = {
-    authId?: boolean
-    cityId?: boolean
-  }
-
-  export type AuthOnCityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"authId" | "cityId", ExtArgs["result"]["authOnCity"]>
-  export type AuthOnCityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-  export type AuthOnCityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-  export type AuthOnCityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-
-  export type $AuthOnCityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AuthOnCity"
-    objects: {
-      auth: Prisma.$AdminAuthorityPayload<ExtArgs>
-      city: Prisma.$CityPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      authId: string
-      cityId: string
-    }, ExtArgs["result"]["authOnCity"]>
-    composites: {}
-  }
-
-  type AuthOnCityGetPayload<S extends boolean | null | undefined | AuthOnCityDefaultArgs> = $Result.GetResult<Prisma.$AuthOnCityPayload, S>
-
-  type AuthOnCityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AuthOnCityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AuthOnCityCountAggregateInputType | true
-    }
-
-  export interface AuthOnCityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AuthOnCity'], meta: { name: 'AuthOnCity' } }
-    /**
-     * Find zero or one AuthOnCity that matches the filter.
-     * @param {AuthOnCityFindUniqueArgs} args - Arguments to find a AuthOnCity
-     * @example
-     * // Get one AuthOnCity
-     * const authOnCity = await prisma.authOnCity.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends AuthOnCityFindUniqueArgs>(args: SelectSubset<T, AuthOnCityFindUniqueArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one AuthOnCity that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {AuthOnCityFindUniqueOrThrowArgs} args - Arguments to find a AuthOnCity
-     * @example
-     * // Get one AuthOnCity
-     * const authOnCity = await prisma.authOnCity.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends AuthOnCityFindUniqueOrThrowArgs>(args: SelectSubset<T, AuthOnCityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AuthOnCity that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityFindFirstArgs} args - Arguments to find a AuthOnCity
-     * @example
-     * // Get one AuthOnCity
-     * const authOnCity = await prisma.authOnCity.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends AuthOnCityFindFirstArgs>(args?: SelectSubset<T, AuthOnCityFindFirstArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AuthOnCity that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityFindFirstOrThrowArgs} args - Arguments to find a AuthOnCity
-     * @example
-     * // Get one AuthOnCity
-     * const authOnCity = await prisma.authOnCity.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends AuthOnCityFindFirstOrThrowArgs>(args?: SelectSubset<T, AuthOnCityFindFirstOrThrowArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more AuthOnCities that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all AuthOnCities
-     * const authOnCities = await prisma.authOnCity.findMany()
-     * 
-     * // Get first 10 AuthOnCities
-     * const authOnCities = await prisma.authOnCity.findMany({ take: 10 })
-     * 
-     * // Only select the `authId`
-     * const authOnCityWithAuthIdOnly = await prisma.authOnCity.findMany({ select: { authId: true } })
-     * 
-     */
-    findMany<T extends AuthOnCityFindManyArgs>(args?: SelectSubset<T, AuthOnCityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a AuthOnCity.
-     * @param {AuthOnCityCreateArgs} args - Arguments to create a AuthOnCity.
-     * @example
-     * // Create one AuthOnCity
-     * const AuthOnCity = await prisma.authOnCity.create({
-     *   data: {
-     *     // ... data to create a AuthOnCity
-     *   }
-     * })
-     * 
-     */
-    create<T extends AuthOnCityCreateArgs>(args: SelectSubset<T, AuthOnCityCreateArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many AuthOnCities.
-     * @param {AuthOnCityCreateManyArgs} args - Arguments to create many AuthOnCities.
-     * @example
-     * // Create many AuthOnCities
-     * const authOnCity = await prisma.authOnCity.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends AuthOnCityCreateManyArgs>(args?: SelectSubset<T, AuthOnCityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many AuthOnCities and returns the data saved in the database.
-     * @param {AuthOnCityCreateManyAndReturnArgs} args - Arguments to create many AuthOnCities.
-     * @example
-     * // Create many AuthOnCities
-     * const authOnCity = await prisma.authOnCity.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many AuthOnCities and only return the `authId`
-     * const authOnCityWithAuthIdOnly = await prisma.authOnCity.createManyAndReturn({
-     *   select: { authId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends AuthOnCityCreateManyAndReturnArgs>(args?: SelectSubset<T, AuthOnCityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a AuthOnCity.
-     * @param {AuthOnCityDeleteArgs} args - Arguments to delete one AuthOnCity.
-     * @example
-     * // Delete one AuthOnCity
-     * const AuthOnCity = await prisma.authOnCity.delete({
-     *   where: {
-     *     // ... filter to delete one AuthOnCity
-     *   }
-     * })
-     * 
-     */
-    delete<T extends AuthOnCityDeleteArgs>(args: SelectSubset<T, AuthOnCityDeleteArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one AuthOnCity.
-     * @param {AuthOnCityUpdateArgs} args - Arguments to update one AuthOnCity.
-     * @example
-     * // Update one AuthOnCity
-     * const authOnCity = await prisma.authOnCity.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends AuthOnCityUpdateArgs>(args: SelectSubset<T, AuthOnCityUpdateArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more AuthOnCities.
-     * @param {AuthOnCityDeleteManyArgs} args - Arguments to filter AuthOnCities to delete.
-     * @example
-     * // Delete a few AuthOnCities
-     * const { count } = await prisma.authOnCity.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends AuthOnCityDeleteManyArgs>(args?: SelectSubset<T, AuthOnCityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AuthOnCities.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many AuthOnCities
-     * const authOnCity = await prisma.authOnCity.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends AuthOnCityUpdateManyArgs>(args: SelectSubset<T, AuthOnCityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AuthOnCities and returns the data updated in the database.
-     * @param {AuthOnCityUpdateManyAndReturnArgs} args - Arguments to update many AuthOnCities.
-     * @example
-     * // Update many AuthOnCities
-     * const authOnCity = await prisma.authOnCity.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more AuthOnCities and only return the `authId`
-     * const authOnCityWithAuthIdOnly = await prisma.authOnCity.updateManyAndReturn({
-     *   select: { authId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends AuthOnCityUpdateManyAndReturnArgs>(args: SelectSubset<T, AuthOnCityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one AuthOnCity.
-     * @param {AuthOnCityUpsertArgs} args - Arguments to update or create a AuthOnCity.
-     * @example
-     * // Update or create a AuthOnCity
-     * const authOnCity = await prisma.authOnCity.upsert({
-     *   create: {
-     *     // ... data to create a AuthOnCity
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the AuthOnCity we want to update
-     *   }
-     * })
-     */
-    upsert<T extends AuthOnCityUpsertArgs>(args: SelectSubset<T, AuthOnCityUpsertArgs<ExtArgs>>): Prisma__AuthOnCityClient<$Result.GetResult<Prisma.$AuthOnCityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of AuthOnCities.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityCountArgs} args - Arguments to filter AuthOnCities to count.
-     * @example
-     * // Count the number of AuthOnCities
-     * const count = await prisma.authOnCity.count({
-     *   where: {
-     *     // ... the filter for the AuthOnCities we want to count
-     *   }
-     * })
-    **/
-    count<T extends AuthOnCityCountArgs>(
-      args?: Subset<T, AuthOnCityCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AuthOnCityCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a AuthOnCity.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AuthOnCityAggregateArgs>(args: Subset<T, AuthOnCityAggregateArgs>): Prisma.PrismaPromise<GetAuthOnCityAggregateType<T>>
-
-    /**
-     * Group by AuthOnCity.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnCityGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends AuthOnCityGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AuthOnCityGroupByArgs['orderBy'] }
-        : { orderBy?: AuthOnCityGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, AuthOnCityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuthOnCityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the AuthOnCity model
-   */
-  readonly fields: AuthOnCityFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for AuthOnCity.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__AuthOnCityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    auth<T extends AdminAuthorityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthorityDefaultArgs<ExtArgs>>): Prisma__AdminAuthorityClient<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    city<T extends CityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CityDefaultArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the AuthOnCity model
-   */
-  interface AuthOnCityFieldRefs {
-    readonly authId: FieldRef<"AuthOnCity", 'String'>
-    readonly cityId: FieldRef<"AuthOnCity", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * AuthOnCity findUnique
-   */
-  export type AuthOnCityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnCity to fetch.
-     */
-    where: AuthOnCityWhereUniqueInput
-  }
-
-  /**
-   * AuthOnCity findUniqueOrThrow
-   */
-  export type AuthOnCityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnCity to fetch.
-     */
-    where: AuthOnCityWhereUniqueInput
-  }
-
-  /**
-   * AuthOnCity findFirst
-   */
-  export type AuthOnCityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnCity to fetch.
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnCities to fetch.
-     */
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AuthOnCities.
-     */
-    cursor?: AuthOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AuthOnCities.
-     */
-    distinct?: AuthOnCityScalarFieldEnum | AuthOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnCity findFirstOrThrow
-   */
-  export type AuthOnCityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnCity to fetch.
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnCities to fetch.
-     */
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AuthOnCities.
-     */
-    cursor?: AuthOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AuthOnCities.
-     */
-    distinct?: AuthOnCityScalarFieldEnum | AuthOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnCity findMany
-   */
-  export type AuthOnCityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnCities to fetch.
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnCities to fetch.
-     */
-    orderBy?: AuthOnCityOrderByWithRelationInput | AuthOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing AuthOnCities.
-     */
-    cursor?: AuthOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnCities.
-     */
-    skip?: number
-    distinct?: AuthOnCityScalarFieldEnum | AuthOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnCity create
-   */
-  export type AuthOnCityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * The data needed to create a AuthOnCity.
-     */
-    data: XOR<AuthOnCityCreateInput, AuthOnCityUncheckedCreateInput>
-  }
-
-  /**
-   * AuthOnCity createMany
-   */
-  export type AuthOnCityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many AuthOnCities.
-     */
-    data: AuthOnCityCreateManyInput | AuthOnCityCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * AuthOnCity createManyAndReturn
-   */
-  export type AuthOnCityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * The data used to create many AuthOnCities.
-     */
-    data: AuthOnCityCreateManyInput | AuthOnCityCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AuthOnCity update
-   */
-  export type AuthOnCityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * The data needed to update a AuthOnCity.
-     */
-    data: XOR<AuthOnCityUpdateInput, AuthOnCityUncheckedUpdateInput>
-    /**
-     * Choose, which AuthOnCity to update.
-     */
-    where: AuthOnCityWhereUniqueInput
-  }
-
-  /**
-   * AuthOnCity updateMany
-   */
-  export type AuthOnCityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update AuthOnCities.
-     */
-    data: XOR<AuthOnCityUpdateManyMutationInput, AuthOnCityUncheckedUpdateManyInput>
-    /**
-     * Filter which AuthOnCities to update
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * Limit how many AuthOnCities to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * AuthOnCity updateManyAndReturn
-   */
-  export type AuthOnCityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * The data used to update AuthOnCities.
-     */
-    data: XOR<AuthOnCityUpdateManyMutationInput, AuthOnCityUncheckedUpdateManyInput>
-    /**
-     * Filter which AuthOnCities to update
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * Limit how many AuthOnCities to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AuthOnCity upsert
-   */
-  export type AuthOnCityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * The filter to search for the AuthOnCity to update in case it exists.
-     */
-    where: AuthOnCityWhereUniqueInput
-    /**
-     * In case the AuthOnCity found by the `where` argument doesn't exist, create a new AuthOnCity with this data.
-     */
-    create: XOR<AuthOnCityCreateInput, AuthOnCityUncheckedCreateInput>
-    /**
-     * In case the AuthOnCity was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<AuthOnCityUpdateInput, AuthOnCityUncheckedUpdateInput>
-  }
-
-  /**
-   * AuthOnCity delete
-   */
-  export type AuthOnCityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-    /**
-     * Filter which AuthOnCity to delete.
-     */
-    where: AuthOnCityWhereUniqueInput
-  }
-
-  /**
-   * AuthOnCity deleteMany
-   */
-  export type AuthOnCityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AuthOnCities to delete
-     */
-    where?: AuthOnCityWhereInput
-    /**
-     * Limit how many AuthOnCities to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * AuthOnCity without action
-   */
-  export type AuthOnCityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnCity
-     */
-    select?: AuthOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnCity
-     */
-    omit?: AuthOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnCityInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model AuthOnSchool
-   */
-
-  export type AggregateAuthOnSchool = {
-    _count: AuthOnSchoolCountAggregateOutputType | null
-    _min: AuthOnSchoolMinAggregateOutputType | null
-    _max: AuthOnSchoolMaxAggregateOutputType | null
-  }
-
-  export type AuthOnSchoolMinAggregateOutputType = {
-    authId: string | null
-    schoolId: string | null
-  }
-
-  export type AuthOnSchoolMaxAggregateOutputType = {
-    authId: string | null
-    schoolId: string | null
-  }
-
-  export type AuthOnSchoolCountAggregateOutputType = {
-    authId: number
-    schoolId: number
-    _all: number
-  }
-
-
-  export type AuthOnSchoolMinAggregateInputType = {
-    authId?: true
-    schoolId?: true
-  }
-
-  export type AuthOnSchoolMaxAggregateInputType = {
-    authId?: true
-    schoolId?: true
-  }
-
-  export type AuthOnSchoolCountAggregateInputType = {
-    authId?: true
-    schoolId?: true
-    _all?: true
-  }
-
-  export type AuthOnSchoolAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AuthOnSchool to aggregate.
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnSchools to fetch.
-     */
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: AuthOnSchoolWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnSchools from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnSchools.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned AuthOnSchools
-    **/
-    _count?: true | AuthOnSchoolCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AuthOnSchoolMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AuthOnSchoolMaxAggregateInputType
-  }
-
-  export type GetAuthOnSchoolAggregateType<T extends AuthOnSchoolAggregateArgs> = {
-        [P in keyof T & keyof AggregateAuthOnSchool]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAuthOnSchool[P]>
-      : GetScalarType<T[P], AggregateAuthOnSchool[P]>
-  }
-
-
-
-
-  export type AuthOnSchoolGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AuthOnSchoolWhereInput
-    orderBy?: AuthOnSchoolOrderByWithAggregationInput | AuthOnSchoolOrderByWithAggregationInput[]
-    by: AuthOnSchoolScalarFieldEnum[] | AuthOnSchoolScalarFieldEnum
-    having?: AuthOnSchoolScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AuthOnSchoolCountAggregateInputType | true
-    _min?: AuthOnSchoolMinAggregateInputType
-    _max?: AuthOnSchoolMaxAggregateInputType
-  }
-
-  export type AuthOnSchoolGroupByOutputType = {
-    authId: string
-    schoolId: string
-    _count: AuthOnSchoolCountAggregateOutputType | null
-    _min: AuthOnSchoolMinAggregateOutputType | null
-    _max: AuthOnSchoolMaxAggregateOutputType | null
-  }
-
-  type GetAuthOnSchoolGroupByPayload<T extends AuthOnSchoolGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AuthOnSchoolGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AuthOnSchoolGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AuthOnSchoolGroupByOutputType[P]>
-            : GetScalarType<T[P], AuthOnSchoolGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type AuthOnSchoolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    schoolId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnSchool"]>
-
-  export type AuthOnSchoolSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    schoolId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnSchool"]>
-
-  export type AuthOnSchoolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    authId?: boolean
-    schoolId?: boolean
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["authOnSchool"]>
-
-  export type AuthOnSchoolSelectScalar = {
-    authId?: boolean
-    schoolId?: boolean
-  }
-
-  export type AuthOnSchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"authId" | "schoolId", ExtArgs["result"]["authOnSchool"]>
-  export type AuthOnSchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }
-  export type AuthOnSchoolIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }
-  export type AuthOnSchoolIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    auth?: boolean | AdminAuthorityDefaultArgs<ExtArgs>
-    school?: boolean | SchoolDefaultArgs<ExtArgs>
-  }
-
-  export type $AuthOnSchoolPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AuthOnSchool"
-    objects: {
-      auth: Prisma.$AdminAuthorityPayload<ExtArgs>
-      school: Prisma.$SchoolPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      authId: string
-      schoolId: string
-    }, ExtArgs["result"]["authOnSchool"]>
-    composites: {}
-  }
-
-  type AuthOnSchoolGetPayload<S extends boolean | null | undefined | AuthOnSchoolDefaultArgs> = $Result.GetResult<Prisma.$AuthOnSchoolPayload, S>
-
-  type AuthOnSchoolCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AuthOnSchoolFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AuthOnSchoolCountAggregateInputType | true
-    }
-
-  export interface AuthOnSchoolDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AuthOnSchool'], meta: { name: 'AuthOnSchool' } }
-    /**
-     * Find zero or one AuthOnSchool that matches the filter.
-     * @param {AuthOnSchoolFindUniqueArgs} args - Arguments to find a AuthOnSchool
-     * @example
-     * // Get one AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends AuthOnSchoolFindUniqueArgs>(args: SelectSubset<T, AuthOnSchoolFindUniqueArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one AuthOnSchool that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {AuthOnSchoolFindUniqueOrThrowArgs} args - Arguments to find a AuthOnSchool
-     * @example
-     * // Get one AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends AuthOnSchoolFindUniqueOrThrowArgs>(args: SelectSubset<T, AuthOnSchoolFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AuthOnSchool that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolFindFirstArgs} args - Arguments to find a AuthOnSchool
-     * @example
-     * // Get one AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends AuthOnSchoolFindFirstArgs>(args?: SelectSubset<T, AuthOnSchoolFindFirstArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AuthOnSchool that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolFindFirstOrThrowArgs} args - Arguments to find a AuthOnSchool
-     * @example
-     * // Get one AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends AuthOnSchoolFindFirstOrThrowArgs>(args?: SelectSubset<T, AuthOnSchoolFindFirstOrThrowArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more AuthOnSchools that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all AuthOnSchools
-     * const authOnSchools = await prisma.authOnSchool.findMany()
-     * 
-     * // Get first 10 AuthOnSchools
-     * const authOnSchools = await prisma.authOnSchool.findMany({ take: 10 })
-     * 
-     * // Only select the `authId`
-     * const authOnSchoolWithAuthIdOnly = await prisma.authOnSchool.findMany({ select: { authId: true } })
-     * 
-     */
-    findMany<T extends AuthOnSchoolFindManyArgs>(args?: SelectSubset<T, AuthOnSchoolFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a AuthOnSchool.
-     * @param {AuthOnSchoolCreateArgs} args - Arguments to create a AuthOnSchool.
-     * @example
-     * // Create one AuthOnSchool
-     * const AuthOnSchool = await prisma.authOnSchool.create({
-     *   data: {
-     *     // ... data to create a AuthOnSchool
-     *   }
-     * })
-     * 
-     */
-    create<T extends AuthOnSchoolCreateArgs>(args: SelectSubset<T, AuthOnSchoolCreateArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many AuthOnSchools.
-     * @param {AuthOnSchoolCreateManyArgs} args - Arguments to create many AuthOnSchools.
-     * @example
-     * // Create many AuthOnSchools
-     * const authOnSchool = await prisma.authOnSchool.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends AuthOnSchoolCreateManyArgs>(args?: SelectSubset<T, AuthOnSchoolCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many AuthOnSchools and returns the data saved in the database.
-     * @param {AuthOnSchoolCreateManyAndReturnArgs} args - Arguments to create many AuthOnSchools.
-     * @example
-     * // Create many AuthOnSchools
-     * const authOnSchool = await prisma.authOnSchool.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many AuthOnSchools and only return the `authId`
-     * const authOnSchoolWithAuthIdOnly = await prisma.authOnSchool.createManyAndReturn({
-     *   select: { authId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends AuthOnSchoolCreateManyAndReturnArgs>(args?: SelectSubset<T, AuthOnSchoolCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a AuthOnSchool.
-     * @param {AuthOnSchoolDeleteArgs} args - Arguments to delete one AuthOnSchool.
-     * @example
-     * // Delete one AuthOnSchool
-     * const AuthOnSchool = await prisma.authOnSchool.delete({
-     *   where: {
-     *     // ... filter to delete one AuthOnSchool
-     *   }
-     * })
-     * 
-     */
-    delete<T extends AuthOnSchoolDeleteArgs>(args: SelectSubset<T, AuthOnSchoolDeleteArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one AuthOnSchool.
-     * @param {AuthOnSchoolUpdateArgs} args - Arguments to update one AuthOnSchool.
-     * @example
-     * // Update one AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends AuthOnSchoolUpdateArgs>(args: SelectSubset<T, AuthOnSchoolUpdateArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more AuthOnSchools.
-     * @param {AuthOnSchoolDeleteManyArgs} args - Arguments to filter AuthOnSchools to delete.
-     * @example
-     * // Delete a few AuthOnSchools
-     * const { count } = await prisma.authOnSchool.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends AuthOnSchoolDeleteManyArgs>(args?: SelectSubset<T, AuthOnSchoolDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AuthOnSchools.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many AuthOnSchools
-     * const authOnSchool = await prisma.authOnSchool.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends AuthOnSchoolUpdateManyArgs>(args: SelectSubset<T, AuthOnSchoolUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AuthOnSchools and returns the data updated in the database.
-     * @param {AuthOnSchoolUpdateManyAndReturnArgs} args - Arguments to update many AuthOnSchools.
-     * @example
-     * // Update many AuthOnSchools
-     * const authOnSchool = await prisma.authOnSchool.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more AuthOnSchools and only return the `authId`
-     * const authOnSchoolWithAuthIdOnly = await prisma.authOnSchool.updateManyAndReturn({
-     *   select: { authId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends AuthOnSchoolUpdateManyAndReturnArgs>(args: SelectSubset<T, AuthOnSchoolUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one AuthOnSchool.
-     * @param {AuthOnSchoolUpsertArgs} args - Arguments to update or create a AuthOnSchool.
-     * @example
-     * // Update or create a AuthOnSchool
-     * const authOnSchool = await prisma.authOnSchool.upsert({
-     *   create: {
-     *     // ... data to create a AuthOnSchool
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the AuthOnSchool we want to update
-     *   }
-     * })
-     */
-    upsert<T extends AuthOnSchoolUpsertArgs>(args: SelectSubset<T, AuthOnSchoolUpsertArgs<ExtArgs>>): Prisma__AuthOnSchoolClient<$Result.GetResult<Prisma.$AuthOnSchoolPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of AuthOnSchools.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolCountArgs} args - Arguments to filter AuthOnSchools to count.
-     * @example
-     * // Count the number of AuthOnSchools
-     * const count = await prisma.authOnSchool.count({
-     *   where: {
-     *     // ... the filter for the AuthOnSchools we want to count
-     *   }
-     * })
-    **/
-    count<T extends AuthOnSchoolCountArgs>(
-      args?: Subset<T, AuthOnSchoolCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AuthOnSchoolCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a AuthOnSchool.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AuthOnSchoolAggregateArgs>(args: Subset<T, AuthOnSchoolAggregateArgs>): Prisma.PrismaPromise<GetAuthOnSchoolAggregateType<T>>
-
-    /**
-     * Group by AuthOnSchool.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AuthOnSchoolGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends AuthOnSchoolGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AuthOnSchoolGroupByArgs['orderBy'] }
-        : { orderBy?: AuthOnSchoolGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, AuthOnSchoolGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuthOnSchoolGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the AuthOnSchool model
-   */
-  readonly fields: AuthOnSchoolFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for AuthOnSchool.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__AuthOnSchoolClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    auth<T extends AdminAuthorityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthorityDefaultArgs<ExtArgs>>): Prisma__AdminAuthorityClient<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    school<T extends SchoolDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SchoolDefaultArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the AuthOnSchool model
-   */
-  interface AuthOnSchoolFieldRefs {
-    readonly authId: FieldRef<"AuthOnSchool", 'String'>
-    readonly schoolId: FieldRef<"AuthOnSchool", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * AuthOnSchool findUnique
-   */
-  export type AuthOnSchoolFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnSchool to fetch.
-     */
-    where: AuthOnSchoolWhereUniqueInput
-  }
-
-  /**
-   * AuthOnSchool findUniqueOrThrow
-   */
-  export type AuthOnSchoolFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnSchool to fetch.
-     */
-    where: AuthOnSchoolWhereUniqueInput
-  }
-
-  /**
-   * AuthOnSchool findFirst
-   */
-  export type AuthOnSchoolFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnSchool to fetch.
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnSchools to fetch.
-     */
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AuthOnSchools.
-     */
-    cursor?: AuthOnSchoolWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnSchools from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnSchools.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AuthOnSchools.
-     */
-    distinct?: AuthOnSchoolScalarFieldEnum | AuthOnSchoolScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnSchool findFirstOrThrow
-   */
-  export type AuthOnSchoolFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnSchool to fetch.
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnSchools to fetch.
-     */
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AuthOnSchools.
-     */
-    cursor?: AuthOnSchoolWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnSchools from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnSchools.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AuthOnSchools.
-     */
-    distinct?: AuthOnSchoolScalarFieldEnum | AuthOnSchoolScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnSchool findMany
-   */
-  export type AuthOnSchoolFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter, which AuthOnSchools to fetch.
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AuthOnSchools to fetch.
-     */
-    orderBy?: AuthOnSchoolOrderByWithRelationInput | AuthOnSchoolOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing AuthOnSchools.
-     */
-    cursor?: AuthOnSchoolWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AuthOnSchools from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AuthOnSchools.
-     */
-    skip?: number
-    distinct?: AuthOnSchoolScalarFieldEnum | AuthOnSchoolScalarFieldEnum[]
-  }
-
-  /**
-   * AuthOnSchool create
-   */
-  export type AuthOnSchoolCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * The data needed to create a AuthOnSchool.
-     */
-    data: XOR<AuthOnSchoolCreateInput, AuthOnSchoolUncheckedCreateInput>
-  }
-
-  /**
-   * AuthOnSchool createMany
-   */
-  export type AuthOnSchoolCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many AuthOnSchools.
-     */
-    data: AuthOnSchoolCreateManyInput | AuthOnSchoolCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * AuthOnSchool createManyAndReturn
-   */
-  export type AuthOnSchoolCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * The data used to create many AuthOnSchools.
-     */
-    data: AuthOnSchoolCreateManyInput | AuthOnSchoolCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AuthOnSchool update
-   */
-  export type AuthOnSchoolUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * The data needed to update a AuthOnSchool.
-     */
-    data: XOR<AuthOnSchoolUpdateInput, AuthOnSchoolUncheckedUpdateInput>
-    /**
-     * Choose, which AuthOnSchool to update.
-     */
-    where: AuthOnSchoolWhereUniqueInput
-  }
-
-  /**
-   * AuthOnSchool updateMany
-   */
-  export type AuthOnSchoolUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update AuthOnSchools.
-     */
-    data: XOR<AuthOnSchoolUpdateManyMutationInput, AuthOnSchoolUncheckedUpdateManyInput>
-    /**
-     * Filter which AuthOnSchools to update
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * Limit how many AuthOnSchools to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * AuthOnSchool updateManyAndReturn
-   */
-  export type AuthOnSchoolUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * The data used to update AuthOnSchools.
-     */
-    data: XOR<AuthOnSchoolUpdateManyMutationInput, AuthOnSchoolUncheckedUpdateManyInput>
-    /**
-     * Filter which AuthOnSchools to update
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * Limit how many AuthOnSchools to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AuthOnSchool upsert
-   */
-  export type AuthOnSchoolUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * The filter to search for the AuthOnSchool to update in case it exists.
-     */
-    where: AuthOnSchoolWhereUniqueInput
-    /**
-     * In case the AuthOnSchool found by the `where` argument doesn't exist, create a new AuthOnSchool with this data.
-     */
-    create: XOR<AuthOnSchoolCreateInput, AuthOnSchoolUncheckedCreateInput>
-    /**
-     * In case the AuthOnSchool was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<AuthOnSchoolUpdateInput, AuthOnSchoolUncheckedUpdateInput>
-  }
-
-  /**
-   * AuthOnSchool delete
-   */
-  export type AuthOnSchoolDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-    /**
-     * Filter which AuthOnSchool to delete.
-     */
-    where: AuthOnSchoolWhereUniqueInput
-  }
-
-  /**
-   * AuthOnSchool deleteMany
-   */
-  export type AuthOnSchoolDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AuthOnSchools to delete
-     */
-    where?: AuthOnSchoolWhereInput
-    /**
-     * Limit how many AuthOnSchools to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * AuthOnSchool without action
-   */
-  export type AuthOnSchoolDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AuthOnSchool
-     */
-    select?: AuthOnSchoolSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AuthOnSchool
-     */
-    omit?: AuthOnSchoolOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AuthOnSchoolInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model BannerOnProvince
-   */
-
-  export type AggregateBannerOnProvince = {
-    _count: BannerOnProvinceCountAggregateOutputType | null
-    _min: BannerOnProvinceMinAggregateOutputType | null
-    _max: BannerOnProvinceMaxAggregateOutputType | null
-  }
-
-  export type BannerOnProvinceMinAggregateOutputType = {
-    bannerId: string | null
-    provinceId: string | null
-  }
-
-  export type BannerOnProvinceMaxAggregateOutputType = {
-    bannerId: string | null
-    provinceId: string | null
-  }
-
-  export type BannerOnProvinceCountAggregateOutputType = {
-    bannerId: number
-    provinceId: number
-    _all: number
-  }
-
-
-  export type BannerOnProvinceMinAggregateInputType = {
-    bannerId?: true
-    provinceId?: true
-  }
-
-  export type BannerOnProvinceMaxAggregateInputType = {
-    bannerId?: true
-    provinceId?: true
-  }
-
-  export type BannerOnProvinceCountAggregateInputType = {
-    bannerId?: true
-    provinceId?: true
-    _all?: true
-  }
-
-  export type BannerOnProvinceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerOnProvince to aggregate.
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnProvinces to fetch.
-     */
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BannerOnProvinceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnProvinces from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnProvinces.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned BannerOnProvinces
-    **/
-    _count?: true | BannerOnProvinceCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BannerOnProvinceMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BannerOnProvinceMaxAggregateInputType
-  }
-
-  export type GetBannerOnProvinceAggregateType<T extends BannerOnProvinceAggregateArgs> = {
-        [P in keyof T & keyof AggregateBannerOnProvince]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBannerOnProvince[P]>
-      : GetScalarType<T[P], AggregateBannerOnProvince[P]>
-  }
-
-
-
-
-  export type BannerOnProvinceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnProvinceWhereInput
-    orderBy?: BannerOnProvinceOrderByWithAggregationInput | BannerOnProvinceOrderByWithAggregationInput[]
-    by: BannerOnProvinceScalarFieldEnum[] | BannerOnProvinceScalarFieldEnum
-    having?: BannerOnProvinceScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BannerOnProvinceCountAggregateInputType | true
-    _min?: BannerOnProvinceMinAggregateInputType
-    _max?: BannerOnProvinceMaxAggregateInputType
-  }
-
-  export type BannerOnProvinceGroupByOutputType = {
-    bannerId: string
-    provinceId: string
-    _count: BannerOnProvinceCountAggregateOutputType | null
-    _min: BannerOnProvinceMinAggregateOutputType | null
-    _max: BannerOnProvinceMaxAggregateOutputType | null
-  }
-
-  type GetBannerOnProvinceGroupByPayload<T extends BannerOnProvinceGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BannerOnProvinceGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BannerOnProvinceGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BannerOnProvinceGroupByOutputType[P]>
-            : GetScalarType<T[P], BannerOnProvinceGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BannerOnProvinceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    provinceId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnProvince"]>
-
-  export type BannerOnProvinceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    provinceId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnProvince"]>
-
-  export type BannerOnProvinceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    provinceId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnProvince"]>
-
-  export type BannerOnProvinceSelectScalar = {
-    bannerId?: boolean
-    provinceId?: boolean
-  }
-
-  export type BannerOnProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"bannerId" | "provinceId", ExtArgs["result"]["bannerOnProvince"]>
-  export type BannerOnProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }
-  export type BannerOnProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }
-  export type BannerOnProvinceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }
-
-  export type $BannerOnProvincePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "BannerOnProvince"
-    objects: {
-      banner: Prisma.$BannerPayload<ExtArgs>
-      province: Prisma.$ProvincePayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      bannerId: string
-      provinceId: string
-    }, ExtArgs["result"]["bannerOnProvince"]>
-    composites: {}
-  }
-
-  type BannerOnProvinceGetPayload<S extends boolean | null | undefined | BannerOnProvinceDefaultArgs> = $Result.GetResult<Prisma.$BannerOnProvincePayload, S>
-
-  type BannerOnProvinceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BannerOnProvinceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BannerOnProvinceCountAggregateInputType | true
-    }
-
-  export interface BannerOnProvinceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BannerOnProvince'], meta: { name: 'BannerOnProvince' } }
-    /**
-     * Find zero or one BannerOnProvince that matches the filter.
-     * @param {BannerOnProvinceFindUniqueArgs} args - Arguments to find a BannerOnProvince
-     * @example
-     * // Get one BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BannerOnProvinceFindUniqueArgs>(args: SelectSubset<T, BannerOnProvinceFindUniqueArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one BannerOnProvince that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BannerOnProvinceFindUniqueOrThrowArgs} args - Arguments to find a BannerOnProvince
-     * @example
-     * // Get one BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BannerOnProvinceFindUniqueOrThrowArgs>(args: SelectSubset<T, BannerOnProvinceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerOnProvince that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceFindFirstArgs} args - Arguments to find a BannerOnProvince
-     * @example
-     * // Get one BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BannerOnProvinceFindFirstArgs>(args?: SelectSubset<T, BannerOnProvinceFindFirstArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerOnProvince that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceFindFirstOrThrowArgs} args - Arguments to find a BannerOnProvince
-     * @example
-     * // Get one BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BannerOnProvinceFindFirstOrThrowArgs>(args?: SelectSubset<T, BannerOnProvinceFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more BannerOnProvinces that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all BannerOnProvinces
-     * const bannerOnProvinces = await prisma.bannerOnProvince.findMany()
-     * 
-     * // Get first 10 BannerOnProvinces
-     * const bannerOnProvinces = await prisma.bannerOnProvince.findMany({ take: 10 })
-     * 
-     * // Only select the `bannerId`
-     * const bannerOnProvinceWithBannerIdOnly = await prisma.bannerOnProvince.findMany({ select: { bannerId: true } })
-     * 
-     */
-    findMany<T extends BannerOnProvinceFindManyArgs>(args?: SelectSubset<T, BannerOnProvinceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a BannerOnProvince.
-     * @param {BannerOnProvinceCreateArgs} args - Arguments to create a BannerOnProvince.
-     * @example
-     * // Create one BannerOnProvince
-     * const BannerOnProvince = await prisma.bannerOnProvince.create({
-     *   data: {
-     *     // ... data to create a BannerOnProvince
-     *   }
-     * })
-     * 
-     */
-    create<T extends BannerOnProvinceCreateArgs>(args: SelectSubset<T, BannerOnProvinceCreateArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many BannerOnProvinces.
-     * @param {BannerOnProvinceCreateManyArgs} args - Arguments to create many BannerOnProvinces.
-     * @example
-     * // Create many BannerOnProvinces
-     * const bannerOnProvince = await prisma.bannerOnProvince.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BannerOnProvinceCreateManyArgs>(args?: SelectSubset<T, BannerOnProvinceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many BannerOnProvinces and returns the data saved in the database.
-     * @param {BannerOnProvinceCreateManyAndReturnArgs} args - Arguments to create many BannerOnProvinces.
-     * @example
-     * // Create many BannerOnProvinces
-     * const bannerOnProvince = await prisma.bannerOnProvince.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many BannerOnProvinces and only return the `bannerId`
-     * const bannerOnProvinceWithBannerIdOnly = await prisma.bannerOnProvince.createManyAndReturn({
-     *   select: { bannerId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BannerOnProvinceCreateManyAndReturnArgs>(args?: SelectSubset<T, BannerOnProvinceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a BannerOnProvince.
-     * @param {BannerOnProvinceDeleteArgs} args - Arguments to delete one BannerOnProvince.
-     * @example
-     * // Delete one BannerOnProvince
-     * const BannerOnProvince = await prisma.bannerOnProvince.delete({
-     *   where: {
-     *     // ... filter to delete one BannerOnProvince
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BannerOnProvinceDeleteArgs>(args: SelectSubset<T, BannerOnProvinceDeleteArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one BannerOnProvince.
-     * @param {BannerOnProvinceUpdateArgs} args - Arguments to update one BannerOnProvince.
-     * @example
-     * // Update one BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BannerOnProvinceUpdateArgs>(args: SelectSubset<T, BannerOnProvinceUpdateArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more BannerOnProvinces.
-     * @param {BannerOnProvinceDeleteManyArgs} args - Arguments to filter BannerOnProvinces to delete.
-     * @example
-     * // Delete a few BannerOnProvinces
-     * const { count } = await prisma.bannerOnProvince.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BannerOnProvinceDeleteManyArgs>(args?: SelectSubset<T, BannerOnProvinceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerOnProvinces.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many BannerOnProvinces
-     * const bannerOnProvince = await prisma.bannerOnProvince.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BannerOnProvinceUpdateManyArgs>(args: SelectSubset<T, BannerOnProvinceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerOnProvinces and returns the data updated in the database.
-     * @param {BannerOnProvinceUpdateManyAndReturnArgs} args - Arguments to update many BannerOnProvinces.
-     * @example
-     * // Update many BannerOnProvinces
-     * const bannerOnProvince = await prisma.bannerOnProvince.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more BannerOnProvinces and only return the `bannerId`
-     * const bannerOnProvinceWithBannerIdOnly = await prisma.bannerOnProvince.updateManyAndReturn({
-     *   select: { bannerId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BannerOnProvinceUpdateManyAndReturnArgs>(args: SelectSubset<T, BannerOnProvinceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one BannerOnProvince.
-     * @param {BannerOnProvinceUpsertArgs} args - Arguments to update or create a BannerOnProvince.
-     * @example
-     * // Update or create a BannerOnProvince
-     * const bannerOnProvince = await prisma.bannerOnProvince.upsert({
-     *   create: {
-     *     // ... data to create a BannerOnProvince
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the BannerOnProvince we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BannerOnProvinceUpsertArgs>(args: SelectSubset<T, BannerOnProvinceUpsertArgs<ExtArgs>>): Prisma__BannerOnProvinceClient<$Result.GetResult<Prisma.$BannerOnProvincePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of BannerOnProvinces.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceCountArgs} args - Arguments to filter BannerOnProvinces to count.
-     * @example
-     * // Count the number of BannerOnProvinces
-     * const count = await prisma.bannerOnProvince.count({
-     *   where: {
-     *     // ... the filter for the BannerOnProvinces we want to count
-     *   }
-     * })
-    **/
-    count<T extends BannerOnProvinceCountArgs>(
-      args?: Subset<T, BannerOnProvinceCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BannerOnProvinceCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a BannerOnProvince.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BannerOnProvinceAggregateArgs>(args: Subset<T, BannerOnProvinceAggregateArgs>): Prisma.PrismaPromise<GetBannerOnProvinceAggregateType<T>>
-
-    /**
-     * Group by BannerOnProvince.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnProvinceGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BannerOnProvinceGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BannerOnProvinceGroupByArgs['orderBy'] }
-        : { orderBy?: BannerOnProvinceGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BannerOnProvinceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannerOnProvinceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the BannerOnProvince model
-   */
-  readonly fields: BannerOnProvinceFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for BannerOnProvince.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BannerOnProvinceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    banner<T extends BannerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BannerDefaultArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the BannerOnProvince model
-   */
-  interface BannerOnProvinceFieldRefs {
-    readonly bannerId: FieldRef<"BannerOnProvince", 'String'>
-    readonly provinceId: FieldRef<"BannerOnProvince", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * BannerOnProvince findUnique
-   */
-  export type BannerOnProvinceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnProvince to fetch.
-     */
-    where: BannerOnProvinceWhereUniqueInput
-  }
-
-  /**
-   * BannerOnProvince findUniqueOrThrow
-   */
-  export type BannerOnProvinceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnProvince to fetch.
-     */
-    where: BannerOnProvinceWhereUniqueInput
-  }
-
-  /**
-   * BannerOnProvince findFirst
-   */
-  export type BannerOnProvinceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnProvince to fetch.
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnProvinces to fetch.
-     */
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerOnProvinces.
-     */
-    cursor?: BannerOnProvinceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnProvinces from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnProvinces.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerOnProvinces.
-     */
-    distinct?: BannerOnProvinceScalarFieldEnum | BannerOnProvinceScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnProvince findFirstOrThrow
-   */
-  export type BannerOnProvinceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnProvince to fetch.
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnProvinces to fetch.
-     */
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerOnProvinces.
-     */
-    cursor?: BannerOnProvinceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnProvinces from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnProvinces.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerOnProvinces.
-     */
-    distinct?: BannerOnProvinceScalarFieldEnum | BannerOnProvinceScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnProvince findMany
-   */
-  export type BannerOnProvinceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnProvinces to fetch.
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnProvinces to fetch.
-     */
-    orderBy?: BannerOnProvinceOrderByWithRelationInput | BannerOnProvinceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing BannerOnProvinces.
-     */
-    cursor?: BannerOnProvinceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnProvinces from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnProvinces.
-     */
-    skip?: number
-    distinct?: BannerOnProvinceScalarFieldEnum | BannerOnProvinceScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnProvince create
-   */
-  export type BannerOnProvinceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * The data needed to create a BannerOnProvince.
-     */
-    data: XOR<BannerOnProvinceCreateInput, BannerOnProvinceUncheckedCreateInput>
-  }
-
-  /**
-   * BannerOnProvince createMany
-   */
-  export type BannerOnProvinceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many BannerOnProvinces.
-     */
-    data: BannerOnProvinceCreateManyInput | BannerOnProvinceCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * BannerOnProvince createManyAndReturn
-   */
-  export type BannerOnProvinceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * The data used to create many BannerOnProvinces.
-     */
-    data: BannerOnProvinceCreateManyInput | BannerOnProvinceCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerOnProvince update
-   */
-  export type BannerOnProvinceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * The data needed to update a BannerOnProvince.
-     */
-    data: XOR<BannerOnProvinceUpdateInput, BannerOnProvinceUncheckedUpdateInput>
-    /**
-     * Choose, which BannerOnProvince to update.
-     */
-    where: BannerOnProvinceWhereUniqueInput
-  }
-
-  /**
-   * BannerOnProvince updateMany
-   */
-  export type BannerOnProvinceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update BannerOnProvinces.
-     */
-    data: XOR<BannerOnProvinceUpdateManyMutationInput, BannerOnProvinceUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerOnProvinces to update
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * Limit how many BannerOnProvinces to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerOnProvince updateManyAndReturn
-   */
-  export type BannerOnProvinceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * The data used to update BannerOnProvinces.
-     */
-    data: XOR<BannerOnProvinceUpdateManyMutationInput, BannerOnProvinceUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerOnProvinces to update
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * Limit how many BannerOnProvinces to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerOnProvince upsert
-   */
-  export type BannerOnProvinceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * The filter to search for the BannerOnProvince to update in case it exists.
-     */
-    where: BannerOnProvinceWhereUniqueInput
-    /**
-     * In case the BannerOnProvince found by the `where` argument doesn't exist, create a new BannerOnProvince with this data.
-     */
-    create: XOR<BannerOnProvinceCreateInput, BannerOnProvinceUncheckedCreateInput>
-    /**
-     * In case the BannerOnProvince was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BannerOnProvinceUpdateInput, BannerOnProvinceUncheckedUpdateInput>
-  }
-
-  /**
-   * BannerOnProvince delete
-   */
-  export type BannerOnProvinceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-    /**
-     * Filter which BannerOnProvince to delete.
-     */
-    where: BannerOnProvinceWhereUniqueInput
-  }
-
-  /**
-   * BannerOnProvince deleteMany
-   */
-  export type BannerOnProvinceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerOnProvinces to delete
-     */
-    where?: BannerOnProvinceWhereInput
-    /**
-     * Limit how many BannerOnProvinces to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerOnProvince without action
-   */
-  export type BannerOnProvinceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnProvince
-     */
-    select?: BannerOnProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnProvince
-     */
-    omit?: BannerOnProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnProvinceInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model BannerOnCity
-   */
-
-  export type AggregateBannerOnCity = {
-    _count: BannerOnCityCountAggregateOutputType | null
-    _min: BannerOnCityMinAggregateOutputType | null
-    _max: BannerOnCityMaxAggregateOutputType | null
-  }
-
-  export type BannerOnCityMinAggregateOutputType = {
-    bannerId: string | null
-    cityId: string | null
-  }
-
-  export type BannerOnCityMaxAggregateOutputType = {
-    bannerId: string | null
-    cityId: string | null
-  }
-
-  export type BannerOnCityCountAggregateOutputType = {
-    bannerId: number
-    cityId: number
-    _all: number
-  }
-
-
-  export type BannerOnCityMinAggregateInputType = {
-    bannerId?: true
-    cityId?: true
-  }
-
-  export type BannerOnCityMaxAggregateInputType = {
-    bannerId?: true
-    cityId?: true
-  }
-
-  export type BannerOnCityCountAggregateInputType = {
-    bannerId?: true
-    cityId?: true
-    _all?: true
-  }
-
-  export type BannerOnCityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerOnCity to aggregate.
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnCities to fetch.
-     */
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BannerOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned BannerOnCities
-    **/
-    _count?: true | BannerOnCityCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BannerOnCityMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BannerOnCityMaxAggregateInputType
-  }
-
-  export type GetBannerOnCityAggregateType<T extends BannerOnCityAggregateArgs> = {
-        [P in keyof T & keyof AggregateBannerOnCity]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBannerOnCity[P]>
-      : GetScalarType<T[P], AggregateBannerOnCity[P]>
-  }
-
-
-
-
-  export type BannerOnCityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerOnCityWhereInput
-    orderBy?: BannerOnCityOrderByWithAggregationInput | BannerOnCityOrderByWithAggregationInput[]
-    by: BannerOnCityScalarFieldEnum[] | BannerOnCityScalarFieldEnum
-    having?: BannerOnCityScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BannerOnCityCountAggregateInputType | true
-    _min?: BannerOnCityMinAggregateInputType
-    _max?: BannerOnCityMaxAggregateInputType
-  }
-
-  export type BannerOnCityGroupByOutputType = {
-    bannerId: string
-    cityId: string
-    _count: BannerOnCityCountAggregateOutputType | null
-    _min: BannerOnCityMinAggregateOutputType | null
-    _max: BannerOnCityMaxAggregateOutputType | null
-  }
-
-  type GetBannerOnCityGroupByPayload<T extends BannerOnCityGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BannerOnCityGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BannerOnCityGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BannerOnCityGroupByOutputType[P]>
-            : GetScalarType<T[P], BannerOnCityGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BannerOnCitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    cityId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnCity"]>
-
-  export type BannerOnCitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    cityId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnCity"]>
-
-  export type BannerOnCitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    bannerId?: boolean
-    cityId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerOnCity"]>
-
-  export type BannerOnCitySelectScalar = {
-    bannerId?: boolean
-    cityId?: boolean
-  }
-
-  export type BannerOnCityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"bannerId" | "cityId", ExtArgs["result"]["bannerOnCity"]>
-  export type BannerOnCityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-  export type BannerOnCityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-  export type BannerOnCityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-  }
-
-  export type $BannerOnCityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "BannerOnCity"
-    objects: {
-      banner: Prisma.$BannerPayload<ExtArgs>
-      city: Prisma.$CityPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      bannerId: string
-      cityId: string
-    }, ExtArgs["result"]["bannerOnCity"]>
-    composites: {}
-  }
-
-  type BannerOnCityGetPayload<S extends boolean | null | undefined | BannerOnCityDefaultArgs> = $Result.GetResult<Prisma.$BannerOnCityPayload, S>
-
-  type BannerOnCityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BannerOnCityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BannerOnCityCountAggregateInputType | true
-    }
-
-  export interface BannerOnCityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BannerOnCity'], meta: { name: 'BannerOnCity' } }
-    /**
-     * Find zero or one BannerOnCity that matches the filter.
-     * @param {BannerOnCityFindUniqueArgs} args - Arguments to find a BannerOnCity
-     * @example
-     * // Get one BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BannerOnCityFindUniqueArgs>(args: SelectSubset<T, BannerOnCityFindUniqueArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one BannerOnCity that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BannerOnCityFindUniqueOrThrowArgs} args - Arguments to find a BannerOnCity
-     * @example
-     * // Get one BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BannerOnCityFindUniqueOrThrowArgs>(args: SelectSubset<T, BannerOnCityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerOnCity that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityFindFirstArgs} args - Arguments to find a BannerOnCity
-     * @example
-     * // Get one BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BannerOnCityFindFirstArgs>(args?: SelectSubset<T, BannerOnCityFindFirstArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerOnCity that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityFindFirstOrThrowArgs} args - Arguments to find a BannerOnCity
-     * @example
-     * // Get one BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BannerOnCityFindFirstOrThrowArgs>(args?: SelectSubset<T, BannerOnCityFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more BannerOnCities that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all BannerOnCities
-     * const bannerOnCities = await prisma.bannerOnCity.findMany()
-     * 
-     * // Get first 10 BannerOnCities
-     * const bannerOnCities = await prisma.bannerOnCity.findMany({ take: 10 })
-     * 
-     * // Only select the `bannerId`
-     * const bannerOnCityWithBannerIdOnly = await prisma.bannerOnCity.findMany({ select: { bannerId: true } })
-     * 
-     */
-    findMany<T extends BannerOnCityFindManyArgs>(args?: SelectSubset<T, BannerOnCityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a BannerOnCity.
-     * @param {BannerOnCityCreateArgs} args - Arguments to create a BannerOnCity.
-     * @example
-     * // Create one BannerOnCity
-     * const BannerOnCity = await prisma.bannerOnCity.create({
-     *   data: {
-     *     // ... data to create a BannerOnCity
-     *   }
-     * })
-     * 
-     */
-    create<T extends BannerOnCityCreateArgs>(args: SelectSubset<T, BannerOnCityCreateArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many BannerOnCities.
-     * @param {BannerOnCityCreateManyArgs} args - Arguments to create many BannerOnCities.
-     * @example
-     * // Create many BannerOnCities
-     * const bannerOnCity = await prisma.bannerOnCity.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BannerOnCityCreateManyArgs>(args?: SelectSubset<T, BannerOnCityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many BannerOnCities and returns the data saved in the database.
-     * @param {BannerOnCityCreateManyAndReturnArgs} args - Arguments to create many BannerOnCities.
-     * @example
-     * // Create many BannerOnCities
-     * const bannerOnCity = await prisma.bannerOnCity.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many BannerOnCities and only return the `bannerId`
-     * const bannerOnCityWithBannerIdOnly = await prisma.bannerOnCity.createManyAndReturn({
-     *   select: { bannerId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BannerOnCityCreateManyAndReturnArgs>(args?: SelectSubset<T, BannerOnCityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a BannerOnCity.
-     * @param {BannerOnCityDeleteArgs} args - Arguments to delete one BannerOnCity.
-     * @example
-     * // Delete one BannerOnCity
-     * const BannerOnCity = await prisma.bannerOnCity.delete({
-     *   where: {
-     *     // ... filter to delete one BannerOnCity
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BannerOnCityDeleteArgs>(args: SelectSubset<T, BannerOnCityDeleteArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one BannerOnCity.
-     * @param {BannerOnCityUpdateArgs} args - Arguments to update one BannerOnCity.
-     * @example
-     * // Update one BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BannerOnCityUpdateArgs>(args: SelectSubset<T, BannerOnCityUpdateArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more BannerOnCities.
-     * @param {BannerOnCityDeleteManyArgs} args - Arguments to filter BannerOnCities to delete.
-     * @example
-     * // Delete a few BannerOnCities
-     * const { count } = await prisma.bannerOnCity.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BannerOnCityDeleteManyArgs>(args?: SelectSubset<T, BannerOnCityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerOnCities.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many BannerOnCities
-     * const bannerOnCity = await prisma.bannerOnCity.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BannerOnCityUpdateManyArgs>(args: SelectSubset<T, BannerOnCityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerOnCities and returns the data updated in the database.
-     * @param {BannerOnCityUpdateManyAndReturnArgs} args - Arguments to update many BannerOnCities.
-     * @example
-     * // Update many BannerOnCities
-     * const bannerOnCity = await prisma.bannerOnCity.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more BannerOnCities and only return the `bannerId`
-     * const bannerOnCityWithBannerIdOnly = await prisma.bannerOnCity.updateManyAndReturn({
-     *   select: { bannerId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BannerOnCityUpdateManyAndReturnArgs>(args: SelectSubset<T, BannerOnCityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one BannerOnCity.
-     * @param {BannerOnCityUpsertArgs} args - Arguments to update or create a BannerOnCity.
-     * @example
-     * // Update or create a BannerOnCity
-     * const bannerOnCity = await prisma.bannerOnCity.upsert({
-     *   create: {
-     *     // ... data to create a BannerOnCity
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the BannerOnCity we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BannerOnCityUpsertArgs>(args: SelectSubset<T, BannerOnCityUpsertArgs<ExtArgs>>): Prisma__BannerOnCityClient<$Result.GetResult<Prisma.$BannerOnCityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of BannerOnCities.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityCountArgs} args - Arguments to filter BannerOnCities to count.
-     * @example
-     * // Count the number of BannerOnCities
-     * const count = await prisma.bannerOnCity.count({
-     *   where: {
-     *     // ... the filter for the BannerOnCities we want to count
-     *   }
-     * })
-    **/
-    count<T extends BannerOnCityCountArgs>(
-      args?: Subset<T, BannerOnCityCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BannerOnCityCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a BannerOnCity.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BannerOnCityAggregateArgs>(args: Subset<T, BannerOnCityAggregateArgs>): Prisma.PrismaPromise<GetBannerOnCityAggregateType<T>>
-
-    /**
-     * Group by BannerOnCity.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerOnCityGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BannerOnCityGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BannerOnCityGroupByArgs['orderBy'] }
-        : { orderBy?: BannerOnCityGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BannerOnCityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannerOnCityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the BannerOnCity model
-   */
-  readonly fields: BannerOnCityFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for BannerOnCity.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BannerOnCityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    banner<T extends BannerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BannerDefaultArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    city<T extends CityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CityDefaultArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the BannerOnCity model
-   */
-  interface BannerOnCityFieldRefs {
-    readonly bannerId: FieldRef<"BannerOnCity", 'String'>
-    readonly cityId: FieldRef<"BannerOnCity", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * BannerOnCity findUnique
-   */
-  export type BannerOnCityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnCity to fetch.
-     */
-    where: BannerOnCityWhereUniqueInput
-  }
-
-  /**
-   * BannerOnCity findUniqueOrThrow
-   */
-  export type BannerOnCityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnCity to fetch.
-     */
-    where: BannerOnCityWhereUniqueInput
-  }
-
-  /**
-   * BannerOnCity findFirst
-   */
-  export type BannerOnCityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnCity to fetch.
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnCities to fetch.
-     */
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerOnCities.
-     */
-    cursor?: BannerOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerOnCities.
-     */
-    distinct?: BannerOnCityScalarFieldEnum | BannerOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnCity findFirstOrThrow
-   */
-  export type BannerOnCityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnCity to fetch.
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnCities to fetch.
-     */
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerOnCities.
-     */
-    cursor?: BannerOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnCities.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerOnCities.
-     */
-    distinct?: BannerOnCityScalarFieldEnum | BannerOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnCity findMany
-   */
-  export type BannerOnCityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerOnCities to fetch.
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerOnCities to fetch.
-     */
-    orderBy?: BannerOnCityOrderByWithRelationInput | BannerOnCityOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing BannerOnCities.
-     */
-    cursor?: BannerOnCityWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerOnCities from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerOnCities.
-     */
-    skip?: number
-    distinct?: BannerOnCityScalarFieldEnum | BannerOnCityScalarFieldEnum[]
-  }
-
-  /**
-   * BannerOnCity create
-   */
-  export type BannerOnCityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * The data needed to create a BannerOnCity.
-     */
-    data: XOR<BannerOnCityCreateInput, BannerOnCityUncheckedCreateInput>
-  }
-
-  /**
-   * BannerOnCity createMany
-   */
-  export type BannerOnCityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many BannerOnCities.
-     */
-    data: BannerOnCityCreateManyInput | BannerOnCityCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * BannerOnCity createManyAndReturn
-   */
-  export type BannerOnCityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * The data used to create many BannerOnCities.
-     */
-    data: BannerOnCityCreateManyInput | BannerOnCityCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerOnCity update
-   */
-  export type BannerOnCityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * The data needed to update a BannerOnCity.
-     */
-    data: XOR<BannerOnCityUpdateInput, BannerOnCityUncheckedUpdateInput>
-    /**
-     * Choose, which BannerOnCity to update.
-     */
-    where: BannerOnCityWhereUniqueInput
-  }
-
-  /**
-   * BannerOnCity updateMany
-   */
-  export type BannerOnCityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update BannerOnCities.
-     */
-    data: XOR<BannerOnCityUpdateManyMutationInput, BannerOnCityUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerOnCities to update
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * Limit how many BannerOnCities to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerOnCity updateManyAndReturn
-   */
-  export type BannerOnCityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * The data used to update BannerOnCities.
-     */
-    data: XOR<BannerOnCityUpdateManyMutationInput, BannerOnCityUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerOnCities to update
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * Limit how many BannerOnCities to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerOnCity upsert
-   */
-  export type BannerOnCityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * The filter to search for the BannerOnCity to update in case it exists.
-     */
-    where: BannerOnCityWhereUniqueInput
-    /**
-     * In case the BannerOnCity found by the `where` argument doesn't exist, create a new BannerOnCity with this data.
-     */
-    create: XOR<BannerOnCityCreateInput, BannerOnCityUncheckedCreateInput>
-    /**
-     * In case the BannerOnCity was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BannerOnCityUpdateInput, BannerOnCityUncheckedUpdateInput>
-  }
-
-  /**
-   * BannerOnCity delete
-   */
-  export type BannerOnCityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-    /**
-     * Filter which BannerOnCity to delete.
-     */
-    where: BannerOnCityWhereUniqueInput
-  }
-
-  /**
-   * BannerOnCity deleteMany
-   */
-  export type BannerOnCityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerOnCities to delete
-     */
-    where?: BannerOnCityWhereInput
-    /**
-     * Limit how many BannerOnCities to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerOnCity without action
-   */
-  export type BannerOnCityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerOnCity
-     */
-    select?: BannerOnCitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerOnCity
-     */
-    omit?: BannerOnCityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerOnCityInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -49367,7 +44932,7 @@ export namespace Prisma {
   export const AdminScalarFieldEnum: {
     id: 'id',
     authId: 'authId',
-    googleId: 'googleId',
+    email: 'email',
     name: 'name',
     role: 'role',
     createdAt: 'createdAt',
@@ -49390,7 +44955,7 @@ export namespace Prisma {
   export const AdminAuthorityScalarFieldEnum: {
     id: 'id',
     adminId: 'adminId',
-    authProvinceId: 'authProvinceId',
+    provinceId: 'provinceId',
     grades: 'grades'
   };
 
@@ -49408,6 +44973,15 @@ export namespace Prisma {
   };
 
   export type BannerScalarFieldEnum = (typeof BannerScalarFieldEnum)[keyof typeof BannerScalarFieldEnum]
+
+
+  export const BannerLocationScalarFieldEnum: {
+    id: 'id',
+    bannerId: 'bannerId',
+    provinceId: 'provinceId'
+  };
+
+  export type BannerLocationScalarFieldEnum = (typeof BannerLocationScalarFieldEnum)[keyof typeof BannerLocationScalarFieldEnum]
 
 
   export const BannerVisitorScalarFieldEnum: {
@@ -49622,46 +45196,6 @@ export namespace Prisma {
   };
 
   export type MultiPlayerMemberScalarFieldEnum = (typeof MultiPlayerMemberScalarFieldEnum)[keyof typeof MultiPlayerMemberScalarFieldEnum]
-
-
-  export const UserOnAccessContentScalarFieldEnum: {
-    userId: 'userId',
-    accessContentId: 'accessContentId'
-  };
-
-  export type UserOnAccessContentScalarFieldEnum = (typeof UserOnAccessContentScalarFieldEnum)[keyof typeof UserOnAccessContentScalarFieldEnum]
-
-
-  export const AuthOnCityScalarFieldEnum: {
-    authId: 'authId',
-    cityId: 'cityId'
-  };
-
-  export type AuthOnCityScalarFieldEnum = (typeof AuthOnCityScalarFieldEnum)[keyof typeof AuthOnCityScalarFieldEnum]
-
-
-  export const AuthOnSchoolScalarFieldEnum: {
-    authId: 'authId',
-    schoolId: 'schoolId'
-  };
-
-  export type AuthOnSchoolScalarFieldEnum = (typeof AuthOnSchoolScalarFieldEnum)[keyof typeof AuthOnSchoolScalarFieldEnum]
-
-
-  export const BannerOnProvinceScalarFieldEnum: {
-    bannerId: 'bannerId',
-    provinceId: 'provinceId'
-  };
-
-  export type BannerOnProvinceScalarFieldEnum = (typeof BannerOnProvinceScalarFieldEnum)[keyof typeof BannerOnProvinceScalarFieldEnum]
-
-
-  export const BannerOnCityScalarFieldEnum: {
-    bannerId: 'bannerId',
-    cityId: 'cityId'
-  };
-
-  export type BannerOnCityScalarFieldEnum = (typeof BannerOnCityScalarFieldEnum)[keyof typeof BannerOnCityScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -49901,8 +45435,8 @@ export namespace Prisma {
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
-    bannerOnProvince?: BannerOnProvinceListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
   }
 
   export type ProvinceOrderByWithRelationInput = {
@@ -49916,8 +45450,8 @@ export namespace Prisma {
     cities?: CityOrderByRelationAggregateInput
     schools?: SchoolOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
-    bannerOnProvince?: BannerOnProvinceOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
+    bannerLocation?: BannerLocationOrderByRelationAggregateInput
   }
 
   export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
@@ -49934,8 +45468,8 @@ export namespace Prisma {
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
-    bannerOnProvince?: BannerOnProvinceListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
   }, "id">
 
   export type ProvinceOrderByWithAggregationInput = {
@@ -49981,8 +45515,8 @@ export namespace Prisma {
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
-    authOnCity?: AuthOnCityListRelationFilter
-    bannerOnCity?: BannerOnCityListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
   }
 
   export type CityOrderByWithRelationInput = {
@@ -49997,8 +45531,8 @@ export namespace Prisma {
     province?: ProvinceOrderByWithRelationInput
     schools?: SchoolOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
-    authOnCity?: AuthOnCityOrderByRelationAggregateInput
-    bannerOnCity?: BannerOnCityOrderByRelationAggregateInput
+    adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
+    bannerLocation?: BannerLocationOrderByRelationAggregateInput
   }
 
   export type CityWhereUniqueInput = Prisma.AtLeast<{
@@ -50016,8 +45550,8 @@ export namespace Prisma {
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
-    authOnCity?: AuthOnCityListRelationFilter
-    bannerOnCity?: BannerOnCityListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
   }, "id">
 
   export type CityOrderByWithAggregationInput = {
@@ -50066,7 +45600,7 @@ export namespace Prisma {
     city?: XOR<CityScalarRelationFilter, CityWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     users?: UserListRelationFilter
-    authOnSchool?: AuthOnSchoolListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
   }
 
   export type SchoolOrderByWithRelationInput = {
@@ -50082,7 +45616,7 @@ export namespace Prisma {
     city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
     users?: UserOrderByRelationAggregateInput
-    authOnSchool?: AuthOnSchoolOrderByRelationAggregateInput
+    adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
   }
 
   export type SchoolWhereUniqueInput = Prisma.AtLeast<{
@@ -50101,7 +45635,7 @@ export namespace Prisma {
     city?: XOR<CityScalarRelationFilter, CityWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     users?: UserListRelationFilter
-    authOnSchool?: AuthOnSchoolListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
   }, "id">
 
   export type SchoolOrderByWithAggregationInput = {
@@ -50149,7 +45683,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AccessContent"> | Date | string
     updatedAt?: DateTimeFilter<"AccessContent"> | Date | string
     owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    userAccesses?: UserOnAccessContentListRelationFilter
+    userAccesses?: UserListRelationFilter
     redemeers?: UserListRelationFilter
   }
 
@@ -50163,7 +45697,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     owner?: UserOrderByWithRelationInput
-    userAccesses?: UserOnAccessContentOrderByRelationAggregateInput
+    userAccesses?: UserOrderByRelationAggregateInput
     redemeers?: UserOrderByRelationAggregateInput
   }
 
@@ -50180,7 +45714,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AccessContent"> | Date | string
     updatedAt?: DateTimeFilter<"AccessContent"> | Date | string
     owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    userAccesses?: UserOnAccessContentListRelationFilter
+    userAccesses?: UserListRelationFilter
     redemeers?: UserListRelationFilter
   }, "id">
 
@@ -50251,7 +45785,7 @@ export namespace Prisma {
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
-    userAccesses?: UserOnAccessContentListRelationFilter
+    userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
     redeemedAccesses?: AccessContentListRelationFilter
     UserLogin?: UserLoginListRelationFilter
@@ -50298,7 +45832,7 @@ export namespace Prisma {
     province?: ProvinceOrderByWithRelationInput
     school?: SchoolOrderByWithRelationInput
     admin?: AdminOrderByWithRelationInput
-    userAccesses?: UserOnAccessContentOrderByRelationAggregateInput
+    userAccesses?: AccessContentOrderByRelationAggregateInput
     zones?: ZoneOrderByRelationAggregateInput
     redeemedAccesses?: AccessContentOrderByRelationAggregateInput
     UserLogin?: UserLoginOrderByRelationAggregateInput
@@ -50348,7 +45882,7 @@ export namespace Prisma {
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
-    userAccesses?: UserOnAccessContentListRelationFilter
+    userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
     redeemedAccesses?: AccessContentListRelationFilter
     UserLogin?: UserLoginListRelationFilter
@@ -51227,9 +46761,9 @@ export namespace Prisma {
     NOT?: AdminWhereInput | AdminWhereInput[]
     id?: StringFilter<"Admin"> | string
     authId?: StringFilter<"Admin"> | string
-    googleId?: StringNullableFilter<"Admin"> | string | null
+    email?: StringFilter<"Admin"> | string
     name?: StringFilter<"Admin"> | string
-    role?: EnumRoleFilter<"Admin"> | $Enums.Role
+    role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -51243,9 +46777,9 @@ export namespace Prisma {
   export type AdminOrderByWithRelationInput = {
     id?: SortOrder
     authId?: SortOrder
-    googleId?: SortOrderInput | SortOrder
+    email?: SortOrder
     name?: SortOrder
-    role?: SortOrder
+    role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -51259,12 +46793,12 @@ export namespace Prisma {
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     authId?: string
-    googleId?: string
+    email?: string
     AND?: AdminWhereInput | AdminWhereInput[]
     OR?: AdminWhereInput[]
     NOT?: AdminWhereInput | AdminWhereInput[]
     name?: StringFilter<"Admin"> | string
-    role?: EnumRoleFilter<"Admin"> | $Enums.Role
+    role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -51273,14 +46807,14 @@ export namespace Prisma {
     banner?: BannerListRelationFilter
     adminTransaction?: AdminTransactionListRelationFilter
     adminTransactionArchive?: AdminTransactionArchiveListRelationFilter
-  }, "id" | "authId" | "googleId">
+  }, "id" | "authId" | "email">
 
   export type AdminOrderByWithAggregationInput = {
     id?: SortOrder
     authId?: SortOrder
-    googleId?: SortOrderInput | SortOrder
+    email?: SortOrder
     name?: SortOrder
-    role?: SortOrder
+    role?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AdminCountOrderByAggregateInput
@@ -51294,9 +46828,9 @@ export namespace Prisma {
     NOT?: AdminScalarWhereWithAggregatesInput | AdminScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Admin"> | string
     authId?: StringWithAggregatesFilter<"Admin"> | string
-    googleId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    email?: StringWithAggregatesFilter<"Admin"> | string
     name?: StringWithAggregatesFilter<"Admin"> | string
-    role?: EnumRoleWithAggregatesFilter<"Admin"> | $Enums.Role
+    role?: EnumRoleNullableWithAggregatesFilter<"Admin"> | $Enums.Role | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
   }
@@ -51357,43 +46891,43 @@ export namespace Prisma {
     NOT?: AdminAuthorityWhereInput | AdminAuthorityWhereInput[]
     id?: StringFilter<"AdminAuthority"> | string
     adminId?: StringFilter<"AdminAuthority"> | string
-    authProvinceId?: StringFilter<"AdminAuthority"> | string
+    provinceId?: StringFilter<"AdminAuthority"> | string
     grades?: IntNullableListFilter<"AdminAuthority">
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
-    authOnCity?: AuthOnCityListRelationFilter
-    authOnSchool?: AuthOnSchoolListRelationFilter
+    cities?: CityListRelationFilter
+    schools?: SchoolListRelationFilter
   }
 
   export type AdminAuthorityOrderByWithRelationInput = {
     id?: SortOrder
     adminId?: SortOrder
-    authProvinceId?: SortOrder
+    provinceId?: SortOrder
     grades?: SortOrder
     admin?: AdminOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
-    authOnCity?: AuthOnCityOrderByRelationAggregateInput
-    authOnSchool?: AuthOnSchoolOrderByRelationAggregateInput
+    cities?: CityOrderByRelationAggregateInput
+    schools?: SchoolOrderByRelationAggregateInput
   }
 
   export type AdminAuthorityWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    adminId?: string
     AND?: AdminAuthorityWhereInput | AdminAuthorityWhereInput[]
     OR?: AdminAuthorityWhereInput[]
     NOT?: AdminAuthorityWhereInput | AdminAuthorityWhereInput[]
-    authProvinceId?: StringFilter<"AdminAuthority"> | string
+    adminId?: StringFilter<"AdminAuthority"> | string
+    provinceId?: StringFilter<"AdminAuthority"> | string
     grades?: IntNullableListFilter<"AdminAuthority">
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
-    authOnCity?: AuthOnCityListRelationFilter
-    authOnSchool?: AuthOnSchoolListRelationFilter
-  }, "id" | "adminId">
+    cities?: CityListRelationFilter
+    schools?: SchoolListRelationFilter
+  }, "id">
 
   export type AdminAuthorityOrderByWithAggregationInput = {
     id?: SortOrder
     adminId?: SortOrder
-    authProvinceId?: SortOrder
+    provinceId?: SortOrder
     grades?: SortOrder
     _count?: AdminAuthorityCountOrderByAggregateInput
     _avg?: AdminAuthorityAvgOrderByAggregateInput
@@ -51408,7 +46942,7 @@ export namespace Prisma {
     NOT?: AdminAuthorityScalarWhereWithAggregatesInput | AdminAuthorityScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AdminAuthority"> | string
     adminId?: StringWithAggregatesFilter<"AdminAuthority"> | string
-    authProvinceId?: StringWithAggregatesFilter<"AdminAuthority"> | string
+    provinceId?: StringWithAggregatesFilter<"AdminAuthority"> | string
     grades?: IntNullableListFilter<"AdminAuthority">
   }
 
@@ -51423,10 +46957,9 @@ export namespace Prisma {
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
     adminId?: StringFilter<"Banner"> | string
-    bannerOnProvince?: BannerOnProvinceListRelationFilter
-    bannerOnCity?: BannerOnCityListRelationFilter
     visitors?: BannerVisitorListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    bannerLocation?: BannerLocationListRelationFilter
   }
 
   export type BannerOrderByWithRelationInput = {
@@ -51437,10 +46970,9 @@ export namespace Prisma {
     endedAt?: SortOrderInput | SortOrder
     isHide?: SortOrder
     adminId?: SortOrder
-    bannerOnProvince?: BannerOnProvinceOrderByRelationAggregateInput
-    bannerOnCity?: BannerOnCityOrderByRelationAggregateInput
     visitors?: BannerVisitorOrderByRelationAggregateInput
     admin?: AdminOrderByWithRelationInput
+    bannerLocation?: BannerLocationOrderByRelationAggregateInput
   }
 
   export type BannerWhereUniqueInput = Prisma.AtLeast<{
@@ -51454,10 +46986,9 @@ export namespace Prisma {
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
     adminId?: StringFilter<"Banner"> | string
-    bannerOnProvince?: BannerOnProvinceListRelationFilter
-    bannerOnCity?: BannerOnCityListRelationFilter
     visitors?: BannerVisitorListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    bannerLocation?: BannerLocationListRelationFilter
   }, "id">
 
   export type BannerOrderByWithAggregationInput = {
@@ -51484,6 +47015,57 @@ export namespace Prisma {
     endedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     isHide?: BoolWithAggregatesFilter<"Banner"> | boolean
     adminId?: StringWithAggregatesFilter<"Banner"> | string
+  }
+
+  export type BannerLocationWhereInput = {
+    AND?: BannerLocationWhereInput | BannerLocationWhereInput[]
+    OR?: BannerLocationWhereInput[]
+    NOT?: BannerLocationWhereInput | BannerLocationWhereInput[]
+    id?: StringFilter<"BannerLocation"> | string
+    bannerId?: StringFilter<"BannerLocation"> | string
+    provinceId?: StringFilter<"BannerLocation"> | string
+    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    cities?: CityListRelationFilter
+  }
+
+  export type BannerLocationOrderByWithRelationInput = {
+    id?: SortOrder
+    bannerId?: SortOrder
+    provinceId?: SortOrder
+    banner?: BannerOrderByWithRelationInput
+    province?: ProvinceOrderByWithRelationInput
+    cities?: CityOrderByRelationAggregateInput
+  }
+
+  export type BannerLocationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BannerLocationWhereInput | BannerLocationWhereInput[]
+    OR?: BannerLocationWhereInput[]
+    NOT?: BannerLocationWhereInput | BannerLocationWhereInput[]
+    bannerId?: StringFilter<"BannerLocation"> | string
+    provinceId?: StringFilter<"BannerLocation"> | string
+    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    cities?: CityListRelationFilter
+  }, "id">
+
+  export type BannerLocationOrderByWithAggregationInput = {
+    id?: SortOrder
+    bannerId?: SortOrder
+    provinceId?: SortOrder
+    _count?: BannerLocationCountOrderByAggregateInput
+    _max?: BannerLocationMaxOrderByAggregateInput
+    _min?: BannerLocationMinOrderByAggregateInput
+  }
+
+  export type BannerLocationScalarWhereWithAggregatesInput = {
+    AND?: BannerLocationScalarWhereWithAggregatesInput | BannerLocationScalarWhereWithAggregatesInput[]
+    OR?: BannerLocationScalarWhereWithAggregatesInput[]
+    NOT?: BannerLocationScalarWhereWithAggregatesInput | BannerLocationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BannerLocation"> | string
+    bannerId?: StringWithAggregatesFilter<"BannerLocation"> | string
+    provinceId?: StringWithAggregatesFilter<"BannerLocation"> | string
   }
 
   export type BannerVisitorWhereInput = {
@@ -51513,17 +47095,17 @@ export namespace Prisma {
 
   export type BannerVisitorWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    bannerId?: string
+    userId?: string
     AND?: BannerVisitorWhereInput | BannerVisitorWhereInput[]
     OR?: BannerVisitorWhereInput[]
     NOT?: BannerVisitorWhereInput | BannerVisitorWhereInput[]
-    bannerId?: StringFilter<"BannerVisitor"> | string
-    userId?: StringFilter<"BannerVisitor"> | string
     createdAt?: DateTimeFilter<"BannerVisitor"> | Date | string
     updatedAt?: DateTimeFilter<"BannerVisitor"> | Date | string
     traffic?: IntFilter<"BannerVisitor"> | number
     banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "bannerId" | "userId">
 
   export type BannerVisitorOrderByWithAggregationInput = {
     id?: SortOrder
@@ -52593,226 +48175,6 @@ export namespace Prisma {
     isDisconnect?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
   }
 
-  export type UserOnAccessContentWhereInput = {
-    AND?: UserOnAccessContentWhereInput | UserOnAccessContentWhereInput[]
-    OR?: UserOnAccessContentWhereInput[]
-    NOT?: UserOnAccessContentWhereInput | UserOnAccessContentWhereInput[]
-    userId?: StringFilter<"UserOnAccessContent"> | string
-    accessContentId?: StringFilter<"UserOnAccessContent"> | string
-    accessContent?: XOR<AccessContentScalarRelationFilter, AccessContentWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type UserOnAccessContentOrderByWithRelationInput = {
-    userId?: SortOrder
-    accessContentId?: SortOrder
-    accessContent?: AccessContentOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type UserOnAccessContentWhereUniqueInput = Prisma.AtLeast<{
-    userId_accessContentId?: UserOnAccessContentUserIdAccessContentIdCompoundUniqueInput
-    AND?: UserOnAccessContentWhereInput | UserOnAccessContentWhereInput[]
-    OR?: UserOnAccessContentWhereInput[]
-    NOT?: UserOnAccessContentWhereInput | UserOnAccessContentWhereInput[]
-    userId?: StringFilter<"UserOnAccessContent"> | string
-    accessContentId?: StringFilter<"UserOnAccessContent"> | string
-    accessContent?: XOR<AccessContentScalarRelationFilter, AccessContentWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "userId_accessContentId">
-
-  export type UserOnAccessContentOrderByWithAggregationInput = {
-    userId?: SortOrder
-    accessContentId?: SortOrder
-    _count?: UserOnAccessContentCountOrderByAggregateInput
-    _max?: UserOnAccessContentMaxOrderByAggregateInput
-    _min?: UserOnAccessContentMinOrderByAggregateInput
-  }
-
-  export type UserOnAccessContentScalarWhereWithAggregatesInput = {
-    AND?: UserOnAccessContentScalarWhereWithAggregatesInput | UserOnAccessContentScalarWhereWithAggregatesInput[]
-    OR?: UserOnAccessContentScalarWhereWithAggregatesInput[]
-    NOT?: UserOnAccessContentScalarWhereWithAggregatesInput | UserOnAccessContentScalarWhereWithAggregatesInput[]
-    userId?: StringWithAggregatesFilter<"UserOnAccessContent"> | string
-    accessContentId?: StringWithAggregatesFilter<"UserOnAccessContent"> | string
-  }
-
-  export type AuthOnCityWhereInput = {
-    AND?: AuthOnCityWhereInput | AuthOnCityWhereInput[]
-    OR?: AuthOnCityWhereInput[]
-    NOT?: AuthOnCityWhereInput | AuthOnCityWhereInput[]
-    authId?: StringFilter<"AuthOnCity"> | string
-    cityId?: StringFilter<"AuthOnCity"> | string
-    auth?: XOR<AdminAuthorityScalarRelationFilter, AdminAuthorityWhereInput>
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-  }
-
-  export type AuthOnCityOrderByWithRelationInput = {
-    authId?: SortOrder
-    cityId?: SortOrder
-    auth?: AdminAuthorityOrderByWithRelationInput
-    city?: CityOrderByWithRelationInput
-  }
-
-  export type AuthOnCityWhereUniqueInput = Prisma.AtLeast<{
-    authId_cityId?: AuthOnCityAuthIdCityIdCompoundUniqueInput
-    AND?: AuthOnCityWhereInput | AuthOnCityWhereInput[]
-    OR?: AuthOnCityWhereInput[]
-    NOT?: AuthOnCityWhereInput | AuthOnCityWhereInput[]
-    authId?: StringFilter<"AuthOnCity"> | string
-    cityId?: StringFilter<"AuthOnCity"> | string
-    auth?: XOR<AdminAuthorityScalarRelationFilter, AdminAuthorityWhereInput>
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-  }, "authId_cityId">
-
-  export type AuthOnCityOrderByWithAggregationInput = {
-    authId?: SortOrder
-    cityId?: SortOrder
-    _count?: AuthOnCityCountOrderByAggregateInput
-    _max?: AuthOnCityMaxOrderByAggregateInput
-    _min?: AuthOnCityMinOrderByAggregateInput
-  }
-
-  export type AuthOnCityScalarWhereWithAggregatesInput = {
-    AND?: AuthOnCityScalarWhereWithAggregatesInput | AuthOnCityScalarWhereWithAggregatesInput[]
-    OR?: AuthOnCityScalarWhereWithAggregatesInput[]
-    NOT?: AuthOnCityScalarWhereWithAggregatesInput | AuthOnCityScalarWhereWithAggregatesInput[]
-    authId?: StringWithAggregatesFilter<"AuthOnCity"> | string
-    cityId?: StringWithAggregatesFilter<"AuthOnCity"> | string
-  }
-
-  export type AuthOnSchoolWhereInput = {
-    AND?: AuthOnSchoolWhereInput | AuthOnSchoolWhereInput[]
-    OR?: AuthOnSchoolWhereInput[]
-    NOT?: AuthOnSchoolWhereInput | AuthOnSchoolWhereInput[]
-    authId?: StringFilter<"AuthOnSchool"> | string
-    schoolId?: StringFilter<"AuthOnSchool"> | string
-    auth?: XOR<AdminAuthorityScalarRelationFilter, AdminAuthorityWhereInput>
-    school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
-  }
-
-  export type AuthOnSchoolOrderByWithRelationInput = {
-    authId?: SortOrder
-    schoolId?: SortOrder
-    auth?: AdminAuthorityOrderByWithRelationInput
-    school?: SchoolOrderByWithRelationInput
-  }
-
-  export type AuthOnSchoolWhereUniqueInput = Prisma.AtLeast<{
-    authId_schoolId?: AuthOnSchoolAuthIdSchoolIdCompoundUniqueInput
-    AND?: AuthOnSchoolWhereInput | AuthOnSchoolWhereInput[]
-    OR?: AuthOnSchoolWhereInput[]
-    NOT?: AuthOnSchoolWhereInput | AuthOnSchoolWhereInput[]
-    authId?: StringFilter<"AuthOnSchool"> | string
-    schoolId?: StringFilter<"AuthOnSchool"> | string
-    auth?: XOR<AdminAuthorityScalarRelationFilter, AdminAuthorityWhereInput>
-    school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
-  }, "authId_schoolId">
-
-  export type AuthOnSchoolOrderByWithAggregationInput = {
-    authId?: SortOrder
-    schoolId?: SortOrder
-    _count?: AuthOnSchoolCountOrderByAggregateInput
-    _max?: AuthOnSchoolMaxOrderByAggregateInput
-    _min?: AuthOnSchoolMinOrderByAggregateInput
-  }
-
-  export type AuthOnSchoolScalarWhereWithAggregatesInput = {
-    AND?: AuthOnSchoolScalarWhereWithAggregatesInput | AuthOnSchoolScalarWhereWithAggregatesInput[]
-    OR?: AuthOnSchoolScalarWhereWithAggregatesInput[]
-    NOT?: AuthOnSchoolScalarWhereWithAggregatesInput | AuthOnSchoolScalarWhereWithAggregatesInput[]
-    authId?: StringWithAggregatesFilter<"AuthOnSchool"> | string
-    schoolId?: StringWithAggregatesFilter<"AuthOnSchool"> | string
-  }
-
-  export type BannerOnProvinceWhereInput = {
-    AND?: BannerOnProvinceWhereInput | BannerOnProvinceWhereInput[]
-    OR?: BannerOnProvinceWhereInput[]
-    NOT?: BannerOnProvinceWhereInput | BannerOnProvinceWhereInput[]
-    bannerId?: StringFilter<"BannerOnProvince"> | string
-    provinceId?: StringFilter<"BannerOnProvince"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
-  }
-
-  export type BannerOnProvinceOrderByWithRelationInput = {
-    bannerId?: SortOrder
-    provinceId?: SortOrder
-    banner?: BannerOrderByWithRelationInput
-    province?: ProvinceOrderByWithRelationInput
-  }
-
-  export type BannerOnProvinceWhereUniqueInput = Prisma.AtLeast<{
-    bannerId_provinceId?: BannerOnProvinceBannerIdProvinceIdCompoundUniqueInput
-    AND?: BannerOnProvinceWhereInput | BannerOnProvinceWhereInput[]
-    OR?: BannerOnProvinceWhereInput[]
-    NOT?: BannerOnProvinceWhereInput | BannerOnProvinceWhereInput[]
-    bannerId?: StringFilter<"BannerOnProvince"> | string
-    provinceId?: StringFilter<"BannerOnProvince"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
-  }, "bannerId_provinceId">
-
-  export type BannerOnProvinceOrderByWithAggregationInput = {
-    bannerId?: SortOrder
-    provinceId?: SortOrder
-    _count?: BannerOnProvinceCountOrderByAggregateInput
-    _max?: BannerOnProvinceMaxOrderByAggregateInput
-    _min?: BannerOnProvinceMinOrderByAggregateInput
-  }
-
-  export type BannerOnProvinceScalarWhereWithAggregatesInput = {
-    AND?: BannerOnProvinceScalarWhereWithAggregatesInput | BannerOnProvinceScalarWhereWithAggregatesInput[]
-    OR?: BannerOnProvinceScalarWhereWithAggregatesInput[]
-    NOT?: BannerOnProvinceScalarWhereWithAggregatesInput | BannerOnProvinceScalarWhereWithAggregatesInput[]
-    bannerId?: StringWithAggregatesFilter<"BannerOnProvince"> | string
-    provinceId?: StringWithAggregatesFilter<"BannerOnProvince"> | string
-  }
-
-  export type BannerOnCityWhereInput = {
-    AND?: BannerOnCityWhereInput | BannerOnCityWhereInput[]
-    OR?: BannerOnCityWhereInput[]
-    NOT?: BannerOnCityWhereInput | BannerOnCityWhereInput[]
-    bannerId?: StringFilter<"BannerOnCity"> | string
-    cityId?: StringFilter<"BannerOnCity"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-  }
-
-  export type BannerOnCityOrderByWithRelationInput = {
-    bannerId?: SortOrder
-    cityId?: SortOrder
-    banner?: BannerOrderByWithRelationInput
-    city?: CityOrderByWithRelationInput
-  }
-
-  export type BannerOnCityWhereUniqueInput = Prisma.AtLeast<{
-    bannerId_cityId?: BannerOnCityBannerIdCityIdCompoundUniqueInput
-    AND?: BannerOnCityWhereInput | BannerOnCityWhereInput[]
-    OR?: BannerOnCityWhereInput[]
-    NOT?: BannerOnCityWhereInput | BannerOnCityWhereInput[]
-    bannerId?: StringFilter<"BannerOnCity"> | string
-    cityId?: StringFilter<"BannerOnCity"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-  }, "bannerId_cityId">
-
-  export type BannerOnCityOrderByWithAggregationInput = {
-    bannerId?: SortOrder
-    cityId?: SortOrder
-    _count?: BannerOnCityCountOrderByAggregateInput
-    _max?: BannerOnCityMaxOrderByAggregateInput
-    _min?: BannerOnCityMinOrderByAggregateInput
-  }
-
-  export type BannerOnCityScalarWhereWithAggregatesInput = {
-    AND?: BannerOnCityScalarWhereWithAggregatesInput | BannerOnCityScalarWhereWithAggregatesInput[]
-    OR?: BannerOnCityScalarWhereWithAggregatesInput[]
-    NOT?: BannerOnCityScalarWhereWithAggregatesInput | BannerOnCityScalarWhereWithAggregatesInput[]
-    bannerId?: StringWithAggregatesFilter<"BannerOnCity"> | string
-    cityId?: StringWithAggregatesFilter<"BannerOnCity"> | string
-  }
-
   export type ProvinceCreateInput = {
     id?: string
     name: string
@@ -52824,8 +48186,8 @@ export namespace Prisma {
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateInput = {
@@ -52839,8 +48201,8 @@ export namespace Prisma {
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUpdateInput = {
@@ -52854,8 +48216,8 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateInput = {
@@ -52869,8 +48231,8 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceCreateManyInput = {
@@ -52914,8 +48276,8 @@ export namespace Prisma {
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateInput = {
@@ -52929,8 +48291,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUpdateInput = {
@@ -52944,8 +48306,8 @@ export namespace Prisma {
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateInput = {
@@ -52959,8 +48321,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityCreateManyInput = {
@@ -53006,7 +48368,7 @@ export namespace Prisma {
     city: CityCreateNestedOneWithoutSchoolsInput
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolUncheckedCreateInput = {
@@ -53020,7 +48382,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolUpdateInput = {
@@ -53034,7 +48396,7 @@ export namespace Prisma {
     city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
 
   export type SchoolUncheckedUpdateInput = {
@@ -53048,7 +48410,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
   }
 
   export type SchoolCreateManyInput = {
@@ -53094,7 +48456,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
     redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
   }
 
@@ -53107,7 +48469,7 @@ export namespace Prisma {
     zones?: AccessContentCreatezonesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
     redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
   }
 
@@ -53120,7 +48482,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
     redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
@@ -53133,7 +48495,7 @@ export namespace Prisma {
     zones?: AccessContentUpdatezonesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
     redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
@@ -53199,7 +48561,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -53242,7 +48604,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -53285,7 +48647,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -53328,7 +48690,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -54295,9 +49657,9 @@ export namespace Prisma {
   export type AdminCreateInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -54311,9 +49673,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -54327,9 +49689,9 @@ export namespace Prisma {
   export type AdminUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -54343,9 +49705,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -54359,9 +49721,9 @@ export namespace Prisma {
   export type AdminCreateManyInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -54369,9 +49731,9 @@ export namespace Prisma {
   export type AdminUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -54379,9 +49741,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -54439,17 +49801,17 @@ export namespace Prisma {
     grades?: AdminAuthorityCreategradesInput | number[]
     admin: AdminCreateNestedOneWithoutAuthorityInput
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutAuthInput
+    cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityUncheckedCreateInput = {
     id?: string
     adminId: string
-    authProvinceId: string
+    provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutAuthInput
+    cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityUpdateInput = {
@@ -54457,23 +49819,23 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
     admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutAuthNestedInput
+    cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutAuthNestedInput
+    cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityCreateManyInput = {
     id?: string
     adminId: string
-    authProvinceId: string
+    provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
   }
 
@@ -54485,7 +49847,7 @@ export namespace Prisma {
   export type AdminAuthorityUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
@@ -54496,10 +49858,9 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutBannerInput
     visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
     admin: AdminCreateNestedOneWithoutBannerInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateInput = {
@@ -54510,9 +49871,8 @@ export namespace Prisma {
     endedAt?: Date | string | null
     isHide?: boolean
     adminId: string
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutBannerInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUpdateInput = {
@@ -54522,10 +49882,9 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutBannerNestedInput
     visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateInput = {
@@ -54536,9 +49895,8 @@ export namespace Prisma {
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutBannerNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerCreateManyInput = {
@@ -54568,6 +49926,50 @@ export namespace Prisma {
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BannerLocationCreateInput = {
+    id?: string
+    banner: BannerCreateNestedOneWithoutBannerLocationInput
+    province: ProvinceCreateNestedOneWithoutBannerLocationInput
+    cities?: CityCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationUncheckedCreateInput = {
+    id?: string
+    bannerId: string
+    provinceId: string
+    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
+    cities?: CityUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationCreateManyInput = {
+    id?: string
+    bannerId: string
+    provinceId: string
+  }
+
+  export type BannerLocationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BannerLocationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
   }
 
   export type BannerVisitorCreateInput = {
@@ -55770,176 +51172,6 @@ export namespace Prisma {
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type UserOnAccessContentCreateInput = {
-    accessContent: AccessContentCreateNestedOneWithoutUserAccessesInput
-    user: UserCreateNestedOneWithoutUserAccessesInput
-  }
-
-  export type UserOnAccessContentUncheckedCreateInput = {
-    userId: string
-    accessContentId: string
-  }
-
-  export type UserOnAccessContentUpdateInput = {
-    accessContent?: AccessContentUpdateOneRequiredWithoutUserAccessesNestedInput
-    user?: UserUpdateOneRequiredWithoutUserAccessesNestedInput
-  }
-
-  export type UserOnAccessContentUncheckedUpdateInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    accessContentId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserOnAccessContentCreateManyInput = {
-    userId: string
-    accessContentId: string
-  }
-
-  export type UserOnAccessContentUpdateManyMutationInput = {
-
-  }
-
-  export type UserOnAccessContentUncheckedUpdateManyInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    accessContentId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnCityCreateInput = {
-    auth: AdminAuthorityCreateNestedOneWithoutAuthOnCityInput
-    city: CityCreateNestedOneWithoutAuthOnCityInput
-  }
-
-  export type AuthOnCityUncheckedCreateInput = {
-    authId: string
-    cityId: string
-  }
-
-  export type AuthOnCityUpdateInput = {
-    auth?: AdminAuthorityUpdateOneRequiredWithoutAuthOnCityNestedInput
-    city?: CityUpdateOneRequiredWithoutAuthOnCityNestedInput
-  }
-
-  export type AuthOnCityUncheckedUpdateInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnCityCreateManyInput = {
-    authId: string
-    cityId: string
-  }
-
-  export type AuthOnCityUpdateManyMutationInput = {
-
-  }
-
-  export type AuthOnCityUncheckedUpdateManyInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolCreateInput = {
-    auth: AdminAuthorityCreateNestedOneWithoutAuthOnSchoolInput
-    school: SchoolCreateNestedOneWithoutAuthOnSchoolInput
-  }
-
-  export type AuthOnSchoolUncheckedCreateInput = {
-    authId: string
-    schoolId: string
-  }
-
-  export type AuthOnSchoolUpdateInput = {
-    auth?: AdminAuthorityUpdateOneRequiredWithoutAuthOnSchoolNestedInput
-    school?: SchoolUpdateOneRequiredWithoutAuthOnSchoolNestedInput
-  }
-
-  export type AuthOnSchoolUncheckedUpdateInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    schoolId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolCreateManyInput = {
-    authId: string
-    schoolId: string
-  }
-
-  export type AuthOnSchoolUpdateManyMutationInput = {
-
-  }
-
-  export type AuthOnSchoolUncheckedUpdateManyInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    schoolId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceCreateInput = {
-    banner: BannerCreateNestedOneWithoutBannerOnProvinceInput
-    province: ProvinceCreateNestedOneWithoutBannerOnProvinceInput
-  }
-
-  export type BannerOnProvinceUncheckedCreateInput = {
-    bannerId: string
-    provinceId: string
-  }
-
-  export type BannerOnProvinceUpdateInput = {
-    banner?: BannerUpdateOneRequiredWithoutBannerOnProvinceNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutBannerOnProvinceNestedInput
-  }
-
-  export type BannerOnProvinceUncheckedUpdateInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceCreateManyInput = {
-    bannerId: string
-    provinceId: string
-  }
-
-  export type BannerOnProvinceUpdateManyMutationInput = {
-
-  }
-
-  export type BannerOnProvinceUncheckedUpdateManyInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityCreateInput = {
-    banner: BannerCreateNestedOneWithoutBannerOnCityInput
-    city: CityCreateNestedOneWithoutBannerOnCityInput
-  }
-
-  export type BannerOnCityUncheckedCreateInput = {
-    bannerId: string
-    cityId: string
-  }
-
-  export type BannerOnCityUpdateInput = {
-    banner?: BannerUpdateOneRequiredWithoutBannerOnCityNestedInput
-    city?: CityUpdateOneRequiredWithoutBannerOnCityNestedInput
-  }
-
-  export type BannerOnCityUncheckedUpdateInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityCreateManyInput = {
-    bannerId: string
-    cityId: string
-  }
-
-  export type BannerOnCityUpdateManyMutationInput = {
-
-  }
-
-  export type BannerOnCityUncheckedUpdateManyInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -55995,16 +51227,16 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
-  export type BannerOnProvinceListRelationFilter = {
-    every?: BannerOnProvinceWhereInput
-    some?: BannerOnProvinceWhereInput
-    none?: BannerOnProvinceWhereInput
-  }
-
   export type AdminAuthorityListRelationFilter = {
     every?: AdminAuthorityWhereInput
     some?: AdminAuthorityWhereInput
     none?: AdminAuthorityWhereInput
+  }
+
+  export type BannerLocationListRelationFilter = {
+    every?: BannerLocationWhereInput
+    some?: BannerLocationWhereInput
+    none?: BannerLocationWhereInput
   }
 
   export type CityOrderByRelationAggregateInput = {
@@ -56019,11 +51251,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type BannerOnProvinceOrderByRelationAggregateInput = {
+  export type AdminAuthorityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type AdminAuthorityOrderByRelationAggregateInput = {
+  export type BannerLocationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -56120,26 +51352,6 @@ export namespace Prisma {
     isNot?: ProvinceWhereInput
   }
 
-  export type AuthOnCityListRelationFilter = {
-    every?: AuthOnCityWhereInput
-    some?: AuthOnCityWhereInput
-    none?: AuthOnCityWhereInput
-  }
-
-  export type BannerOnCityListRelationFilter = {
-    every?: BannerOnCityWhereInput
-    some?: BannerOnCityWhereInput
-    none?: BannerOnCityWhereInput
-  }
-
-  export type AuthOnCityOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BannerOnCityOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CityCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -56186,16 +51398,6 @@ export namespace Prisma {
   export type CityScalarRelationFilter = {
     is?: CityWhereInput
     isNot?: CityWhereInput
-  }
-
-  export type AuthOnSchoolListRelationFilter = {
-    every?: AuthOnSchoolWhereInput
-    some?: AuthOnSchoolWhereInput
-    none?: AuthOnSchoolWhereInput
-  }
-
-  export type AuthOnSchoolOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type SchoolCountOrderByAggregateInput = {
@@ -56283,19 +51485,9 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
-  export type UserOnAccessContentListRelationFilter = {
-    every?: UserOnAccessContentWhereInput
-    some?: UserOnAccessContentWhereInput
-    none?: UserOnAccessContentWhereInput
-  }
-
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type UserOnAccessContentOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type AccessContentCountOrderByAggregateInput = {
@@ -57225,6 +52417,13 @@ export namespace Prisma {
     logoutDate?: SortOrder
   }
 
+  export type EnumRoleNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRoleNullableFilter<$PrismaModel> | $Enums.Role | null
+  }
+
   export type AdminOperationHistoryListRelationFilter = {
     every?: AdminOperationHistoryWhereInput
     some?: AdminOperationHistoryWhereInput
@@ -57268,7 +52467,7 @@ export namespace Prisma {
   export type AdminCountOrderByAggregateInput = {
     id?: SortOrder
     authId?: SortOrder
-    googleId?: SortOrder
+    email?: SortOrder
     name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
@@ -57278,7 +52477,7 @@ export namespace Prisma {
   export type AdminMaxOrderByAggregateInput = {
     id?: SortOrder
     authId?: SortOrder
-    googleId?: SortOrder
+    email?: SortOrder
     name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
@@ -57288,11 +52487,21 @@ export namespace Prisma {
   export type AdminMinOrderByAggregateInput = {
     id?: SortOrder
     authId?: SortOrder
-    googleId?: SortOrder
+    email?: SortOrder
     name?: SortOrder
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumRoleNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRoleNullableWithAggregatesFilter<$PrismaModel> | $Enums.Role | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumRoleNullableFilter<$PrismaModel>
+    _max?: NestedEnumRoleNullableFilter<$PrismaModel>
   }
 
   export type EnumOperationFilter<$PrismaModel = never> = {
@@ -57341,7 +52550,7 @@ export namespace Prisma {
   export type AdminAuthorityCountOrderByAggregateInput = {
     id?: SortOrder
     adminId?: SortOrder
-    authProvinceId?: SortOrder
+    provinceId?: SortOrder
     grades?: SortOrder
   }
 
@@ -57352,13 +52561,13 @@ export namespace Prisma {
   export type AdminAuthorityMaxOrderByAggregateInput = {
     id?: SortOrder
     adminId?: SortOrder
-    authProvinceId?: SortOrder
+    provinceId?: SortOrder
   }
 
   export type AdminAuthorityMinOrderByAggregateInput = {
     id?: SortOrder
     adminId?: SortOrder
-    authProvinceId?: SortOrder
+    provinceId?: SortOrder
   }
 
   export type AdminAuthoritySumOrderByAggregateInput = {
@@ -57398,6 +52607,24 @@ export namespace Prisma {
   export type BannerScalarRelationFilter = {
     is?: BannerWhereInput
     isNot?: BannerWhereInput
+  }
+
+  export type BannerLocationCountOrderByAggregateInput = {
+    id?: SortOrder
+    bannerId?: SortOrder
+    provinceId?: SortOrder
+  }
+
+  export type BannerLocationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bannerId?: SortOrder
+    provinceId?: SortOrder
+  }
+
+  export type BannerLocationMinOrderByAggregateInput = {
+    id?: SortOrder
+    bannerId?: SortOrder
+    provinceId?: SortOrder
   }
 
   export type BannerVisitorCountOrderByAggregateInput = {
@@ -58162,121 +53389,6 @@ export namespace Prisma {
     bonusPoint?: SortOrder
   }
 
-  export type AccessContentScalarRelationFilter = {
-    is?: AccessContentWhereInput
-    isNot?: AccessContentWhereInput
-  }
-
-  export type UserOnAccessContentUserIdAccessContentIdCompoundUniqueInput = {
-    userId: string
-    accessContentId: string
-  }
-
-  export type UserOnAccessContentCountOrderByAggregateInput = {
-    userId?: SortOrder
-    accessContentId?: SortOrder
-  }
-
-  export type UserOnAccessContentMaxOrderByAggregateInput = {
-    userId?: SortOrder
-    accessContentId?: SortOrder
-  }
-
-  export type UserOnAccessContentMinOrderByAggregateInput = {
-    userId?: SortOrder
-    accessContentId?: SortOrder
-  }
-
-  export type AdminAuthorityScalarRelationFilter = {
-    is?: AdminAuthorityWhereInput
-    isNot?: AdminAuthorityWhereInput
-  }
-
-  export type AuthOnCityAuthIdCityIdCompoundUniqueInput = {
-    authId: string
-    cityId: string
-  }
-
-  export type AuthOnCityCountOrderByAggregateInput = {
-    authId?: SortOrder
-    cityId?: SortOrder
-  }
-
-  export type AuthOnCityMaxOrderByAggregateInput = {
-    authId?: SortOrder
-    cityId?: SortOrder
-  }
-
-  export type AuthOnCityMinOrderByAggregateInput = {
-    authId?: SortOrder
-    cityId?: SortOrder
-  }
-
-  export type SchoolScalarRelationFilter = {
-    is?: SchoolWhereInput
-    isNot?: SchoolWhereInput
-  }
-
-  export type AuthOnSchoolAuthIdSchoolIdCompoundUniqueInput = {
-    authId: string
-    schoolId: string
-  }
-
-  export type AuthOnSchoolCountOrderByAggregateInput = {
-    authId?: SortOrder
-    schoolId?: SortOrder
-  }
-
-  export type AuthOnSchoolMaxOrderByAggregateInput = {
-    authId?: SortOrder
-    schoolId?: SortOrder
-  }
-
-  export type AuthOnSchoolMinOrderByAggregateInput = {
-    authId?: SortOrder
-    schoolId?: SortOrder
-  }
-
-  export type BannerOnProvinceBannerIdProvinceIdCompoundUniqueInput = {
-    bannerId: string
-    provinceId: string
-  }
-
-  export type BannerOnProvinceCountOrderByAggregateInput = {
-    bannerId?: SortOrder
-    provinceId?: SortOrder
-  }
-
-  export type BannerOnProvinceMaxOrderByAggregateInput = {
-    bannerId?: SortOrder
-    provinceId?: SortOrder
-  }
-
-  export type BannerOnProvinceMinOrderByAggregateInput = {
-    bannerId?: SortOrder
-    provinceId?: SortOrder
-  }
-
-  export type BannerOnCityBannerIdCityIdCompoundUniqueInput = {
-    bannerId: string
-    cityId: string
-  }
-
-  export type BannerOnCityCountOrderByAggregateInput = {
-    bannerId?: SortOrder
-    cityId?: SortOrder
-  }
-
-  export type BannerOnCityMaxOrderByAggregateInput = {
-    bannerId?: SortOrder
-    cityId?: SortOrder
-  }
-
-  export type BannerOnCityMinOrderByAggregateInput = {
-    bannerId?: SortOrder
-    cityId?: SortOrder
-  }
-
   export type CityCreateNestedManyWithoutProvinceInput = {
     create?: XOR<CityCreateWithoutProvinceInput, CityUncheckedCreateWithoutProvinceInput> | CityCreateWithoutProvinceInput[] | CityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: CityCreateOrConnectWithoutProvinceInput | CityCreateOrConnectWithoutProvinceInput[]
@@ -58298,18 +53410,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type BannerOnProvinceCreateNestedManyWithoutProvinceInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput> | BannerOnProvinceCreateWithoutProvinceInput[] | BannerOnProvinceUncheckedCreateWithoutProvinceInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutProvinceInput | BannerOnProvinceCreateOrConnectWithoutProvinceInput[]
-    createMany?: BannerOnProvinceCreateManyProvinceInputEnvelope
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-  }
-
   export type AdminAuthorityCreateNestedManyWithoutProvinceInput = {
     create?: XOR<AdminAuthorityCreateWithoutProvinceInput, AdminAuthorityUncheckedCreateWithoutProvinceInput> | AdminAuthorityCreateWithoutProvinceInput[] | AdminAuthorityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutProvinceInput | AdminAuthorityCreateOrConnectWithoutProvinceInput[]
     createMany?: AdminAuthorityCreateManyProvinceInputEnvelope
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+  }
+
+  export type BannerLocationCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput> | BannerLocationCreateWithoutProvinceInput[] | BannerLocationUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinceInput | BannerLocationCreateOrConnectWithoutProvinceInput[]
+    createMany?: BannerLocationCreateManyProvinceInputEnvelope
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type CityUncheckedCreateNestedManyWithoutProvinceInput = {
@@ -58333,18 +53445,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput> | BannerOnProvinceCreateWithoutProvinceInput[] | BannerOnProvinceUncheckedCreateWithoutProvinceInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutProvinceInput | BannerOnProvinceCreateOrConnectWithoutProvinceInput[]
-    createMany?: BannerOnProvinceCreateManyProvinceInputEnvelope
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-  }
-
   export type AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput = {
     create?: XOR<AdminAuthorityCreateWithoutProvinceInput, AdminAuthorityUncheckedCreateWithoutProvinceInput> | AdminAuthorityCreateWithoutProvinceInput[] | AdminAuthorityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutProvinceInput | AdminAuthorityCreateOrConnectWithoutProvinceInput[]
     createMany?: AdminAuthorityCreateManyProvinceInputEnvelope
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+  }
+
+  export type BannerLocationUncheckedCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput> | BannerLocationCreateWithoutProvinceInput[] | BannerLocationUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinceInput | BannerLocationCreateOrConnectWithoutProvinceInput[]
+    createMany?: BannerLocationCreateManyProvinceInputEnvelope
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -58405,20 +53517,6 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type BannerOnProvinceUpdateManyWithoutProvinceNestedInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput> | BannerOnProvinceCreateWithoutProvinceInput[] | BannerOnProvinceUncheckedCreateWithoutProvinceInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutProvinceInput | BannerOnProvinceCreateOrConnectWithoutProvinceInput[]
-    upsert?: BannerOnProvinceUpsertWithWhereUniqueWithoutProvinceInput | BannerOnProvinceUpsertWithWhereUniqueWithoutProvinceInput[]
-    createMany?: BannerOnProvinceCreateManyProvinceInputEnvelope
-    set?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    disconnect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    delete?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    update?: BannerOnProvinceUpdateWithWhereUniqueWithoutProvinceInput | BannerOnProvinceUpdateWithWhereUniqueWithoutProvinceInput[]
-    updateMany?: BannerOnProvinceUpdateManyWithWhereWithoutProvinceInput | BannerOnProvinceUpdateManyWithWhereWithoutProvinceInput[]
-    deleteMany?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-  }
-
   export type AdminAuthorityUpdateManyWithoutProvinceNestedInput = {
     create?: XOR<AdminAuthorityCreateWithoutProvinceInput, AdminAuthorityUncheckedCreateWithoutProvinceInput> | AdminAuthorityCreateWithoutProvinceInput[] | AdminAuthorityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutProvinceInput | AdminAuthorityCreateOrConnectWithoutProvinceInput[]
@@ -58431,6 +53529,20 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput | AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutProvinceInput | AdminAuthorityUpdateManyWithWhereWithoutProvinceInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type BannerLocationUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput> | BannerLocationCreateWithoutProvinceInput[] | BannerLocationUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinceInput | BannerLocationCreateOrConnectWithoutProvinceInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutProvinceInput | BannerLocationUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: BannerLocationCreateManyProvinceInputEnvelope
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutProvinceInput | BannerLocationUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutProvinceInput | BannerLocationUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type CityUncheckedUpdateManyWithoutProvinceNestedInput = {
@@ -58475,20 +53587,6 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput> | BannerOnProvinceCreateWithoutProvinceInput[] | BannerOnProvinceUncheckedCreateWithoutProvinceInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutProvinceInput | BannerOnProvinceCreateOrConnectWithoutProvinceInput[]
-    upsert?: BannerOnProvinceUpsertWithWhereUniqueWithoutProvinceInput | BannerOnProvinceUpsertWithWhereUniqueWithoutProvinceInput[]
-    createMany?: BannerOnProvinceCreateManyProvinceInputEnvelope
-    set?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    disconnect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    delete?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    update?: BannerOnProvinceUpdateWithWhereUniqueWithoutProvinceInput | BannerOnProvinceUpdateWithWhereUniqueWithoutProvinceInput[]
-    updateMany?: BannerOnProvinceUpdateManyWithWhereWithoutProvinceInput | BannerOnProvinceUpdateManyWithWhereWithoutProvinceInput[]
-    deleteMany?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-  }
-
   export type AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput = {
     create?: XOR<AdminAuthorityCreateWithoutProvinceInput, AdminAuthorityUncheckedCreateWithoutProvinceInput> | AdminAuthorityCreateWithoutProvinceInput[] | AdminAuthorityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutProvinceInput | AdminAuthorityCreateOrConnectWithoutProvinceInput[]
@@ -58501,6 +53599,20 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput | AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutProvinceInput | AdminAuthorityUpdateManyWithWhereWithoutProvinceInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput> | BannerLocationCreateWithoutProvinceInput[] | BannerLocationUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinceInput | BannerLocationCreateOrConnectWithoutProvinceInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutProvinceInput | BannerLocationUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: BannerLocationCreateManyProvinceInputEnvelope
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutProvinceInput | BannerLocationUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutProvinceInput | BannerLocationUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type ProvinceCreateNestedOneWithoutCitiesInput = {
@@ -58523,18 +53635,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type AuthOnCityCreateNestedManyWithoutCityInput = {
-    create?: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput> | AuthOnCityCreateWithoutCityInput[] | AuthOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutCityInput | AuthOnCityCreateOrConnectWithoutCityInput[]
-    createMany?: AuthOnCityCreateManyCityInputEnvelope
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
+  export type AdminAuthorityCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput> | AdminAuthorityCreateWithoutCitiesInput[] | AdminAuthorityUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutCitiesInput | AdminAuthorityCreateOrConnectWithoutCitiesInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerOnCityCreateNestedManyWithoutCityInput = {
-    create?: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput> | BannerOnCityCreateWithoutCityInput[] | BannerOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutCityInput | BannerOnCityCreateOrConnectWithoutCityInput[]
-    createMany?: BannerOnCityCreateManyCityInputEnvelope
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
+  export type BannerLocationCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type SchoolUncheckedCreateNestedManyWithoutCityInput = {
@@ -58551,18 +53661,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type AuthOnCityUncheckedCreateNestedManyWithoutCityInput = {
-    create?: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput> | AuthOnCityCreateWithoutCityInput[] | AuthOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutCityInput | AuthOnCityCreateOrConnectWithoutCityInput[]
-    createMany?: AuthOnCityCreateManyCityInputEnvelope
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
+  export type AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput> | AdminAuthorityCreateWithoutCitiesInput[] | AdminAuthorityUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutCitiesInput | AdminAuthorityCreateOrConnectWithoutCitiesInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerOnCityUncheckedCreateNestedManyWithoutCityInput = {
-    create?: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput> | BannerOnCityCreateWithoutCityInput[] | BannerOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutCityInput | BannerOnCityCreateOrConnectWithoutCityInput[]
-    createMany?: BannerOnCityCreateManyCityInputEnvelope
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
+  export type BannerLocationUncheckedCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type ProvinceUpdateOneRequiredWithoutCitiesNestedInput = {
@@ -58601,32 +53709,30 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type AuthOnCityUpdateManyWithoutCityNestedInput = {
-    create?: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput> | AuthOnCityCreateWithoutCityInput[] | AuthOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutCityInput | AuthOnCityCreateOrConnectWithoutCityInput[]
-    upsert?: AuthOnCityUpsertWithWhereUniqueWithoutCityInput | AuthOnCityUpsertWithWhereUniqueWithoutCityInput[]
-    createMany?: AuthOnCityCreateManyCityInputEnvelope
-    set?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    disconnect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    delete?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    update?: AuthOnCityUpdateWithWhereUniqueWithoutCityInput | AuthOnCityUpdateWithWhereUniqueWithoutCityInput[]
-    updateMany?: AuthOnCityUpdateManyWithWhereWithoutCityInput | AuthOnCityUpdateManyWithWhereWithoutCityInput[]
-    deleteMany?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
+  export type AdminAuthorityUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput> | AdminAuthorityCreateWithoutCitiesInput[] | AdminAuthorityUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutCitiesInput | AdminAuthorityCreateOrConnectWithoutCitiesInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutCitiesInput | AdminAuthorityUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutCitiesInput | AdminAuthorityUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutCitiesInput | AdminAuthorityUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerOnCityUpdateManyWithoutCityNestedInput = {
-    create?: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput> | BannerOnCityCreateWithoutCityInput[] | BannerOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutCityInput | BannerOnCityCreateOrConnectWithoutCityInput[]
-    upsert?: BannerOnCityUpsertWithWhereUniqueWithoutCityInput | BannerOnCityUpsertWithWhereUniqueWithoutCityInput[]
-    createMany?: BannerOnCityCreateManyCityInputEnvelope
-    set?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    disconnect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    delete?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    update?: BannerOnCityUpdateWithWhereUniqueWithoutCityInput | BannerOnCityUpdateWithWhereUniqueWithoutCityInput[]
-    updateMany?: BannerOnCityUpdateManyWithWhereWithoutCityInput | BannerOnCityUpdateManyWithWhereWithoutCityInput[]
-    deleteMany?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
+  export type BannerLocationUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutCitiesInput | BannerLocationUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutCitiesInput | BannerLocationUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutCitiesInput | BannerLocationUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type SchoolUncheckedUpdateManyWithoutCityNestedInput = {
@@ -58657,32 +53763,30 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type AuthOnCityUncheckedUpdateManyWithoutCityNestedInput = {
-    create?: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput> | AuthOnCityCreateWithoutCityInput[] | AuthOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutCityInput | AuthOnCityCreateOrConnectWithoutCityInput[]
-    upsert?: AuthOnCityUpsertWithWhereUniqueWithoutCityInput | AuthOnCityUpsertWithWhereUniqueWithoutCityInput[]
-    createMany?: AuthOnCityCreateManyCityInputEnvelope
-    set?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    disconnect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    delete?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    update?: AuthOnCityUpdateWithWhereUniqueWithoutCityInput | AuthOnCityUpdateWithWhereUniqueWithoutCityInput[]
-    updateMany?: AuthOnCityUpdateManyWithWhereWithoutCityInput | AuthOnCityUpdateManyWithWhereWithoutCityInput[]
-    deleteMany?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
+  export type AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput> | AdminAuthorityCreateWithoutCitiesInput[] | AdminAuthorityUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutCitiesInput | AdminAuthorityCreateOrConnectWithoutCitiesInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutCitiesInput | AdminAuthorityUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutCitiesInput | AdminAuthorityUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutCitiesInput | AdminAuthorityUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerOnCityUncheckedUpdateManyWithoutCityNestedInput = {
-    create?: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput> | BannerOnCityCreateWithoutCityInput[] | BannerOnCityUncheckedCreateWithoutCityInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutCityInput | BannerOnCityCreateOrConnectWithoutCityInput[]
-    upsert?: BannerOnCityUpsertWithWhereUniqueWithoutCityInput | BannerOnCityUpsertWithWhereUniqueWithoutCityInput[]
-    createMany?: BannerOnCityCreateManyCityInputEnvelope
-    set?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    disconnect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    delete?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    update?: BannerOnCityUpdateWithWhereUniqueWithoutCityInput | BannerOnCityUpdateWithWhereUniqueWithoutCityInput[]
-    updateMany?: BannerOnCityUpdateManyWithWhereWithoutCityInput | BannerOnCityUpdateManyWithWhereWithoutCityInput[]
-    deleteMany?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
+  export type BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutCitiesInput | BannerLocationUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutCitiesInput | BannerLocationUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutCitiesInput | BannerLocationUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type CityCreateNestedOneWithoutSchoolsInput = {
@@ -58704,11 +53808,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type AuthOnSchoolCreateNestedManyWithoutSchoolInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput> | AuthOnSchoolCreateWithoutSchoolInput[] | AuthOnSchoolUncheckedCreateWithoutSchoolInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutSchoolInput | AuthOnSchoolCreateOrConnectWithoutSchoolInput[]
-    createMany?: AuthOnSchoolCreateManySchoolInputEnvelope
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
+  export type AdminAuthorityCreateNestedManyWithoutSchoolsInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput> | AdminAuthorityCreateWithoutSchoolsInput[] | AdminAuthorityUncheckedCreateWithoutSchoolsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSchoolsInput | AdminAuthorityCreateOrConnectWithoutSchoolsInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutSchoolInput = {
@@ -58718,11 +53821,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type AuthOnSchoolUncheckedCreateNestedManyWithoutSchoolInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput> | AuthOnSchoolCreateWithoutSchoolInput[] | AuthOnSchoolUncheckedCreateWithoutSchoolInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutSchoolInput | AuthOnSchoolCreateOrConnectWithoutSchoolInput[]
-    createMany?: AuthOnSchoolCreateManySchoolInputEnvelope
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
+  export type AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput> | AdminAuthorityCreateWithoutSchoolsInput[] | AdminAuthorityUncheckedCreateWithoutSchoolsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSchoolsInput | AdminAuthorityCreateOrConnectWithoutSchoolsInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
   export type CityUpdateOneRequiredWithoutSchoolsNestedInput = {
@@ -58755,18 +53857,17 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type AuthOnSchoolUpdateManyWithoutSchoolNestedInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput> | AuthOnSchoolCreateWithoutSchoolInput[] | AuthOnSchoolUncheckedCreateWithoutSchoolInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutSchoolInput | AuthOnSchoolCreateOrConnectWithoutSchoolInput[]
-    upsert?: AuthOnSchoolUpsertWithWhereUniqueWithoutSchoolInput | AuthOnSchoolUpsertWithWhereUniqueWithoutSchoolInput[]
-    createMany?: AuthOnSchoolCreateManySchoolInputEnvelope
-    set?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    disconnect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    delete?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    update?: AuthOnSchoolUpdateWithWhereUniqueWithoutSchoolInput | AuthOnSchoolUpdateWithWhereUniqueWithoutSchoolInput[]
-    updateMany?: AuthOnSchoolUpdateManyWithWhereWithoutSchoolInput | AuthOnSchoolUpdateManyWithWhereWithoutSchoolInput[]
-    deleteMany?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
+  export type AdminAuthorityUpdateManyWithoutSchoolsNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput> | AdminAuthorityCreateWithoutSchoolsInput[] | AdminAuthorityUncheckedCreateWithoutSchoolsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSchoolsInput | AdminAuthorityCreateOrConnectWithoutSchoolsInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpsertWithWhereUniqueWithoutSchoolsInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput | AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutSchoolNestedInput = {
@@ -58783,18 +53884,17 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type AuthOnSchoolUncheckedUpdateManyWithoutSchoolNestedInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput> | AuthOnSchoolCreateWithoutSchoolInput[] | AuthOnSchoolUncheckedCreateWithoutSchoolInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutSchoolInput | AuthOnSchoolCreateOrConnectWithoutSchoolInput[]
-    upsert?: AuthOnSchoolUpsertWithWhereUniqueWithoutSchoolInput | AuthOnSchoolUpsertWithWhereUniqueWithoutSchoolInput[]
-    createMany?: AuthOnSchoolCreateManySchoolInputEnvelope
-    set?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    disconnect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    delete?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    update?: AuthOnSchoolUpdateWithWhereUniqueWithoutSchoolInput | AuthOnSchoolUpdateWithWhereUniqueWithoutSchoolInput[]
-    updateMany?: AuthOnSchoolUpdateManyWithWhereWithoutSchoolInput | AuthOnSchoolUpdateManyWithWhereWithoutSchoolInput[]
-    deleteMany?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
+  export type AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput> | AdminAuthorityCreateWithoutSchoolsInput[] | AdminAuthorityUncheckedCreateWithoutSchoolsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSchoolsInput | AdminAuthorityCreateOrConnectWithoutSchoolsInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpsertWithWhereUniqueWithoutSchoolsInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput | AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
   export type AccessContentCreatezonesInput = {
@@ -58807,11 +53907,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type UserOnAccessContentCreateNestedManyWithoutAccessContentInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput> | UserOnAccessContentCreateWithoutAccessContentInput[] | UserOnAccessContentUncheckedCreateWithoutAccessContentInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutAccessContentInput | UserOnAccessContentCreateOrConnectWithoutAccessContentInput[]
-    createMany?: UserOnAccessContentCreateManyAccessContentInputEnvelope
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
+  export type UserCreateNestedManyWithoutUserAccessesInput = {
+    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
   export type UserCreateNestedManyWithoutRedeemedAccessesInput = {
@@ -58820,11 +53919,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type UserOnAccessContentUncheckedCreateNestedManyWithoutAccessContentInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput> | UserOnAccessContentCreateWithoutAccessContentInput[] | UserOnAccessContentUncheckedCreateWithoutAccessContentInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutAccessContentInput | UserOnAccessContentCreateOrConnectWithoutAccessContentInput[]
-    createMany?: UserOnAccessContentCreateManyAccessContentInputEnvelope
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
+  export type UserUncheckedCreateNestedManyWithoutUserAccessesInput = {
+    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput = {
@@ -58856,18 +53954,17 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOwnedAccessesInput, UserUpdateWithoutOwnedAccessesInput>, UserUncheckedUpdateWithoutOwnedAccessesInput>
   }
 
-  export type UserOnAccessContentUpdateManyWithoutAccessContentNestedInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput> | UserOnAccessContentCreateWithoutAccessContentInput[] | UserOnAccessContentUncheckedCreateWithoutAccessContentInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutAccessContentInput | UserOnAccessContentCreateOrConnectWithoutAccessContentInput[]
-    upsert?: UserOnAccessContentUpsertWithWhereUniqueWithoutAccessContentInput | UserOnAccessContentUpsertWithWhereUniqueWithoutAccessContentInput[]
-    createMany?: UserOnAccessContentCreateManyAccessContentInputEnvelope
-    set?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    disconnect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    delete?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    update?: UserOnAccessContentUpdateWithWhereUniqueWithoutAccessContentInput | UserOnAccessContentUpdateWithWhereUniqueWithoutAccessContentInput[]
-    updateMany?: UserOnAccessContentUpdateManyWithWhereWithoutAccessContentInput | UserOnAccessContentUpdateManyWithWhereWithoutAccessContentInput[]
-    deleteMany?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
+  export type UserUpdateManyWithoutUserAccessesNestedInput = {
+    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutUserAccessesInput | UserUpsertWithWhereUniqueWithoutUserAccessesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutUserAccessesInput | UserUpdateWithWhereUniqueWithoutUserAccessesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutUserAccessesInput | UserUpdateManyWithWhereWithoutUserAccessesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutRedeemedAccessesNestedInput = {
@@ -58887,18 +53984,17 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type UserOnAccessContentUncheckedUpdateManyWithoutAccessContentNestedInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput> | UserOnAccessContentCreateWithoutAccessContentInput[] | UserOnAccessContentUncheckedCreateWithoutAccessContentInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutAccessContentInput | UserOnAccessContentCreateOrConnectWithoutAccessContentInput[]
-    upsert?: UserOnAccessContentUpsertWithWhereUniqueWithoutAccessContentInput | UserOnAccessContentUpsertWithWhereUniqueWithoutAccessContentInput[]
-    createMany?: UserOnAccessContentCreateManyAccessContentInputEnvelope
-    set?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    disconnect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    delete?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    update?: UserOnAccessContentUpdateWithWhereUniqueWithoutAccessContentInput | UserOnAccessContentUpdateWithWhereUniqueWithoutAccessContentInput[]
-    updateMany?: UserOnAccessContentUpdateManyWithWhereWithoutAccessContentInput | UserOnAccessContentUpdateManyWithWhereWithoutAccessContentInput[]
-    deleteMany?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
+  export type UserUncheckedUpdateManyWithoutUserAccessesNestedInput = {
+    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutUserAccessesInput | UserUpsertWithWhereUniqueWithoutUserAccessesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutUserAccessesInput | UserUpdateWithWhereUniqueWithoutUserAccessesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutUserAccessesInput | UserUpdateManyWithWhereWithoutUserAccessesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput = {
@@ -58955,11 +54051,10 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type UserOnAccessContentCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput> | UserOnAccessContentCreateWithoutUserInput[] | UserOnAccessContentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutUserInput | UserOnAccessContentCreateOrConnectWithoutUserInput[]
-    createMany?: UserOnAccessContentCreateManyUserInputEnvelope
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
+  export type AccessContentCreateNestedManyWithoutUserAccessesInput = {
+    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
+    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
   export type ZoneCreateNestedManyWithoutUserInput = {
@@ -59044,11 +54139,10 @@ export namespace Prisma {
     connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
-  export type UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput> | UserOnAccessContentCreateWithoutUserInput[] | UserOnAccessContentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutUserInput | UserOnAccessContentCreateOrConnectWithoutUserInput[]
-    createMany?: UserOnAccessContentCreateManyUserInputEnvelope
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
+  export type AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput = {
+    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
+    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
   export type ZoneUncheckedCreateNestedManyWithoutUserInput = {
@@ -59205,18 +54299,17 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutUserInput, AdminUpdateWithoutUserInput>, AdminUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserOnAccessContentUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput> | UserOnAccessContentCreateWithoutUserInput[] | UserOnAccessContentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutUserInput | UserOnAccessContentCreateOrConnectWithoutUserInput[]
-    upsert?: UserOnAccessContentUpsertWithWhereUniqueWithoutUserInput | UserOnAccessContentUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserOnAccessContentCreateManyUserInputEnvelope
-    set?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    disconnect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    delete?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    update?: UserOnAccessContentUpdateWithWhereUniqueWithoutUserInput | UserOnAccessContentUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserOnAccessContentUpdateManyWithWhereWithoutUserInput | UserOnAccessContentUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
+  export type AccessContentUpdateManyWithoutUserAccessesNestedInput = {
+    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
+    upsert?: AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput | AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput[]
+    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    update?: AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput | AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput[]
+    updateMany?: AccessContentUpdateManyWithWhereWithoutUserAccessesInput | AccessContentUpdateManyWithWhereWithoutUserAccessesInput[]
+    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
   export type ZoneUpdateManyWithoutUserNestedInput = {
@@ -59382,18 +54475,17 @@ export namespace Prisma {
     deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
-  export type UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput> | UserOnAccessContentCreateWithoutUserInput[] | UserOnAccessContentUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserOnAccessContentCreateOrConnectWithoutUserInput | UserOnAccessContentCreateOrConnectWithoutUserInput[]
-    upsert?: UserOnAccessContentUpsertWithWhereUniqueWithoutUserInput | UserOnAccessContentUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserOnAccessContentCreateManyUserInputEnvelope
-    set?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    disconnect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    delete?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    connect?: UserOnAccessContentWhereUniqueInput | UserOnAccessContentWhereUniqueInput[]
-    update?: UserOnAccessContentUpdateWithWhereUniqueWithoutUserInput | UserOnAccessContentUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserOnAccessContentUpdateManyWithWhereWithoutUserInput | UserOnAccessContentUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
+  export type AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput = {
+    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
+    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
+    upsert?: AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput | AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput[]
+    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+    update?: AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput | AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput[]
+    updateMany?: AccessContentUpdateManyWithWhereWithoutUserAccessesInput | AccessContentUpdateManyWithWhereWithoutUserAccessesInput[]
+    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
   export type ZoneUncheckedUpdateManyWithoutUserNestedInput = {
@@ -60031,6 +55123,10 @@ export namespace Prisma {
     connect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
   }
 
+  export type NullableEnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role | null
+  }
+
   export type UserUpdateOneWithoutAdminNestedInput = {
     create?: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
     connectOrCreate?: UserCreateOrConnectWithoutAdminInput
@@ -60227,32 +55323,28 @@ export namespace Prisma {
     connect?: ProvinceWhereUniqueInput
   }
 
-  export type AuthOnCityCreateNestedManyWithoutAuthInput = {
-    create?: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput> | AuthOnCityCreateWithoutAuthInput[] | AuthOnCityUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutAuthInput | AuthOnCityCreateOrConnectWithoutAuthInput[]
-    createMany?: AuthOnCityCreateManyAuthInputEnvelope
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
+  export type CityCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput> | CityCreateWithoutAdminAuthorityInput[] | CityUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutAdminAuthorityInput | CityCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
-  export type AuthOnSchoolCreateNestedManyWithoutAuthInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput> | AuthOnSchoolCreateWithoutAuthInput[] | AuthOnSchoolUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutAuthInput | AuthOnSchoolCreateOrConnectWithoutAuthInput[]
-    createMany?: AuthOnSchoolCreateManyAuthInputEnvelope
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
+  export type SchoolCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
   }
 
-  export type AuthOnCityUncheckedCreateNestedManyWithoutAuthInput = {
-    create?: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput> | AuthOnCityCreateWithoutAuthInput[] | AuthOnCityUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutAuthInput | AuthOnCityCreateOrConnectWithoutAuthInput[]
-    createMany?: AuthOnCityCreateManyAuthInputEnvelope
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
+  export type CityUncheckedCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput> | CityCreateWithoutAdminAuthorityInput[] | CityUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutAdminAuthorityInput | CityCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
-  export type AuthOnSchoolUncheckedCreateNestedManyWithoutAuthInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput> | AuthOnSchoolCreateWithoutAuthInput[] | AuthOnSchoolUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutAuthInput | AuthOnSchoolCreateOrConnectWithoutAuthInput[]
-    createMany?: AuthOnSchoolCreateManyAuthInputEnvelope
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
+  export type SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
   }
 
   export type AdminAuthorityUpdategradesInput = {
@@ -60276,74 +55368,56 @@ export namespace Prisma {
     update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutAdminAuthorityInput, ProvinceUpdateWithoutAdminAuthorityInput>, ProvinceUncheckedUpdateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnCityUpdateManyWithoutAuthNestedInput = {
-    create?: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput> | AuthOnCityCreateWithoutAuthInput[] | AuthOnCityUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutAuthInput | AuthOnCityCreateOrConnectWithoutAuthInput[]
-    upsert?: AuthOnCityUpsertWithWhereUniqueWithoutAuthInput | AuthOnCityUpsertWithWhereUniqueWithoutAuthInput[]
-    createMany?: AuthOnCityCreateManyAuthInputEnvelope
-    set?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    disconnect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    delete?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    update?: AuthOnCityUpdateWithWhereUniqueWithoutAuthInput | AuthOnCityUpdateWithWhereUniqueWithoutAuthInput[]
-    updateMany?: AuthOnCityUpdateManyWithWhereWithoutAuthInput | AuthOnCityUpdateManyWithWhereWithoutAuthInput[]
-    deleteMany?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
+  export type CityUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput> | CityCreateWithoutAdminAuthorityInput[] | CityUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutAdminAuthorityInput | CityCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutAdminAuthorityInput | CityUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutAdminAuthorityInput | CityUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutAdminAuthorityInput | CityUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
-  export type AuthOnSchoolUpdateManyWithoutAuthNestedInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput> | AuthOnSchoolCreateWithoutAuthInput[] | AuthOnSchoolUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutAuthInput | AuthOnSchoolCreateOrConnectWithoutAuthInput[]
-    upsert?: AuthOnSchoolUpsertWithWhereUniqueWithoutAuthInput | AuthOnSchoolUpsertWithWhereUniqueWithoutAuthInput[]
-    createMany?: AuthOnSchoolCreateManyAuthInputEnvelope
-    set?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    disconnect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    delete?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    update?: AuthOnSchoolUpdateWithWhereUniqueWithoutAuthInput | AuthOnSchoolUpdateWithWhereUniqueWithoutAuthInput[]
-    updateMany?: AuthOnSchoolUpdateManyWithWhereWithoutAuthInput | AuthOnSchoolUpdateManyWithWhereWithoutAuthInput[]
-    deleteMany?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
+  export type SchoolUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput | SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    disconnect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    delete?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    update?: SchoolUpdateWithWhereUniqueWithoutAdminAuthorityInput | SchoolUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: SchoolUpdateManyWithWhereWithoutAdminAuthorityInput | SchoolUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
   }
 
-  export type AuthOnCityUncheckedUpdateManyWithoutAuthNestedInput = {
-    create?: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput> | AuthOnCityCreateWithoutAuthInput[] | AuthOnCityUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnCityCreateOrConnectWithoutAuthInput | AuthOnCityCreateOrConnectWithoutAuthInput[]
-    upsert?: AuthOnCityUpsertWithWhereUniqueWithoutAuthInput | AuthOnCityUpsertWithWhereUniqueWithoutAuthInput[]
-    createMany?: AuthOnCityCreateManyAuthInputEnvelope
-    set?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    disconnect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    delete?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    connect?: AuthOnCityWhereUniqueInput | AuthOnCityWhereUniqueInput[]
-    update?: AuthOnCityUpdateWithWhereUniqueWithoutAuthInput | AuthOnCityUpdateWithWhereUniqueWithoutAuthInput[]
-    updateMany?: AuthOnCityUpdateManyWithWhereWithoutAuthInput | AuthOnCityUpdateManyWithWhereWithoutAuthInput[]
-    deleteMany?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
+  export type CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput> | CityCreateWithoutAdminAuthorityInput[] | CityUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutAdminAuthorityInput | CityCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutAdminAuthorityInput | CityUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutAdminAuthorityInput | CityUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutAdminAuthorityInput | CityUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
-  export type AuthOnSchoolUncheckedUpdateManyWithoutAuthNestedInput = {
-    create?: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput> | AuthOnSchoolCreateWithoutAuthInput[] | AuthOnSchoolUncheckedCreateWithoutAuthInput[]
-    connectOrCreate?: AuthOnSchoolCreateOrConnectWithoutAuthInput | AuthOnSchoolCreateOrConnectWithoutAuthInput[]
-    upsert?: AuthOnSchoolUpsertWithWhereUniqueWithoutAuthInput | AuthOnSchoolUpsertWithWhereUniqueWithoutAuthInput[]
-    createMany?: AuthOnSchoolCreateManyAuthInputEnvelope
-    set?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    disconnect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    delete?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    connect?: AuthOnSchoolWhereUniqueInput | AuthOnSchoolWhereUniqueInput[]
-    update?: AuthOnSchoolUpdateWithWhereUniqueWithoutAuthInput | AuthOnSchoolUpdateWithWhereUniqueWithoutAuthInput[]
-    updateMany?: AuthOnSchoolUpdateManyWithWhereWithoutAuthInput | AuthOnSchoolUpdateManyWithWhereWithoutAuthInput[]
-    deleteMany?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
-  }
-
-  export type BannerOnProvinceCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput> | BannerOnProvinceCreateWithoutBannerInput[] | BannerOnProvinceUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutBannerInput | BannerOnProvinceCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerOnProvinceCreateManyBannerInputEnvelope
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-  }
-
-  export type BannerOnCityCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput> | BannerOnCityCreateWithoutBannerInput[] | BannerOnCityUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutBannerInput | BannerOnCityCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerOnCityCreateManyBannerInputEnvelope
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
+  export type SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput | SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    disconnect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    delete?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    update?: SchoolUpdateWithWhereUniqueWithoutAdminAuthorityInput | SchoolUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: SchoolUpdateManyWithWhereWithoutAdminAuthorityInput | SchoolUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
   }
 
   export type BannerVisitorCreateNestedManyWithoutBannerInput = {
@@ -60359,18 +55433,11 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type BannerOnProvinceUncheckedCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput> | BannerOnProvinceCreateWithoutBannerInput[] | BannerOnProvinceUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutBannerInput | BannerOnProvinceCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerOnProvinceCreateManyBannerInputEnvelope
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-  }
-
-  export type BannerOnCityUncheckedCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput> | BannerOnCityCreateWithoutBannerInput[] | BannerOnCityUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutBannerInput | BannerOnCityCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerOnCityCreateManyBannerInputEnvelope
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
+  export type BannerLocationCreateNestedManyWithoutBannerInput = {
+    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
+    createMany?: BannerLocationCreateManyBannerInputEnvelope
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type BannerVisitorUncheckedCreateNestedManyWithoutBannerInput = {
@@ -60380,32 +55447,11 @@ export namespace Prisma {
     connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
-  export type BannerOnProvinceUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput> | BannerOnProvinceCreateWithoutBannerInput[] | BannerOnProvinceUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutBannerInput | BannerOnProvinceCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerOnProvinceUpsertWithWhereUniqueWithoutBannerInput | BannerOnProvinceUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerOnProvinceCreateManyBannerInputEnvelope
-    set?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    disconnect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    delete?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    update?: BannerOnProvinceUpdateWithWhereUniqueWithoutBannerInput | BannerOnProvinceUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerOnProvinceUpdateManyWithWhereWithoutBannerInput | BannerOnProvinceUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-  }
-
-  export type BannerOnCityUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput> | BannerOnCityCreateWithoutBannerInput[] | BannerOnCityUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutBannerInput | BannerOnCityCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerOnCityUpsertWithWhereUniqueWithoutBannerInput | BannerOnCityUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerOnCityCreateManyBannerInputEnvelope
-    set?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    disconnect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    delete?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    update?: BannerOnCityUpdateWithWhereUniqueWithoutBannerInput | BannerOnCityUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerOnCityUpdateManyWithWhereWithoutBannerInput | BannerOnCityUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
+  export type BannerLocationUncheckedCreateNestedManyWithoutBannerInput = {
+    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
+    createMany?: BannerLocationCreateManyBannerInputEnvelope
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type BannerVisitorUpdateManyWithoutBannerNestedInput = {
@@ -60430,32 +55476,18 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutBannerInput, AdminUpdateWithoutBannerInput>, AdminUncheckedUpdateWithoutBannerInput>
   }
 
-  export type BannerOnProvinceUncheckedUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput> | BannerOnProvinceCreateWithoutBannerInput[] | BannerOnProvinceUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnProvinceCreateOrConnectWithoutBannerInput | BannerOnProvinceCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerOnProvinceUpsertWithWhereUniqueWithoutBannerInput | BannerOnProvinceUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerOnProvinceCreateManyBannerInputEnvelope
-    set?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    disconnect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    delete?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    connect?: BannerOnProvinceWhereUniqueInput | BannerOnProvinceWhereUniqueInput[]
-    update?: BannerOnProvinceUpdateWithWhereUniqueWithoutBannerInput | BannerOnProvinceUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerOnProvinceUpdateManyWithWhereWithoutBannerInput | BannerOnProvinceUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-  }
-
-  export type BannerOnCityUncheckedUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput> | BannerOnCityCreateWithoutBannerInput[] | BannerOnCityUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerOnCityCreateOrConnectWithoutBannerInput | BannerOnCityCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerOnCityUpsertWithWhereUniqueWithoutBannerInput | BannerOnCityUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerOnCityCreateManyBannerInputEnvelope
-    set?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    disconnect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    delete?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    connect?: BannerOnCityWhereUniqueInput | BannerOnCityWhereUniqueInput[]
-    update?: BannerOnCityUpdateWithWhereUniqueWithoutBannerInput | BannerOnCityUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerOnCityUpdateManyWithWhereWithoutBannerInput | BannerOnCityUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
+  export type BannerLocationUpdateManyWithoutBannerNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutBannerInput | BannerLocationUpsertWithWhereUniqueWithoutBannerInput[]
+    createMany?: BannerLocationCreateManyBannerInputEnvelope
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutBannerInput | BannerLocationUpdateWithWhereUniqueWithoutBannerInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutBannerInput | BannerLocationUpdateManyWithWhereWithoutBannerInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput = {
@@ -60470,6 +55502,86 @@ export namespace Prisma {
     update?: BannerVisitorUpdateWithWhereUniqueWithoutBannerInput | BannerVisitorUpdateWithWhereUniqueWithoutBannerInput[]
     updateMany?: BannerVisitorUpdateManyWithWhereWithoutBannerInput | BannerVisitorUpdateManyWithWhereWithoutBannerInput[]
     deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutBannerNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutBannerInput | BannerLocationUpsertWithWhereUniqueWithoutBannerInput[]
+    createMany?: BannerLocationCreateManyBannerInputEnvelope
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutBannerInput | BannerLocationUpdateWithWhereUniqueWithoutBannerInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutBannerInput | BannerLocationUpdateManyWithWhereWithoutBannerInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  }
+
+  export type BannerCreateNestedOneWithoutBannerLocationInput = {
+    create?: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
+    connectOrCreate?: BannerCreateOrConnectWithoutBannerLocationInput
+    connect?: BannerWhereUniqueInput
+  }
+
+  export type ProvinceCreateNestedOneWithoutBannerLocationInput = {
+    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
+  export type CityCreateNestedManyWithoutBannerLocationInput = {
+    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type CityUncheckedCreateNestedManyWithoutBannerLocationInput = {
+    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type BannerUpdateOneRequiredWithoutBannerLocationNestedInput = {
+    create?: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
+    connectOrCreate?: BannerCreateOrConnectWithoutBannerLocationInput
+    upsert?: BannerUpsertWithoutBannerLocationInput
+    connect?: BannerWhereUniqueInput
+    update?: XOR<XOR<BannerUpdateToOneWithWhereWithoutBannerLocationInput, BannerUpdateWithoutBannerLocationInput>, BannerUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput = {
+    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput
+    upsert?: ProvinceUpsertWithoutBannerLocationInput
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutBannerLocationInput, ProvinceUpdateWithoutBannerLocationInput>, ProvinceUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type CityUpdateManyWithoutBannerLocationNestedInput = {
+    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutBannerLocationInput | CityUpsertWithWhereUniqueWithoutBannerLocationInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutBannerLocationInput | CityUpdateWithWhereUniqueWithoutBannerLocationInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutBannerLocationInput | CityUpdateManyWithWhereWithoutBannerLocationInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
+  }
+
+  export type CityUncheckedUpdateManyWithoutBannerLocationNestedInput = {
+    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutBannerLocationInput | CityUpsertWithWhereUniqueWithoutBannerLocationInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutBannerLocationInput | CityUpdateWithWhereUniqueWithoutBannerLocationInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutBannerLocationInput | CityUpdateManyWithWhereWithoutBannerLocationInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
   export type BannerCreateNestedOneWithoutVisitorsInput = {
@@ -60899,146 +56011,6 @@ export namespace Prisma {
     update?: XOR<XOR<MultiplayerRoomUpdateToOneWithWhereWithoutMembersInput, MultiplayerRoomUpdateWithoutMembersInput>, MultiplayerRoomUncheckedUpdateWithoutMembersInput>
   }
 
-  export type AccessContentCreateNestedOneWithoutUserAccessesInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput
-    connect?: AccessContentWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutUserAccessesInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type AccessContentUpdateOneRequiredWithoutUserAccessesNestedInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput
-    upsert?: AccessContentUpsertWithoutUserAccessesInput
-    connect?: AccessContentWhereUniqueInput
-    update?: XOR<XOR<AccessContentUpdateToOneWithWhereWithoutUserAccessesInput, AccessContentUpdateWithoutUserAccessesInput>, AccessContentUncheckedUpdateWithoutUserAccessesInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutUserAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput
-    upsert?: UserUpsertWithoutUserAccessesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserAccessesInput, UserUpdateWithoutUserAccessesInput>, UserUncheckedUpdateWithoutUserAccessesInput>
-  }
-
-  export type AdminAuthorityCreateNestedOneWithoutAuthOnCityInput = {
-    create?: XOR<AdminAuthorityCreateWithoutAuthOnCityInput, AdminAuthorityUncheckedCreateWithoutAuthOnCityInput>
-    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAuthOnCityInput
-    connect?: AdminAuthorityWhereUniqueInput
-  }
-
-  export type CityCreateNestedOneWithoutAuthOnCityInput = {
-    create?: XOR<CityCreateWithoutAuthOnCityInput, CityUncheckedCreateWithoutAuthOnCityInput>
-    connectOrCreate?: CityCreateOrConnectWithoutAuthOnCityInput
-    connect?: CityWhereUniqueInput
-  }
-
-  export type AdminAuthorityUpdateOneRequiredWithoutAuthOnCityNestedInput = {
-    create?: XOR<AdminAuthorityCreateWithoutAuthOnCityInput, AdminAuthorityUncheckedCreateWithoutAuthOnCityInput>
-    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAuthOnCityInput
-    upsert?: AdminAuthorityUpsertWithoutAuthOnCityInput
-    connect?: AdminAuthorityWhereUniqueInput
-    update?: XOR<XOR<AdminAuthorityUpdateToOneWithWhereWithoutAuthOnCityInput, AdminAuthorityUpdateWithoutAuthOnCityInput>, AdminAuthorityUncheckedUpdateWithoutAuthOnCityInput>
-  }
-
-  export type CityUpdateOneRequiredWithoutAuthOnCityNestedInput = {
-    create?: XOR<CityCreateWithoutAuthOnCityInput, CityUncheckedCreateWithoutAuthOnCityInput>
-    connectOrCreate?: CityCreateOrConnectWithoutAuthOnCityInput
-    upsert?: CityUpsertWithoutAuthOnCityInput
-    connect?: CityWhereUniqueInput
-    update?: XOR<XOR<CityUpdateToOneWithWhereWithoutAuthOnCityInput, CityUpdateWithoutAuthOnCityInput>, CityUncheckedUpdateWithoutAuthOnCityInput>
-  }
-
-  export type AdminAuthorityCreateNestedOneWithoutAuthOnSchoolInput = {
-    create?: XOR<AdminAuthorityCreateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedCreateWithoutAuthOnSchoolInput>
-    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAuthOnSchoolInput
-    connect?: AdminAuthorityWhereUniqueInput
-  }
-
-  export type SchoolCreateNestedOneWithoutAuthOnSchoolInput = {
-    create?: XOR<SchoolCreateWithoutAuthOnSchoolInput, SchoolUncheckedCreateWithoutAuthOnSchoolInput>
-    connectOrCreate?: SchoolCreateOrConnectWithoutAuthOnSchoolInput
-    connect?: SchoolWhereUniqueInput
-  }
-
-  export type AdminAuthorityUpdateOneRequiredWithoutAuthOnSchoolNestedInput = {
-    create?: XOR<AdminAuthorityCreateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedCreateWithoutAuthOnSchoolInput>
-    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAuthOnSchoolInput
-    upsert?: AdminAuthorityUpsertWithoutAuthOnSchoolInput
-    connect?: AdminAuthorityWhereUniqueInput
-    update?: XOR<XOR<AdminAuthorityUpdateToOneWithWhereWithoutAuthOnSchoolInput, AdminAuthorityUpdateWithoutAuthOnSchoolInput>, AdminAuthorityUncheckedUpdateWithoutAuthOnSchoolInput>
-  }
-
-  export type SchoolUpdateOneRequiredWithoutAuthOnSchoolNestedInput = {
-    create?: XOR<SchoolCreateWithoutAuthOnSchoolInput, SchoolUncheckedCreateWithoutAuthOnSchoolInput>
-    connectOrCreate?: SchoolCreateOrConnectWithoutAuthOnSchoolInput
-    upsert?: SchoolUpsertWithoutAuthOnSchoolInput
-    connect?: SchoolWhereUniqueInput
-    update?: XOR<XOR<SchoolUpdateToOneWithWhereWithoutAuthOnSchoolInput, SchoolUpdateWithoutAuthOnSchoolInput>, SchoolUncheckedUpdateWithoutAuthOnSchoolInput>
-  }
-
-  export type BannerCreateNestedOneWithoutBannerOnProvinceInput = {
-    create?: XOR<BannerCreateWithoutBannerOnProvinceInput, BannerUncheckedCreateWithoutBannerOnProvinceInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerOnProvinceInput
-    connect?: BannerWhereUniqueInput
-  }
-
-  export type ProvinceCreateNestedOneWithoutBannerOnProvinceInput = {
-    create?: XOR<ProvinceCreateWithoutBannerOnProvinceInput, ProvinceUncheckedCreateWithoutBannerOnProvinceInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerOnProvinceInput
-    connect?: ProvinceWhereUniqueInput
-  }
-
-  export type BannerUpdateOneRequiredWithoutBannerOnProvinceNestedInput = {
-    create?: XOR<BannerCreateWithoutBannerOnProvinceInput, BannerUncheckedCreateWithoutBannerOnProvinceInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerOnProvinceInput
-    upsert?: BannerUpsertWithoutBannerOnProvinceInput
-    connect?: BannerWhereUniqueInput
-    update?: XOR<XOR<BannerUpdateToOneWithWhereWithoutBannerOnProvinceInput, BannerUpdateWithoutBannerOnProvinceInput>, BannerUncheckedUpdateWithoutBannerOnProvinceInput>
-  }
-
-  export type ProvinceUpdateOneRequiredWithoutBannerOnProvinceNestedInput = {
-    create?: XOR<ProvinceCreateWithoutBannerOnProvinceInput, ProvinceUncheckedCreateWithoutBannerOnProvinceInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerOnProvinceInput
-    upsert?: ProvinceUpsertWithoutBannerOnProvinceInput
-    connect?: ProvinceWhereUniqueInput
-    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutBannerOnProvinceInput, ProvinceUpdateWithoutBannerOnProvinceInput>, ProvinceUncheckedUpdateWithoutBannerOnProvinceInput>
-  }
-
-  export type BannerCreateNestedOneWithoutBannerOnCityInput = {
-    create?: XOR<BannerCreateWithoutBannerOnCityInput, BannerUncheckedCreateWithoutBannerOnCityInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerOnCityInput
-    connect?: BannerWhereUniqueInput
-  }
-
-  export type CityCreateNestedOneWithoutBannerOnCityInput = {
-    create?: XOR<CityCreateWithoutBannerOnCityInput, CityUncheckedCreateWithoutBannerOnCityInput>
-    connectOrCreate?: CityCreateOrConnectWithoutBannerOnCityInput
-    connect?: CityWhereUniqueInput
-  }
-
-  export type BannerUpdateOneRequiredWithoutBannerOnCityNestedInput = {
-    create?: XOR<BannerCreateWithoutBannerOnCityInput, BannerUncheckedCreateWithoutBannerOnCityInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerOnCityInput
-    upsert?: BannerUpsertWithoutBannerOnCityInput
-    connect?: BannerWhereUniqueInput
-    update?: XOR<XOR<BannerUpdateToOneWithWhereWithoutBannerOnCityInput, BannerUpdateWithoutBannerOnCityInput>, BannerUncheckedUpdateWithoutBannerOnCityInput>
-  }
-
-  export type CityUpdateOneRequiredWithoutBannerOnCityNestedInput = {
-    create?: XOR<CityCreateWithoutBannerOnCityInput, CityUncheckedCreateWithoutBannerOnCityInput>
-    connectOrCreate?: CityCreateOrConnectWithoutBannerOnCityInput
-    upsert?: CityUpsertWithoutBannerOnCityInput
-    connect?: CityWhereUniqueInput
-    update?: XOR<XOR<CityUpdateToOneWithWhereWithoutBannerOnCityInput, CityUpdateWithoutBannerOnCityInput>, CityUncheckedUpdateWithoutBannerOnCityInput>
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -61263,6 +56235,23 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumRoleNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRoleNullableFilter<$PrismaModel> | $Enums.Role | null
+  }
+
+  export type NestedEnumRoleNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRoleNullableWithAggregatesFilter<$PrismaModel> | $Enums.Role | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumRoleNullableFilter<$PrismaModel>
+    _max?: NestedEnumRoleNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumOperationFilter<$PrismaModel = never> = {
     equals?: $Enums.Operation | EnumOperationFieldRefInput<$PrismaModel>
     in?: $Enums.Operation[] | ListEnumOperationFieldRefInput<$PrismaModel>
@@ -61381,8 +56370,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     schools?: SchoolCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutProvinceInput = {
@@ -61395,8 +56384,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutProvinceInput = {
@@ -61419,7 +56408,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     city: CityCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolUncheckedCreateWithoutProvinceInput = {
@@ -61432,7 +56421,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolCreateOrConnectWithoutProvinceInput = {
@@ -61474,7 +56463,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -61516,7 +56505,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -61539,38 +56528,20 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BannerOnProvinceCreateWithoutProvinceInput = {
-    banner: BannerCreateNestedOneWithoutBannerOnProvinceInput
-  }
-
-  export type BannerOnProvinceUncheckedCreateWithoutProvinceInput = {
-    bannerId: string
-  }
-
-  export type BannerOnProvinceCreateOrConnectWithoutProvinceInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    create: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput>
-  }
-
-  export type BannerOnProvinceCreateManyProvinceInputEnvelope = {
-    data: BannerOnProvinceCreateManyProvinceInput | BannerOnProvinceCreateManyProvinceInput[]
-    skipDuplicates?: boolean
-  }
-
   export type AdminAuthorityCreateWithoutProvinceInput = {
     id?: string
     grades?: AdminAuthorityCreategradesInput | number[]
     admin: AdminCreateNestedOneWithoutAuthorityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutAuthInput
+    cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityUncheckedCreateWithoutProvinceInput = {
     id?: string
     adminId: string
     grades?: AdminAuthorityCreategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutAuthInput
+    cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityCreateOrConnectWithoutProvinceInput = {
@@ -61580,6 +56551,28 @@ export namespace Prisma {
 
   export type AdminAuthorityCreateManyProvinceInputEnvelope = {
     data: AdminAuthorityCreateManyProvinceInput | AdminAuthorityCreateManyProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BannerLocationCreateWithoutProvinceInput = {
+    id?: string
+    banner: BannerCreateNestedOneWithoutBannerLocationInput
+    cities?: CityCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationUncheckedCreateWithoutProvinceInput = {
+    id?: string
+    bannerId: string
+    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationCreateOrConnectWithoutProvinceInput = {
+    where: BannerLocationWhereUniqueInput
+    create: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type BannerLocationCreateManyProvinceInputEnvelope = {
+    data: BannerLocationCreateManyProvinceInput | BannerLocationCreateManyProvinceInput[]
     skipDuplicates?: boolean
   }
 
@@ -61693,30 +56686,6 @@ export namespace Prisma {
     lastIdZonePosition?: StringFilter<"User"> | string
   }
 
-  export type BannerOnProvinceUpsertWithWhereUniqueWithoutProvinceInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    update: XOR<BannerOnProvinceUpdateWithoutProvinceInput, BannerOnProvinceUncheckedUpdateWithoutProvinceInput>
-    create: XOR<BannerOnProvinceCreateWithoutProvinceInput, BannerOnProvinceUncheckedCreateWithoutProvinceInput>
-  }
-
-  export type BannerOnProvinceUpdateWithWhereUniqueWithoutProvinceInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    data: XOR<BannerOnProvinceUpdateWithoutProvinceInput, BannerOnProvinceUncheckedUpdateWithoutProvinceInput>
-  }
-
-  export type BannerOnProvinceUpdateManyWithWhereWithoutProvinceInput = {
-    where: BannerOnProvinceScalarWhereInput
-    data: XOR<BannerOnProvinceUpdateManyMutationInput, BannerOnProvinceUncheckedUpdateManyWithoutProvinceInput>
-  }
-
-  export type BannerOnProvinceScalarWhereInput = {
-    AND?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-    OR?: BannerOnProvinceScalarWhereInput[]
-    NOT?: BannerOnProvinceScalarWhereInput | BannerOnProvinceScalarWhereInput[]
-    bannerId?: StringFilter<"BannerOnProvince"> | string
-    provinceId?: StringFilter<"BannerOnProvince"> | string
-  }
-
   export type AdminAuthorityUpsertWithWhereUniqueWithoutProvinceInput = {
     where: AdminAuthorityWhereUniqueInput
     update: XOR<AdminAuthorityUpdateWithoutProvinceInput, AdminAuthorityUncheckedUpdateWithoutProvinceInput>
@@ -61739,8 +56708,33 @@ export namespace Prisma {
     NOT?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
     id?: StringFilter<"AdminAuthority"> | string
     adminId?: StringFilter<"AdminAuthority"> | string
-    authProvinceId?: StringFilter<"AdminAuthority"> | string
+    provinceId?: StringFilter<"AdminAuthority"> | string
     grades?: IntNullableListFilter<"AdminAuthority">
+  }
+
+  export type BannerLocationUpsertWithWhereUniqueWithoutProvinceInput = {
+    where: BannerLocationWhereUniqueInput
+    update: XOR<BannerLocationUpdateWithoutProvinceInput, BannerLocationUncheckedUpdateWithoutProvinceInput>
+    create: XOR<BannerLocationCreateWithoutProvinceInput, BannerLocationUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type BannerLocationUpdateWithWhereUniqueWithoutProvinceInput = {
+    where: BannerLocationWhereUniqueInput
+    data: XOR<BannerLocationUpdateWithoutProvinceInput, BannerLocationUncheckedUpdateWithoutProvinceInput>
+  }
+
+  export type BannerLocationUpdateManyWithWhereWithoutProvinceInput = {
+    where: BannerLocationScalarWhereInput
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutProvinceInput>
+  }
+
+  export type BannerLocationScalarWhereInput = {
+    AND?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+    OR?: BannerLocationScalarWhereInput[]
+    NOT?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+    id?: StringFilter<"BannerLocation"> | string
+    bannerId?: StringFilter<"BannerLocation"> | string
+    provinceId?: StringFilter<"BannerLocation"> | string
   }
 
   export type ProvinceCreateWithoutCitiesInput = {
@@ -61753,8 +56747,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutCitiesInput = {
@@ -61767,8 +56761,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutCitiesInput = {
@@ -61786,7 +56780,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolUncheckedCreateWithoutCityInput = {
@@ -61799,7 +56793,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolCreateOrConnectWithoutCityInput = {
@@ -61841,7 +56835,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -61883,7 +56877,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -61906,40 +56900,42 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AuthOnCityCreateWithoutCityInput = {
-    auth: AdminAuthorityCreateNestedOneWithoutAuthOnCityInput
+  export type AdminAuthorityCreateWithoutCitiesInput = {
+    id?: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    admin: AdminCreateNestedOneWithoutAuthorityInput
+    province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
+    schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
-  export type AuthOnCityUncheckedCreateWithoutCityInput = {
-    authId: string
+  export type AdminAuthorityUncheckedCreateWithoutCitiesInput = {
+    id?: string
+    adminId: string
+    provinceId: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
-  export type AuthOnCityCreateOrConnectWithoutCityInput = {
-    where: AuthOnCityWhereUniqueInput
-    create: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput>
+  export type AdminAuthorityCreateOrConnectWithoutCitiesInput = {
+    where: AdminAuthorityWhereUniqueInput
+    create: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput>
   }
 
-  export type AuthOnCityCreateManyCityInputEnvelope = {
-    data: AuthOnCityCreateManyCityInput | AuthOnCityCreateManyCityInput[]
-    skipDuplicates?: boolean
+  export type BannerLocationCreateWithoutCitiesInput = {
+    id?: string
+    banner: BannerCreateNestedOneWithoutBannerLocationInput
+    province: ProvinceCreateNestedOneWithoutBannerLocationInput
   }
 
-  export type BannerOnCityCreateWithoutCityInput = {
-    banner: BannerCreateNestedOneWithoutBannerOnCityInput
-  }
-
-  export type BannerOnCityUncheckedCreateWithoutCityInput = {
+  export type BannerLocationUncheckedCreateWithoutCitiesInput = {
+    id?: string
     bannerId: string
+    provinceId: string
   }
 
-  export type BannerOnCityCreateOrConnectWithoutCityInput = {
-    where: BannerOnCityWhereUniqueInput
-    create: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput>
-  }
-
-  export type BannerOnCityCreateManyCityInputEnvelope = {
-    data: BannerOnCityCreateManyCityInput | BannerOnCityCreateManyCityInput[]
-    skipDuplicates?: boolean
+  export type BannerLocationCreateOrConnectWithoutCitiesInput = {
+    where: BannerLocationWhereUniqueInput
+    create: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput>
   }
 
   export type ProvinceUpsertWithoutCitiesInput = {
@@ -61963,8 +56959,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutCitiesInput = {
@@ -61977,8 +56973,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutCityInput = {
@@ -62013,52 +57009,36 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCityInput>
   }
 
-  export type AuthOnCityUpsertWithWhereUniqueWithoutCityInput = {
-    where: AuthOnCityWhereUniqueInput
-    update: XOR<AuthOnCityUpdateWithoutCityInput, AuthOnCityUncheckedUpdateWithoutCityInput>
-    create: XOR<AuthOnCityCreateWithoutCityInput, AuthOnCityUncheckedCreateWithoutCityInput>
+  export type AdminAuthorityUpsertWithWhereUniqueWithoutCitiesInput = {
+    where: AdminAuthorityWhereUniqueInput
+    update: XOR<AdminAuthorityUpdateWithoutCitiesInput, AdminAuthorityUncheckedUpdateWithoutCitiesInput>
+    create: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput>
   }
 
-  export type AuthOnCityUpdateWithWhereUniqueWithoutCityInput = {
-    where: AuthOnCityWhereUniqueInput
-    data: XOR<AuthOnCityUpdateWithoutCityInput, AuthOnCityUncheckedUpdateWithoutCityInput>
+  export type AdminAuthorityUpdateWithWhereUniqueWithoutCitiesInput = {
+    where: AdminAuthorityWhereUniqueInput
+    data: XOR<AdminAuthorityUpdateWithoutCitiesInput, AdminAuthorityUncheckedUpdateWithoutCitiesInput>
   }
 
-  export type AuthOnCityUpdateManyWithWhereWithoutCityInput = {
-    where: AuthOnCityScalarWhereInput
-    data: XOR<AuthOnCityUpdateManyMutationInput, AuthOnCityUncheckedUpdateManyWithoutCityInput>
+  export type AdminAuthorityUpdateManyWithWhereWithoutCitiesInput = {
+    where: AdminAuthorityScalarWhereInput
+    data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutCitiesInput>
   }
 
-  export type AuthOnCityScalarWhereInput = {
-    AND?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
-    OR?: AuthOnCityScalarWhereInput[]
-    NOT?: AuthOnCityScalarWhereInput | AuthOnCityScalarWhereInput[]
-    authId?: StringFilter<"AuthOnCity"> | string
-    cityId?: StringFilter<"AuthOnCity"> | string
+  export type BannerLocationUpsertWithWhereUniqueWithoutCitiesInput = {
+    where: BannerLocationWhereUniqueInput
+    update: XOR<BannerLocationUpdateWithoutCitiesInput, BannerLocationUncheckedUpdateWithoutCitiesInput>
+    create: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput>
   }
 
-  export type BannerOnCityUpsertWithWhereUniqueWithoutCityInput = {
-    where: BannerOnCityWhereUniqueInput
-    update: XOR<BannerOnCityUpdateWithoutCityInput, BannerOnCityUncheckedUpdateWithoutCityInput>
-    create: XOR<BannerOnCityCreateWithoutCityInput, BannerOnCityUncheckedCreateWithoutCityInput>
+  export type BannerLocationUpdateWithWhereUniqueWithoutCitiesInput = {
+    where: BannerLocationWhereUniqueInput
+    data: XOR<BannerLocationUpdateWithoutCitiesInput, BannerLocationUncheckedUpdateWithoutCitiesInput>
   }
 
-  export type BannerOnCityUpdateWithWhereUniqueWithoutCityInput = {
-    where: BannerOnCityWhereUniqueInput
-    data: XOR<BannerOnCityUpdateWithoutCityInput, BannerOnCityUncheckedUpdateWithoutCityInput>
-  }
-
-  export type BannerOnCityUpdateManyWithWhereWithoutCityInput = {
-    where: BannerOnCityScalarWhereInput
-    data: XOR<BannerOnCityUpdateManyMutationInput, BannerOnCityUncheckedUpdateManyWithoutCityInput>
-  }
-
-  export type BannerOnCityScalarWhereInput = {
-    AND?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
-    OR?: BannerOnCityScalarWhereInput[]
-    NOT?: BannerOnCityScalarWhereInput | BannerOnCityScalarWhereInput[]
-    bannerId?: StringFilter<"BannerOnCity"> | string
-    cityId?: StringFilter<"BannerOnCity"> | string
+  export type BannerLocationUpdateManyWithWhereWithoutCitiesInput = {
+    where: BannerLocationScalarWhereInput
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutCitiesInput>
   }
 
   export type CityCreateWithoutSchoolsInput = {
@@ -62071,8 +57051,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     province: ProvinceCreateNestedOneWithoutCitiesInput
     users?: UserCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutSchoolsInput = {
@@ -62085,8 +57065,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutSchoolsInput = {
@@ -62104,8 +57084,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     cities?: CityCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutSchoolsInput = {
@@ -62118,8 +57098,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutSchoolsInput = {
@@ -62156,7 +57136,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -62198,7 +57178,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -62221,22 +57201,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AuthOnSchoolCreateWithoutSchoolInput = {
-    auth: AdminAuthorityCreateNestedOneWithoutAuthOnSchoolInput
+  export type AdminAuthorityCreateWithoutSchoolsInput = {
+    id?: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    admin: AdminCreateNestedOneWithoutAuthorityInput
+    province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
+    cities?: CityCreateNestedManyWithoutAdminAuthorityInput
   }
 
-  export type AuthOnSchoolUncheckedCreateWithoutSchoolInput = {
-    authId: string
+  export type AdminAuthorityUncheckedCreateWithoutSchoolsInput = {
+    id?: string
+    adminId: string
+    provinceId: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
-  export type AuthOnSchoolCreateOrConnectWithoutSchoolInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    create: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput>
-  }
-
-  export type AuthOnSchoolCreateManySchoolInputEnvelope = {
-    data: AuthOnSchoolCreateManySchoolInput | AuthOnSchoolCreateManySchoolInput[]
-    skipDuplicates?: boolean
+  export type AdminAuthorityCreateOrConnectWithoutSchoolsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    create: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput>
   }
 
   export type CityUpsertWithoutSchoolsInput = {
@@ -62260,8 +57243,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutSchoolsInput = {
@@ -62274,8 +57257,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type ProvinceUpsertWithoutSchoolsInput = {
@@ -62299,8 +57282,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutSchoolsInput = {
@@ -62313,8 +57296,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutSchoolInput = {
@@ -62333,28 +57316,20 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutSchoolInput>
   }
 
-  export type AuthOnSchoolUpsertWithWhereUniqueWithoutSchoolInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    update: XOR<AuthOnSchoolUpdateWithoutSchoolInput, AuthOnSchoolUncheckedUpdateWithoutSchoolInput>
-    create: XOR<AuthOnSchoolCreateWithoutSchoolInput, AuthOnSchoolUncheckedCreateWithoutSchoolInput>
+  export type AdminAuthorityUpsertWithWhereUniqueWithoutSchoolsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    update: XOR<AdminAuthorityUpdateWithoutSchoolsInput, AdminAuthorityUncheckedUpdateWithoutSchoolsInput>
+    create: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput>
   }
 
-  export type AuthOnSchoolUpdateWithWhereUniqueWithoutSchoolInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    data: XOR<AuthOnSchoolUpdateWithoutSchoolInput, AuthOnSchoolUncheckedUpdateWithoutSchoolInput>
+  export type AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    data: XOR<AdminAuthorityUpdateWithoutSchoolsInput, AdminAuthorityUncheckedUpdateWithoutSchoolsInput>
   }
 
-  export type AuthOnSchoolUpdateManyWithWhereWithoutSchoolInput = {
-    where: AuthOnSchoolScalarWhereInput
-    data: XOR<AuthOnSchoolUpdateManyMutationInput, AuthOnSchoolUncheckedUpdateManyWithoutSchoolInput>
-  }
-
-  export type AuthOnSchoolScalarWhereInput = {
-    AND?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
-    OR?: AuthOnSchoolScalarWhereInput[]
-    NOT?: AuthOnSchoolScalarWhereInput | AuthOnSchoolScalarWhereInput[]
-    authId?: StringFilter<"AuthOnSchool"> | string
-    schoolId?: StringFilter<"AuthOnSchool"> | string
+  export type AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput = {
+    where: AdminAuthorityScalarWhereInput
+    data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutSchoolsInput>
   }
 
   export type UserCreateWithoutOwnedAccessesInput = {
@@ -62386,7 +57361,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -62428,7 +57403,7 @@ export namespace Prisma {
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -62446,22 +57421,93 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutOwnedAccessesInput, UserUncheckedCreateWithoutOwnedAccessesInput>
   }
 
-  export type UserOnAccessContentCreateWithoutAccessContentInput = {
-    user: UserCreateNestedOneWithoutUserAccessesInput
+  export type UserCreateWithoutUserAccessesInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity?: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: number
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    device?: DeviceCreateNestedOneWithoutUserInput
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
   }
 
-  export type UserOnAccessContentUncheckedCreateWithoutAccessContentInput = {
-    userId: string
+  export type UserUncheckedCreateWithoutUserAccessesInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity?: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: number
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserOnAccessContentCreateOrConnectWithoutAccessContentInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    create: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput>
-  }
-
-  export type UserOnAccessContentCreateManyAccessContentInputEnvelope = {
-    data: UserOnAccessContentCreateManyAccessContentInput | UserOnAccessContentCreateManyAccessContentInput[]
-    skipDuplicates?: boolean
+  export type UserCreateOrConnectWithoutUserAccessesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
   }
 
   export type UserCreateWithoutRedeemedAccessesInput = {
@@ -62494,7 +57540,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
@@ -62536,7 +57582,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
@@ -62593,7 +57639,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -62635,7 +57681,7 @@ export namespace Prisma {
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -62648,28 +57694,20 @@ export namespace Prisma {
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserOnAccessContentUpsertWithWhereUniqueWithoutAccessContentInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    update: XOR<UserOnAccessContentUpdateWithoutAccessContentInput, UserOnAccessContentUncheckedUpdateWithoutAccessContentInput>
-    create: XOR<UserOnAccessContentCreateWithoutAccessContentInput, UserOnAccessContentUncheckedCreateWithoutAccessContentInput>
+  export type UserUpsertWithWhereUniqueWithoutUserAccessesInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
+    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
   }
 
-  export type UserOnAccessContentUpdateWithWhereUniqueWithoutAccessContentInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    data: XOR<UserOnAccessContentUpdateWithoutAccessContentInput, UserOnAccessContentUncheckedUpdateWithoutAccessContentInput>
+  export type UserUpdateWithWhereUniqueWithoutUserAccessesInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
   }
 
-  export type UserOnAccessContentUpdateManyWithWhereWithoutAccessContentInput = {
-    where: UserOnAccessContentScalarWhereInput
-    data: XOR<UserOnAccessContentUpdateManyMutationInput, UserOnAccessContentUncheckedUpdateManyWithoutAccessContentInput>
-  }
-
-  export type UserOnAccessContentScalarWhereInput = {
-    AND?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
-    OR?: UserOnAccessContentScalarWhereInput[]
-    NOT?: UserOnAccessContentScalarWhereInput | UserOnAccessContentScalarWhereInput[]
-    userId?: StringFilter<"UserOnAccessContent"> | string
-    accessContentId?: StringFilter<"UserOnAccessContent"> | string
+  export type UserUpdateManyWithWhereWithoutUserAccessesInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutUserAccessesInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput = {
@@ -62725,7 +57763,7 @@ export namespace Prisma {
     zones?: AccessContentCreatezonesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
     redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
   }
 
@@ -62737,7 +57775,7 @@ export namespace Prisma {
     zones?: AccessContentCreatezonesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
     redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
   }
 
@@ -62761,8 +57799,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutUsersInput = {
@@ -62775,8 +57813,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutUsersInput = {
@@ -62794,8 +57832,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutUsersInput = {
@@ -62808,8 +57846,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutUsersInput = {
@@ -62827,7 +57865,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     city: CityCreateNestedOneWithoutSchoolsInput
     province: ProvinceCreateNestedOneWithoutSchoolsInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolUncheckedCreateWithoutUsersInput = {
@@ -62840,7 +57878,7 @@ export namespace Prisma {
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
   }
 
   export type SchoolCreateOrConnectWithoutUsersInput = {
@@ -62851,9 +57889,9 @@ export namespace Prisma {
   export type AdminCreateWithoutUserInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
@@ -62866,9 +57904,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutUserInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
@@ -62883,22 +57921,33 @@ export namespace Prisma {
     create: XOR<AdminCreateWithoutUserInput, AdminUncheckedCreateWithoutUserInput>
   }
 
-  export type UserOnAccessContentCreateWithoutUserInput = {
-    accessContent: AccessContentCreateNestedOneWithoutUserAccessesInput
+  export type AccessContentCreateWithoutUserAccessesInput = {
+    id?: string
+    expired: Date | string
+    quota: number
+    currentQuota: number
+    zones?: AccessContentCreatezonesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    owner?: UserCreateNestedOneWithoutOwnedAccessesInput
+    redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
   }
 
-  export type UserOnAccessContentUncheckedCreateWithoutUserInput = {
-    accessContentId: string
+  export type AccessContentUncheckedCreateWithoutUserAccessesInput = {
+    id?: string
+    expired: Date | string
+    quota: number
+    currentQuota: number
+    ownerId?: string | null
+    zones?: AccessContentCreatezonesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
   }
 
-  export type UserOnAccessContentCreateOrConnectWithoutUserInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    create: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserOnAccessContentCreateManyUserInputEnvelope = {
-    data: UserOnAccessContentCreateManyUserInput | UserOnAccessContentCreateManyUserInput[]
-    skipDuplicates?: boolean
+  export type AccessContentCreateOrConnectWithoutUserAccessesInput = {
+    where: AccessContentWhereUniqueInput
+    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
   }
 
   export type ZoneCreateWithoutUserInput = {
@@ -62952,7 +58001,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
   }
 
   export type AccessContentUncheckedCreateWithoutRedemeersInput = {
@@ -62964,7 +58013,7 @@ export namespace Prisma {
     zones?: AccessContentCreatezonesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutAccessContentInput
+    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
   }
 
   export type AccessContentCreateOrConnectWithoutRedemeersInput = {
@@ -63303,8 +58352,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutUsersInput = {
@@ -63317,8 +58366,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type ProvinceUpsertWithoutUsersInput = {
@@ -63342,8 +58391,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutUsersInput = {
@@ -63356,8 +58405,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithoutUsersInput = {
@@ -63381,7 +58430,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
 
   export type SchoolUncheckedUpdateWithoutUsersInput = {
@@ -63394,7 +58443,7 @@ export namespace Prisma {
     provinceId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
   }
 
   export type AdminUpsertWithoutUserInput = {
@@ -63411,9 +58460,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
@@ -63426,9 +58475,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
@@ -63438,20 +58487,20 @@ export namespace Prisma {
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
-  export type UserOnAccessContentUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    update: XOR<UserOnAccessContentUpdateWithoutUserInput, UserOnAccessContentUncheckedUpdateWithoutUserInput>
-    create: XOR<UserOnAccessContentCreateWithoutUserInput, UserOnAccessContentUncheckedCreateWithoutUserInput>
+  export type AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput = {
+    where: AccessContentWhereUniqueInput
+    update: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
+    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
   }
 
-  export type UserOnAccessContentUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserOnAccessContentWhereUniqueInput
-    data: XOR<UserOnAccessContentUpdateWithoutUserInput, UserOnAccessContentUncheckedUpdateWithoutUserInput>
+  export type AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput = {
+    where: AccessContentWhereUniqueInput
+    data: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
   }
 
-  export type UserOnAccessContentUpdateManyWithWhereWithoutUserInput = {
-    where: UserOnAccessContentScalarWhereInput
-    data: XOR<UserOnAccessContentUpdateManyMutationInput, UserOnAccessContentUncheckedUpdateManyWithoutUserInput>
+  export type AccessContentUpdateManyWithWhereWithoutUserAccessesInput = {
+    where: AccessContentScalarWhereInput
+    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyWithoutUserAccessesInput>
   }
 
   export type ZoneUpsertWithWhereUniqueWithoutUserInput = {
@@ -63774,7 +58823,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -63816,7 +58865,7 @@ export namespace Prisma {
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -63874,7 +58923,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -63916,7 +58965,7 @@ export namespace Prisma {
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -63959,7 +59008,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
@@ -64001,7 +59050,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
@@ -64143,7 +59192,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
@@ -64185,7 +59234,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
@@ -65075,7 +60124,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
@@ -65117,7 +60166,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
@@ -65175,7 +60224,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
@@ -65217,7 +60266,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
@@ -65258,7 +60307,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -65300,7 +60349,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -65322,16 +60371,16 @@ export namespace Prisma {
     id?: string
     grades?: AdminAuthorityCreategradesInput | number[]
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutAuthInput
+    cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityUncheckedCreateWithoutAdminInput = {
     id?: string
-    authProvinceId: string
+    provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutAuthInput
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutAuthInput
+    cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityCreateOrConnectWithoutAdminInput = {
@@ -65373,9 +60422,8 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutBannerInput
     visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateWithoutAdminInput = {
@@ -65385,9 +60433,8 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutBannerInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerCreateOrConnectWithoutAdminInput = {
@@ -65512,7 +60559,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -65554,7 +60601,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -65707,9 +60754,9 @@ export namespace Prisma {
   export type AdminCreateWithoutOperationHistoriesInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -65722,9 +60769,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -65753,9 +60800,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutOperationHistoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -65768,9 +60815,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -65783,9 +60830,9 @@ export namespace Prisma {
   export type AdminCreateWithoutAuthorityInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -65798,9 +60845,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutAuthorityInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -65826,7 +60873,7 @@ export namespace Prisma {
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutAdminAuthorityInput = {
@@ -65840,7 +60887,7 @@ export namespace Prisma {
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutAdminAuthorityInput = {
@@ -65848,40 +60895,68 @@ export namespace Prisma {
     create: XOR<ProvinceCreateWithoutAdminAuthorityInput, ProvinceUncheckedCreateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnCityCreateWithoutAuthInput = {
-    city: CityCreateNestedOneWithoutAuthOnCityInput
+  export type CityCreateWithoutAdminAuthorityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutCitiesInput
+    schools?: SchoolCreateNestedManyWithoutCityInput
+    users?: UserCreateNestedManyWithoutCityInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
 
-  export type AuthOnCityUncheckedCreateWithoutAuthInput = {
+  export type CityUncheckedCreateWithoutAdminAuthorityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    users?: UserUncheckedCreateNestedManyWithoutCityInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityCreateOrConnectWithoutAdminAuthorityInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput>
+  }
+
+  export type SchoolCreateWithoutAdminAuthorityInput = {
+    id?: string
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: CityCreateNestedOneWithoutSchoolsInput
+    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    users?: UserCreateNestedManyWithoutSchoolInput
+  }
+
+  export type SchoolUncheckedCreateWithoutAdminAuthorityInput = {
+    id?: string
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
     cityId: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutSchoolInput
   }
 
-  export type AuthOnCityCreateOrConnectWithoutAuthInput = {
-    where: AuthOnCityWhereUniqueInput
-    create: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput>
-  }
-
-  export type AuthOnCityCreateManyAuthInputEnvelope = {
-    data: AuthOnCityCreateManyAuthInput | AuthOnCityCreateManyAuthInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type AuthOnSchoolCreateWithoutAuthInput = {
-    school: SchoolCreateNestedOneWithoutAuthOnSchoolInput
-  }
-
-  export type AuthOnSchoolUncheckedCreateWithoutAuthInput = {
-    schoolId: string
-  }
-
-  export type AuthOnSchoolCreateOrConnectWithoutAuthInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    create: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput>
-  }
-
-  export type AuthOnSchoolCreateManyAuthInputEnvelope = {
-    data: AuthOnSchoolCreateManyAuthInput | AuthOnSchoolCreateManyAuthInput[]
-    skipDuplicates?: boolean
+  export type SchoolCreateOrConnectWithoutAdminAuthorityInput = {
+    where: SchoolWhereUniqueInput
+    create: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput>
   }
 
   export type AdminUpsertWithoutAuthorityInput = {
@@ -65898,9 +60973,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -65913,9 +60988,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -65947,7 +61022,7 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -65961,75 +61036,39 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
-  export type AuthOnCityUpsertWithWhereUniqueWithoutAuthInput = {
-    where: AuthOnCityWhereUniqueInput
-    update: XOR<AuthOnCityUpdateWithoutAuthInput, AuthOnCityUncheckedUpdateWithoutAuthInput>
-    create: XOR<AuthOnCityCreateWithoutAuthInput, AuthOnCityUncheckedCreateWithoutAuthInput>
+  export type CityUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: CityWhereUniqueInput
+    update: XOR<CityUpdateWithoutAdminAuthorityInput, CityUncheckedUpdateWithoutAdminAuthorityInput>
+    create: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnCityUpdateWithWhereUniqueWithoutAuthInput = {
-    where: AuthOnCityWhereUniqueInput
-    data: XOR<AuthOnCityUpdateWithoutAuthInput, AuthOnCityUncheckedUpdateWithoutAuthInput>
+  export type CityUpdateWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: CityWhereUniqueInput
+    data: XOR<CityUpdateWithoutAdminAuthorityInput, CityUncheckedUpdateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnCityUpdateManyWithWhereWithoutAuthInput = {
-    where: AuthOnCityScalarWhereInput
-    data: XOR<AuthOnCityUpdateManyMutationInput, AuthOnCityUncheckedUpdateManyWithoutAuthInput>
+  export type CityUpdateManyWithWhereWithoutAdminAuthorityInput = {
+    where: CityScalarWhereInput
+    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnSchoolUpsertWithWhereUniqueWithoutAuthInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    update: XOR<AuthOnSchoolUpdateWithoutAuthInput, AuthOnSchoolUncheckedUpdateWithoutAuthInput>
-    create: XOR<AuthOnSchoolCreateWithoutAuthInput, AuthOnSchoolUncheckedCreateWithoutAuthInput>
+  export type SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: SchoolWhereUniqueInput
+    update: XOR<SchoolUpdateWithoutAdminAuthorityInput, SchoolUncheckedUpdateWithoutAdminAuthorityInput>
+    create: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnSchoolUpdateWithWhereUniqueWithoutAuthInput = {
-    where: AuthOnSchoolWhereUniqueInput
-    data: XOR<AuthOnSchoolUpdateWithoutAuthInput, AuthOnSchoolUncheckedUpdateWithoutAuthInput>
+  export type SchoolUpdateWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: SchoolWhereUniqueInput
+    data: XOR<SchoolUpdateWithoutAdminAuthorityInput, SchoolUncheckedUpdateWithoutAdminAuthorityInput>
   }
 
-  export type AuthOnSchoolUpdateManyWithWhereWithoutAuthInput = {
-    where: AuthOnSchoolScalarWhereInput
-    data: XOR<AuthOnSchoolUpdateManyMutationInput, AuthOnSchoolUncheckedUpdateManyWithoutAuthInput>
-  }
-
-  export type BannerOnProvinceCreateWithoutBannerInput = {
-    province: ProvinceCreateNestedOneWithoutBannerOnProvinceInput
-  }
-
-  export type BannerOnProvinceUncheckedCreateWithoutBannerInput = {
-    provinceId: string
-  }
-
-  export type BannerOnProvinceCreateOrConnectWithoutBannerInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    create: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput>
-  }
-
-  export type BannerOnProvinceCreateManyBannerInputEnvelope = {
-    data: BannerOnProvinceCreateManyBannerInput | BannerOnProvinceCreateManyBannerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BannerOnCityCreateWithoutBannerInput = {
-    city: CityCreateNestedOneWithoutBannerOnCityInput
-  }
-
-  export type BannerOnCityUncheckedCreateWithoutBannerInput = {
-    cityId: string
-  }
-
-  export type BannerOnCityCreateOrConnectWithoutBannerInput = {
-    where: BannerOnCityWhereUniqueInput
-    create: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput>
-  }
-
-  export type BannerOnCityCreateManyBannerInputEnvelope = {
-    data: BannerOnCityCreateManyBannerInput | BannerOnCityCreateManyBannerInput[]
-    skipDuplicates?: boolean
+  export type SchoolUpdateManyWithWhereWithoutAdminAuthorityInput = {
+    where: SchoolScalarWhereInput
+    data: XOR<SchoolUpdateManyMutationInput, SchoolUncheckedUpdateManyWithoutAdminAuthorityInput>
   }
 
   export type BannerVisitorCreateWithoutBannerInput = {
@@ -66061,9 +61100,9 @@ export namespace Prisma {
   export type AdminCreateWithoutBannerInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -66076,9 +61115,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutBannerInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -66093,36 +61132,26 @@ export namespace Prisma {
     create: XOR<AdminCreateWithoutBannerInput, AdminUncheckedCreateWithoutBannerInput>
   }
 
-  export type BannerOnProvinceUpsertWithWhereUniqueWithoutBannerInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    update: XOR<BannerOnProvinceUpdateWithoutBannerInput, BannerOnProvinceUncheckedUpdateWithoutBannerInput>
-    create: XOR<BannerOnProvinceCreateWithoutBannerInput, BannerOnProvinceUncheckedCreateWithoutBannerInput>
+  export type BannerLocationCreateWithoutBannerInput = {
+    id?: string
+    province: ProvinceCreateNestedOneWithoutBannerLocationInput
+    cities?: CityCreateNestedManyWithoutBannerLocationInput
   }
 
-  export type BannerOnProvinceUpdateWithWhereUniqueWithoutBannerInput = {
-    where: BannerOnProvinceWhereUniqueInput
-    data: XOR<BannerOnProvinceUpdateWithoutBannerInput, BannerOnProvinceUncheckedUpdateWithoutBannerInput>
+  export type BannerLocationUncheckedCreateWithoutBannerInput = {
+    id?: string
+    provinceId: string
+    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
   }
 
-  export type BannerOnProvinceUpdateManyWithWhereWithoutBannerInput = {
-    where: BannerOnProvinceScalarWhereInput
-    data: XOR<BannerOnProvinceUpdateManyMutationInput, BannerOnProvinceUncheckedUpdateManyWithoutBannerInput>
+  export type BannerLocationCreateOrConnectWithoutBannerInput = {
+    where: BannerLocationWhereUniqueInput
+    create: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput>
   }
 
-  export type BannerOnCityUpsertWithWhereUniqueWithoutBannerInput = {
-    where: BannerOnCityWhereUniqueInput
-    update: XOR<BannerOnCityUpdateWithoutBannerInput, BannerOnCityUncheckedUpdateWithoutBannerInput>
-    create: XOR<BannerOnCityCreateWithoutBannerInput, BannerOnCityUncheckedCreateWithoutBannerInput>
-  }
-
-  export type BannerOnCityUpdateWithWhereUniqueWithoutBannerInput = {
-    where: BannerOnCityWhereUniqueInput
-    data: XOR<BannerOnCityUpdateWithoutBannerInput, BannerOnCityUncheckedUpdateWithoutBannerInput>
-  }
-
-  export type BannerOnCityUpdateManyWithWhereWithoutBannerInput = {
-    where: BannerOnCityScalarWhereInput
-    data: XOR<BannerOnCityUpdateManyMutationInput, BannerOnCityUncheckedUpdateManyWithoutBannerInput>
+  export type BannerLocationCreateManyBannerInputEnvelope = {
+    data: BannerLocationCreateManyBannerInput | BannerLocationCreateManyBannerInput[]
+    skipDuplicates?: boolean
   }
 
   export type BannerVisitorUpsertWithWhereUniqueWithoutBannerInput = {
@@ -66155,9 +61184,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutBannerInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -66170,9 +61199,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutBannerInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -66182,6 +61211,203 @@ export namespace Prisma {
     adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
+  export type BannerLocationUpsertWithWhereUniqueWithoutBannerInput = {
+    where: BannerLocationWhereUniqueInput
+    update: XOR<BannerLocationUpdateWithoutBannerInput, BannerLocationUncheckedUpdateWithoutBannerInput>
+    create: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput>
+  }
+
+  export type BannerLocationUpdateWithWhereUniqueWithoutBannerInput = {
+    where: BannerLocationWhereUniqueInput
+    data: XOR<BannerLocationUpdateWithoutBannerInput, BannerLocationUncheckedUpdateWithoutBannerInput>
+  }
+
+  export type BannerLocationUpdateManyWithWhereWithoutBannerInput = {
+    where: BannerLocationScalarWhereInput
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutBannerInput>
+  }
+
+  export type BannerCreateWithoutBannerLocationInput = {
+    id?: string
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
+    admin: AdminCreateNestedOneWithoutBannerInput
+  }
+
+  export type BannerUncheckedCreateWithoutBannerLocationInput = {
+    id?: string
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    adminId: string
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
+  }
+
+  export type BannerCreateOrConnectWithoutBannerLocationInput = {
+    where: BannerWhereUniqueInput
+    create: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type ProvinceCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cities?: CityCreateNestedManyWithoutProvinceInput
+    schools?: SchoolCreateNestedManyWithoutProvinceInput
+    users?: UserCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutBannerLocationInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type CityCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutCitiesInput
+    schools?: SchoolCreateNestedManyWithoutCityInput
+    users?: UserCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityUncheckedCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    users?: UserUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityCreateOrConnectWithoutBannerLocationInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type BannerUpsertWithoutBannerLocationInput = {
+    update: XOR<BannerUpdateWithoutBannerLocationInput, BannerUncheckedUpdateWithoutBannerLocationInput>
+    create: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
+    where?: BannerWhereInput
+  }
+
+  export type BannerUpdateToOneWithWhereWithoutBannerLocationInput = {
+    where?: BannerWhereInput
+    data: XOR<BannerUpdateWithoutBannerLocationInput, BannerUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type BannerUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
+    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+  }
+
+  export type BannerUncheckedUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
+  }
+
+  export type ProvinceUpsertWithoutBannerLocationInput = {
+    update: XOR<ProvinceUpdateWithoutBannerLocationInput, ProvinceUncheckedUpdateWithoutBannerLocationInput>
+    create: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutBannerLocationInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutBannerLocationInput, ProvinceUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type ProvinceUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cities?: CityUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUpdateManyWithoutProvinceNestedInput
+    users?: UserUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
+    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type CityUpsertWithWhereUniqueWithoutBannerLocationInput = {
+    where: CityWhereUniqueInput
+    update: XOR<CityUpdateWithoutBannerLocationInput, CityUncheckedUpdateWithoutBannerLocationInput>
+    create: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type CityUpdateWithWhereUniqueWithoutBannerLocationInput = {
+    where: CityWhereUniqueInput
+    data: XOR<CityUpdateWithoutBannerLocationInput, CityUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type CityUpdateManyWithWhereWithoutBannerLocationInput = {
+    where: CityScalarWhereInput
+    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutBannerLocationInput>
+  }
+
   export type BannerCreateWithoutVisitorsInput = {
     id?: string
     thumbnail: string
@@ -66189,9 +61415,8 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutBannerInput
     admin: AdminCreateNestedOneWithoutBannerInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateWithoutVisitorsInput = {
@@ -66202,8 +61427,7 @@ export namespace Prisma {
     endedAt?: Date | string | null
     isHide?: boolean
     adminId: string
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutBannerInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutBannerInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerCreateOrConnectWithoutVisitorsInput = {
@@ -66241,7 +61465,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -66283,7 +61507,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -66318,9 +61542,8 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutBannerNestedInput
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateWithoutVisitorsInput = {
@@ -66331,8 +61554,7 @@ export namespace Prisma {
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type UserUpsertWithoutBannerVisitorInput = {
@@ -66376,7 +61598,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -66418,7 +61640,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -66553,7 +61775,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -66595,7 +61817,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -66732,7 +61954,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -66774,7 +61996,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -66863,7 +62085,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -66905,7 +62127,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -67000,7 +62222,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -67042,7 +62264,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -67147,7 +62369,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -67189,7 +62411,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -67279,7 +62501,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -67321,7 +62543,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -67336,9 +62558,9 @@ export namespace Prisma {
   export type AdminCreateWithoutAdminTransactionInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -67351,9 +62573,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutAdminTransactionInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -67382,9 +62604,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutAdminTransactionInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -67397,9 +62619,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutAdminTransactionInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -67412,9 +62634,9 @@ export namespace Prisma {
   export type AdminCreateWithoutAdminTransactionArchiveInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
@@ -67427,9 +62649,9 @@ export namespace Prisma {
   export type AdminUncheckedCreateWithoutAdminTransactionArchiveInput = {
     id?: string
     authId: string
-    googleId?: string | null
+    email: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -67458,9 +62680,9 @@ export namespace Prisma {
   export type AdminUpdateWithoutAdminTransactionArchiveInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
@@ -67473,9 +62695,9 @@ export namespace Prisma {
   export type AdminUncheckedUpdateWithoutAdminTransactionArchiveInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -67515,7 +62737,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -67557,7 +62779,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -67615,7 +62837,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -67657,7 +62879,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -67699,7 +62921,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -67741,7 +62963,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -67799,7 +63021,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -67841,7 +63063,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -67935,7 +63157,7 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: UserOnAccessContentCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginCreateNestedManyWithoutUserInput
@@ -67977,7 +63199,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: UserOnAccessContentUncheckedCreateNestedManyWithoutUserInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -68068,7 +63290,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
@@ -68110,7 +63332,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -68161,78 +63383,28 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AccessContentCreateWithoutUserAccessesInput = {
+  export type CityCreateManyProvinceInput = {
     id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
   }
 
-  export type AccessContentUncheckedCreateWithoutUserAccessesInput = {
+  export type SchoolCreateManyProvinceInput = {
     id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    ownerId?: string | null
-    zones?: AccessContentCreatezonesInput | string[]
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
+    cityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
   }
 
-  export type AccessContentCreateOrConnectWithoutUserAccessesInput = {
-    where: AccessContentWhereUniqueInput
-    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
-  }
-
-  export type UserCreateWithoutUserAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutUserAccessesInput = {
+  export type UserCreateManyProvinceInput = {
     id?: string
     authId: string
     email: string
@@ -68252,6 +63424,283 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+  }
+
+  export type AdminAuthorityCreateManyProvinceInput = {
+    id?: string
+    adminId: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+  }
+
+  export type BannerLocationCreateManyProvinceInput = {
+    id?: string
+    bannerId: string
+  }
+
+  export type CityUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SchoolUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
+    users?: UserUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SchoolUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SchoolUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuthorityUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
+    cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+  }
+
+  export type BannerLocationUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
+    cities?: CityUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SchoolCreateManyCityInput = {
+    id?: string
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCreateManyCityInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity?: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: number
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
     provinceId?: string | null
     adminId?: string | null
     createdAt?: Date | string
@@ -68260,69 +63709,362 @@ export namespace Prisma {
     storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutUserAccessesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-  }
-
-  export type AccessContentUpsertWithoutUserAccessesInput = {
-    update: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
-    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
-    where?: AccessContentWhereInput
-  }
-
-  export type AccessContentUpdateToOneWithWhereWithoutUserAccessesInput = {
-    where?: AccessContentWhereInput
-    data: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
-  }
-
-  export type AccessContentUpdateWithoutUserAccessesInput = {
+  export type SchoolUpdateWithoutCityInput = {
     id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    users?: UserUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
 
-  export type AccessContentUncheckedUpdateWithoutUserAccessesInput = {
+  export type SchoolUncheckedUpdateWithoutCityInput = {
     id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    provinceId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
+    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
   }
 
-  export type UserUpsertWithoutUserAccessesInput = {
-    update: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
-    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-    where?: UserWhereInput
+  export type SchoolUncheckedUpdateManyWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserUpdateToOneWithWhereWithoutUserAccessesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
+  export type UserUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuthorityUpdateWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
+    schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateManyWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+  }
+
+  export type BannerLocationUpdateWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCreateManySchoolInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity?: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: number
+    inventory?: UserCreateinventoryInput | number[]
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+  }
+
+  export type UserUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: IntFieldUpdateOperationsInput | number
+    inventory?: UserUpdateinventoryInput | number[]
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuthorityUpdateWithoutSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
+    cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateWithoutSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateManyWithoutSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
   export type UserUpdateWithoutUserAccessesInput = {
@@ -68409,692 +64151,7 @@ export namespace Prisma {
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type AdminAuthorityCreateWithoutAuthOnCityInput = {
-    id?: string
-    grades?: AdminAuthorityCreategradesInput | number[]
-    admin: AdminCreateNestedOneWithoutAuthorityInput
-    province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
-    authOnSchool?: AuthOnSchoolCreateNestedManyWithoutAuthInput
-  }
-
-  export type AdminAuthorityUncheckedCreateWithoutAuthOnCityInput = {
-    id?: string
-    adminId: string
-    authProvinceId: string
-    grades?: AdminAuthorityCreategradesInput | number[]
-    authOnSchool?: AuthOnSchoolUncheckedCreateNestedManyWithoutAuthInput
-  }
-
-  export type AdminAuthorityCreateOrConnectWithoutAuthOnCityInput = {
-    where: AdminAuthorityWhereUniqueInput
-    create: XOR<AdminAuthorityCreateWithoutAuthOnCityInput, AdminAuthorityUncheckedCreateWithoutAuthOnCityInput>
-  }
-
-  export type CityCreateWithoutAuthOnCityInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    province: ProvinceCreateNestedOneWithoutCitiesInput
-    schools?: SchoolCreateNestedManyWithoutCityInput
-    users?: UserCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutCityInput
-  }
-
-  export type CityUncheckedCreateWithoutAuthOnCityInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    provinceId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
-    users?: UserUncheckedCreateNestedManyWithoutCityInput
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutCityInput
-  }
-
-  export type CityCreateOrConnectWithoutAuthOnCityInput = {
-    where: CityWhereUniqueInput
-    create: XOR<CityCreateWithoutAuthOnCityInput, CityUncheckedCreateWithoutAuthOnCityInput>
-  }
-
-  export type AdminAuthorityUpsertWithoutAuthOnCityInput = {
-    update: XOR<AdminAuthorityUpdateWithoutAuthOnCityInput, AdminAuthorityUncheckedUpdateWithoutAuthOnCityInput>
-    create: XOR<AdminAuthorityCreateWithoutAuthOnCityInput, AdminAuthorityUncheckedCreateWithoutAuthOnCityInput>
-    where?: AdminAuthorityWhereInput
-  }
-
-  export type AdminAuthorityUpdateToOneWithWhereWithoutAuthOnCityInput = {
-    where?: AdminAuthorityWhereInput
-    data: XOR<AdminAuthorityUpdateWithoutAuthOnCityInput, AdminAuthorityUncheckedUpdateWithoutAuthOnCityInput>
-  }
-
-  export type AdminAuthorityUpdateWithoutAuthOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutAuthNestedInput
-  }
-
-  export type AdminAuthorityUncheckedUpdateWithoutAuthOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutAuthNestedInput
-  }
-
-  export type CityUpsertWithoutAuthOnCityInput = {
-    update: XOR<CityUpdateWithoutAuthOnCityInput, CityUncheckedUpdateWithoutAuthOnCityInput>
-    create: XOR<CityCreateWithoutAuthOnCityInput, CityUncheckedCreateWithoutAuthOnCityInput>
-    where?: CityWhereInput
-  }
-
-  export type CityUpdateToOneWithWhereWithoutAuthOnCityInput = {
-    where?: CityWhereInput
-    data: XOR<CityUpdateWithoutAuthOnCityInput, CityUncheckedUpdateWithoutAuthOnCityInput>
-  }
-
-  export type CityUpdateWithoutAuthOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
-    schools?: SchoolUpdateManyWithoutCityNestedInput
-    users?: UserUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutCityNestedInput
-  }
-
-  export type CityUncheckedUpdateWithoutAuthOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutCityNestedInput
-  }
-
-  export type AdminAuthorityCreateWithoutAuthOnSchoolInput = {
-    id?: string
-    grades?: AdminAuthorityCreategradesInput | number[]
-    admin: AdminCreateNestedOneWithoutAuthorityInput
-    province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutAuthInput
-  }
-
-  export type AdminAuthorityUncheckedCreateWithoutAuthOnSchoolInput = {
-    id?: string
-    adminId: string
-    authProvinceId: string
-    grades?: AdminAuthorityCreategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutAuthInput
-  }
-
-  export type AdminAuthorityCreateOrConnectWithoutAuthOnSchoolInput = {
-    where: AdminAuthorityWhereUniqueInput
-    create: XOR<AdminAuthorityCreateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedCreateWithoutAuthOnSchoolInput>
-  }
-
-  export type SchoolCreateWithoutAuthOnSchoolInput = {
-    id?: string
-    identity: string
-    name: string
-    longitude: number
-    latitude: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    city: CityCreateNestedOneWithoutSchoolsInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
-    users?: UserCreateNestedManyWithoutSchoolInput
-  }
-
-  export type SchoolUncheckedCreateWithoutAuthOnSchoolInput = {
-    id?: string
-    identity: string
-    name: string
-    longitude: number
-    latitude: number
-    cityId: string
-    provinceId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutSchoolInput
-  }
-
-  export type SchoolCreateOrConnectWithoutAuthOnSchoolInput = {
-    where: SchoolWhereUniqueInput
-    create: XOR<SchoolCreateWithoutAuthOnSchoolInput, SchoolUncheckedCreateWithoutAuthOnSchoolInput>
-  }
-
-  export type AdminAuthorityUpsertWithoutAuthOnSchoolInput = {
-    update: XOR<AdminAuthorityUpdateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedUpdateWithoutAuthOnSchoolInput>
-    create: XOR<AdminAuthorityCreateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedCreateWithoutAuthOnSchoolInput>
-    where?: AdminAuthorityWhereInput
-  }
-
-  export type AdminAuthorityUpdateToOneWithWhereWithoutAuthOnSchoolInput = {
-    where?: AdminAuthorityWhereInput
-    data: XOR<AdminAuthorityUpdateWithoutAuthOnSchoolInput, AdminAuthorityUncheckedUpdateWithoutAuthOnSchoolInput>
-  }
-
-  export type AdminAuthorityUpdateWithoutAuthOnSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutAuthNestedInput
-  }
-
-  export type AdminAuthorityUncheckedUpdateWithoutAuthOnSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutAuthNestedInput
-  }
-
-  export type SchoolUpsertWithoutAuthOnSchoolInput = {
-    update: XOR<SchoolUpdateWithoutAuthOnSchoolInput, SchoolUncheckedUpdateWithoutAuthOnSchoolInput>
-    create: XOR<SchoolCreateWithoutAuthOnSchoolInput, SchoolUncheckedCreateWithoutAuthOnSchoolInput>
-    where?: SchoolWhereInput
-  }
-
-  export type SchoolUpdateToOneWithWhereWithoutAuthOnSchoolInput = {
-    where?: SchoolWhereInput
-    data: XOR<SchoolUpdateWithoutAuthOnSchoolInput, SchoolUncheckedUpdateWithoutAuthOnSchoolInput>
-  }
-
-  export type SchoolUpdateWithoutAuthOnSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
-    users?: UserUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type SchoolUncheckedUpdateWithoutAuthOnSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type BannerCreateWithoutBannerOnProvinceInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    bannerOnCity?: BannerOnCityCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
-    admin: AdminCreateNestedOneWithoutBannerInput
-  }
-
-  export type BannerUncheckedCreateWithoutBannerOnProvinceInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    adminId: string
-    bannerOnCity?: BannerOnCityUncheckedCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
-  }
-
-  export type BannerCreateOrConnectWithoutBannerOnProvinceInput = {
-    where: BannerWhereUniqueInput
-    create: XOR<BannerCreateWithoutBannerOnProvinceInput, BannerUncheckedCreateWithoutBannerOnProvinceInput>
-  }
-
-  export type ProvinceCreateWithoutBannerOnProvinceInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    cities?: CityCreateNestedManyWithoutProvinceInput
-    schools?: SchoolCreateNestedManyWithoutProvinceInput
-    users?: UserCreateNestedManyWithoutProvinceInput
-    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-  }
-
-  export type ProvinceUncheckedCreateWithoutBannerOnProvinceInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
-    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
-    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-  }
-
-  export type ProvinceCreateOrConnectWithoutBannerOnProvinceInput = {
-    where: ProvinceWhereUniqueInput
-    create: XOR<ProvinceCreateWithoutBannerOnProvinceInput, ProvinceUncheckedCreateWithoutBannerOnProvinceInput>
-  }
-
-  export type BannerUpsertWithoutBannerOnProvinceInput = {
-    update: XOR<BannerUpdateWithoutBannerOnProvinceInput, BannerUncheckedUpdateWithoutBannerOnProvinceInput>
-    create: XOR<BannerCreateWithoutBannerOnProvinceInput, BannerUncheckedCreateWithoutBannerOnProvinceInput>
-    where?: BannerWhereInput
-  }
-
-  export type BannerUpdateToOneWithWhereWithoutBannerOnProvinceInput = {
-    where?: BannerWhereInput
-    data: XOR<BannerUpdateWithoutBannerOnProvinceInput, BannerUncheckedUpdateWithoutBannerOnProvinceInput>
-  }
-
-  export type BannerUpdateWithoutBannerOnProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnCity?: BannerOnCityUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
-    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-  }
-
-  export type BannerUncheckedUpdateWithoutBannerOnProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    adminId?: StringFieldUpdateOperationsInput | string
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
-  }
-
-  export type ProvinceUpsertWithoutBannerOnProvinceInput = {
-    update: XOR<ProvinceUpdateWithoutBannerOnProvinceInput, ProvinceUncheckedUpdateWithoutBannerOnProvinceInput>
-    create: XOR<ProvinceCreateWithoutBannerOnProvinceInput, ProvinceUncheckedCreateWithoutBannerOnProvinceInput>
-    where?: ProvinceWhereInput
-  }
-
-  export type ProvinceUpdateToOneWithWhereWithoutBannerOnProvinceInput = {
-    where?: ProvinceWhereInput
-    data: XOR<ProvinceUpdateWithoutBannerOnProvinceInput, ProvinceUncheckedUpdateWithoutBannerOnProvinceInput>
-  }
-
-  export type ProvinceUpdateWithoutBannerOnProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cities?: CityUpdateManyWithoutProvinceNestedInput
-    schools?: SchoolUpdateManyWithoutProvinceNestedInput
-    users?: UserUpdateManyWithoutProvinceNestedInput
-    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-  }
-
-  export type ProvinceUncheckedUpdateWithoutBannerOnProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
-    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
-    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-  }
-
-  export type BannerCreateWithoutBannerOnCityInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    bannerOnProvince?: BannerOnProvinceCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
-    admin: AdminCreateNestedOneWithoutBannerInput
-  }
-
-  export type BannerUncheckedCreateWithoutBannerOnCityInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    adminId: string
-    bannerOnProvince?: BannerOnProvinceUncheckedCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
-  }
-
-  export type BannerCreateOrConnectWithoutBannerOnCityInput = {
-    where: BannerWhereUniqueInput
-    create: XOR<BannerCreateWithoutBannerOnCityInput, BannerUncheckedCreateWithoutBannerOnCityInput>
-  }
-
-  export type CityCreateWithoutBannerOnCityInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    province: ProvinceCreateNestedOneWithoutCitiesInput
-    schools?: SchoolCreateNestedManyWithoutCityInput
-    users?: UserCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityCreateNestedManyWithoutCityInput
-  }
-
-  export type CityUncheckedCreateWithoutBannerOnCityInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    provinceId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
-    users?: UserUncheckedCreateNestedManyWithoutCityInput
-    authOnCity?: AuthOnCityUncheckedCreateNestedManyWithoutCityInput
-  }
-
-  export type CityCreateOrConnectWithoutBannerOnCityInput = {
-    where: CityWhereUniqueInput
-    create: XOR<CityCreateWithoutBannerOnCityInput, CityUncheckedCreateWithoutBannerOnCityInput>
-  }
-
-  export type BannerUpsertWithoutBannerOnCityInput = {
-    update: XOR<BannerUpdateWithoutBannerOnCityInput, BannerUncheckedUpdateWithoutBannerOnCityInput>
-    create: XOR<BannerCreateWithoutBannerOnCityInput, BannerUncheckedCreateWithoutBannerOnCityInput>
-    where?: BannerWhereInput
-  }
-
-  export type BannerUpdateToOneWithWhereWithoutBannerOnCityInput = {
-    where?: BannerWhereInput
-    data: XOR<BannerUpdateWithoutBannerOnCityInput, BannerUncheckedUpdateWithoutBannerOnCityInput>
-  }
-
-  export type BannerUpdateWithoutBannerOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
-    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-  }
-
-  export type BannerUncheckedUpdateWithoutBannerOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    adminId?: StringFieldUpdateOperationsInput | string
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
-  }
-
-  export type CityUpsertWithoutBannerOnCityInput = {
-    update: XOR<CityUpdateWithoutBannerOnCityInput, CityUncheckedUpdateWithoutBannerOnCityInput>
-    create: XOR<CityCreateWithoutBannerOnCityInput, CityUncheckedCreateWithoutBannerOnCityInput>
-    where?: CityWhereInput
-  }
-
-  export type CityUpdateToOneWithWhereWithoutBannerOnCityInput = {
-    where?: CityWhereInput
-    data: XOR<CityUpdateWithoutBannerOnCityInput, CityUncheckedUpdateWithoutBannerOnCityInput>
-  }
-
-  export type CityUpdateWithoutBannerOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
-    schools?: SchoolUpdateManyWithoutCityNestedInput
-    users?: UserUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutCityNestedInput
-  }
-
-  export type CityUncheckedUpdateWithoutBannerOnCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutCityNestedInput
-  }
-
-  export type CityCreateManyProvinceInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SchoolCreateManyProvinceInput = {
-    id?: string
-    identity: string
-    name: string
-    longitude: number
-    latitude: number
-    cityId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserCreateManyProvinceInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-  }
-
-  export type BannerOnProvinceCreateManyProvinceInput = {
-    bannerId: string
-  }
-
-  export type AdminAuthorityCreateManyProvinceInput = {
-    id?: string
-    adminId: string
-    grades?: AdminAuthorityCreategradesInput | number[]
-  }
-
-  export type CityUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUpdateManyWithoutCityNestedInput
-    users?: UserUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutCityNestedInput
-  }
-
-  export type CityUncheckedUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutCityNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutCityNestedInput
-  }
-
-  export type CityUncheckedUpdateManyWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SchoolUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    users?: UserUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type SchoolUncheckedUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type SchoolUncheckedUpdateManyWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutProvinceInput = {
+  export type UserUncheckedUpdateManyWithoutUserAccessesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -69114,237 +64171,6 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceUpdateWithoutProvinceInput = {
-    banner?: BannerUpdateOneRequiredWithoutBannerOnProvinceNestedInput
-  }
-
-  export type BannerOnProvinceUncheckedUpdateWithoutProvinceInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceUncheckedUpdateManyWithoutProvinceInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AdminAuthorityUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutAuthNestedInput
-  }
-
-  export type AdminAuthorityUncheckedUpdateWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutAuthNestedInput
-  }
-
-  export type AdminAuthorityUncheckedUpdateManyWithoutProvinceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    grades?: AdminAuthorityUpdategradesInput | number[]
-  }
-
-  export type SchoolCreateManyCityInput = {
-    id?: string
-    identity: string
-    name: string
-    longitude: number
-    latitude: number
-    provinceId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserCreateManyCityInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-  }
-
-  export type AuthOnCityCreateManyCityInput = {
-    authId: string
-  }
-
-  export type BannerOnCityCreateManyCityInput = {
-    bannerId: string
-  }
-
-  export type SchoolUpdateWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
-    users?: UserUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type SchoolUncheckedUpdateWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutSchoolNestedInput
-  }
-
-  export type SchoolUncheckedUpdateManyWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    identity?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserUpdateWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69353,246 +64179,6 @@ export namespace Prisma {
     storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutCityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnCityUpdateWithoutCityInput = {
-    auth?: AdminAuthorityUpdateOneRequiredWithoutAuthOnCityNestedInput
-  }
-
-  export type AuthOnCityUncheckedUpdateWithoutCityInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnCityUncheckedUpdateManyWithoutCityInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityUpdateWithoutCityInput = {
-    banner?: BannerUpdateOneRequiredWithoutBannerOnCityNestedInput
-  }
-
-  export type BannerOnCityUncheckedUpdateWithoutCityInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityUncheckedUpdateManyWithoutCityInput = {
-    bannerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserCreateManySchoolInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-  }
-
-  export type AuthOnSchoolCreateManySchoolInput = {
-    authId: string
-  }
-
-  export type UserUpdateWithoutSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutSchoolInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolUpdateWithoutSchoolInput = {
-    auth?: AdminAuthorityUpdateOneRequiredWithoutAuthOnSchoolNestedInput
-  }
-
-  export type AuthOnSchoolUncheckedUpdateWithoutSchoolInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolUncheckedUpdateManyWithoutSchoolInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserOnAccessContentCreateManyAccessContentInput = {
-    userId: string
-  }
-
-  export type UserOnAccessContentUpdateWithoutAccessContentInput = {
-    user?: UserUpdateOneRequiredWithoutUserAccessesNestedInput
-  }
-
-  export type UserOnAccessContentUncheckedUpdateWithoutAccessContentInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserOnAccessContentUncheckedUpdateManyWithoutAccessContentInput = {
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUpdateWithoutRedeemedAccessesInput = {
@@ -69625,7 +64211,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
@@ -69667,7 +64253,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutUserNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
@@ -69717,10 +64303,6 @@ export namespace Prisma {
     zones?: AccessContentCreatezonesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type UserOnAccessContentCreateManyUserInput = {
-    accessContentId: string
   }
 
   export type ZoneCreateManyUserInput = {
@@ -69826,7 +64408,7 @@ export namespace Prisma {
     zones?: AccessContentUpdatezonesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserOnAccessContentUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
     redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
@@ -69838,7 +64420,7 @@ export namespace Prisma {
     zones?: AccessContentUpdatezonesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
     redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
@@ -69852,16 +64434,39 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserOnAccessContentUpdateWithoutUserInput = {
-    accessContent?: AccessContentUpdateOneRequiredWithoutUserAccessesNestedInput
+  export type AccessContentUpdateWithoutUserAccessesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expired?: DateTimeFieldUpdateOperationsInput | Date | string
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    zones?: AccessContentUpdatezonesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
+    redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
-  export type UserOnAccessContentUncheckedUpdateWithoutUserInput = {
-    accessContentId?: StringFieldUpdateOperationsInput | string
+  export type AccessContentUncheckedUpdateWithoutUserAccessesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expired?: DateTimeFieldUpdateOperationsInput | Date | string
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    zones?: AccessContentUpdatezonesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
   }
 
-  export type UserOnAccessContentUncheckedUpdateManyWithoutUserInput = {
-    accessContentId?: StringFieldUpdateOperationsInput | string
+  export type AccessContentUncheckedUpdateManyWithoutUserAccessesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expired?: DateTimeFieldUpdateOperationsInput | Date | string
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
+    zones?: AccessContentUpdatezonesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ZoneUpdateWithoutUserInput = {
@@ -69918,7 +64523,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    userAccesses?: UserOnAccessContentUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
   }
 
   export type AccessContentUncheckedUpdateWithoutRedemeersInput = {
@@ -69930,7 +64535,7 @@ export namespace Prisma {
     zones?: AccessContentUpdatezonesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserOnAccessContentUncheckedUpdateManyWithoutAccessContentNestedInput
+    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
   }
 
   export type AccessContentUncheckedUpdateManyWithoutRedemeersInput = {
@@ -70445,7 +65050,7 @@ export namespace Prisma {
 
   export type AdminAuthorityCreateManyAdminInput = {
     id?: string
-    authProvinceId: string
+    provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
   }
 
@@ -70494,21 +65099,21 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
-    authOnCity?: AuthOnCityUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUpdateManyWithoutAuthNestedInput
+    cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
-    authOnCity?: AuthOnCityUncheckedUpdateManyWithoutAuthNestedInput
-    authOnSchool?: AuthOnSchoolUncheckedUpdateManyWithoutAuthNestedInput
+    cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    authProvinceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
@@ -70537,9 +65142,8 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnProvince?: BannerOnProvinceUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUpdateManyWithoutBannerNestedInput
     visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateWithoutAdminInput = {
@@ -70549,9 +65153,8 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    bannerOnProvince?: BannerOnProvinceUncheckedUpdateManyWithoutBannerNestedInput
-    bannerOnCity?: BannerOnCityUncheckedUpdateManyWithoutBannerNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateManyWithoutAdminInput = {
@@ -70641,44 +65244,81 @@ export namespace Prisma {
     zones?: AdminTransactionArchiveUpdatezonesInput | string[]
   }
 
-  export type AuthOnCityCreateManyAuthInput = {
-    cityId: string
+  export type CityUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
 
-  export type AuthOnSchoolCreateManyAuthInput = {
-    schoolId: string
+  export type CityUncheckedUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
-  export type AuthOnCityUpdateWithoutAuthInput = {
-    city?: CityUpdateOneRequiredWithoutAuthOnCityNestedInput
+  export type CityUncheckedUpdateManyWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AuthOnCityUncheckedUpdateWithoutAuthInput = {
+  export type SchoolUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    users?: UserUpdateManyWithoutSchoolNestedInput
+  }
+
+  export type SchoolUncheckedUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
     cityId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
-  export type AuthOnCityUncheckedUpdateManyWithoutAuthInput = {
+  export type SchoolUncheckedUpdateManyWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
     cityId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolUpdateWithoutAuthInput = {
-    school?: SchoolUpdateOneRequiredWithoutAuthOnSchoolNestedInput
-  }
-
-  export type AuthOnSchoolUncheckedUpdateWithoutAuthInput = {
-    schoolId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AuthOnSchoolUncheckedUpdateManyWithoutAuthInput = {
-    schoolId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceCreateManyBannerInput = {
-    provinceId: string
-  }
-
-  export type BannerOnCityCreateManyBannerInput = {
-    cityId: string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BannerVisitorCreateManyBannerInput = {
@@ -70689,28 +65329,9 @@ export namespace Prisma {
     traffic?: number
   }
 
-  export type BannerOnProvinceUpdateWithoutBannerInput = {
-    province?: ProvinceUpdateOneRequiredWithoutBannerOnProvinceNestedInput
-  }
-
-  export type BannerOnProvinceUncheckedUpdateWithoutBannerInput = {
-    provinceId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnProvinceUncheckedUpdateManyWithoutBannerInput = {
-    provinceId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityUpdateWithoutBannerInput = {
-    city?: CityUpdateOneRequiredWithoutBannerOnCityNestedInput
-  }
-
-  export type BannerOnCityUncheckedUpdateWithoutBannerInput = {
-    cityId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerOnCityUncheckedUpdateManyWithoutBannerInput = {
-    cityId?: StringFieldUpdateOperationsInput | string
+  export type BannerLocationCreateManyBannerInput = {
+    id?: string
+    provinceId: string
   }
 
   export type BannerVisitorUpdateWithoutBannerInput = {
@@ -70735,6 +65356,62 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     traffic?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BannerLocationUpdateWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
+    cities?: CityUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CityUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateManyWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestParticipantCreateManyTestInput = {

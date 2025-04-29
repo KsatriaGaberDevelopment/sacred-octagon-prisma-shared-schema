@@ -315,7 +315,7 @@ exports.Prisma.UserLoginScalarFieldEnum = {
 exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
   authId: 'authId',
-  googleId: 'googleId',
+  email: 'email',
   name: 'name',
   role: 'role',
   createdAt: 'createdAt',
@@ -332,7 +332,7 @@ exports.Prisma.AdminOperationHistoryScalarFieldEnum = {
 exports.Prisma.AdminAuthorityScalarFieldEnum = {
   id: 'id',
   adminId: 'adminId',
-  authProvinceId: 'authProvinceId',
+  provinceId: 'provinceId',
   grades: 'grades'
 };
 
@@ -344,6 +344,12 @@ exports.Prisma.BannerScalarFieldEnum = {
   endedAt: 'endedAt',
   isHide: 'isHide',
   adminId: 'adminId'
+};
+
+exports.Prisma.BannerLocationScalarFieldEnum = {
+  id: 'id',
+  bannerId: 'bannerId',
+  provinceId: 'provinceId'
 };
 
 exports.Prisma.BannerVisitorScalarFieldEnum = {
@@ -518,31 +524,6 @@ exports.Prisma.MultiPlayerMemberScalarFieldEnum = {
   isDisconnect: 'isDisconnect'
 };
 
-exports.Prisma.UserOnAccessContentScalarFieldEnum = {
-  userId: 'userId',
-  accessContentId: 'accessContentId'
-};
-
-exports.Prisma.AuthOnCityScalarFieldEnum = {
-  authId: 'authId',
-  cityId: 'cityId'
-};
-
-exports.Prisma.AuthOnSchoolScalarFieldEnum = {
-  authId: 'authId',
-  schoolId: 'schoolId'
-};
-
-exports.Prisma.BannerOnProvinceScalarFieldEnum = {
-  bannerId: 'bannerId',
-  provinceId: 'provinceId'
-};
-
-exports.Prisma.BannerOnCityScalarFieldEnum = {
-  bannerId: 'bannerId',
-  cityId: 'cityId'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -633,6 +614,7 @@ exports.Prisma.ModelName = {
   AdminOperationHistory: 'AdminOperationHistory',
   AdminAuthority: 'AdminAuthority',
   Banner: 'Banner',
+  BannerLocation: 'BannerLocation',
   BannerVisitor: 'BannerVisitor',
   Test: 'Test',
   TestParticipant: 'TestParticipant',
@@ -646,12 +628,7 @@ exports.Prisma.ModelName = {
   UserTransaction: 'UserTransaction',
   UserTransactionArchive: 'UserTransactionArchive',
   MultiplayerRoom: 'MultiplayerRoom',
-  MultiPlayerMember: 'MultiPlayerMember',
-  UserOnAccessContent: 'UserOnAccessContent',
-  AuthOnCity: 'AuthOnCity',
-  AuthOnSchool: 'AuthOnSchool',
-  BannerOnProvince: 'BannerOnProvince',
-  BannerOnCity: 'BannerOnCity'
+  MultiPlayerMember: 'MultiPlayerMember'
 };
 
 /**
