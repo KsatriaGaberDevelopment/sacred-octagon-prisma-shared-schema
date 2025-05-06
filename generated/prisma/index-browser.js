@@ -191,19 +191,6 @@ exports.Prisma.UserScalarFieldEnum = {
   lastIdZonePosition: 'lastIdZonePosition'
 };
 
-exports.Prisma.DeviceScalarFieldEnum = {
-  id: 'id',
-  uuid: 'uuid',
-  model: 'model',
-  manufactur: 'manufactur',
-  os: 'os',
-  ramSize: 'ramSize',
-  gpuName: 'gpuName',
-  cpuType: 'cpuType',
-  cpuCores: 'cpuCores',
-  userId: 'userId'
-};
-
 exports.Prisma.ZoneScalarFieldEnum = {
   id: 'id',
   zoneId: 'zoneId',
@@ -305,6 +292,19 @@ exports.Prisma.ChampionshipRecordScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.DeviceScalarFieldEnum = {
+  id: 'id',
+  uuid: 'uuid',
+  model: 'model',
+  manufactur: 'manufactur',
+  os: 'os',
+  ramSize: 'ramSize',
+  gpuName: 'gpuName',
+  cpuType: 'cpuType',
+  cpuCores: 'cpuCores',
+  userId: 'userId'
+};
+
 exports.Prisma.UserLoginScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -319,6 +319,9 @@ exports.Prisma.AdminScalarFieldEnum = {
   name: 'name',
   suspend: 'suspend',
   role: 'role',
+  provinceId: 'provinceId',
+  cityId: 'cityId',
+  schoolId: 'schoolId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -602,7 +605,6 @@ exports.Prisma.ModelName = {
   School: 'School',
   AccessContent: 'AccessContent',
   User: 'User',
-  Device: 'Device',
   Zone: 'Zone',
   Level: 'Level',
   SubLevel: 'SubLevel',
@@ -611,6 +613,7 @@ exports.Prisma.ModelName = {
   Championship: 'Championship',
   GempoRecord: 'GempoRecord',
   ChampionshipRecord: 'ChampionshipRecord',
+  Device: 'Device',
   UserLogin: 'UserLogin',
   Admin: 'Admin',
   AdminOperationHistory: 'AdminOperationHistory',

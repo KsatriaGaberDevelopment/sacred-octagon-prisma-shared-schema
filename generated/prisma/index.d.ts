@@ -39,11 +39,6 @@ export type AccessContent = $Result.DefaultSelection<Prisma.$AccessContentPayloa
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model Device
- * 
- */
-export type Device = $Result.DefaultSelection<Prisma.$DevicePayload>
-/**
  * Model Zone
  * 
  */
@@ -83,6 +78,11 @@ export type GempoRecord = $Result.DefaultSelection<Prisma.$GempoRecordPayload>
  * 
  */
 export type ChampionshipRecord = $Result.DefaultSelection<Prisma.$ChampionshipRecordPayload>
+/**
+ * Model Device
+ * 
+ */
+export type Device = $Result.DefaultSelection<Prisma.$DevicePayload>
 /**
  * Model UserLogin
  * 
@@ -460,16 +460,6 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.device`: Exposes CRUD operations for the **Device** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Devices
-    * const devices = await prisma.device.findMany()
-    * ```
-    */
-  get device(): Prisma.DeviceDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.zone`: Exposes CRUD operations for the **Zone** model.
     * Example usage:
     * ```ts
@@ -548,6 +538,16 @@ export class PrismaClient<
     * ```
     */
   get championshipRecord(): Prisma.ChampionshipRecordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.device`: Exposes CRUD operations for the **Device** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Devices
+    * const devices = await prisma.device.findMany()
+    * ```
+    */
+  get device(): Prisma.DeviceDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.userLogin`: Exposes CRUD operations for the **UserLogin** model.
@@ -1193,7 +1193,6 @@ export namespace Prisma {
     School: 'School',
     AccessContent: 'AccessContent',
     User: 'User',
-    Device: 'Device',
     Zone: 'Zone',
     Level: 'Level',
     SubLevel: 'SubLevel',
@@ -1202,6 +1201,7 @@ export namespace Prisma {
     Championship: 'Championship',
     GempoRecord: 'GempoRecord',
     ChampionshipRecord: 'ChampionshipRecord',
+    Device: 'Device',
     UserLogin: 'UserLogin',
     Admin: 'Admin',
     AdminOperationHistory: 'AdminOperationHistory',
@@ -1240,7 +1240,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "device" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "device" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1611,80 +1611,6 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
-          }
-        }
-      }
-      Device: {
-        payload: Prisma.$DevicePayload<ExtArgs>
-        fields: Prisma.DeviceFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DeviceFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DeviceFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          findFirst: {
-            args: Prisma.DeviceFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DeviceFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          findMany: {
-            args: Prisma.DeviceFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          create: {
-            args: Prisma.DeviceCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          createMany: {
-            args: Prisma.DeviceCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.DeviceCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          delete: {
-            args: Prisma.DeviceDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          update: {
-            args: Prisma.DeviceUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          deleteMany: {
-            args: Prisma.DeviceDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DeviceUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.DeviceUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          upsert: {
-            args: Prisma.DeviceUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          aggregate: {
-            args: Prisma.DeviceAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDevice>
-          }
-          groupBy: {
-            args: Prisma.DeviceGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DeviceGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DeviceCountArgs<ExtArgs>
-            result: $Utils.Optional<DeviceCountAggregateOutputType> | number
           }
         }
       }
@@ -2277,6 +2203,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ChampionshipRecordCountArgs<ExtArgs>
             result: $Utils.Optional<ChampionshipRecordCountAggregateOutputType> | number
+          }
+        }
+      }
+      Device: {
+        payload: Prisma.$DevicePayload<ExtArgs>
+        fields: Prisma.DeviceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DeviceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DeviceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          findFirst: {
+            args: Prisma.DeviceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DeviceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          findMany: {
+            args: Prisma.DeviceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
+          }
+          create: {
+            args: Prisma.DeviceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          createMany: {
+            args: Prisma.DeviceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DeviceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
+          }
+          delete: {
+            args: Prisma.DeviceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          update: {
+            args: Prisma.DeviceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          deleteMany: {
+            args: Prisma.DeviceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DeviceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DeviceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
+          }
+          upsert: {
+            args: Prisma.DeviceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
+          }
+          aggregate: {
+            args: Prisma.DeviceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDevice>
+          }
+          groupBy: {
+            args: Prisma.DeviceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DeviceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DeviceCountArgs<ExtArgs>
+            result: $Utils.Optional<DeviceCountAggregateOutputType> | number
           }
         }
       }
@@ -3849,7 +3849,6 @@ export namespace Prisma {
     school?: SchoolOmit
     accessContent?: AccessContentOmit
     user?: UserOmit
-    device?: DeviceOmit
     zone?: ZoneOmit
     level?: LevelOmit
     subLevel?: SubLevelOmit
@@ -3858,6 +3857,7 @@ export namespace Prisma {
     championship?: ChampionshipOmit
     gempoRecord?: GempoRecordOmit
     championshipRecord?: ChampionshipRecordOmit
+    device?: DeviceOmit
     userLogin?: UserLoginOmit
     admin?: AdminOmit
     adminOperationHistory?: AdminOperationHistoryOmit
@@ -3977,6 +3977,7 @@ export namespace Prisma {
     users: number
     adminAuthority: number
     bannerLocation: number
+    admin: number
   }
 
   export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3985,6 +3986,7 @@ export namespace Prisma {
     users?: boolean | ProvinceCountOutputTypeCountUsersArgs
     adminAuthority?: boolean | ProvinceCountOutputTypeCountAdminAuthorityArgs
     bannerLocation?: boolean | ProvinceCountOutputTypeCountBannerLocationArgs
+    admin?: boolean | ProvinceCountOutputTypeCountAdminArgs
   }
 
   // Custom InputTypes
@@ -4033,6 +4035,13 @@ export namespace Prisma {
     where?: BannerLocationWhereInput
   }
 
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeCountAdminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminWhereInput
+  }
+
 
   /**
    * Count Type CityCountOutputType
@@ -4043,6 +4052,7 @@ export namespace Prisma {
     users: number
     adminAuthority: number
     bannerLocation: number
+    admin: number
   }
 
   export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4050,6 +4060,7 @@ export namespace Prisma {
     users?: boolean | CityCountOutputTypeCountUsersArgs
     adminAuthority?: boolean | CityCountOutputTypeCountAdminAuthorityArgs
     bannerLocation?: boolean | CityCountOutputTypeCountBannerLocationArgs
+    admin?: boolean | CityCountOutputTypeCountAdminArgs
   }
 
   // Custom InputTypes
@@ -4091,6 +4102,13 @@ export namespace Prisma {
     where?: BannerLocationWhereInput
   }
 
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeCountAdminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminWhereInput
+  }
+
 
   /**
    * Count Type SchoolCountOutputType
@@ -4099,11 +4117,13 @@ export namespace Prisma {
   export type SchoolCountOutputType = {
     users: number
     adminAuthority: number
+    admin: number
   }
 
   export type SchoolCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | SchoolCountOutputTypeCountUsersArgs
     adminAuthority?: boolean | SchoolCountOutputTypeCountAdminAuthorityArgs
+    admin?: boolean | SchoolCountOutputTypeCountAdminArgs
   }
 
   // Custom InputTypes
@@ -4129,6 +4149,13 @@ export namespace Prisma {
    */
   export type SchoolCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AdminAuthorityWhereInput
+  }
+
+  /**
+   * SchoolCountOutputType without action
+   */
+  export type SchoolCountOutputTypeCountAdminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminWhereInput
   }
 
 
@@ -4181,7 +4208,7 @@ export namespace Prisma {
     userAccesses: number
     zones: number
     redeemedAccesses: number
-    UserLogin: number
+    userLogin: number
     bannerVisitor: number
     testParticipant: number
     voucherRedemeer: number
@@ -4196,7 +4223,7 @@ export namespace Prisma {
     userAccesses?: boolean | UserCountOutputTypeCountUserAccessesArgs
     zones?: boolean | UserCountOutputTypeCountZonesArgs
     redeemedAccesses?: boolean | UserCountOutputTypeCountRedeemedAccessesArgs
-    UserLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
+    userLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
     bannerVisitor?: boolean | UserCountOutputTypeCountBannerVisitorArgs
     testParticipant?: boolean | UserCountOutputTypeCountTestParticipantArgs
     voucherRedemeer?: boolean | UserCountOutputTypeCountVoucherRedemeerArgs
@@ -4995,6 +5022,7 @@ export namespace Prisma {
     users?: boolean | Province$usersArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
+    admin?: boolean | Province$adminArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["province"]>
 
@@ -5035,6 +5063,7 @@ export namespace Prisma {
     users?: boolean | Province$usersArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
+    admin?: boolean | Province$adminArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5048,6 +5077,7 @@ export namespace Prisma {
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+      admin: Prisma.$AdminPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5456,6 +5486,7 @@ export namespace Prisma {
     users<T extends Province$usersArgs<ExtArgs> = {}>(args?: Subset<T, Province$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends Province$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, Province$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerLocation<T extends Province$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Province$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    admin<T extends Province$adminArgs<ExtArgs> = {}>(args?: Subset<T, Province$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6000,6 +6031,30 @@ export namespace Prisma {
   }
 
   /**
+   * Province.admin
+   */
+  export type Province$adminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Admin
+     */
+    select?: AdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Admin
+     */
+    omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    where?: AdminWhereInput
+    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    cursor?: AdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+  }
+
+  /**
    * Province without action
    */
   export type ProvinceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6249,6 +6304,7 @@ export namespace Prisma {
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
+    admin?: boolean | City$adminArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["city"]>
 
@@ -6294,6 +6350,7 @@ export namespace Prisma {
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
+    admin?: boolean | City$adminArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6311,6 +6368,7 @@ export namespace Prisma {
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+      admin: Prisma.$AdminPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6720,6 +6778,7 @@ export namespace Prisma {
     users<T extends City$usersArgs<ExtArgs> = {}>(args?: Subset<T, City$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends City$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, City$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerLocation<T extends City$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, City$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    admin<T extends City$adminArgs<ExtArgs> = {}>(args?: Subset<T, City$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7249,6 +7308,30 @@ export namespace Prisma {
   }
 
   /**
+   * City.admin
+   */
+  export type City$adminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Admin
+     */
+    select?: AdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Admin
+     */
+    omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    where?: AdminWhereInput
+    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    cursor?: AdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+  }
+
+  /**
    * City without action
    */
   export type CityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7505,6 +7588,7 @@ export namespace Prisma {
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
     adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
+    admin?: boolean | School$adminArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["school"]>
 
@@ -7554,6 +7638,7 @@ export namespace Prisma {
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
     adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
+    admin?: boolean | School$adminArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SchoolIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7572,6 +7657,7 @@ export namespace Prisma {
       province: Prisma.$ProvincePayload<ExtArgs>
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
+      admin: Prisma.$AdminPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7981,6 +8067,7 @@ export namespace Prisma {
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     users<T extends School$usersArgs<ExtArgs> = {}>(args?: Subset<T, School$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends School$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, School$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    admin<T extends School$adminArgs<ExtArgs> = {}>(args?: Subset<T, School$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8460,6 +8547,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AdminAuthorityScalarFieldEnum | AdminAuthorityScalarFieldEnum[]
+  }
+
+  /**
+   * School.admin
+   */
+  export type School$adminArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Admin
+     */
+    select?: AdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Admin
+     */
+    omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    where?: AdminWhereInput
+    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    cursor?: AdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
   }
 
   /**
@@ -9704,14 +9815,12 @@ export namespace Prisma {
   export type UserAvgAggregateOutputType = {
     grade: number | null
     playTime: number | null
-    characterUsed: number | null
     inventory: number | null
   }
 
   export type UserSumAggregateOutputType = {
     grade: number | null
     playTime: number | null
-    characterUsed: number | null
     inventory: number[]
   }
 
@@ -9731,7 +9840,7 @@ export namespace Prisma {
     loginAt: Date | null
     logoutAt: Date | null
     playTime: number | null
-    characterUsed: number | null
+    characterUsed: string | null
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
@@ -9760,7 +9869,7 @@ export namespace Prisma {
     loginAt: Date | null
     logoutAt: Date | null
     playTime: number | null
-    characterUsed: number | null
+    characterUsed: string | null
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
@@ -9808,14 +9917,12 @@ export namespace Prisma {
   export type UserAvgAggregateInputType = {
     grade?: true
     playTime?: true
-    characterUsed?: true
     inventory?: true
   }
 
   export type UserSumAggregateInputType = {
     grade?: true
     playTime?: true
-    characterUsed?: true
     inventory?: true
   }
 
@@ -10010,7 +10117,7 @@ export namespace Prisma {
     loginAt: Date | null
     logoutAt: Date | null
     playTime: number
-    characterUsed: number
+    characterUsed: string
     inventory: number[]
     schoolId: string | null
     cityId: string | null
@@ -10080,7 +10187,7 @@ export namespace Prisma {
     userAccesses?: boolean | User$userAccessesArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     redeemedAccesses?: boolean | User$redeemedAccessesArgs<ExtArgs>
-    UserLogin?: boolean | User$UserLoginArgs<ExtArgs>
+    userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
@@ -10200,7 +10307,7 @@ export namespace Prisma {
     userAccesses?: boolean | User$userAccessesArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     redeemedAccesses?: boolean | User$redeemedAccessesArgs<ExtArgs>
-    UserLogin?: boolean | User$UserLoginArgs<ExtArgs>
+    userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
@@ -10235,7 +10342,7 @@ export namespace Prisma {
       userAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       zones: Prisma.$ZonePayload<ExtArgs>[]
       redeemedAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
-      UserLogin: Prisma.$UserLoginPayload<ExtArgs>[]
+      userLogin: Prisma.$UserLoginPayload<ExtArgs>[]
       bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs>[]
       testParticipant: Prisma.$TestParticipantPayload<ExtArgs>[]
       voucherRedemeer: Prisma.$VoucherRedemeerPayload<ExtArgs>[]
@@ -10260,7 +10367,7 @@ export namespace Prisma {
       loginAt: Date | null
       logoutAt: Date | null
       playTime: number
-      characterUsed: number
+      characterUsed: string
       inventory: number[]
       schoolId: string | null
       cityId: string | null
@@ -10675,7 +10782,7 @@ export namespace Prisma {
     userAccesses<T extends User$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     zones<T extends User$zonesArgs<ExtArgs> = {}>(args?: Subset<T, User$zonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     redeemedAccesses<T extends User$redeemedAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$redeemedAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    UserLogin<T extends User$UserLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$UserLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userLogin<T extends User$userLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$userLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testParticipant<T extends User$testParticipantArgs<ExtArgs> = {}>(args?: Subset<T, User$testParticipantArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     voucherRedemeer<T extends User$voucherRedemeerArgs<ExtArgs> = {}>(args?: Subset<T, User$voucherRedemeerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -10727,7 +10834,7 @@ export namespace Prisma {
     readonly loginAt: FieldRef<"User", 'DateTime'>
     readonly logoutAt: FieldRef<"User", 'DateTime'>
     readonly playTime: FieldRef<"User", 'Int'>
-    readonly characterUsed: FieldRef<"User", 'Int'>
+    readonly characterUsed: FieldRef<"User", 'String'>
     readonly inventory: FieldRef<"User", 'Int[]'>
     readonly schoolId: FieldRef<"User", 'String'>
     readonly cityId: FieldRef<"User", 'String'>
@@ -11326,9 +11433,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.UserLogin
+   * User.userLogin
    */
-  export type User$UserLoginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$userLoginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserLogin
      */
@@ -11533,1167 +11640,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Device
-   */
-
-  export type AggregateDevice = {
-    _count: DeviceCountAggregateOutputType | null
-    _avg: DeviceAvgAggregateOutputType | null
-    _sum: DeviceSumAggregateOutputType | null
-    _min: DeviceMinAggregateOutputType | null
-    _max: DeviceMaxAggregateOutputType | null
-  }
-
-  export type DeviceAvgAggregateOutputType = {
-    ramSize: number | null
-    cpuCores: number | null
-  }
-
-  export type DeviceSumAggregateOutputType = {
-    ramSize: number | null
-    cpuCores: number | null
-  }
-
-  export type DeviceMinAggregateOutputType = {
-    id: string | null
-    uuid: string | null
-    model: string | null
-    manufactur: string | null
-    os: string | null
-    ramSize: number | null
-    gpuName: string | null
-    cpuType: string | null
-    cpuCores: number | null
-    userId: string | null
-  }
-
-  export type DeviceMaxAggregateOutputType = {
-    id: string | null
-    uuid: string | null
-    model: string | null
-    manufactur: string | null
-    os: string | null
-    ramSize: number | null
-    gpuName: string | null
-    cpuType: string | null
-    cpuCores: number | null
-    userId: string | null
-  }
-
-  export type DeviceCountAggregateOutputType = {
-    id: number
-    uuid: number
-    model: number
-    manufactur: number
-    os: number
-    ramSize: number
-    gpuName: number
-    cpuType: number
-    cpuCores: number
-    userId: number
-    _all: number
-  }
-
-
-  export type DeviceAvgAggregateInputType = {
-    ramSize?: true
-    cpuCores?: true
-  }
-
-  export type DeviceSumAggregateInputType = {
-    ramSize?: true
-    cpuCores?: true
-  }
-
-  export type DeviceMinAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-  }
-
-  export type DeviceMaxAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-  }
-
-  export type DeviceCountAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type DeviceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Device to aggregate.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Devices
-    **/
-    _count?: true | DeviceCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: DeviceAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: DeviceSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: DeviceMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: DeviceMaxAggregateInputType
-  }
-
-  export type GetDeviceAggregateType<T extends DeviceAggregateArgs> = {
-        [P in keyof T & keyof AggregateDevice]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDevice[P]>
-      : GetScalarType<T[P], AggregateDevice[P]>
-  }
-
-
-
-
-  export type DeviceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DeviceWhereInput
-    orderBy?: DeviceOrderByWithAggregationInput | DeviceOrderByWithAggregationInput[]
-    by: DeviceScalarFieldEnum[] | DeviceScalarFieldEnum
-    having?: DeviceScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: DeviceCountAggregateInputType | true
-    _avg?: DeviceAvgAggregateInputType
-    _sum?: DeviceSumAggregateInputType
-    _min?: DeviceMinAggregateInputType
-    _max?: DeviceMaxAggregateInputType
-  }
-
-  export type DeviceGroupByOutputType = {
-    id: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-    _count: DeviceCountAggregateOutputType | null
-    _avg: DeviceAvgAggregateOutputType | null
-    _sum: DeviceSumAggregateOutputType | null
-    _min: DeviceMinAggregateOutputType | null
-    _max: DeviceMaxAggregateOutputType | null
-  }
-
-  type GetDeviceGroupByPayload<T extends DeviceGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<DeviceGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DeviceGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DeviceGroupByOutputType[P]>
-            : GetScalarType<T[P], DeviceGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type DeviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectScalar = {
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-  }
-
-  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "model" | "manufactur" | "os" | "ramSize" | "gpuName" | "cpuType" | "cpuCores" | "userId", ExtArgs["result"]["device"]>
-  export type DeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type DeviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type DeviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $DevicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Device"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      uuid: string
-      model: string
-      manufactur: string
-      os: string
-      ramSize: number
-      gpuName: string
-      cpuType: string
-      cpuCores: number
-      userId: string
-    }, ExtArgs["result"]["device"]>
-    composites: {}
-  }
-
-  type DeviceGetPayload<S extends boolean | null | undefined | DeviceDefaultArgs> = $Result.GetResult<Prisma.$DevicePayload, S>
-
-  type DeviceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DeviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DeviceCountAggregateInputType | true
-    }
-
-  export interface DeviceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Device'], meta: { name: 'Device' } }
-    /**
-     * Find zero or one Device that matches the filter.
-     * @param {DeviceFindUniqueArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends DeviceFindUniqueArgs>(args: SelectSubset<T, DeviceFindUniqueArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Device that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {DeviceFindUniqueOrThrowArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends DeviceFindUniqueOrThrowArgs>(args: SelectSubset<T, DeviceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Device that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindFirstArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends DeviceFindFirstArgs>(args?: SelectSubset<T, DeviceFindFirstArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Device that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindFirstOrThrowArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends DeviceFindFirstOrThrowArgs>(args?: SelectSubset<T, DeviceFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Devices that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Devices
-     * const devices = await prisma.device.findMany()
-     * 
-     * // Get first 10 Devices
-     * const devices = await prisma.device.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const deviceWithIdOnly = await prisma.device.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends DeviceFindManyArgs>(args?: SelectSubset<T, DeviceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Device.
-     * @param {DeviceCreateArgs} args - Arguments to create a Device.
-     * @example
-     * // Create one Device
-     * const Device = await prisma.device.create({
-     *   data: {
-     *     // ... data to create a Device
-     *   }
-     * })
-     * 
-     */
-    create<T extends DeviceCreateArgs>(args: SelectSubset<T, DeviceCreateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Devices.
-     * @param {DeviceCreateManyArgs} args - Arguments to create many Devices.
-     * @example
-     * // Create many Devices
-     * const device = await prisma.device.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends DeviceCreateManyArgs>(args?: SelectSubset<T, DeviceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Devices and returns the data saved in the database.
-     * @param {DeviceCreateManyAndReturnArgs} args - Arguments to create many Devices.
-     * @example
-     * // Create many Devices
-     * const device = await prisma.device.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Devices and only return the `id`
-     * const deviceWithIdOnly = await prisma.device.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends DeviceCreateManyAndReturnArgs>(args?: SelectSubset<T, DeviceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Device.
-     * @param {DeviceDeleteArgs} args - Arguments to delete one Device.
-     * @example
-     * // Delete one Device
-     * const Device = await prisma.device.delete({
-     *   where: {
-     *     // ... filter to delete one Device
-     *   }
-     * })
-     * 
-     */
-    delete<T extends DeviceDeleteArgs>(args: SelectSubset<T, DeviceDeleteArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Device.
-     * @param {DeviceUpdateArgs} args - Arguments to update one Device.
-     * @example
-     * // Update one Device
-     * const device = await prisma.device.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends DeviceUpdateArgs>(args: SelectSubset<T, DeviceUpdateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Devices.
-     * @param {DeviceDeleteManyArgs} args - Arguments to filter Devices to delete.
-     * @example
-     * // Delete a few Devices
-     * const { count } = await prisma.device.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends DeviceDeleteManyArgs>(args?: SelectSubset<T, DeviceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Devices.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Devices
-     * const device = await prisma.device.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends DeviceUpdateManyArgs>(args: SelectSubset<T, DeviceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Devices and returns the data updated in the database.
-     * @param {DeviceUpdateManyAndReturnArgs} args - Arguments to update many Devices.
-     * @example
-     * // Update many Devices
-     * const device = await prisma.device.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Devices and only return the `id`
-     * const deviceWithIdOnly = await prisma.device.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends DeviceUpdateManyAndReturnArgs>(args: SelectSubset<T, DeviceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Device.
-     * @param {DeviceUpsertArgs} args - Arguments to update or create a Device.
-     * @example
-     * // Update or create a Device
-     * const device = await prisma.device.upsert({
-     *   create: {
-     *     // ... data to create a Device
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Device we want to update
-     *   }
-     * })
-     */
-    upsert<T extends DeviceUpsertArgs>(args: SelectSubset<T, DeviceUpsertArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Devices.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceCountArgs} args - Arguments to filter Devices to count.
-     * @example
-     * // Count the number of Devices
-     * const count = await prisma.device.count({
-     *   where: {
-     *     // ... the filter for the Devices we want to count
-     *   }
-     * })
-    **/
-    count<T extends DeviceCountArgs>(
-      args?: Subset<T, DeviceCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DeviceCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Device.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends DeviceAggregateArgs>(args: Subset<T, DeviceAggregateArgs>): Prisma.PrismaPromise<GetDeviceAggregateType<T>>
-
-    /**
-     * Group by Device.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends DeviceGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DeviceGroupByArgs['orderBy'] }
-        : { orderBy?: DeviceGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, DeviceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeviceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Device model
-   */
-  readonly fields: DeviceFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Device.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__DeviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Device model
-   */
-  interface DeviceFieldRefs {
-    readonly id: FieldRef<"Device", 'String'>
-    readonly uuid: FieldRef<"Device", 'String'>
-    readonly model: FieldRef<"Device", 'String'>
-    readonly manufactur: FieldRef<"Device", 'String'>
-    readonly os: FieldRef<"Device", 'String'>
-    readonly ramSize: FieldRef<"Device", 'Int'>
-    readonly gpuName: FieldRef<"Device", 'String'>
-    readonly cpuType: FieldRef<"Device", 'String'>
-    readonly cpuCores: FieldRef<"Device", 'Int'>
-    readonly userId: FieldRef<"Device", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Device findUnique
-   */
-  export type DeviceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device findUniqueOrThrow
-   */
-  export type DeviceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device findFirst
-   */
-  export type DeviceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Devices.
-     */
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device findFirstOrThrow
-   */
-  export type DeviceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Devices.
-     */
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device findMany
-   */
-  export type DeviceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Devices to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device create
-   */
-  export type DeviceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Device.
-     */
-    data: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
-  }
-
-  /**
-   * Device createMany
-   */
-  export type DeviceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Devices.
-     */
-    data: DeviceCreateManyInput | DeviceCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Device createManyAndReturn
-   */
-  export type DeviceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * The data used to create many Devices.
-     */
-    data: DeviceCreateManyInput | DeviceCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Device update
-   */
-  export type DeviceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Device.
-     */
-    data: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
-    /**
-     * Choose, which Device to update.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device updateMany
-   */
-  export type DeviceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Devices.
-     */
-    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
-    /**
-     * Filter which Devices to update
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Device updateManyAndReturn
-   */
-  export type DeviceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * The data used to update Devices.
-     */
-    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
-    /**
-     * Filter which Devices to update
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Device upsert
-   */
-  export type DeviceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Device to update in case it exists.
-     */
-    where: DeviceWhereUniqueInput
-    /**
-     * In case the Device found by the `where` argument doesn't exist, create a new Device with this data.
-     */
-    create: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
-    /**
-     * In case the Device was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
-  }
-
-  /**
-   * Device delete
-   */
-  export type DeviceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter which Device to delete.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device deleteMany
-   */
-  export type DeviceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Devices to delete
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Device without action
-   */
-  export type DeviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
   }
 
 
@@ -21977,6 +20923,1167 @@ export namespace Prisma {
 
 
   /**
+   * Model Device
+   */
+
+  export type AggregateDevice = {
+    _count: DeviceCountAggregateOutputType | null
+    _avg: DeviceAvgAggregateOutputType | null
+    _sum: DeviceSumAggregateOutputType | null
+    _min: DeviceMinAggregateOutputType | null
+    _max: DeviceMaxAggregateOutputType | null
+  }
+
+  export type DeviceAvgAggregateOutputType = {
+    ramSize: number | null
+    cpuCores: number | null
+  }
+
+  export type DeviceSumAggregateOutputType = {
+    ramSize: number | null
+    cpuCores: number | null
+  }
+
+  export type DeviceMinAggregateOutputType = {
+    id: string | null
+    uuid: string | null
+    model: string | null
+    manufactur: string | null
+    os: string | null
+    ramSize: number | null
+    gpuName: string | null
+    cpuType: string | null
+    cpuCores: number | null
+    userId: string | null
+  }
+
+  export type DeviceMaxAggregateOutputType = {
+    id: string | null
+    uuid: string | null
+    model: string | null
+    manufactur: string | null
+    os: string | null
+    ramSize: number | null
+    gpuName: string | null
+    cpuType: string | null
+    cpuCores: number | null
+    userId: string | null
+  }
+
+  export type DeviceCountAggregateOutputType = {
+    id: number
+    uuid: number
+    model: number
+    manufactur: number
+    os: number
+    ramSize: number
+    gpuName: number
+    cpuType: number
+    cpuCores: number
+    userId: number
+    _all: number
+  }
+
+
+  export type DeviceAvgAggregateInputType = {
+    ramSize?: true
+    cpuCores?: true
+  }
+
+  export type DeviceSumAggregateInputType = {
+    ramSize?: true
+    cpuCores?: true
+  }
+
+  export type DeviceMinAggregateInputType = {
+    id?: true
+    uuid?: true
+    model?: true
+    manufactur?: true
+    os?: true
+    ramSize?: true
+    gpuName?: true
+    cpuType?: true
+    cpuCores?: true
+    userId?: true
+  }
+
+  export type DeviceMaxAggregateInputType = {
+    id?: true
+    uuid?: true
+    model?: true
+    manufactur?: true
+    os?: true
+    ramSize?: true
+    gpuName?: true
+    cpuType?: true
+    cpuCores?: true
+    userId?: true
+  }
+
+  export type DeviceCountAggregateInputType = {
+    id?: true
+    uuid?: true
+    model?: true
+    manufactur?: true
+    os?: true
+    ramSize?: true
+    gpuName?: true
+    cpuType?: true
+    cpuCores?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type DeviceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Device to aggregate.
+     */
+    where?: DeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Devices
+    **/
+    _count?: true | DeviceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DeviceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DeviceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeviceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeviceMaxAggregateInputType
+  }
+
+  export type GetDeviceAggregateType<T extends DeviceAggregateArgs> = {
+        [P in keyof T & keyof AggregateDevice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDevice[P]>
+      : GetScalarType<T[P], AggregateDevice[P]>
+  }
+
+
+
+
+  export type DeviceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeviceWhereInput
+    orderBy?: DeviceOrderByWithAggregationInput | DeviceOrderByWithAggregationInput[]
+    by: DeviceScalarFieldEnum[] | DeviceScalarFieldEnum
+    having?: DeviceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DeviceCountAggregateInputType | true
+    _avg?: DeviceAvgAggregateInputType
+    _sum?: DeviceSumAggregateInputType
+    _min?: DeviceMinAggregateInputType
+    _max?: DeviceMaxAggregateInputType
+  }
+
+  export type DeviceGroupByOutputType = {
+    id: string
+    uuid: string
+    model: string
+    manufactur: string
+    os: string
+    ramSize: number
+    gpuName: string
+    cpuType: string
+    cpuCores: number
+    userId: string
+    _count: DeviceCountAggregateOutputType | null
+    _avg: DeviceAvgAggregateOutputType | null
+    _sum: DeviceSumAggregateOutputType | null
+    _min: DeviceMinAggregateOutputType | null
+    _max: DeviceMaxAggregateOutputType | null
+  }
+
+  type GetDeviceGroupByPayload<T extends DeviceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DeviceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DeviceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DeviceGroupByOutputType[P]>
+            : GetScalarType<T[P], DeviceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DeviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    uuid?: boolean
+    model?: boolean
+    manufactur?: boolean
+    os?: boolean
+    ramSize?: boolean
+    gpuName?: boolean
+    cpuType?: boolean
+    cpuCores?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["device"]>
+
+  export type DeviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    uuid?: boolean
+    model?: boolean
+    manufactur?: boolean
+    os?: boolean
+    ramSize?: boolean
+    gpuName?: boolean
+    cpuType?: boolean
+    cpuCores?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["device"]>
+
+  export type DeviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    uuid?: boolean
+    model?: boolean
+    manufactur?: boolean
+    os?: boolean
+    ramSize?: boolean
+    gpuName?: boolean
+    cpuType?: boolean
+    cpuCores?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["device"]>
+
+  export type DeviceSelectScalar = {
+    id?: boolean
+    uuid?: boolean
+    model?: boolean
+    manufactur?: boolean
+    os?: boolean
+    ramSize?: boolean
+    gpuName?: boolean
+    cpuType?: boolean
+    cpuCores?: boolean
+    userId?: boolean
+  }
+
+  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "model" | "manufactur" | "os" | "ramSize" | "gpuName" | "cpuType" | "cpuCores" | "userId", ExtArgs["result"]["device"]>
+  export type DeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DeviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DeviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DevicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Device"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      uuid: string
+      model: string
+      manufactur: string
+      os: string
+      ramSize: number
+      gpuName: string
+      cpuType: string
+      cpuCores: number
+      userId: string
+    }, ExtArgs["result"]["device"]>
+    composites: {}
+  }
+
+  type DeviceGetPayload<S extends boolean | null | undefined | DeviceDefaultArgs> = $Result.GetResult<Prisma.$DevicePayload, S>
+
+  type DeviceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DeviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DeviceCountAggregateInputType | true
+    }
+
+  export interface DeviceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Device'], meta: { name: 'Device' } }
+    /**
+     * Find zero or one Device that matches the filter.
+     * @param {DeviceFindUniqueArgs} args - Arguments to find a Device
+     * @example
+     * // Get one Device
+     * const device = await prisma.device.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeviceFindUniqueArgs>(args: SelectSubset<T, DeviceFindUniqueArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Device that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeviceFindUniqueOrThrowArgs} args - Arguments to find a Device
+     * @example
+     * // Get one Device
+     * const device = await prisma.device.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeviceFindUniqueOrThrowArgs>(args: SelectSubset<T, DeviceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Device that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceFindFirstArgs} args - Arguments to find a Device
+     * @example
+     * // Get one Device
+     * const device = await prisma.device.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeviceFindFirstArgs>(args?: SelectSubset<T, DeviceFindFirstArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Device that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceFindFirstOrThrowArgs} args - Arguments to find a Device
+     * @example
+     * // Get one Device
+     * const device = await prisma.device.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeviceFindFirstOrThrowArgs>(args?: SelectSubset<T, DeviceFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Devices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Devices
+     * const devices = await prisma.device.findMany()
+     * 
+     * // Get first 10 Devices
+     * const devices = await prisma.device.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const deviceWithIdOnly = await prisma.device.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DeviceFindManyArgs>(args?: SelectSubset<T, DeviceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Device.
+     * @param {DeviceCreateArgs} args - Arguments to create a Device.
+     * @example
+     * // Create one Device
+     * const Device = await prisma.device.create({
+     *   data: {
+     *     // ... data to create a Device
+     *   }
+     * })
+     * 
+     */
+    create<T extends DeviceCreateArgs>(args: SelectSubset<T, DeviceCreateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Devices.
+     * @param {DeviceCreateManyArgs} args - Arguments to create many Devices.
+     * @example
+     * // Create many Devices
+     * const device = await prisma.device.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DeviceCreateManyArgs>(args?: SelectSubset<T, DeviceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Devices and returns the data saved in the database.
+     * @param {DeviceCreateManyAndReturnArgs} args - Arguments to create many Devices.
+     * @example
+     * // Create many Devices
+     * const device = await prisma.device.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Devices and only return the `id`
+     * const deviceWithIdOnly = await prisma.device.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DeviceCreateManyAndReturnArgs>(args?: SelectSubset<T, DeviceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Device.
+     * @param {DeviceDeleteArgs} args - Arguments to delete one Device.
+     * @example
+     * // Delete one Device
+     * const Device = await prisma.device.delete({
+     *   where: {
+     *     // ... filter to delete one Device
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DeviceDeleteArgs>(args: SelectSubset<T, DeviceDeleteArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Device.
+     * @param {DeviceUpdateArgs} args - Arguments to update one Device.
+     * @example
+     * // Update one Device
+     * const device = await prisma.device.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DeviceUpdateArgs>(args: SelectSubset<T, DeviceUpdateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Devices.
+     * @param {DeviceDeleteManyArgs} args - Arguments to filter Devices to delete.
+     * @example
+     * // Delete a few Devices
+     * const { count } = await prisma.device.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DeviceDeleteManyArgs>(args?: SelectSubset<T, DeviceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Devices
+     * const device = await prisma.device.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DeviceUpdateManyArgs>(args: SelectSubset<T, DeviceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Devices and returns the data updated in the database.
+     * @param {DeviceUpdateManyAndReturnArgs} args - Arguments to update many Devices.
+     * @example
+     * // Update many Devices
+     * const device = await prisma.device.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Devices and only return the `id`
+     * const deviceWithIdOnly = await prisma.device.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DeviceUpdateManyAndReturnArgs>(args: SelectSubset<T, DeviceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Device.
+     * @param {DeviceUpsertArgs} args - Arguments to update or create a Device.
+     * @example
+     * // Update or create a Device
+     * const device = await prisma.device.upsert({
+     *   create: {
+     *     // ... data to create a Device
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Device we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeviceUpsertArgs>(args: SelectSubset<T, DeviceUpsertArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceCountArgs} args - Arguments to filter Devices to count.
+     * @example
+     * // Count the number of Devices
+     * const count = await prisma.device.count({
+     *   where: {
+     *     // ... the filter for the Devices we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeviceCountArgs>(
+      args?: Subset<T, DeviceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DeviceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Device.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeviceAggregateArgs>(args: Subset<T, DeviceAggregateArgs>): Prisma.PrismaPromise<GetDeviceAggregateType<T>>
+
+    /**
+     * Group by Device.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DeviceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DeviceGroupByArgs['orderBy'] }
+        : { orderBy?: DeviceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DeviceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeviceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Device model
+   */
+  readonly fields: DeviceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Device.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DeviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Device model
+   */
+  interface DeviceFieldRefs {
+    readonly id: FieldRef<"Device", 'String'>
+    readonly uuid: FieldRef<"Device", 'String'>
+    readonly model: FieldRef<"Device", 'String'>
+    readonly manufactur: FieldRef<"Device", 'String'>
+    readonly os: FieldRef<"Device", 'String'>
+    readonly ramSize: FieldRef<"Device", 'Int'>
+    readonly gpuName: FieldRef<"Device", 'String'>
+    readonly cpuType: FieldRef<"Device", 'String'>
+    readonly cpuCores: FieldRef<"Device", 'Int'>
+    readonly userId: FieldRef<"Device", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Device findUnique
+   */
+  export type DeviceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which Device to fetch.
+     */
+    where: DeviceWhereUniqueInput
+  }
+
+  /**
+   * Device findUniqueOrThrow
+   */
+  export type DeviceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which Device to fetch.
+     */
+    where: DeviceWhereUniqueInput
+  }
+
+  /**
+   * Device findFirst
+   */
+  export type DeviceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which Device to fetch.
+     */
+    where?: DeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Devices.
+     */
+    cursor?: DeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Devices.
+     */
+    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
+  }
+
+  /**
+   * Device findFirstOrThrow
+   */
+  export type DeviceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which Device to fetch.
+     */
+    where?: DeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Devices.
+     */
+    cursor?: DeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Devices.
+     */
+    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
+  }
+
+  /**
+   * Device findMany
+   */
+  export type DeviceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where?: DeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Devices.
+     */
+    cursor?: DeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
+  }
+
+  /**
+   * Device create
+   */
+  export type DeviceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Device.
+     */
+    data: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
+  }
+
+  /**
+   * Device createMany
+   */
+  export type DeviceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Devices.
+     */
+    data: DeviceCreateManyInput | DeviceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Device createManyAndReturn
+   */
+  export type DeviceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Devices.
+     */
+    data: DeviceCreateManyInput | DeviceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Device update
+   */
+  export type DeviceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Device.
+     */
+    data: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
+    /**
+     * Choose, which Device to update.
+     */
+    where: DeviceWhereUniqueInput
+  }
+
+  /**
+   * Device updateMany
+   */
+  export type DeviceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Devices.
+     */
+    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
+    /**
+     * Filter which Devices to update
+     */
+    where?: DeviceWhereInput
+    /**
+     * Limit how many Devices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Device updateManyAndReturn
+   */
+  export type DeviceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * The data used to update Devices.
+     */
+    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
+    /**
+     * Filter which Devices to update
+     */
+    where?: DeviceWhereInput
+    /**
+     * Limit how many Devices to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Device upsert
+   */
+  export type DeviceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Device to update in case it exists.
+     */
+    where: DeviceWhereUniqueInput
+    /**
+     * In case the Device found by the `where` argument doesn't exist, create a new Device with this data.
+     */
+    create: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
+    /**
+     * In case the Device was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
+  }
+
+  /**
+   * Device delete
+   */
+  export type DeviceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+    /**
+     * Filter which Device to delete.
+     */
+    where: DeviceWhereUniqueInput
+  }
+
+  /**
+   * Device deleteMany
+   */
+  export type DeviceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Devices to delete
+     */
+    where?: DeviceWhereInput
+    /**
+     * Limit how many Devices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Device without action
+   */
+  export type DeviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Device
+     */
+    select?: DeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Device
+     */
+    omit?: DeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model UserLogin
    */
 
@@ -23038,6 +23145,9 @@ export namespace Prisma {
     name: string | null
     suspend: boolean | null
     role: $Enums.Role | null
+    provinceId: string | null
+    cityId: string | null
+    schoolId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -23049,6 +23159,9 @@ export namespace Prisma {
     name: string | null
     suspend: boolean | null
     role: $Enums.Role | null
+    provinceId: string | null
+    cityId: string | null
+    schoolId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -23060,6 +23173,9 @@ export namespace Prisma {
     name: number
     suspend: number
     role: number
+    provinceId: number
+    cityId: number
+    schoolId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -23073,6 +23189,9 @@ export namespace Prisma {
     name?: true
     suspend?: true
     role?: true
+    provinceId?: true
+    cityId?: true
+    schoolId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -23084,6 +23203,9 @@ export namespace Prisma {
     name?: true
     suspend?: true
     role?: true
+    provinceId?: true
+    cityId?: true
+    schoolId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -23095,6 +23217,9 @@ export namespace Prisma {
     name?: true
     suspend?: true
     role?: true
+    provinceId?: true
+    cityId?: true
+    schoolId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -23179,6 +23304,9 @@ export namespace Prisma {
     name: string
     suspend: boolean
     role: $Enums.Role | null
+    provinceId: string | null
+    cityId: string | null
+    schoolId: string | null
     createdAt: Date
     updatedAt: Date
     _count: AdminCountAggregateOutputType | null
@@ -23207,9 +23335,15 @@ export namespace Prisma {
     name?: boolean
     suspend?: boolean
     role?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | Admin$userArgs<ExtArgs>
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
     operations?: boolean | Admin$operationsArgs<ExtArgs>
@@ -23226,8 +23360,14 @@ export namespace Prisma {
     name?: boolean
     suspend?: boolean
     role?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -23237,8 +23377,14 @@ export namespace Prisma {
     name?: boolean
     suspend?: boolean
     role?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectScalar = {
@@ -23248,13 +23394,19 @@ export namespace Prisma {
     name?: boolean
     suspend?: boolean
     role?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "provinceId" | "cityId" | "schoolId" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Admin$userArgs<ExtArgs>
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
     operations?: boolean | Admin$operationsArgs<ExtArgs>
@@ -23263,13 +23415,24 @@ export namespace Prisma {
     adminTransactionArchive?: boolean | Admin$adminTransactionArchiveArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type AdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
+  }
+  export type AdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    school?: boolean | Admin$schoolArgs<ExtArgs>
+  }
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
     objects: {
       user: Prisma.$UserPayload<ExtArgs> | null
+      province: Prisma.$ProvincePayload<ExtArgs> | null
+      city: Prisma.$CityPayload<ExtArgs> | null
+      school: Prisma.$SchoolPayload<ExtArgs> | null
       authority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       operationHistories: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       operations: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
@@ -23284,6 +23447,9 @@ export namespace Prisma {
       name: string
       suspend: boolean
       role: $Enums.Role | null
+      provinceId: string | null
+      cityId: string | null
+      schoolId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["admin"]>
@@ -23681,6 +23847,9 @@ export namespace Prisma {
   export interface Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends Admin$userArgs<ExtArgs> = {}>(args?: Subset<T, Admin$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    province<T extends Admin$provinceArgs<ExtArgs> = {}>(args?: Subset<T, Admin$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    city<T extends Admin$cityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    school<T extends Admin$schoolArgs<ExtArgs> = {}>(args?: Subset<T, Admin$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     authority<T extends Admin$authorityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$authorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     operationHistories<T extends Admin$operationHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     operations<T extends Admin$operationsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -23722,6 +23891,9 @@ export namespace Prisma {
     readonly name: FieldRef<"Admin", 'String'>
     readonly suspend: FieldRef<"Admin", 'Boolean'>
     readonly role: FieldRef<"Admin", 'Role'>
+    readonly provinceId: FieldRef<"Admin", 'String'>
+    readonly cityId: FieldRef<"Admin", 'String'>
+    readonly schoolId: FieldRef<"Admin", 'String'>
     readonly createdAt: FieldRef<"Admin", 'DateTime'>
     readonly updatedAt: FieldRef<"Admin", 'DateTime'>
   }
@@ -23973,6 +24145,10 @@ export namespace Prisma {
      */
     data: AdminCreateManyInput | AdminCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -24043,6 +24219,10 @@ export namespace Prisma {
      * Limit how many Admins to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -24128,6 +24308,63 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+  /**
+   * Admin.province
+   */
+  export type Admin$provinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    where?: ProvinceWhereInput
+  }
+
+  /**
+   * Admin.city
+   */
+  export type Admin$cityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the City
+     */
+    omit?: CityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+  }
+
+  /**
+   * Admin.school
+   */
+  export type Admin$schoolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the School
+     */
+    select?: SchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the School
+     */
+    omit?: SchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SchoolInclude<ExtArgs> | null
+    where?: SchoolWhereInput
   }
 
   /**
@@ -44830,22 +45067,6 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const DeviceScalarFieldEnum: {
-    id: 'id',
-    uuid: 'uuid',
-    model: 'model',
-    manufactur: 'manufactur',
-    os: 'os',
-    ramSize: 'ramSize',
-    gpuName: 'gpuName',
-    cpuType: 'cpuType',
-    cpuCores: 'cpuCores',
-    userId: 'userId'
-  };
-
-  export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
-
-
   export const ZoneScalarFieldEnum: {
     id: 'id',
     zoneId: 'zoneId',
@@ -44971,6 +45192,22 @@ export namespace Prisma {
   export type ChampionshipRecordScalarFieldEnum = (typeof ChampionshipRecordScalarFieldEnum)[keyof typeof ChampionshipRecordScalarFieldEnum]
 
 
+  export const DeviceScalarFieldEnum: {
+    id: 'id',
+    uuid: 'uuid',
+    model: 'model',
+    manufactur: 'manufactur',
+    os: 'os',
+    ramSize: 'ramSize',
+    gpuName: 'gpuName',
+    cpuType: 'cpuType',
+    cpuCores: 'cpuCores',
+    userId: 'userId'
+  };
+
+  export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
+
+
   export const UserLoginScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
@@ -44988,6 +45225,9 @@ export namespace Prisma {
     name: 'name',
     suspend: 'suspend',
     role: 'role',
+    provinceId: 'provinceId',
+    cityId: 'cityId',
+    schoolId: 'schoolId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -45491,6 +45731,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
+    admin?: AdminListRelationFilter
   }
 
   export type ProvinceOrderByWithRelationInput = {
@@ -45506,6 +45747,7 @@ export namespace Prisma {
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
     bannerLocation?: BannerLocationOrderByRelationAggregateInput
+    admin?: AdminOrderByRelationAggregateInput
   }
 
   export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
@@ -45524,6 +45766,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
+    admin?: AdminListRelationFilter
   }, "id">
 
   export type ProvinceOrderByWithAggregationInput = {
@@ -45571,6 +45814,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
+    admin?: AdminListRelationFilter
   }
 
   export type CityOrderByWithRelationInput = {
@@ -45587,6 +45831,7 @@ export namespace Prisma {
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
     bannerLocation?: BannerLocationOrderByRelationAggregateInput
+    admin?: AdminOrderByRelationAggregateInput
   }
 
   export type CityWhereUniqueInput = Prisma.AtLeast<{
@@ -45606,6 +45851,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
+    admin?: AdminListRelationFilter
   }, "id">
 
   export type CityOrderByWithAggregationInput = {
@@ -45655,6 +45901,7 @@ export namespace Prisma {
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
+    admin?: AdminListRelationFilter
   }
 
   export type SchoolOrderByWithRelationInput = {
@@ -45671,6 +45918,7 @@ export namespace Prisma {
     province?: ProvinceOrderByWithRelationInput
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
+    admin?: AdminOrderByRelationAggregateInput
   }
 
   export type SchoolWhereUniqueInput = Prisma.AtLeast<{
@@ -45690,6 +45938,7 @@ export namespace Prisma {
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
+    admin?: AdminListRelationFilter
   }, "id">
 
   export type SchoolOrderByWithAggregationInput = {
@@ -45821,7 +46070,7 @@ export namespace Prisma {
     loginAt?: DateTimeNullableFilter<"User"> | Date | string | null
     logoutAt?: DateTimeNullableFilter<"User"> | Date | string | null
     playTime?: IntFilter<"User"> | number
-    characterUsed?: IntFilter<"User"> | number
+    characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
@@ -45842,7 +46091,7 @@ export namespace Prisma {
     userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
     redeemedAccesses?: AccessContentListRelationFilter
-    UserLogin?: UserLoginListRelationFilter
+    userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     voucherRedemeer?: VoucherRedemeerListRelationFilter
@@ -45889,7 +46138,7 @@ export namespace Prisma {
     userAccesses?: AccessContentOrderByRelationAggregateInput
     zones?: ZoneOrderByRelationAggregateInput
     redeemedAccesses?: AccessContentOrderByRelationAggregateInput
-    UserLogin?: UserLoginOrderByRelationAggregateInput
+    userLogin?: UserLoginOrderByRelationAggregateInput
     bannerVisitor?: BannerVisitorOrderByRelationAggregateInput
     testParticipant?: TestParticipantOrderByRelationAggregateInput
     voucherRedemeer?: VoucherRedemeerOrderByRelationAggregateInput
@@ -45903,10 +46152,9 @@ export namespace Prisma {
     id?: string
     authId?: string
     email?: string
-    schoolId?: string
-    cityId?: string
-    provinceId?: string
+    schoolIdentity?: string
     adminId?: string
+    username?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -45918,15 +46166,16 @@ export namespace Prisma {
     birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
     grade?: IntFilter<"User"> | number
     lastGradeUpdateAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    schoolIdentity?: StringFilter<"User"> | string
     loginAt?: DateTimeNullableFilter<"User"> | Date | string | null
     logoutAt?: DateTimeNullableFilter<"User"> | Date | string | null
     playTime?: IntFilter<"User"> | number
-    characterUsed?: IntFilter<"User"> | number
+    characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
+    schoolId?: StringNullableFilter<"User"> | string | null
+    cityId?: StringNullableFilter<"User"> | string | null
+    provinceId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    username?: StringFilter<"User"> | string
     storageId?: StringNullableFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
@@ -45939,7 +46188,7 @@ export namespace Prisma {
     userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
     redeemedAccesses?: AccessContentListRelationFilter
-    UserLogin?: UserLoginListRelationFilter
+    userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     voucherRedemeer?: VoucherRedemeerListRelationFilter
@@ -45947,7 +46196,7 @@ export namespace Prisma {
     userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     testRecords?: TestParticipantRecordListRelationFilter
-  }, "id" | "authId" | "email" | "schoolId" | "cityId" | "provinceId" | "adminId">
+  }, "id" | "authId" | "email" | "schoolIdentity" | "adminId" | "username">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -46003,7 +46252,7 @@ export namespace Prisma {
     loginAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     logoutAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     playTime?: IntWithAggregatesFilter<"User"> | number
-    characterUsed?: IntWithAggregatesFilter<"User"> | number
+    characterUsed?: StringWithAggregatesFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
     schoolId?: StringNullableWithAggregatesFilter<"User"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -46015,88 +46264,6 @@ export namespace Prisma {
     storageId?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringWithAggregatesFilter<"User"> | string
     lastIdZonePosition?: StringWithAggregatesFilter<"User"> | string
-  }
-
-  export type DeviceWhereInput = {
-    AND?: DeviceWhereInput | DeviceWhereInput[]
-    OR?: DeviceWhereInput[]
-    NOT?: DeviceWhereInput | DeviceWhereInput[]
-    id?: StringFilter<"Device"> | string
-    uuid?: StringFilter<"Device"> | string
-    model?: StringFilter<"Device"> | string
-    manufactur?: StringFilter<"Device"> | string
-    os?: StringFilter<"Device"> | string
-    ramSize?: IntFilter<"Device"> | number
-    gpuName?: StringFilter<"Device"> | string
-    cpuType?: StringFilter<"Device"> | string
-    cpuCores?: IntFilter<"Device"> | number
-    userId?: StringFilter<"Device"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type DeviceOrderByWithRelationInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type DeviceWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    userId?: string
-    AND?: DeviceWhereInput | DeviceWhereInput[]
-    OR?: DeviceWhereInput[]
-    NOT?: DeviceWhereInput | DeviceWhereInput[]
-    uuid?: StringFilter<"Device"> | string
-    model?: StringFilter<"Device"> | string
-    manufactur?: StringFilter<"Device"> | string
-    os?: StringFilter<"Device"> | string
-    ramSize?: IntFilter<"Device"> | number
-    gpuName?: StringFilter<"Device"> | string
-    cpuType?: StringFilter<"Device"> | string
-    cpuCores?: IntFilter<"Device"> | number
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "userId">
-
-  export type DeviceOrderByWithAggregationInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-    _count?: DeviceCountOrderByAggregateInput
-    _avg?: DeviceAvgOrderByAggregateInput
-    _max?: DeviceMaxOrderByAggregateInput
-    _min?: DeviceMinOrderByAggregateInput
-    _sum?: DeviceSumOrderByAggregateInput
-  }
-
-  export type DeviceScalarWhereWithAggregatesInput = {
-    AND?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
-    OR?: DeviceScalarWhereWithAggregatesInput[]
-    NOT?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Device"> | string
-    uuid?: StringWithAggregatesFilter<"Device"> | string
-    model?: StringWithAggregatesFilter<"Device"> | string
-    manufactur?: StringWithAggregatesFilter<"Device"> | string
-    os?: StringWithAggregatesFilter<"Device"> | string
-    ramSize?: IntWithAggregatesFilter<"Device"> | number
-    gpuName?: StringWithAggregatesFilter<"Device"> | string
-    cpuType?: StringWithAggregatesFilter<"Device"> | string
-    cpuCores?: IntWithAggregatesFilter<"Device"> | number
-    userId?: StringWithAggregatesFilter<"Device"> | string
   }
 
   export type ZoneWhereInput = {
@@ -46759,6 +46926,88 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ChampionshipRecord"> | Date | string
   }
 
+  export type DeviceWhereInput = {
+    AND?: DeviceWhereInput | DeviceWhereInput[]
+    OR?: DeviceWhereInput[]
+    NOT?: DeviceWhereInput | DeviceWhereInput[]
+    id?: StringFilter<"Device"> | string
+    uuid?: StringFilter<"Device"> | string
+    model?: StringFilter<"Device"> | string
+    manufactur?: StringFilter<"Device"> | string
+    os?: StringFilter<"Device"> | string
+    ramSize?: IntFilter<"Device"> | number
+    gpuName?: StringFilter<"Device"> | string
+    cpuType?: StringFilter<"Device"> | string
+    cpuCores?: IntFilter<"Device"> | number
+    userId?: StringFilter<"Device"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DeviceOrderByWithRelationInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    model?: SortOrder
+    manufactur?: SortOrder
+    os?: SortOrder
+    ramSize?: SortOrder
+    gpuName?: SortOrder
+    cpuType?: SortOrder
+    cpuCores?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type DeviceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: DeviceWhereInput | DeviceWhereInput[]
+    OR?: DeviceWhereInput[]
+    NOT?: DeviceWhereInput | DeviceWhereInput[]
+    uuid?: StringFilter<"Device"> | string
+    model?: StringFilter<"Device"> | string
+    manufactur?: StringFilter<"Device"> | string
+    os?: StringFilter<"Device"> | string
+    ramSize?: IntFilter<"Device"> | number
+    gpuName?: StringFilter<"Device"> | string
+    cpuType?: StringFilter<"Device"> | string
+    cpuCores?: IntFilter<"Device"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type DeviceOrderByWithAggregationInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    model?: SortOrder
+    manufactur?: SortOrder
+    os?: SortOrder
+    ramSize?: SortOrder
+    gpuName?: SortOrder
+    cpuType?: SortOrder
+    cpuCores?: SortOrder
+    userId?: SortOrder
+    _count?: DeviceCountOrderByAggregateInput
+    _avg?: DeviceAvgOrderByAggregateInput
+    _max?: DeviceMaxOrderByAggregateInput
+    _min?: DeviceMinOrderByAggregateInput
+    _sum?: DeviceSumOrderByAggregateInput
+  }
+
+  export type DeviceScalarWhereWithAggregatesInput = {
+    AND?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
+    OR?: DeviceScalarWhereWithAggregatesInput[]
+    NOT?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Device"> | string
+    uuid?: StringWithAggregatesFilter<"Device"> | string
+    model?: StringWithAggregatesFilter<"Device"> | string
+    manufactur?: StringWithAggregatesFilter<"Device"> | string
+    os?: StringWithAggregatesFilter<"Device"> | string
+    ramSize?: IntWithAggregatesFilter<"Device"> | number
+    gpuName?: StringWithAggregatesFilter<"Device"> | string
+    cpuType?: StringWithAggregatesFilter<"Device"> | string
+    cpuCores?: IntWithAggregatesFilter<"Device"> | number
+    userId?: StringWithAggregatesFilter<"Device"> | string
+  }
+
   export type UserLoginWhereInput = {
     AND?: UserLoginWhereInput | UserLoginWhereInput[]
     OR?: UserLoginWhereInput[]
@@ -46819,9 +47068,15 @@ export namespace Prisma {
     name?: StringFilter<"Admin"> | string
     suspend?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
+    provinceId?: StringNullableFilter<"Admin"> | string | null
+    cityId?: StringNullableFilter<"Admin"> | string | null
+    schoolId?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     operationHistories?: AdminOperationHistoryListRelationFilter
     operations?: AdminOperationHistoryListRelationFilter
@@ -46837,9 +47092,15 @@ export namespace Prisma {
     name?: SortOrder
     suspend?: SortOrder
     role?: SortOrderInput | SortOrder
+    provinceId?: SortOrderInput | SortOrder
+    cityId?: SortOrderInput | SortOrder
+    schoolId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    province?: ProvinceOrderByWithRelationInput
+    city?: CityOrderByWithRelationInput
+    school?: SchoolOrderByWithRelationInput
     authority?: AdminAuthorityOrderByRelationAggregateInput
     operationHistories?: AdminOperationHistoryOrderByRelationAggregateInput
     operations?: AdminOperationHistoryOrderByRelationAggregateInput
@@ -46858,9 +47119,15 @@ export namespace Prisma {
     name?: StringFilter<"Admin"> | string
     suspend?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
+    provinceId?: StringNullableFilter<"Admin"> | string | null
+    cityId?: StringNullableFilter<"Admin"> | string | null
+    schoolId?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     operationHistories?: AdminOperationHistoryListRelationFilter
     operations?: AdminOperationHistoryListRelationFilter
@@ -46876,6 +47143,9 @@ export namespace Prisma {
     name?: SortOrder
     suspend?: SortOrder
     role?: SortOrderInput | SortOrder
+    provinceId?: SortOrderInput | SortOrder
+    cityId?: SortOrderInput | SortOrder
+    schoolId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AdminCountOrderByAggregateInput
@@ -46893,6 +47163,9 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Admin"> | string
     suspend?: BoolWithAggregatesFilter<"Admin"> | boolean
     role?: EnumRoleNullableWithAggregatesFilter<"Admin"> | $Enums.Role | null
+    provinceId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    cityId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    schoolId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
   }
@@ -48258,6 +48531,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateInput = {
@@ -48273,6 +48547,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUpdateInput = {
@@ -48288,6 +48563,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateInput = {
@@ -48303,6 +48579,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceCreateManyInput = {
@@ -48348,6 +48625,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateInput = {
@@ -48363,6 +48641,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityUpdateInput = {
@@ -48378,6 +48657,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateInput = {
@@ -48393,6 +48673,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityCreateManyInput = {
@@ -48439,6 +48720,7 @@ export namespace Prisma {
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+    admin?: AdminCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUncheckedCreateInput = {
@@ -48453,6 +48735,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUpdateInput = {
@@ -48467,6 +48750,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateInput = {
@@ -48481,6 +48765,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolCreateManyInput = {
@@ -48613,11 +48898,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -48634,7 +48919,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -48656,11 +48941,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -48677,7 +48962,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -48703,7 +48988,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48720,7 +49005,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -48746,7 +49031,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48763,7 +49048,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -48785,11 +49070,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -48819,7 +49104,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48845,7 +49130,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48857,96 +49142,6 @@ export namespace Prisma {
     storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DeviceCreateInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    user: UserCreateNestedOneWithoutDeviceInput
-  }
-
-  export type DeviceUncheckedCreateInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-  }
-
-  export type DeviceUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutDeviceNestedInput
-  }
-
-  export type DeviceUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DeviceCreateManyInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-  }
-
-  export type DeviceUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DeviceUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ZoneCreateInput = {
@@ -49676,6 +49871,96 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DeviceCreateInput = {
+    id?: string
+    uuid: string
+    model: string
+    manufactur: string
+    os: string
+    ramSize: number
+    gpuName: string
+    cpuType: string
+    cpuCores: number
+    user: UserCreateNestedOneWithoutDeviceInput
+  }
+
+  export type DeviceUncheckedCreateInput = {
+    id?: string
+    uuid: string
+    model: string
+    manufactur: string
+    os: string
+    ramSize: number
+    gpuName: string
+    cpuType: string
+    cpuCores: number
+    userId: string
+  }
+
+  export type DeviceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    uuid?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    manufactur?: StringFieldUpdateOperationsInput | string
+    os?: StringFieldUpdateOperationsInput | string
+    ramSize?: IntFieldUpdateOperationsInput | number
+    gpuName?: StringFieldUpdateOperationsInput | string
+    cpuType?: StringFieldUpdateOperationsInput | string
+    cpuCores?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutDeviceNestedInput
+  }
+
+  export type DeviceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    uuid?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    manufactur?: StringFieldUpdateOperationsInput | string
+    os?: StringFieldUpdateOperationsInput | string
+    ramSize?: IntFieldUpdateOperationsInput | number
+    gpuName?: StringFieldUpdateOperationsInput | string
+    cpuType?: StringFieldUpdateOperationsInput | string
+    cpuCores?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeviceCreateManyInput = {
+    id?: string
+    uuid: string
+    model: string
+    manufactur: string
+    os: string
+    ramSize: number
+    gpuName: string
+    cpuType: string
+    cpuCores: number
+    userId: string
+  }
+
+  export type DeviceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    uuid?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    manufactur?: StringFieldUpdateOperationsInput | string
+    os?: StringFieldUpdateOperationsInput | string
+    ramSize?: IntFieldUpdateOperationsInput | number
+    gpuName?: StringFieldUpdateOperationsInput | string
+    cpuType?: StringFieldUpdateOperationsInput | string
+    cpuCores?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DeviceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    uuid?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    manufactur?: StringFieldUpdateOperationsInput | string
+    os?: StringFieldUpdateOperationsInput | string
+    ramSize?: IntFieldUpdateOperationsInput | number
+    gpuName?: StringFieldUpdateOperationsInput | string
+    cpuType?: StringFieldUpdateOperationsInput | string
+    cpuCores?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserLoginCreateInput = {
     id?: string
     loginDate: Date | string
@@ -49734,6 +50019,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
@@ -49749,6 +50037,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -49770,6 +50061,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
@@ -49785,6 +50079,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -49803,6 +50100,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -49825,6 +50125,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -51326,6 +51629,12 @@ export namespace Prisma {
     none?: BannerLocationWhereInput
   }
 
+  export type AdminListRelationFilter = {
+    every?: AdminWhereInput
+    some?: AdminWhereInput
+    none?: AdminWhereInput
+  }
+
   export type CityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -51343,6 +51652,10 @@ export namespace Prisma {
   }
 
   export type BannerLocationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AdminOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -51848,7 +52161,6 @@ export namespace Prisma {
   export type UserAvgOrderByAggregateInput = {
     grade?: SortOrder
     playTime?: SortOrder
-    characterUsed?: SortOrder
     inventory?: SortOrder
   }
 
@@ -51913,7 +52225,6 @@ export namespace Prisma {
   export type UserSumOrderByAggregateInput = {
     grade?: SortOrder
     playTime?: SortOrder
-    characterUsed?: SortOrder
     inventory?: SortOrder
   }
 
@@ -51962,55 +52273,6 @@ export namespace Prisma {
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
-  }
-
-  export type DeviceCountOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceAvgOrderByAggregateInput = {
-    ramSize?: SortOrder
-    cpuCores?: SortOrder
-  }
-
-  export type DeviceMaxOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceMinOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceSumOrderByAggregateInput = {
-    ramSize?: SortOrder
-    cpuCores?: SortOrder
   }
 
   export type LevelListRelationFilter = {
@@ -52483,6 +52745,55 @@ export namespace Prisma {
     soloPoint?: SortOrder
   }
 
+  export type DeviceCountOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    model?: SortOrder
+    manufactur?: SortOrder
+    os?: SortOrder
+    ramSize?: SortOrder
+    gpuName?: SortOrder
+    cpuType?: SortOrder
+    cpuCores?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DeviceAvgOrderByAggregateInput = {
+    ramSize?: SortOrder
+    cpuCores?: SortOrder
+  }
+
+  export type DeviceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    model?: SortOrder
+    manufactur?: SortOrder
+    os?: SortOrder
+    ramSize?: SortOrder
+    gpuName?: SortOrder
+    cpuType?: SortOrder
+    cpuCores?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DeviceMinOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    model?: SortOrder
+    manufactur?: SortOrder
+    os?: SortOrder
+    ramSize?: SortOrder
+    gpuName?: SortOrder
+    cpuType?: SortOrder
+    cpuCores?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DeviceSumOrderByAggregateInput = {
+    ramSize?: SortOrder
+    cpuCores?: SortOrder
+  }
+
   export type UserLoginCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -52558,6 +52869,9 @@ export namespace Prisma {
     name?: SortOrder
     suspend?: SortOrder
     role?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -52569,6 +52883,9 @@ export namespace Prisma {
     name?: SortOrder
     suspend?: SortOrder
     role?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -52580,6 +52897,9 @@ export namespace Prisma {
     name?: SortOrder
     suspend?: SortOrder
     role?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -53517,6 +53837,13 @@ export namespace Prisma {
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
+  export type AdminCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
+    createMany?: AdminCreateManyProvinceInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+  }
+
   export type CityUncheckedCreateNestedManyWithoutProvinceInput = {
     create?: XOR<CityCreateWithoutProvinceInput, CityUncheckedCreateWithoutProvinceInput> | CityCreateWithoutProvinceInput[] | CityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: CityCreateOrConnectWithoutProvinceInput | CityCreateOrConnectWithoutProvinceInput[]
@@ -53550,6 +53877,13 @@ export namespace Prisma {
     connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinceInput | BannerLocationCreateOrConnectWithoutProvinceInput[]
     createMany?: BannerLocationCreateManyProvinceInputEnvelope
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  }
+
+  export type AdminUncheckedCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
+    createMany?: AdminCreateManyProvinceInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -53638,6 +53972,20 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
+  export type AdminUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutProvinceInput | AdminUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: AdminCreateManyProvinceInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutProvinceInput | AdminUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutProvinceInput | AdminUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
   export type CityUncheckedUpdateManyWithoutProvinceNestedInput = {
     create?: XOR<CityCreateWithoutProvinceInput, CityUncheckedCreateWithoutProvinceInput> | CityCreateWithoutProvinceInput[] | CityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: CityCreateOrConnectWithoutProvinceInput | CityCreateOrConnectWithoutProvinceInput[]
@@ -53708,6 +54056,20 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
+  export type AdminUncheckedUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutProvinceInput | AdminUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: AdminCreateManyProvinceInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutProvinceInput | AdminUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutProvinceInput | AdminUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
   export type ProvinceCreateNestedOneWithoutCitiesInput = {
     create?: XOR<ProvinceCreateWithoutCitiesInput, ProvinceUncheckedCreateWithoutCitiesInput>
     connectOrCreate?: ProvinceCreateOrConnectWithoutCitiesInput
@@ -53740,6 +54102,13 @@ export namespace Prisma {
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
+  export type AdminCreateNestedManyWithoutCityInput = {
+    create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
+    createMany?: AdminCreateManyCityInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+  }
+
   export type SchoolUncheckedCreateNestedManyWithoutCityInput = {
     create?: XOR<SchoolCreateWithoutCityInput, SchoolUncheckedCreateWithoutCityInput> | SchoolCreateWithoutCityInput[] | SchoolUncheckedCreateWithoutCityInput[]
     connectOrCreate?: SchoolCreateOrConnectWithoutCityInput | SchoolCreateOrConnectWithoutCityInput[]
@@ -53764,6 +54133,13 @@ export namespace Prisma {
     create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
     connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  }
+
+  export type AdminUncheckedCreateNestedManyWithoutCityInput = {
+    create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
+    createMany?: AdminCreateManyCityInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
   }
 
   export type ProvinceUpdateOneRequiredWithoutCitiesNestedInput = {
@@ -53828,6 +54204,20 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
+  export type AdminUpdateManyWithoutCityNestedInput = {
+    create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutCityInput | AdminUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: AdminCreateManyCityInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutCityInput | AdminUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutCityInput | AdminUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
   export type SchoolUncheckedUpdateManyWithoutCityNestedInput = {
     create?: XOR<SchoolCreateWithoutCityInput, SchoolUncheckedCreateWithoutCityInput> | SchoolCreateWithoutCityInput[] | SchoolUncheckedCreateWithoutCityInput[]
     connectOrCreate?: SchoolCreateOrConnectWithoutCityInput | SchoolCreateOrConnectWithoutCityInput[]
@@ -53882,6 +54272,20 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
+  export type AdminUncheckedUpdateManyWithoutCityNestedInput = {
+    create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutCityInput | AdminUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: AdminCreateManyCityInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutCityInput | AdminUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutCityInput | AdminUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
   export type CityCreateNestedOneWithoutSchoolsInput = {
     create?: XOR<CityCreateWithoutSchoolsInput, CityUncheckedCreateWithoutSchoolsInput>
     connectOrCreate?: CityCreateOrConnectWithoutSchoolsInput
@@ -53907,6 +54311,13 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
+  export type AdminCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
+    createMany?: AdminCreateManySchoolInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutSchoolInput = {
     create?: XOR<UserCreateWithoutSchoolInput, UserUncheckedCreateWithoutSchoolInput> | UserCreateWithoutSchoolInput[] | UserUncheckedCreateWithoutSchoolInput[]
     connectOrCreate?: UserCreateOrConnectWithoutSchoolInput | UserCreateOrConnectWithoutSchoolInput[]
@@ -53918,6 +54329,13 @@ export namespace Prisma {
     create?: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput> | AdminAuthorityCreateWithoutSchoolsInput[] | AdminAuthorityUncheckedCreateWithoutSchoolsInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSchoolsInput | AdminAuthorityCreateOrConnectWithoutSchoolsInput[]
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+  }
+
+  export type AdminUncheckedCreateNestedManyWithoutSchoolInput = {
+    create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
+    createMany?: AdminCreateManySchoolInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
   }
 
   export type CityUpdateOneRequiredWithoutSchoolsNestedInput = {
@@ -53963,6 +54381,20 @@ export namespace Prisma {
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
+  export type AdminUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutSchoolInput | AdminUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: AdminCreateManySchoolInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutSchoolInput | AdminUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutSchoolInput | AdminUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutSchoolNestedInput = {
     create?: XOR<UserCreateWithoutSchoolInput, UserUncheckedCreateWithoutSchoolInput> | UserCreateWithoutSchoolInput[] | UserUncheckedCreateWithoutSchoolInput[]
     connectOrCreate?: UserCreateOrConnectWithoutSchoolInput | UserCreateOrConnectWithoutSchoolInput[]
@@ -53988,6 +54420,20 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput | AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type AdminUncheckedUpdateManyWithoutSchoolNestedInput = {
+    create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutSchoolInput | AdminUpsertWithWhereUniqueWithoutSchoolInput[]
+    createMany?: AdminCreateManySchoolInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutSchoolInput | AdminUpdateWithWhereUniqueWithoutSchoolInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutSchoolInput | AdminUpdateManyWithWhereWithoutSchoolInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
   }
 
   export type AccessContentCreatezonesInput = {
@@ -54720,20 +55166,6 @@ export namespace Prisma {
     deleteMany?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutDeviceInput = {
-    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutDeviceNestedInput = {
-    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
-    upsert?: UserUpsertWithoutDeviceInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDeviceInput, UserUpdateWithoutDeviceInput>, UserUncheckedUpdateWithoutDeviceInput>
-  }
-
   export type UserCreateNestedOneWithoutZonesInput = {
     create?: XOR<UserCreateWithoutZonesInput, UserUncheckedCreateWithoutZonesInput>
     connectOrCreate?: UserCreateOrConnectWithoutZonesInput
@@ -55120,6 +55552,20 @@ export namespace Prisma {
     update?: XOR<XOR<ChampionshipUpdateToOneWithWhereWithoutRecordsInput, ChampionshipUpdateWithoutRecordsInput>, ChampionshipUncheckedUpdateWithoutRecordsInput>
   }
 
+  export type UserCreateNestedOneWithoutDeviceInput = {
+    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutDeviceNestedInput = {
+    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
+    upsert?: UserUpsertWithoutDeviceInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDeviceInput, UserUpdateWithoutDeviceInput>, UserUncheckedUpdateWithoutDeviceInput>
+  }
+
   export type UserCreateNestedOneWithoutUserLoginInput = {
     create?: XOR<UserCreateWithoutUserLoginInput, UserUncheckedCreateWithoutUserLoginInput>
     connectOrCreate?: UserCreateOrConnectWithoutUserLoginInput
@@ -55138,6 +55584,24 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
     connectOrCreate?: UserCreateOrConnectWithoutAdminInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type ProvinceCreateNestedOneWithoutAdminInput = {
+    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
+  export type CityCreateNestedOneWithoutAdminInput = {
+    create?: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: CityCreateOrConnectWithoutAdminInput
+    connect?: CityWhereUniqueInput
+  }
+
+  export type SchoolCreateNestedOneWithoutAdminInput = {
+    create?: XOR<SchoolCreateWithoutAdminInput, SchoolUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminInput
+    connect?: SchoolWhereUniqueInput
   }
 
   export type AdminAuthorityCreateNestedManyWithoutAdminInput = {
@@ -55242,6 +55706,36 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAdminInput, UserUpdateWithoutAdminInput>, UserUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type ProvinceUpdateOneWithoutAdminNestedInput = {
+    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
+    upsert?: ProvinceUpsertWithoutAdminInput
+    disconnect?: ProvinceWhereInput | boolean
+    delete?: ProvinceWhereInput | boolean
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutAdminInput, ProvinceUpdateWithoutAdminInput>, ProvinceUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type CityUpdateOneWithoutAdminNestedInput = {
+    create?: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: CityCreateOrConnectWithoutAdminInput
+    upsert?: CityUpsertWithoutAdminInput
+    disconnect?: CityWhereInput | boolean
+    delete?: CityWhereInput | boolean
+    connect?: CityWhereUniqueInput
+    update?: XOR<XOR<CityUpdateToOneWithWhereWithoutAdminInput, CityUpdateWithoutAdminInput>, CityUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type SchoolUpdateOneWithoutAdminNestedInput = {
+    create?: XOR<SchoolCreateWithoutAdminInput, SchoolUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: SchoolCreateOrConnectWithoutAdminInput
+    upsert?: SchoolUpsertWithoutAdminInput
+    disconnect?: SchoolWhereInput | boolean
+    delete?: SchoolWhereInput | boolean
+    connect?: SchoolWhereUniqueInput
+    update?: XOR<XOR<SchoolUpdateToOneWithWhereWithoutAdminInput, SchoolUpdateWithoutAdminInput>, SchoolUncheckedUpdateWithoutAdminInput>
   }
 
   export type AdminAuthorityUpdateManyWithoutAdminNestedInput = {
@@ -56519,6 +57013,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutProvinceInput = {
@@ -56533,6 +57028,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutProvinceInput = {
@@ -56556,6 +57052,7 @@ export namespace Prisma {
     city: CityCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+    admin?: AdminCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUncheckedCreateWithoutProvinceInput = {
@@ -56569,6 +57066,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolCreateOrConnectWithoutProvinceInput = {
@@ -56593,11 +57091,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56613,7 +57111,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -56635,11 +57133,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -56655,7 +57153,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -56720,6 +57218,56 @@ export namespace Prisma {
 
   export type BannerLocationCreateManyProvinceInputEnvelope = {
     data: BannerLocationCreateManyProvinceInput | BannerLocationCreateManyProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminCreateWithoutProvinceInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminUncheckedCreateWithoutProvinceInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminCreateOrConnectWithoutProvinceInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type AdminCreateManyProvinceInputEnvelope = {
+    data: AdminCreateManyProvinceInput | AdminCreateManyProvinceInput[]
     skipDuplicates?: boolean
   }
 
@@ -56819,7 +57367,7 @@ export namespace Prisma {
     loginAt?: DateTimeNullableFilter<"User"> | Date | string | null
     logoutAt?: DateTimeNullableFilter<"User"> | Date | string | null
     playTime?: IntFilter<"User"> | number
-    characterUsed?: IntFilter<"User"> | number
+    characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
@@ -56884,6 +57432,39 @@ export namespace Prisma {
     provinceId?: StringFilter<"BannerLocation"> | string
   }
 
+  export type AdminUpsertWithWhereUniqueWithoutProvinceInput = {
+    where: AdminWhereUniqueInput
+    update: XOR<AdminUpdateWithoutProvinceInput, AdminUncheckedUpdateWithoutProvinceInput>
+    create: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type AdminUpdateWithWhereUniqueWithoutProvinceInput = {
+    where: AdminWhereUniqueInput
+    data: XOR<AdminUpdateWithoutProvinceInput, AdminUncheckedUpdateWithoutProvinceInput>
+  }
+
+  export type AdminUpdateManyWithWhereWithoutProvinceInput = {
+    where: AdminScalarWhereInput
+    data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyWithoutProvinceInput>
+  }
+
+  export type AdminScalarWhereInput = {
+    AND?: AdminScalarWhereInput | AdminScalarWhereInput[]
+    OR?: AdminScalarWhereInput[]
+    NOT?: AdminScalarWhereInput | AdminScalarWhereInput[]
+    id?: StringFilter<"Admin"> | string
+    authId?: StringFilter<"Admin"> | string
+    email?: StringFilter<"Admin"> | string
+    name?: StringFilter<"Admin"> | string
+    suspend?: BoolFilter<"Admin"> | boolean
+    role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
+    provinceId?: StringNullableFilter<"Admin"> | string | null
+    cityId?: StringNullableFilter<"Admin"> | string | null
+    schoolId?: StringNullableFilter<"Admin"> | string | null
+    createdAt?: DateTimeFilter<"Admin"> | Date | string
+    updatedAt?: DateTimeFilter<"Admin"> | Date | string
+  }
+
   export type ProvinceCreateWithoutCitiesInput = {
     id?: string
     name: string
@@ -56896,6 +57477,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutCitiesInput = {
@@ -56910,6 +57492,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutCitiesInput = {
@@ -56928,6 +57511,7 @@ export namespace Prisma {
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+    admin?: AdminCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUncheckedCreateWithoutCityInput = {
@@ -56941,6 +57525,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolCreateOrConnectWithoutCityInput = {
@@ -56965,11 +57550,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56985,7 +57570,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -57007,11 +57592,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
@@ -57027,7 +57612,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -57085,6 +57670,56 @@ export namespace Prisma {
     create: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput>
   }
 
+  export type AdminCreateWithoutCityInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminUncheckedCreateWithoutCityInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminCreateOrConnectWithoutCityInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput>
+  }
+
+  export type AdminCreateManyCityInputEnvelope = {
+    data: AdminCreateManyCityInput | AdminCreateManyCityInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProvinceUpsertWithoutCitiesInput = {
     update: XOR<ProvinceUpdateWithoutCitiesInput, ProvinceUncheckedUpdateWithoutCitiesInput>
     create: XOR<ProvinceCreateWithoutCitiesInput, ProvinceUncheckedCreateWithoutCitiesInput>
@@ -57108,6 +57743,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutCitiesInput = {
@@ -57122,6 +57758,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutCityInput = {
@@ -57188,6 +57825,22 @@ export namespace Prisma {
     data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutCitiesInput>
   }
 
+  export type AdminUpsertWithWhereUniqueWithoutCityInput = {
+    where: AdminWhereUniqueInput
+    update: XOR<AdminUpdateWithoutCityInput, AdminUncheckedUpdateWithoutCityInput>
+    create: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput>
+  }
+
+  export type AdminUpdateWithWhereUniqueWithoutCityInput = {
+    where: AdminWhereUniqueInput
+    data: XOR<AdminUpdateWithoutCityInput, AdminUncheckedUpdateWithoutCityInput>
+  }
+
+  export type AdminUpdateManyWithWhereWithoutCityInput = {
+    where: AdminScalarWhereInput
+    data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyWithoutCityInput>
+  }
+
   export type CityCreateWithoutSchoolsInput = {
     id?: string
     name: string
@@ -57200,6 +57853,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutSchoolsInput = {
@@ -57214,6 +57868,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutSchoolsInput = {
@@ -57233,6 +57888,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutSchoolsInput = {
@@ -57247,6 +57903,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutSchoolsInput = {
@@ -57266,11 +57923,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57286,7 +57943,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -57308,11 +57965,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
@@ -57328,7 +57985,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -57369,6 +58026,56 @@ export namespace Prisma {
     create: XOR<AdminAuthorityCreateWithoutSchoolsInput, AdminAuthorityUncheckedCreateWithoutSchoolsInput>
   }
 
+  export type AdminCreateWithoutSchoolInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminUncheckedCreateWithoutSchoolInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type AdminCreateOrConnectWithoutSchoolInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type AdminCreateManySchoolInputEnvelope = {
+    data: AdminCreateManySchoolInput | AdminCreateManySchoolInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CityUpsertWithoutSchoolsInput = {
     update: XOR<CityUpdateWithoutSchoolsInput, CityUncheckedUpdateWithoutSchoolsInput>
     create: XOR<CityCreateWithoutSchoolsInput, CityUncheckedCreateWithoutSchoolsInput>
@@ -57392,6 +58099,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutSchoolsInput = {
@@ -57406,6 +58114,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type ProvinceUpsertWithoutSchoolsInput = {
@@ -57431,6 +58140,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutSchoolsInput = {
@@ -57445,6 +58155,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutSchoolInput = {
@@ -57479,6 +58190,22 @@ export namespace Prisma {
     data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutSchoolsInput>
   }
 
+  export type AdminUpsertWithWhereUniqueWithoutSchoolInput = {
+    where: AdminWhereUniqueInput
+    update: XOR<AdminUpdateWithoutSchoolInput, AdminUncheckedUpdateWithoutSchoolInput>
+    create: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput>
+  }
+
+  export type AdminUpdateWithWhereUniqueWithoutSchoolInput = {
+    where: AdminWhereUniqueInput
+    data: XOR<AdminUpdateWithoutSchoolInput, AdminUncheckedUpdateWithoutSchoolInput>
+  }
+
+  export type AdminUpdateManyWithWhereWithoutSchoolInput = {
+    where: AdminScalarWhereInput
+    data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyWithoutSchoolInput>
+  }
+
   export type UserCreateWithoutOwnedAccessesInput = {
     id?: string
     authId: string
@@ -57491,11 +58218,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57511,7 +58238,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -57533,11 +58260,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -57553,7 +58280,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -57580,11 +58307,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57600,7 +58327,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -57622,11 +58349,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -57642,7 +58369,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -57669,11 +58396,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57689,7 +58416,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -57711,11 +58438,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -57731,7 +58458,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -57773,7 +58500,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57789,7 +58516,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -57815,7 +58542,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57831,7 +58558,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -57948,6 +58675,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutUsersInput = {
@@ -57962,6 +58690,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutUsersInput = {
@@ -57981,6 +58710,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutUsersInput = {
@@ -57995,6 +58725,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutUsersInput = {
@@ -58013,6 +58744,7 @@ export namespace Prisma {
     city: CityCreateNestedOneWithoutSchoolsInput
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+    admin?: AdminCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUncheckedCreateWithoutUsersInput = {
@@ -58026,6 +58758,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolCreateOrConnectWithoutUsersInput = {
@@ -58042,6 +58775,9 @@ export namespace Prisma {
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
@@ -58057,6 +58793,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
@@ -58505,6 +59244,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutUsersInput = {
@@ -58519,6 +59259,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type ProvinceUpsertWithoutUsersInput = {
@@ -58544,6 +59285,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutUsersInput = {
@@ -58558,6 +59300,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithoutUsersInput = {
@@ -58582,6 +59325,7 @@ export namespace Prisma {
     city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateWithoutUsersInput = {
@@ -58595,6 +59339,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
   export type AdminUpsertWithoutUserInput = {
@@ -58617,6 +59362,9 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
@@ -58632,6 +59380,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
@@ -58949,190 +59700,6 @@ export namespace Prisma {
     answers?: JsonFilter<"TestParticipantRecord">
   }
 
-  export type UserCreateWithoutDeviceInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutDeviceInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: number
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    storageId?: string | null
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutDeviceInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-  }
-
-  export type UserUpsertWithoutDeviceInput = {
-    update: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
-    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutDeviceInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
-  }
-
-  export type UserUpdateWithoutDeviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDeviceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
   export type UserCreateWithoutZonesInput = {
     id?: string
     authId: string
@@ -59145,11 +59712,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59165,7 +59732,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -59187,11 +59754,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -59207,7 +59774,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -59333,7 +59900,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59349,7 +59916,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -59375,7 +59942,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59391,7 +59958,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -60249,6 +60816,190 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserCreateWithoutDeviceInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDeviceInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    storageId?: string | null
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDeviceInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type UserUpsertWithoutDeviceInput = {
+    update: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
+    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDeviceInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
+  }
+
+  export type UserUpdateWithoutDeviceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDeviceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    storageId?: NullableStringFieldUpdateOperationsInput | string | null
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type UserCreateWithoutUserLoginInput = {
     id?: string
     authId: string
@@ -60261,11 +61012,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60303,11 +61054,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -60365,7 +61116,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60407,7 +61158,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60445,11 +61196,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60465,7 +61216,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -60487,11 +61238,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -60507,7 +61258,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -60520,6 +61271,109 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutAdminInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
+  }
+
+  export type ProvinceCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cities?: CityCreateNestedManyWithoutProvinceInput
+    schools?: SchoolCreateNestedManyWithoutProvinceInput
+    users?: UserCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutAdminInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+  }
+
+  export type CityCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutCitiesInput
+    schools?: SchoolCreateNestedManyWithoutCityInput
+    users?: UserCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityUncheckedCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    users?: UserUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityCreateOrConnectWithoutAdminInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
+  }
+
+  export type SchoolCreateWithoutAdminInput = {
+    id?: string
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: CityCreateNestedOneWithoutSchoolsInput
+    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    users?: UserCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+  }
+
+  export type SchoolUncheckedCreateWithoutAdminInput = {
+    id?: string
+    identity: string
+    name: string
+    longitude: number
+    latitude: number
+    cityId: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+  }
+
+  export type SchoolCreateOrConnectWithoutAdminInput = {
+    where: SchoolWhereUniqueInput
+    create: XOR<SchoolCreateWithoutAdminInput, SchoolUncheckedCreateWithoutAdminInput>
   }
 
   export type AdminAuthorityCreateWithoutAdminInput = {
@@ -60727,7 +61581,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60743,7 +61597,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -60769,7 +61623,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60785,7 +61639,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -60793,6 +61647,127 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ProvinceUpsertWithoutAdminInput = {
+    update: XOR<ProvinceUpdateWithoutAdminInput, ProvinceUncheckedUpdateWithoutAdminInput>
+    create: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutAdminInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutAdminInput, ProvinceUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type ProvinceUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cities?: CityUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUpdateManyWithoutProvinceNestedInput
+    users?: UserUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
+    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type CityUpsertWithoutAdminInput = {
+    update: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
+    create: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
+    where?: CityWhereInput
+  }
+
+  export type CityUpdateToOneWithWhereWithoutAdminInput = {
+    where?: CityWhereInput
+    data: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type CityUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type SchoolUpsertWithoutAdminInput = {
+    update: XOR<SchoolUpdateWithoutAdminInput, SchoolUncheckedUpdateWithoutAdminInput>
+    create: XOR<SchoolCreateWithoutAdminInput, SchoolUncheckedCreateWithoutAdminInput>
+    where?: SchoolWhereInput
+  }
+
+  export type SchoolUpdateToOneWithWhereWithoutAdminInput = {
+    where?: SchoolWhereInput
+    data: XOR<SchoolUpdateWithoutAdminInput, SchoolUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type SchoolUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    users?: UserUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SchoolUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    cityId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
   }
 
   export type AdminAuthorityUpsertWithWhereUniqueWithoutAdminInput = {
@@ -60959,6 +61934,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -60973,6 +61951,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -60998,6 +61979,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -61012,6 +61996,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -61048,6 +62035,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -61062,6 +62052,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -61093,6 +62086,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -61107,6 +62103,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -61127,6 +62126,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -61141,6 +62143,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -61168,6 +62173,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutAdminAuthorityInput = {
@@ -61182,6 +62188,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutAdminAuthorityInput = {
@@ -61201,6 +62208,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutAdminAuthorityInput = {
@@ -61215,6 +62223,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutAdminAuthorityInput = {
@@ -61233,6 +62242,7 @@ export namespace Prisma {
     city: CityCreateNestedOneWithoutSchoolsInput
     province: ProvinceCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
+    admin?: AdminCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolUncheckedCreateWithoutAdminAuthorityInput = {
@@ -61246,6 +62256,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
   }
 
   export type SchoolCreateOrConnectWithoutAdminAuthorityInput = {
@@ -61274,6 +62285,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -61288,6 +62302,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -61321,6 +62338,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -61335,6 +62353,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
@@ -61405,6 +62424,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
@@ -61419,6 +62441,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -61493,6 +62518,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
@@ -61507,6 +62535,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -61572,6 +62603,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    admin?: AdminCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutBannerLocationInput = {
@@ -61586,6 +62618,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutBannerLocationInput = {
@@ -61605,6 +62638,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    admin?: AdminCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutBannerLocationInput = {
@@ -61619,6 +62653,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutBannerLocationInput = {
@@ -61682,6 +62717,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutBannerLocationInput = {
@@ -61696,6 +62732,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutBannerLocationInput = {
@@ -61753,11 +62790,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61774,7 +62811,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -61795,11 +62832,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -61816,7 +62853,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -61890,7 +62927,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61907,7 +62944,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -61932,7 +62969,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61949,7 +62986,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -62063,11 +63100,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62084,7 +63121,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -62105,11 +63142,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -62126,7 +63163,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -62246,7 +63283,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62263,7 +63300,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -62288,7 +63325,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62305,7 +63342,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -62373,11 +63410,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62394,7 +63431,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -62415,11 +63452,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -62436,7 +63473,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -62514,7 +63551,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62531,7 +63568,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -62556,7 +63593,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62573,7 +63610,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -62657,11 +63694,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62678,7 +63715,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
@@ -62699,11 +63736,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -62720,7 +63757,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
@@ -62793,7 +63830,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62810,7 +63847,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
@@ -62835,7 +63872,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62852,7 +63889,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
@@ -62871,6 +63908,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
@@ -62885,6 +63925,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -62921,6 +63964,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
@@ -62935,6 +63981,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -62955,6 +64004,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
@@ -62969,6 +64021,9 @@ export namespace Prisma {
     name: string
     suspend?: boolean
     role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
@@ -63005,6 +64060,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
@@ -63019,6 +64077,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
@@ -63041,11 +64102,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63062,7 +64123,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -63083,11 +64144,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -63104,7 +64165,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -63145,7 +64206,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63162,7 +64223,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -63187,7 +64248,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63204,7 +64265,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -63225,11 +64286,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63246,7 +64307,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -63267,11 +64328,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -63288,7 +64349,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -63329,7 +64390,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63346,7 +64407,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -63371,7 +64432,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63388,7 +64449,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -63461,11 +64522,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63482,7 +64543,7 @@ export namespace Prisma {
     userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
@@ -63503,11 +64564,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -63524,7 +64585,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    UserLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
@@ -63598,7 +64659,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63615,7 +64676,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -63640,7 +64701,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63657,7 +64718,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -63738,11 +64799,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
@@ -63766,6 +64827,19 @@ export namespace Prisma {
     bannerId: string
   }
 
+  export type AdminCreateManyProvinceInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CityUpdateWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -63778,6 +64852,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutProvinceInput = {
@@ -63792,6 +64867,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutProvinceInput = {
@@ -63815,6 +64891,7 @@ export namespace Prisma {
     city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateWithoutProvinceInput = {
@@ -63828,6 +64905,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateManyWithoutProvinceInput = {
@@ -63857,7 +64935,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63873,7 +64951,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -63899,7 +64977,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63915,7 +64993,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -63941,7 +65019,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63993,6 +65071,59 @@ export namespace Prisma {
     bannerId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type AdminUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SchoolCreateManyCityInput = {
     id?: string
     identity: string
@@ -64016,11 +65147,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
@@ -64031,6 +65162,19 @@ export namespace Prisma {
     storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
+  }
+
+  export type AdminCreateManyCityInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SchoolUpdateWithoutCityInput = {
@@ -64044,6 +65188,7 @@ export namespace Prisma {
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateWithoutCityInput = {
@@ -64057,6 +65202,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateManyWithoutCityInput = {
@@ -64086,7 +65232,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64102,7 +65248,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -64128,7 +65274,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64144,7 +65290,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -64170,7 +65316,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64224,6 +65370,59 @@ export namespace Prisma {
     provinceId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type AdminUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateManyWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateManySchoolInput = {
     id?: string
     authId: string
@@ -64236,11 +65435,11 @@ export namespace Prisma {
     birthDate?: Date | string | null
     grade?: number
     lastGradeUpdateAt?: Date | string | null
-    schoolIdentity?: string
+    schoolIdentity: string
     loginAt?: Date | string | null
     logoutAt?: Date | string | null
     playTime?: number
-    characterUsed?: number
+    characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
@@ -64251,6 +65450,19 @@ export namespace Prisma {
     storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
+  }
+
+  export type AdminCreateManySchoolInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateWithoutSchoolInput = {
@@ -64269,7 +65481,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64285,7 +65497,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -64311,7 +65523,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64327,7 +65539,7 @@ export namespace Prisma {
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -64353,7 +65565,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64389,6 +65601,59 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
+  export type AdminUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type AdminUncheckedUpdateManyWithoutSchoolInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserUpdateWithoutUserAccessesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
@@ -64405,7 +65670,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64421,7 +65686,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -64447,7 +65712,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64463,7 +65728,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -64489,7 +65754,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64519,7 +65784,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64535,7 +65800,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    UserLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
@@ -64561,7 +65826,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64577,7 +65842,7 @@ export namespace Prisma {
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    UserLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
@@ -64603,7 +65868,7 @@ export namespace Prisma {
     loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65610,6 +66875,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -65624,6 +66890,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutAdminAuthorityInput = {
@@ -65648,6 +66915,7 @@ export namespace Prisma {
     city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
     province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -65661,6 +66929,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
   }
 
   export type SchoolUncheckedUpdateManyWithoutAdminAuthorityInput = {
@@ -65741,6 +67010,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutBannerLocationInput = {
@@ -65755,6 +67025,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutBannerLocationInput = {

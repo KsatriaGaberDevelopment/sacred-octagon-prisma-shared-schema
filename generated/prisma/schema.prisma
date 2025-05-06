@@ -27,6 +27,7 @@ model Province {
   users          User[]
   adminAuthority AdminAuthority[]
   bannerLocation BannerLocation[]
+  admin          Admin[]
 
   @@index([id])
   @@index([name])
@@ -47,6 +48,7 @@ model City {
   users          User[]
   adminAuthority AdminAuthority[]
   bannerLocation BannerLocation[]
+  admin          Admin[]
 
   @@index([provinceId])
 }
@@ -65,6 +67,7 @@ model School {
   province       Province         @relation(fields: [provinceId], references: [id])
   users          User[]
   adminAuthority AdminAuthority[]
+  admin          Admin[]
 
   @@index([cityId])
 }
@@ -95,19 +98,19 @@ model User {
   birthDate              DateTime?
   grade                  Int                      @default(0)
   lastGradeUpdateAt      DateTime?
-  schoolIdentity         String                   @default("")
+  schoolIdentity         String                   @unique
   loginAt                DateTime?
   logoutAt               DateTime?
   playTime               Int                      @default(0)
-  characterUsed          Int                      @default(0)
+  characterUsed          String                   @default("")
   inventory              Int[]                    @default([0, 0, 0])
-  schoolId               String?                  @unique
-  cityId                 String?                  @unique
-  provinceId             String?                  @unique
+  schoolId               String?
+  cityId                 String?
+  provinceId             String?
   adminId                String?                  @unique
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime                 @updatedAt
-  username               String
+  username               String                   @unique
   device                 Device?
   storageId              String?
   lastIdZoneUnlocked     String                   @default("")
@@ -120,7 +123,7 @@ model User {
   userAccesses           AccessContent[]
   zones                  Zone[]
   redeemedAccesses       AccessContent[]          @relation("AccessRedemeers")
-  UserLogin              UserLogin[]
+  userLogin              UserLogin[]
   bannerVisitor          BannerVisitor[]
   testParticipant        TestParticipant[]
   voucherRedemeer        VoucherRedemeer[]
@@ -130,20 +133,6 @@ model User {
   testRecords            TestParticipantRecord[]
 
   @@index([authId])
-}
-
-model Device {
-  id         String @id @default(cuid())
-  uuid       String
-  model      String
-  manufactur String
-  os         String
-  ramSize    Int
-  gpuName    String
-  cpuType    String
-  cpuCores   Int
-  userId     String @unique
-  user       User   @relation(fields: [userId], references: [id])
 }
 
 model Zone {
@@ -289,6 +278,20 @@ model ChampionshipRecord {
   @@index([recordId])
 }
 
+model Device {
+  id         String @id @default(cuid())
+  uuid       String
+  model      String
+  manufactur String
+  os         String
+  ramSize    Int
+  gpuName    String
+  cpuType    String
+  cpuCores   Int
+  userId     String @unique
+  user       User   @relation(fields: [userId], references: [id])
+}
+
 model UserLogin {
   id         String    @id @default(cuid())
   userId     String
@@ -307,6 +310,12 @@ model Admin {
   suspend                 Boolean                   @default(false)
   role                    Role?
   user                    User?
+  provinceId              String?
+  cityId                  String?
+  schoolId                String?
+  province                Province?                 @relation(fields: [provinceId], references: [id])
+  city                    City?                     @relation(fields: [cityId], references: [id])
+  school                  School?                   @relation(fields: [schoolId], references: [id])
   authority               AdminAuthority[]
   createdAt               DateTime                  @default(now())
   updatedAt               DateTime                  @updatedAt
