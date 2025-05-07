@@ -10,8 +10,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Province {
@@ -193,18 +194,20 @@ model SubLevel {
 }
 
 model InnerLevel {
-  id           String    @id @default(cuid())
-  innerLevelId String
-  subLevelId   String
-  subLevel     SubLevel  @relation(fields: [subLevelId], references: [id], onDelete: Cascade)
-  isUnlock     Boolean   @default(false)
-  unlockedAt   DateTime?
-  isComplete   Boolean   @default(false)
-  completedAt  DateTime?
-  point        Int       @default(0)
-  played       Int       @default(0)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  innerLevelId   String
+  subLevelId     String
+  subLevel       SubLevel  @relation(fields: [subLevelId], references: [id], onDelete: Cascade)
+  isUnlock       Boolean   @default(false)
+  unlockedAt     DateTime?
+  isComplete     Boolean   @default(false)
+  completedAt    DateTime?
+  correctAttempt Float     @default(0)
+  playTime       Int       @default(0)
+  point          Int       @default(0)
+  played         Int       @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   @@unique([subLevelId, innerLevelId])
   @@index([innerLevelId])

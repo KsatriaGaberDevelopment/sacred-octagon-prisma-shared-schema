@@ -237,6 +237,8 @@ exports.Prisma.InnerLevelScalarFieldEnum = {
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
+  correctAttempt: 'correctAttempt',
+  playTime: 'playTime',
   point: 'point',
   played: 'played',
   createdAt: 'createdAt',

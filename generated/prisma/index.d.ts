@@ -15148,11 +15148,15 @@ export namespace Prisma {
   }
 
   export type InnerLevelAvgAggregateOutputType = {
+    correctAttempt: number | null
+    playTime: number | null
     point: number | null
     played: number | null
   }
 
   export type InnerLevelSumAggregateOutputType = {
+    correctAttempt: number | null
+    playTime: number | null
     point: number | null
     played: number | null
   }
@@ -15165,6 +15169,8 @@ export namespace Prisma {
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
+    correctAttempt: number | null
+    playTime: number | null
     point: number | null
     played: number | null
     createdAt: Date | null
@@ -15179,6 +15185,8 @@ export namespace Prisma {
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
+    correctAttempt: number | null
+    playTime: number | null
     point: number | null
     played: number | null
     createdAt: Date | null
@@ -15193,6 +15201,8 @@ export namespace Prisma {
     unlockedAt: number
     isComplete: number
     completedAt: number
+    correctAttempt: number
+    playTime: number
     point: number
     played: number
     createdAt: number
@@ -15202,11 +15212,15 @@ export namespace Prisma {
 
 
   export type InnerLevelAvgAggregateInputType = {
+    correctAttempt?: true
+    playTime?: true
     point?: true
     played?: true
   }
 
   export type InnerLevelSumAggregateInputType = {
+    correctAttempt?: true
+    playTime?: true
     point?: true
     played?: true
   }
@@ -15219,6 +15233,8 @@ export namespace Prisma {
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
+    correctAttempt?: true
+    playTime?: true
     point?: true
     played?: true
     createdAt?: true
@@ -15233,6 +15249,8 @@ export namespace Prisma {
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
+    correctAttempt?: true
+    playTime?: true
     point?: true
     played?: true
     createdAt?: true
@@ -15247,6 +15265,8 @@ export namespace Prisma {
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
+    correctAttempt?: true
+    playTime?: true
     point?: true
     played?: true
     createdAt?: true
@@ -15348,6 +15368,8 @@ export namespace Prisma {
     unlockedAt: Date | null
     isComplete: boolean
     completedAt: Date | null
+    correctAttempt: number
+    playTime: number
     point: number
     played: number
     createdAt: Date
@@ -15381,6 +15403,8 @@ export namespace Prisma {
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
+    correctAttempt?: boolean
+    playTime?: boolean
     point?: boolean
     played?: boolean
     createdAt?: boolean
@@ -15396,6 +15420,8 @@ export namespace Prisma {
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
+    correctAttempt?: boolean
+    playTime?: boolean
     point?: boolean
     played?: boolean
     createdAt?: boolean
@@ -15411,6 +15437,8 @@ export namespace Prisma {
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
+    correctAttempt?: boolean
+    playTime?: boolean
     point?: boolean
     played?: boolean
     createdAt?: boolean
@@ -15426,13 +15454,15 @@ export namespace Prisma {
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
+    correctAttempt?: boolean
+    playTime?: boolean
     point?: boolean
     played?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type InnerLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "innerLevelId" | "subLevelId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "point" | "played" | "createdAt" | "updatedAt", ExtArgs["result"]["innerLevel"]>
+  export type InnerLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "innerLevelId" | "subLevelId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "correctAttempt" | "playTime" | "point" | "played" | "createdAt" | "updatedAt", ExtArgs["result"]["innerLevel"]>
   export type InnerLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
   }
@@ -15456,6 +15486,8 @@ export namespace Prisma {
       unlockedAt: Date | null
       isComplete: boolean
       completedAt: Date | null
+      correctAttempt: number
+      playTime: number
       point: number
       played: number
       createdAt: Date
@@ -15891,6 +15923,8 @@ export namespace Prisma {
     readonly unlockedAt: FieldRef<"InnerLevel", 'DateTime'>
     readonly isComplete: FieldRef<"InnerLevel", 'Boolean'>
     readonly completedAt: FieldRef<"InnerLevel", 'DateTime'>
+    readonly correctAttempt: FieldRef<"InnerLevel", 'Float'>
+    readonly playTime: FieldRef<"InnerLevel", 'Int'>
     readonly point: FieldRef<"InnerLevel", 'Int'>
     readonly played: FieldRef<"InnerLevel", 'Int'>
     readonly createdAt: FieldRef<"InnerLevel", 'DateTime'>
@@ -45122,6 +45156,8 @@ export namespace Prisma {
     unlockedAt: 'unlockedAt',
     isComplete: 'isComplete',
     completedAt: 'completedAt',
+    correctAttempt: 'correctAttempt',
+    playTime: 'playTime',
     point: 'point',
     played: 'played',
     createdAt: 'createdAt',
@@ -46530,6 +46566,8 @@ export namespace Prisma {
     unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolFilter<"InnerLevel"> | boolean
     completedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
+    correctAttempt?: FloatFilter<"InnerLevel"> | number
+    playTime?: IntFilter<"InnerLevel"> | number
     point?: IntFilter<"InnerLevel"> | number
     played?: IntFilter<"InnerLevel"> | number
     createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
@@ -46545,6 +46583,8 @@ export namespace Prisma {
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
     createdAt?: SortOrder
@@ -46564,6 +46604,8 @@ export namespace Prisma {
     unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolFilter<"InnerLevel"> | boolean
     completedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
+    correctAttempt?: FloatFilter<"InnerLevel"> | number
+    playTime?: IntFilter<"InnerLevel"> | number
     point?: IntFilter<"InnerLevel"> | number
     played?: IntFilter<"InnerLevel"> | number
     createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
@@ -46579,6 +46621,8 @@ export namespace Prisma {
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
     createdAt?: SortOrder
@@ -46601,6 +46645,8 @@ export namespace Prisma {
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolWithAggregatesFilter<"InnerLevel"> | boolean
     completedAt?: DateTimeNullableWithAggregatesFilter<"InnerLevel"> | Date | string | null
+    correctAttempt?: FloatWithAggregatesFilter<"InnerLevel"> | number
+    playTime?: IntWithAggregatesFilter<"InnerLevel"> | number
     point?: IntWithAggregatesFilter<"InnerLevel"> | number
     played?: IntWithAggregatesFilter<"InnerLevel"> | number
     createdAt?: DateTimeWithAggregatesFilter<"InnerLevel"> | Date | string
@@ -49434,6 +49480,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -49449,6 +49497,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -49462,6 +49512,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49477,6 +49529,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49491,6 +49545,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -49504,6 +49560,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49518,6 +49576,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52472,6 +52532,8 @@ export namespace Prisma {
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
     createdAt?: SortOrder
@@ -52479,6 +52541,8 @@ export namespace Prisma {
   }
 
   export type InnerLevelAvgOrderByAggregateInput = {
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
   }
@@ -52491,6 +52555,8 @@ export namespace Prisma {
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
     createdAt?: SortOrder
@@ -52505,6 +52571,8 @@ export namespace Prisma {
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
     createdAt?: SortOrder
@@ -52512,6 +52580,8 @@ export namespace Prisma {
   }
 
   export type InnerLevelSumOrderByAggregateInput = {
+    correctAttempt?: SortOrder
+    playTime?: SortOrder
     point?: SortOrder
     played?: SortOrder
   }
@@ -60242,6 +60312,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -60255,6 +60327,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -60333,6 +60407,8 @@ export namespace Prisma {
     unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolFilter<"InnerLevel"> | boolean
     completedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
+    correctAttempt?: FloatFilter<"InnerLevel"> | number
+    playTime?: IntFilter<"InnerLevel"> | number
     point?: IntFilter<"InnerLevel"> | number
     played?: IntFilter<"InnerLevel"> | number
     createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
@@ -66482,6 +66558,8 @@ export namespace Prisma {
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
     point?: number
     played?: number
     createdAt?: Date | string
@@ -66495,6 +66573,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66508,6 +66588,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66521,6 +66603,8 @@ export namespace Prisma {
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
+    playTime?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
