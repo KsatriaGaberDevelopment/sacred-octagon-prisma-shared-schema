@@ -186,14 +186,13 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   username: 'username',
-  storageId: 'storageId',
   lastIdZoneUnlocked: 'lastIdZoneUnlocked',
   lastIdZonePosition: 'lastIdZonePosition'
 };
 
 exports.Prisma.ZoneScalarFieldEnum = {
   id: 'id',
-  zoneId: 'zoneId',
+  inGameId: 'inGameId',
   userId: 'userId',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
@@ -207,32 +206,37 @@ exports.Prisma.ZoneScalarFieldEnum = {
 
 exports.Prisma.LevelScalarFieldEnum = {
   id: 'id',
-  levelId: 'levelId',
-  zoneId: 'zoneId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.SubLevelScalarFieldEnum = {
   id: 'id',
-  subLevelId: 'subLevelId',
-  levelId: 'levelId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
+  levelInGameId: 'levelInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.InnerLevelScalarFieldEnum = {
   id: 'id',
-  innerLevelId: 'innerLevelId',
-  subLevelId: 'subLevelId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
+  levelInGameId: 'levelInGameId',
+  subLevelInGameId: 'subLevelInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
@@ -242,44 +246,50 @@ exports.Prisma.InnerLevelScalarFieldEnum = {
   point: 'point',
   played: 'played',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.GempoScalarFieldEnum = {
   id: 'id',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
-  gempoId: 'gempoId',
-  zoneId: 'zoneId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.ChampionshipScalarFieldEnum = {
   id: 'id',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
-  championshipId: 'championshipId',
-  zoneId: 'zoneId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.GempoRecordScalarFieldEnum = {
   id: 'id',
-  recordId: 'recordId',
-  gempoId: 'gempoId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
+  gempoInGameId: 'gempoInGameId',
   played: 'played',
   point: 'point',
   lastPlayedAt: 'lastPlayedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.ChampionshipRecordScalarFieldEnum = {
   id: 'id',
-  recordId: 'recordId',
-  championshipId: 'championshipId',
+  inGameId: 'inGameId',
+  zoneInGameId: 'zoneInGameId',
+  championshipInGameId: 'championshipInGameId',
   teamWin: 'teamWin',
   teamLose: 'teamLose',
   teamPlayed: 'teamPlayed',
@@ -291,19 +301,7 @@ exports.Prisma.ChampionshipRecordScalarFieldEnum = {
   soloPoint: 'soloPoint',
   soloLastPlayedAt: 'soloLastPlayedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.DeviceScalarFieldEnum = {
-  id: 'id',
-  uuid: 'uuid',
-  model: 'model',
-  manufactur: 'manufactur',
-  os: 'os',
-  ramSize: 'ramSize',
-  gpuName: 'gpuName',
-  cpuType: 'cpuType',
-  cpuCores: 'cpuCores',
+  updatedAt: 'updatedAt',
   userId: 'userId'
 };
 
@@ -615,7 +613,6 @@ exports.Prisma.ModelName = {
   Championship: 'Championship',
   GempoRecord: 'GempoRecord',
   ChampionshipRecord: 'ChampionshipRecord',
-  Device: 'Device',
   UserLogin: 'UserLogin',
   Admin: 'Admin',
   AdminOperationHistory: 'AdminOperationHistory',

@@ -112,8 +112,6 @@ model User {
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime                 @updatedAt
   username               String                   @unique
-  device                 Device?
-  storageId              String?
   lastIdZoneUnlocked     String                   @default("")
   lastIdZonePosition     String                   @default("")
   ownedAccesses          AccessContent[]          @relation("AccessOwner")
@@ -132,167 +130,188 @@ model User {
   userTransaction        UserTransaction[]
   multiPlayerMember      MultiPlayerMember[]
   testRecords            TestParticipantRecord[]
+  subLevels              SubLevel[]
+  innerLevels            InnerLevel[]
+  levels                 Level[]
+  gempos                 Gempo[]
+  championships          Championship[]
+  gempoRecords           GempoRecord[]
+  championshipRecords    ChampionshipRecord[]
 
   @@index([authId])
 }
 
 model Zone {
-  id               String        @id @default(cuid())
-  zoneId           String
+  id               String    @id @default(cuid())
+  inGameId         String
   userId           String
-  user             User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  isComplete       Boolean       @default(false)
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isComplete       Boolean   @default(false)
   completedAt      DateTime?
-  lastLevelId      String        @default("")
-  lastSubLevelId   String        @default("")
-  lastInnerLevelId String        @default("")
-  lastLevelUnlock  String        @default("")
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @updatedAt
-  levels           Level[]
-  gempo            Gempo?
-  championship     Championship?
+  lastLevelId      String    @default("")
+  lastSubLevelId   String    @default("")
+  lastInnerLevelId String    @default("")
+  lastLevelUnlock  String    @default("")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
-  @@unique([userId, zoneId])
+  @@unique([userId, inGameId])
+  @@index([inGameId])
   @@index([userId])
 }
 
 model Level {
-  id          String     @id @default(cuid())
-  levelId     String
-  zoneId      String
-  zone        Zone       @relation(fields: [zoneId], references: [id], onDelete: Cascade)
-  isUnlock    Boolean    @default(false)
-  unlockedAt  DateTime?
-  isComplete  Boolean    @default(false)
-  completedAt DateTime?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  subLevels   SubLevel[]
+  id           String    @id @default(cuid())
+  inGameId     String
+  zoneInGameId String
+  isUnlock     Boolean   @default(false)
+  unlockedAt   DateTime?
+  isComplete   Boolean   @default(false)
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([zoneId, levelId])
-  @@index([levelId])
-  @@index([zoneId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model SubLevel {
-  id          String       @id @default(cuid())
-  subLevelId  String
-  levelId     String
-  level       Level        @relation(fields: [levelId], references: [id], onDelete: Cascade)
-  isUnlock    Boolean      @default(false)
-  unlockedAt  DateTime?
-  isComplete  Boolean      @default(false)
-  completedAt DateTime?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  innerLevels InnerLevel[]
+  id            String    @id @default(cuid())
+  inGameId      String
+  zoneInGameId  String
+  levelInGameId String
+  isUnlock      Boolean   @default(false)
+  unlockedAt    DateTime?
+  isComplete    Boolean   @default(false)
+  completedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([levelId, subLevelId])
-  @@index([levelId])
-  @@index([subLevelId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId])
+  @@index([levelInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model InnerLevel {
-  id             String    @id @default(cuid())
-  innerLevelId   String
-  subLevelId     String
-  subLevel       SubLevel  @relation(fields: [subLevelId], references: [id], onDelete: Cascade)
-  isUnlock       Boolean   @default(false)
-  unlockedAt     DateTime?
-  isComplete     Boolean   @default(false)
-  completedAt    DateTime?
-  correctAttempt Float     @default(0)
-  playTime       Int       @default(0)
-  point          Int       @default(0)
-  played         Int       @default(0)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id               String    @id @default(cuid())
+  inGameId         String
+  zoneInGameId     String
+  levelInGameId    String
+  subLevelInGameId String
+  isUnlock         Boolean   @default(false)
+  unlockedAt       DateTime?
+  isComplete       Boolean   @default(false)
+  completedAt      DateTime?
+  correctAttempt   Float     @default(0)
+  playTime         Int       @default(0)
+  point            Int       @default(0)
+  played           Int       @default(0)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([subLevelId, innerLevelId])
-  @@index([innerLevelId])
-  @@index([subLevelId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId])
+  @@index([levelInGameId])
+  @@index([subLevelInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model Gempo {
-  id         String        @id @default(cuid())
-  isUnlock   Boolean       @default(false)
-  unlockedAt DateTime?
-  gempoId    String
-  zoneId     String        @unique
-  zone       Zone          @relation(fields: [zoneId], references: [id], onDelete: Cascade)
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime      @updatedAt
-  records    GempoRecord[]
+  id           String    @id @default(cuid())
+  isUnlock     Boolean   @default(false)
+  unlockedAt   DateTime?
+  inGameId     String
+  zoneInGameId String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([zoneId, gempoId])
-  @@index([gempoId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId, inGameId])
+  @@index([zoneInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model Championship {
-  id             String               @id @default(cuid())
-  isUnlock       Boolean              @default(false)
-  unlockedAt     DateTime?
-  championshipId String
-  zoneId         String               @unique
-  zone           Zone                 @relation(fields: [zoneId], references: [id], onDelete: Cascade)
-  createdAt      DateTime             @default(now())
-  updatedAt      DateTime             @updatedAt
-  records        ChampionshipRecord[]
+  id           String    @id @default(cuid())
+  isUnlock     Boolean   @default(false)
+  unlockedAt   DateTime?
+  inGameId     String
+  zoneInGameId String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([zoneId, championshipId])
-  @@index([championshipId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId, inGameId])
+  @@index([zoneInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model GempoRecord {
-  id           String    @id @default(cuid())
-  recordId     String // in-game id ex: G02
-  gempoId      String
-  gempo        Gempo     @relation(fields: [gempoId], references: [id], onDelete: Cascade)
-  played       Int       @default(0)
-  point        Int       @default(0)
-  lastPlayedAt DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id            String    @id @default(cuid())
+  inGameId      String // in-game id ex: G02
+  zoneInGameId  String
+  gempoInGameId String
+  played        Int       @default(0)
+  point         Int       @default(0)
+  lastPlayedAt  DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([gempoId, recordId])
-  @@index([recordId])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId, gempoInGameId])
+  @@index([gempoInGameId, inGameId])
+  @@index([gempoInGameId])
+  @@index([zoneInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model ChampionshipRecord {
-  id               String       @id @default(cuid())
-  recordId         String // in-game id
-  championshipId   String
-  championship     Championship @relation(fields: [championshipId], references: [id], onDelete: Cascade)
-  teamWin          Int          @default(0)
-  teamLose         Int          @default(0)
-  teamPlayed       Int          @default(0)
-  teamPoint        Int          @default(0)
-  teamLastPlayedAt DateTime?
-  soloWin          Int          @default(0)
-  soloLose         Int          @default(0)
-  soloPlayed       Int          @default(0)
-  soloPoint        Int          @default(0)
-  soloLastPlayedAt DateTime?
-  createdAt        DateTime     @default(now())
-  updatedAt        DateTime     @updatedAt
+  id                   String    @id @default(cuid())
+  inGameId             String // in-game id
+  zoneInGameId         String
+  championshipInGameId String
+  teamWin              Int       @default(0)
+  teamLose             Int       @default(0)
+  teamPlayed           Int       @default(0)
+  teamPoint            Int       @default(0)
+  teamLastPlayedAt     DateTime?
+  soloWin              Int       @default(0)
+  soloLose             Int       @default(0)
+  soloPlayed           Int       @default(0)
+  soloPoint            Int       @default(0)
+  soloLastPlayedAt     DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  userId               String
+  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([championshipId, recordId])
-  @@index([recordId])
-}
-
-model Device {
-  id         String @id @default(cuid())
-  uuid       String
-  model      String
-  manufactur String
-  os         String
-  ramSize    Int
-  gpuName    String
-  cpuType    String
-  cpuCores   Int
-  userId     String @unique
-  user       User   @relation(fields: [userId], references: [id])
+  @@unique([userId, inGameId])
+  @@index([zoneInGameId, championshipInGameId])
+  @@index([championshipInGameId, inGameId])
+  @@index([championshipInGameId])
+  @@index([zoneInGameId])
+  @@index([inGameId])
+  @@index([userId])
 }
 
 model UserLogin {

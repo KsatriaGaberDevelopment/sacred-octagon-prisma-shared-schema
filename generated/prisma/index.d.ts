@@ -79,11 +79,6 @@ export type GempoRecord = $Result.DefaultSelection<Prisma.$GempoRecordPayload>
  */
 export type ChampionshipRecord = $Result.DefaultSelection<Prisma.$ChampionshipRecordPayload>
 /**
- * Model Device
- * 
- */
-export type Device = $Result.DefaultSelection<Prisma.$DevicePayload>
-/**
  * Model UserLogin
  * 
  */
@@ -538,16 +533,6 @@ export class PrismaClient<
     * ```
     */
   get championshipRecord(): Prisma.ChampionshipRecordDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.device`: Exposes CRUD operations for the **Device** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Devices
-    * const devices = await prisma.device.findMany()
-    * ```
-    */
-  get device(): Prisma.DeviceDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.userLogin`: Exposes CRUD operations for the **UserLogin** model.
@@ -1201,7 +1186,6 @@ export namespace Prisma {
     Championship: 'Championship',
     GempoRecord: 'GempoRecord',
     ChampionshipRecord: 'ChampionshipRecord',
-    Device: 'Device',
     UserLogin: 'UserLogin',
     Admin: 'Admin',
     AdminOperationHistory: 'AdminOperationHistory',
@@ -1240,7 +1224,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "device" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2203,80 +2187,6 @@ export namespace Prisma {
           count: {
             args: Prisma.ChampionshipRecordCountArgs<ExtArgs>
             result: $Utils.Optional<ChampionshipRecordCountAggregateOutputType> | number
-          }
-        }
-      }
-      Device: {
-        payload: Prisma.$DevicePayload<ExtArgs>
-        fields: Prisma.DeviceFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DeviceFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DeviceFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          findFirst: {
-            args: Prisma.DeviceFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DeviceFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          findMany: {
-            args: Prisma.DeviceFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          create: {
-            args: Prisma.DeviceCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          createMany: {
-            args: Prisma.DeviceCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.DeviceCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          delete: {
-            args: Prisma.DeviceDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          update: {
-            args: Prisma.DeviceUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          deleteMany: {
-            args: Prisma.DeviceDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DeviceUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.DeviceUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>[]
-          }
-          upsert: {
-            args: Prisma.DeviceUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DevicePayload>
-          }
-          aggregate: {
-            args: Prisma.DeviceAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDevice>
-          }
-          groupBy: {
-            args: Prisma.DeviceGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DeviceGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DeviceCountArgs<ExtArgs>
-            result: $Utils.Optional<DeviceCountAggregateOutputType> | number
           }
         }
       }
@@ -3857,7 +3767,6 @@ export namespace Prisma {
     championship?: ChampionshipOmit
     gempoRecord?: GempoRecordOmit
     championshipRecord?: ChampionshipRecordOmit
-    device?: DeviceOmit
     userLogin?: UserLoginOmit
     admin?: AdminOmit
     adminOperationHistory?: AdminOperationHistoryOmit
@@ -4216,6 +4125,13 @@ export namespace Prisma {
     userTransaction: number
     multiPlayerMember: number
     testRecords: number
+    subLevels: number
+    innerLevels: number
+    levels: number
+    gempos: number
+    championships: number
+    gempoRecords: number
+    championshipRecords: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4231,6 +4147,13 @@ export namespace Prisma {
     userTransaction?: boolean | UserCountOutputTypeCountUserTransactionArgs
     multiPlayerMember?: boolean | UserCountOutputTypeCountMultiPlayerMemberArgs
     testRecords?: boolean | UserCountOutputTypeCountTestRecordsArgs
+    subLevels?: boolean | UserCountOutputTypeCountSubLevelsArgs
+    innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
+    levels?: boolean | UserCountOutputTypeCountLevelsArgs
+    gempos?: boolean | UserCountOutputTypeCountGemposArgs
+    championships?: boolean | UserCountOutputTypeCountChampionshipsArgs
+    gempoRecords?: boolean | UserCountOutputTypeCountGempoRecordsArgs
+    championshipRecords?: boolean | UserCountOutputTypeCountChampionshipRecordsArgs
   }
 
   // Custom InputTypes
@@ -4328,158 +4251,52 @@ export namespace Prisma {
     where?: TestParticipantRecordWhereInput
   }
 
-
   /**
-   * Count Type ZoneCountOutputType
+   * UserCountOutputType without action
    */
-
-  export type ZoneCountOutputType = {
-    levels: number
-  }
-
-  export type ZoneCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    levels?: boolean | ZoneCountOutputTypeCountLevelsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ZoneCountOutputType without action
-   */
-  export type ZoneCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ZoneCountOutputType
-     */
-    select?: ZoneCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ZoneCountOutputType without action
-   */
-  export type ZoneCountOutputTypeCountLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LevelWhereInput
-  }
-
-
-  /**
-   * Count Type LevelCountOutputType
-   */
-
-  export type LevelCountOutputType = {
-    subLevels: number
-  }
-
-  export type LevelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subLevels?: boolean | LevelCountOutputTypeCountSubLevelsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * LevelCountOutputType without action
-   */
-  export type LevelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LevelCountOutputType
-     */
-    select?: LevelCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * LevelCountOutputType without action
-   */
-  export type LevelCountOutputTypeCountSubLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSubLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubLevelWhereInput
   }
 
-
   /**
-   * Count Type SubLevelCountOutputType
+   * UserCountOutputType without action
    */
-
-  export type SubLevelCountOutputType = {
-    innerLevels: number
-  }
-
-  export type SubLevelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    innerLevels?: boolean | SubLevelCountOutputTypeCountInnerLevelsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * SubLevelCountOutputType without action
-   */
-  export type SubLevelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubLevelCountOutputType
-     */
-    select?: SubLevelCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * SubLevelCountOutputType without action
-   */
-  export type SubLevelCountOutputTypeCountInnerLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountInnerLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InnerLevelWhereInput
   }
 
-
   /**
-   * Count Type GempoCountOutputType
+   * UserCountOutputType without action
    */
-
-  export type GempoCountOutputType = {
-    records: number
-  }
-
-  export type GempoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    records?: boolean | GempoCountOutputTypeCountRecordsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * GempoCountOutputType without action
-   */
-  export type GempoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the GempoCountOutputType
-     */
-    select?: GempoCountOutputTypeSelect<ExtArgs> | null
+  export type UserCountOutputTypeCountLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LevelWhereInput
   }
 
   /**
-   * GempoCountOutputType without action
+   * UserCountOutputType without action
    */
-  export type GempoCountOutputTypeCountRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountGemposArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GempoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountChampionshipsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChampionshipWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGempoRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GempoRecordWhereInput
   }
 
-
   /**
-   * Count Type ChampionshipCountOutputType
+   * UserCountOutputType without action
    */
-
-  export type ChampionshipCountOutputType = {
-    records: number
-  }
-
-  export type ChampionshipCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    records?: boolean | ChampionshipCountOutputTypeCountRecordsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ChampionshipCountOutputType without action
-   */
-  export type ChampionshipCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChampionshipCountOutputType
-     */
-    select?: ChampionshipCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ChampionshipCountOutputType without action
-   */
-  export type ChampionshipCountOutputTypeCountRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountChampionshipRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ChampionshipRecordWhereInput
   }
 
@@ -9848,7 +9665,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     username: string | null
-    storageId: string | null
     lastIdZoneUnlocked: string | null
     lastIdZonePosition: string | null
   }
@@ -9877,7 +9693,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     username: string | null
-    storageId: string | null
     lastIdZoneUnlocked: string | null
     lastIdZonePosition: string | null
   }
@@ -9907,7 +9722,6 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     username: number
-    storageId: number
     lastIdZoneUnlocked: number
     lastIdZonePosition: number
     _all: number
@@ -9950,7 +9764,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     username?: true
-    storageId?: true
     lastIdZoneUnlocked?: true
     lastIdZonePosition?: true
   }
@@ -9979,7 +9792,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     username?: true
-    storageId?: true
     lastIdZoneUnlocked?: true
     lastIdZonePosition?: true
   }
@@ -10009,7 +9821,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     username?: true
-    storageId?: true
     lastIdZoneUnlocked?: true
     lastIdZonePosition?: true
     _all?: true
@@ -10126,7 +9937,6 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     username: string
-    storageId: string | null
     lastIdZoneUnlocked: string
     lastIdZonePosition: string
     _count: UserCountAggregateOutputType | null
@@ -10175,10 +9985,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     username?: boolean
-    storageId?: boolean
     lastIdZoneUnlocked?: boolean
     lastIdZonePosition?: boolean
-    device?: boolean | User$deviceArgs<ExtArgs>
     ownedAccesses?: boolean | User$ownedAccessesArgs<ExtArgs>
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
@@ -10195,6 +10003,13 @@ export namespace Prisma {
     userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     testRecords?: boolean | User$testRecordsArgs<ExtArgs>
+    subLevels?: boolean | User$subLevelsArgs<ExtArgs>
+    innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
+    levels?: boolean | User$levelsArgs<ExtArgs>
+    gempos?: boolean | User$gemposArgs<ExtArgs>
+    championships?: boolean | User$championshipsArgs<ExtArgs>
+    gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
+    championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -10223,7 +10038,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     username?: boolean
-    storageId?: boolean
     lastIdZoneUnlocked?: boolean
     lastIdZonePosition?: boolean
     city?: boolean | User$cityArgs<ExtArgs>
@@ -10257,7 +10071,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     username?: boolean
-    storageId?: boolean
     lastIdZoneUnlocked?: boolean
     lastIdZonePosition?: boolean
     city?: boolean | User$cityArgs<ExtArgs>
@@ -10291,14 +10104,12 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     username?: boolean
-    storageId?: boolean
     lastIdZoneUnlocked?: boolean
     lastIdZonePosition?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "adminId" | "createdAt" | "updatedAt" | "username" | "storageId" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    device?: boolean | User$deviceArgs<ExtArgs>
     ownedAccesses?: boolean | User$ownedAccessesArgs<ExtArgs>
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
@@ -10315,6 +10126,13 @@ export namespace Prisma {
     userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     testRecords?: boolean | User$testRecordsArgs<ExtArgs>
+    subLevels?: boolean | User$subLevelsArgs<ExtArgs>
+    innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
+    levels?: boolean | User$levelsArgs<ExtArgs>
+    gempos?: boolean | User$gemposArgs<ExtArgs>
+    championships?: boolean | User$championshipsArgs<ExtArgs>
+    gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
+    championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10333,7 +10151,6 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      device: Prisma.$DevicePayload<ExtArgs> | null
       ownedAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       city: Prisma.$CityPayload<ExtArgs> | null
       province: Prisma.$ProvincePayload<ExtArgs> | null
@@ -10350,6 +10167,13 @@ export namespace Prisma {
       userTransaction: Prisma.$UserTransactionPayload<ExtArgs>[]
       multiPlayerMember: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
       testRecords: Prisma.$TestParticipantRecordPayload<ExtArgs>[]
+      subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
+      innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
+      levels: Prisma.$LevelPayload<ExtArgs>[]
+      gempos: Prisma.$GempoPayload<ExtArgs>[]
+      championships: Prisma.$ChampionshipPayload<ExtArgs>[]
+      gempoRecords: Prisma.$GempoRecordPayload<ExtArgs>[]
+      championshipRecords: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10376,7 +10200,6 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       username: string
-      storageId: string | null
       lastIdZoneUnlocked: string
       lastIdZonePosition: string
     }, ExtArgs["result"]["user"]>
@@ -10773,7 +10596,6 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    device<T extends User$deviceArgs<ExtArgs> = {}>(args?: Subset<T, User$deviceArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     ownedAccesses<T extends User$ownedAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$ownedAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     city<T extends User$cityArgs<ExtArgs> = {}>(args?: Subset<T, User$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     province<T extends User$provinceArgs<ExtArgs> = {}>(args?: Subset<T, User$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -10790,6 +10612,13 @@ export namespace Prisma {
     userTransaction<T extends User$userTransactionArgs<ExtArgs> = {}>(args?: Subset<T, User$userTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     multiPlayerMember<T extends User$multiPlayerMemberArgs<ExtArgs> = {}>(args?: Subset<T, User$multiPlayerMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testRecords<T extends User$testRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$testRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subLevels<T extends User$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    levels<T extends User$levelsArgs<ExtArgs> = {}>(args?: Subset<T, User$levelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    gempos<T extends User$gemposArgs<ExtArgs> = {}>(args?: Subset<T, User$gemposArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    championships<T extends User$championshipsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    gempoRecords<T extends User$gempoRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$gempoRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    championshipRecords<T extends User$championshipRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10843,7 +10672,6 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly username: FieldRef<"User", 'String'>
-    readonly storageId: FieldRef<"User", 'String'>
     readonly lastIdZoneUnlocked: FieldRef<"User", 'String'>
     readonly lastIdZonePosition: FieldRef<"User", 'String'>
   }
@@ -11242,25 +11070,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.device
-   */
-  export type User$deviceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    where?: DeviceWhereInput
-  }
-
-  /**
    * User.ownedAccesses
    */
   export type User$ownedAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11625,6 +11434,174 @@ export namespace Prisma {
   }
 
   /**
+   * User.subLevels
+   */
+  export type User$subLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubLevel
+     */
+    select?: SubLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubLevel
+     */
+    omit?: SubLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubLevelInclude<ExtArgs> | null
+    where?: SubLevelWhereInput
+    orderBy?: SubLevelOrderByWithRelationInput | SubLevelOrderByWithRelationInput[]
+    cursor?: SubLevelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubLevelScalarFieldEnum | SubLevelScalarFieldEnum[]
+  }
+
+  /**
+   * User.innerLevels
+   */
+  export type User$innerLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InnerLevel
+     */
+    select?: InnerLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InnerLevel
+     */
+    omit?: InnerLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InnerLevelInclude<ExtArgs> | null
+    where?: InnerLevelWhereInput
+    orderBy?: InnerLevelOrderByWithRelationInput | InnerLevelOrderByWithRelationInput[]
+    cursor?: InnerLevelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InnerLevelScalarFieldEnum | InnerLevelScalarFieldEnum[]
+  }
+
+  /**
+   * User.levels
+   */
+  export type User$levelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Level
+     */
+    select?: LevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Level
+     */
+    omit?: LevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelInclude<ExtArgs> | null
+    where?: LevelWhereInput
+    orderBy?: LevelOrderByWithRelationInput | LevelOrderByWithRelationInput[]
+    cursor?: LevelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LevelScalarFieldEnum | LevelScalarFieldEnum[]
+  }
+
+  /**
+   * User.gempos
+   */
+  export type User$gemposArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Gempo
+     */
+    select?: GempoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Gempo
+     */
+    omit?: GempoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GempoInclude<ExtArgs> | null
+    where?: GempoWhereInput
+    orderBy?: GempoOrderByWithRelationInput | GempoOrderByWithRelationInput[]
+    cursor?: GempoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GempoScalarFieldEnum | GempoScalarFieldEnum[]
+  }
+
+  /**
+   * User.championships
+   */
+  export type User$championshipsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Championship
+     */
+    select?: ChampionshipSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Championship
+     */
+    omit?: ChampionshipOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipInclude<ExtArgs> | null
+    where?: ChampionshipWhereInput
+    orderBy?: ChampionshipOrderByWithRelationInput | ChampionshipOrderByWithRelationInput[]
+    cursor?: ChampionshipWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChampionshipScalarFieldEnum | ChampionshipScalarFieldEnum[]
+  }
+
+  /**
+   * User.gempoRecords
+   */
+  export type User$gempoRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GempoRecord
+     */
+    select?: GempoRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GempoRecord
+     */
+    omit?: GempoRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GempoRecordInclude<ExtArgs> | null
+    where?: GempoRecordWhereInput
+    orderBy?: GempoRecordOrderByWithRelationInput | GempoRecordOrderByWithRelationInput[]
+    cursor?: GempoRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GempoRecordScalarFieldEnum | GempoRecordScalarFieldEnum[]
+  }
+
+  /**
+   * User.championshipRecords
+   */
+  export type User$championshipRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipRecord
+     */
+    select?: ChampionshipRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipRecord
+     */
+    omit?: ChampionshipRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipRecordInclude<ExtArgs> | null
+    where?: ChampionshipRecordWhereInput
+    orderBy?: ChampionshipRecordOrderByWithRelationInput | ChampionshipRecordOrderByWithRelationInput[]
+    cursor?: ChampionshipRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChampionshipRecordScalarFieldEnum | ChampionshipRecordScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11655,7 +11632,7 @@ export namespace Prisma {
 
   export type ZoneMinAggregateOutputType = {
     id: string | null
-    zoneId: string | null
+    inGameId: string | null
     userId: string | null
     isComplete: boolean | null
     completedAt: Date | null
@@ -11669,7 +11646,7 @@ export namespace Prisma {
 
   export type ZoneMaxAggregateOutputType = {
     id: string | null
-    zoneId: string | null
+    inGameId: string | null
     userId: string | null
     isComplete: boolean | null
     completedAt: Date | null
@@ -11683,7 +11660,7 @@ export namespace Prisma {
 
   export type ZoneCountAggregateOutputType = {
     id: number
-    zoneId: number
+    inGameId: number
     userId: number
     isComplete: number
     completedAt: number
@@ -11699,7 +11676,7 @@ export namespace Prisma {
 
   export type ZoneMinAggregateInputType = {
     id?: true
-    zoneId?: true
+    inGameId?: true
     userId?: true
     isComplete?: true
     completedAt?: true
@@ -11713,7 +11690,7 @@ export namespace Prisma {
 
   export type ZoneMaxAggregateInputType = {
     id?: true
-    zoneId?: true
+    inGameId?: true
     userId?: true
     isComplete?: true
     completedAt?: true
@@ -11727,7 +11704,7 @@ export namespace Prisma {
 
   export type ZoneCountAggregateInputType = {
     id?: true
-    zoneId?: true
+    inGameId?: true
     userId?: true
     isComplete?: true
     completedAt?: true
@@ -11814,7 +11791,7 @@ export namespace Prisma {
 
   export type ZoneGroupByOutputType = {
     id: string
-    zoneId: string
+    inGameId: string
     userId: string
     isComplete: boolean
     completedAt: Date | null
@@ -11845,7 +11822,7 @@ export namespace Prisma {
 
   export type ZoneSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
     userId?: boolean
     isComplete?: boolean
     completedAt?: boolean
@@ -11856,15 +11833,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    levels?: boolean | Zone$levelsArgs<ExtArgs>
-    gempo?: boolean | Zone$gempoArgs<ExtArgs>
-    championship?: boolean | Zone$championshipArgs<ExtArgs>
-    _count?: boolean | ZoneCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["zone"]>
 
   export type ZoneSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
     userId?: boolean
     isComplete?: boolean
     completedAt?: boolean
@@ -11879,7 +11852,7 @@ export namespace Prisma {
 
   export type ZoneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
     userId?: boolean
     isComplete?: boolean
     completedAt?: boolean
@@ -11894,7 +11867,7 @@ export namespace Prisma {
 
   export type ZoneSelectScalar = {
     id?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
     userId?: boolean
     isComplete?: boolean
     completedAt?: boolean
@@ -11906,13 +11879,9 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ZoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "zoneId" | "userId" | "isComplete" | "completedAt" | "lastLevelId" | "lastSubLevelId" | "lastInnerLevelId" | "lastLevelUnlock" | "createdAt" | "updatedAt", ExtArgs["result"]["zone"]>
+  export type ZoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "userId" | "isComplete" | "completedAt" | "lastLevelId" | "lastSubLevelId" | "lastInnerLevelId" | "lastLevelUnlock" | "createdAt" | "updatedAt", ExtArgs["result"]["zone"]>
   export type ZoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    levels?: boolean | Zone$levelsArgs<ExtArgs>
-    gempo?: boolean | Zone$gempoArgs<ExtArgs>
-    championship?: boolean | Zone$championshipArgs<ExtArgs>
-    _count?: boolean | ZoneCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ZoneIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -11925,13 +11894,10 @@ export namespace Prisma {
     name: "Zone"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      levels: Prisma.$LevelPayload<ExtArgs>[]
-      gempo: Prisma.$GempoPayload<ExtArgs> | null
-      championship: Prisma.$ChampionshipPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      zoneId: string
+      inGameId: string
       userId: string
       isComplete: boolean
       completedAt: Date | null
@@ -12336,9 +12302,6 @@ export namespace Prisma {
   export interface Prisma__ZoneClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    levels<T extends Zone$levelsArgs<ExtArgs> = {}>(args?: Subset<T, Zone$levelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    gempo<T extends Zone$gempoArgs<ExtArgs> = {}>(args?: Subset<T, Zone$gempoArgs<ExtArgs>>): Prisma__GempoClient<$Result.GetResult<Prisma.$GempoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    championship<T extends Zone$championshipArgs<ExtArgs> = {}>(args?: Subset<T, Zone$championshipArgs<ExtArgs>>): Prisma__ChampionshipClient<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12369,7 +12332,7 @@ export namespace Prisma {
    */
   interface ZoneFieldRefs {
     readonly id: FieldRef<"Zone", 'String'>
-    readonly zoneId: FieldRef<"Zone", 'String'>
+    readonly inGameId: FieldRef<"Zone", 'String'>
     readonly userId: FieldRef<"Zone", 'String'>
     readonly isComplete: FieldRef<"Zone", 'Boolean'>
     readonly completedAt: FieldRef<"Zone", 'DateTime'>
@@ -12775,68 +12738,6 @@ export namespace Prisma {
   }
 
   /**
-   * Zone.levels
-   */
-  export type Zone$levelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Level
-     */
-    select?: LevelSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Level
-     */
-    omit?: LevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LevelInclude<ExtArgs> | null
-    where?: LevelWhereInput
-    orderBy?: LevelOrderByWithRelationInput | LevelOrderByWithRelationInput[]
-    cursor?: LevelWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LevelScalarFieldEnum | LevelScalarFieldEnum[]
-  }
-
-  /**
-   * Zone.gempo
-   */
-  export type Zone$gempoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Gempo
-     */
-    select?: GempoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Gempo
-     */
-    omit?: GempoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GempoInclude<ExtArgs> | null
-    where?: GempoWhereInput
-  }
-
-  /**
-   * Zone.championship
-   */
-  export type Zone$championshipArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Championship
-     */
-    select?: ChampionshipSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Championship
-     */
-    omit?: ChampionshipOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChampionshipInclude<ExtArgs> | null
-    where?: ChampionshipWhereInput
-  }
-
-  /**
    * Zone without action
    */
   export type ZoneDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12867,76 +12768,82 @@ export namespace Prisma {
 
   export type LevelMinAggregateOutputType = {
     id: string | null
-    levelId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type LevelMaxAggregateOutputType = {
     id: string | null
-    levelId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type LevelCountAggregateOutputType = {
     id: number
-    levelId: number
-    zoneId: number
+    inGameId: number
+    zoneInGameId: number
     isUnlock: number
     unlockedAt: number
     isComplete: number
     completedAt: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
 
   export type LevelMinAggregateInputType = {
     id?: true
-    levelId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type LevelMaxAggregateInputType = {
     id?: true
-    levelId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type LevelCountAggregateInputType = {
     id?: true
-    levelId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -13014,14 +12921,15 @@ export namespace Prisma {
 
   export type LevelGroupByOutputType = {
     id: string
-    levelId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     isUnlock: boolean
     unlockedAt: Date | null
     isComplete: boolean
     completedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: LevelCountAggregateOutputType | null
     _min: LevelMinAggregateOutputType | null
     _max: LevelMaxAggregateOutputType | null
@@ -13043,86 +12951,86 @@ export namespace Prisma {
 
   export type LevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    levelId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    subLevels?: boolean | Level$subLevelsArgs<ExtArgs>
-    _count?: boolean | LevelCountOutputTypeDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["level"]>
 
   export type LevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    levelId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["level"]>
 
   export type LevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    levelId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["level"]>
 
   export type LevelSelectScalar = {
     id?: boolean
-    levelId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type LevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "levelId" | "zoneId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["level"]>
+  export type LevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "zoneInGameId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["level"]>
   export type LevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    subLevels?: boolean | Level$subLevelsArgs<ExtArgs>
-    _count?: boolean | LevelCountOutputTypeDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type LevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type LevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $LevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Level"
     objects: {
-      zone: Prisma.$ZonePayload<ExtArgs>
-      subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      levelId: string
-      zoneId: string
+      inGameId: string
+      zoneInGameId: string
       isUnlock: boolean
       unlockedAt: Date | null
       isComplete: boolean
       completedAt: Date | null
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["level"]>
     composites: {}
   }
@@ -13517,8 +13425,7 @@ export namespace Prisma {
    */
   export interface Prisma__LevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    zone<T extends ZoneDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ZoneDefaultArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    subLevels<T extends Level$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, Level$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13549,14 +13456,15 @@ export namespace Prisma {
    */
   interface LevelFieldRefs {
     readonly id: FieldRef<"Level", 'String'>
-    readonly levelId: FieldRef<"Level", 'String'>
-    readonly zoneId: FieldRef<"Level", 'String'>
+    readonly inGameId: FieldRef<"Level", 'String'>
+    readonly zoneInGameId: FieldRef<"Level", 'String'>
     readonly isUnlock: FieldRef<"Level", 'Boolean'>
     readonly unlockedAt: FieldRef<"Level", 'DateTime'>
     readonly isComplete: FieldRef<"Level", 'Boolean'>
     readonly completedAt: FieldRef<"Level", 'DateTime'>
     readonly createdAt: FieldRef<"Level", 'DateTime'>
     readonly updatedAt: FieldRef<"Level", 'DateTime'>
+    readonly userId: FieldRef<"Level", 'String'>
   }
     
 
@@ -13953,30 +13861,6 @@ export namespace Prisma {
   }
 
   /**
-   * Level.subLevels
-   */
-  export type Level$subLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubLevel
-     */
-    select?: SubLevelSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SubLevel
-     */
-    omit?: SubLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SubLevelInclude<ExtArgs> | null
-    where?: SubLevelWhereInput
-    orderBy?: SubLevelOrderByWithRelationInput | SubLevelOrderByWithRelationInput[]
-    cursor?: SubLevelWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SubLevelScalarFieldEnum | SubLevelScalarFieldEnum[]
-  }
-
-  /**
    * Level without action
    */
   export type LevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14007,76 +13891,88 @@ export namespace Prisma {
 
   export type SubLevelMinAggregateOutputType = {
     id: string | null
-    subLevelId: string | null
-    levelId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    levelInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type SubLevelMaxAggregateOutputType = {
     id: string | null
-    subLevelId: string | null
-    levelId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    levelInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
     completedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type SubLevelCountAggregateOutputType = {
     id: number
-    subLevelId: number
-    levelId: number
+    inGameId: number
+    zoneInGameId: number
+    levelInGameId: number
     isUnlock: number
     unlockedAt: number
     isComplete: number
     completedAt: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
 
   export type SubLevelMinAggregateInputType = {
     id?: true
-    subLevelId?: true
-    levelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type SubLevelMaxAggregateInputType = {
     id?: true
-    subLevelId?: true
-    levelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type SubLevelCountAggregateInputType = {
     id?: true
-    subLevelId?: true
-    levelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
     completedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -14154,14 +14050,16 @@ export namespace Prisma {
 
   export type SubLevelGroupByOutputType = {
     id: string
-    subLevelId: string
-    levelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
     isUnlock: boolean
     unlockedAt: Date | null
     isComplete: boolean
     completedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: SubLevelCountAggregateOutputType | null
     _min: SubLevelMinAggregateOutputType | null
     _max: SubLevelMaxAggregateOutputType | null
@@ -14183,86 +14081,91 @@ export namespace Prisma {
 
   export type SubLevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    subLevelId?: boolean
-    levelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    level?: boolean | LevelDefaultArgs<ExtArgs>
-    innerLevels?: boolean | SubLevel$innerLevelsArgs<ExtArgs>
-    _count?: boolean | SubLevelCountOutputTypeDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subLevel"]>
 
   export type SubLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    subLevelId?: boolean
-    levelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    level?: boolean | LevelDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subLevel"]>
 
   export type SubLevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    subLevelId?: boolean
-    levelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    level?: boolean | LevelDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subLevel"]>
 
   export type SubLevelSelectScalar = {
     id?: boolean
-    subLevelId?: boolean
-    levelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
     completedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type SubLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "subLevelId" | "levelId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["subLevel"]>
+  export type SubLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "zoneInGameId" | "levelInGameId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["subLevel"]>
   export type SubLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    level?: boolean | LevelDefaultArgs<ExtArgs>
-    innerLevels?: boolean | SubLevel$innerLevelsArgs<ExtArgs>
-    _count?: boolean | SubLevelCountOutputTypeDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type SubLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    level?: boolean | LevelDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type SubLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    level?: boolean | LevelDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $SubLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SubLevel"
     objects: {
-      level: Prisma.$LevelPayload<ExtArgs>
-      innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      subLevelId: string
-      levelId: string
+      inGameId: string
+      zoneInGameId: string
+      levelInGameId: string
       isUnlock: boolean
       unlockedAt: Date | null
       isComplete: boolean
       completedAt: Date | null
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["subLevel"]>
     composites: {}
   }
@@ -14657,8 +14560,7 @@ export namespace Prisma {
    */
   export interface Prisma__SubLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    level<T extends LevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LevelDefaultArgs<ExtArgs>>): Prisma__LevelClient<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    innerLevels<T extends SubLevel$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, SubLevel$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14689,14 +14591,16 @@ export namespace Prisma {
    */
   interface SubLevelFieldRefs {
     readonly id: FieldRef<"SubLevel", 'String'>
-    readonly subLevelId: FieldRef<"SubLevel", 'String'>
-    readonly levelId: FieldRef<"SubLevel", 'String'>
+    readonly inGameId: FieldRef<"SubLevel", 'String'>
+    readonly zoneInGameId: FieldRef<"SubLevel", 'String'>
+    readonly levelInGameId: FieldRef<"SubLevel", 'String'>
     readonly isUnlock: FieldRef<"SubLevel", 'Boolean'>
     readonly unlockedAt: FieldRef<"SubLevel", 'DateTime'>
     readonly isComplete: FieldRef<"SubLevel", 'Boolean'>
     readonly completedAt: FieldRef<"SubLevel", 'DateTime'>
     readonly createdAt: FieldRef<"SubLevel", 'DateTime'>
     readonly updatedAt: FieldRef<"SubLevel", 'DateTime'>
+    readonly userId: FieldRef<"SubLevel", 'String'>
   }
     
 
@@ -15093,30 +14997,6 @@ export namespace Prisma {
   }
 
   /**
-   * SubLevel.innerLevels
-   */
-  export type SubLevel$innerLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the InnerLevel
-     */
-    select?: InnerLevelSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the InnerLevel
-     */
-    omit?: InnerLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InnerLevelInclude<ExtArgs> | null
-    where?: InnerLevelWhereInput
-    orderBy?: InnerLevelOrderByWithRelationInput | InnerLevelOrderByWithRelationInput[]
-    cursor?: InnerLevelWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InnerLevelScalarFieldEnum | InnerLevelScalarFieldEnum[]
-  }
-
-  /**
    * SubLevel without action
    */
   export type SubLevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15163,8 +15043,10 @@ export namespace Prisma {
 
   export type InnerLevelMinAggregateOutputType = {
     id: string | null
-    innerLevelId: string | null
-    subLevelId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    levelInGameId: string | null
+    subLevelInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
@@ -15175,12 +15057,15 @@ export namespace Prisma {
     played: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type InnerLevelMaxAggregateOutputType = {
     id: string | null
-    innerLevelId: string | null
-    subLevelId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    levelInGameId: string | null
+    subLevelInGameId: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
     isComplete: boolean | null
@@ -15191,12 +15076,15 @@ export namespace Prisma {
     played: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type InnerLevelCountAggregateOutputType = {
     id: number
-    innerLevelId: number
-    subLevelId: number
+    inGameId: number
+    zoneInGameId: number
+    levelInGameId: number
+    subLevelInGameId: number
     isUnlock: number
     unlockedAt: number
     isComplete: number
@@ -15207,6 +15095,7 @@ export namespace Prisma {
     played: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -15227,8 +15116,10 @@ export namespace Prisma {
 
   export type InnerLevelMinAggregateInputType = {
     id?: true
-    innerLevelId?: true
-    subLevelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
+    subLevelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
@@ -15239,12 +15130,15 @@ export namespace Prisma {
     played?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type InnerLevelMaxAggregateInputType = {
     id?: true
-    innerLevelId?: true
-    subLevelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
+    subLevelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
@@ -15255,12 +15149,15 @@ export namespace Prisma {
     played?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type InnerLevelCountAggregateInputType = {
     id?: true
-    innerLevelId?: true
-    subLevelId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    levelInGameId?: true
+    subLevelInGameId?: true
     isUnlock?: true
     unlockedAt?: true
     isComplete?: true
@@ -15271,6 +15168,7 @@ export namespace Prisma {
     played?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -15362,8 +15260,10 @@ export namespace Prisma {
 
   export type InnerLevelGroupByOutputType = {
     id: string
-    innerLevelId: string
-    subLevelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
     isUnlock: boolean
     unlockedAt: Date | null
     isComplete: boolean
@@ -15374,6 +15274,7 @@ export namespace Prisma {
     played: number
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: InnerLevelCountAggregateOutputType | null
     _avg: InnerLevelAvgAggregateOutputType | null
     _sum: InnerLevelSumAggregateOutputType | null
@@ -15397,8 +15298,10 @@ export namespace Prisma {
 
   export type InnerLevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    innerLevelId?: boolean
-    subLevelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
+    subLevelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
@@ -15409,13 +15312,16 @@ export namespace Prisma {
     played?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["innerLevel"]>
 
   export type InnerLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    innerLevelId?: boolean
-    subLevelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
+    subLevelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
@@ -15426,13 +15332,16 @@ export namespace Prisma {
     played?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["innerLevel"]>
 
   export type InnerLevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    innerLevelId?: boolean
-    subLevelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
+    subLevelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
@@ -15443,13 +15352,16 @@ export namespace Prisma {
     played?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["innerLevel"]>
 
   export type InnerLevelSelectScalar = {
     id?: boolean
-    innerLevelId?: boolean
-    subLevelId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    levelInGameId?: boolean
+    subLevelInGameId?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
     isComplete?: boolean
@@ -15460,28 +15372,31 @@ export namespace Prisma {
     played?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type InnerLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "innerLevelId" | "subLevelId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "correctAttempt" | "playTime" | "point" | "played" | "createdAt" | "updatedAt", ExtArgs["result"]["innerLevel"]>
+  export type InnerLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "zoneInGameId" | "levelInGameId" | "subLevelInGameId" | "isUnlock" | "unlockedAt" | "isComplete" | "completedAt" | "correctAttempt" | "playTime" | "point" | "played" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["innerLevel"]>
   export type InnerLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type InnerLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type InnerLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subLevel?: boolean | SubLevelDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $InnerLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InnerLevel"
     objects: {
-      subLevel: Prisma.$SubLevelPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      innerLevelId: string
-      subLevelId: string
+      inGameId: string
+      zoneInGameId: string
+      levelInGameId: string
+      subLevelInGameId: string
       isUnlock: boolean
       unlockedAt: Date | null
       isComplete: boolean
@@ -15492,6 +15407,7 @@ export namespace Prisma {
       played: number
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["innerLevel"]>
     composites: {}
   }
@@ -15886,7 +15802,7 @@ export namespace Prisma {
    */
   export interface Prisma__InnerLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    subLevel<T extends SubLevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubLevelDefaultArgs<ExtArgs>>): Prisma__SubLevelClient<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15917,8 +15833,10 @@ export namespace Prisma {
    */
   interface InnerLevelFieldRefs {
     readonly id: FieldRef<"InnerLevel", 'String'>
-    readonly innerLevelId: FieldRef<"InnerLevel", 'String'>
-    readonly subLevelId: FieldRef<"InnerLevel", 'String'>
+    readonly inGameId: FieldRef<"InnerLevel", 'String'>
+    readonly zoneInGameId: FieldRef<"InnerLevel", 'String'>
+    readonly levelInGameId: FieldRef<"InnerLevel", 'String'>
+    readonly subLevelInGameId: FieldRef<"InnerLevel", 'String'>
     readonly isUnlock: FieldRef<"InnerLevel", 'Boolean'>
     readonly unlockedAt: FieldRef<"InnerLevel", 'DateTime'>
     readonly isComplete: FieldRef<"InnerLevel", 'Boolean'>
@@ -15929,6 +15847,7 @@ export namespace Prisma {
     readonly played: FieldRef<"InnerLevel", 'Int'>
     readonly createdAt: FieldRef<"InnerLevel", 'DateTime'>
     readonly updatedAt: FieldRef<"InnerLevel", 'DateTime'>
+    readonly userId: FieldRef<"InnerLevel", 'String'>
   }
     
 
@@ -16357,30 +16276,33 @@ export namespace Prisma {
     id: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
-    gempoId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type GempoMaxAggregateOutputType = {
     id: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
-    gempoId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type GempoCountAggregateOutputType = {
     id: number
     isUnlock: number
     unlockedAt: number
-    gempoId: number
-    zoneId: number
+    inGameId: number
+    zoneInGameId: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -16389,30 +16311,33 @@ export namespace Prisma {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    gempoId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type GempoMaxAggregateInputType = {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    gempoId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type GempoCountAggregateInputType = {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    gempoId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -16492,10 +16417,11 @@ export namespace Prisma {
     id: string
     isUnlock: boolean
     unlockedAt: Date | null
-    gempoId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: GempoCountAggregateOutputType | null
     _min: GempoMinAggregateOutputType | null
     _max: GempoMaxAggregateOutputType | null
@@ -16519,74 +16445,74 @@ export namespace Prisma {
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    gempoId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    records?: boolean | Gempo$recordsArgs<ExtArgs>
-    _count?: boolean | GempoCountOutputTypeDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempo"]>
 
   export type GempoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    gempoId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempo"]>
 
   export type GempoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    gempoId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempo"]>
 
   export type GempoSelectScalar = {
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    gempoId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type GempoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "isUnlock" | "unlockedAt" | "gempoId" | "zoneId" | "createdAt" | "updatedAt", ExtArgs["result"]["gempo"]>
+  export type GempoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "isUnlock" | "unlockedAt" | "inGameId" | "zoneInGameId" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["gempo"]>
   export type GempoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    records?: boolean | Gempo$recordsArgs<ExtArgs>
-    _count?: boolean | GempoCountOutputTypeDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type GempoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type GempoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $GempoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Gempo"
     objects: {
-      zone: Prisma.$ZonePayload<ExtArgs>
-      records: Prisma.$GempoRecordPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       isUnlock: boolean
       unlockedAt: Date | null
-      gempoId: string
-      zoneId: string
+      inGameId: string
+      zoneInGameId: string
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["gempo"]>
     composites: {}
   }
@@ -16981,8 +16907,7 @@ export namespace Prisma {
    */
   export interface Prisma__GempoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    zone<T extends ZoneDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ZoneDefaultArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    records<T extends Gempo$recordsArgs<ExtArgs> = {}>(args?: Subset<T, Gempo$recordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17015,10 +16940,11 @@ export namespace Prisma {
     readonly id: FieldRef<"Gempo", 'String'>
     readonly isUnlock: FieldRef<"Gempo", 'Boolean'>
     readonly unlockedAt: FieldRef<"Gempo", 'DateTime'>
-    readonly gempoId: FieldRef<"Gempo", 'String'>
-    readonly zoneId: FieldRef<"Gempo", 'String'>
+    readonly inGameId: FieldRef<"Gempo", 'String'>
+    readonly zoneInGameId: FieldRef<"Gempo", 'String'>
     readonly createdAt: FieldRef<"Gempo", 'DateTime'>
     readonly updatedAt: FieldRef<"Gempo", 'DateTime'>
+    readonly userId: FieldRef<"Gempo", 'String'>
   }
     
 
@@ -17415,30 +17341,6 @@ export namespace Prisma {
   }
 
   /**
-   * Gempo.records
-   */
-  export type Gempo$recordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the GempoRecord
-     */
-    select?: GempoRecordSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the GempoRecord
-     */
-    omit?: GempoRecordOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GempoRecordInclude<ExtArgs> | null
-    where?: GempoRecordWhereInput
-    orderBy?: GempoRecordOrderByWithRelationInput | GempoRecordOrderByWithRelationInput[]
-    cursor?: GempoRecordWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: GempoRecordScalarFieldEnum | GempoRecordScalarFieldEnum[]
-  }
-
-  /**
    * Gempo without action
    */
   export type GempoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17471,30 +17373,33 @@ export namespace Prisma {
     id: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
-    championshipId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type ChampionshipMaxAggregateOutputType = {
     id: string | null
     isUnlock: boolean | null
     unlockedAt: Date | null
-    championshipId: string | null
-    zoneId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type ChampionshipCountAggregateOutputType = {
     id: number
     isUnlock: number
     unlockedAt: number
-    championshipId: number
-    zoneId: number
+    inGameId: number
+    zoneInGameId: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -17503,30 +17408,33 @@ export namespace Prisma {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    championshipId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type ChampionshipMaxAggregateInputType = {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    championshipId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type ChampionshipCountAggregateInputType = {
     id?: true
     isUnlock?: true
     unlockedAt?: true
-    championshipId?: true
-    zoneId?: true
+    inGameId?: true
+    zoneInGameId?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -17606,10 +17514,11 @@ export namespace Prisma {
     id: string
     isUnlock: boolean
     unlockedAt: Date | null
-    championshipId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: ChampionshipCountAggregateOutputType | null
     _min: ChampionshipMinAggregateOutputType | null
     _max: ChampionshipMaxAggregateOutputType | null
@@ -17633,74 +17542,74 @@ export namespace Prisma {
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    championshipId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    records?: boolean | Championship$recordsArgs<ExtArgs>
-    _count?: boolean | ChampionshipCountOutputTypeDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championship"]>
 
   export type ChampionshipSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    championshipId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championship"]>
 
   export type ChampionshipSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    championshipId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championship"]>
 
   export type ChampionshipSelectScalar = {
     id?: boolean
     isUnlock?: boolean
     unlockedAt?: boolean
-    championshipId?: boolean
-    zoneId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type ChampionshipOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "isUnlock" | "unlockedAt" | "championshipId" | "zoneId" | "createdAt" | "updatedAt", ExtArgs["result"]["championship"]>
+  export type ChampionshipOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "isUnlock" | "unlockedAt" | "inGameId" | "zoneInGameId" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["championship"]>
   export type ChampionshipInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
-    records?: boolean | Championship$recordsArgs<ExtArgs>
-    _count?: boolean | ChampionshipCountOutputTypeDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ChampionshipIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ChampionshipIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    zone?: boolean | ZoneDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ChampionshipPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Championship"
     objects: {
-      zone: Prisma.$ZonePayload<ExtArgs>
-      records: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       isUnlock: boolean
       unlockedAt: Date | null
-      championshipId: string
-      zoneId: string
+      inGameId: string
+      zoneInGameId: string
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["championship"]>
     composites: {}
   }
@@ -18095,8 +18004,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChampionshipClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    zone<T extends ZoneDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ZoneDefaultArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    records<T extends Championship$recordsArgs<ExtArgs> = {}>(args?: Subset<T, Championship$recordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18129,10 +18037,11 @@ export namespace Prisma {
     readonly id: FieldRef<"Championship", 'String'>
     readonly isUnlock: FieldRef<"Championship", 'Boolean'>
     readonly unlockedAt: FieldRef<"Championship", 'DateTime'>
-    readonly championshipId: FieldRef<"Championship", 'String'>
-    readonly zoneId: FieldRef<"Championship", 'String'>
+    readonly inGameId: FieldRef<"Championship", 'String'>
+    readonly zoneInGameId: FieldRef<"Championship", 'String'>
     readonly createdAt: FieldRef<"Championship", 'DateTime'>
     readonly updatedAt: FieldRef<"Championship", 'DateTime'>
+    readonly userId: FieldRef<"Championship", 'String'>
   }
     
 
@@ -18529,30 +18438,6 @@ export namespace Prisma {
   }
 
   /**
-   * Championship.records
-   */
-  export type Championship$recordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChampionshipRecord
-     */
-    select?: ChampionshipRecordSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ChampionshipRecord
-     */
-    omit?: ChampionshipRecordOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChampionshipRecordInclude<ExtArgs> | null
-    where?: ChampionshipRecordWhereInput
-    orderBy?: ChampionshipRecordOrderByWithRelationInput | ChampionshipRecordOrderByWithRelationInput[]
-    cursor?: ChampionshipRecordWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChampionshipRecordScalarFieldEnum | ChampionshipRecordScalarFieldEnum[]
-  }
-
-  /**
    * Championship without action
    */
   export type ChampionshipDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18595,35 +18480,41 @@ export namespace Prisma {
 
   export type GempoRecordMinAggregateOutputType = {
     id: string | null
-    recordId: string | null
-    gempoId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    gempoInGameId: string | null
     played: number | null
     point: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type GempoRecordMaxAggregateOutputType = {
     id: string | null
-    recordId: string | null
-    gempoId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    gempoInGameId: string | null
     played: number | null
     point: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type GempoRecordCountAggregateOutputType = {
     id: number
-    recordId: number
-    gempoId: number
+    inGameId: number
+    zoneInGameId: number
+    gempoInGameId: number
     played: number
     point: number
     lastPlayedAt: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -18640,35 +18531,41 @@ export namespace Prisma {
 
   export type GempoRecordMinAggregateInputType = {
     id?: true
-    recordId?: true
-    gempoId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    gempoInGameId?: true
     played?: true
     point?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type GempoRecordMaxAggregateInputType = {
     id?: true
-    recordId?: true
-    gempoId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    gempoInGameId?: true
     played?: true
     point?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type GempoRecordCountAggregateInputType = {
     id?: true
-    recordId?: true
-    gempoId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    gempoInGameId?: true
     played?: true
     point?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -18760,13 +18657,15 @@ export namespace Prisma {
 
   export type GempoRecordGroupByOutputType = {
     id: string
-    recordId: string
-    gempoId: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
     played: number
     point: number
     lastPlayedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: GempoRecordCountAggregateOutputType | null
     _avg: GempoRecordAvgAggregateOutputType | null
     _sum: GempoRecordSumAggregateOutputType | null
@@ -18790,76 +18689,86 @@ export namespace Prisma {
 
   export type GempoRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    gempoId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    gempoInGameId?: boolean
     played?: boolean
     point?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
   export type GempoRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    gempoId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    gempoInGameId?: boolean
     played?: boolean
     point?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
   export type GempoRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    gempoId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    gempoInGameId?: boolean
     played?: boolean
     point?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
   export type GempoRecordSelectScalar = {
     id?: boolean
-    recordId?: boolean
-    gempoId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    gempoInGameId?: boolean
     played?: boolean
     point?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "recordId" | "gempoId" | "played" | "point" | "lastPlayedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["gempoRecord"]>
+  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "zoneInGameId" | "gempoInGameId" | "played" | "point" | "lastPlayedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["gempoRecord"]>
   export type GempoRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type GempoRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type GempoRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    gempo?: boolean | GempoDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $GempoRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "GempoRecord"
     objects: {
-      gempo: Prisma.$GempoPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      recordId: string
-      gempoId: string
+      inGameId: string
+      zoneInGameId: string
+      gempoInGameId: string
       played: number
       point: number
       lastPlayedAt: Date | null
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["gempoRecord"]>
     composites: {}
   }
@@ -19254,7 +19163,7 @@ export namespace Prisma {
    */
   export interface Prisma__GempoRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    gempo<T extends GempoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GempoDefaultArgs<ExtArgs>>): Prisma__GempoClient<$Result.GetResult<Prisma.$GempoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19285,13 +19194,15 @@ export namespace Prisma {
    */
   interface GempoRecordFieldRefs {
     readonly id: FieldRef<"GempoRecord", 'String'>
-    readonly recordId: FieldRef<"GempoRecord", 'String'>
-    readonly gempoId: FieldRef<"GempoRecord", 'String'>
+    readonly inGameId: FieldRef<"GempoRecord", 'String'>
+    readonly zoneInGameId: FieldRef<"GempoRecord", 'String'>
+    readonly gempoInGameId: FieldRef<"GempoRecord", 'String'>
     readonly played: FieldRef<"GempoRecord", 'Int'>
     readonly point: FieldRef<"GempoRecord", 'Int'>
     readonly lastPlayedAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly createdAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"GempoRecord", 'DateTime'>
+    readonly userId: FieldRef<"GempoRecord", 'String'>
   }
     
 
@@ -19742,8 +19653,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordMinAggregateOutputType = {
     id: string | null
-    recordId: string | null
-    championshipId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    championshipInGameId: string | null
     teamWin: number | null
     teamLose: number | null
     teamPlayed: number | null
@@ -19756,12 +19668,14 @@ export namespace Prisma {
     soloLastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type ChampionshipRecordMaxAggregateOutputType = {
     id: string | null
-    recordId: string | null
-    championshipId: string | null
+    inGameId: string | null
+    zoneInGameId: string | null
+    championshipInGameId: string | null
     teamWin: number | null
     teamLose: number | null
     teamPlayed: number | null
@@ -19774,12 +19688,14 @@ export namespace Prisma {
     soloLastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    userId: string | null
   }
 
   export type ChampionshipRecordCountAggregateOutputType = {
     id: number
-    recordId: number
-    championshipId: number
+    inGameId: number
+    zoneInGameId: number
+    championshipInGameId: number
     teamWin: number
     teamLose: number
     teamPlayed: number
@@ -19792,6 +19708,7 @@ export namespace Prisma {
     soloLastPlayedAt: number
     createdAt: number
     updatedAt: number
+    userId: number
     _all: number
   }
 
@@ -19820,8 +19737,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordMinAggregateInputType = {
     id?: true
-    recordId?: true
-    championshipId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    championshipInGameId?: true
     teamWin?: true
     teamLose?: true
     teamPlayed?: true
@@ -19834,12 +19752,14 @@ export namespace Prisma {
     soloLastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type ChampionshipRecordMaxAggregateInputType = {
     id?: true
-    recordId?: true
-    championshipId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    championshipInGameId?: true
     teamWin?: true
     teamLose?: true
     teamPlayed?: true
@@ -19852,12 +19772,14 @@ export namespace Prisma {
     soloLastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
   }
 
   export type ChampionshipRecordCountAggregateInputType = {
     id?: true
-    recordId?: true
-    championshipId?: true
+    inGameId?: true
+    zoneInGameId?: true
+    championshipInGameId?: true
     teamWin?: true
     teamLose?: true
     teamPlayed?: true
@@ -19870,6 +19792,7 @@ export namespace Prisma {
     soloLastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -19961,8 +19884,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordGroupByOutputType = {
     id: string
-    recordId: string
-    championshipId: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
     teamWin: number
     teamLose: number
     teamPlayed: number
@@ -19975,6 +19899,7 @@ export namespace Prisma {
     soloLastPlayedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    userId: string
     _count: ChampionshipRecordCountAggregateOutputType | null
     _avg: ChampionshipRecordAvgAggregateOutputType | null
     _sum: ChampionshipRecordSumAggregateOutputType | null
@@ -19998,8 +19923,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    championshipId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    championshipInGameId?: boolean
     teamWin?: boolean
     teamLose?: boolean
     teamPlayed?: boolean
@@ -20012,13 +19938,15 @@ export namespace Prisma {
     soloLastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championshipRecord"]>
 
   export type ChampionshipRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    championshipId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    championshipInGameId?: boolean
     teamWin?: boolean
     teamLose?: boolean
     teamPlayed?: boolean
@@ -20031,13 +19959,15 @@ export namespace Prisma {
     soloLastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championshipRecord"]>
 
   export type ChampionshipRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    recordId?: boolean
-    championshipId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    championshipInGameId?: boolean
     teamWin?: boolean
     teamLose?: boolean
     teamPlayed?: boolean
@@ -20050,13 +19980,15 @@ export namespace Prisma {
     soloLastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["championshipRecord"]>
 
   export type ChampionshipRecordSelectScalar = {
     id?: boolean
-    recordId?: boolean
-    championshipId?: boolean
+    inGameId?: boolean
+    zoneInGameId?: boolean
+    championshipInGameId?: boolean
     teamWin?: boolean
     teamLose?: boolean
     teamPlayed?: boolean
@@ -20069,28 +20001,30 @@ export namespace Prisma {
     soloLastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    userId?: boolean
   }
 
-  export type ChampionshipRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "recordId" | "championshipId" | "teamWin" | "teamLose" | "teamPlayed" | "teamPoint" | "teamLastPlayedAt" | "soloWin" | "soloLose" | "soloPlayed" | "soloPoint" | "soloLastPlayedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["championshipRecord"]>
+  export type ChampionshipRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "zoneInGameId" | "championshipInGameId" | "teamWin" | "teamLose" | "teamPlayed" | "teamPoint" | "teamLastPlayedAt" | "soloWin" | "soloLose" | "soloPlayed" | "soloPoint" | "soloLastPlayedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["championshipRecord"]>
   export type ChampionshipRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ChampionshipRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ChampionshipRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    championship?: boolean | ChampionshipDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ChampionshipRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ChampionshipRecord"
     objects: {
-      championship: Prisma.$ChampionshipPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      recordId: string
-      championshipId: string
+      inGameId: string
+      zoneInGameId: string
+      championshipInGameId: string
       teamWin: number
       teamLose: number
       teamPlayed: number
@@ -20103,6 +20037,7 @@ export namespace Prisma {
       soloLastPlayedAt: Date | null
       createdAt: Date
       updatedAt: Date
+      userId: string
     }, ExtArgs["result"]["championshipRecord"]>
     composites: {}
   }
@@ -20497,7 +20432,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChampionshipRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    championship<T extends ChampionshipDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChampionshipDefaultArgs<ExtArgs>>): Prisma__ChampionshipClient<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -20528,8 +20463,9 @@ export namespace Prisma {
    */
   interface ChampionshipRecordFieldRefs {
     readonly id: FieldRef<"ChampionshipRecord", 'String'>
-    readonly recordId: FieldRef<"ChampionshipRecord", 'String'>
-    readonly championshipId: FieldRef<"ChampionshipRecord", 'String'>
+    readonly inGameId: FieldRef<"ChampionshipRecord", 'String'>
+    readonly zoneInGameId: FieldRef<"ChampionshipRecord", 'String'>
+    readonly championshipInGameId: FieldRef<"ChampionshipRecord", 'String'>
     readonly teamWin: FieldRef<"ChampionshipRecord", 'Int'>
     readonly teamLose: FieldRef<"ChampionshipRecord", 'Int'>
     readonly teamPlayed: FieldRef<"ChampionshipRecord", 'Int'>
@@ -20542,6 +20478,7 @@ export namespace Prisma {
     readonly soloLastPlayedAt: FieldRef<"ChampionshipRecord", 'DateTime'>
     readonly createdAt: FieldRef<"ChampionshipRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"ChampionshipRecord", 'DateTime'>
+    readonly userId: FieldRef<"ChampionshipRecord", 'String'>
   }
     
 
@@ -20953,1167 +20890,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ChampionshipRecordInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Device
-   */
-
-  export type AggregateDevice = {
-    _count: DeviceCountAggregateOutputType | null
-    _avg: DeviceAvgAggregateOutputType | null
-    _sum: DeviceSumAggregateOutputType | null
-    _min: DeviceMinAggregateOutputType | null
-    _max: DeviceMaxAggregateOutputType | null
-  }
-
-  export type DeviceAvgAggregateOutputType = {
-    ramSize: number | null
-    cpuCores: number | null
-  }
-
-  export type DeviceSumAggregateOutputType = {
-    ramSize: number | null
-    cpuCores: number | null
-  }
-
-  export type DeviceMinAggregateOutputType = {
-    id: string | null
-    uuid: string | null
-    model: string | null
-    manufactur: string | null
-    os: string | null
-    ramSize: number | null
-    gpuName: string | null
-    cpuType: string | null
-    cpuCores: number | null
-    userId: string | null
-  }
-
-  export type DeviceMaxAggregateOutputType = {
-    id: string | null
-    uuid: string | null
-    model: string | null
-    manufactur: string | null
-    os: string | null
-    ramSize: number | null
-    gpuName: string | null
-    cpuType: string | null
-    cpuCores: number | null
-    userId: string | null
-  }
-
-  export type DeviceCountAggregateOutputType = {
-    id: number
-    uuid: number
-    model: number
-    manufactur: number
-    os: number
-    ramSize: number
-    gpuName: number
-    cpuType: number
-    cpuCores: number
-    userId: number
-    _all: number
-  }
-
-
-  export type DeviceAvgAggregateInputType = {
-    ramSize?: true
-    cpuCores?: true
-  }
-
-  export type DeviceSumAggregateInputType = {
-    ramSize?: true
-    cpuCores?: true
-  }
-
-  export type DeviceMinAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-  }
-
-  export type DeviceMaxAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-  }
-
-  export type DeviceCountAggregateInputType = {
-    id?: true
-    uuid?: true
-    model?: true
-    manufactur?: true
-    os?: true
-    ramSize?: true
-    gpuName?: true
-    cpuType?: true
-    cpuCores?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type DeviceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Device to aggregate.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Devices
-    **/
-    _count?: true | DeviceCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: DeviceAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: DeviceSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: DeviceMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: DeviceMaxAggregateInputType
-  }
-
-  export type GetDeviceAggregateType<T extends DeviceAggregateArgs> = {
-        [P in keyof T & keyof AggregateDevice]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDevice[P]>
-      : GetScalarType<T[P], AggregateDevice[P]>
-  }
-
-
-
-
-  export type DeviceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DeviceWhereInput
-    orderBy?: DeviceOrderByWithAggregationInput | DeviceOrderByWithAggregationInput[]
-    by: DeviceScalarFieldEnum[] | DeviceScalarFieldEnum
-    having?: DeviceScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: DeviceCountAggregateInputType | true
-    _avg?: DeviceAvgAggregateInputType
-    _sum?: DeviceSumAggregateInputType
-    _min?: DeviceMinAggregateInputType
-    _max?: DeviceMaxAggregateInputType
-  }
-
-  export type DeviceGroupByOutputType = {
-    id: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-    _count: DeviceCountAggregateOutputType | null
-    _avg: DeviceAvgAggregateOutputType | null
-    _sum: DeviceSumAggregateOutputType | null
-    _min: DeviceMinAggregateOutputType | null
-    _max: DeviceMaxAggregateOutputType | null
-  }
-
-  type GetDeviceGroupByPayload<T extends DeviceGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<DeviceGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DeviceGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DeviceGroupByOutputType[P]>
-            : GetScalarType<T[P], DeviceGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type DeviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["device"]>
-
-  export type DeviceSelectScalar = {
-    id?: boolean
-    uuid?: boolean
-    model?: boolean
-    manufactur?: boolean
-    os?: boolean
-    ramSize?: boolean
-    gpuName?: boolean
-    cpuType?: boolean
-    cpuCores?: boolean
-    userId?: boolean
-  }
-
-  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "model" | "manufactur" | "os" | "ramSize" | "gpuName" | "cpuType" | "cpuCores" | "userId", ExtArgs["result"]["device"]>
-  export type DeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type DeviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type DeviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $DevicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Device"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      uuid: string
-      model: string
-      manufactur: string
-      os: string
-      ramSize: number
-      gpuName: string
-      cpuType: string
-      cpuCores: number
-      userId: string
-    }, ExtArgs["result"]["device"]>
-    composites: {}
-  }
-
-  type DeviceGetPayload<S extends boolean | null | undefined | DeviceDefaultArgs> = $Result.GetResult<Prisma.$DevicePayload, S>
-
-  type DeviceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DeviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DeviceCountAggregateInputType | true
-    }
-
-  export interface DeviceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Device'], meta: { name: 'Device' } }
-    /**
-     * Find zero or one Device that matches the filter.
-     * @param {DeviceFindUniqueArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends DeviceFindUniqueArgs>(args: SelectSubset<T, DeviceFindUniqueArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Device that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {DeviceFindUniqueOrThrowArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends DeviceFindUniqueOrThrowArgs>(args: SelectSubset<T, DeviceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Device that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindFirstArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends DeviceFindFirstArgs>(args?: SelectSubset<T, DeviceFindFirstArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Device that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindFirstOrThrowArgs} args - Arguments to find a Device
-     * @example
-     * // Get one Device
-     * const device = await prisma.device.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends DeviceFindFirstOrThrowArgs>(args?: SelectSubset<T, DeviceFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Devices that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Devices
-     * const devices = await prisma.device.findMany()
-     * 
-     * // Get first 10 Devices
-     * const devices = await prisma.device.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const deviceWithIdOnly = await prisma.device.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends DeviceFindManyArgs>(args?: SelectSubset<T, DeviceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Device.
-     * @param {DeviceCreateArgs} args - Arguments to create a Device.
-     * @example
-     * // Create one Device
-     * const Device = await prisma.device.create({
-     *   data: {
-     *     // ... data to create a Device
-     *   }
-     * })
-     * 
-     */
-    create<T extends DeviceCreateArgs>(args: SelectSubset<T, DeviceCreateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Devices.
-     * @param {DeviceCreateManyArgs} args - Arguments to create many Devices.
-     * @example
-     * // Create many Devices
-     * const device = await prisma.device.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends DeviceCreateManyArgs>(args?: SelectSubset<T, DeviceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Devices and returns the data saved in the database.
-     * @param {DeviceCreateManyAndReturnArgs} args - Arguments to create many Devices.
-     * @example
-     * // Create many Devices
-     * const device = await prisma.device.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Devices and only return the `id`
-     * const deviceWithIdOnly = await prisma.device.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends DeviceCreateManyAndReturnArgs>(args?: SelectSubset<T, DeviceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Device.
-     * @param {DeviceDeleteArgs} args - Arguments to delete one Device.
-     * @example
-     * // Delete one Device
-     * const Device = await prisma.device.delete({
-     *   where: {
-     *     // ... filter to delete one Device
-     *   }
-     * })
-     * 
-     */
-    delete<T extends DeviceDeleteArgs>(args: SelectSubset<T, DeviceDeleteArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Device.
-     * @param {DeviceUpdateArgs} args - Arguments to update one Device.
-     * @example
-     * // Update one Device
-     * const device = await prisma.device.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends DeviceUpdateArgs>(args: SelectSubset<T, DeviceUpdateArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Devices.
-     * @param {DeviceDeleteManyArgs} args - Arguments to filter Devices to delete.
-     * @example
-     * // Delete a few Devices
-     * const { count } = await prisma.device.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends DeviceDeleteManyArgs>(args?: SelectSubset<T, DeviceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Devices.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Devices
-     * const device = await prisma.device.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends DeviceUpdateManyArgs>(args: SelectSubset<T, DeviceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Devices and returns the data updated in the database.
-     * @param {DeviceUpdateManyAndReturnArgs} args - Arguments to update many Devices.
-     * @example
-     * // Update many Devices
-     * const device = await prisma.device.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Devices and only return the `id`
-     * const deviceWithIdOnly = await prisma.device.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends DeviceUpdateManyAndReturnArgs>(args: SelectSubset<T, DeviceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Device.
-     * @param {DeviceUpsertArgs} args - Arguments to update or create a Device.
-     * @example
-     * // Update or create a Device
-     * const device = await prisma.device.upsert({
-     *   create: {
-     *     // ... data to create a Device
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Device we want to update
-     *   }
-     * })
-     */
-    upsert<T extends DeviceUpsertArgs>(args: SelectSubset<T, DeviceUpsertArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Devices.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceCountArgs} args - Arguments to filter Devices to count.
-     * @example
-     * // Count the number of Devices
-     * const count = await prisma.device.count({
-     *   where: {
-     *     // ... the filter for the Devices we want to count
-     *   }
-     * })
-    **/
-    count<T extends DeviceCountArgs>(
-      args?: Subset<T, DeviceCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DeviceCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Device.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends DeviceAggregateArgs>(args: Subset<T, DeviceAggregateArgs>): Prisma.PrismaPromise<GetDeviceAggregateType<T>>
-
-    /**
-     * Group by Device.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DeviceGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends DeviceGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DeviceGroupByArgs['orderBy'] }
-        : { orderBy?: DeviceGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, DeviceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeviceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Device model
-   */
-  readonly fields: DeviceFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Device.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__DeviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Device model
-   */
-  interface DeviceFieldRefs {
-    readonly id: FieldRef<"Device", 'String'>
-    readonly uuid: FieldRef<"Device", 'String'>
-    readonly model: FieldRef<"Device", 'String'>
-    readonly manufactur: FieldRef<"Device", 'String'>
-    readonly os: FieldRef<"Device", 'String'>
-    readonly ramSize: FieldRef<"Device", 'Int'>
-    readonly gpuName: FieldRef<"Device", 'String'>
-    readonly cpuType: FieldRef<"Device", 'String'>
-    readonly cpuCores: FieldRef<"Device", 'Int'>
-    readonly userId: FieldRef<"Device", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Device findUnique
-   */
-  export type DeviceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device findUniqueOrThrow
-   */
-  export type DeviceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device findFirst
-   */
-  export type DeviceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Devices.
-     */
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device findFirstOrThrow
-   */
-  export type DeviceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Device to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Devices.
-     */
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device findMany
-   */
-  export type DeviceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter, which Devices to fetch.
-     */
-    where?: DeviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Devices to fetch.
-     */
-    orderBy?: DeviceOrderByWithRelationInput | DeviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Devices.
-     */
-    cursor?: DeviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Devices from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Devices.
-     */
-    skip?: number
-    distinct?: DeviceScalarFieldEnum | DeviceScalarFieldEnum[]
-  }
-
-  /**
-   * Device create
-   */
-  export type DeviceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Device.
-     */
-    data: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
-  }
-
-  /**
-   * Device createMany
-   */
-  export type DeviceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Devices.
-     */
-    data: DeviceCreateManyInput | DeviceCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Device createManyAndReturn
-   */
-  export type DeviceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * The data used to create many Devices.
-     */
-    data: DeviceCreateManyInput | DeviceCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Device update
-   */
-  export type DeviceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Device.
-     */
-    data: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
-    /**
-     * Choose, which Device to update.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device updateMany
-   */
-  export type DeviceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Devices.
-     */
-    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
-    /**
-     * Filter which Devices to update
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Device updateManyAndReturn
-   */
-  export type DeviceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * The data used to update Devices.
-     */
-    data: XOR<DeviceUpdateManyMutationInput, DeviceUncheckedUpdateManyInput>
-    /**
-     * Filter which Devices to update
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Device upsert
-   */
-  export type DeviceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Device to update in case it exists.
-     */
-    where: DeviceWhereUniqueInput
-    /**
-     * In case the Device found by the `where` argument doesn't exist, create a new Device with this data.
-     */
-    create: XOR<DeviceCreateInput, DeviceUncheckedCreateInput>
-    /**
-     * In case the Device was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<DeviceUpdateInput, DeviceUncheckedUpdateInput>
-  }
-
-  /**
-   * Device delete
-   */
-  export type DeviceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
-    /**
-     * Filter which Device to delete.
-     */
-    where: DeviceWhereUniqueInput
-  }
-
-  /**
-   * Device deleteMany
-   */
-  export type DeviceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Devices to delete
-     */
-    where?: DeviceWhereInput
-    /**
-     * Limit how many Devices to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Device without action
-   */
-  export type DeviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Device
-     */
-    select?: DeviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Device
-     */
-    omit?: DeviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DeviceInclude<ExtArgs> | null
   }
 
 
@@ -45093,7 +43869,6 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     username: 'username',
-    storageId: 'storageId',
     lastIdZoneUnlocked: 'lastIdZoneUnlocked',
     lastIdZonePosition: 'lastIdZonePosition'
   };
@@ -45103,7 +43878,7 @@ export namespace Prisma {
 
   export const ZoneScalarFieldEnum: {
     id: 'id',
-    zoneId: 'zoneId',
+    inGameId: 'inGameId',
     userId: 'userId',
     isComplete: 'isComplete',
     completedAt: 'completedAt',
@@ -45120,14 +43895,15 @@ export namespace Prisma {
 
   export const LevelScalarFieldEnum: {
     id: 'id',
-    levelId: 'levelId',
-    zoneId: 'zoneId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
     isUnlock: 'isUnlock',
     unlockedAt: 'unlockedAt',
     isComplete: 'isComplete',
     completedAt: 'completedAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type LevelScalarFieldEnum = (typeof LevelScalarFieldEnum)[keyof typeof LevelScalarFieldEnum]
@@ -45135,14 +43911,16 @@ export namespace Prisma {
 
   export const SubLevelScalarFieldEnum: {
     id: 'id',
-    subLevelId: 'subLevelId',
-    levelId: 'levelId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
+    levelInGameId: 'levelInGameId',
     isUnlock: 'isUnlock',
     unlockedAt: 'unlockedAt',
     isComplete: 'isComplete',
     completedAt: 'completedAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type SubLevelScalarFieldEnum = (typeof SubLevelScalarFieldEnum)[keyof typeof SubLevelScalarFieldEnum]
@@ -45150,8 +43928,10 @@ export namespace Prisma {
 
   export const InnerLevelScalarFieldEnum: {
     id: 'id',
-    innerLevelId: 'innerLevelId',
-    subLevelId: 'subLevelId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
+    levelInGameId: 'levelInGameId',
+    subLevelInGameId: 'subLevelInGameId',
     isUnlock: 'isUnlock',
     unlockedAt: 'unlockedAt',
     isComplete: 'isComplete',
@@ -45161,7 +43941,8 @@ export namespace Prisma {
     point: 'point',
     played: 'played',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type InnerLevelScalarFieldEnum = (typeof InnerLevelScalarFieldEnum)[keyof typeof InnerLevelScalarFieldEnum]
@@ -45171,10 +43952,11 @@ export namespace Prisma {
     id: 'id',
     isUnlock: 'isUnlock',
     unlockedAt: 'unlockedAt',
-    gempoId: 'gempoId',
-    zoneId: 'zoneId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type GempoScalarFieldEnum = (typeof GempoScalarFieldEnum)[keyof typeof GempoScalarFieldEnum]
@@ -45184,10 +43966,11 @@ export namespace Prisma {
     id: 'id',
     isUnlock: 'isUnlock',
     unlockedAt: 'unlockedAt',
-    championshipId: 'championshipId',
-    zoneId: 'zoneId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type ChampionshipScalarFieldEnum = (typeof ChampionshipScalarFieldEnum)[keyof typeof ChampionshipScalarFieldEnum]
@@ -45195,13 +43978,15 @@ export namespace Prisma {
 
   export const GempoRecordScalarFieldEnum: {
     id: 'id',
-    recordId: 'recordId',
-    gempoId: 'gempoId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
+    gempoInGameId: 'gempoInGameId',
     played: 'played',
     point: 'point',
     lastPlayedAt: 'lastPlayedAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    userId: 'userId'
   };
 
   export type GempoRecordScalarFieldEnum = (typeof GempoRecordScalarFieldEnum)[keyof typeof GempoRecordScalarFieldEnum]
@@ -45209,8 +43994,9 @@ export namespace Prisma {
 
   export const ChampionshipRecordScalarFieldEnum: {
     id: 'id',
-    recordId: 'recordId',
-    championshipId: 'championshipId',
+    inGameId: 'inGameId',
+    zoneInGameId: 'zoneInGameId',
+    championshipInGameId: 'championshipInGameId',
     teamWin: 'teamWin',
     teamLose: 'teamLose',
     teamPlayed: 'teamPlayed',
@@ -45222,26 +44008,11 @@ export namespace Prisma {
     soloPoint: 'soloPoint',
     soloLastPlayedAt: 'soloLastPlayedAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type ChampionshipRecordScalarFieldEnum = (typeof ChampionshipRecordScalarFieldEnum)[keyof typeof ChampionshipRecordScalarFieldEnum]
-
-
-  export const DeviceScalarFieldEnum: {
-    id: 'id',
-    uuid: 'uuid',
-    model: 'model',
-    manufactur: 'manufactur',
-    os: 'os',
-    ramSize: 'ramSize',
-    gpuName: 'gpuName',
-    cpuType: 'cpuType',
-    cpuCores: 'cpuCores',
+    updatedAt: 'updatedAt',
     userId: 'userId'
   };
 
-  export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
+  export type ChampionshipRecordScalarFieldEnum = (typeof ChampionshipRecordScalarFieldEnum)[keyof typeof ChampionshipRecordScalarFieldEnum]
 
 
   export const UserLoginScalarFieldEnum: {
@@ -46115,10 +44886,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     username?: StringFilter<"User"> | string
-    storageId?: StringNullableFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    device?: XOR<DeviceNullableScalarRelationFilter, DeviceWhereInput> | null
     ownedAccesses?: AccessContentListRelationFilter
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
@@ -46135,6 +44904,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     testRecords?: TestParticipantRecordListRelationFilter
+    subLevels?: SubLevelListRelationFilter
+    innerLevels?: InnerLevelListRelationFilter
+    levels?: LevelListRelationFilter
+    gempos?: GempoListRelationFilter
+    championships?: ChampionshipListRelationFilter
+    gempoRecords?: GempoRecordListRelationFilter
+    championshipRecords?: ChampionshipRecordListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -46162,10 +44938,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     username?: SortOrder
-    storageId?: SortOrderInput | SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
-    device?: DeviceOrderByWithRelationInput
     ownedAccesses?: AccessContentOrderByRelationAggregateInput
     city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
@@ -46182,6 +44956,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionOrderByRelationAggregateInput
     multiPlayerMember?: MultiPlayerMemberOrderByRelationAggregateInput
     testRecords?: TestParticipantRecordOrderByRelationAggregateInput
+    subLevels?: SubLevelOrderByRelationAggregateInput
+    innerLevels?: InnerLevelOrderByRelationAggregateInput
+    levels?: LevelOrderByRelationAggregateInput
+    gempos?: GempoOrderByRelationAggregateInput
+    championships?: ChampionshipOrderByRelationAggregateInput
+    gempoRecords?: GempoRecordOrderByRelationAggregateInput
+    championshipRecords?: ChampionshipRecordOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -46212,10 +44993,8 @@ export namespace Prisma {
     provinceId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    storageId?: StringNullableFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    device?: XOR<DeviceNullableScalarRelationFilter, DeviceWhereInput> | null
     ownedAccesses?: AccessContentListRelationFilter
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
@@ -46232,6 +45011,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     testRecords?: TestParticipantRecordListRelationFilter
+    subLevels?: SubLevelListRelationFilter
+    innerLevels?: InnerLevelListRelationFilter
+    levels?: LevelListRelationFilter
+    gempos?: GempoListRelationFilter
+    championships?: ChampionshipListRelationFilter
+    gempoRecords?: GempoRecordListRelationFilter
+    championshipRecords?: ChampionshipRecordListRelationFilter
   }, "id" | "authId" | "email" | "schoolIdentity" | "adminId" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -46259,7 +45045,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     username?: SortOrder
-    storageId?: SortOrderInput | SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -46297,7 +45082,6 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     username?: StringWithAggregatesFilter<"User"> | string
-    storageId?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringWithAggregatesFilter<"User"> | string
     lastIdZonePosition?: StringWithAggregatesFilter<"User"> | string
   }
@@ -46307,7 +45091,7 @@ export namespace Prisma {
     OR?: ZoneWhereInput[]
     NOT?: ZoneWhereInput | ZoneWhereInput[]
     id?: StringFilter<"Zone"> | string
-    zoneId?: StringFilter<"Zone"> | string
+    inGameId?: StringFilter<"Zone"> | string
     userId?: StringFilter<"Zone"> | string
     isComplete?: BoolFilter<"Zone"> | boolean
     completedAt?: DateTimeNullableFilter<"Zone"> | Date | string | null
@@ -46318,14 +45102,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    levels?: LevelListRelationFilter
-    gempo?: XOR<GempoNullableScalarRelationFilter, GempoWhereInput> | null
-    championship?: XOR<ChampionshipNullableScalarRelationFilter, ChampionshipWhereInput> | null
   }
 
   export type ZoneOrderByWithRelationInput = {
     id?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
     userId?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
@@ -46336,18 +45117,15 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    levels?: LevelOrderByRelationAggregateInput
-    gempo?: GempoOrderByWithRelationInput
-    championship?: ChampionshipOrderByWithRelationInput
   }
 
   export type ZoneWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId_zoneId?: ZoneUserIdZoneIdCompoundUniqueInput
+    userId_inGameId?: ZoneUserIdInGameIdCompoundUniqueInput
     AND?: ZoneWhereInput | ZoneWhereInput[]
     OR?: ZoneWhereInput[]
     NOT?: ZoneWhereInput | ZoneWhereInput[]
-    zoneId?: StringFilter<"Zone"> | string
+    inGameId?: StringFilter<"Zone"> | string
     userId?: StringFilter<"Zone"> | string
     isComplete?: BoolFilter<"Zone"> | boolean
     completedAt?: DateTimeNullableFilter<"Zone"> | Date | string | null
@@ -46358,14 +45136,11 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    levels?: LevelListRelationFilter
-    gempo?: XOR<GempoNullableScalarRelationFilter, GempoWhereInput> | null
-    championship?: XOR<ChampionshipNullableScalarRelationFilter, ChampionshipWhereInput> | null
-  }, "id" | "userId_zoneId">
+  }, "id" | "userId_inGameId">
 
   export type ZoneOrderByWithAggregationInput = {
     id?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
     userId?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
@@ -46385,7 +45160,7 @@ export namespace Prisma {
     OR?: ZoneScalarWhereWithAggregatesInput[]
     NOT?: ZoneScalarWhereWithAggregatesInput | ZoneScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Zone"> | string
-    zoneId?: StringWithAggregatesFilter<"Zone"> | string
+    inGameId?: StringWithAggregatesFilter<"Zone"> | string
     userId?: StringWithAggregatesFilter<"Zone"> | string
     isComplete?: BoolWithAggregatesFilter<"Zone"> | boolean
     completedAt?: DateTimeNullableWithAggregatesFilter<"Zone"> | Date | string | null
@@ -46402,60 +45177,61 @@ export namespace Prisma {
     OR?: LevelWhereInput[]
     NOT?: LevelWhereInput | LevelWhereInput[]
     id?: StringFilter<"Level"> | string
-    levelId?: StringFilter<"Level"> | string
-    zoneId?: StringFilter<"Level"> | string
+    inGameId?: StringFilter<"Level"> | string
+    zoneInGameId?: StringFilter<"Level"> | string
     isUnlock?: BoolFilter<"Level"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
     isComplete?: BoolFilter<"Level"> | boolean
     completedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
     createdAt?: DateTimeFilter<"Level"> | Date | string
     updatedAt?: DateTimeFilter<"Level"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    subLevels?: SubLevelListRelationFilter
+    userId?: StringFilter<"Level"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type LevelOrderByWithRelationInput = {
     id?: SortOrder
-    levelId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    zone?: ZoneOrderByWithRelationInput
-    subLevels?: SubLevelOrderByRelationAggregateInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type LevelWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    zoneId_levelId?: LevelZoneIdLevelIdCompoundUniqueInput
+    userId_inGameId?: LevelUserIdInGameIdCompoundUniqueInput
     AND?: LevelWhereInput | LevelWhereInput[]
     OR?: LevelWhereInput[]
     NOT?: LevelWhereInput | LevelWhereInput[]
-    levelId?: StringFilter<"Level"> | string
-    zoneId?: StringFilter<"Level"> | string
+    inGameId?: StringFilter<"Level"> | string
+    zoneInGameId?: StringFilter<"Level"> | string
     isUnlock?: BoolFilter<"Level"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
     isComplete?: BoolFilter<"Level"> | boolean
     completedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
     createdAt?: DateTimeFilter<"Level"> | Date | string
     updatedAt?: DateTimeFilter<"Level"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    subLevels?: SubLevelListRelationFilter
-  }, "id" | "zoneId_levelId">
+    userId?: StringFilter<"Level"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type LevelOrderByWithAggregationInput = {
     id?: SortOrder
-    levelId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: LevelCountOrderByAggregateInput
     _max?: LevelMaxOrderByAggregateInput
     _min?: LevelMinOrderByAggregateInput
@@ -46466,14 +45242,15 @@ export namespace Prisma {
     OR?: LevelScalarWhereWithAggregatesInput[]
     NOT?: LevelScalarWhereWithAggregatesInput | LevelScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Level"> | string
-    levelId?: StringWithAggregatesFilter<"Level"> | string
-    zoneId?: StringWithAggregatesFilter<"Level"> | string
+    inGameId?: StringWithAggregatesFilter<"Level"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"Level"> | string
     isUnlock?: BoolWithAggregatesFilter<"Level"> | boolean
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"Level"> | Date | string | null
     isComplete?: BoolWithAggregatesFilter<"Level"> | boolean
     completedAt?: DateTimeNullableWithAggregatesFilter<"Level"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Level"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Level"> | Date | string
+    userId?: StringWithAggregatesFilter<"Level"> | string
   }
 
   export type SubLevelWhereInput = {
@@ -46481,60 +45258,65 @@ export namespace Prisma {
     OR?: SubLevelWhereInput[]
     NOT?: SubLevelWhereInput | SubLevelWhereInput[]
     id?: StringFilter<"SubLevel"> | string
-    subLevelId?: StringFilter<"SubLevel"> | string
-    levelId?: StringFilter<"SubLevel"> | string
+    inGameId?: StringFilter<"SubLevel"> | string
+    zoneInGameId?: StringFilter<"SubLevel"> | string
+    levelInGameId?: StringFilter<"SubLevel"> | string
     isUnlock?: BoolFilter<"SubLevel"> | boolean
     unlockedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
     isComplete?: BoolFilter<"SubLevel"> | boolean
     completedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
     createdAt?: DateTimeFilter<"SubLevel"> | Date | string
     updatedAt?: DateTimeFilter<"SubLevel"> | Date | string
-    level?: XOR<LevelScalarRelationFilter, LevelWhereInput>
-    innerLevels?: InnerLevelListRelationFilter
+    userId?: StringFilter<"SubLevel"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type SubLevelOrderByWithRelationInput = {
     id?: SortOrder
-    subLevelId?: SortOrder
-    levelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    level?: LevelOrderByWithRelationInput
-    innerLevels?: InnerLevelOrderByRelationAggregateInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type SubLevelWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    levelId_subLevelId?: SubLevelLevelIdSubLevelIdCompoundUniqueInput
+    userId_inGameId?: SubLevelUserIdInGameIdCompoundUniqueInput
     AND?: SubLevelWhereInput | SubLevelWhereInput[]
     OR?: SubLevelWhereInput[]
     NOT?: SubLevelWhereInput | SubLevelWhereInput[]
-    subLevelId?: StringFilter<"SubLevel"> | string
-    levelId?: StringFilter<"SubLevel"> | string
+    inGameId?: StringFilter<"SubLevel"> | string
+    zoneInGameId?: StringFilter<"SubLevel"> | string
+    levelInGameId?: StringFilter<"SubLevel"> | string
     isUnlock?: BoolFilter<"SubLevel"> | boolean
     unlockedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
     isComplete?: BoolFilter<"SubLevel"> | boolean
     completedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
     createdAt?: DateTimeFilter<"SubLevel"> | Date | string
     updatedAt?: DateTimeFilter<"SubLevel"> | Date | string
-    level?: XOR<LevelScalarRelationFilter, LevelWhereInput>
-    innerLevels?: InnerLevelListRelationFilter
-  }, "id" | "levelId_subLevelId">
+    userId?: StringFilter<"SubLevel"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type SubLevelOrderByWithAggregationInput = {
     id?: SortOrder
-    subLevelId?: SortOrder
-    levelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: SubLevelCountOrderByAggregateInput
     _max?: SubLevelMaxOrderByAggregateInput
     _min?: SubLevelMinOrderByAggregateInput
@@ -46545,14 +45327,16 @@ export namespace Prisma {
     OR?: SubLevelScalarWhereWithAggregatesInput[]
     NOT?: SubLevelScalarWhereWithAggregatesInput | SubLevelScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SubLevel"> | string
-    subLevelId?: StringWithAggregatesFilter<"SubLevel"> | string
-    levelId?: StringWithAggregatesFilter<"SubLevel"> | string
+    inGameId?: StringWithAggregatesFilter<"SubLevel"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"SubLevel"> | string
+    levelInGameId?: StringWithAggregatesFilter<"SubLevel"> | string
     isUnlock?: BoolWithAggregatesFilter<"SubLevel"> | boolean
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"SubLevel"> | Date | string | null
     isComplete?: BoolWithAggregatesFilter<"SubLevel"> | boolean
     completedAt?: DateTimeNullableWithAggregatesFilter<"SubLevel"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"SubLevel"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"SubLevel"> | Date | string
+    userId?: StringWithAggregatesFilter<"SubLevel"> | string
   }
 
   export type InnerLevelWhereInput = {
@@ -46560,8 +45344,10 @@ export namespace Prisma {
     OR?: InnerLevelWhereInput[]
     NOT?: InnerLevelWhereInput | InnerLevelWhereInput[]
     id?: StringFilter<"InnerLevel"> | string
-    innerLevelId?: StringFilter<"InnerLevel"> | string
-    subLevelId?: StringFilter<"InnerLevel"> | string
+    inGameId?: StringFilter<"InnerLevel"> | string
+    zoneInGameId?: StringFilter<"InnerLevel"> | string
+    levelInGameId?: StringFilter<"InnerLevel"> | string
+    subLevelInGameId?: StringFilter<"InnerLevel"> | string
     isUnlock?: BoolFilter<"InnerLevel"> | boolean
     unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolFilter<"InnerLevel"> | boolean
@@ -46572,13 +45358,16 @@ export namespace Prisma {
     played?: IntFilter<"InnerLevel"> | number
     createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
     updatedAt?: DateTimeFilter<"InnerLevel"> | Date | string
-    subLevel?: XOR<SubLevelScalarRelationFilter, SubLevelWhereInput>
+    userId?: StringFilter<"InnerLevel"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type InnerLevelOrderByWithRelationInput = {
     id?: SortOrder
-    innerLevelId?: SortOrder
-    subLevelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
+    subLevelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
@@ -46589,17 +45378,20 @@ export namespace Prisma {
     played?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    subLevel?: SubLevelOrderByWithRelationInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type InnerLevelWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    subLevelId_innerLevelId?: InnerLevelSubLevelIdInnerLevelIdCompoundUniqueInput
+    userId_inGameId?: InnerLevelUserIdInGameIdCompoundUniqueInput
     AND?: InnerLevelWhereInput | InnerLevelWhereInput[]
     OR?: InnerLevelWhereInput[]
     NOT?: InnerLevelWhereInput | InnerLevelWhereInput[]
-    innerLevelId?: StringFilter<"InnerLevel"> | string
-    subLevelId?: StringFilter<"InnerLevel"> | string
+    inGameId?: StringFilter<"InnerLevel"> | string
+    zoneInGameId?: StringFilter<"InnerLevel"> | string
+    levelInGameId?: StringFilter<"InnerLevel"> | string
+    subLevelInGameId?: StringFilter<"InnerLevel"> | string
     isUnlock?: BoolFilter<"InnerLevel"> | boolean
     unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolFilter<"InnerLevel"> | boolean
@@ -46610,13 +45402,16 @@ export namespace Prisma {
     played?: IntFilter<"InnerLevel"> | number
     createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
     updatedAt?: DateTimeFilter<"InnerLevel"> | Date | string
-    subLevel?: XOR<SubLevelScalarRelationFilter, SubLevelWhereInput>
-  }, "id" | "subLevelId_innerLevelId">
+    userId?: StringFilter<"InnerLevel"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type InnerLevelOrderByWithAggregationInput = {
     id?: SortOrder
-    innerLevelId?: SortOrder
-    subLevelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
+    subLevelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
     isComplete?: SortOrder
@@ -46627,6 +45422,7 @@ export namespace Prisma {
     played?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: InnerLevelCountOrderByAggregateInput
     _avg?: InnerLevelAvgOrderByAggregateInput
     _max?: InnerLevelMaxOrderByAggregateInput
@@ -46639,8 +45435,10 @@ export namespace Prisma {
     OR?: InnerLevelScalarWhereWithAggregatesInput[]
     NOT?: InnerLevelScalarWhereWithAggregatesInput | InnerLevelScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"InnerLevel"> | string
-    innerLevelId?: StringWithAggregatesFilter<"InnerLevel"> | string
-    subLevelId?: StringWithAggregatesFilter<"InnerLevel"> | string
+    inGameId?: StringWithAggregatesFilter<"InnerLevel"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"InnerLevel"> | string
+    levelInGameId?: StringWithAggregatesFilter<"InnerLevel"> | string
+    subLevelInGameId?: StringWithAggregatesFilter<"InnerLevel"> | string
     isUnlock?: BoolWithAggregatesFilter<"InnerLevel"> | boolean
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"InnerLevel"> | Date | string | null
     isComplete?: BoolWithAggregatesFilter<"InnerLevel"> | boolean
@@ -46651,6 +45449,7 @@ export namespace Prisma {
     played?: IntWithAggregatesFilter<"InnerLevel"> | number
     createdAt?: DateTimeWithAggregatesFilter<"InnerLevel"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"InnerLevel"> | Date | string
+    userId?: StringWithAggregatesFilter<"InnerLevel"> | string
   }
 
   export type GempoWhereInput = {
@@ -46660,50 +45459,51 @@ export namespace Prisma {
     id?: StringFilter<"Gempo"> | string
     isUnlock?: BoolFilter<"Gempo"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Gempo"> | Date | string | null
-    gempoId?: StringFilter<"Gempo"> | string
-    zoneId?: StringFilter<"Gempo"> | string
+    inGameId?: StringFilter<"Gempo"> | string
+    zoneInGameId?: StringFilter<"Gempo"> | string
     createdAt?: DateTimeFilter<"Gempo"> | Date | string
     updatedAt?: DateTimeFilter<"Gempo"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    records?: GempoRecordListRelationFilter
+    userId?: StringFilter<"Gempo"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type GempoOrderByWithRelationInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
-    gempoId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    zone?: ZoneOrderByWithRelationInput
-    records?: GempoRecordOrderByRelationAggregateInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type GempoWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    zoneId?: string
-    zoneId_gempoId?: GempoZoneIdGempoIdCompoundUniqueInput
+    userId_inGameId?: GempoUserIdInGameIdCompoundUniqueInput
     AND?: GempoWhereInput | GempoWhereInput[]
     OR?: GempoWhereInput[]
     NOT?: GempoWhereInput | GempoWhereInput[]
     isUnlock?: BoolFilter<"Gempo"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Gempo"> | Date | string | null
-    gempoId?: StringFilter<"Gempo"> | string
+    inGameId?: StringFilter<"Gempo"> | string
+    zoneInGameId?: StringFilter<"Gempo"> | string
     createdAt?: DateTimeFilter<"Gempo"> | Date | string
     updatedAt?: DateTimeFilter<"Gempo"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    records?: GempoRecordListRelationFilter
-  }, "id" | "zoneId" | "zoneId_gempoId">
+    userId?: StringFilter<"Gempo"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type GempoOrderByWithAggregationInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
-    gempoId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: GempoCountOrderByAggregateInput
     _max?: GempoMaxOrderByAggregateInput
     _min?: GempoMinOrderByAggregateInput
@@ -46716,10 +45516,11 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Gempo"> | string
     isUnlock?: BoolWithAggregatesFilter<"Gempo"> | boolean
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"Gempo"> | Date | string | null
-    gempoId?: StringWithAggregatesFilter<"Gempo"> | string
-    zoneId?: StringWithAggregatesFilter<"Gempo"> | string
+    inGameId?: StringWithAggregatesFilter<"Gempo"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"Gempo"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Gempo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Gempo"> | Date | string
+    userId?: StringWithAggregatesFilter<"Gempo"> | string
   }
 
   export type ChampionshipWhereInput = {
@@ -46729,50 +45530,51 @@ export namespace Prisma {
     id?: StringFilter<"Championship"> | string
     isUnlock?: BoolFilter<"Championship"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Championship"> | Date | string | null
-    championshipId?: StringFilter<"Championship"> | string
-    zoneId?: StringFilter<"Championship"> | string
+    inGameId?: StringFilter<"Championship"> | string
+    zoneInGameId?: StringFilter<"Championship"> | string
     createdAt?: DateTimeFilter<"Championship"> | Date | string
     updatedAt?: DateTimeFilter<"Championship"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    records?: ChampionshipRecordListRelationFilter
+    userId?: StringFilter<"Championship"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ChampionshipOrderByWithRelationInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
-    championshipId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    zone?: ZoneOrderByWithRelationInput
-    records?: ChampionshipRecordOrderByRelationAggregateInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type ChampionshipWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    zoneId?: string
-    zoneId_championshipId?: ChampionshipZoneIdChampionshipIdCompoundUniqueInput
+    userId_inGameId?: ChampionshipUserIdInGameIdCompoundUniqueInput
     AND?: ChampionshipWhereInput | ChampionshipWhereInput[]
     OR?: ChampionshipWhereInput[]
     NOT?: ChampionshipWhereInput | ChampionshipWhereInput[]
     isUnlock?: BoolFilter<"Championship"> | boolean
     unlockedAt?: DateTimeNullableFilter<"Championship"> | Date | string | null
-    championshipId?: StringFilter<"Championship"> | string
+    inGameId?: StringFilter<"Championship"> | string
+    zoneInGameId?: StringFilter<"Championship"> | string
     createdAt?: DateTimeFilter<"Championship"> | Date | string
     updatedAt?: DateTimeFilter<"Championship"> | Date | string
-    zone?: XOR<ZoneScalarRelationFilter, ZoneWhereInput>
-    records?: ChampionshipRecordListRelationFilter
-  }, "id" | "zoneId" | "zoneId_championshipId">
+    userId?: StringFilter<"Championship"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type ChampionshipOrderByWithAggregationInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrderInput | SortOrder
-    championshipId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: ChampionshipCountOrderByAggregateInput
     _max?: ChampionshipMaxOrderByAggregateInput
     _min?: ChampionshipMinOrderByAggregateInput
@@ -46785,10 +45587,11 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Championship"> | string
     isUnlock?: BoolWithAggregatesFilter<"Championship"> | boolean
     unlockedAt?: DateTimeNullableWithAggregatesFilter<"Championship"> | Date | string | null
-    championshipId?: StringWithAggregatesFilter<"Championship"> | string
-    zoneId?: StringWithAggregatesFilter<"Championship"> | string
+    inGameId?: StringWithAggregatesFilter<"Championship"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"Championship"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Championship"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Championship"> | Date | string
+    userId?: StringWithAggregatesFilter<"Championship"> | string
   }
 
   export type GempoRecordWhereInput = {
@@ -46796,53 +45599,61 @@ export namespace Prisma {
     OR?: GempoRecordWhereInput[]
     NOT?: GempoRecordWhereInput | GempoRecordWhereInput[]
     id?: StringFilter<"GempoRecord"> | string
-    recordId?: StringFilter<"GempoRecord"> | string
-    gempoId?: StringFilter<"GempoRecord"> | string
+    inGameId?: StringFilter<"GempoRecord"> | string
+    zoneInGameId?: StringFilter<"GempoRecord"> | string
+    gempoInGameId?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
-    gempo?: XOR<GempoScalarRelationFilter, GempoWhereInput>
+    userId?: StringFilter<"GempoRecord"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type GempoRecordOrderByWithRelationInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    gempoId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    gempoInGameId?: SortOrder
     played?: SortOrder
     point?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    gempo?: GempoOrderByWithRelationInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type GempoRecordWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    gempoId_recordId?: GempoRecordGempoIdRecordIdCompoundUniqueInput
+    userId_inGameId?: GempoRecordUserIdInGameIdCompoundUniqueInput
     AND?: GempoRecordWhereInput | GempoRecordWhereInput[]
     OR?: GempoRecordWhereInput[]
     NOT?: GempoRecordWhereInput | GempoRecordWhereInput[]
-    recordId?: StringFilter<"GempoRecord"> | string
-    gempoId?: StringFilter<"GempoRecord"> | string
+    inGameId?: StringFilter<"GempoRecord"> | string
+    zoneInGameId?: StringFilter<"GempoRecord"> | string
+    gempoInGameId?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
-    gempo?: XOR<GempoScalarRelationFilter, GempoWhereInput>
-  }, "id" | "gempoId_recordId">
+    userId?: StringFilter<"GempoRecord"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type GempoRecordOrderByWithAggregationInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    gempoId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    gempoInGameId?: SortOrder
     played?: SortOrder
     point?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: GempoRecordCountOrderByAggregateInput
     _avg?: GempoRecordAvgOrderByAggregateInput
     _max?: GempoRecordMaxOrderByAggregateInput
@@ -46855,13 +45666,15 @@ export namespace Prisma {
     OR?: GempoRecordScalarWhereWithAggregatesInput[]
     NOT?: GempoRecordScalarWhereWithAggregatesInput | GempoRecordScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"GempoRecord"> | string
-    recordId?: StringWithAggregatesFilter<"GempoRecord"> | string
-    gempoId?: StringWithAggregatesFilter<"GempoRecord"> | string
+    inGameId?: StringWithAggregatesFilter<"GempoRecord"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"GempoRecord"> | string
+    gempoInGameId?: StringWithAggregatesFilter<"GempoRecord"> | string
     played?: IntWithAggregatesFilter<"GempoRecord"> | number
     point?: IntWithAggregatesFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableWithAggregatesFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
+    userId?: StringWithAggregatesFilter<"GempoRecord"> | string
   }
 
   export type ChampionshipRecordWhereInput = {
@@ -46869,8 +45682,9 @@ export namespace Prisma {
     OR?: ChampionshipRecordWhereInput[]
     NOT?: ChampionshipRecordWhereInput | ChampionshipRecordWhereInput[]
     id?: StringFilter<"ChampionshipRecord"> | string
-    recordId?: StringFilter<"ChampionshipRecord"> | string
-    championshipId?: StringFilter<"ChampionshipRecord"> | string
+    inGameId?: StringFilter<"ChampionshipRecord"> | string
+    zoneInGameId?: StringFilter<"ChampionshipRecord"> | string
+    championshipInGameId?: StringFilter<"ChampionshipRecord"> | string
     teamWin?: IntFilter<"ChampionshipRecord"> | number
     teamLose?: IntFilter<"ChampionshipRecord"> | number
     teamPlayed?: IntFilter<"ChampionshipRecord"> | number
@@ -46883,13 +45697,15 @@ export namespace Prisma {
     soloLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
     updatedAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
-    championship?: XOR<ChampionshipScalarRelationFilter, ChampionshipWhereInput>
+    userId?: StringFilter<"ChampionshipRecord"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ChampionshipRecordOrderByWithRelationInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    championshipId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    championshipInGameId?: SortOrder
     teamWin?: SortOrder
     teamLose?: SortOrder
     teamPlayed?: SortOrder
@@ -46902,17 +45718,19 @@ export namespace Prisma {
     soloLastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    championship?: ChampionshipOrderByWithRelationInput
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type ChampionshipRecordWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    championshipId_recordId?: ChampionshipRecordChampionshipIdRecordIdCompoundUniqueInput
+    userId_inGameId?: ChampionshipRecordUserIdInGameIdCompoundUniqueInput
     AND?: ChampionshipRecordWhereInput | ChampionshipRecordWhereInput[]
     OR?: ChampionshipRecordWhereInput[]
     NOT?: ChampionshipRecordWhereInput | ChampionshipRecordWhereInput[]
-    recordId?: StringFilter<"ChampionshipRecord"> | string
-    championshipId?: StringFilter<"ChampionshipRecord"> | string
+    inGameId?: StringFilter<"ChampionshipRecord"> | string
+    zoneInGameId?: StringFilter<"ChampionshipRecord"> | string
+    championshipInGameId?: StringFilter<"ChampionshipRecord"> | string
     teamWin?: IntFilter<"ChampionshipRecord"> | number
     teamLose?: IntFilter<"ChampionshipRecord"> | number
     teamPlayed?: IntFilter<"ChampionshipRecord"> | number
@@ -46925,13 +45743,15 @@ export namespace Prisma {
     soloLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
     updatedAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
-    championship?: XOR<ChampionshipScalarRelationFilter, ChampionshipWhereInput>
-  }, "id" | "championshipId_recordId">
+    userId?: StringFilter<"ChampionshipRecord"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_inGameId">
 
   export type ChampionshipRecordOrderByWithAggregationInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    championshipId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    championshipInGameId?: SortOrder
     teamWin?: SortOrder
     teamLose?: SortOrder
     teamPlayed?: SortOrder
@@ -46944,6 +45764,7 @@ export namespace Prisma {
     soloLastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
     _count?: ChampionshipRecordCountOrderByAggregateInput
     _avg?: ChampionshipRecordAvgOrderByAggregateInput
     _max?: ChampionshipRecordMaxOrderByAggregateInput
@@ -46956,8 +45777,9 @@ export namespace Prisma {
     OR?: ChampionshipRecordScalarWhereWithAggregatesInput[]
     NOT?: ChampionshipRecordScalarWhereWithAggregatesInput | ChampionshipRecordScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
-    recordId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
-    championshipId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
+    inGameId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
+    zoneInGameId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
+    championshipInGameId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
     teamWin?: IntWithAggregatesFilter<"ChampionshipRecord"> | number
     teamLose?: IntWithAggregatesFilter<"ChampionshipRecord"> | number
     teamPlayed?: IntWithAggregatesFilter<"ChampionshipRecord"> | number
@@ -46970,88 +45792,7 @@ export namespace Prisma {
     soloLastPlayedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipRecord"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ChampionshipRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ChampionshipRecord"> | Date | string
-  }
-
-  export type DeviceWhereInput = {
-    AND?: DeviceWhereInput | DeviceWhereInput[]
-    OR?: DeviceWhereInput[]
-    NOT?: DeviceWhereInput | DeviceWhereInput[]
-    id?: StringFilter<"Device"> | string
-    uuid?: StringFilter<"Device"> | string
-    model?: StringFilter<"Device"> | string
-    manufactur?: StringFilter<"Device"> | string
-    os?: StringFilter<"Device"> | string
-    ramSize?: IntFilter<"Device"> | number
-    gpuName?: StringFilter<"Device"> | string
-    cpuType?: StringFilter<"Device"> | string
-    cpuCores?: IntFilter<"Device"> | number
-    userId?: StringFilter<"Device"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type DeviceOrderByWithRelationInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type DeviceWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    userId?: string
-    AND?: DeviceWhereInput | DeviceWhereInput[]
-    OR?: DeviceWhereInput[]
-    NOT?: DeviceWhereInput | DeviceWhereInput[]
-    uuid?: StringFilter<"Device"> | string
-    model?: StringFilter<"Device"> | string
-    manufactur?: StringFilter<"Device"> | string
-    os?: StringFilter<"Device"> | string
-    ramSize?: IntFilter<"Device"> | number
-    gpuName?: StringFilter<"Device"> | string
-    cpuType?: StringFilter<"Device"> | string
-    cpuCores?: IntFilter<"Device"> | number
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "userId">
-
-  export type DeviceOrderByWithAggregationInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-    _count?: DeviceCountOrderByAggregateInput
-    _avg?: DeviceAvgOrderByAggregateInput
-    _max?: DeviceMaxOrderByAggregateInput
-    _min?: DeviceMinOrderByAggregateInput
-    _sum?: DeviceSumOrderByAggregateInput
-  }
-
-  export type DeviceScalarWhereWithAggregatesInput = {
-    AND?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
-    OR?: DeviceScalarWhereWithAggregatesInput[]
-    NOT?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Device"> | string
-    uuid?: StringWithAggregatesFilter<"Device"> | string
-    model?: StringWithAggregatesFilter<"Device"> | string
-    manufactur?: StringWithAggregatesFilter<"Device"> | string
-    os?: StringWithAggregatesFilter<"Device"> | string
-    ramSize?: IntWithAggregatesFilter<"Device"> | number
-    gpuName?: StringWithAggregatesFilter<"Device"> | string
-    cpuType?: StringWithAggregatesFilter<"Device"> | string
-    cpuCores?: IntWithAggregatesFilter<"Device"> | number
-    userId?: StringWithAggregatesFilter<"Device"> | string
+    userId?: StringWithAggregatesFilter<"ChampionshipRecord"> | string
   }
 
   export type UserLoginWhereInput = {
@@ -48953,10 +47694,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -48973,6 +47712,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -49000,10 +47746,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -49016,6 +47760,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -49039,10 +47790,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -49059,6 +47808,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -49086,10 +47842,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -49102,6 +47856,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -49129,7 +47890,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
   }
@@ -49155,7 +47915,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -49185,14 +47944,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
 
   export type ZoneCreateInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     isComplete?: boolean
     completedAt?: Date | string | null
     lastLevelId?: string
@@ -49202,14 +47960,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutZonesInput
-    levels?: LevelCreateNestedManyWithoutZoneInput
-    gempo?: GempoCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipCreateNestedOneWithoutZoneInput
   }
 
   export type ZoneUncheckedCreateInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     userId: string
     isComplete?: boolean
     completedAt?: Date | string | null
@@ -49219,14 +47974,11 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    levels?: LevelUncheckedCreateNestedManyWithoutZoneInput
-    gempo?: GempoUncheckedCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipUncheckedCreateNestedOneWithoutZoneInput
   }
 
   export type ZoneUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastLevelId?: StringFieldUpdateOperationsInput | string
@@ -49236,14 +47988,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutZonesNestedInput
-    levels?: LevelUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUpdateOneWithoutZoneNestedInput
   }
 
   export type ZoneUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49253,14 +48002,11 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    levels?: LevelUncheckedUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUncheckedUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUncheckedUpdateOneWithoutZoneNestedInput
   }
 
   export type ZoneCreateManyInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     userId: string
     isComplete?: boolean
     completedAt?: Date | string | null
@@ -49274,7 +48020,7 @@ export namespace Prisma {
 
   export type ZoneUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastLevelId?: StringFieldUpdateOperationsInput | string
@@ -49287,7 +48033,7 @@ export namespace Prisma {
 
   export type ZoneUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49301,71 +48047,73 @@ export namespace Prisma {
 
   export type LevelCreateInput = {
     id?: string
-    levelId: string
+    inGameId: string
+    zoneInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutLevelsInput
-    subLevels?: SubLevelCreateNestedManyWithoutLevelInput
+    user: UserCreateNestedOneWithoutLevelsInput
   }
 
   export type LevelUncheckedCreateInput = {
     id?: string
-    levelId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutLevelInput
+    userId: string
   }
 
   export type LevelUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutLevelsNestedInput
-    subLevels?: SubLevelUpdateManyWithoutLevelNestedInput
+    user?: UserUpdateOneRequiredWithoutLevelsNestedInput
   }
 
   export type LevelUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subLevels?: SubLevelUncheckedUpdateManyWithoutLevelNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type LevelCreateManyInput = {
     id?: string
-    levelId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type LevelUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49376,83 +48124,92 @@ export namespace Prisma {
 
   export type LevelUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SubLevelCreateInput = {
     id?: string
-    subLevelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    level: LevelCreateNestedOneWithoutSubLevelsInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutSubLevelInput
+    user: UserCreateNestedOneWithoutSubLevelsInput
   }
 
   export type SubLevelUncheckedCreateInput = {
     id?: string
-    subLevelId: string
-    levelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutSubLevelInput
+    userId: string
   }
 
   export type SubLevelUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    level?: LevelUpdateOneRequiredWithoutSubLevelsNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutSubLevelNestedInput
+    user?: UserUpdateOneRequiredWithoutSubLevelsNestedInput
   }
 
   export type SubLevelUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutSubLevelNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SubLevelCreateManyInput = {
     id?: string
-    subLevelId: string
-    levelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
     completedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type SubLevelUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49463,19 +48220,24 @@ export namespace Prisma {
 
   export type SubLevelUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type InnerLevelCreateInput = {
     id?: string
-    innerLevelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
@@ -49486,13 +48248,15 @@ export namespace Prisma {
     played?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    subLevel: SubLevelCreateNestedOneWithoutInnerLevelsInput
+    user: UserCreateNestedOneWithoutInnerLevelsInput
   }
 
   export type InnerLevelUncheckedCreateInput = {
     id?: string
-    innerLevelId: string
-    subLevelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
@@ -49503,11 +48267,15 @@ export namespace Prisma {
     played?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type InnerLevelUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49518,13 +48286,15 @@ export namespace Prisma {
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subLevel?: SubLevelUpdateOneRequiredWithoutInnerLevelsNestedInput
+    user?: UserUpdateOneRequiredWithoutInnerLevelsNestedInput
   }
 
   export type InnerLevelUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49535,12 +48305,15 @@ export namespace Prisma {
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type InnerLevelCreateManyInput = {
     id?: string
-    innerLevelId: string
-    subLevelId: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
     isComplete?: boolean
@@ -49551,11 +48324,15 @@ export namespace Prisma {
     played?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type InnerLevelUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49570,8 +48347,10 @@ export namespace Prisma {
 
   export type InnerLevelUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -49582,67 +48361,70 @@ export namespace Prisma {
     played?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GempoCreateInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    gempoId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutGempoInput
-    records?: GempoRecordCreateNestedManyWithoutGempoInput
+    user: UserCreateNestedOneWithoutGemposInput
   }
 
   export type GempoUncheckedCreateInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    gempoId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    records?: GempoRecordUncheckedCreateNestedManyWithoutGempoInput
+    userId: string
   }
 
   export type GempoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutGempoNestedInput
-    records?: GempoRecordUpdateManyWithoutGempoNestedInput
+    user?: UserUpdateOneRequiredWithoutGemposNestedInput
   }
 
   export type GempoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: GempoRecordUncheckedUpdateManyWithoutGempoNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GempoCreateManyInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    gempoId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type GempoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49651,71 +48433,74 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChampionshipCreateInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    championshipId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutChampionshipInput
-    records?: ChampionshipRecordCreateNestedManyWithoutChampionshipInput
+    user: UserCreateNestedOneWithoutChampionshipsInput
   }
 
   export type ChampionshipUncheckedCreateInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    championshipId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    records?: ChampionshipRecordUncheckedCreateNestedManyWithoutChampionshipInput
+    userId: string
   }
 
   export type ChampionshipUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutChampionshipNestedInput
-    records?: ChampionshipRecordUpdateManyWithoutChampionshipNestedInput
+    user?: UserUpdateOneRequiredWithoutChampionshipsNestedInput
   }
 
   export type ChampionshipUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: ChampionshipRecordUncheckedUpdateManyWithoutChampionshipNestedInput
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChampionshipCreateManyInput = {
     id?: string
     isUnlock?: boolean
     unlockedAt?: Date | string | null
-    championshipId: string
-    zoneId: string
+    inGameId: string
+    zoneInGameId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type ChampionshipUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49724,70 +48509,83 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GempoRecordCreateInput = {
     id?: string
-    recordId: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
     played?: number
     point?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    gempo: GempoCreateNestedOneWithoutRecordsInput
+    user: UserCreateNestedOneWithoutGempoRecordsInput
   }
 
   export type GempoRecordUncheckedCreateInput = {
     id?: string
-    recordId: string
-    gempoId: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
     played?: number
     point?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type GempoRecordUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    gempo?: GempoUpdateOneRequiredWithoutRecordsNestedInput
+    user?: UserUpdateOneRequiredWithoutGempoRecordsNestedInput
   }
 
   export type GempoRecordUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
-    gempoId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GempoRecordCreateManyInput = {
     id?: string
-    recordId: string
-    gempoId: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
     played?: number
     point?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type GempoRecordUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49797,18 +48595,22 @@ export namespace Prisma {
 
   export type GempoRecordUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
-    gempoId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChampionshipRecordCreateInput = {
     id?: string
-    recordId: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
     teamWin?: number
     teamLose?: number
     teamPlayed?: number
@@ -49821,13 +48623,14 @@ export namespace Prisma {
     soloLastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    championship: ChampionshipCreateNestedOneWithoutRecordsInput
+    user: UserCreateNestedOneWithoutChampionshipRecordsInput
   }
 
   export type ChampionshipRecordUncheckedCreateInput = {
     id?: string
-    recordId: string
-    championshipId: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
     teamWin?: number
     teamLose?: number
     teamPlayed?: number
@@ -49840,11 +48643,14 @@ export namespace Prisma {
     soloLastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type ChampionshipRecordUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -49857,13 +48663,14 @@ export namespace Prisma {
     soloLastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    championship?: ChampionshipUpdateOneRequiredWithoutRecordsNestedInput
+    user?: UserUpdateOneRequiredWithoutChampionshipRecordsNestedInput
   }
 
   export type ChampionshipRecordUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
-    championshipId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -49876,12 +48683,14 @@ export namespace Prisma {
     soloLastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChampionshipRecordCreateManyInput = {
     id?: string
-    recordId: string
-    championshipId: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
     teamWin?: number
     teamLose?: number
     teamPlayed?: number
@@ -49894,11 +48703,14 @@ export namespace Prisma {
     soloLastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    userId: string
   }
 
   export type ChampionshipRecordUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -49915,8 +48727,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
-    championshipId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -49929,95 +48742,6 @@ export namespace Prisma {
     soloLastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DeviceCreateInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    user: UserCreateNestedOneWithoutDeviceInput
-  }
-
-  export type DeviceUncheckedCreateInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-  }
-
-  export type DeviceUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutDeviceNestedInput
-  }
-
-  export type DeviceUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type DeviceCreateManyInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-    userId: string
-  }
-
-  export type DeviceUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DeviceUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -52063,11 +50787,6 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type DeviceNullableScalarRelationFilter = {
-    is?: DeviceWhereInput | null
-    isNot?: DeviceWhereInput | null
-  }
-
   export type AccessContentListRelationFilter = {
     every?: AccessContentWhereInput
     some?: AccessContentWhereInput
@@ -52148,6 +50867,48 @@ export namespace Prisma {
     none?: TestParticipantRecordWhereInput
   }
 
+  export type SubLevelListRelationFilter = {
+    every?: SubLevelWhereInput
+    some?: SubLevelWhereInput
+    none?: SubLevelWhereInput
+  }
+
+  export type InnerLevelListRelationFilter = {
+    every?: InnerLevelWhereInput
+    some?: InnerLevelWhereInput
+    none?: InnerLevelWhereInput
+  }
+
+  export type LevelListRelationFilter = {
+    every?: LevelWhereInput
+    some?: LevelWhereInput
+    none?: LevelWhereInput
+  }
+
+  export type GempoListRelationFilter = {
+    every?: GempoWhereInput
+    some?: GempoWhereInput
+    none?: GempoWhereInput
+  }
+
+  export type ChampionshipListRelationFilter = {
+    every?: ChampionshipWhereInput
+    some?: ChampionshipWhereInput
+    none?: ChampionshipWhereInput
+  }
+
+  export type GempoRecordListRelationFilter = {
+    every?: GempoRecordWhereInput
+    some?: GempoRecordWhereInput
+    none?: GempoRecordWhereInput
+  }
+
+  export type ChampionshipRecordListRelationFilter = {
+    every?: ChampionshipRecordWhereInput
+    some?: ChampionshipRecordWhereInput
+    none?: ChampionshipRecordWhereInput
+  }
+
   export type AccessContentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -52188,6 +50949,34 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type SubLevelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InnerLevelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LevelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GempoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChampionshipOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GempoRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChampionshipRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     authId?: SortOrder
@@ -52213,7 +51002,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     username?: SortOrder
-    storageId?: SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
   }
@@ -52248,7 +51036,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     username?: SortOrder
-    storageId?: SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
   }
@@ -52277,7 +51064,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     username?: SortOrder
-    storageId?: SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
   }
@@ -52335,34 +51121,14 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type LevelListRelationFilter = {
-    every?: LevelWhereInput
-    some?: LevelWhereInput
-    none?: LevelWhereInput
-  }
-
-  export type GempoNullableScalarRelationFilter = {
-    is?: GempoWhereInput | null
-    isNot?: GempoWhereInput | null
-  }
-
-  export type ChampionshipNullableScalarRelationFilter = {
-    is?: ChampionshipWhereInput | null
-    isNot?: ChampionshipWhereInput | null
-  }
-
-  export type LevelOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ZoneUserIdZoneIdCompoundUniqueInput = {
+  export type ZoneUserIdInGameIdCompoundUniqueInput = {
     userId: string
-    zoneId: string
+    inGameId: string
   }
 
   export type ZoneCountOrderByAggregateInput = {
     id?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
     userId?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
@@ -52376,7 +51142,7 @@ export namespace Prisma {
 
   export type ZoneMaxOrderByAggregateInput = {
     id?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
     userId?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
@@ -52390,7 +51156,7 @@ export namespace Prisma {
 
   export type ZoneMinOrderByAggregateInput = {
     id?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
     userId?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
@@ -52402,132 +51168,108 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type ZoneScalarRelationFilter = {
-    is?: ZoneWhereInput
-    isNot?: ZoneWhereInput
-  }
-
-  export type SubLevelListRelationFilter = {
-    every?: SubLevelWhereInput
-    some?: SubLevelWhereInput
-    none?: SubLevelWhereInput
-  }
-
-  export type SubLevelOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type LevelZoneIdLevelIdCompoundUniqueInput = {
-    zoneId: string
-    levelId: string
+  export type LevelUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type LevelCountOrderByAggregateInput = {
     id?: SortOrder
-    levelId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type LevelMaxOrderByAggregateInput = {
     id?: SortOrder
-    levelId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type LevelMinOrderByAggregateInput = {
     id?: SortOrder
-    levelId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
-  export type LevelScalarRelationFilter = {
-    is?: LevelWhereInput
-    isNot?: LevelWhereInput
-  }
-
-  export type InnerLevelListRelationFilter = {
-    every?: InnerLevelWhereInput
-    some?: InnerLevelWhereInput
-    none?: InnerLevelWhereInput
-  }
-
-  export type InnerLevelOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SubLevelLevelIdSubLevelIdCompoundUniqueInput = {
-    levelId: string
-    subLevelId: string
+  export type SubLevelUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type SubLevelCountOrderByAggregateInput = {
     id?: SortOrder
-    subLevelId?: SortOrder
-    levelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type SubLevelMaxOrderByAggregateInput = {
     id?: SortOrder
-    subLevelId?: SortOrder
-    levelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type SubLevelMinOrderByAggregateInput = {
     id?: SortOrder
-    subLevelId?: SortOrder
-    levelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
     completedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
-  export type SubLevelScalarRelationFilter = {
-    is?: SubLevelWhereInput
-    isNot?: SubLevelWhereInput
-  }
-
-  export type InnerLevelSubLevelIdInnerLevelIdCompoundUniqueInput = {
-    subLevelId: string
-    innerLevelId: string
+  export type InnerLevelUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type InnerLevelCountOrderByAggregateInput = {
     id?: SortOrder
-    innerLevelId?: SortOrder
-    subLevelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
+    subLevelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
@@ -52538,6 +51280,7 @@ export namespace Prisma {
     played?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type InnerLevelAvgOrderByAggregateInput = {
@@ -52549,8 +51292,10 @@ export namespace Prisma {
 
   export type InnerLevelMaxOrderByAggregateInput = {
     id?: SortOrder
-    innerLevelId?: SortOrder
-    subLevelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
+    subLevelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
@@ -52561,12 +51306,15 @@ export namespace Prisma {
     played?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type InnerLevelMinOrderByAggregateInput = {
     id?: SortOrder
-    innerLevelId?: SortOrder
-    subLevelId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    levelInGameId?: SortOrder
+    subLevelInGameId?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
     isComplete?: SortOrder
@@ -52577,6 +51325,7 @@ export namespace Prisma {
     played?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type InnerLevelSumOrderByAggregateInput = {
@@ -52586,115 +51335,98 @@ export namespace Prisma {
     played?: SortOrder
   }
 
-  export type GempoRecordListRelationFilter = {
-    every?: GempoRecordWhereInput
-    some?: GempoRecordWhereInput
-    none?: GempoRecordWhereInput
-  }
-
-  export type GempoRecordOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type GempoZoneIdGempoIdCompoundUniqueInput = {
-    zoneId: string
-    gempoId: string
+  export type GempoUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type GempoCountOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    gempoId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type GempoMaxOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    gempoId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type GempoMinOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    gempoId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
-  export type ChampionshipRecordListRelationFilter = {
-    every?: ChampionshipRecordWhereInput
-    some?: ChampionshipRecordWhereInput
-    none?: ChampionshipRecordWhereInput
-  }
-
-  export type ChampionshipRecordOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ChampionshipZoneIdChampionshipIdCompoundUniqueInput = {
-    zoneId: string
-    championshipId: string
+  export type ChampionshipUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type ChampionshipCountOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    championshipId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type ChampionshipMaxOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    championshipId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type ChampionshipMinOrderByAggregateInput = {
     id?: SortOrder
     isUnlock?: SortOrder
     unlockedAt?: SortOrder
-    championshipId?: SortOrder
-    zoneId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
-  export type GempoScalarRelationFilter = {
-    is?: GempoWhereInput
-    isNot?: GempoWhereInput
-  }
-
-  export type GempoRecordGempoIdRecordIdCompoundUniqueInput = {
-    gempoId: string
-    recordId: string
+  export type GempoRecordUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type GempoRecordCountOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    gempoId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    gempoInGameId?: SortOrder
     played?: SortOrder
     point?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type GempoRecordAvgOrderByAggregateInput = {
@@ -52704,24 +51436,28 @@ export namespace Prisma {
 
   export type GempoRecordMaxOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    gempoId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    gempoInGameId?: SortOrder
     played?: SortOrder
     point?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type GempoRecordMinOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    gempoId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    gempoInGameId?: SortOrder
     played?: SortOrder
     point?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type GempoRecordSumOrderByAggregateInput = {
@@ -52729,20 +51465,16 @@ export namespace Prisma {
     point?: SortOrder
   }
 
-  export type ChampionshipScalarRelationFilter = {
-    is?: ChampionshipWhereInput
-    isNot?: ChampionshipWhereInput
-  }
-
-  export type ChampionshipRecordChampionshipIdRecordIdCompoundUniqueInput = {
-    championshipId: string
-    recordId: string
+  export type ChampionshipRecordUserIdInGameIdCompoundUniqueInput = {
+    userId: string
+    inGameId: string
   }
 
   export type ChampionshipRecordCountOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    championshipId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    championshipInGameId?: SortOrder
     teamWin?: SortOrder
     teamLose?: SortOrder
     teamPlayed?: SortOrder
@@ -52755,6 +51487,7 @@ export namespace Prisma {
     soloLastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type ChampionshipRecordAvgOrderByAggregateInput = {
@@ -52770,8 +51503,9 @@ export namespace Prisma {
 
   export type ChampionshipRecordMaxOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    championshipId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    championshipInGameId?: SortOrder
     teamWin?: SortOrder
     teamLose?: SortOrder
     teamPlayed?: SortOrder
@@ -52784,12 +51518,14 @@ export namespace Prisma {
     soloLastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type ChampionshipRecordMinOrderByAggregateInput = {
     id?: SortOrder
-    recordId?: SortOrder
-    championshipId?: SortOrder
+    inGameId?: SortOrder
+    zoneInGameId?: SortOrder
+    championshipInGameId?: SortOrder
     teamWin?: SortOrder
     teamLose?: SortOrder
     teamPlayed?: SortOrder
@@ -52802,6 +51538,7 @@ export namespace Prisma {
     soloLastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type ChampionshipRecordSumOrderByAggregateInput = {
@@ -52813,55 +51550,6 @@ export namespace Prisma {
     soloLose?: SortOrder
     soloPlayed?: SortOrder
     soloPoint?: SortOrder
-  }
-
-  export type DeviceCountOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceAvgOrderByAggregateInput = {
-    ramSize?: SortOrder
-    cpuCores?: SortOrder
-  }
-
-  export type DeviceMaxOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceMinOrderByAggregateInput = {
-    id?: SortOrder
-    uuid?: SortOrder
-    model?: SortOrder
-    manufactur?: SortOrder
-    os?: SortOrder
-    ramSize?: SortOrder
-    gpuName?: SortOrder
-    cpuType?: SortOrder
-    cpuCores?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type DeviceSumOrderByAggregateInput = {
-    ramSize?: SortOrder
-    cpuCores?: SortOrder
   }
 
   export type UserLoginCountOrderByAggregateInput = {
@@ -54623,12 +53311,6 @@ export namespace Prisma {
     set: number[]
   }
 
-  export type DeviceCreateNestedOneWithoutUserInput = {
-    create?: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutUserInput
-    connect?: DeviceWhereUniqueInput
-  }
-
   export type AccessContentCreateNestedManyWithoutOwnerInput = {
     create?: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput> | AccessContentCreateWithoutOwnerInput[] | AccessContentUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: AccessContentCreateOrConnectWithoutOwnerInput | AccessContentCreateOrConnectWithoutOwnerInput[]
@@ -54735,10 +53417,53 @@ export namespace Prisma {
     connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
   }
 
-  export type DeviceUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutUserInput
-    connect?: DeviceWhereUniqueInput
+  export type SubLevelCreateNestedManyWithoutUserInput = {
+    create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
+    createMany?: SubLevelCreateManyUserInputEnvelope
+    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+  }
+
+  export type InnerLevelCreateNestedManyWithoutUserInput = {
+    create?: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput> | InnerLevelCreateWithoutUserInput[] | InnerLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InnerLevelCreateOrConnectWithoutUserInput | InnerLevelCreateOrConnectWithoutUserInput[]
+    createMany?: InnerLevelCreateManyUserInputEnvelope
+    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+  }
+
+  export type LevelCreateNestedManyWithoutUserInput = {
+    create?: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput> | LevelCreateWithoutUserInput[] | LevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LevelCreateOrConnectWithoutUserInput | LevelCreateOrConnectWithoutUserInput[]
+    createMany?: LevelCreateManyUserInputEnvelope
+    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+  }
+
+  export type GempoCreateNestedManyWithoutUserInput = {
+    create?: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput> | GempoCreateWithoutUserInput[] | GempoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoCreateOrConnectWithoutUserInput | GempoCreateOrConnectWithoutUserInput[]
+    createMany?: GempoCreateManyUserInputEnvelope
+    connect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+  }
+
+  export type ChampionshipCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput> | ChampionshipCreateWithoutUserInput[] | ChampionshipUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipCreateOrConnectWithoutUserInput | ChampionshipCreateOrConnectWithoutUserInput[]
+    createMany?: ChampionshipCreateManyUserInputEnvelope
+    connect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+  }
+
+  export type GempoRecordCreateNestedManyWithoutUserInput = {
+    create?: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput> | GempoRecordCreateWithoutUserInput[] | GempoRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoRecordCreateOrConnectWithoutUserInput | GempoRecordCreateOrConnectWithoutUserInput[]
+    createMany?: GempoRecordCreateManyUserInputEnvelope
+    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+  }
+
+  export type ChampionshipRecordCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput> | ChampionshipRecordCreateWithoutUserInput[] | ChampionshipRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutUserInput | ChampionshipRecordCreateOrConnectWithoutUserInput[]
+    createMany?: ChampionshipRecordCreateManyUserInputEnvelope
+    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
   }
 
   export type AccessContentUncheckedCreateNestedManyWithoutOwnerInput = {
@@ -54823,6 +53548,55 @@ export namespace Prisma {
     connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
   }
 
+  export type SubLevelUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
+    createMany?: SubLevelCreateManyUserInputEnvelope
+    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+  }
+
+  export type InnerLevelUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput> | InnerLevelCreateWithoutUserInput[] | InnerLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InnerLevelCreateOrConnectWithoutUserInput | InnerLevelCreateOrConnectWithoutUserInput[]
+    createMany?: InnerLevelCreateManyUserInputEnvelope
+    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+  }
+
+  export type LevelUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput> | LevelCreateWithoutUserInput[] | LevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LevelCreateOrConnectWithoutUserInput | LevelCreateOrConnectWithoutUserInput[]
+    createMany?: LevelCreateManyUserInputEnvelope
+    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+  }
+
+  export type GempoUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput> | GempoCreateWithoutUserInput[] | GempoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoCreateOrConnectWithoutUserInput | GempoCreateOrConnectWithoutUserInput[]
+    createMany?: GempoCreateManyUserInputEnvelope
+    connect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+  }
+
+  export type ChampionshipUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput> | ChampionshipCreateWithoutUserInput[] | ChampionshipUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipCreateOrConnectWithoutUserInput | ChampionshipCreateOrConnectWithoutUserInput[]
+    createMany?: ChampionshipCreateManyUserInputEnvelope
+    connect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+  }
+
+  export type GempoRecordUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput> | GempoRecordCreateWithoutUserInput[] | GempoRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoRecordCreateOrConnectWithoutUserInput | GempoRecordCreateOrConnectWithoutUserInput[]
+    createMany?: GempoRecordCreateManyUserInputEnvelope
+    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+  }
+
+  export type ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput> | ChampionshipRecordCreateWithoutUserInput[] | ChampionshipRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutUserInput | ChampionshipRecordCreateOrConnectWithoutUserInput[]
+    createMany?: ChampionshipRecordCreateManyUserInputEnvelope
+    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+  }
+
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
   }
@@ -54842,16 +53616,6 @@ export namespace Prisma {
   export type UserUpdateinventoryInput = {
     set?: number[]
     push?: number | number[]
-  }
-
-  export type DeviceUpdateOneWithoutUserNestedInput = {
-    create?: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutUserInput
-    upsert?: DeviceUpsertWithoutUserInput
-    disconnect?: DeviceWhereInput | boolean
-    delete?: DeviceWhereInput | boolean
-    connect?: DeviceWhereUniqueInput
-    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutUserInput, DeviceUpdateWithoutUserInput>, DeviceUncheckedUpdateWithoutUserInput>
   }
 
   export type AccessContentUpdateManyWithoutOwnerNestedInput = {
@@ -55060,14 +53824,102 @@ export namespace Prisma {
     deleteMany?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
   }
 
-  export type DeviceUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutUserInput
-    upsert?: DeviceUpsertWithoutUserInput
-    disconnect?: DeviceWhereInput | boolean
-    delete?: DeviceWhereInput | boolean
-    connect?: DeviceWhereUniqueInput
-    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutUserInput, DeviceUpdateWithoutUserInput>, DeviceUncheckedUpdateWithoutUserInput>
+  export type SubLevelUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
+    upsert?: SubLevelUpsertWithWhereUniqueWithoutUserInput | SubLevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SubLevelCreateManyUserInputEnvelope
+    set?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    disconnect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    delete?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    update?: SubLevelUpdateWithWhereUniqueWithoutUserInput | SubLevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SubLevelUpdateManyWithWhereWithoutUserInput | SubLevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
+  }
+
+  export type InnerLevelUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput> | InnerLevelCreateWithoutUserInput[] | InnerLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InnerLevelCreateOrConnectWithoutUserInput | InnerLevelCreateOrConnectWithoutUserInput[]
+    upsert?: InnerLevelUpsertWithWhereUniqueWithoutUserInput | InnerLevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InnerLevelCreateManyUserInputEnvelope
+    set?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    disconnect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    delete?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    update?: InnerLevelUpdateWithWhereUniqueWithoutUserInput | InnerLevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InnerLevelUpdateManyWithWhereWithoutUserInput | InnerLevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
+  }
+
+  export type LevelUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput> | LevelCreateWithoutUserInput[] | LevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LevelCreateOrConnectWithoutUserInput | LevelCreateOrConnectWithoutUserInput[]
+    upsert?: LevelUpsertWithWhereUniqueWithoutUserInput | LevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LevelCreateManyUserInputEnvelope
+    set?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    disconnect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    delete?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    update?: LevelUpdateWithWhereUniqueWithoutUserInput | LevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LevelUpdateManyWithWhereWithoutUserInput | LevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
+  }
+
+  export type GempoUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput> | GempoCreateWithoutUserInput[] | GempoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoCreateOrConnectWithoutUserInput | GempoCreateOrConnectWithoutUserInput[]
+    upsert?: GempoUpsertWithWhereUniqueWithoutUserInput | GempoUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GempoCreateManyUserInputEnvelope
+    set?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    disconnect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    delete?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    connect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    update?: GempoUpdateWithWhereUniqueWithoutUserInput | GempoUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GempoUpdateManyWithWhereWithoutUserInput | GempoUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GempoScalarWhereInput | GempoScalarWhereInput[]
+  }
+
+  export type ChampionshipUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput> | ChampionshipCreateWithoutUserInput[] | ChampionshipUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipCreateOrConnectWithoutUserInput | ChampionshipCreateOrConnectWithoutUserInput[]
+    upsert?: ChampionshipUpsertWithWhereUniqueWithoutUserInput | ChampionshipUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChampionshipCreateManyUserInputEnvelope
+    set?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    disconnect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    delete?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    connect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    update?: ChampionshipUpdateWithWhereUniqueWithoutUserInput | ChampionshipUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChampionshipUpdateManyWithWhereWithoutUserInput | ChampionshipUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChampionshipScalarWhereInput | ChampionshipScalarWhereInput[]
+  }
+
+  export type GempoRecordUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput> | GempoRecordCreateWithoutUserInput[] | GempoRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoRecordCreateOrConnectWithoutUserInput | GempoRecordCreateOrConnectWithoutUserInput[]
+    upsert?: GempoRecordUpsertWithWhereUniqueWithoutUserInput | GempoRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GempoRecordCreateManyUserInputEnvelope
+    set?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    disconnect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    delete?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    update?: GempoRecordUpdateWithWhereUniqueWithoutUserInput | GempoRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GempoRecordUpdateManyWithWhereWithoutUserInput | GempoRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
+  }
+
+  export type ChampionshipRecordUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput> | ChampionshipRecordCreateWithoutUserInput[] | ChampionshipRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutUserInput | ChampionshipRecordCreateOrConnectWithoutUserInput[]
+    upsert?: ChampionshipRecordUpsertWithWhereUniqueWithoutUserInput | ChampionshipRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChampionshipRecordCreateManyUserInputEnvelope
+    set?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    disconnect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    delete?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    update?: ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput | ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChampionshipRecordUpdateManyWithWhereWithoutUserInput | ChampionshipRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
   }
 
   export type AccessContentUncheckedUpdateManyWithoutOwnerNestedInput = {
@@ -55236,48 +54088,108 @@ export namespace Prisma {
     deleteMany?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
   }
 
+  export type SubLevelUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
+    upsert?: SubLevelUpsertWithWhereUniqueWithoutUserInput | SubLevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SubLevelCreateManyUserInputEnvelope
+    set?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    disconnect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    delete?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
+    update?: SubLevelUpdateWithWhereUniqueWithoutUserInput | SubLevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SubLevelUpdateManyWithWhereWithoutUserInput | SubLevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
+  }
+
+  export type InnerLevelUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput> | InnerLevelCreateWithoutUserInput[] | InnerLevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: InnerLevelCreateOrConnectWithoutUserInput | InnerLevelCreateOrConnectWithoutUserInput[]
+    upsert?: InnerLevelUpsertWithWhereUniqueWithoutUserInput | InnerLevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: InnerLevelCreateManyUserInputEnvelope
+    set?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    disconnect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    delete?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
+    update?: InnerLevelUpdateWithWhereUniqueWithoutUserInput | InnerLevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: InnerLevelUpdateManyWithWhereWithoutUserInput | InnerLevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
+  }
+
+  export type LevelUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput> | LevelCreateWithoutUserInput[] | LevelUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LevelCreateOrConnectWithoutUserInput | LevelCreateOrConnectWithoutUserInput[]
+    upsert?: LevelUpsertWithWhereUniqueWithoutUserInput | LevelUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LevelCreateManyUserInputEnvelope
+    set?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    disconnect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    delete?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
+    update?: LevelUpdateWithWhereUniqueWithoutUserInput | LevelUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LevelUpdateManyWithWhereWithoutUserInput | LevelUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
+  }
+
+  export type GempoUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput> | GempoCreateWithoutUserInput[] | GempoUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoCreateOrConnectWithoutUserInput | GempoCreateOrConnectWithoutUserInput[]
+    upsert?: GempoUpsertWithWhereUniqueWithoutUserInput | GempoUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GempoCreateManyUserInputEnvelope
+    set?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    disconnect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    delete?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    connect?: GempoWhereUniqueInput | GempoWhereUniqueInput[]
+    update?: GempoUpdateWithWhereUniqueWithoutUserInput | GempoUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GempoUpdateManyWithWhereWithoutUserInput | GempoUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GempoScalarWhereInput | GempoScalarWhereInput[]
+  }
+
+  export type ChampionshipUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput> | ChampionshipCreateWithoutUserInput[] | ChampionshipUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipCreateOrConnectWithoutUserInput | ChampionshipCreateOrConnectWithoutUserInput[]
+    upsert?: ChampionshipUpsertWithWhereUniqueWithoutUserInput | ChampionshipUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChampionshipCreateManyUserInputEnvelope
+    set?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    disconnect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    delete?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    connect?: ChampionshipWhereUniqueInput | ChampionshipWhereUniqueInput[]
+    update?: ChampionshipUpdateWithWhereUniqueWithoutUserInput | ChampionshipUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChampionshipUpdateManyWithWhereWithoutUserInput | ChampionshipUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChampionshipScalarWhereInput | ChampionshipScalarWhereInput[]
+  }
+
+  export type GempoRecordUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput> | GempoRecordCreateWithoutUserInput[] | GempoRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GempoRecordCreateOrConnectWithoutUserInput | GempoRecordCreateOrConnectWithoutUserInput[]
+    upsert?: GempoRecordUpsertWithWhereUniqueWithoutUserInput | GempoRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GempoRecordCreateManyUserInputEnvelope
+    set?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    disconnect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    delete?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
+    update?: GempoRecordUpdateWithWhereUniqueWithoutUserInput | GempoRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GempoRecordUpdateManyWithWhereWithoutUserInput | GempoRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
+  }
+
+  export type ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput> | ChampionshipRecordCreateWithoutUserInput[] | ChampionshipRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutUserInput | ChampionshipRecordCreateOrConnectWithoutUserInput[]
+    upsert?: ChampionshipRecordUpsertWithWhereUniqueWithoutUserInput | ChampionshipRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChampionshipRecordCreateManyUserInputEnvelope
+    set?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    disconnect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    delete?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
+    update?: ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput | ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChampionshipRecordUpdateManyWithWhereWithoutUserInput | ChampionshipRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutZonesInput = {
     create?: XOR<UserCreateWithoutZonesInput, UserUncheckedCreateWithoutZonesInput>
     connectOrCreate?: UserCreateOrConnectWithoutZonesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type LevelCreateNestedManyWithoutZoneInput = {
-    create?: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput> | LevelCreateWithoutZoneInput[] | LevelUncheckedCreateWithoutZoneInput[]
-    connectOrCreate?: LevelCreateOrConnectWithoutZoneInput | LevelCreateOrConnectWithoutZoneInput[]
-    createMany?: LevelCreateManyZoneInputEnvelope
-    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-  }
-
-  export type GempoCreateNestedOneWithoutZoneInput = {
-    create?: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutZoneInput
-    connect?: GempoWhereUniqueInput
-  }
-
-  export type ChampionshipCreateNestedOneWithoutZoneInput = {
-    create?: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutZoneInput
-    connect?: ChampionshipWhereUniqueInput
-  }
-
-  export type LevelUncheckedCreateNestedManyWithoutZoneInput = {
-    create?: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput> | LevelCreateWithoutZoneInput[] | LevelUncheckedCreateWithoutZoneInput[]
-    connectOrCreate?: LevelCreateOrConnectWithoutZoneInput | LevelCreateOrConnectWithoutZoneInput[]
-    createMany?: LevelCreateManyZoneInputEnvelope
-    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-  }
-
-  export type GempoUncheckedCreateNestedOneWithoutZoneInput = {
-    create?: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutZoneInput
-    connect?: GempoWhereUniqueInput
-  }
-
-  export type ChampionshipUncheckedCreateNestedOneWithoutZoneInput = {
-    create?: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutZoneInput
-    connect?: ChampionshipWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutZonesNestedInput = {
@@ -55288,352 +54200,102 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutZonesInput, UserUpdateWithoutZonesInput>, UserUncheckedUpdateWithoutZonesInput>
   }
 
-  export type LevelUpdateManyWithoutZoneNestedInput = {
-    create?: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput> | LevelCreateWithoutZoneInput[] | LevelUncheckedCreateWithoutZoneInput[]
-    connectOrCreate?: LevelCreateOrConnectWithoutZoneInput | LevelCreateOrConnectWithoutZoneInput[]
-    upsert?: LevelUpsertWithWhereUniqueWithoutZoneInput | LevelUpsertWithWhereUniqueWithoutZoneInput[]
-    createMany?: LevelCreateManyZoneInputEnvelope
-    set?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    disconnect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    delete?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    update?: LevelUpdateWithWhereUniqueWithoutZoneInput | LevelUpdateWithWhereUniqueWithoutZoneInput[]
-    updateMany?: LevelUpdateManyWithWhereWithoutZoneInput | LevelUpdateManyWithWhereWithoutZoneInput[]
-    deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
-  }
-
-  export type GempoUpdateOneWithoutZoneNestedInput = {
-    create?: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutZoneInput
-    upsert?: GempoUpsertWithoutZoneInput
-    disconnect?: GempoWhereInput | boolean
-    delete?: GempoWhereInput | boolean
-    connect?: GempoWhereUniqueInput
-    update?: XOR<XOR<GempoUpdateToOneWithWhereWithoutZoneInput, GempoUpdateWithoutZoneInput>, GempoUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type ChampionshipUpdateOneWithoutZoneNestedInput = {
-    create?: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutZoneInput
-    upsert?: ChampionshipUpsertWithoutZoneInput
-    disconnect?: ChampionshipWhereInput | boolean
-    delete?: ChampionshipWhereInput | boolean
-    connect?: ChampionshipWhereUniqueInput
-    update?: XOR<XOR<ChampionshipUpdateToOneWithWhereWithoutZoneInput, ChampionshipUpdateWithoutZoneInput>, ChampionshipUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type LevelUncheckedUpdateManyWithoutZoneNestedInput = {
-    create?: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput> | LevelCreateWithoutZoneInput[] | LevelUncheckedCreateWithoutZoneInput[]
-    connectOrCreate?: LevelCreateOrConnectWithoutZoneInput | LevelCreateOrConnectWithoutZoneInput[]
-    upsert?: LevelUpsertWithWhereUniqueWithoutZoneInput | LevelUpsertWithWhereUniqueWithoutZoneInput[]
-    createMany?: LevelCreateManyZoneInputEnvelope
-    set?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    disconnect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    delete?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
-    update?: LevelUpdateWithWhereUniqueWithoutZoneInput | LevelUpdateWithWhereUniqueWithoutZoneInput[]
-    updateMany?: LevelUpdateManyWithWhereWithoutZoneInput | LevelUpdateManyWithWhereWithoutZoneInput[]
-    deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
-  }
-
-  export type GempoUncheckedUpdateOneWithoutZoneNestedInput = {
-    create?: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutZoneInput
-    upsert?: GempoUpsertWithoutZoneInput
-    disconnect?: GempoWhereInput | boolean
-    delete?: GempoWhereInput | boolean
-    connect?: GempoWhereUniqueInput
-    update?: XOR<XOR<GempoUpdateToOneWithWhereWithoutZoneInput, GempoUpdateWithoutZoneInput>, GempoUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type ChampionshipUncheckedUpdateOneWithoutZoneNestedInput = {
-    create?: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutZoneInput
-    upsert?: ChampionshipUpsertWithoutZoneInput
-    disconnect?: ChampionshipWhereInput | boolean
-    delete?: ChampionshipWhereInput | boolean
-    connect?: ChampionshipWhereUniqueInput
-    update?: XOR<XOR<ChampionshipUpdateToOneWithWhereWithoutZoneInput, ChampionshipUpdateWithoutZoneInput>, ChampionshipUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type ZoneCreateNestedOneWithoutLevelsInput = {
-    create?: XOR<ZoneCreateWithoutLevelsInput, ZoneUncheckedCreateWithoutLevelsInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutLevelsInput
-    connect?: ZoneWhereUniqueInput
-  }
-
-  export type SubLevelCreateNestedManyWithoutLevelInput = {
-    create?: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput> | SubLevelCreateWithoutLevelInput[] | SubLevelUncheckedCreateWithoutLevelInput[]
-    connectOrCreate?: SubLevelCreateOrConnectWithoutLevelInput | SubLevelCreateOrConnectWithoutLevelInput[]
-    createMany?: SubLevelCreateManyLevelInputEnvelope
-    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-  }
-
-  export type SubLevelUncheckedCreateNestedManyWithoutLevelInput = {
-    create?: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput> | SubLevelCreateWithoutLevelInput[] | SubLevelUncheckedCreateWithoutLevelInput[]
-    connectOrCreate?: SubLevelCreateOrConnectWithoutLevelInput | SubLevelCreateOrConnectWithoutLevelInput[]
-    createMany?: SubLevelCreateManyLevelInputEnvelope
-    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-  }
-
-  export type ZoneUpdateOneRequiredWithoutLevelsNestedInput = {
-    create?: XOR<ZoneCreateWithoutLevelsInput, ZoneUncheckedCreateWithoutLevelsInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutLevelsInput
-    upsert?: ZoneUpsertWithoutLevelsInput
-    connect?: ZoneWhereUniqueInput
-    update?: XOR<XOR<ZoneUpdateToOneWithWhereWithoutLevelsInput, ZoneUpdateWithoutLevelsInput>, ZoneUncheckedUpdateWithoutLevelsInput>
-  }
-
-  export type SubLevelUpdateManyWithoutLevelNestedInput = {
-    create?: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput> | SubLevelCreateWithoutLevelInput[] | SubLevelUncheckedCreateWithoutLevelInput[]
-    connectOrCreate?: SubLevelCreateOrConnectWithoutLevelInput | SubLevelCreateOrConnectWithoutLevelInput[]
-    upsert?: SubLevelUpsertWithWhereUniqueWithoutLevelInput | SubLevelUpsertWithWhereUniqueWithoutLevelInput[]
-    createMany?: SubLevelCreateManyLevelInputEnvelope
-    set?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    disconnect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    delete?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    update?: SubLevelUpdateWithWhereUniqueWithoutLevelInput | SubLevelUpdateWithWhereUniqueWithoutLevelInput[]
-    updateMany?: SubLevelUpdateManyWithWhereWithoutLevelInput | SubLevelUpdateManyWithWhereWithoutLevelInput[]
-    deleteMany?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
-  }
-
-  export type SubLevelUncheckedUpdateManyWithoutLevelNestedInput = {
-    create?: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput> | SubLevelCreateWithoutLevelInput[] | SubLevelUncheckedCreateWithoutLevelInput[]
-    connectOrCreate?: SubLevelCreateOrConnectWithoutLevelInput | SubLevelCreateOrConnectWithoutLevelInput[]
-    upsert?: SubLevelUpsertWithWhereUniqueWithoutLevelInput | SubLevelUpsertWithWhereUniqueWithoutLevelInput[]
-    createMany?: SubLevelCreateManyLevelInputEnvelope
-    set?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    disconnect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    delete?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    connect?: SubLevelWhereUniqueInput | SubLevelWhereUniqueInput[]
-    update?: SubLevelUpdateWithWhereUniqueWithoutLevelInput | SubLevelUpdateWithWhereUniqueWithoutLevelInput[]
-    updateMany?: SubLevelUpdateManyWithWhereWithoutLevelInput | SubLevelUpdateManyWithWhereWithoutLevelInput[]
-    deleteMany?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
-  }
-
-  export type LevelCreateNestedOneWithoutSubLevelsInput = {
-    create?: XOR<LevelCreateWithoutSubLevelsInput, LevelUncheckedCreateWithoutSubLevelsInput>
-    connectOrCreate?: LevelCreateOrConnectWithoutSubLevelsInput
-    connect?: LevelWhereUniqueInput
-  }
-
-  export type InnerLevelCreateNestedManyWithoutSubLevelInput = {
-    create?: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput> | InnerLevelCreateWithoutSubLevelInput[] | InnerLevelUncheckedCreateWithoutSubLevelInput[]
-    connectOrCreate?: InnerLevelCreateOrConnectWithoutSubLevelInput | InnerLevelCreateOrConnectWithoutSubLevelInput[]
-    createMany?: InnerLevelCreateManySubLevelInputEnvelope
-    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-  }
-
-  export type InnerLevelUncheckedCreateNestedManyWithoutSubLevelInput = {
-    create?: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput> | InnerLevelCreateWithoutSubLevelInput[] | InnerLevelUncheckedCreateWithoutSubLevelInput[]
-    connectOrCreate?: InnerLevelCreateOrConnectWithoutSubLevelInput | InnerLevelCreateOrConnectWithoutSubLevelInput[]
-    createMany?: InnerLevelCreateManySubLevelInputEnvelope
-    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-  }
-
-  export type LevelUpdateOneRequiredWithoutSubLevelsNestedInput = {
-    create?: XOR<LevelCreateWithoutSubLevelsInput, LevelUncheckedCreateWithoutSubLevelsInput>
-    connectOrCreate?: LevelCreateOrConnectWithoutSubLevelsInput
-    upsert?: LevelUpsertWithoutSubLevelsInput
-    connect?: LevelWhereUniqueInput
-    update?: XOR<XOR<LevelUpdateToOneWithWhereWithoutSubLevelsInput, LevelUpdateWithoutSubLevelsInput>, LevelUncheckedUpdateWithoutSubLevelsInput>
-  }
-
-  export type InnerLevelUpdateManyWithoutSubLevelNestedInput = {
-    create?: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput> | InnerLevelCreateWithoutSubLevelInput[] | InnerLevelUncheckedCreateWithoutSubLevelInput[]
-    connectOrCreate?: InnerLevelCreateOrConnectWithoutSubLevelInput | InnerLevelCreateOrConnectWithoutSubLevelInput[]
-    upsert?: InnerLevelUpsertWithWhereUniqueWithoutSubLevelInput | InnerLevelUpsertWithWhereUniqueWithoutSubLevelInput[]
-    createMany?: InnerLevelCreateManySubLevelInputEnvelope
-    set?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    disconnect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    delete?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    update?: InnerLevelUpdateWithWhereUniqueWithoutSubLevelInput | InnerLevelUpdateWithWhereUniqueWithoutSubLevelInput[]
-    updateMany?: InnerLevelUpdateManyWithWhereWithoutSubLevelInput | InnerLevelUpdateManyWithWhereWithoutSubLevelInput[]
-    deleteMany?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
-  }
-
-  export type InnerLevelUncheckedUpdateManyWithoutSubLevelNestedInput = {
-    create?: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput> | InnerLevelCreateWithoutSubLevelInput[] | InnerLevelUncheckedCreateWithoutSubLevelInput[]
-    connectOrCreate?: InnerLevelCreateOrConnectWithoutSubLevelInput | InnerLevelCreateOrConnectWithoutSubLevelInput[]
-    upsert?: InnerLevelUpsertWithWhereUniqueWithoutSubLevelInput | InnerLevelUpsertWithWhereUniqueWithoutSubLevelInput[]
-    createMany?: InnerLevelCreateManySubLevelInputEnvelope
-    set?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    disconnect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    delete?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    connect?: InnerLevelWhereUniqueInput | InnerLevelWhereUniqueInput[]
-    update?: InnerLevelUpdateWithWhereUniqueWithoutSubLevelInput | InnerLevelUpdateWithWhereUniqueWithoutSubLevelInput[]
-    updateMany?: InnerLevelUpdateManyWithWhereWithoutSubLevelInput | InnerLevelUpdateManyWithWhereWithoutSubLevelInput[]
-    deleteMany?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
-  }
-
-  export type SubLevelCreateNestedOneWithoutInnerLevelsInput = {
-    create?: XOR<SubLevelCreateWithoutInnerLevelsInput, SubLevelUncheckedCreateWithoutInnerLevelsInput>
-    connectOrCreate?: SubLevelCreateOrConnectWithoutInnerLevelsInput
-    connect?: SubLevelWhereUniqueInput
-  }
-
-  export type SubLevelUpdateOneRequiredWithoutInnerLevelsNestedInput = {
-    create?: XOR<SubLevelCreateWithoutInnerLevelsInput, SubLevelUncheckedCreateWithoutInnerLevelsInput>
-    connectOrCreate?: SubLevelCreateOrConnectWithoutInnerLevelsInput
-    upsert?: SubLevelUpsertWithoutInnerLevelsInput
-    connect?: SubLevelWhereUniqueInput
-    update?: XOR<XOR<SubLevelUpdateToOneWithWhereWithoutInnerLevelsInput, SubLevelUpdateWithoutInnerLevelsInput>, SubLevelUncheckedUpdateWithoutInnerLevelsInput>
-  }
-
-  export type ZoneCreateNestedOneWithoutGempoInput = {
-    create?: XOR<ZoneCreateWithoutGempoInput, ZoneUncheckedCreateWithoutGempoInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutGempoInput
-    connect?: ZoneWhereUniqueInput
-  }
-
-  export type GempoRecordCreateNestedManyWithoutGempoInput = {
-    create?: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput> | GempoRecordCreateWithoutGempoInput[] | GempoRecordUncheckedCreateWithoutGempoInput[]
-    connectOrCreate?: GempoRecordCreateOrConnectWithoutGempoInput | GempoRecordCreateOrConnectWithoutGempoInput[]
-    createMany?: GempoRecordCreateManyGempoInputEnvelope
-    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-  }
-
-  export type GempoRecordUncheckedCreateNestedManyWithoutGempoInput = {
-    create?: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput> | GempoRecordCreateWithoutGempoInput[] | GempoRecordUncheckedCreateWithoutGempoInput[]
-    connectOrCreate?: GempoRecordCreateOrConnectWithoutGempoInput | GempoRecordCreateOrConnectWithoutGempoInput[]
-    createMany?: GempoRecordCreateManyGempoInputEnvelope
-    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-  }
-
-  export type ZoneUpdateOneRequiredWithoutGempoNestedInput = {
-    create?: XOR<ZoneCreateWithoutGempoInput, ZoneUncheckedCreateWithoutGempoInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutGempoInput
-    upsert?: ZoneUpsertWithoutGempoInput
-    connect?: ZoneWhereUniqueInput
-    update?: XOR<XOR<ZoneUpdateToOneWithWhereWithoutGempoInput, ZoneUpdateWithoutGempoInput>, ZoneUncheckedUpdateWithoutGempoInput>
-  }
-
-  export type GempoRecordUpdateManyWithoutGempoNestedInput = {
-    create?: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput> | GempoRecordCreateWithoutGempoInput[] | GempoRecordUncheckedCreateWithoutGempoInput[]
-    connectOrCreate?: GempoRecordCreateOrConnectWithoutGempoInput | GempoRecordCreateOrConnectWithoutGempoInput[]
-    upsert?: GempoRecordUpsertWithWhereUniqueWithoutGempoInput | GempoRecordUpsertWithWhereUniqueWithoutGempoInput[]
-    createMany?: GempoRecordCreateManyGempoInputEnvelope
-    set?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    disconnect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    delete?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    update?: GempoRecordUpdateWithWhereUniqueWithoutGempoInput | GempoRecordUpdateWithWhereUniqueWithoutGempoInput[]
-    updateMany?: GempoRecordUpdateManyWithWhereWithoutGempoInput | GempoRecordUpdateManyWithWhereWithoutGempoInput[]
-    deleteMany?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
-  }
-
-  export type GempoRecordUncheckedUpdateManyWithoutGempoNestedInput = {
-    create?: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput> | GempoRecordCreateWithoutGempoInput[] | GempoRecordUncheckedCreateWithoutGempoInput[]
-    connectOrCreate?: GempoRecordCreateOrConnectWithoutGempoInput | GempoRecordCreateOrConnectWithoutGempoInput[]
-    upsert?: GempoRecordUpsertWithWhereUniqueWithoutGempoInput | GempoRecordUpsertWithWhereUniqueWithoutGempoInput[]
-    createMany?: GempoRecordCreateManyGempoInputEnvelope
-    set?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    disconnect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    delete?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    connect?: GempoRecordWhereUniqueInput | GempoRecordWhereUniqueInput[]
-    update?: GempoRecordUpdateWithWhereUniqueWithoutGempoInput | GempoRecordUpdateWithWhereUniqueWithoutGempoInput[]
-    updateMany?: GempoRecordUpdateManyWithWhereWithoutGempoInput | GempoRecordUpdateManyWithWhereWithoutGempoInput[]
-    deleteMany?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
-  }
-
-  export type ZoneCreateNestedOneWithoutChampionshipInput = {
-    create?: XOR<ZoneCreateWithoutChampionshipInput, ZoneUncheckedCreateWithoutChampionshipInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutChampionshipInput
-    connect?: ZoneWhereUniqueInput
-  }
-
-  export type ChampionshipRecordCreateNestedManyWithoutChampionshipInput = {
-    create?: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput> | ChampionshipRecordCreateWithoutChampionshipInput[] | ChampionshipRecordUncheckedCreateWithoutChampionshipInput[]
-    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutChampionshipInput | ChampionshipRecordCreateOrConnectWithoutChampionshipInput[]
-    createMany?: ChampionshipRecordCreateManyChampionshipInputEnvelope
-    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-  }
-
-  export type ChampionshipRecordUncheckedCreateNestedManyWithoutChampionshipInput = {
-    create?: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput> | ChampionshipRecordCreateWithoutChampionshipInput[] | ChampionshipRecordUncheckedCreateWithoutChampionshipInput[]
-    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutChampionshipInput | ChampionshipRecordCreateOrConnectWithoutChampionshipInput[]
-    createMany?: ChampionshipRecordCreateManyChampionshipInputEnvelope
-    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-  }
-
-  export type ZoneUpdateOneRequiredWithoutChampionshipNestedInput = {
-    create?: XOR<ZoneCreateWithoutChampionshipInput, ZoneUncheckedCreateWithoutChampionshipInput>
-    connectOrCreate?: ZoneCreateOrConnectWithoutChampionshipInput
-    upsert?: ZoneUpsertWithoutChampionshipInput
-    connect?: ZoneWhereUniqueInput
-    update?: XOR<XOR<ZoneUpdateToOneWithWhereWithoutChampionshipInput, ZoneUpdateWithoutChampionshipInput>, ZoneUncheckedUpdateWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordUpdateManyWithoutChampionshipNestedInput = {
-    create?: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput> | ChampionshipRecordCreateWithoutChampionshipInput[] | ChampionshipRecordUncheckedCreateWithoutChampionshipInput[]
-    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutChampionshipInput | ChampionshipRecordCreateOrConnectWithoutChampionshipInput[]
-    upsert?: ChampionshipRecordUpsertWithWhereUniqueWithoutChampionshipInput | ChampionshipRecordUpsertWithWhereUniqueWithoutChampionshipInput[]
-    createMany?: ChampionshipRecordCreateManyChampionshipInputEnvelope
-    set?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    disconnect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    delete?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    update?: ChampionshipRecordUpdateWithWhereUniqueWithoutChampionshipInput | ChampionshipRecordUpdateWithWhereUniqueWithoutChampionshipInput[]
-    updateMany?: ChampionshipRecordUpdateManyWithWhereWithoutChampionshipInput | ChampionshipRecordUpdateManyWithWhereWithoutChampionshipInput[]
-    deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
-  }
-
-  export type ChampionshipRecordUncheckedUpdateManyWithoutChampionshipNestedInput = {
-    create?: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput> | ChampionshipRecordCreateWithoutChampionshipInput[] | ChampionshipRecordUncheckedCreateWithoutChampionshipInput[]
-    connectOrCreate?: ChampionshipRecordCreateOrConnectWithoutChampionshipInput | ChampionshipRecordCreateOrConnectWithoutChampionshipInput[]
-    upsert?: ChampionshipRecordUpsertWithWhereUniqueWithoutChampionshipInput | ChampionshipRecordUpsertWithWhereUniqueWithoutChampionshipInput[]
-    createMany?: ChampionshipRecordCreateManyChampionshipInputEnvelope
-    set?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    disconnect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    delete?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
-    update?: ChampionshipRecordUpdateWithWhereUniqueWithoutChampionshipInput | ChampionshipRecordUpdateWithWhereUniqueWithoutChampionshipInput[]
-    updateMany?: ChampionshipRecordUpdateManyWithWhereWithoutChampionshipInput | ChampionshipRecordUpdateManyWithWhereWithoutChampionshipInput[]
-    deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
-  }
-
-  export type GempoCreateNestedOneWithoutRecordsInput = {
-    create?: XOR<GempoCreateWithoutRecordsInput, GempoUncheckedCreateWithoutRecordsInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutRecordsInput
-    connect?: GempoWhereUniqueInput
-  }
-
-  export type GempoUpdateOneRequiredWithoutRecordsNestedInput = {
-    create?: XOR<GempoCreateWithoutRecordsInput, GempoUncheckedCreateWithoutRecordsInput>
-    connectOrCreate?: GempoCreateOrConnectWithoutRecordsInput
-    upsert?: GempoUpsertWithoutRecordsInput
-    connect?: GempoWhereUniqueInput
-    update?: XOR<XOR<GempoUpdateToOneWithWhereWithoutRecordsInput, GempoUpdateWithoutRecordsInput>, GempoUncheckedUpdateWithoutRecordsInput>
-  }
-
-  export type ChampionshipCreateNestedOneWithoutRecordsInput = {
-    create?: XOR<ChampionshipCreateWithoutRecordsInput, ChampionshipUncheckedCreateWithoutRecordsInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutRecordsInput
-    connect?: ChampionshipWhereUniqueInput
-  }
-
-  export type ChampionshipUpdateOneRequiredWithoutRecordsNestedInput = {
-    create?: XOR<ChampionshipCreateWithoutRecordsInput, ChampionshipUncheckedCreateWithoutRecordsInput>
-    connectOrCreate?: ChampionshipCreateOrConnectWithoutRecordsInput
-    upsert?: ChampionshipUpsertWithoutRecordsInput
-    connect?: ChampionshipWhereUniqueInput
-    update?: XOR<XOR<ChampionshipUpdateToOneWithWhereWithoutRecordsInput, ChampionshipUpdateWithoutRecordsInput>, ChampionshipUncheckedUpdateWithoutRecordsInput>
-  }
-
-  export type UserCreateNestedOneWithoutDeviceInput = {
-    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
+  export type UserCreateNestedOneWithoutLevelsInput = {
+    create?: XOR<UserCreateWithoutLevelsInput, UserUncheckedCreateWithoutLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLevelsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutDeviceNestedInput = {
-    create?: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDeviceInput
-    upsert?: UserUpsertWithoutDeviceInput
+  export type UserUpdateOneRequiredWithoutLevelsNestedInput = {
+    create?: XOR<UserCreateWithoutLevelsInput, UserUncheckedCreateWithoutLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLevelsInput
+    upsert?: UserUpsertWithoutLevelsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDeviceInput, UserUpdateWithoutDeviceInput>, UserUncheckedUpdateWithoutDeviceInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLevelsInput, UserUpdateWithoutLevelsInput>, UserUncheckedUpdateWithoutLevelsInput>
+  }
+
+  export type UserCreateNestedOneWithoutSubLevelsInput = {
+    create?: XOR<UserCreateWithoutSubLevelsInput, UserUncheckedCreateWithoutSubLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSubLevelsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSubLevelsNestedInput = {
+    create?: XOR<UserCreateWithoutSubLevelsInput, UserUncheckedCreateWithoutSubLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSubLevelsInput
+    upsert?: UserUpsertWithoutSubLevelsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSubLevelsInput, UserUpdateWithoutSubLevelsInput>, UserUncheckedUpdateWithoutSubLevelsInput>
+  }
+
+  export type UserCreateNestedOneWithoutInnerLevelsInput = {
+    create?: XOR<UserCreateWithoutInnerLevelsInput, UserUncheckedCreateWithoutInnerLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInnerLevelsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutInnerLevelsNestedInput = {
+    create?: XOR<UserCreateWithoutInnerLevelsInput, UserUncheckedCreateWithoutInnerLevelsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutInnerLevelsInput
+    upsert?: UserUpsertWithoutInnerLevelsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInnerLevelsInput, UserUpdateWithoutInnerLevelsInput>, UserUncheckedUpdateWithoutInnerLevelsInput>
+  }
+
+  export type UserCreateNestedOneWithoutGemposInput = {
+    create?: XOR<UserCreateWithoutGemposInput, UserUncheckedCreateWithoutGemposInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGemposInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutGemposNestedInput = {
+    create?: XOR<UserCreateWithoutGemposInput, UserUncheckedCreateWithoutGemposInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGemposInput
+    upsert?: UserUpsertWithoutGemposInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGemposInput, UserUpdateWithoutGemposInput>, UserUncheckedUpdateWithoutGemposInput>
+  }
+
+  export type UserCreateNestedOneWithoutChampionshipsInput = {
+    create?: XOR<UserCreateWithoutChampionshipsInput, UserUncheckedCreateWithoutChampionshipsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChampionshipsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutChampionshipsNestedInput = {
+    create?: XOR<UserCreateWithoutChampionshipsInput, UserUncheckedCreateWithoutChampionshipsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChampionshipsInput
+    upsert?: UserUpsertWithoutChampionshipsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChampionshipsInput, UserUpdateWithoutChampionshipsInput>, UserUncheckedUpdateWithoutChampionshipsInput>
+  }
+
+  export type UserCreateNestedOneWithoutGempoRecordsInput = {
+    create?: XOR<UserCreateWithoutGempoRecordsInput, UserUncheckedCreateWithoutGempoRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGempoRecordsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutGempoRecordsNestedInput = {
+    create?: XOR<UserCreateWithoutGempoRecordsInput, UserUncheckedCreateWithoutGempoRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGempoRecordsInput
+    upsert?: UserUpsertWithoutGempoRecordsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGempoRecordsInput, UserUpdateWithoutGempoRecordsInput>, UserUncheckedUpdateWithoutGempoRecordsInput>
+  }
+
+  export type UserCreateNestedOneWithoutChampionshipRecordsInput = {
+    create?: XOR<UserCreateWithoutChampionshipRecordsInput, UserUncheckedCreateWithoutChampionshipRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChampionshipRecordsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutChampionshipRecordsNestedInput = {
+    create?: XOR<UserCreateWithoutChampionshipRecordsInput, UserUncheckedCreateWithoutChampionshipRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChampionshipRecordsInput
+    upsert?: UserUpsertWithoutChampionshipRecordsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChampionshipRecordsInput, UserUpdateWithoutChampionshipRecordsInput>, UserUncheckedUpdateWithoutChampionshipRecordsInput>
   }
 
   export type UserCreateNestedOneWithoutUserLoginInput = {
@@ -57170,10 +55832,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
@@ -57189,6 +55849,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProvinceInput = {
@@ -57215,10 +55882,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -57231,6 +55896,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProvinceInput = {
@@ -57446,7 +56118,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     username?: StringFilter<"User"> | string
-    storageId?: StringNullableFilter<"User"> | string | null
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
   }
@@ -57629,10 +56300,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
@@ -57648,6 +56317,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCityInput = {
@@ -57674,10 +56350,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -57690,6 +56364,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCityInput = {
@@ -58002,10 +56683,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -58021,6 +56700,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSchoolInput = {
@@ -58047,10 +56733,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -58063,6 +56747,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSchoolInput = {
@@ -58297,10 +56988,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
@@ -58316,6 +57005,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutOwnedAccessesInput = {
@@ -58343,10 +57039,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
@@ -58358,6 +57052,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutOwnedAccessesInput = {
@@ -58386,10 +57087,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -58405,6 +57104,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserAccessesInput = {
@@ -58432,10 +57138,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
@@ -58447,6 +57151,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserAccessesInput = {
@@ -58475,10 +57186,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -58494,6 +57203,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRedeemedAccessesInput = {
@@ -58521,10 +57237,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -58536,6 +57250,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRedeemedAccessesInput = {
@@ -58575,10 +57296,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
@@ -58594,6 +57313,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOwnedAccessesInput = {
@@ -58621,10 +57347,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
@@ -58636,6 +57360,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutUserAccessesInput = {
@@ -58668,35 +57399,6 @@ export namespace Prisma {
   export type UserUpdateManyWithWhereWithoutRedeemedAccessesInput = {
     where: UserScalarWhereInput
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutRedeemedAccessesInput>
-  }
-
-  export type DeviceCreateWithoutUserInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-  }
-
-  export type DeviceUncheckedCreateWithoutUserInput = {
-    id?: string
-    uuid: string
-    model: string
-    manufactur: string
-    os: string
-    ramSize: number
-    gpuName: string
-    cpuType: string
-    cpuCores: number
-  }
-
-  export type DeviceCreateOrConnectWithoutUserInput = {
-    where: DeviceWhereUniqueInput
-    create: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
   }
 
   export type AccessContentCreateWithoutOwnerInput = {
@@ -58912,7 +57614,7 @@ export namespace Prisma {
 
   export type ZoneCreateWithoutUserInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     isComplete?: boolean
     completedAt?: Date | string | null
     lastLevelId?: string
@@ -58921,14 +57623,11 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    levels?: LevelCreateNestedManyWithoutZoneInput
-    gempo?: GempoCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipCreateNestedOneWithoutZoneInput
   }
 
   export type ZoneUncheckedCreateWithoutUserInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     isComplete?: boolean
     completedAt?: Date | string | null
     lastLevelId?: string
@@ -58937,9 +57636,6 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    levels?: LevelUncheckedCreateNestedManyWithoutZoneInput
-    gempo?: GempoUncheckedCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipUncheckedCreateNestedOneWithoutZoneInput
   }
 
   export type ZoneCreateOrConnectWithoutUserInput = {
@@ -59226,39 +57922,262 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DeviceUpsertWithoutUserInput = {
-    update: XOR<DeviceUpdateWithoutUserInput, DeviceUncheckedUpdateWithoutUserInput>
-    create: XOR<DeviceCreateWithoutUserInput, DeviceUncheckedCreateWithoutUserInput>
-    where?: DeviceWhereInput
+  export type SubLevelCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type DeviceUpdateToOneWithWhereWithoutUserInput = {
-    where?: DeviceWhereInput
-    data: XOR<DeviceUpdateWithoutUserInput, DeviceUncheckedUpdateWithoutUserInput>
+  export type SubLevelUncheckedCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type DeviceUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
+  export type SubLevelCreateOrConnectWithoutUserInput = {
+    where: SubLevelWhereUniqueInput
+    create: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput>
   }
 
-  export type DeviceUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    uuid?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    manufactur?: StringFieldUpdateOperationsInput | string
-    os?: StringFieldUpdateOperationsInput | string
-    ramSize?: IntFieldUpdateOperationsInput | number
-    gpuName?: StringFieldUpdateOperationsInput | string
-    cpuType?: StringFieldUpdateOperationsInput | string
-    cpuCores?: IntFieldUpdateOperationsInput | number
+  export type SubLevelCreateManyUserInputEnvelope = {
+    data: SubLevelCreateManyUserInput | SubLevelCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InnerLevelCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
+    point?: number
+    played?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InnerLevelUncheckedCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
+    point?: number
+    played?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InnerLevelCreateOrConnectWithoutUserInput = {
+    where: InnerLevelWhereUniqueInput
+    create: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput>
+  }
+
+  export type InnerLevelCreateManyUserInputEnvelope = {
+    data: InnerLevelCreateManyUserInput | InnerLevelCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LevelCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LevelUncheckedCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LevelCreateOrConnectWithoutUserInput = {
+    where: LevelWhereUniqueInput
+    create: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput>
+  }
+
+  export type LevelCreateManyUserInputEnvelope = {
+    data: LevelCreateManyUserInput | LevelCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GempoCreateWithoutUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoUncheckedCreateWithoutUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoCreateOrConnectWithoutUserInput = {
+    where: GempoWhereUniqueInput
+    create: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput>
+  }
+
+  export type GempoCreateManyUserInputEnvelope = {
+    data: GempoCreateManyUserInput | GempoCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ChampionshipCreateWithoutUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipUncheckedCreateWithoutUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipCreateOrConnectWithoutUserInput = {
+    where: ChampionshipWhereUniqueInput
+    create: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChampionshipCreateManyUserInputEnvelope = {
+    data: ChampionshipCreateManyUserInput | ChampionshipCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GempoRecordCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
+    played?: number
+    point?: number
+    lastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoRecordUncheckedCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
+    played?: number
+    point?: number
+    lastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoRecordCreateOrConnectWithoutUserInput = {
+    where: GempoRecordWhereUniqueInput
+    create: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type GempoRecordCreateManyUserInputEnvelope = {
+    data: GempoRecordCreateManyUserInput | GempoRecordCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ChampionshipRecordCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
+    teamWin?: number
+    teamLose?: number
+    teamPlayed?: number
+    teamPoint?: number
+    teamLastPlayedAt?: Date | string | null
+    soloWin?: number
+    soloLose?: number
+    soloPlayed?: number
+    soloPoint?: number
+    soloLastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipRecordUncheckedCreateWithoutUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
+    teamWin?: number
+    teamLose?: number
+    teamPlayed?: number
+    teamPoint?: number
+    teamLastPlayedAt?: Date | string | null
+    soloWin?: number
+    soloLose?: number
+    soloPlayed?: number
+    soloPoint?: number
+    soloLastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipRecordCreateOrConnectWithoutUserInput = {
+    where: ChampionshipRecordWhereUniqueInput
+    create: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChampionshipRecordCreateManyUserInputEnvelope = {
+    data: ChampionshipRecordCreateManyUserInput | ChampionshipRecordCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type AccessContentUpsertWithWhereUniqueWithoutOwnerInput = {
@@ -59500,7 +58419,7 @@ export namespace Prisma {
     OR?: ZoneScalarWhereInput[]
     NOT?: ZoneScalarWhereInput | ZoneScalarWhereInput[]
     id?: StringFilter<"Zone"> | string
-    zoneId?: StringFilter<"Zone"> | string
+    inGameId?: StringFilter<"Zone"> | string
     userId?: StringFilter<"Zone"> | string
     isComplete?: BoolFilter<"Zone"> | boolean
     completedAt?: DateTimeNullableFilter<"Zone"> | Date | string | null
@@ -59770,6 +58689,240 @@ export namespace Prisma {
     answers?: JsonFilter<"TestParticipantRecord">
   }
 
+  export type SubLevelUpsertWithWhereUniqueWithoutUserInput = {
+    where: SubLevelWhereUniqueInput
+    update: XOR<SubLevelUpdateWithoutUserInput, SubLevelUncheckedUpdateWithoutUserInput>
+    create: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput>
+  }
+
+  export type SubLevelUpdateWithWhereUniqueWithoutUserInput = {
+    where: SubLevelWhereUniqueInput
+    data: XOR<SubLevelUpdateWithoutUserInput, SubLevelUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SubLevelUpdateManyWithWhereWithoutUserInput = {
+    where: SubLevelScalarWhereInput
+    data: XOR<SubLevelUpdateManyMutationInput, SubLevelUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SubLevelScalarWhereInput = {
+    AND?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
+    OR?: SubLevelScalarWhereInput[]
+    NOT?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
+    id?: StringFilter<"SubLevel"> | string
+    inGameId?: StringFilter<"SubLevel"> | string
+    zoneInGameId?: StringFilter<"SubLevel"> | string
+    levelInGameId?: StringFilter<"SubLevel"> | string
+    isUnlock?: BoolFilter<"SubLevel"> | boolean
+    unlockedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
+    isComplete?: BoolFilter<"SubLevel"> | boolean
+    completedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
+    createdAt?: DateTimeFilter<"SubLevel"> | Date | string
+    updatedAt?: DateTimeFilter<"SubLevel"> | Date | string
+    userId?: StringFilter<"SubLevel"> | string
+  }
+
+  export type InnerLevelUpsertWithWhereUniqueWithoutUserInput = {
+    where: InnerLevelWhereUniqueInput
+    update: XOR<InnerLevelUpdateWithoutUserInput, InnerLevelUncheckedUpdateWithoutUserInput>
+    create: XOR<InnerLevelCreateWithoutUserInput, InnerLevelUncheckedCreateWithoutUserInput>
+  }
+
+  export type InnerLevelUpdateWithWhereUniqueWithoutUserInput = {
+    where: InnerLevelWhereUniqueInput
+    data: XOR<InnerLevelUpdateWithoutUserInput, InnerLevelUncheckedUpdateWithoutUserInput>
+  }
+
+  export type InnerLevelUpdateManyWithWhereWithoutUserInput = {
+    where: InnerLevelScalarWhereInput
+    data: XOR<InnerLevelUpdateManyMutationInput, InnerLevelUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type InnerLevelScalarWhereInput = {
+    AND?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
+    OR?: InnerLevelScalarWhereInput[]
+    NOT?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
+    id?: StringFilter<"InnerLevel"> | string
+    inGameId?: StringFilter<"InnerLevel"> | string
+    zoneInGameId?: StringFilter<"InnerLevel"> | string
+    levelInGameId?: StringFilter<"InnerLevel"> | string
+    subLevelInGameId?: StringFilter<"InnerLevel"> | string
+    isUnlock?: BoolFilter<"InnerLevel"> | boolean
+    unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
+    isComplete?: BoolFilter<"InnerLevel"> | boolean
+    completedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
+    correctAttempt?: FloatFilter<"InnerLevel"> | number
+    playTime?: IntFilter<"InnerLevel"> | number
+    point?: IntFilter<"InnerLevel"> | number
+    played?: IntFilter<"InnerLevel"> | number
+    createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
+    updatedAt?: DateTimeFilter<"InnerLevel"> | Date | string
+    userId?: StringFilter<"InnerLevel"> | string
+  }
+
+  export type LevelUpsertWithWhereUniqueWithoutUserInput = {
+    where: LevelWhereUniqueInput
+    update: XOR<LevelUpdateWithoutUserInput, LevelUncheckedUpdateWithoutUserInput>
+    create: XOR<LevelCreateWithoutUserInput, LevelUncheckedCreateWithoutUserInput>
+  }
+
+  export type LevelUpdateWithWhereUniqueWithoutUserInput = {
+    where: LevelWhereUniqueInput
+    data: XOR<LevelUpdateWithoutUserInput, LevelUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LevelUpdateManyWithWhereWithoutUserInput = {
+    where: LevelScalarWhereInput
+    data: XOR<LevelUpdateManyMutationInput, LevelUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LevelScalarWhereInput = {
+    AND?: LevelScalarWhereInput | LevelScalarWhereInput[]
+    OR?: LevelScalarWhereInput[]
+    NOT?: LevelScalarWhereInput | LevelScalarWhereInput[]
+    id?: StringFilter<"Level"> | string
+    inGameId?: StringFilter<"Level"> | string
+    zoneInGameId?: StringFilter<"Level"> | string
+    isUnlock?: BoolFilter<"Level"> | boolean
+    unlockedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
+    isComplete?: BoolFilter<"Level"> | boolean
+    completedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
+    createdAt?: DateTimeFilter<"Level"> | Date | string
+    updatedAt?: DateTimeFilter<"Level"> | Date | string
+    userId?: StringFilter<"Level"> | string
+  }
+
+  export type GempoUpsertWithWhereUniqueWithoutUserInput = {
+    where: GempoWhereUniqueInput
+    update: XOR<GempoUpdateWithoutUserInput, GempoUncheckedUpdateWithoutUserInput>
+    create: XOR<GempoCreateWithoutUserInput, GempoUncheckedCreateWithoutUserInput>
+  }
+
+  export type GempoUpdateWithWhereUniqueWithoutUserInput = {
+    where: GempoWhereUniqueInput
+    data: XOR<GempoUpdateWithoutUserInput, GempoUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GempoUpdateManyWithWhereWithoutUserInput = {
+    where: GempoScalarWhereInput
+    data: XOR<GempoUpdateManyMutationInput, GempoUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GempoScalarWhereInput = {
+    AND?: GempoScalarWhereInput | GempoScalarWhereInput[]
+    OR?: GempoScalarWhereInput[]
+    NOT?: GempoScalarWhereInput | GempoScalarWhereInput[]
+    id?: StringFilter<"Gempo"> | string
+    isUnlock?: BoolFilter<"Gempo"> | boolean
+    unlockedAt?: DateTimeNullableFilter<"Gempo"> | Date | string | null
+    inGameId?: StringFilter<"Gempo"> | string
+    zoneInGameId?: StringFilter<"Gempo"> | string
+    createdAt?: DateTimeFilter<"Gempo"> | Date | string
+    updatedAt?: DateTimeFilter<"Gempo"> | Date | string
+    userId?: StringFilter<"Gempo"> | string
+  }
+
+  export type ChampionshipUpsertWithWhereUniqueWithoutUserInput = {
+    where: ChampionshipWhereUniqueInput
+    update: XOR<ChampionshipUpdateWithoutUserInput, ChampionshipUncheckedUpdateWithoutUserInput>
+    create: XOR<ChampionshipCreateWithoutUserInput, ChampionshipUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChampionshipUpdateWithWhereUniqueWithoutUserInput = {
+    where: ChampionshipWhereUniqueInput
+    data: XOR<ChampionshipUpdateWithoutUserInput, ChampionshipUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ChampionshipUpdateManyWithWhereWithoutUserInput = {
+    where: ChampionshipScalarWhereInput
+    data: XOR<ChampionshipUpdateManyMutationInput, ChampionshipUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ChampionshipScalarWhereInput = {
+    AND?: ChampionshipScalarWhereInput | ChampionshipScalarWhereInput[]
+    OR?: ChampionshipScalarWhereInput[]
+    NOT?: ChampionshipScalarWhereInput | ChampionshipScalarWhereInput[]
+    id?: StringFilter<"Championship"> | string
+    isUnlock?: BoolFilter<"Championship"> | boolean
+    unlockedAt?: DateTimeNullableFilter<"Championship"> | Date | string | null
+    inGameId?: StringFilter<"Championship"> | string
+    zoneInGameId?: StringFilter<"Championship"> | string
+    createdAt?: DateTimeFilter<"Championship"> | Date | string
+    updatedAt?: DateTimeFilter<"Championship"> | Date | string
+    userId?: StringFilter<"Championship"> | string
+  }
+
+  export type GempoRecordUpsertWithWhereUniqueWithoutUserInput = {
+    where: GempoRecordWhereUniqueInput
+    update: XOR<GempoRecordUpdateWithoutUserInput, GempoRecordUncheckedUpdateWithoutUserInput>
+    create: XOR<GempoRecordCreateWithoutUserInput, GempoRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type GempoRecordUpdateWithWhereUniqueWithoutUserInput = {
+    where: GempoRecordWhereUniqueInput
+    data: XOR<GempoRecordUpdateWithoutUserInput, GempoRecordUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GempoRecordUpdateManyWithWhereWithoutUserInput = {
+    where: GempoRecordScalarWhereInput
+    data: XOR<GempoRecordUpdateManyMutationInput, GempoRecordUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GempoRecordScalarWhereInput = {
+    AND?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
+    OR?: GempoRecordScalarWhereInput[]
+    NOT?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
+    id?: StringFilter<"GempoRecord"> | string
+    inGameId?: StringFilter<"GempoRecord"> | string
+    zoneInGameId?: StringFilter<"GempoRecord"> | string
+    gempoInGameId?: StringFilter<"GempoRecord"> | string
+    played?: IntFilter<"GempoRecord"> | number
+    point?: IntFilter<"GempoRecord"> | number
+    lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
+    createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
+    userId?: StringFilter<"GempoRecord"> | string
+  }
+
+  export type ChampionshipRecordUpsertWithWhereUniqueWithoutUserInput = {
+    where: ChampionshipRecordWhereUniqueInput
+    update: XOR<ChampionshipRecordUpdateWithoutUserInput, ChampionshipRecordUncheckedUpdateWithoutUserInput>
+    create: XOR<ChampionshipRecordCreateWithoutUserInput, ChampionshipRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput = {
+    where: ChampionshipRecordWhereUniqueInput
+    data: XOR<ChampionshipRecordUpdateWithoutUserInput, ChampionshipRecordUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ChampionshipRecordUpdateManyWithWhereWithoutUserInput = {
+    where: ChampionshipRecordScalarWhereInput
+    data: XOR<ChampionshipRecordUpdateManyMutationInput, ChampionshipRecordUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ChampionshipRecordScalarWhereInput = {
+    AND?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
+    OR?: ChampionshipRecordScalarWhereInput[]
+    NOT?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
+    id?: StringFilter<"ChampionshipRecord"> | string
+    inGameId?: StringFilter<"ChampionshipRecord"> | string
+    zoneInGameId?: StringFilter<"ChampionshipRecord"> | string
+    championshipInGameId?: StringFilter<"ChampionshipRecord"> | string
+    teamWin?: IntFilter<"ChampionshipRecord"> | number
+    teamLose?: IntFilter<"ChampionshipRecord"> | number
+    teamPlayed?: IntFilter<"ChampionshipRecord"> | number
+    teamPoint?: IntFilter<"ChampionshipRecord"> | number
+    teamLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
+    soloWin?: IntFilter<"ChampionshipRecord"> | number
+    soloLose?: IntFilter<"ChampionshipRecord"> | number
+    soloPlayed?: IntFilter<"ChampionshipRecord"> | number
+    soloPoint?: IntFilter<"ChampionshipRecord"> | number
+    soloLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
+    createdAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
+    userId?: StringFilter<"ChampionshipRecord"> | string
+  }
+
   export type UserCreateWithoutZonesInput = {
     id?: string
     authId: string
@@ -59791,10 +58944,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -59810,6 +58961,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutZonesInput = {
@@ -59837,10 +58995,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
@@ -59852,95 +59008,18 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutZonesInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutZonesInput, UserUncheckedCreateWithoutZonesInput>
-  }
-
-  export type LevelCreateWithoutZoneInput = {
-    id?: string
-    levelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subLevels?: SubLevelCreateNestedManyWithoutLevelInput
-  }
-
-  export type LevelUncheckedCreateWithoutZoneInput = {
-    id?: string
-    levelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutLevelInput
-  }
-
-  export type LevelCreateOrConnectWithoutZoneInput = {
-    where: LevelWhereUniqueInput
-    create: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput>
-  }
-
-  export type LevelCreateManyZoneInputEnvelope = {
-    data: LevelCreateManyZoneInput | LevelCreateManyZoneInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type GempoCreateWithoutZoneInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    gempoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    records?: GempoRecordCreateNestedManyWithoutGempoInput
-  }
-
-  export type GempoUncheckedCreateWithoutZoneInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    gempoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    records?: GempoRecordUncheckedCreateNestedManyWithoutGempoInput
-  }
-
-  export type GempoCreateOrConnectWithoutZoneInput = {
-    where: GempoWhereUniqueInput
-    create: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-  }
-
-  export type ChampionshipCreateWithoutZoneInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    championshipId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    records?: ChampionshipRecordCreateNestedManyWithoutChampionshipInput
-  }
-
-  export type ChampionshipUncheckedCreateWithoutZoneInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    championshipId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    records?: ChampionshipRecordUncheckedCreateNestedManyWithoutChampionshipInput
-  }
-
-  export type ChampionshipCreateOrConnectWithoutZoneInput = {
-    where: ChampionshipWhereUniqueInput
-    create: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
   }
 
   export type UserUpsertWithoutZonesInput = {
@@ -59975,10 +59054,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -59994,6 +59071,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutZonesInput = {
@@ -60021,10 +59105,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
@@ -60036,863 +59118,16 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type LevelUpsertWithWhereUniqueWithoutZoneInput = {
-    where: LevelWhereUniqueInput
-    update: XOR<LevelUpdateWithoutZoneInput, LevelUncheckedUpdateWithoutZoneInput>
-    create: XOR<LevelCreateWithoutZoneInput, LevelUncheckedCreateWithoutZoneInput>
-  }
-
-  export type LevelUpdateWithWhereUniqueWithoutZoneInput = {
-    where: LevelWhereUniqueInput
-    data: XOR<LevelUpdateWithoutZoneInput, LevelUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type LevelUpdateManyWithWhereWithoutZoneInput = {
-    where: LevelScalarWhereInput
-    data: XOR<LevelUpdateManyMutationInput, LevelUncheckedUpdateManyWithoutZoneInput>
-  }
-
-  export type LevelScalarWhereInput = {
-    AND?: LevelScalarWhereInput | LevelScalarWhereInput[]
-    OR?: LevelScalarWhereInput[]
-    NOT?: LevelScalarWhereInput | LevelScalarWhereInput[]
-    id?: StringFilter<"Level"> | string
-    levelId?: StringFilter<"Level"> | string
-    zoneId?: StringFilter<"Level"> | string
-    isUnlock?: BoolFilter<"Level"> | boolean
-    unlockedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
-    isComplete?: BoolFilter<"Level"> | boolean
-    completedAt?: DateTimeNullableFilter<"Level"> | Date | string | null
-    createdAt?: DateTimeFilter<"Level"> | Date | string
-    updatedAt?: DateTimeFilter<"Level"> | Date | string
-  }
-
-  export type GempoUpsertWithoutZoneInput = {
-    update: XOR<GempoUpdateWithoutZoneInput, GempoUncheckedUpdateWithoutZoneInput>
-    create: XOR<GempoCreateWithoutZoneInput, GempoUncheckedCreateWithoutZoneInput>
-    where?: GempoWhereInput
-  }
-
-  export type GempoUpdateToOneWithWhereWithoutZoneInput = {
-    where?: GempoWhereInput
-    data: XOR<GempoUpdateWithoutZoneInput, GempoUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type GempoUpdateWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: GempoRecordUpdateManyWithoutGempoNestedInput
-  }
-
-  export type GempoUncheckedUpdateWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: GempoRecordUncheckedUpdateManyWithoutGempoNestedInput
-  }
-
-  export type ChampionshipUpsertWithoutZoneInput = {
-    update: XOR<ChampionshipUpdateWithoutZoneInput, ChampionshipUncheckedUpdateWithoutZoneInput>
-    create: XOR<ChampionshipCreateWithoutZoneInput, ChampionshipUncheckedCreateWithoutZoneInput>
-    where?: ChampionshipWhereInput
-  }
-
-  export type ChampionshipUpdateToOneWithWhereWithoutZoneInput = {
-    where?: ChampionshipWhereInput
-    data: XOR<ChampionshipUpdateWithoutZoneInput, ChampionshipUncheckedUpdateWithoutZoneInput>
-  }
-
-  export type ChampionshipUpdateWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: ChampionshipRecordUpdateManyWithoutChampionshipNestedInput
-  }
-
-  export type ChampionshipUncheckedUpdateWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    records?: ChampionshipRecordUncheckedUpdateManyWithoutChampionshipNestedInput
-  }
-
-  export type ZoneCreateWithoutLevelsInput = {
-    id?: string
-    zoneId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutZonesInput
-    gempo?: GempoCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneUncheckedCreateWithoutLevelsInput = {
-    id?: string
-    zoneId: string
-    userId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    gempo?: GempoUncheckedCreateNestedOneWithoutZoneInput
-    championship?: ChampionshipUncheckedCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneCreateOrConnectWithoutLevelsInput = {
-    where: ZoneWhereUniqueInput
-    create: XOR<ZoneCreateWithoutLevelsInput, ZoneUncheckedCreateWithoutLevelsInput>
-  }
-
-  export type SubLevelCreateWithoutLevelInput = {
-    id?: string
-    subLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    innerLevels?: InnerLevelCreateNestedManyWithoutSubLevelInput
-  }
-
-  export type SubLevelUncheckedCreateWithoutLevelInput = {
-    id?: string
-    subLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutSubLevelInput
-  }
-
-  export type SubLevelCreateOrConnectWithoutLevelInput = {
-    where: SubLevelWhereUniqueInput
-    create: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput>
-  }
-
-  export type SubLevelCreateManyLevelInputEnvelope = {
-    data: SubLevelCreateManyLevelInput | SubLevelCreateManyLevelInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ZoneUpsertWithoutLevelsInput = {
-    update: XOR<ZoneUpdateWithoutLevelsInput, ZoneUncheckedUpdateWithoutLevelsInput>
-    create: XOR<ZoneCreateWithoutLevelsInput, ZoneUncheckedCreateWithoutLevelsInput>
-    where?: ZoneWhereInput
-  }
-
-  export type ZoneUpdateToOneWithWhereWithoutLevelsInput = {
-    where?: ZoneWhereInput
-    data: XOR<ZoneUpdateWithoutLevelsInput, ZoneUncheckedUpdateWithoutLevelsInput>
-  }
-
-  export type ZoneUpdateWithoutLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutZonesNestedInput
-    gempo?: GempoUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUpdateOneWithoutZoneNestedInput
-  }
-
-  export type ZoneUncheckedUpdateWithoutLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    gempo?: GempoUncheckedUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUncheckedUpdateOneWithoutZoneNestedInput
-  }
-
-  export type SubLevelUpsertWithWhereUniqueWithoutLevelInput = {
-    where: SubLevelWhereUniqueInput
-    update: XOR<SubLevelUpdateWithoutLevelInput, SubLevelUncheckedUpdateWithoutLevelInput>
-    create: XOR<SubLevelCreateWithoutLevelInput, SubLevelUncheckedCreateWithoutLevelInput>
-  }
-
-  export type SubLevelUpdateWithWhereUniqueWithoutLevelInput = {
-    where: SubLevelWhereUniqueInput
-    data: XOR<SubLevelUpdateWithoutLevelInput, SubLevelUncheckedUpdateWithoutLevelInput>
-  }
-
-  export type SubLevelUpdateManyWithWhereWithoutLevelInput = {
-    where: SubLevelScalarWhereInput
-    data: XOR<SubLevelUpdateManyMutationInput, SubLevelUncheckedUpdateManyWithoutLevelInput>
-  }
-
-  export type SubLevelScalarWhereInput = {
-    AND?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
-    OR?: SubLevelScalarWhereInput[]
-    NOT?: SubLevelScalarWhereInput | SubLevelScalarWhereInput[]
-    id?: StringFilter<"SubLevel"> | string
-    subLevelId?: StringFilter<"SubLevel"> | string
-    levelId?: StringFilter<"SubLevel"> | string
-    isUnlock?: BoolFilter<"SubLevel"> | boolean
-    unlockedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
-    isComplete?: BoolFilter<"SubLevel"> | boolean
-    completedAt?: DateTimeNullableFilter<"SubLevel"> | Date | string | null
-    createdAt?: DateTimeFilter<"SubLevel"> | Date | string
-    updatedAt?: DateTimeFilter<"SubLevel"> | Date | string
-  }
-
-  export type LevelCreateWithoutSubLevelsInput = {
-    id?: string
-    levelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutLevelsInput
-  }
-
-  export type LevelUncheckedCreateWithoutSubLevelsInput = {
-    id?: string
-    levelId: string
-    zoneId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type LevelCreateOrConnectWithoutSubLevelsInput = {
-    where: LevelWhereUniqueInput
-    create: XOR<LevelCreateWithoutSubLevelsInput, LevelUncheckedCreateWithoutSubLevelsInput>
-  }
-
-  export type InnerLevelCreateWithoutSubLevelInput = {
-    id?: string
-    innerLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    correctAttempt?: number
-    playTime?: number
-    point?: number
-    played?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type InnerLevelUncheckedCreateWithoutSubLevelInput = {
-    id?: string
-    innerLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    correctAttempt?: number
-    playTime?: number
-    point?: number
-    played?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type InnerLevelCreateOrConnectWithoutSubLevelInput = {
-    where: InnerLevelWhereUniqueInput
-    create: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput>
-  }
-
-  export type InnerLevelCreateManySubLevelInputEnvelope = {
-    data: InnerLevelCreateManySubLevelInput | InnerLevelCreateManySubLevelInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type LevelUpsertWithoutSubLevelsInput = {
-    update: XOR<LevelUpdateWithoutSubLevelsInput, LevelUncheckedUpdateWithoutSubLevelsInput>
-    create: XOR<LevelCreateWithoutSubLevelsInput, LevelUncheckedCreateWithoutSubLevelsInput>
-    where?: LevelWhereInput
-  }
-
-  export type LevelUpdateToOneWithWhereWithoutSubLevelsInput = {
-    where?: LevelWhereInput
-    data: XOR<LevelUpdateWithoutSubLevelsInput, LevelUncheckedUpdateWithoutSubLevelsInput>
-  }
-
-  export type LevelUpdateWithoutSubLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutLevelsNestedInput
-  }
-
-  export type LevelUncheckedUpdateWithoutSubLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type InnerLevelUpsertWithWhereUniqueWithoutSubLevelInput = {
-    where: InnerLevelWhereUniqueInput
-    update: XOR<InnerLevelUpdateWithoutSubLevelInput, InnerLevelUncheckedUpdateWithoutSubLevelInput>
-    create: XOR<InnerLevelCreateWithoutSubLevelInput, InnerLevelUncheckedCreateWithoutSubLevelInput>
-  }
-
-  export type InnerLevelUpdateWithWhereUniqueWithoutSubLevelInput = {
-    where: InnerLevelWhereUniqueInput
-    data: XOR<InnerLevelUpdateWithoutSubLevelInput, InnerLevelUncheckedUpdateWithoutSubLevelInput>
-  }
-
-  export type InnerLevelUpdateManyWithWhereWithoutSubLevelInput = {
-    where: InnerLevelScalarWhereInput
-    data: XOR<InnerLevelUpdateManyMutationInput, InnerLevelUncheckedUpdateManyWithoutSubLevelInput>
-  }
-
-  export type InnerLevelScalarWhereInput = {
-    AND?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
-    OR?: InnerLevelScalarWhereInput[]
-    NOT?: InnerLevelScalarWhereInput | InnerLevelScalarWhereInput[]
-    id?: StringFilter<"InnerLevel"> | string
-    innerLevelId?: StringFilter<"InnerLevel"> | string
-    subLevelId?: StringFilter<"InnerLevel"> | string
-    isUnlock?: BoolFilter<"InnerLevel"> | boolean
-    unlockedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
-    isComplete?: BoolFilter<"InnerLevel"> | boolean
-    completedAt?: DateTimeNullableFilter<"InnerLevel"> | Date | string | null
-    correctAttempt?: FloatFilter<"InnerLevel"> | number
-    playTime?: IntFilter<"InnerLevel"> | number
-    point?: IntFilter<"InnerLevel"> | number
-    played?: IntFilter<"InnerLevel"> | number
-    createdAt?: DateTimeFilter<"InnerLevel"> | Date | string
-    updatedAt?: DateTimeFilter<"InnerLevel"> | Date | string
-  }
-
-  export type SubLevelCreateWithoutInnerLevelsInput = {
-    id?: string
-    subLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    level: LevelCreateNestedOneWithoutSubLevelsInput
-  }
-
-  export type SubLevelUncheckedCreateWithoutInnerLevelsInput = {
-    id?: string
-    subLevelId: string
-    levelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SubLevelCreateOrConnectWithoutInnerLevelsInput = {
-    where: SubLevelWhereUniqueInput
-    create: XOR<SubLevelCreateWithoutInnerLevelsInput, SubLevelUncheckedCreateWithoutInnerLevelsInput>
-  }
-
-  export type SubLevelUpsertWithoutInnerLevelsInput = {
-    update: XOR<SubLevelUpdateWithoutInnerLevelsInput, SubLevelUncheckedUpdateWithoutInnerLevelsInput>
-    create: XOR<SubLevelCreateWithoutInnerLevelsInput, SubLevelUncheckedCreateWithoutInnerLevelsInput>
-    where?: SubLevelWhereInput
-  }
-
-  export type SubLevelUpdateToOneWithWhereWithoutInnerLevelsInput = {
-    where?: SubLevelWhereInput
-    data: XOR<SubLevelUpdateWithoutInnerLevelsInput, SubLevelUncheckedUpdateWithoutInnerLevelsInput>
-  }
-
-  export type SubLevelUpdateWithoutInnerLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    level?: LevelUpdateOneRequiredWithoutSubLevelsNestedInput
-  }
-
-  export type SubLevelUncheckedUpdateWithoutInnerLevelsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ZoneCreateWithoutGempoInput = {
-    id?: string
-    zoneId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutZonesInput
-    levels?: LevelCreateNestedManyWithoutZoneInput
-    championship?: ChampionshipCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneUncheckedCreateWithoutGempoInput = {
-    id?: string
-    zoneId: string
-    userId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    levels?: LevelUncheckedCreateNestedManyWithoutZoneInput
-    championship?: ChampionshipUncheckedCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneCreateOrConnectWithoutGempoInput = {
-    where: ZoneWhereUniqueInput
-    create: XOR<ZoneCreateWithoutGempoInput, ZoneUncheckedCreateWithoutGempoInput>
-  }
-
-  export type GempoRecordCreateWithoutGempoInput = {
-    id?: string
-    recordId: string
-    played?: number
-    point?: number
-    lastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GempoRecordUncheckedCreateWithoutGempoInput = {
-    id?: string
-    recordId: string
-    played?: number
-    point?: number
-    lastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GempoRecordCreateOrConnectWithoutGempoInput = {
-    where: GempoRecordWhereUniqueInput
-    create: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput>
-  }
-
-  export type GempoRecordCreateManyGempoInputEnvelope = {
-    data: GempoRecordCreateManyGempoInput | GempoRecordCreateManyGempoInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ZoneUpsertWithoutGempoInput = {
-    update: XOR<ZoneUpdateWithoutGempoInput, ZoneUncheckedUpdateWithoutGempoInput>
-    create: XOR<ZoneCreateWithoutGempoInput, ZoneUncheckedCreateWithoutGempoInput>
-    where?: ZoneWhereInput
-  }
-
-  export type ZoneUpdateToOneWithWhereWithoutGempoInput = {
-    where?: ZoneWhereInput
-    data: XOR<ZoneUpdateWithoutGempoInput, ZoneUncheckedUpdateWithoutGempoInput>
-  }
-
-  export type ZoneUpdateWithoutGempoInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutZonesNestedInput
-    levels?: LevelUpdateManyWithoutZoneNestedInput
-    championship?: ChampionshipUpdateOneWithoutZoneNestedInput
-  }
-
-  export type ZoneUncheckedUpdateWithoutGempoInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    levels?: LevelUncheckedUpdateManyWithoutZoneNestedInput
-    championship?: ChampionshipUncheckedUpdateOneWithoutZoneNestedInput
-  }
-
-  export type GempoRecordUpsertWithWhereUniqueWithoutGempoInput = {
-    where: GempoRecordWhereUniqueInput
-    update: XOR<GempoRecordUpdateWithoutGempoInput, GempoRecordUncheckedUpdateWithoutGempoInput>
-    create: XOR<GempoRecordCreateWithoutGempoInput, GempoRecordUncheckedCreateWithoutGempoInput>
-  }
-
-  export type GempoRecordUpdateWithWhereUniqueWithoutGempoInput = {
-    where: GempoRecordWhereUniqueInput
-    data: XOR<GempoRecordUpdateWithoutGempoInput, GempoRecordUncheckedUpdateWithoutGempoInput>
-  }
-
-  export type GempoRecordUpdateManyWithWhereWithoutGempoInput = {
-    where: GempoRecordScalarWhereInput
-    data: XOR<GempoRecordUpdateManyMutationInput, GempoRecordUncheckedUpdateManyWithoutGempoInput>
-  }
-
-  export type GempoRecordScalarWhereInput = {
-    AND?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
-    OR?: GempoRecordScalarWhereInput[]
-    NOT?: GempoRecordScalarWhereInput | GempoRecordScalarWhereInput[]
-    id?: StringFilter<"GempoRecord"> | string
-    recordId?: StringFilter<"GempoRecord"> | string
-    gempoId?: StringFilter<"GempoRecord"> | string
-    played?: IntFilter<"GempoRecord"> | number
-    point?: IntFilter<"GempoRecord"> | number
-    lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
-    createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
-    updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
-  }
-
-  export type ZoneCreateWithoutChampionshipInput = {
-    id?: string
-    zoneId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutZonesInput
-    levels?: LevelCreateNestedManyWithoutZoneInput
-    gempo?: GempoCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneUncheckedCreateWithoutChampionshipInput = {
-    id?: string
-    zoneId: string
-    userId: string
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    lastLevelId?: string
-    lastSubLevelId?: string
-    lastInnerLevelId?: string
-    lastLevelUnlock?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    levels?: LevelUncheckedCreateNestedManyWithoutZoneInput
-    gempo?: GempoUncheckedCreateNestedOneWithoutZoneInput
-  }
-
-  export type ZoneCreateOrConnectWithoutChampionshipInput = {
-    where: ZoneWhereUniqueInput
-    create: XOR<ZoneCreateWithoutChampionshipInput, ZoneUncheckedCreateWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordCreateWithoutChampionshipInput = {
-    id?: string
-    recordId: string
-    teamWin?: number
-    teamLose?: number
-    teamPlayed?: number
-    teamPoint?: number
-    teamLastPlayedAt?: Date | string | null
-    soloWin?: number
-    soloLose?: number
-    soloPlayed?: number
-    soloPoint?: number
-    soloLastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChampionshipRecordUncheckedCreateWithoutChampionshipInput = {
-    id?: string
-    recordId: string
-    teamWin?: number
-    teamLose?: number
-    teamPlayed?: number
-    teamPoint?: number
-    teamLastPlayedAt?: Date | string | null
-    soloWin?: number
-    soloLose?: number
-    soloPlayed?: number
-    soloPoint?: number
-    soloLastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChampionshipRecordCreateOrConnectWithoutChampionshipInput = {
-    where: ChampionshipRecordWhereUniqueInput
-    create: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordCreateManyChampionshipInputEnvelope = {
-    data: ChampionshipRecordCreateManyChampionshipInput | ChampionshipRecordCreateManyChampionshipInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ZoneUpsertWithoutChampionshipInput = {
-    update: XOR<ZoneUpdateWithoutChampionshipInput, ZoneUncheckedUpdateWithoutChampionshipInput>
-    create: XOR<ZoneCreateWithoutChampionshipInput, ZoneUncheckedCreateWithoutChampionshipInput>
-    where?: ZoneWhereInput
-  }
-
-  export type ZoneUpdateToOneWithWhereWithoutChampionshipInput = {
-    where?: ZoneWhereInput
-    data: XOR<ZoneUpdateWithoutChampionshipInput, ZoneUncheckedUpdateWithoutChampionshipInput>
-  }
-
-  export type ZoneUpdateWithoutChampionshipInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutZonesNestedInput
-    levels?: LevelUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUpdateOneWithoutZoneNestedInput
-  }
-
-  export type ZoneUncheckedUpdateWithoutChampionshipInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastLevelId?: StringFieldUpdateOperationsInput | string
-    lastSubLevelId?: StringFieldUpdateOperationsInput | string
-    lastInnerLevelId?: StringFieldUpdateOperationsInput | string
-    lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    levels?: LevelUncheckedUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUncheckedUpdateOneWithoutZoneNestedInput
-  }
-
-  export type ChampionshipRecordUpsertWithWhereUniqueWithoutChampionshipInput = {
-    where: ChampionshipRecordWhereUniqueInput
-    update: XOR<ChampionshipRecordUpdateWithoutChampionshipInput, ChampionshipRecordUncheckedUpdateWithoutChampionshipInput>
-    create: XOR<ChampionshipRecordCreateWithoutChampionshipInput, ChampionshipRecordUncheckedCreateWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordUpdateWithWhereUniqueWithoutChampionshipInput = {
-    where: ChampionshipRecordWhereUniqueInput
-    data: XOR<ChampionshipRecordUpdateWithoutChampionshipInput, ChampionshipRecordUncheckedUpdateWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordUpdateManyWithWhereWithoutChampionshipInput = {
-    where: ChampionshipRecordScalarWhereInput
-    data: XOR<ChampionshipRecordUpdateManyMutationInput, ChampionshipRecordUncheckedUpdateManyWithoutChampionshipInput>
-  }
-
-  export type ChampionshipRecordScalarWhereInput = {
-    AND?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
-    OR?: ChampionshipRecordScalarWhereInput[]
-    NOT?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
-    id?: StringFilter<"ChampionshipRecord"> | string
-    recordId?: StringFilter<"ChampionshipRecord"> | string
-    championshipId?: StringFilter<"ChampionshipRecord"> | string
-    teamWin?: IntFilter<"ChampionshipRecord"> | number
-    teamLose?: IntFilter<"ChampionshipRecord"> | number
-    teamPlayed?: IntFilter<"ChampionshipRecord"> | number
-    teamPoint?: IntFilter<"ChampionshipRecord"> | number
-    teamLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
-    soloWin?: IntFilter<"ChampionshipRecord"> | number
-    soloLose?: IntFilter<"ChampionshipRecord"> | number
-    soloPlayed?: IntFilter<"ChampionshipRecord"> | number
-    soloPoint?: IntFilter<"ChampionshipRecord"> | number
-    soloLastPlayedAt?: DateTimeNullableFilter<"ChampionshipRecord"> | Date | string | null
-    createdAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
-    updatedAt?: DateTimeFilter<"ChampionshipRecord"> | Date | string
-  }
-
-  export type GempoCreateWithoutRecordsInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    gempoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutGempoInput
-  }
-
-  export type GempoUncheckedCreateWithoutRecordsInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    gempoId: string
-    zoneId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GempoCreateOrConnectWithoutRecordsInput = {
-    where: GempoWhereUniqueInput
-    create: XOR<GempoCreateWithoutRecordsInput, GempoUncheckedCreateWithoutRecordsInput>
-  }
-
-  export type GempoUpsertWithoutRecordsInput = {
-    update: XOR<GempoUpdateWithoutRecordsInput, GempoUncheckedUpdateWithoutRecordsInput>
-    create: XOR<GempoCreateWithoutRecordsInput, GempoUncheckedCreateWithoutRecordsInput>
-    where?: GempoWhereInput
-  }
-
-  export type GempoUpdateToOneWithWhereWithoutRecordsInput = {
-    where?: GempoWhereInput
-    data: XOR<GempoUpdateWithoutRecordsInput, GempoUncheckedUpdateWithoutRecordsInput>
-  }
-
-  export type GempoUpdateWithoutRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutGempoNestedInput
-  }
-
-  export type GempoUncheckedUpdateWithoutRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    gempoId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChampionshipCreateWithoutRecordsInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    championshipId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    zone: ZoneCreateNestedOneWithoutChampionshipInput
-  }
-
-  export type ChampionshipUncheckedCreateWithoutRecordsInput = {
-    id?: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    championshipId: string
-    zoneId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChampionshipCreateOrConnectWithoutRecordsInput = {
-    where: ChampionshipWhereUniqueInput
-    create: XOR<ChampionshipCreateWithoutRecordsInput, ChampionshipUncheckedCreateWithoutRecordsInput>
-  }
-
-  export type ChampionshipUpsertWithoutRecordsInput = {
-    update: XOR<ChampionshipUpdateWithoutRecordsInput, ChampionshipUncheckedUpdateWithoutRecordsInput>
-    create: XOR<ChampionshipCreateWithoutRecordsInput, ChampionshipUncheckedCreateWithoutRecordsInput>
-    where?: ChampionshipWhereInput
-  }
-
-  export type ChampionshipUpdateToOneWithWhereWithoutRecordsInput = {
-    where?: ChampionshipWhereInput
-    data: XOR<ChampionshipUpdateWithoutRecordsInput, ChampionshipUncheckedUpdateWithoutRecordsInput>
-  }
-
-  export type ChampionshipUpdateWithoutRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    zone?: ZoneUpdateOneRequiredWithoutChampionshipNestedInput
-  }
-
-  export type ChampionshipUncheckedUpdateWithoutRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    championshipId?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserCreateWithoutDeviceInput = {
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutLevelsInput = {
     id?: string
     authId: string
     email: string
@@ -60913,7 +59148,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
@@ -60932,9 +59166,15 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutDeviceInput = {
+  export type UserUncheckedCreateWithoutLevelsInput = {
     id?: string
     authId: string
     email: string
@@ -60959,7 +59199,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
@@ -60974,25 +59213,31 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutDeviceInput = {
+  export type UserCreateOrConnectWithoutLevelsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+    create: XOR<UserCreateWithoutLevelsInput, UserUncheckedCreateWithoutLevelsInput>
   }
 
-  export type UserUpsertWithoutDeviceInput = {
-    update: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
-    create: XOR<UserCreateWithoutDeviceInput, UserUncheckedCreateWithoutDeviceInput>
+  export type UserUpsertWithoutLevelsInput = {
+    update: XOR<UserUpdateWithoutLevelsInput, UserUncheckedUpdateWithoutLevelsInput>
+    create: XOR<UserCreateWithoutLevelsInput, UserUncheckedCreateWithoutLevelsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutDeviceInput = {
+  export type UserUpdateToOneWithWhereWithoutLevelsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutDeviceInput, UserUncheckedUpdateWithoutDeviceInput>
+    data: XOR<UserUpdateWithoutLevelsInput, UserUncheckedUpdateWithoutLevelsInput>
   }
 
-  export type UserUpdateWithoutDeviceInput = {
+  export type UserUpdateWithoutLevelsInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -61013,7 +59258,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
@@ -61032,9 +59276,15 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutDeviceInput = {
+  export type UserUncheckedUpdateWithoutLevelsInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -61059,7 +59309,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
@@ -61074,6 +59323,1236 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutSubLevelsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSubLevelsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSubLevelsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSubLevelsInput, UserUncheckedCreateWithoutSubLevelsInput>
+  }
+
+  export type UserUpsertWithoutSubLevelsInput = {
+    update: XOR<UserUpdateWithoutSubLevelsInput, UserUncheckedUpdateWithoutSubLevelsInput>
+    create: XOR<UserCreateWithoutSubLevelsInput, UserUncheckedCreateWithoutSubLevelsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSubLevelsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSubLevelsInput, UserUncheckedUpdateWithoutSubLevelsInput>
+  }
+
+  export type UserUpdateWithoutSubLevelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSubLevelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutInnerLevelsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutInnerLevelsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutInnerLevelsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutInnerLevelsInput, UserUncheckedCreateWithoutInnerLevelsInput>
+  }
+
+  export type UserUpsertWithoutInnerLevelsInput = {
+    update: XOR<UserUpdateWithoutInnerLevelsInput, UserUncheckedUpdateWithoutInnerLevelsInput>
+    create: XOR<UserCreateWithoutInnerLevelsInput, UserUncheckedCreateWithoutInnerLevelsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutInnerLevelsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutInnerLevelsInput, UserUncheckedUpdateWithoutInnerLevelsInput>
+  }
+
+  export type UserUpdateWithoutInnerLevelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutInnerLevelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutGemposInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGemposInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGemposInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGemposInput, UserUncheckedCreateWithoutGemposInput>
+  }
+
+  export type UserUpsertWithoutGemposInput = {
+    update: XOR<UserUpdateWithoutGemposInput, UserUncheckedUpdateWithoutGemposInput>
+    create: XOR<UserCreateWithoutGemposInput, UserUncheckedCreateWithoutGemposInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGemposInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGemposInput, UserUncheckedUpdateWithoutGemposInput>
+  }
+
+  export type UserUpdateWithoutGemposInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGemposInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutChampionshipsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutChampionshipsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutChampionshipsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutChampionshipsInput, UserUncheckedCreateWithoutChampionshipsInput>
+  }
+
+  export type UserUpsertWithoutChampionshipsInput = {
+    update: XOR<UserUpdateWithoutChampionshipsInput, UserUncheckedUpdateWithoutChampionshipsInput>
+    create: XOR<UserCreateWithoutChampionshipsInput, UserUncheckedCreateWithoutChampionshipsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutChampionshipsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutChampionshipsInput, UserUncheckedUpdateWithoutChampionshipsInput>
+  }
+
+  export type UserUpdateWithoutChampionshipsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutChampionshipsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutGempoRecordsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGempoRecordsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGempoRecordsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGempoRecordsInput, UserUncheckedCreateWithoutGempoRecordsInput>
+  }
+
+  export type UserUpsertWithoutGempoRecordsInput = {
+    update: XOR<UserUpdateWithoutGempoRecordsInput, UserUncheckedUpdateWithoutGempoRecordsInput>
+    create: XOR<UserCreateWithoutGempoRecordsInput, UserUncheckedCreateWithoutGempoRecordsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGempoRecordsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGempoRecordsInput, UserUncheckedUpdateWithoutGempoRecordsInput>
+  }
+
+  export type UserUpdateWithoutGempoRecordsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGempoRecordsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutChampionshipRecordsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutChampionshipRecordsInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
+    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutChampionshipRecordsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutChampionshipRecordsInput, UserUncheckedCreateWithoutChampionshipRecordsInput>
+  }
+
+  export type UserUpsertWithoutChampionshipRecordsInput = {
+    update: XOR<UserUpdateWithoutChampionshipRecordsInput, UserUncheckedUpdateWithoutChampionshipRecordsInput>
+    create: XOR<UserCreateWithoutChampionshipRecordsInput, UserUncheckedCreateWithoutChampionshipRecordsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutChampionshipRecordsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutChampionshipRecordsInput, UserUncheckedUpdateWithoutChampionshipRecordsInput>
+  }
+
+  export type UserUpdateWithoutChampionshipRecordsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutChampionshipRecordsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
+    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutUserLoginInput = {
@@ -61097,10 +60576,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -61116,6 +60593,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserLoginInput = {
@@ -61143,10 +60627,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -61158,6 +60640,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserLoginInput = {
@@ -61197,10 +60686,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -61216,6 +60703,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserLoginInput = {
@@ -61243,10 +60737,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -61258,6 +60750,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAdminInput = {
@@ -61281,10 +60780,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -61300,6 +60797,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAdminInput = {
@@ -61326,10 +60830,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -61342,6 +60844,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAdminInput = {
@@ -61662,10 +61171,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -61681,6 +61188,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAdminInput = {
@@ -61707,10 +61221,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -61723,6 +61235,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminInput = {
@@ -62875,10 +62394,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -62894,6 +62411,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBannerVisitorInput = {
@@ -62921,10 +62445,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -62936,6 +62458,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBannerVisitorInput = {
@@ -63008,10 +62537,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -63027,6 +62554,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBannerVisitorInput = {
@@ -63054,10 +62588,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -63069,6 +62601,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TestParticipantCreateWithoutTestInput = {
@@ -63185,10 +62724,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -63204,6 +62741,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestParticipantInput = {
@@ -63231,10 +62775,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -63246,6 +62788,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestParticipantInput = {
@@ -63364,10 +62913,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -63383,6 +62930,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestParticipantInput = {
@@ -63410,10 +62964,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -63425,6 +62977,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TestParticipantRecordUpsertWithWhereUniqueWithoutParticipantInput = {
@@ -63495,10 +63054,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -63514,6 +63071,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestRecordsInput = {
@@ -63541,10 +63105,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -63556,6 +63118,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestRecordsInput = {
@@ -63632,10 +63201,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -63651,6 +63218,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestRecordsInput = {
@@ -63678,10 +63252,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -63693,6 +63265,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type VoucherRedemeerCreateWithoutVoucherInput = {
@@ -63779,10 +63358,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -63798,6 +63375,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutVoucherRedemeerInput = {
@@ -63825,10 +63409,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -63840,6 +63422,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutVoucherRedemeerInput = {
@@ -63911,10 +63500,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -63930,6 +63517,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutVoucherRedemeerInput = {
@@ -63957,10 +63551,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -63972,6 +63564,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AdminCreateWithoutAdminTransactionInput = {
@@ -64187,10 +63786,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -64206,6 +63803,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserTransactionInput = {
@@ -64233,10 +63837,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -64248,6 +63850,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserTransactionInput = {
@@ -64287,10 +63896,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -64306,6 +63913,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserTransactionInput = {
@@ -64333,10 +63947,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -64348,6 +63960,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutUserTransactionArchiveInput = {
@@ -64371,10 +63990,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -64390,6 +64007,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserTransactionArchiveInput = {
@@ -64417,10 +64041,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -64432,6 +64054,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserTransactionArchiveInput = {
@@ -64471,10 +64100,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -64490,6 +64117,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserTransactionArchiveInput = {
@@ -64517,10 +64151,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -64532,6 +64164,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MultiPlayerMemberCreateWithoutRoomInput = {
@@ -64607,10 +64246,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
@@ -64626,6 +64263,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMultiPlayerMemberInput = {
@@ -64653,10 +64297,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    device?: DeviceUncheckedCreateNestedOneWithoutUserInput
     ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
     userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -64668,6 +64310,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMultiPlayerMemberInput = {
@@ -64740,10 +64389,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -64759,6 +64406,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMultiPlayerMemberInput = {
@@ -64786,10 +64440,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -64801,6 +64453,13 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MultiplayerRoomUpsertWithoutMembersInput = {
@@ -64887,7 +64546,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
   }
@@ -65016,10 +64674,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
@@ -65035,6 +64691,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProvinceInput = {
@@ -65061,10 +64724,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -65077,6 +64738,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutProvinceInput = {
@@ -65103,7 +64771,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -65235,7 +64902,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
   }
@@ -65313,10 +64979,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
@@ -65332,6 +64996,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCityInput = {
@@ -65358,10 +65029,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -65374,6 +65043,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutCityInput = {
@@ -65400,7 +65076,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -65523,7 +65198,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
-    storageId?: string | null
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
   }
@@ -65562,10 +65236,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -65581,6 +65253,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSchoolInput = {
@@ -65607,10 +65286,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -65623,6 +65300,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSchoolInput = {
@@ -65649,7 +65333,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -65751,10 +65434,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -65770,6 +65451,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserAccessesInput = {
@@ -65797,10 +65485,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
@@ -65812,6 +65498,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutUserAccessesInput = {
@@ -65839,7 +65532,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -65865,10 +65557,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
@@ -65884,6 +65574,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRedeemedAccessesInput = {
@@ -65911,10 +65608,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    device?: DeviceUncheckedUpdateOneWithoutUserNestedInput
     ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
     userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -65926,6 +65621,13 @@ export namespace Prisma {
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRedeemedAccessesInput = {
@@ -65953,7 +65655,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
-    storageId?: NullableStringFieldUpdateOperationsInput | string | null
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
   }
@@ -65970,7 +65671,7 @@ export namespace Prisma {
 
   export type ZoneCreateManyUserInput = {
     id?: string
-    zoneId: string
+    inGameId: string
     isComplete?: boolean
     completedAt?: Date | string | null
     lastLevelId?: string
@@ -66063,6 +65764,100 @@ export namespace Prisma {
     answers: JsonNullValueInput | InputJsonValue
   }
 
+  export type SubLevelCreateManyUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InnerLevelCreateManyUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    levelInGameId: string
+    subLevelInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    correctAttempt?: number
+    playTime?: number
+    point?: number
+    played?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LevelCreateManyUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    isComplete?: boolean
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoCreateManyUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipCreateManyUserInput = {
+    id?: string
+    isUnlock?: boolean
+    unlockedAt?: Date | string | null
+    inGameId: string
+    zoneInGameId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GempoRecordCreateManyUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    gempoInGameId: string
+    played?: number
+    point?: number
+    lastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ChampionshipRecordCreateManyUserInput = {
+    id?: string
+    inGameId: string
+    zoneInGameId: string
+    championshipInGameId: string
+    teamWin?: number
+    teamLose?: number
+    teamPlayed?: number
+    teamPoint?: number
+    teamLastPlayedAt?: Date | string | null
+    soloWin?: number
+    soloLose?: number
+    soloPlayed?: number
+    soloPoint?: number
+    soloLastPlayedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AccessContentUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     expired?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66134,7 +65929,7 @@ export namespace Prisma {
 
   export type ZoneUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastLevelId?: StringFieldUpdateOperationsInput | string
@@ -66143,14 +65938,11 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    levels?: LevelUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUpdateOneWithoutZoneNestedInput
   }
 
   export type ZoneUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastLevelId?: StringFieldUpdateOperationsInput | string
@@ -66159,14 +65951,11 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    levels?: LevelUncheckedUpdateManyWithoutZoneNestedInput
-    gempo?: GempoUncheckedUpdateOneWithoutZoneNestedInput
-    championship?: ChampionshipUncheckedUpdateOneWithoutZoneNestedInput
   }
 
   export type ZoneUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    zoneId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
     isComplete?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastLevelId?: StringFieldUpdateOperationsInput | string
@@ -66459,44 +66248,11 @@ export namespace Prisma {
     answers?: JsonNullValueInput | InputJsonValue
   }
 
-  export type LevelCreateManyZoneInput = {
-    id?: string
-    levelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type LevelUpdateWithoutZoneInput = {
+  export type SubLevelUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subLevels?: SubLevelUpdateManyWithoutLevelNestedInput
-  }
-
-  export type LevelUncheckedUpdateWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subLevels?: SubLevelUncheckedUpdateManyWithoutLevelNestedInput
-  }
-
-  export type LevelUncheckedUpdateManyWithoutZoneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    levelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -66505,44 +66261,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SubLevelCreateManyLevelInput = {
-    id?: string
-    subLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SubLevelUpdateWithoutLevelInput = {
+  export type SubLevelUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    innerLevels?: InnerLevelUpdateManyWithoutSubLevelNestedInput
-  }
-
-  export type SubLevelUncheckedUpdateWithoutLevelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
-    isUnlock?: BoolFieldUpdateOperationsInput | boolean
-    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isComplete?: BoolFieldUpdateOperationsInput | boolean
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutSubLevelNestedInput
-  }
-
-  export type SubLevelUncheckedUpdateManyWithoutLevelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -66551,24 +66274,25 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InnerLevelCreateManySubLevelInput = {
-    id?: string
-    innerLevelId: string
-    isUnlock?: boolean
-    unlockedAt?: Date | string | null
-    isComplete?: boolean
-    completedAt?: Date | string | null
-    correctAttempt?: number
-    playTime?: number
-    point?: number
-    played?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type SubLevelUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InnerLevelUpdateWithoutSubLevelInput = {
+  export type InnerLevelUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -66581,9 +66305,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InnerLevelUncheckedUpdateWithoutSubLevelInput = {
+  export type InnerLevelUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -66596,9 +66323,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InnerLevelUncheckedUpdateManyWithoutSubLevelInput = {
+  export type InnerLevelUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    innerLevelId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    levelInGameId?: StringFieldUpdateOperationsInput | string
+    subLevelInGameId?: StringFieldUpdateOperationsInput | string
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isComplete?: BoolFieldUpdateOperationsInput | boolean
@@ -66611,19 +66341,107 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type GempoRecordCreateManyGempoInput = {
-    id?: string
-    recordId: string
-    played?: number
-    point?: number
-    lastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type LevelUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type GempoRecordUpdateWithoutGempoInput = {
+  export type LevelUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LevelUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GempoUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GempoUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GempoUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChampionshipUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChampionshipUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChampionshipUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    unlockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GempoRecordUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66631,9 +66449,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type GempoRecordUncheckedUpdateWithoutGempoInput = {
+  export type GempoRecordUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66641,9 +66461,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type GempoRecordUncheckedUpdateManyWithoutGempoInput = {
+  export type GempoRecordUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    gempoInGameId?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66651,26 +66473,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChampionshipRecordCreateManyChampionshipInput = {
-    id?: string
-    recordId: string
-    teamWin?: number
-    teamLose?: number
-    teamPlayed?: number
-    teamPoint?: number
-    teamLastPlayedAt?: Date | string | null
-    soloWin?: number
-    soloLose?: number
-    soloPlayed?: number
-    soloPoint?: number
-    soloLastPlayedAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ChampionshipRecordUpdateWithoutChampionshipInput = {
+  export type ChampionshipRecordUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -66685,9 +66492,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChampionshipRecordUncheckedUpdateWithoutChampionshipInput = {
+  export type ChampionshipRecordUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
@@ -66702,9 +66511,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChampionshipRecordUncheckedUpdateManyWithoutChampionshipInput = {
+  export type ChampionshipRecordUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    recordId?: StringFieldUpdateOperationsInput | string
+    inGameId?: StringFieldUpdateOperationsInput | string
+    zoneInGameId?: StringFieldUpdateOperationsInput | string
+    championshipInGameId?: StringFieldUpdateOperationsInput | string
     teamWin?: IntFieldUpdateOperationsInput | number
     teamLose?: IntFieldUpdateOperationsInput | number
     teamPlayed?: IntFieldUpdateOperationsInput | number
