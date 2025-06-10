@@ -343,6 +343,7 @@ exports.Prisma.AdminAuthorityScalarFieldEnum = {
 
 exports.Prisma.BannerScalarFieldEnum = {
   id: 'id',
+  thumbnailId: 'thumbnailId',
   thumbnail: 'thumbnail',
   link: 'link',
   startedAt: 'startedAt',
@@ -392,9 +393,7 @@ exports.Prisma.TestParticipantScalarFieldEnum = {
   lastTestAt: 'lastTestAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  highscore: 'highscore',
-  average: 'average',
-  lowscore: 'lowscore'
+  highscore: 'highscore'
 };
 
 exports.Prisma.TestParticipantRecordScalarFieldEnum = {
@@ -405,13 +404,13 @@ exports.Prisma.TestParticipantRecordScalarFieldEnum = {
   score: 'score',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId',
   answers: 'answers'
 };
 
 exports.Prisma.BackgroundScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  thumbnailId: 'thumbnailId',
   thumbnail: 'thumbnail',
   isUse: 'isUse',
   createdAt: 'createdAt',
@@ -512,7 +511,8 @@ exports.Prisma.MultiplayerRoomScalarFieldEnum = {
   isStarted: 'isStarted',
   isEnded: 'isEnded',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  currentMember: 'currentMember'
 };
 
 exports.Prisma.MultiPlayerMemberScalarFieldEnum = {

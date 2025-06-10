@@ -4124,7 +4124,6 @@ export namespace Prisma {
     userTransactionArchive: number
     userTransaction: number
     multiPlayerMember: number
-    testRecords: number
     subLevels: number
     innerLevels: number
     levels: number
@@ -4146,7 +4145,6 @@ export namespace Prisma {
     userTransactionArchive?: boolean | UserCountOutputTypeCountUserTransactionArchiveArgs
     userTransaction?: boolean | UserCountOutputTypeCountUserTransactionArgs
     multiPlayerMember?: boolean | UserCountOutputTypeCountMultiPlayerMemberArgs
-    testRecords?: boolean | UserCountOutputTypeCountTestRecordsArgs
     subLevels?: boolean | UserCountOutputTypeCountSubLevelsArgs
     innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
     levels?: boolean | UserCountOutputTypeCountLevelsArgs
@@ -4242,13 +4240,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMultiPlayerMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MultiPlayerMemberWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountTestRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestParticipantRecordWhereInput
   }
 
   /**
@@ -10002,7 +9993,6 @@ export namespace Prisma {
     userTransactionArchive?: boolean | User$userTransactionArchiveArgs<ExtArgs>
     userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
-    testRecords?: boolean | User$testRecordsArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
     levels?: boolean | User$levelsArgs<ExtArgs>
@@ -10125,7 +10115,6 @@ export namespace Prisma {
     userTransactionArchive?: boolean | User$userTransactionArchiveArgs<ExtArgs>
     userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
-    testRecords?: boolean | User$testRecordsArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
     levels?: boolean | User$levelsArgs<ExtArgs>
@@ -10166,7 +10155,6 @@ export namespace Prisma {
       userTransactionArchive: Prisma.$UserTransactionArchivePayload<ExtArgs>[]
       userTransaction: Prisma.$UserTransactionPayload<ExtArgs>[]
       multiPlayerMember: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
-      testRecords: Prisma.$TestParticipantRecordPayload<ExtArgs>[]
       subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
       levels: Prisma.$LevelPayload<ExtArgs>[]
@@ -10611,7 +10599,6 @@ export namespace Prisma {
     userTransactionArchive<T extends User$userTransactionArchiveArgs<ExtArgs> = {}>(args?: Subset<T, User$userTransactionArchiveArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     userTransaction<T extends User$userTransactionArgs<ExtArgs> = {}>(args?: Subset<T, User$userTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     multiPlayerMember<T extends User$multiPlayerMemberArgs<ExtArgs> = {}>(args?: Subset<T, User$multiPlayerMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    testRecords<T extends User$testRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$testRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subLevels<T extends User$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     levels<T extends User$levelsArgs<ExtArgs> = {}>(args?: Subset<T, User$levelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11407,30 +11394,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
-  }
-
-  /**
-   * User.testRecords
-   */
-  export type User$testRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestParticipantRecord
-     */
-    select?: TestParticipantRecordSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestParticipantRecord
-     */
-    omit?: TestParticipantRecordOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestParticipantRecordInclude<ExtArgs> | null
-    where?: TestParticipantRecordWhereInput
-    orderBy?: TestParticipantRecordOrderByWithRelationInput | TestParticipantRecordOrderByWithRelationInput[]
-    cursor?: TestParticipantRecordWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TestParticipantRecordScalarFieldEnum | TestParticipantRecordScalarFieldEnum[]
   }
 
   /**
@@ -25559,6 +25522,7 @@ export namespace Prisma {
 
   export type BannerMinAggregateOutputType = {
     id: string | null
+    thumbnailId: string | null
     thumbnail: string | null
     link: string | null
     startedAt: Date | null
@@ -25569,6 +25533,7 @@ export namespace Prisma {
 
   export type BannerMaxAggregateOutputType = {
     id: string | null
+    thumbnailId: string | null
     thumbnail: string | null
     link: string | null
     startedAt: Date | null
@@ -25579,6 +25544,7 @@ export namespace Prisma {
 
   export type BannerCountAggregateOutputType = {
     id: number
+    thumbnailId: number
     thumbnail: number
     link: number
     startedAt: number
@@ -25591,6 +25557,7 @@ export namespace Prisma {
 
   export type BannerMinAggregateInputType = {
     id?: true
+    thumbnailId?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -25601,6 +25568,7 @@ export namespace Prisma {
 
   export type BannerMaxAggregateInputType = {
     id?: true
+    thumbnailId?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -25611,6 +25579,7 @@ export namespace Prisma {
 
   export type BannerCountAggregateInputType = {
     id?: true
+    thumbnailId?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -25694,6 +25663,7 @@ export namespace Prisma {
 
   export type BannerGroupByOutputType = {
     id: string
+    thumbnailId: string
     thumbnail: string
     link: string | null
     startedAt: Date | null
@@ -25721,6 +25691,7 @@ export namespace Prisma {
 
   export type BannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -25735,6 +25706,7 @@ export namespace Prisma {
 
   export type BannerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -25746,6 +25718,7 @@ export namespace Prisma {
 
   export type BannerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -25757,6 +25730,7 @@ export namespace Prisma {
 
   export type BannerSelectScalar = {
     id?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -25765,7 +25739,7 @@ export namespace Prisma {
     adminId?: boolean
   }
 
-  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "adminId", ExtArgs["result"]["banner"]>
+  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnailId" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "adminId", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     visitors?: boolean | Banner$visitorsArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -25788,6 +25762,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      thumbnailId: string
       thumbnail: string
       link: string | null
       startedAt: Date | null
@@ -26221,6 +26196,7 @@ export namespace Prisma {
    */
   interface BannerFieldRefs {
     readonly id: FieldRef<"Banner", 'String'>
+    readonly thumbnailId: FieldRef<"Banner", 'String'>
     readonly thumbnail: FieldRef<"Banner", 'String'>
     readonly link: FieldRef<"Banner", 'String'>
     readonly startedAt: FieldRef<"Banner", 'DateTime'>
@@ -30136,14 +30112,10 @@ export namespace Prisma {
 
   export type TestParticipantAvgAggregateOutputType = {
     highscore: number | null
-    average: number | null
-    lowscore: number | null
   }
 
   export type TestParticipantSumAggregateOutputType = {
     highscore: number | null
-    average: number | null
-    lowscore: number | null
   }
 
   export type TestParticipantMinAggregateOutputType = {
@@ -30155,8 +30127,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     highscore: number | null
-    average: number | null
-    lowscore: number | null
   }
 
   export type TestParticipantMaxAggregateOutputType = {
@@ -30168,8 +30138,6 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     highscore: number | null
-    average: number | null
-    lowscore: number | null
   }
 
   export type TestParticipantCountAggregateOutputType = {
@@ -30181,22 +30149,16 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     highscore: number
-    average: number
-    lowscore: number
     _all: number
   }
 
 
   export type TestParticipantAvgAggregateInputType = {
     highscore?: true
-    average?: true
-    lowscore?: true
   }
 
   export type TestParticipantSumAggregateInputType = {
     highscore?: true
-    average?: true
-    lowscore?: true
   }
 
   export type TestParticipantMinAggregateInputType = {
@@ -30208,8 +30170,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     highscore?: true
-    average?: true
-    lowscore?: true
   }
 
   export type TestParticipantMaxAggregateInputType = {
@@ -30221,8 +30181,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     highscore?: true
-    average?: true
-    lowscore?: true
   }
 
   export type TestParticipantCountAggregateInputType = {
@@ -30234,8 +30192,6 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     highscore?: true
-    average?: true
-    lowscore?: true
     _all?: true
   }
 
@@ -30334,8 +30290,6 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     highscore: number
-    average: number
-    lowscore: number
     _count: TestParticipantCountAggregateOutputType | null
     _avg: TestParticipantAvgAggregateOutputType | null
     _sum: TestParticipantSumAggregateOutputType | null
@@ -30366,8 +30320,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
-    average?: boolean
-    lowscore?: boolean
     test?: boolean | TestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     records?: boolean | TestParticipant$recordsArgs<ExtArgs>
@@ -30383,8 +30335,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
-    average?: boolean
-    lowscore?: boolean
     test?: boolean | TestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testParticipant"]>
@@ -30398,8 +30348,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
-    average?: boolean
-    lowscore?: boolean
     test?: boolean | TestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testParticipant"]>
@@ -30413,11 +30361,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
-    average?: boolean
-    lowscore?: boolean
   }
 
-  export type TestParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "testId" | "userId" | "firstTimeAt" | "lastTestAt" | "createdAt" | "updatedAt" | "highscore" | "average" | "lowscore", ExtArgs["result"]["testParticipant"]>
+  export type TestParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "testId" | "userId" | "firstTimeAt" | "lastTestAt" | "createdAt" | "updatedAt" | "highscore", ExtArgs["result"]["testParticipant"]>
   export type TestParticipantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     test?: boolean | TestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -30449,8 +30395,6 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       highscore: number
-      average: number
-      lowscore: number
     }, ExtArgs["result"]["testParticipant"]>
     composites: {}
   }
@@ -30885,8 +30829,6 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"TestParticipant", 'DateTime'>
     readonly updatedAt: FieldRef<"TestParticipant", 'DateTime'>
     readonly highscore: FieldRef<"TestParticipant", 'Float'>
-    readonly average: FieldRef<"TestParticipant", 'Float'>
-    readonly lowscore: FieldRef<"TestParticipant", 'Float'>
   }
     
 
@@ -31353,7 +31295,6 @@ export namespace Prisma {
     score: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    userId: string | null
   }
 
   export type TestParticipantRecordMaxAggregateOutputType = {
@@ -31364,7 +31305,6 @@ export namespace Prisma {
     score: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    userId: string | null
   }
 
   export type TestParticipantRecordCountAggregateOutputType = {
@@ -31375,7 +31315,6 @@ export namespace Prisma {
     score: number
     createdAt: number
     updatedAt: number
-    userId: number
     answers: number
     _all: number
   }
@@ -31397,7 +31336,6 @@ export namespace Prisma {
     score?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
   }
 
   export type TestParticipantRecordMaxAggregateInputType = {
@@ -31408,7 +31346,6 @@ export namespace Prisma {
     score?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
   }
 
   export type TestParticipantRecordCountAggregateInputType = {
@@ -31419,7 +31356,6 @@ export namespace Prisma {
     score?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
     answers?: true
     _all?: true
   }
@@ -31518,7 +31454,6 @@ export namespace Prisma {
     score: number
     createdAt: Date
     updatedAt: Date
-    userId: string
     answers: JsonValue
     _count: TestParticipantRecordCountAggregateOutputType | null
     _avg: TestParticipantRecordAvgAggregateOutputType | null
@@ -31549,10 +31484,8 @@ export namespace Prisma {
     score?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     answers?: boolean
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testParticipantRecord"]>
 
   export type TestParticipantRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -31563,10 +31496,8 @@ export namespace Prisma {
     score?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     answers?: boolean
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testParticipantRecord"]>
 
   export type TestParticipantRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -31577,10 +31508,8 @@ export namespace Prisma {
     score?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     answers?: boolean
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testParticipantRecord"]>
 
   export type TestParticipantRecordSelectScalar = {
@@ -31591,29 +31520,24 @@ export namespace Prisma {
     score?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     answers?: boolean
   }
 
-  export type TestParticipantRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "participantId" | "startedAt" | "endedAt" | "score" | "createdAt" | "updatedAt" | "userId" | "answers", ExtArgs["result"]["testParticipantRecord"]>
+  export type TestParticipantRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "participantId" | "startedAt" | "endedAt" | "score" | "createdAt" | "updatedAt" | "answers", ExtArgs["result"]["testParticipantRecord"]>
   export type TestParticipantRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type TestParticipantRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type TestParticipantRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     participant?: boolean | TestParticipantDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $TestParticipantRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "TestParticipantRecord"
     objects: {
       participant: Prisma.$TestParticipantPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -31623,7 +31547,6 @@ export namespace Prisma {
       score: number
       createdAt: Date
       updatedAt: Date
-      userId: string
       answers: Prisma.JsonValue
     }, ExtArgs["result"]["testParticipantRecord"]>
     composites: {}
@@ -32020,7 +31943,6 @@ export namespace Prisma {
   export interface Prisma__TestParticipantRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     participant<T extends TestParticipantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TestParticipantDefaultArgs<ExtArgs>>): Prisma__TestParticipantClient<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -32057,7 +31979,6 @@ export namespace Prisma {
     readonly score: FieldRef<"TestParticipantRecord", 'Float'>
     readonly createdAt: FieldRef<"TestParticipantRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"TestParticipantRecord", 'DateTime'>
-    readonly userId: FieldRef<"TestParticipantRecord", 'String'>
     readonly answers: FieldRef<"TestParticipantRecord", 'Json'>
   }
     
@@ -32486,6 +32407,7 @@ export namespace Prisma {
   export type BackgroundMinAggregateOutputType = {
     id: string | null
     name: string | null
+    thumbnailId: string | null
     thumbnail: string | null
     isUse: boolean | null
     createdAt: Date | null
@@ -32495,6 +32417,7 @@ export namespace Prisma {
   export type BackgroundMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    thumbnailId: string | null
     thumbnail: string | null
     isUse: boolean | null
     createdAt: Date | null
@@ -32504,6 +32427,7 @@ export namespace Prisma {
   export type BackgroundCountAggregateOutputType = {
     id: number
     name: number
+    thumbnailId: number
     thumbnail: number
     isUse: number
     createdAt: number
@@ -32515,6 +32439,7 @@ export namespace Prisma {
   export type BackgroundMinAggregateInputType = {
     id?: true
     name?: true
+    thumbnailId?: true
     thumbnail?: true
     isUse?: true
     createdAt?: true
@@ -32524,6 +32449,7 @@ export namespace Prisma {
   export type BackgroundMaxAggregateInputType = {
     id?: true
     name?: true
+    thumbnailId?: true
     thumbnail?: true
     isUse?: true
     createdAt?: true
@@ -32533,6 +32459,7 @@ export namespace Prisma {
   export type BackgroundCountAggregateInputType = {
     id?: true
     name?: true
+    thumbnailId?: true
     thumbnail?: true
     isUse?: true
     createdAt?: true
@@ -32615,6 +32542,7 @@ export namespace Prisma {
   export type BackgroundGroupByOutputType = {
     id: string
     name: string
+    thumbnailId: string
     thumbnail: string
     isUse: boolean
     createdAt: Date
@@ -32641,6 +32569,7 @@ export namespace Prisma {
   export type BackgroundSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     isUse?: boolean
     createdAt?: boolean
@@ -32650,6 +32579,7 @@ export namespace Prisma {
   export type BackgroundSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     isUse?: boolean
     createdAt?: boolean
@@ -32659,6 +32589,7 @@ export namespace Prisma {
   export type BackgroundSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     isUse?: boolean
     createdAt?: boolean
@@ -32668,13 +32599,14 @@ export namespace Prisma {
   export type BackgroundSelectScalar = {
     id?: boolean
     name?: boolean
+    thumbnailId?: boolean
     thumbnail?: boolean
     isUse?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BackgroundOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "thumbnail" | "isUse" | "createdAt" | "updatedAt", ExtArgs["result"]["background"]>
+  export type BackgroundOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "thumbnailId" | "thumbnail" | "isUse" | "createdAt" | "updatedAt", ExtArgs["result"]["background"]>
 
   export type $BackgroundPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Background"
@@ -32682,6 +32614,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      thumbnailId: string
       thumbnail: string
       isUse: boolean
       createdAt: Date
@@ -33111,6 +33044,7 @@ export namespace Prisma {
   interface BackgroundFieldRefs {
     readonly id: FieldRef<"Background", 'String'>
     readonly name: FieldRef<"Background", 'String'>
+    readonly thumbnailId: FieldRef<"Background", 'String'>
     readonly thumbnail: FieldRef<"Background", 'String'>
     readonly isUse: FieldRef<"Background", 'Boolean'>
     readonly createdAt: FieldRef<"Background", 'DateTime'>
@@ -41405,10 +41339,12 @@ export namespace Prisma {
 
   export type MultiplayerRoomAvgAggregateOutputType = {
     max: number | null
+    currentMember: number | null
   }
 
   export type MultiplayerRoomSumAggregateOutputType = {
     max: number | null
+    currentMember: number | null
   }
 
   export type MultiplayerRoomMinAggregateOutputType = {
@@ -41423,6 +41359,7 @@ export namespace Prisma {
     isEnded: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    currentMember: number | null
   }
 
   export type MultiplayerRoomMaxAggregateOutputType = {
@@ -41437,6 +41374,7 @@ export namespace Prisma {
     isEnded: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    currentMember: number | null
   }
 
   export type MultiplayerRoomCountAggregateOutputType = {
@@ -41451,16 +41389,19 @@ export namespace Prisma {
     isEnded: number
     createdAt: number
     updatedAt: number
+    currentMember: number
     _all: number
   }
 
 
   export type MultiplayerRoomAvgAggregateInputType = {
     max?: true
+    currentMember?: true
   }
 
   export type MultiplayerRoomSumAggregateInputType = {
     max?: true
+    currentMember?: true
   }
 
   export type MultiplayerRoomMinAggregateInputType = {
@@ -41475,6 +41416,7 @@ export namespace Prisma {
     isEnded?: true
     createdAt?: true
     updatedAt?: true
+    currentMember?: true
   }
 
   export type MultiplayerRoomMaxAggregateInputType = {
@@ -41489,6 +41431,7 @@ export namespace Prisma {
     isEnded?: true
     createdAt?: true
     updatedAt?: true
+    currentMember?: true
   }
 
   export type MultiplayerRoomCountAggregateInputType = {
@@ -41503,6 +41446,7 @@ export namespace Prisma {
     isEnded?: true
     createdAt?: true
     updatedAt?: true
+    currentMember?: true
     _all?: true
   }
 
@@ -41604,6 +41548,7 @@ export namespace Prisma {
     isEnded: boolean
     createdAt: Date
     updatedAt: Date
+    currentMember: number
     _count: MultiplayerRoomCountAggregateOutputType | null
     _avg: MultiplayerRoomAvgAggregateOutputType | null
     _sum: MultiplayerRoomSumAggregateOutputType | null
@@ -41637,6 +41582,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    currentMember?: boolean
     members?: boolean | MultiplayerRoom$membersArgs<ExtArgs>
     _count?: boolean | MultiplayerRoomCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["multiplayerRoom"]>
@@ -41653,6 +41599,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    currentMember?: boolean
   }, ExtArgs["result"]["multiplayerRoom"]>
 
   export type MultiplayerRoomSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -41667,6 +41614,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    currentMember?: boolean
   }, ExtArgs["result"]["multiplayerRoom"]>
 
   export type MultiplayerRoomSelectScalar = {
@@ -41681,9 +41629,10 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    currentMember?: boolean
   }
 
-  export type MultiplayerRoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt", ExtArgs["result"]["multiplayerRoom"]>
+  export type MultiplayerRoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["multiplayerRoom"]>
   export type MultiplayerRoomInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     members?: boolean | MultiplayerRoom$membersArgs<ExtArgs>
     _count?: boolean | MultiplayerRoomCountOutputTypeDefaultArgs<ExtArgs>
@@ -41708,6 +41657,7 @@ export namespace Prisma {
       isEnded: boolean
       createdAt: Date
       updatedAt: Date
+      currentMember: number
     }, ExtArgs["result"]["multiplayerRoom"]>
     composites: {}
   }
@@ -42143,6 +42093,7 @@ export namespace Prisma {
     readonly isEnded: FieldRef<"MultiplayerRoom", 'Boolean'>
     readonly createdAt: FieldRef<"MultiplayerRoom", 'DateTime'>
     readonly updatedAt: FieldRef<"MultiplayerRoom", 'DateTime'>
+    readonly currentMember: FieldRef<"MultiplayerRoom", 'Int'>
   }
     
 
@@ -42781,7 +42732,7 @@ export namespace Prisma {
   export type MultiPlayerMemberGroupByOutputType = {
     id: string
     roomId: string
-    userId: string | null
+    userId: string
     point: number
     bonusPoint: number
     isReady: boolean
@@ -42823,7 +42774,7 @@ export namespace Prisma {
     joinedAt?: boolean
     finishedAt?: boolean
     isDisconnect?: boolean
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["multiPlayerMember"]>
 
@@ -42839,7 +42790,7 @@ export namespace Prisma {
     joinedAt?: boolean
     finishedAt?: boolean
     isDisconnect?: boolean
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["multiPlayerMember"]>
 
@@ -42855,7 +42806,7 @@ export namespace Prisma {
     joinedAt?: boolean
     finishedAt?: boolean
     isDisconnect?: boolean
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["multiPlayerMember"]>
 
@@ -42875,28 +42826,28 @@ export namespace Prisma {
 
   export type MultiPlayerMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "point" | "bonusPoint" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["multiPlayerMember"]>
   export type MultiPlayerMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }
   export type MultiPlayerMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }
   export type MultiPlayerMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | MultiPlayerMember$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
   }
 
   export type $MultiPlayerMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "MultiPlayerMember"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
       room: Prisma.$MultiplayerRoomPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       roomId: string
-      userId: string | null
+      userId: string
       point: number
       bonusPoint: number
       isReady: boolean
@@ -43299,7 +43250,7 @@ export namespace Prisma {
    */
   export interface Prisma__MultiPlayerMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends MultiPlayerMember$userArgs<ExtArgs> = {}>(args?: Subset<T, MultiPlayerMember$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     room<T extends MultiplayerRoomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MultiplayerRoomDefaultArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -43737,25 +43688,6 @@ export namespace Prisma {
   }
 
   /**
-   * MultiPlayerMember.user
-   */
-  export type MultiPlayerMember$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * MultiPlayerMember without action
    */
   export type MultiPlayerMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -44065,6 +43997,7 @@ export namespace Prisma {
 
   export const BannerScalarFieldEnum: {
     id: 'id',
+    thumbnailId: 'thumbnailId',
     thumbnail: 'thumbnail',
     link: 'link',
     startedAt: 'startedAt',
@@ -44126,9 +44059,7 @@ export namespace Prisma {
     lastTestAt: 'lastTestAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    highscore: 'highscore',
-    average: 'average',
-    lowscore: 'lowscore'
+    highscore: 'highscore'
   };
 
   export type TestParticipantScalarFieldEnum = (typeof TestParticipantScalarFieldEnum)[keyof typeof TestParticipantScalarFieldEnum]
@@ -44142,7 +44073,6 @@ export namespace Prisma {
     score: 'score',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    userId: 'userId',
     answers: 'answers'
   };
 
@@ -44152,6 +44082,7 @@ export namespace Prisma {
   export const BackgroundScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    thumbnailId: 'thumbnailId',
     thumbnail: 'thumbnail',
     isUse: 'isUse',
     createdAt: 'createdAt',
@@ -44276,7 +44207,8 @@ export namespace Prisma {
     isStarted: 'isStarted',
     isEnded: 'isEnded',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    currentMember: 'currentMember'
   };
 
   export type MultiplayerRoomScalarFieldEnum = (typeof MultiplayerRoomScalarFieldEnum)[keyof typeof MultiplayerRoomScalarFieldEnum]
@@ -44903,7 +44835,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveListRelationFilter
     userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
-    testRecords?: TestParticipantRecordListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
     levels?: LevelListRelationFilter
@@ -44955,7 +44886,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveOrderByRelationAggregateInput
     userTransaction?: UserTransactionOrderByRelationAggregateInput
     multiPlayerMember?: MultiPlayerMemberOrderByRelationAggregateInput
-    testRecords?: TestParticipantRecordOrderByRelationAggregateInput
     subLevels?: SubLevelOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
     levels?: LevelOrderByRelationAggregateInput
@@ -45010,7 +44940,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveListRelationFilter
     userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
-    testRecords?: TestParticipantRecordListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
     levels?: LevelListRelationFilter
@@ -46081,6 +46010,7 @@ export namespace Prisma {
     OR?: BannerWhereInput[]
     NOT?: BannerWhereInput | BannerWhereInput[]
     id?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -46094,6 +46024,7 @@ export namespace Prisma {
 
   export type BannerOrderByWithRelationInput = {
     id?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -46110,6 +46041,7 @@ export namespace Prisma {
     AND?: BannerWhereInput | BannerWhereInput[]
     OR?: BannerWhereInput[]
     NOT?: BannerWhereInput | BannerWhereInput[]
+    thumbnailId?: StringFilter<"Banner"> | string
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -46123,6 +46055,7 @@ export namespace Prisma {
 
   export type BannerOrderByWithAggregationInput = {
     id?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -46139,6 +46072,7 @@ export namespace Prisma {
     OR?: BannerScalarWhereWithAggregatesInput[]
     NOT?: BannerScalarWhereWithAggregatesInput | BannerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Banner"> | string
+    thumbnailId?: StringWithAggregatesFilter<"Banner"> | string
     thumbnail?: StringWithAggregatesFilter<"Banner"> | string
     link?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
@@ -46382,8 +46316,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
-    average?: FloatFilter<"TestParticipant"> | number
-    lowscore?: FloatFilter<"TestParticipant"> | number
     test?: XOR<TestScalarRelationFilter, TestWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     records?: TestParticipantRecordListRelationFilter
@@ -46398,8 +46330,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
     test?: TestOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
     records?: TestParticipantRecordOrderByRelationAggregateInput
@@ -46418,8 +46348,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
-    average?: FloatFilter<"TestParticipant"> | number
-    lowscore?: FloatFilter<"TestParticipant"> | number
     test?: XOR<TestScalarRelationFilter, TestWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     records?: TestParticipantRecordListRelationFilter
@@ -46434,8 +46362,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
     _count?: TestParticipantCountOrderByAggregateInput
     _avg?: TestParticipantAvgOrderByAggregateInput
     _max?: TestParticipantMaxOrderByAggregateInput
@@ -46455,8 +46381,6 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TestParticipant"> | Date | string
     highscore?: FloatWithAggregatesFilter<"TestParticipant"> | number
-    average?: FloatWithAggregatesFilter<"TestParticipant"> | number
-    lowscore?: FloatWithAggregatesFilter<"TestParticipant"> | number
   }
 
   export type TestParticipantRecordWhereInput = {
@@ -46470,10 +46394,8 @@ export namespace Prisma {
     score?: FloatFilter<"TestParticipantRecord"> | number
     createdAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
-    userId?: StringFilter<"TestParticipantRecord"> | string
     answers?: JsonFilter<"TestParticipantRecord">
     participant?: XOR<TestParticipantScalarRelationFilter, TestParticipantWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type TestParticipantRecordOrderByWithRelationInput = {
@@ -46484,10 +46406,8 @@ export namespace Prisma {
     score?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
     answers?: SortOrder
     participant?: TestParticipantOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
   }
 
   export type TestParticipantRecordWhereUniqueInput = Prisma.AtLeast<{
@@ -46501,10 +46421,8 @@ export namespace Prisma {
     score?: FloatFilter<"TestParticipantRecord"> | number
     createdAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
-    userId?: StringFilter<"TestParticipantRecord"> | string
     answers?: JsonFilter<"TestParticipantRecord">
     participant?: XOR<TestParticipantScalarRelationFilter, TestParticipantWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type TestParticipantRecordOrderByWithAggregationInput = {
@@ -46515,7 +46433,6 @@ export namespace Prisma {
     score?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
     answers?: SortOrder
     _count?: TestParticipantRecordCountOrderByAggregateInput
     _avg?: TestParticipantRecordAvgOrderByAggregateInput
@@ -46535,7 +46452,6 @@ export namespace Prisma {
     score?: FloatWithAggregatesFilter<"TestParticipantRecord"> | number
     createdAt?: DateTimeWithAggregatesFilter<"TestParticipantRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TestParticipantRecord"> | Date | string
-    userId?: StringWithAggregatesFilter<"TestParticipantRecord"> | string
     answers?: JsonWithAggregatesFilter<"TestParticipantRecord">
   }
 
@@ -46545,6 +46461,7 @@ export namespace Prisma {
     NOT?: BackgroundWhereInput | BackgroundWhereInput[]
     id?: StringFilter<"Background"> | string
     name?: StringFilter<"Background"> | string
+    thumbnailId?: StringFilter<"Background"> | string
     thumbnail?: StringFilter<"Background"> | string
     isUse?: BoolFilter<"Background"> | boolean
     createdAt?: DateTimeFilter<"Background"> | Date | string
@@ -46554,6 +46471,7 @@ export namespace Prisma {
   export type BackgroundOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     isUse?: SortOrder
     createdAt?: SortOrder
@@ -46566,6 +46484,7 @@ export namespace Prisma {
     OR?: BackgroundWhereInput[]
     NOT?: BackgroundWhereInput | BackgroundWhereInput[]
     name?: StringFilter<"Background"> | string
+    thumbnailId?: StringFilter<"Background"> | string
     thumbnail?: StringFilter<"Background"> | string
     isUse?: BoolFilter<"Background"> | boolean
     createdAt?: DateTimeFilter<"Background"> | Date | string
@@ -46575,6 +46494,7 @@ export namespace Prisma {
   export type BackgroundOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     isUse?: SortOrder
     createdAt?: SortOrder
@@ -46590,6 +46510,7 @@ export namespace Prisma {
     NOT?: BackgroundScalarWhereWithAggregatesInput | BackgroundScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Background"> | string
     name?: StringWithAggregatesFilter<"Background"> | string
+    thumbnailId?: StringWithAggregatesFilter<"Background"> | string
     thumbnail?: StringWithAggregatesFilter<"Background"> | string
     isUse?: BoolWithAggregatesFilter<"Background"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Background"> | Date | string
@@ -47143,6 +47064,7 @@ export namespace Prisma {
     isEnded?: BoolFilter<"MultiplayerRoom"> | boolean
     createdAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
     updatedAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
+    currentMember?: IntFilter<"MultiplayerRoom"> | number
     members?: MultiPlayerMemberListRelationFilter
   }
 
@@ -47158,6 +47080,7 @@ export namespace Prisma {
     isEnded?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    currentMember?: SortOrder
     members?: MultiPlayerMemberOrderByRelationAggregateInput
   }
 
@@ -47176,6 +47099,7 @@ export namespace Prisma {
     isEnded?: BoolFilter<"MultiplayerRoom"> | boolean
     createdAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
     updatedAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
+    currentMember?: IntFilter<"MultiplayerRoom"> | number
     members?: MultiPlayerMemberListRelationFilter
   }, "id" | "gameplayId">
 
@@ -47191,6 +47115,7 @@ export namespace Prisma {
     isEnded?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    currentMember?: SortOrder
     _count?: MultiplayerRoomCountOrderByAggregateInput
     _avg?: MultiplayerRoomAvgOrderByAggregateInput
     _max?: MultiplayerRoomMaxOrderByAggregateInput
@@ -47213,6 +47138,7 @@ export namespace Prisma {
     isEnded?: BoolWithAggregatesFilter<"MultiplayerRoom"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"MultiplayerRoom"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"MultiplayerRoom"> | Date | string
+    currentMember?: IntWithAggregatesFilter<"MultiplayerRoom"> | number
   }
 
   export type MultiPlayerMemberWhereInput = {
@@ -47221,7 +47147,7 @@ export namespace Prisma {
     NOT?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
     id?: StringFilter<"MultiPlayerMember"> | string
     roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringNullableFilter<"MultiPlayerMember"> | string | null
+    userId?: StringFilter<"MultiPlayerMember"> | string
     point?: IntFilter<"MultiPlayerMember"> | number
     bonusPoint?: IntFilter<"MultiPlayerMember"> | number
     isReady?: BoolFilter<"MultiPlayerMember"> | boolean
@@ -47230,14 +47156,14 @@ export namespace Prisma {
     joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
     finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
     isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     room?: XOR<MultiplayerRoomScalarRelationFilter, MultiplayerRoomWhereInput>
   }
 
   export type MultiPlayerMemberOrderByWithRelationInput = {
     id?: SortOrder
     roomId?: SortOrder
-    userId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     isReady?: SortOrder
@@ -47256,7 +47182,7 @@ export namespace Prisma {
     OR?: MultiPlayerMemberWhereInput[]
     NOT?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
     roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringNullableFilter<"MultiPlayerMember"> | string | null
+    userId?: StringFilter<"MultiPlayerMember"> | string
     point?: IntFilter<"MultiPlayerMember"> | number
     bonusPoint?: IntFilter<"MultiPlayerMember"> | number
     isReady?: BoolFilter<"MultiPlayerMember"> | boolean
@@ -47265,14 +47191,14 @@ export namespace Prisma {
     joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
     finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
     isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     room?: XOR<MultiplayerRoomScalarRelationFilter, MultiplayerRoomWhereInput>
   }, "id">
 
   export type MultiPlayerMemberOrderByWithAggregationInput = {
     id?: SortOrder
     roomId?: SortOrder
-    userId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     isReady?: SortOrder
@@ -47294,7 +47220,7 @@ export namespace Prisma {
     NOT?: MultiPlayerMemberScalarWhereWithAggregatesInput | MultiPlayerMemberScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
     roomId?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
-    userId?: StringNullableWithAggregatesFilter<"MultiPlayerMember"> | string | null
+    userId?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
     point?: IntWithAggregatesFilter<"MultiPlayerMember"> | number
     bonusPoint?: IntWithAggregatesFilter<"MultiPlayerMember"> | number
     isReady?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
@@ -47711,7 +47637,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -47759,7 +47684,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -47807,7 +47731,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -47855,7 +47778,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -49027,6 +48949,7 @@ export namespace Prisma {
 
   export type BannerCreateInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49039,6 +48962,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49051,6 +48975,7 @@ export namespace Prisma {
 
   export type BannerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49063,6 +48988,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49075,6 +49001,7 @@ export namespace Prisma {
 
   export type BannerCreateManyInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49085,6 +49012,7 @@ export namespace Prisma {
 
   export type BannerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49094,6 +49022,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49344,8 +49273,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     test: TestCreateNestedOneWithoutParticipantsInput
     user: UserCreateNestedOneWithoutTestParticipantInput
     records?: TestParticipantRecordCreateNestedManyWithoutParticipantInput
@@ -49360,8 +49287,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     records?: TestParticipantRecordUncheckedCreateNestedManyWithoutParticipantInput
   }
 
@@ -49372,8 +49297,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     test?: TestUpdateOneRequiredWithoutParticipantsNestedInput
     user?: UserUpdateOneRequiredWithoutTestParticipantNestedInput
     records?: TestParticipantRecordUpdateManyWithoutParticipantNestedInput
@@ -49388,8 +49311,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     records?: TestParticipantRecordUncheckedUpdateManyWithoutParticipantNestedInput
   }
 
@@ -49402,8 +49323,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
   }
 
   export type TestParticipantUpdateManyMutationInput = {
@@ -49413,8 +49332,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
   }
 
   export type TestParticipantUncheckedUpdateManyInput = {
@@ -49426,8 +49343,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
   }
 
   export type TestParticipantRecordCreateInput = {
@@ -49439,7 +49354,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     answers: JsonNullValueInput | InputJsonValue
     participant: TestParticipantCreateNestedOneWithoutRecordsInput
-    user: UserCreateNestedOneWithoutTestRecordsInput
   }
 
   export type TestParticipantRecordUncheckedCreateInput = {
@@ -49450,7 +49364,6 @@ export namespace Prisma {
     score?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
     answers: JsonNullValueInput | InputJsonValue
   }
 
@@ -49463,7 +49376,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     answers?: JsonNullValueInput | InputJsonValue
     participant?: TestParticipantUpdateOneRequiredWithoutRecordsNestedInput
-    user?: UserUpdateOneRequiredWithoutTestRecordsNestedInput
   }
 
   export type TestParticipantRecordUncheckedUpdateInput = {
@@ -49474,7 +49386,6 @@ export namespace Prisma {
     score?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
     answers?: JsonNullValueInput | InputJsonValue
   }
 
@@ -49486,7 +49397,6 @@ export namespace Prisma {
     score?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
     answers: JsonNullValueInput | InputJsonValue
   }
 
@@ -49508,13 +49418,13 @@ export namespace Prisma {
     score?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
     answers?: JsonNullValueInput | InputJsonValue
   }
 
   export type BackgroundCreateInput = {
     id?: string
     name: string
+    thumbnailId: string
     thumbnail: string
     isUse: boolean
     createdAt?: Date | string
@@ -49524,6 +49434,7 @@ export namespace Prisma {
   export type BackgroundUncheckedCreateInput = {
     id?: string
     name: string
+    thumbnailId: string
     thumbnail: string
     isUse: boolean
     createdAt?: Date | string
@@ -49533,6 +49444,7 @@ export namespace Prisma {
   export type BackgroundUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     isUse?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49542,6 +49454,7 @@ export namespace Prisma {
   export type BackgroundUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     isUse?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49551,6 +49464,7 @@ export namespace Prisma {
   export type BackgroundCreateManyInput = {
     id?: string
     name: string
+    thumbnailId: string
     thumbnail: string
     isUse: boolean
     createdAt?: Date | string
@@ -49560,6 +49474,7 @@ export namespace Prisma {
   export type BackgroundUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     isUse?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49569,6 +49484,7 @@ export namespace Prisma {
   export type BackgroundUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     isUse?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -50160,6 +50076,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    currentMember?: number
     members?: MultiPlayerMemberCreateNestedManyWithoutRoomInput
   }
 
@@ -50175,6 +50092,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    currentMember?: number
     members?: MultiPlayerMemberUncheckedCreateNestedManyWithoutRoomInput
   }
 
@@ -50190,6 +50108,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
     members?: MultiPlayerMemberUpdateManyWithoutRoomNestedInput
   }
 
@@ -50205,6 +50124,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
     members?: MultiPlayerMemberUncheckedUpdateManyWithoutRoomNestedInput
   }
 
@@ -50220,6 +50140,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    currentMember?: number
   }
 
   export type MultiplayerRoomUpdateManyMutationInput = {
@@ -50234,6 +50155,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
   }
 
   export type MultiplayerRoomUncheckedUpdateManyInput = {
@@ -50248,6 +50170,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
   }
 
   export type MultiPlayerMemberCreateInput = {
@@ -50260,14 +50183,14 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-    user?: UserCreateNestedOneWithoutMultiPlayerMemberInput
+    user: UserCreateNestedOneWithoutMultiPlayerMemberInput
     room: MultiplayerRoomCreateNestedOneWithoutMembersInput
   }
 
   export type MultiPlayerMemberUncheckedCreateInput = {
     id?: string
     roomId: string
-    userId?: string | null
+    userId: string
     point?: number
     bonusPoint?: number
     isReady?: boolean
@@ -50288,14 +50211,14 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneWithoutMultiPlayerMemberNestedInput
+    user?: UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput
     room?: MultiplayerRoomUpdateOneRequiredWithoutMembersNestedInput
   }
 
   export type MultiPlayerMemberUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     isReady?: BoolFieldUpdateOperationsInput | boolean
@@ -50309,7 +50232,7 @@ export namespace Prisma {
   export type MultiPlayerMemberCreateManyInput = {
     id?: string
     roomId: string
-    userId?: string | null
+    userId: string
     point?: number
     bonusPoint?: number
     isReady?: boolean
@@ -50335,7 +50258,7 @@ export namespace Prisma {
   export type MultiPlayerMemberUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     isReady?: BoolFieldUpdateOperationsInput | boolean
@@ -50861,12 +50784,6 @@ export namespace Prisma {
     none?: MultiPlayerMemberWhereInput
   }
 
-  export type TestParticipantRecordListRelationFilter = {
-    every?: TestParticipantRecordWhereInput
-    some?: TestParticipantRecordWhereInput
-    none?: TestParticipantRecordWhereInput
-  }
-
   export type SubLevelListRelationFilter = {
     every?: SubLevelWhereInput
     some?: SubLevelWhereInput
@@ -50942,10 +50859,6 @@ export namespace Prisma {
   }
 
   export type MultiPlayerMemberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type TestParticipantRecordOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -51747,6 +51660,7 @@ export namespace Prisma {
 
   export type BannerCountOrderByAggregateInput = {
     id?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -51757,6 +51671,7 @@ export namespace Prisma {
 
   export type BannerMaxOrderByAggregateInput = {
     id?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -51767,6 +51682,7 @@ export namespace Prisma {
 
   export type BannerMinOrderByAggregateInput = {
     id?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -51959,6 +51875,16 @@ export namespace Prisma {
     isNot?: TestWhereInput
   }
 
+  export type TestParticipantRecordListRelationFilter = {
+    every?: TestParticipantRecordWhereInput
+    some?: TestParticipantRecordWhereInput
+    none?: TestParticipantRecordWhereInput
+  }
+
+  export type TestParticipantRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TestParticipantTestIdUserIdCompoundUniqueInput = {
     testId: string
     userId: string
@@ -51973,14 +51899,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
   }
 
   export type TestParticipantAvgOrderByAggregateInput = {
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
   }
 
   export type TestParticipantMaxOrderByAggregateInput = {
@@ -51992,8 +51914,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
   }
 
   export type TestParticipantMinOrderByAggregateInput = {
@@ -52005,14 +51925,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
   }
 
   export type TestParticipantSumOrderByAggregateInput = {
     highscore?: SortOrder
-    average?: SortOrder
-    lowscore?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -52051,7 +51967,6 @@ export namespace Prisma {
     score?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
     answers?: SortOrder
   }
 
@@ -52067,7 +51982,6 @@ export namespace Prisma {
     score?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type TestParticipantRecordMinOrderByAggregateInput = {
@@ -52078,7 +51992,6 @@ export namespace Prisma {
     score?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type TestParticipantRecordSumOrderByAggregateInput = {
@@ -52114,6 +52027,7 @@ export namespace Prisma {
   export type BackgroundCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     isUse?: SortOrder
     createdAt?: SortOrder
@@ -52123,6 +52037,7 @@ export namespace Prisma {
   export type BackgroundMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     isUse?: SortOrder
     createdAt?: SortOrder
@@ -52132,6 +52047,7 @@ export namespace Prisma {
   export type BackgroundMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    thumbnailId?: SortOrder
     thumbnail?: SortOrder
     isUse?: SortOrder
     createdAt?: SortOrder
@@ -52465,10 +52381,12 @@ export namespace Prisma {
     isEnded?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    currentMember?: SortOrder
   }
 
   export type MultiplayerRoomAvgOrderByAggregateInput = {
     max?: SortOrder
+    currentMember?: SortOrder
   }
 
   export type MultiplayerRoomMaxOrderByAggregateInput = {
@@ -52483,6 +52401,7 @@ export namespace Prisma {
     isEnded?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    currentMember?: SortOrder
   }
 
   export type MultiplayerRoomMinOrderByAggregateInput = {
@@ -52497,10 +52416,12 @@ export namespace Prisma {
     isEnded?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    currentMember?: SortOrder
   }
 
   export type MultiplayerRoomSumOrderByAggregateInput = {
     max?: SortOrder
+    currentMember?: SortOrder
   }
 
   export type MultiplayerRoomScalarRelationFilter = {
@@ -53410,13 +53331,6 @@ export namespace Prisma {
     connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
   }
 
-  export type TestParticipantRecordCreateNestedManyWithoutUserInput = {
-    create?: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput> | TestParticipantRecordCreateWithoutUserInput[] | TestParticipantRecordUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TestParticipantRecordCreateOrConnectWithoutUserInput | TestParticipantRecordCreateOrConnectWithoutUserInput[]
-    createMany?: TestParticipantRecordCreateManyUserInputEnvelope
-    connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-  }
-
   export type SubLevelCreateNestedManyWithoutUserInput = {
     create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
@@ -53539,13 +53453,6 @@ export namespace Prisma {
     connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
     createMany?: MultiPlayerMemberCreateManyUserInputEnvelope
     connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-  }
-
-  export type TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput> | TestParticipantRecordCreateWithoutUserInput[] | TestParticipantRecordUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TestParticipantRecordCreateOrConnectWithoutUserInput | TestParticipantRecordCreateOrConnectWithoutUserInput[]
-    createMany?: TestParticipantRecordCreateManyUserInputEnvelope
-    connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
   }
 
   export type SubLevelUncheckedCreateNestedManyWithoutUserInput = {
@@ -53810,20 +53717,6 @@ export namespace Prisma {
     deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
   }
 
-  export type TestParticipantRecordUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput> | TestParticipantRecordCreateWithoutUserInput[] | TestParticipantRecordUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TestParticipantRecordCreateOrConnectWithoutUserInput | TestParticipantRecordCreateOrConnectWithoutUserInput[]
-    upsert?: TestParticipantRecordUpsertWithWhereUniqueWithoutUserInput | TestParticipantRecordUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TestParticipantRecordCreateManyUserInputEnvelope
-    set?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    disconnect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    delete?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    update?: TestParticipantRecordUpdateWithWhereUniqueWithoutUserInput | TestParticipantRecordUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TestParticipantRecordUpdateManyWithWhereWithoutUserInput | TestParticipantRecordUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
-  }
-
   export type SubLevelUpdateManyWithoutUserNestedInput = {
     create?: XOR<SubLevelCreateWithoutUserInput, SubLevelUncheckedCreateWithoutUserInput> | SubLevelCreateWithoutUserInput[] | SubLevelUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SubLevelCreateOrConnectWithoutUserInput | SubLevelCreateOrConnectWithoutUserInput[]
@@ -54072,20 +53965,6 @@ export namespace Prisma {
     update?: MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput | MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: MultiPlayerMemberUpdateManyWithWhereWithoutUserInput | MultiPlayerMemberUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
-  }
-
-  export type TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput> | TestParticipantRecordCreateWithoutUserInput[] | TestParticipantRecordUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TestParticipantRecordCreateOrConnectWithoutUserInput | TestParticipantRecordCreateOrConnectWithoutUserInput[]
-    upsert?: TestParticipantRecordUpsertWithWhereUniqueWithoutUserInput | TestParticipantRecordUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TestParticipantRecordCreateManyUserInputEnvelope
-    set?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    disconnect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    delete?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    connect?: TestParticipantRecordWhereUniqueInput | TestParticipantRecordWhereUniqueInput[]
-    update?: TestParticipantRecordUpdateWithWhereUniqueWithoutUserInput | TestParticipantRecordUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TestParticipantRecordUpdateManyWithWhereWithoutUserInput | TestParticipantRecordUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
   }
 
   export type SubLevelUncheckedUpdateManyWithoutUserNestedInput = {
@@ -55115,26 +54994,12 @@ export namespace Prisma {
     connect?: TestParticipantWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutTestRecordsInput = {
-    create?: XOR<UserCreateWithoutTestRecordsInput, UserUncheckedCreateWithoutTestRecordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTestRecordsInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type TestParticipantUpdateOneRequiredWithoutRecordsNestedInput = {
     create?: XOR<TestParticipantCreateWithoutRecordsInput, TestParticipantUncheckedCreateWithoutRecordsInput>
     connectOrCreate?: TestParticipantCreateOrConnectWithoutRecordsInput
     upsert?: TestParticipantUpsertWithoutRecordsInput
     connect?: TestParticipantWhereUniqueInput
     update?: XOR<XOR<TestParticipantUpdateToOneWithWhereWithoutRecordsInput, TestParticipantUpdateWithoutRecordsInput>, TestParticipantUncheckedUpdateWithoutRecordsInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutTestRecordsNestedInput = {
-    create?: XOR<UserCreateWithoutTestRecordsInput, UserUncheckedCreateWithoutTestRecordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTestRecordsInput
-    upsert?: UserUpsertWithoutTestRecordsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTestRecordsInput, UserUpdateWithoutTestRecordsInput>, UserUncheckedUpdateWithoutTestRecordsInput>
   }
 
   export type VoucherCreatezonesInput = {
@@ -55366,12 +55231,10 @@ export namespace Prisma {
     connect?: MultiplayerRoomWhereUniqueInput
   }
 
-  export type UserUpdateOneWithoutMultiPlayerMemberNestedInput = {
+  export type UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput = {
     create?: XOR<UserCreateWithoutMultiPlayerMemberInput, UserUncheckedCreateWithoutMultiPlayerMemberInput>
     connectOrCreate?: UserCreateOrConnectWithoutMultiPlayerMemberInput
     upsert?: UserUpsertWithoutMultiPlayerMemberInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMultiPlayerMemberInput, UserUpdateWithoutMultiPlayerMemberInput>, UserUncheckedUpdateWithoutMultiPlayerMemberInput>
   }
@@ -55848,7 +55711,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -55895,7 +55757,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -56316,7 +56177,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -56363,7 +56223,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -56699,7 +56558,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -56746,7 +56604,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -57004,7 +56861,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -57051,7 +56907,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -57103,7 +56958,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -57150,7 +57004,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -57202,7 +57055,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -57249,7 +57101,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -57312,7 +57163,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -57359,7 +57209,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57732,8 +57581,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     test: TestCreateNestedOneWithoutParticipantsInput
     records?: TestParticipantRecordCreateNestedManyWithoutParticipantInput
   }
@@ -57746,8 +57593,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     records?: TestParticipantRecordUncheckedCreateNestedManyWithoutParticipantInput
   }
 
@@ -57887,38 +57732,6 @@ export namespace Prisma {
 
   export type MultiPlayerMemberCreateManyUserInputEnvelope = {
     data: MultiPlayerMemberCreateManyUserInput | MultiPlayerMemberCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type TestParticipantRecordCreateWithoutUserInput = {
-    id?: string
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    score?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    participant: TestParticipantCreateNestedOneWithoutRecordsInput
-  }
-
-  export type TestParticipantRecordUncheckedCreateWithoutUserInput = {
-    id?: string
-    participantId: string
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    score?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-  }
-
-  export type TestParticipantRecordCreateOrConnectWithoutUserInput = {
-    where: TestParticipantRecordWhereUniqueInput
-    create: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput>
-  }
-
-  export type TestParticipantRecordCreateManyUserInputEnvelope = {
-    data: TestParticipantRecordCreateManyUserInput | TestParticipantRecordCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -58529,8 +58342,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
-    average?: FloatFilter<"TestParticipant"> | number
-    lowscore?: FloatFilter<"TestParticipant"> | number
   }
 
   export type VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput = {
@@ -58647,7 +58458,7 @@ export namespace Prisma {
     NOT?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
     id?: StringFilter<"MultiPlayerMember"> | string
     roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringNullableFilter<"MultiPlayerMember"> | string | null
+    userId?: StringFilter<"MultiPlayerMember"> | string
     point?: IntFilter<"MultiPlayerMember"> | number
     bonusPoint?: IntFilter<"MultiPlayerMember"> | number
     isReady?: BoolFilter<"MultiPlayerMember"> | boolean
@@ -58656,37 +58467,6 @@ export namespace Prisma {
     joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
     finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
     isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
-  }
-
-  export type TestParticipantRecordUpsertWithWhereUniqueWithoutUserInput = {
-    where: TestParticipantRecordWhereUniqueInput
-    update: XOR<TestParticipantRecordUpdateWithoutUserInput, TestParticipantRecordUncheckedUpdateWithoutUserInput>
-    create: XOR<TestParticipantRecordCreateWithoutUserInput, TestParticipantRecordUncheckedCreateWithoutUserInput>
-  }
-
-  export type TestParticipantRecordUpdateWithWhereUniqueWithoutUserInput = {
-    where: TestParticipantRecordWhereUniqueInput
-    data: XOR<TestParticipantRecordUpdateWithoutUserInput, TestParticipantRecordUncheckedUpdateWithoutUserInput>
-  }
-
-  export type TestParticipantRecordUpdateManyWithWhereWithoutUserInput = {
-    where: TestParticipantRecordScalarWhereInput
-    data: XOR<TestParticipantRecordUpdateManyMutationInput, TestParticipantRecordUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type TestParticipantRecordScalarWhereInput = {
-    AND?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
-    OR?: TestParticipantRecordScalarWhereInput[]
-    NOT?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
-    id?: StringFilter<"TestParticipantRecord"> | string
-    participantId?: StringFilter<"TestParticipantRecord"> | string
-    startedAt?: DateTimeNullableFilter<"TestParticipantRecord"> | Date | string | null
-    endedAt?: DateTimeNullableFilter<"TestParticipantRecord"> | Date | string | null
-    score?: FloatFilter<"TestParticipantRecord"> | number
-    createdAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
-    updatedAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
-    userId?: StringFilter<"TestParticipantRecord"> | string
-    answers?: JsonFilter<"TestParticipantRecord">
   }
 
   export type SubLevelUpsertWithWhereUniqueWithoutUserInput = {
@@ -58960,7 +58740,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -59007,7 +58786,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -59070,7 +58848,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -59117,7 +58894,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59165,7 +58941,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -59212,7 +58987,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -59275,7 +59049,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -59322,7 +59095,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -59369,7 +59141,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -59416,7 +59187,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -59479,7 +59249,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -59526,7 +59295,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -59573,7 +59341,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -59620,7 +59387,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -59683,7 +59449,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -59730,7 +59495,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -59777,7 +59541,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -59824,7 +59587,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -59887,7 +59649,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -59934,7 +59695,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59981,7 +59741,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60028,7 +59787,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -60091,7 +59849,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -60138,7 +59895,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60185,7 +59941,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60232,7 +59987,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -60295,7 +60049,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -60342,7 +60095,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60389,7 +60141,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60436,7 +60187,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -60499,7 +60249,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -60546,7 +60295,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60592,7 +60340,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60639,7 +60386,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -60702,7 +60448,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -60749,7 +60494,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60796,7 +60540,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60843,7 +60586,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -61037,6 +60779,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutAdminInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -61048,6 +60791,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutAdminInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -61187,7 +60931,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -61234,7 +60977,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61445,6 +61187,7 @@ export namespace Prisma {
     OR?: BannerScalarWhereInput[]
     NOT?: BannerScalarWhereInput | BannerScalarWhereInput[]
     id?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -62161,6 +61904,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutBannerLocationInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62172,6 +61916,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutBannerLocationInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62269,6 +62014,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutBannerLocationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62280,6 +62026,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutBannerLocationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62348,6 +62095,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutVisitorsInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62359,6 +62107,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutVisitorsInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62410,7 +62159,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -62457,7 +62205,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -62485,6 +62232,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutVisitorsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62496,6 +62244,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutVisitorsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62553,7 +62302,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -62600,7 +62348,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -62617,8 +62364,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     user: UserCreateNestedOneWithoutTestParticipantInput
     records?: TestParticipantRecordCreateNestedManyWithoutParticipantInput
   }
@@ -62631,8 +62376,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     records?: TestParticipantRecordUncheckedCreateNestedManyWithoutParticipantInput
   }
 
@@ -62740,7 +62483,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -62787,7 +62529,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -62810,7 +62551,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     answers: JsonNullValueInput | InputJsonValue
-    user: UserCreateNestedOneWithoutTestRecordsInput
   }
 
   export type TestParticipantRecordUncheckedCreateWithoutParticipantInput = {
@@ -62820,7 +62560,6 @@ export namespace Prisma {
     score?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
     answers: JsonNullValueInput | InputJsonValue
   }
 
@@ -62929,7 +62668,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -62976,7 +62714,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63002,6 +62739,20 @@ export namespace Prisma {
     data: XOR<TestParticipantRecordUpdateManyMutationInput, TestParticipantRecordUncheckedUpdateManyWithoutParticipantInput>
   }
 
+  export type TestParticipantRecordScalarWhereInput = {
+    AND?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
+    OR?: TestParticipantRecordScalarWhereInput[]
+    NOT?: TestParticipantRecordScalarWhereInput | TestParticipantRecordScalarWhereInput[]
+    id?: StringFilter<"TestParticipantRecord"> | string
+    participantId?: StringFilter<"TestParticipantRecord"> | string
+    startedAt?: DateTimeNullableFilter<"TestParticipantRecord"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"TestParticipantRecord"> | Date | string | null
+    score?: FloatFilter<"TestParticipantRecord"> | number
+    createdAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"TestParticipantRecord"> | Date | string
+    answers?: JsonFilter<"TestParticipantRecord">
+  }
+
   export type TestParticipantCreateWithoutRecordsInput = {
     id?: string
     firstTimeAt?: Date | string | null
@@ -63009,8 +62760,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
     test: TestCreateNestedOneWithoutParticipantsInput
     user: UserCreateNestedOneWithoutTestParticipantInput
   }
@@ -63024,112 +62773,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
   }
 
   export type TestParticipantCreateOrConnectWithoutRecordsInput = {
     where: TestParticipantWhereUniqueInput
     create: XOR<TestParticipantCreateWithoutRecordsInput, TestParticipantUncheckedCreateWithoutRecordsInput>
-  }
-
-  export type UserCreateWithoutTestRecordsInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutTestRecordsInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutTestRecordsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTestRecordsInput, UserUncheckedCreateWithoutTestRecordsInput>
   }
 
   export type TestParticipantUpsertWithoutRecordsInput = {
@@ -63150,8 +62798,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     test?: TestUpdateOneRequiredWithoutParticipantsNestedInput
     user?: UserUpdateOneRequiredWithoutTestParticipantNestedInput
   }
@@ -63165,113 +62811,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type UserUpsertWithoutTestRecordsInput = {
-    update: XOR<UserUpdateWithoutTestRecordsInput, UserUncheckedUpdateWithoutTestRecordsInput>
-    create: XOR<UserCreateWithoutTestRecordsInput, UserUncheckedCreateWithoutTestRecordsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTestRecordsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTestRecordsInput, UserUncheckedUpdateWithoutTestRecordsInput>
-  }
-
-  export type UserUpdateWithoutTestRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTestRecordsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type VoucherRedemeerCreateWithoutVoucherInput = {
@@ -63374,7 +62913,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -63421,7 +62959,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -63516,7 +63053,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -63563,7 +63099,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63802,7 +63337,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -63849,7 +63383,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -63912,7 +63445,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -63959,7 +63491,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64006,7 +63537,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -64053,7 +63583,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -64116,7 +63645,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -64163,7 +63691,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64183,12 +63710,12 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-    user?: UserCreateNestedOneWithoutMultiPlayerMemberInput
+    user: UserCreateNestedOneWithoutMultiPlayerMemberInput
   }
 
   export type MultiPlayerMemberUncheckedCreateWithoutRoomInput = {
     id?: string
-    userId?: string | null
+    userId: string
     point?: number
     bonusPoint?: number
     isReady?: boolean
@@ -64262,7 +63789,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    testRecords?: TestParticipantRecordCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -64309,7 +63835,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    testRecords?: TestParticipantRecordUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -64336,6 +63861,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    currentMember?: number
   }
 
   export type MultiplayerRoomUncheckedCreateWithoutMembersInput = {
@@ -64350,6 +63876,7 @@ export namespace Prisma {
     isEnded?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    currentMember?: number
   }
 
   export type MultiplayerRoomCreateOrConnectWithoutMembersInput = {
@@ -64405,7 +63932,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -64452,7 +63978,6 @@ export namespace Prisma {
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64485,6 +64010,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
   }
 
   export type MultiplayerRoomUncheckedUpdateWithoutMembersInput = {
@@ -64499,6 +64025,7 @@ export namespace Prisma {
     isEnded?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
   }
 
   export type CityCreateManyProvinceInput = {
@@ -64690,7 +64217,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -64737,7 +64263,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64995,7 +64520,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -65042,7 +64566,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -65252,7 +64775,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -65299,7 +64821,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -65450,7 +64971,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -65497,7 +65017,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -65573,7 +65092,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -65620,7 +65138,6 @@ export namespace Prisma {
     userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    testRecords?: TestParticipantRecordUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -65704,8 +65221,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
   }
 
   export type VoucherRedemeerCreateManyUserInput = {
@@ -65751,17 +65266,6 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-  }
-
-  export type TestParticipantRecordCreateManyUserInput = {
-    id?: string
-    participantId: string
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    score?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
   }
 
   export type SubLevelCreateManyUserInput = {
@@ -66050,8 +65554,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     test?: TestUpdateOneRequiredWithoutParticipantsNestedInput
     records?: TestParticipantRecordUpdateManyWithoutParticipantNestedInput
   }
@@ -66064,8 +65566,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     records?: TestParticipantRecordUncheckedUpdateManyWithoutParticipantNestedInput
   }
 
@@ -66077,8 +65577,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
   }
 
   export type VoucherRedemeerUpdateWithoutUserInput = {
@@ -66213,39 +65711,6 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type TestParticipantRecordUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    score?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    participant?: TestParticipantUpdateOneRequiredWithoutRecordsNestedInput
-  }
-
-  export type TestParticipantRecordUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    participantId?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    score?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-  }
-
-  export type TestParticipantRecordUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    participantId?: StringFieldUpdateOperationsInput | string
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    score?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
   }
 
   export type SubLevelUpdateWithoutUserInput = {
@@ -66552,6 +66017,7 @@ export namespace Prisma {
 
   export type BannerCreateManyAdminInput = {
     id?: string
+    thumbnailId: string
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -66651,6 +66117,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66662,6 +66129,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66673,6 +66141,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66942,8 +66411,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-    average?: number
-    lowscore?: number
   }
 
   export type TestParticipantUpdateWithoutTestInput = {
@@ -66953,8 +66420,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutTestParticipantNestedInput
     records?: TestParticipantRecordUpdateManyWithoutParticipantNestedInput
   }
@@ -66967,8 +66432,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
     records?: TestParticipantRecordUncheckedUpdateManyWithoutParticipantNestedInput
   }
 
@@ -66980,8 +66443,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-    average?: FloatFieldUpdateOperationsInput | number
-    lowscore?: FloatFieldUpdateOperationsInput | number
   }
 
   export type TestParticipantRecordCreateManyParticipantInput = {
@@ -66991,7 +66452,6 @@ export namespace Prisma {
     score?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId: string
     answers: JsonNullValueInput | InputJsonValue
   }
 
@@ -67003,7 +66463,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     answers?: JsonNullValueInput | InputJsonValue
-    user?: UserUpdateOneRequiredWithoutTestRecordsNestedInput
   }
 
   export type TestParticipantRecordUncheckedUpdateWithoutParticipantInput = {
@@ -67013,7 +66472,6 @@ export namespace Prisma {
     score?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
     answers?: JsonNullValueInput | InputJsonValue
   }
 
@@ -67024,7 +66482,6 @@ export namespace Prisma {
     score?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
     answers?: JsonNullValueInput | InputJsonValue
   }
 
@@ -67053,7 +66510,7 @@ export namespace Prisma {
 
   export type MultiPlayerMemberCreateManyRoomInput = {
     id?: string
-    userId?: string | null
+    userId: string
     point?: number
     bonusPoint?: number
     isReady?: boolean
@@ -67074,12 +66531,12 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneWithoutMultiPlayerMemberNestedInput
+    user?: UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput
   }
 
   export type MultiPlayerMemberUncheckedUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     isReady?: BoolFieldUpdateOperationsInput | boolean
@@ -67092,7 +66549,7 @@ export namespace Prisma {
 
   export type MultiPlayerMemberUncheckedUpdateManyWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     isReady?: BoolFieldUpdateOperationsInput | boolean
