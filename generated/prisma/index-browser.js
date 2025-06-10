@@ -150,17 +150,6 @@ exports.Prisma.SchoolScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.AccessContentScalarFieldEnum = {
-  id: 'id',
-  expired: 'expired',
-  quota: 'quota',
-  currentQuota: 'currentQuota',
-  ownerId: 'ownerId',
-  zones: 'zones',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   authId: 'authId',
@@ -446,58 +435,43 @@ exports.Prisma.VoucherRedemeerScalarFieldEnum = {
 
 exports.Prisma.AdminTransactionScalarFieldEnum = {
   id: 'id',
-  transactionName: 'transactionName',
+  name: 'name',
   status: 'status',
+  archived: 'archived',
   createdAt: 'createdAt',
-  expiredAt: 'expiredAt',
   updatedAt: 'updatedAt',
-  customerEmail: 'customerEmail',
-  customerName: 'customerName',
-  customerId: 'customerId',
+  adminId: 'adminId',
   quantity: 'quantity',
-  zones: 'zones'
+  subscriptionTime: 'subscriptionTime',
+  zones: 'zones',
+  transactionRef: 'transactionRef',
+  amount: 'amount',
+  description: 'description',
+  transactionImageId: 'transactionImageId',
+  transactionImageUrl: 'transactionImageUrl'
 };
 
-exports.Prisma.AdminTransactionArchiveScalarFieldEnum = {
+exports.Prisma.RedeemCodeScalarFieldEnum = {
   id: 'id',
-  transactionName: 'transactionName',
-  status: 'status',
-  createdAt: 'createdAt',
+  suspend: 'suspend',
+  transactionId: 'transactionId',
+  adminId: 'adminId',
+  code: 'code',
   expiredAt: 'expiredAt',
-  updatedAt: 'updatedAt',
-  customerEmail: 'customerEmail',
-  customerName: 'customerName',
-  customerId: 'customerId',
-  quantity: 'quantity',
-  zones: 'zones'
+  currentAmount: 'currentAmount',
+  maxAmount: 'maxAmount',
+  data: 'data',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.UserTransactionScalarFieldEnum = {
+exports.Prisma.CodeRedemeerScalarFieldEnum = {
   id: 'id',
-  transactionName: 'transactionName',
-  status: 'status',
+  banned: 'banned',
+  userId: 'userId',
+  codeId: 'codeId',
   createdAt: 'createdAt',
-  expiredAt: 'expiredAt',
-  updatedAt: 'updatedAt',
-  customerEmail: 'customerEmail',
-  customerName: 'customerName',
-  customerId: 'customerId',
-  quantity: 'quantity',
-  zones: 'zones'
-};
-
-exports.Prisma.UserTransactionArchiveScalarFieldEnum = {
-  id: 'id',
-  transactionName: 'transactionName',
-  status: 'status',
-  createdAt: 'createdAt',
-  expiredAt: 'expiredAt',
-  updatedAt: 'updatedAt',
-  customerEmail: 'customerEmail',
-  customerName: 'customerName',
-  customerId: 'customerId',
-  quantity: 'quantity',
-  zones: 'zones'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.MultiplayerRoomScalarFieldEnum = {
@@ -603,7 +577,6 @@ exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',
   School: 'School',
-  AccessContent: 'AccessContent',
   User: 'User',
   Zone: 'Zone',
   Level: 'Level',
@@ -628,9 +601,8 @@ exports.Prisma.ModelName = {
   Voucher: 'Voucher',
   VoucherRedemeer: 'VoucherRedemeer',
   AdminTransaction: 'AdminTransaction',
-  AdminTransactionArchive: 'AdminTransactionArchive',
-  UserTransaction: 'UserTransaction',
-  UserTransactionArchive: 'UserTransactionArchive',
+  RedeemCode: 'RedeemCode',
+  CodeRedemeer: 'CodeRedemeer',
   MultiplayerRoom: 'MultiplayerRoom',
   MultiPlayerMember: 'MultiPlayerMember'
 };

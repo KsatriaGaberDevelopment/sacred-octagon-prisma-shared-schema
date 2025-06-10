@@ -73,70 +73,54 @@ model School {
   @@index([cityId])
 }
 
-model AccessContent {
-  id           String   @id @default(cuid())
-  expired      DateTime
-  quota        Int
-  currentQuota Int
-  ownerId      String?
-  zones        String[]
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  owner        User?    @relation("AccessOwner", fields: [ownerId], references: [id])
-  userAccesses User[]
-  redemeers    User[]   @relation("AccessRedemeers")
-}
-
 model User {
-  id                     String                   @id @default(cuid())
-  authId                 String                   @unique
-  email                  String                   @unique
-  role                   Role                     @default(User)
-  suspend                Boolean                  @default(false)
-  accountType            AccountType              @default(Self)
-  firstTest              Boolean                  @default(false)
-  fullname               String                   @default("")
-  birthDate              DateTime?
-  grade                  Int                      @default(0)
-  lastGradeUpdateAt      DateTime?
-  schoolIdentity         String                   @unique
-  loginAt                DateTime?
-  logoutAt               DateTime?
-  playTime               Int                      @default(0)
-  characterUsed          String                   @default("")
-  inventory              Int[]                    @default([0, 0, 0])
-  schoolId               String?
-  cityId                 String?
-  provinceId             String?
-  adminId                String?                  @unique
-  createdAt              DateTime                 @default(now())
-  updatedAt              DateTime                 @updatedAt
-  username               String                   @unique
-  lastIdZoneUnlocked     String                   @default("")
-  lastIdZonePosition     String                   @default("")
-  ownedAccesses          AccessContent[]          @relation("AccessOwner")
-  city                   City?                    @relation(fields: [cityId], references: [id])
-  province               Province?                @relation(fields: [provinceId], references: [id])
-  school                 School?                  @relation(fields: [schoolId], references: [id])
-  admin                  Admin?                   @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  userAccesses           AccessContent[]
-  zones                  Zone[]
-  redeemedAccesses       AccessContent[]          @relation("AccessRedemeers")
-  userLogin              UserLogin[]
-  bannerVisitor          BannerVisitor[]
-  testParticipant        TestParticipant[]
-  voucherRedemeer        VoucherRedemeer[]
-  userTransactionArchive UserTransactionArchive[]
-  userTransaction        UserTransaction[]
-  multiPlayerMember      MultiPlayerMember[]
+  id                  String               @id @default(cuid())
+  authId              String               @unique
+  email               String               @unique
+  role                Role                 @default(User)
+  suspend             Boolean              @default(false)
+  accountType         AccountType          @default(Self)
+  firstTest           Boolean              @default(false)
+  fullname            String               @default("")
+  birthDate           DateTime?
+  grade               Int                  @default(0)
+  lastGradeUpdateAt   DateTime?
+  schoolIdentity      String               @unique
+  loginAt             DateTime?
+  logoutAt            DateTime?
+  playTime            Int                  @default(0)
+  characterUsed       String               @default("")
+  inventory           Int[]                @default([0, 0, 0])
+  schoolId            String?
+  cityId              String?
+  provinceId          String?
+  adminId             String?              @unique
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  username            String               @unique
+  lastIdZoneUnlocked  String               @default("")
+  lastIdZonePosition  String               @default("")
+  city                City?                @relation(fields: [cityId], references: [id])
+  province            Province?            @relation(fields: [provinceId], references: [id])
+  school              School?              @relation(fields: [schoolId], references: [id])
+  admin               Admin?               @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  zones               Zone[]
+  userLogin           UserLogin[]
+  bannerVisitor       BannerVisitor[]
+  testParticipant     TestParticipant[]
+  voucherRedemeer     VoucherRedemeer[]
+  //userTransactionArchive UserTransactionArchive[]
+  //userTransaction        UserTransaction[]
+  multiPlayerMember   MultiPlayerMember[]
   //testRecords            TestParticipantRecord[]
-  subLevels              SubLevel[]
-  innerLevels            InnerLevel[]
-  levels                 Level[]
-  gempos                 Gempo[]
-  championships          Championship[]
-  gempoRecords           GempoRecord[]
-  championshipRecords    ChampionshipRecord[]
+  subLevels           SubLevel[]
+  innerLevels         InnerLevel[]
+  levels              Level[]
+  gempos              Gempo[]
+  championships       Championship[]
+  gempoRecords        GempoRecord[]
+  championshipRecords ChampionshipRecord[]
+  redemeedCodes       CodeRedemeer[]
 
   @@index([authId])
 }
@@ -325,27 +309,29 @@ model UserLogin {
 }
 
 model Admin {
-  id                      String                    @id @default(cuid())
-  authId                  String                    @unique
-  email                   String                    @unique
-  name                    String
-  suspend                 Boolean                   @default(false)
-  role                    Role?
-  user                    User?
-  provinceId              String?
-  cityId                  String?
-  schoolId                String?
-  province                Province?                 @relation(fields: [provinceId], references: [id])
-  city                    City?                     @relation(fields: [cityId], references: [id])
-  school                  School?                   @relation(fields: [schoolId], references: [id])
-  authority               AdminAuthority[]
-  createdAt               DateTime                  @default(now())
-  updatedAt               DateTime                  @updatedAt
-  operationHistories      AdminOperationHistory[]   @relation("OperationHistory")
-  operations              AdminOperationHistory[]   @relation("Operations")
-  banner                  Banner[]
-  adminTransaction        AdminTransaction[]
-  adminTransactionArchive AdminTransactionArchive[]
+  id                 String                  @id @default(cuid())
+  authId             String                  @unique
+  email              String                  @unique
+  name               String
+  suspend            Boolean                 @default(false)
+  role               Role?
+  user               User?
+  provinceId         String?
+  cityId             String?
+  schoolId           String?
+  province           Province?               @relation(fields: [provinceId], references: [id])
+  city               City?                   @relation(fields: [cityId], references: [id])
+  school             School?                 @relation(fields: [schoolId], references: [id])
+  authority          AdminAuthority[]
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  operationHistories AdminOperationHistory[] @relation("OperationHistory")
+  operations         AdminOperationHistory[] @relation("Operations")
+  banner             Banner[]
+  adminTransaction   AdminTransaction[]
+  //adminTransactionArchive AdminTransactionArchive[]
+
+  RedeemCode RedeemCode[]
 }
 
 model AdminOperationHistory {
@@ -372,14 +358,13 @@ model AdminAuthority {
 }
 
 model Banner {
-  id          String    @id @default(cuid())
-  thumbnailId String
-  thumbnail   String
-  link        String?
-  startedAt   DateTime?
-  endedAt     DateTime?
-  isHide      Boolean   @default(false)
-
+  id             String           @id @default(cuid())
+  thumbnailId    String
+  thumbnail      String
+  link           String?
+  startedAt      DateTime?
+  endedAt        DateTime?
+  isHide         Boolean          @default(false)
   visitors       BannerVisitor[]
   adminId        String
   admin          Admin            @relation(fields: [adminId], references: [id])
@@ -503,64 +488,105 @@ model VoucherRedemeer {
 }
 
 model AdminTransaction {
-  id              String   @id @default(cuid())
-  transactionName String
-  status          String
-  createdAt       DateTime @default(now())
-  expiredAt       DateTime
-  updatedAt       DateTime @updatedAt
-  customerEmail   String
-  customerName    String
-  customerId      String
-  customer        Admin    @relation(fields: [customerId], references: [id])
-  quantity        Int      @default(0)
-  zones           String[]
+  id                  String      @id @default(cuid())
+  name                String
+  status              String
+  archived            Boolean     @default(false)
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  adminId             String
+  admin               Admin       @relation(fields: [adminId], references: [id])
+  quantity            Int         @default(0)
+  subscriptionTime    Int
+  zones               String[]
+  transactionRef      Int?
+  amount              Int
+  description         String?
+  transactionImageId  String?
+  transactionImageUrl String?
+  redeemCode          RedeemCode?
 }
 
-model AdminTransactionArchive {
-  id              String   @id @default(cuid())
-  transactionName String
-  status          String
-  createdAt       DateTime @default(now())
-  expiredAt       DateTime
-  updatedAt       DateTime @updatedAt
-  customerEmail   String
-  customerName    String
-  customerId      String
-  customer        Admin    @relation(fields: [customerId], references: [id])
-  quantity        Int      @default(0)
-  zones           String[]
+model RedeemCode {
+  id            String           @id @default(cuid())
+  suspend       Boolean          @default(false)
+  transactionId String           @unique
+  transaction   AdminTransaction @relation(fields: [transactionId], references: [id])
+  adminId       String
+  admin         Admin            @relation(fields: [adminId], references: [id])
+  redemeers     CodeRedemeer[]
+  code          String           @unique
+  expiredAt     DateTime
+  currentAmount Int
+  maxAmount     Int
+  data          String[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([adminId])
 }
 
-model UserTransaction {
-  id              String   @id @default(cuid())
-  transactionName String
-  status          String
-  createdAt       DateTime @default(now())
-  expiredAt       DateTime
-  updatedAt       DateTime @updatedAt
-  customerEmail   String
-  customerName    String
-  customerId      String
-  customer        User     @relation(fields: [customerId], references: [id])
-  quantity        Int      @default(0)
-  zones           String[]
+model CodeRedemeer {
+  id        String     @id @default(cuid())
+  banned    Boolean    @default(false)
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+  codeId    String
+  code      RedeemCode @relation(fields: [codeId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([codeId])
+  @@index([userId])
+  @@index([banned])
+  @@index([codeId, userId])
+  @@index([codeId, banned])
 }
 
-model UserTransactionArchive {
-  id              String   @id @default(cuid())
-  transactionName String
-  status          String
-  createdAt       DateTime @default(now())
-  expiredAt       DateTime
-  updatedAt       DateTime @updatedAt
-  customerEmail   String
-  customerName    String
-  customerId      String
-  customer        User     @relation(fields: [customerId], references: [id])
-  quantity        Int      @default(0)
-  zones           String[]
-}
+// model AdminTransactionArchive {
+//   id              String   @id @default(cuid())
+//   transactionName String
+//   status          String
+//   createdAt       DateTime @default(now())
+//   expiredAt       DateTime
+//   updatedAt       DateTime @updatedAt
+//   customerEmail   String
+//   customerName    String
+//   customerId      String
+//   customer        Admin    @relation(fields: [customerId], references: [id])
+//   quantity        Int      @default(0)
+//   zones           String[]
+// }
+
+// model UserTransaction {
+//   id              String   @id @default(cuid())
+//   transactionName String
+//   status          String
+//   createdAt       DateTime @default(now())
+//   expiredAt       DateTime
+//   updatedAt       DateTime @updatedAt
+//   customerEmail   String
+//   customerName    String
+//   customerId      String
+//   customer        User     @relation(fields: [customerId], references: [id])
+//   quantity        Int      @default(0)
+//   zones           String[]
+// }
+
+// model UserTransactionArchive {
+//   id              String   @id @default(cuid())
+//   transactionName String
+//   status          String
+//   createdAt       DateTime @default(now())
+//   expiredAt       DateTime
+//   updatedAt       DateTime @updatedAt
+//   customerEmail   String
+//   customerName    String
+//   customerId      String
+//   customer        User     @relation(fields: [customerId], references: [id])
+//   quantity        Int      @default(0)
+//   zones           String[]
+// }
 
 model MultiplayerRoom {
   id            String              @id @default(cuid())

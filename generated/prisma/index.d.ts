@@ -29,11 +29,6 @@ export type City = $Result.DefaultSelection<Prisma.$CityPayload>
  */
 export type School = $Result.DefaultSelection<Prisma.$SchoolPayload>
 /**
- * Model AccessContent
- * 
- */
-export type AccessContent = $Result.DefaultSelection<Prisma.$AccessContentPayload>
-/**
  * Model User
  * 
  */
@@ -154,20 +149,15 @@ export type VoucherRedemeer = $Result.DefaultSelection<Prisma.$VoucherRedemeerPa
  */
 export type AdminTransaction = $Result.DefaultSelection<Prisma.$AdminTransactionPayload>
 /**
- * Model AdminTransactionArchive
+ * Model RedeemCode
  * 
  */
-export type AdminTransactionArchive = $Result.DefaultSelection<Prisma.$AdminTransactionArchivePayload>
+export type RedeemCode = $Result.DefaultSelection<Prisma.$RedeemCodePayload>
 /**
- * Model UserTransaction
+ * Model CodeRedemeer
  * 
  */
-export type UserTransaction = $Result.DefaultSelection<Prisma.$UserTransactionPayload>
-/**
- * Model UserTransactionArchive
- * 
- */
-export type UserTransactionArchive = $Result.DefaultSelection<Prisma.$UserTransactionArchivePayload>
+export type CodeRedemeer = $Result.DefaultSelection<Prisma.$CodeRedemeerPayload>
 /**
  * Model MultiplayerRoom
  * 
@@ -435,16 +425,6 @@ export class PrismaClient<
   get school(): Prisma.SchoolDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.accessContent`: Exposes CRUD operations for the **AccessContent** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more AccessContents
-    * const accessContents = await prisma.accessContent.findMany()
-    * ```
-    */
-  get accessContent(): Prisma.AccessContentDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -685,34 +665,24 @@ export class PrismaClient<
   get adminTransaction(): Prisma.AdminTransactionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.adminTransactionArchive`: Exposes CRUD operations for the **AdminTransactionArchive** model.
+   * `prisma.redeemCode`: Exposes CRUD operations for the **RedeemCode** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more AdminTransactionArchives
-    * const adminTransactionArchives = await prisma.adminTransactionArchive.findMany()
+    * // Fetch zero or more RedeemCodes
+    * const redeemCodes = await prisma.redeemCode.findMany()
     * ```
     */
-  get adminTransactionArchive(): Prisma.AdminTransactionArchiveDelegate<ExtArgs, ClientOptions>;
+  get redeemCode(): Prisma.RedeemCodeDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userTransaction`: Exposes CRUD operations for the **UserTransaction** model.
+   * `prisma.codeRedemeer`: Exposes CRUD operations for the **CodeRedemeer** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserTransactions
-    * const userTransactions = await prisma.userTransaction.findMany()
+    * // Fetch zero or more CodeRedemeers
+    * const codeRedemeers = await prisma.codeRedemeer.findMany()
     * ```
     */
-  get userTransaction(): Prisma.UserTransactionDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.userTransactionArchive`: Exposes CRUD operations for the **UserTransactionArchive** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more UserTransactionArchives
-    * const userTransactionArchives = await prisma.userTransactionArchive.findMany()
-    * ```
-    */
-  get userTransactionArchive(): Prisma.UserTransactionArchiveDelegate<ExtArgs, ClientOptions>;
+  get codeRedemeer(): Prisma.CodeRedemeerDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.multiplayerRoom`: Exposes CRUD operations for the **MultiplayerRoom** model.
@@ -1176,7 +1146,6 @@ export namespace Prisma {
     Province: 'Province',
     City: 'City',
     School: 'School',
-    AccessContent: 'AccessContent',
     User: 'User',
     Zone: 'Zone',
     Level: 'Level',
@@ -1201,9 +1170,8 @@ export namespace Prisma {
     Voucher: 'Voucher',
     VoucherRedemeer: 'VoucherRedemeer',
     AdminTransaction: 'AdminTransaction',
-    AdminTransactionArchive: 'AdminTransactionArchive',
-    UserTransaction: 'UserTransaction',
-    UserTransactionArchive: 'UserTransactionArchive',
+    RedeemCode: 'RedeemCode',
+    CodeRedemeer: 'CodeRedemeer',
     MultiplayerRoom: 'MultiplayerRoom',
     MultiPlayerMember: 'MultiPlayerMember'
   };
@@ -1224,7 +1192,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "accessContent" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "adminTransactionArchive" | "userTransaction" | "userTransactionArchive" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1447,80 +1415,6 @@ export namespace Prisma {
           count: {
             args: Prisma.SchoolCountArgs<ExtArgs>
             result: $Utils.Optional<SchoolCountAggregateOutputType> | number
-          }
-        }
-      }
-      AccessContent: {
-        payload: Prisma.$AccessContentPayload<ExtArgs>
-        fields: Prisma.AccessContentFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.AccessContentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.AccessContentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          findFirst: {
-            args: Prisma.AccessContentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.AccessContentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          findMany: {
-            args: Prisma.AccessContentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>[]
-          }
-          create: {
-            args: Prisma.AccessContentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          createMany: {
-            args: Prisma.AccessContentCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.AccessContentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>[]
-          }
-          delete: {
-            args: Prisma.AccessContentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          update: {
-            args: Prisma.AccessContentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          deleteMany: {
-            args: Prisma.AccessContentDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.AccessContentUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.AccessContentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>[]
-          }
-          upsert: {
-            args: Prisma.AccessContentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccessContentPayload>
-          }
-          aggregate: {
-            args: Prisma.AccessContentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAccessContent>
-          }
-          groupBy: {
-            args: Prisma.AccessContentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AccessContentGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.AccessContentCountArgs<ExtArgs>
-            result: $Utils.Optional<AccessContentCountAggregateOutputType> | number
           }
         }
       }
@@ -3300,225 +3194,151 @@ export namespace Prisma {
           }
         }
       }
-      AdminTransactionArchive: {
-        payload: Prisma.$AdminTransactionArchivePayload<ExtArgs>
-        fields: Prisma.AdminTransactionArchiveFieldRefs
+      RedeemCode: {
+        payload: Prisma.$RedeemCodePayload<ExtArgs>
+        fields: Prisma.RedeemCodeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AdminTransactionArchiveFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload> | null
+            args: Prisma.RedeemCodeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AdminTransactionArchiveFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           findFirst: {
-            args: Prisma.AdminTransactionArchiveFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload> | null
+            args: Prisma.RedeemCodeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AdminTransactionArchiveFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           findMany: {
-            args: Prisma.AdminTransactionArchiveFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>[]
+            args: Prisma.RedeemCodeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>[]
           }
           create: {
-            args: Prisma.AdminTransactionArchiveCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           createMany: {
-            args: Prisma.AdminTransactionArchiveCreateManyArgs<ExtArgs>
+            args: Prisma.RedeemCodeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AdminTransactionArchiveCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>[]
+            args: Prisma.RedeemCodeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>[]
           }
           delete: {
-            args: Prisma.AdminTransactionArchiveDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           update: {
-            args: Prisma.AdminTransactionArchiveUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           deleteMany: {
-            args: Prisma.AdminTransactionArchiveDeleteManyArgs<ExtArgs>
+            args: Prisma.RedeemCodeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AdminTransactionArchiveUpdateManyArgs<ExtArgs>
+            args: Prisma.RedeemCodeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AdminTransactionArchiveUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>[]
+            args: Prisma.RedeemCodeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>[]
           }
           upsert: {
-            args: Prisma.AdminTransactionArchiveUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AdminTransactionArchivePayload>
+            args: Prisma.RedeemCodeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedeemCodePayload>
           }
           aggregate: {
-            args: Prisma.AdminTransactionArchiveAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAdminTransactionArchive>
+            args: Prisma.RedeemCodeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRedeemCode>
           }
           groupBy: {
-            args: Prisma.AdminTransactionArchiveGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AdminTransactionArchiveGroupByOutputType>[]
+            args: Prisma.RedeemCodeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RedeemCodeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AdminTransactionArchiveCountArgs<ExtArgs>
-            result: $Utils.Optional<AdminTransactionArchiveCountAggregateOutputType> | number
+            args: Prisma.RedeemCodeCountArgs<ExtArgs>
+            result: $Utils.Optional<RedeemCodeCountAggregateOutputType> | number
           }
         }
       }
-      UserTransaction: {
-        payload: Prisma.$UserTransactionPayload<ExtArgs>
-        fields: Prisma.UserTransactionFieldRefs
+      CodeRedemeer: {
+        payload: Prisma.$CodeRedemeerPayload<ExtArgs>
+        fields: Prisma.CodeRedemeerFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserTransactionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload> | null
+            args: Prisma.CodeRedemeerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserTransactionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           findFirst: {
-            args: Prisma.UserTransactionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload> | null
+            args: Prisma.CodeRedemeerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserTransactionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           findMany: {
-            args: Prisma.UserTransactionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>[]
+            args: Prisma.CodeRedemeerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
           }
           create: {
-            args: Prisma.UserTransactionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           createMany: {
-            args: Prisma.UserTransactionCreateManyArgs<ExtArgs>
+            args: Prisma.CodeRedemeerCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserTransactionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>[]
+            args: Prisma.CodeRedemeerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
           }
           delete: {
-            args: Prisma.UserTransactionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           update: {
-            args: Prisma.UserTransactionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           deleteMany: {
-            args: Prisma.UserTransactionDeleteManyArgs<ExtArgs>
+            args: Prisma.CodeRedemeerDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserTransactionUpdateManyArgs<ExtArgs>
+            args: Prisma.CodeRedemeerUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserTransactionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>[]
+            args: Prisma.CodeRedemeerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
           }
           upsert: {
-            args: Prisma.UserTransactionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionPayload>
+            args: Prisma.CodeRedemeerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
           }
           aggregate: {
-            args: Prisma.UserTransactionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserTransaction>
+            args: Prisma.CodeRedemeerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodeRedemeer>
           }
           groupBy: {
-            args: Prisma.UserTransactionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserTransactionGroupByOutputType>[]
+            args: Prisma.CodeRedemeerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodeRedemeerGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserTransactionCountArgs<ExtArgs>
-            result: $Utils.Optional<UserTransactionCountAggregateOutputType> | number
-          }
-        }
-      }
-      UserTransactionArchive: {
-        payload: Prisma.$UserTransactionArchivePayload<ExtArgs>
-        fields: Prisma.UserTransactionArchiveFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.UserTransactionArchiveFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.UserTransactionArchiveFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          findFirst: {
-            args: Prisma.UserTransactionArchiveFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.UserTransactionArchiveFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          findMany: {
-            args: Prisma.UserTransactionArchiveFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>[]
-          }
-          create: {
-            args: Prisma.UserTransactionArchiveCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          createMany: {
-            args: Prisma.UserTransactionArchiveCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.UserTransactionArchiveCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>[]
-          }
-          delete: {
-            args: Prisma.UserTransactionArchiveDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          update: {
-            args: Prisma.UserTransactionArchiveUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          deleteMany: {
-            args: Prisma.UserTransactionArchiveDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.UserTransactionArchiveUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.UserTransactionArchiveUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>[]
-          }
-          upsert: {
-            args: Prisma.UserTransactionArchiveUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserTransactionArchivePayload>
-          }
-          aggregate: {
-            args: Prisma.UserTransactionArchiveAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserTransactionArchive>
-          }
-          groupBy: {
-            args: Prisma.UserTransactionArchiveGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserTransactionArchiveGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.UserTransactionArchiveCountArgs<ExtArgs>
-            result: $Utils.Optional<UserTransactionArchiveCountAggregateOutputType> | number
+            args: Prisma.CodeRedemeerCountArgs<ExtArgs>
+            result: $Utils.Optional<CodeRedemeerCountAggregateOutputType> | number
           }
         }
       }
@@ -3757,7 +3577,6 @@ export namespace Prisma {
     province?: ProvinceOmit
     city?: CityOmit
     school?: SchoolOmit
-    accessContent?: AccessContentOmit
     user?: UserOmit
     zone?: ZoneOmit
     level?: LevelOmit
@@ -3782,9 +3601,8 @@ export namespace Prisma {
     voucher?: VoucherOmit
     voucherRedemeer?: VoucherRedemeerOmit
     adminTransaction?: AdminTransactionOmit
-    adminTransactionArchive?: AdminTransactionArchiveOmit
-    userTransaction?: UserTransactionOmit
-    userTransactionArchive?: UserTransactionArchiveOmit
+    redeemCode?: RedeemCodeOmit
+    codeRedemeer?: CodeRedemeerOmit
     multiplayerRoom?: MultiplayerRoomOmit
     multiPlayerMember?: MultiPlayerMemberOmit
   }
@@ -4069,60 +3887,15 @@ export namespace Prisma {
 
 
   /**
-   * Count Type AccessContentCountOutputType
-   */
-
-  export type AccessContentCountOutputType = {
-    userAccesses: number
-    redemeers: number
-  }
-
-  export type AccessContentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userAccesses?: boolean | AccessContentCountOutputTypeCountUserAccessesArgs
-    redemeers?: boolean | AccessContentCountOutputTypeCountRedemeersArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AccessContentCountOutputType without action
-   */
-  export type AccessContentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContentCountOutputType
-     */
-    select?: AccessContentCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AccessContentCountOutputType without action
-   */
-  export type AccessContentCountOutputTypeCountUserAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-  /**
-   * AccessContentCountOutputType without action
-   */
-  export type AccessContentCountOutputTypeCountRedemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-
-  /**
    * Count Type UserCountOutputType
    */
 
   export type UserCountOutputType = {
-    ownedAccesses: number
-    userAccesses: number
     zones: number
-    redeemedAccesses: number
     userLogin: number
     bannerVisitor: number
     testParticipant: number
     voucherRedemeer: number
-    userTransactionArchive: number
-    userTransaction: number
     multiPlayerMember: number
     subLevels: number
     innerLevels: number
@@ -4131,19 +3904,15 @@ export namespace Prisma {
     championships: number
     gempoRecords: number
     championshipRecords: number
+    redemeedCodes: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ownedAccesses?: boolean | UserCountOutputTypeCountOwnedAccessesArgs
-    userAccesses?: boolean | UserCountOutputTypeCountUserAccessesArgs
     zones?: boolean | UserCountOutputTypeCountZonesArgs
-    redeemedAccesses?: boolean | UserCountOutputTypeCountRedeemedAccessesArgs
     userLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
     bannerVisitor?: boolean | UserCountOutputTypeCountBannerVisitorArgs
     testParticipant?: boolean | UserCountOutputTypeCountTestParticipantArgs
     voucherRedemeer?: boolean | UserCountOutputTypeCountVoucherRedemeerArgs
-    userTransactionArchive?: boolean | UserCountOutputTypeCountUserTransactionArchiveArgs
-    userTransaction?: boolean | UserCountOutputTypeCountUserTransactionArgs
     multiPlayerMember?: boolean | UserCountOutputTypeCountMultiPlayerMemberArgs
     subLevels?: boolean | UserCountOutputTypeCountSubLevelsArgs
     innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
@@ -4152,6 +3921,7 @@ export namespace Prisma {
     championships?: boolean | UserCountOutputTypeCountChampionshipsArgs
     gempoRecords?: boolean | UserCountOutputTypeCountGempoRecordsArgs
     championshipRecords?: boolean | UserCountOutputTypeCountChampionshipRecordsArgs
+    redemeedCodes?: boolean | UserCountOutputTypeCountRedemeedCodesArgs
   }
 
   // Custom InputTypes
@@ -4168,29 +3938,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountOwnedAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccessContentWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUserAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccessContentWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountZonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ZoneWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountRedeemedAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccessContentWhereInput
   }
 
   /**
@@ -4219,20 +3968,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountVoucherRedemeerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: VoucherRedemeerWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUserTransactionArchiveArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserTransactionArchiveWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUserTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserTransactionWhereInput
   }
 
   /**
@@ -4291,6 +4026,13 @@ export namespace Prisma {
     where?: ChampionshipRecordWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRedemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeRedemeerWhereInput
+  }
+
 
   /**
    * Count Type AdminCountOutputType
@@ -4302,7 +4044,7 @@ export namespace Prisma {
     operations: number
     banner: number
     adminTransaction: number
-    adminTransactionArchive: number
+    RedeemCode: number
   }
 
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4311,7 +4053,7 @@ export namespace Prisma {
     operations?: boolean | AdminCountOutputTypeCountOperationsArgs
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
     adminTransaction?: boolean | AdminCountOutputTypeCountAdminTransactionArgs
-    adminTransactionArchive?: boolean | AdminCountOutputTypeCountAdminTransactionArchiveArgs
+    RedeemCode?: boolean | AdminCountOutputTypeCountRedeemCodeArgs
   }
 
   // Custom InputTypes
@@ -4363,8 +4105,8 @@ export namespace Prisma {
   /**
    * AdminCountOutputType without action
    */
-  export type AdminCountOutputTypeCountAdminTransactionArchiveArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AdminTransactionArchiveWhereInput
+  export type AdminCountOutputTypeCountRedeemCodeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RedeemCodeWhereInput
   }
 
 
@@ -4569,6 +4311,37 @@ export namespace Prisma {
    */
   export type VoucherCountOutputTypeCountRedemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: VoucherRedemeerWhereInput
+  }
+
+
+  /**
+   * Count Type RedeemCodeCountOutputType
+   */
+
+  export type RedeemCodeCountOutputType = {
+    redemeers: number
+  }
+
+  export type RedeemCodeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    redemeers?: boolean | RedeemCodeCountOutputTypeCountRedemeersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RedeemCodeCountOutputType without action
+   */
+  export type RedeemCodeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RedeemCodeCountOutputType
+     */
+    select?: RedeemCodeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RedeemCodeCountOutputType without action
+   */
+  export type RedeemCodeCountOutputTypeCountRedemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeRedemeerWhereInput
   }
 
 
@@ -8401,1214 +8174,6 @@ export namespace Prisma {
 
 
   /**
-   * Model AccessContent
-   */
-
-  export type AggregateAccessContent = {
-    _count: AccessContentCountAggregateOutputType | null
-    _avg: AccessContentAvgAggregateOutputType | null
-    _sum: AccessContentSumAggregateOutputType | null
-    _min: AccessContentMinAggregateOutputType | null
-    _max: AccessContentMaxAggregateOutputType | null
-  }
-
-  export type AccessContentAvgAggregateOutputType = {
-    quota: number | null
-    currentQuota: number | null
-  }
-
-  export type AccessContentSumAggregateOutputType = {
-    quota: number | null
-    currentQuota: number | null
-  }
-
-  export type AccessContentMinAggregateOutputType = {
-    id: string | null
-    expired: Date | null
-    quota: number | null
-    currentQuota: number | null
-    ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type AccessContentMaxAggregateOutputType = {
-    id: string | null
-    expired: Date | null
-    quota: number | null
-    currentQuota: number | null
-    ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type AccessContentCountAggregateOutputType = {
-    id: number
-    expired: number
-    quota: number
-    currentQuota: number
-    ownerId: number
-    zones: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type AccessContentAvgAggregateInputType = {
-    quota?: true
-    currentQuota?: true
-  }
-
-  export type AccessContentSumAggregateInputType = {
-    quota?: true
-    currentQuota?: true
-  }
-
-  export type AccessContentMinAggregateInputType = {
-    id?: true
-    expired?: true
-    quota?: true
-    currentQuota?: true
-    ownerId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type AccessContentMaxAggregateInputType = {
-    id?: true
-    expired?: true
-    quota?: true
-    currentQuota?: true
-    ownerId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type AccessContentCountAggregateInputType = {
-    id?: true
-    expired?: true
-    quota?: true
-    currentQuota?: true
-    ownerId?: true
-    zones?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type AccessContentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AccessContent to aggregate.
-     */
-    where?: AccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AccessContents to fetch.
-     */
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: AccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned AccessContents
-    **/
-    _count?: true | AccessContentCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: AccessContentAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AccessContentSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AccessContentMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AccessContentMaxAggregateInputType
-  }
-
-  export type GetAccessContentAggregateType<T extends AccessContentAggregateArgs> = {
-        [P in keyof T & keyof AggregateAccessContent]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAccessContent[P]>
-      : GetScalarType<T[P], AggregateAccessContent[P]>
-  }
-
-
-
-
-  export type AccessContentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccessContentWhereInput
-    orderBy?: AccessContentOrderByWithAggregationInput | AccessContentOrderByWithAggregationInput[]
-    by: AccessContentScalarFieldEnum[] | AccessContentScalarFieldEnum
-    having?: AccessContentScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AccessContentCountAggregateInputType | true
-    _avg?: AccessContentAvgAggregateInputType
-    _sum?: AccessContentSumAggregateInputType
-    _min?: AccessContentMinAggregateInputType
-    _max?: AccessContentMaxAggregateInputType
-  }
-
-  export type AccessContentGroupByOutputType = {
-    id: string
-    expired: Date
-    quota: number
-    currentQuota: number
-    ownerId: string | null
-    zones: string[]
-    createdAt: Date
-    updatedAt: Date
-    _count: AccessContentCountAggregateOutputType | null
-    _avg: AccessContentAvgAggregateOutputType | null
-    _sum: AccessContentSumAggregateOutputType | null
-    _min: AccessContentMinAggregateOutputType | null
-    _max: AccessContentMaxAggregateOutputType | null
-  }
-
-  type GetAccessContentGroupByPayload<T extends AccessContentGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AccessContentGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AccessContentGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AccessContentGroupByOutputType[P]>
-            : GetScalarType<T[P], AccessContentGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type AccessContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    expired?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    ownerId?: boolean
-    zones?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-    userAccesses?: boolean | AccessContent$userAccessesArgs<ExtArgs>
-    redemeers?: boolean | AccessContent$redemeersArgs<ExtArgs>
-    _count?: boolean | AccessContentCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["accessContent"]>
-
-  export type AccessContentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    expired?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    ownerId?: boolean
-    zones?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-  }, ExtArgs["result"]["accessContent"]>
-
-  export type AccessContentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    expired?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    ownerId?: boolean
-    zones?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-  }, ExtArgs["result"]["accessContent"]>
-
-  export type AccessContentSelectScalar = {
-    id?: boolean
-    expired?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    ownerId?: boolean
-    zones?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type AccessContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "expired" | "quota" | "currentQuota" | "ownerId" | "zones" | "createdAt" | "updatedAt", ExtArgs["result"]["accessContent"]>
-  export type AccessContentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-    userAccesses?: boolean | AccessContent$userAccessesArgs<ExtArgs>
-    redemeers?: boolean | AccessContent$redemeersArgs<ExtArgs>
-    _count?: boolean | AccessContentCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type AccessContentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-  }
-  export type AccessContentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    owner?: boolean | AccessContent$ownerArgs<ExtArgs>
-  }
-
-  export type $AccessContentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AccessContent"
-    objects: {
-      owner: Prisma.$UserPayload<ExtArgs> | null
-      userAccesses: Prisma.$UserPayload<ExtArgs>[]
-      redemeers: Prisma.$UserPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      expired: Date
-      quota: number
-      currentQuota: number
-      ownerId: string | null
-      zones: string[]
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["accessContent"]>
-    composites: {}
-  }
-
-  type AccessContentGetPayload<S extends boolean | null | undefined | AccessContentDefaultArgs> = $Result.GetResult<Prisma.$AccessContentPayload, S>
-
-  type AccessContentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AccessContentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AccessContentCountAggregateInputType | true
-    }
-
-  export interface AccessContentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AccessContent'], meta: { name: 'AccessContent' } }
-    /**
-     * Find zero or one AccessContent that matches the filter.
-     * @param {AccessContentFindUniqueArgs} args - Arguments to find a AccessContent
-     * @example
-     * // Get one AccessContent
-     * const accessContent = await prisma.accessContent.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends AccessContentFindUniqueArgs>(args: SelectSubset<T, AccessContentFindUniqueArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one AccessContent that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {AccessContentFindUniqueOrThrowArgs} args - Arguments to find a AccessContent
-     * @example
-     * // Get one AccessContent
-     * const accessContent = await prisma.accessContent.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends AccessContentFindUniqueOrThrowArgs>(args: SelectSubset<T, AccessContentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AccessContent that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentFindFirstArgs} args - Arguments to find a AccessContent
-     * @example
-     * // Get one AccessContent
-     * const accessContent = await prisma.accessContent.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends AccessContentFindFirstArgs>(args?: SelectSubset<T, AccessContentFindFirstArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first AccessContent that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentFindFirstOrThrowArgs} args - Arguments to find a AccessContent
-     * @example
-     * // Get one AccessContent
-     * const accessContent = await prisma.accessContent.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends AccessContentFindFirstOrThrowArgs>(args?: SelectSubset<T, AccessContentFindFirstOrThrowArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more AccessContents that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all AccessContents
-     * const accessContents = await prisma.accessContent.findMany()
-     * 
-     * // Get first 10 AccessContents
-     * const accessContents = await prisma.accessContent.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const accessContentWithIdOnly = await prisma.accessContent.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends AccessContentFindManyArgs>(args?: SelectSubset<T, AccessContentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a AccessContent.
-     * @param {AccessContentCreateArgs} args - Arguments to create a AccessContent.
-     * @example
-     * // Create one AccessContent
-     * const AccessContent = await prisma.accessContent.create({
-     *   data: {
-     *     // ... data to create a AccessContent
-     *   }
-     * })
-     * 
-     */
-    create<T extends AccessContentCreateArgs>(args: SelectSubset<T, AccessContentCreateArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many AccessContents.
-     * @param {AccessContentCreateManyArgs} args - Arguments to create many AccessContents.
-     * @example
-     * // Create many AccessContents
-     * const accessContent = await prisma.accessContent.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends AccessContentCreateManyArgs>(args?: SelectSubset<T, AccessContentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many AccessContents and returns the data saved in the database.
-     * @param {AccessContentCreateManyAndReturnArgs} args - Arguments to create many AccessContents.
-     * @example
-     * // Create many AccessContents
-     * const accessContent = await prisma.accessContent.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many AccessContents and only return the `id`
-     * const accessContentWithIdOnly = await prisma.accessContent.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends AccessContentCreateManyAndReturnArgs>(args?: SelectSubset<T, AccessContentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a AccessContent.
-     * @param {AccessContentDeleteArgs} args - Arguments to delete one AccessContent.
-     * @example
-     * // Delete one AccessContent
-     * const AccessContent = await prisma.accessContent.delete({
-     *   where: {
-     *     // ... filter to delete one AccessContent
-     *   }
-     * })
-     * 
-     */
-    delete<T extends AccessContentDeleteArgs>(args: SelectSubset<T, AccessContentDeleteArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one AccessContent.
-     * @param {AccessContentUpdateArgs} args - Arguments to update one AccessContent.
-     * @example
-     * // Update one AccessContent
-     * const accessContent = await prisma.accessContent.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends AccessContentUpdateArgs>(args: SelectSubset<T, AccessContentUpdateArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more AccessContents.
-     * @param {AccessContentDeleteManyArgs} args - Arguments to filter AccessContents to delete.
-     * @example
-     * // Delete a few AccessContents
-     * const { count } = await prisma.accessContent.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends AccessContentDeleteManyArgs>(args?: SelectSubset<T, AccessContentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AccessContents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many AccessContents
-     * const accessContent = await prisma.accessContent.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends AccessContentUpdateManyArgs>(args: SelectSubset<T, AccessContentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more AccessContents and returns the data updated in the database.
-     * @param {AccessContentUpdateManyAndReturnArgs} args - Arguments to update many AccessContents.
-     * @example
-     * // Update many AccessContents
-     * const accessContent = await prisma.accessContent.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more AccessContents and only return the `id`
-     * const accessContentWithIdOnly = await prisma.accessContent.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends AccessContentUpdateManyAndReturnArgs>(args: SelectSubset<T, AccessContentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one AccessContent.
-     * @param {AccessContentUpsertArgs} args - Arguments to update or create a AccessContent.
-     * @example
-     * // Update or create a AccessContent
-     * const accessContent = await prisma.accessContent.upsert({
-     *   create: {
-     *     // ... data to create a AccessContent
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the AccessContent we want to update
-     *   }
-     * })
-     */
-    upsert<T extends AccessContentUpsertArgs>(args: SelectSubset<T, AccessContentUpsertArgs<ExtArgs>>): Prisma__AccessContentClient<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of AccessContents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentCountArgs} args - Arguments to filter AccessContents to count.
-     * @example
-     * // Count the number of AccessContents
-     * const count = await prisma.accessContent.count({
-     *   where: {
-     *     // ... the filter for the AccessContents we want to count
-     *   }
-     * })
-    **/
-    count<T extends AccessContentCountArgs>(
-      args?: Subset<T, AccessContentCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AccessContentCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a AccessContent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AccessContentAggregateArgs>(args: Subset<T, AccessContentAggregateArgs>): Prisma.PrismaPromise<GetAccessContentAggregateType<T>>
-
-    /**
-     * Group by AccessContent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccessContentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends AccessContentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AccessContentGroupByArgs['orderBy'] }
-        : { orderBy?: AccessContentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, AccessContentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccessContentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the AccessContent model
-   */
-  readonly fields: AccessContentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for AccessContent.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__AccessContentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    owner<T extends AccessContent$ownerArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$ownerArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    userAccesses<T extends AccessContent$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    redemeers<T extends AccessContent$redemeersArgs<ExtArgs> = {}>(args?: Subset<T, AccessContent$redemeersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the AccessContent model
-   */
-  interface AccessContentFieldRefs {
-    readonly id: FieldRef<"AccessContent", 'String'>
-    readonly expired: FieldRef<"AccessContent", 'DateTime'>
-    readonly quota: FieldRef<"AccessContent", 'Int'>
-    readonly currentQuota: FieldRef<"AccessContent", 'Int'>
-    readonly ownerId: FieldRef<"AccessContent", 'String'>
-    readonly zones: FieldRef<"AccessContent", 'String[]'>
-    readonly createdAt: FieldRef<"AccessContent", 'DateTime'>
-    readonly updatedAt: FieldRef<"AccessContent", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * AccessContent findUnique
-   */
-  export type AccessContentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which AccessContent to fetch.
-     */
-    where: AccessContentWhereUniqueInput
-  }
-
-  /**
-   * AccessContent findUniqueOrThrow
-   */
-  export type AccessContentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which AccessContent to fetch.
-     */
-    where: AccessContentWhereUniqueInput
-  }
-
-  /**
-   * AccessContent findFirst
-   */
-  export type AccessContentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which AccessContent to fetch.
-     */
-    where?: AccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AccessContents to fetch.
-     */
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AccessContents.
-     */
-    cursor?: AccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AccessContents.
-     */
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * AccessContent findFirstOrThrow
-   */
-  export type AccessContentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which AccessContent to fetch.
-     */
-    where?: AccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AccessContents to fetch.
-     */
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for AccessContents.
-     */
-    cursor?: AccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AccessContents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of AccessContents.
-     */
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * AccessContent findMany
-   */
-  export type AccessContentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter, which AccessContents to fetch.
-     */
-    where?: AccessContentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of AccessContents to fetch.
-     */
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing AccessContents.
-     */
-    cursor?: AccessContentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` AccessContents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` AccessContents.
-     */
-    skip?: number
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
-  }
-
-  /**
-   * AccessContent create
-   */
-  export type AccessContentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * The data needed to create a AccessContent.
-     */
-    data: XOR<AccessContentCreateInput, AccessContentUncheckedCreateInput>
-  }
-
-  /**
-   * AccessContent createMany
-   */
-  export type AccessContentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many AccessContents.
-     */
-    data: AccessContentCreateManyInput | AccessContentCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * AccessContent createManyAndReturn
-   */
-  export type AccessContentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * The data used to create many AccessContents.
-     */
-    data: AccessContentCreateManyInput | AccessContentCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AccessContent update
-   */
-  export type AccessContentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * The data needed to update a AccessContent.
-     */
-    data: XOR<AccessContentUpdateInput, AccessContentUncheckedUpdateInput>
-    /**
-     * Choose, which AccessContent to update.
-     */
-    where: AccessContentWhereUniqueInput
-  }
-
-  /**
-   * AccessContent updateMany
-   */
-  export type AccessContentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update AccessContents.
-     */
-    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyInput>
-    /**
-     * Filter which AccessContents to update
-     */
-    where?: AccessContentWhereInput
-    /**
-     * Limit how many AccessContents to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * AccessContent updateManyAndReturn
-   */
-  export type AccessContentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * The data used to update AccessContents.
-     */
-    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyInput>
-    /**
-     * Filter which AccessContents to update
-     */
-    where?: AccessContentWhereInput
-    /**
-     * Limit how many AccessContents to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * AccessContent upsert
-   */
-  export type AccessContentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * The filter to search for the AccessContent to update in case it exists.
-     */
-    where: AccessContentWhereUniqueInput
-    /**
-     * In case the AccessContent found by the `where` argument doesn't exist, create a new AccessContent with this data.
-     */
-    create: XOR<AccessContentCreateInput, AccessContentUncheckedCreateInput>
-    /**
-     * In case the AccessContent was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<AccessContentUpdateInput, AccessContentUncheckedUpdateInput>
-  }
-
-  /**
-   * AccessContent delete
-   */
-  export type AccessContentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    /**
-     * Filter which AccessContent to delete.
-     */
-    where: AccessContentWhereUniqueInput
-  }
-
-  /**
-   * AccessContent deleteMany
-   */
-  export type AccessContentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which AccessContents to delete
-     */
-    where?: AccessContentWhereInput
-    /**
-     * Limit how many AccessContents to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * AccessContent.owner
-   */
-  export type AccessContent$ownerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * AccessContent.userAccesses
-   */
-  export type AccessContent$userAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * AccessContent.redemeers
-   */
-  export type AccessContent$redemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * AccessContent without action
-   */
-  export type AccessContentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model User
    */
 
@@ -9978,20 +8543,15 @@ export namespace Prisma {
     username?: boolean
     lastIdZoneUnlocked?: boolean
     lastIdZonePosition?: boolean
-    ownedAccesses?: boolean | User$ownedAccessesArgs<ExtArgs>
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
     admin?: boolean | User$adminArgs<ExtArgs>
-    userAccesses?: boolean | User$userAccessesArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
-    redeemedAccesses?: boolean | User$redeemedAccessesArgs<ExtArgs>
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
-    userTransactionArchive?: boolean | User$userTransactionArchiveArgs<ExtArgs>
-    userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -10000,6 +8560,7 @@ export namespace Prisma {
     championships?: boolean | User$championshipsArgs<ExtArgs>
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
+    redemeedCodes?: boolean | User$redemeedCodesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -10100,20 +8661,15 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ownedAccesses?: boolean | User$ownedAccessesArgs<ExtArgs>
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
     admin?: boolean | User$adminArgs<ExtArgs>
-    userAccesses?: boolean | User$userAccessesArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
-    redeemedAccesses?: boolean | User$redeemedAccessesArgs<ExtArgs>
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
-    userTransactionArchive?: boolean | User$userTransactionArchiveArgs<ExtArgs>
-    userTransaction?: boolean | User$userTransactionArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -10122,6 +8678,7 @@ export namespace Prisma {
     championships?: boolean | User$championshipsArgs<ExtArgs>
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
+    redemeedCodes?: boolean | User$redemeedCodesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10140,20 +8697,15 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      ownedAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       city: Prisma.$CityPayload<ExtArgs> | null
       province: Prisma.$ProvincePayload<ExtArgs> | null
       school: Prisma.$SchoolPayload<ExtArgs> | null
       admin: Prisma.$AdminPayload<ExtArgs> | null
-      userAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       zones: Prisma.$ZonePayload<ExtArgs>[]
-      redeemedAccesses: Prisma.$AccessContentPayload<ExtArgs>[]
       userLogin: Prisma.$UserLoginPayload<ExtArgs>[]
       bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs>[]
       testParticipant: Prisma.$TestParticipantPayload<ExtArgs>[]
       voucherRedemeer: Prisma.$VoucherRedemeerPayload<ExtArgs>[]
-      userTransactionArchive: Prisma.$UserTransactionArchivePayload<ExtArgs>[]
-      userTransaction: Prisma.$UserTransactionPayload<ExtArgs>[]
       multiPlayerMember: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
       subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
@@ -10162,6 +8714,7 @@ export namespace Prisma {
       championships: Prisma.$ChampionshipPayload<ExtArgs>[]
       gempoRecords: Prisma.$GempoRecordPayload<ExtArgs>[]
       championshipRecords: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
+      redemeedCodes: Prisma.$CodeRedemeerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10584,20 +9137,15 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    ownedAccesses<T extends User$ownedAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$ownedAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     city<T extends User$cityArgs<ExtArgs> = {}>(args?: Subset<T, User$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     province<T extends User$provinceArgs<ExtArgs> = {}>(args?: Subset<T, User$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     school<T extends User$schoolArgs<ExtArgs> = {}>(args?: Subset<T, User$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     admin<T extends User$adminArgs<ExtArgs> = {}>(args?: Subset<T, User$adminArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    userAccesses<T extends User$userAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$userAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     zones<T extends User$zonesArgs<ExtArgs> = {}>(args?: Subset<T, User$zonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    redeemedAccesses<T extends User$redeemedAccessesArgs<ExtArgs> = {}>(args?: Subset<T, User$redeemedAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     userLogin<T extends User$userLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$userLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testParticipant<T extends User$testParticipantArgs<ExtArgs> = {}>(args?: Subset<T, User$testParticipantArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     voucherRedemeer<T extends User$voucherRedemeerArgs<ExtArgs> = {}>(args?: Subset<T, User$voucherRedemeerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    userTransactionArchive<T extends User$userTransactionArchiveArgs<ExtArgs> = {}>(args?: Subset<T, User$userTransactionArchiveArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    userTransaction<T extends User$userTransactionArgs<ExtArgs> = {}>(args?: Subset<T, User$userTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     multiPlayerMember<T extends User$multiPlayerMemberArgs<ExtArgs> = {}>(args?: Subset<T, User$multiPlayerMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subLevels<T extends User$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -10606,6 +9154,7 @@ export namespace Prisma {
     championships<T extends User$championshipsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gempoRecords<T extends User$gempoRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$gempoRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     championshipRecords<T extends User$championshipRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    redemeedCodes<T extends User$redemeedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redemeedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11057,30 +9606,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.ownedAccesses
-   */
-  export type User$ownedAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    where?: AccessContentWhereInput
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    cursor?: AccessContentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
-  }
-
-  /**
    * User.city
    */
   export type User$cityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11157,30 +9682,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.userAccesses
-   */
-  export type User$userAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    where?: AccessContentWhereInput
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    cursor?: AccessContentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
-  }
-
-  /**
    * User.zones
    */
   export type User$zonesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11202,30 +9703,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ZoneScalarFieldEnum | ZoneScalarFieldEnum[]
-  }
-
-  /**
-   * User.redeemedAccesses
-   */
-  export type User$redeemedAccessesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccessContent
-     */
-    select?: AccessContentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AccessContent
-     */
-    omit?: AccessContentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccessContentInclude<ExtArgs> | null
-    where?: AccessContentWhereInput
-    orderBy?: AccessContentOrderByWithRelationInput | AccessContentOrderByWithRelationInput[]
-    cursor?: AccessContentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AccessContentScalarFieldEnum | AccessContentScalarFieldEnum[]
   }
 
   /**
@@ -11322,54 +9799,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
-  }
-
-  /**
-   * User.userTransactionArchive
-   */
-  export type User$userTransactionArchiveArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    where?: UserTransactionArchiveWhereInput
-    orderBy?: UserTransactionArchiveOrderByWithRelationInput | UserTransactionArchiveOrderByWithRelationInput[]
-    cursor?: UserTransactionArchiveWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserTransactionArchiveScalarFieldEnum | UserTransactionArchiveScalarFieldEnum[]
-  }
-
-  /**
-   * User.userTransaction
-   */
-  export type User$userTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransaction
-     */
-    select?: UserTransactionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransaction
-     */
-    omit?: UserTransactionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionInclude<ExtArgs> | null
-    where?: UserTransactionWhereInput
-    orderBy?: UserTransactionOrderByWithRelationInput | UserTransactionOrderByWithRelationInput[]
-    cursor?: UserTransactionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserTransactionScalarFieldEnum | UserTransactionScalarFieldEnum[]
   }
 
   /**
@@ -11562,6 +9991,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ChampionshipRecordScalarFieldEnum | ChampionshipRecordScalarFieldEnum[]
+  }
+
+  /**
+   * User.redemeedCodes
+   */
+  export type User$redemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeRedemeer
+     */
+    select?: CodeRedemeerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeRedemeer
+     */
+    omit?: CodeRedemeerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CodeRedemeerInclude<ExtArgs> | null
+    where?: CodeRedemeerWhereInput
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    cursor?: CodeRedemeerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
   }
 
   /**
@@ -22122,7 +20575,7 @@ export namespace Prisma {
     operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
-    adminTransactionArchive?: boolean | Admin$adminTransactionArchiveArgs<ExtArgs>
+    RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -22185,7 +20638,7 @@ export namespace Prisma {
     operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
-    adminTransactionArchive?: boolean | Admin$adminTransactionArchiveArgs<ExtArgs>
+    RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -22211,7 +20664,7 @@ export namespace Prisma {
       operations: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       banner: Prisma.$BannerPayload<ExtArgs>[]
       adminTransaction: Prisma.$AdminTransactionPayload<ExtArgs>[]
-      adminTransactionArchive: Prisma.$AdminTransactionArchivePayload<ExtArgs>[]
+      RedeemCode: Prisma.$RedeemCodePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -22628,7 +21081,7 @@ export namespace Prisma {
     operations<T extends Admin$operationsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     banner<T extends Admin$bannerArgs<ExtArgs> = {}>(args?: Subset<T, Admin$bannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminTransaction<T extends Admin$adminTransactionArgs<ExtArgs> = {}>(args?: Subset<T, Admin$adminTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    adminTransactionArchive<T extends Admin$adminTransactionArchiveArgs<ExtArgs> = {}>(args?: Subset<T, Admin$adminTransactionArchiveArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    RedeemCode<T extends Admin$RedeemCodeArgs<ExtArgs> = {}>(args?: Subset<T, Admin$RedeemCodeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23261,27 +21714,27 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.adminTransactionArchive
+   * Admin.RedeemCode
    */
-  export type Admin$adminTransactionArchiveArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Admin$RedeemCodeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
-    where?: AdminTransactionArchiveWhereInput
-    orderBy?: AdminTransactionArchiveOrderByWithRelationInput | AdminTransactionArchiveOrderByWithRelationInput[]
-    cursor?: AdminTransactionArchiveWhereUniqueInput
+    include?: RedeemCodeInclude<ExtArgs> | null
+    where?: RedeemCodeWhereInput
+    orderBy?: RedeemCodeOrderByWithRelationInput | RedeemCodeOrderByWithRelationInput[]
+    cursor?: RedeemCodeWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AdminTransactionArchiveScalarFieldEnum | AdminTransactionArchiveScalarFieldEnum[]
+    distinct?: RedeemCodeScalarFieldEnum | RedeemCodeScalarFieldEnum[]
   }
 
   /**
@@ -36675,100 +35128,136 @@ export namespace Prisma {
 
   export type AdminTransactionAvgAggregateOutputType = {
     quantity: number | null
+    subscriptionTime: number | null
+    transactionRef: number | null
+    amount: number | null
   }
 
   export type AdminTransactionSumAggregateOutputType = {
     quantity: number | null
+    subscriptionTime: number | null
+    transactionRef: number | null
+    amount: number | null
   }
 
   export type AdminTransactionMinAggregateOutputType = {
     id: string | null
-    transactionName: string | null
+    name: string | null
     status: string | null
+    archived: boolean | null
     createdAt: Date | null
-    expiredAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
+    adminId: string | null
     quantity: number | null
+    subscriptionTime: number | null
+    transactionRef: number | null
+    amount: number | null
+    description: string | null
+    transactionImageId: string | null
+    transactionImageUrl: string | null
   }
 
   export type AdminTransactionMaxAggregateOutputType = {
     id: string | null
-    transactionName: string | null
+    name: string | null
     status: string | null
+    archived: boolean | null
     createdAt: Date | null
-    expiredAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
+    adminId: string | null
     quantity: number | null
+    subscriptionTime: number | null
+    transactionRef: number | null
+    amount: number | null
+    description: string | null
+    transactionImageId: string | null
+    transactionImageUrl: string | null
   }
 
   export type AdminTransactionCountAggregateOutputType = {
     id: number
-    transactionName: number
+    name: number
     status: number
+    archived: number
     createdAt: number
-    expiredAt: number
     updatedAt: number
-    customerEmail: number
-    customerName: number
-    customerId: number
+    adminId: number
     quantity: number
+    subscriptionTime: number
     zones: number
+    transactionRef: number
+    amount: number
+    description: number
+    transactionImageId: number
+    transactionImageUrl: number
     _all: number
   }
 
 
   export type AdminTransactionAvgAggregateInputType = {
     quantity?: true
+    subscriptionTime?: true
+    transactionRef?: true
+    amount?: true
   }
 
   export type AdminTransactionSumAggregateInputType = {
     quantity?: true
+    subscriptionTime?: true
+    transactionRef?: true
+    amount?: true
   }
 
   export type AdminTransactionMinAggregateInputType = {
     id?: true
-    transactionName?: true
+    name?: true
     status?: true
+    archived?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
+    adminId?: true
     quantity?: true
+    subscriptionTime?: true
+    transactionRef?: true
+    amount?: true
+    description?: true
+    transactionImageId?: true
+    transactionImageUrl?: true
   }
 
   export type AdminTransactionMaxAggregateInputType = {
     id?: true
-    transactionName?: true
+    name?: true
     status?: true
+    archived?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
+    adminId?: true
     quantity?: true
+    subscriptionTime?: true
+    transactionRef?: true
+    amount?: true
+    description?: true
+    transactionImageId?: true
+    transactionImageUrl?: true
   }
 
   export type AdminTransactionCountAggregateInputType = {
     id?: true
-    transactionName?: true
+    name?: true
     status?: true
+    archived?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
+    adminId?: true
     quantity?: true
+    subscriptionTime?: true
     zones?: true
+    transactionRef?: true
+    amount?: true
+    description?: true
+    transactionImageId?: true
+    transactionImageUrl?: true
     _all?: true
   }
 
@@ -36860,16 +35349,20 @@ export namespace Prisma {
 
   export type AdminTransactionGroupByOutputType = {
     id: string
-    transactionName: string
+    name: string
     status: string
+    archived: boolean
     createdAt: Date
-    expiredAt: Date
     updatedAt: Date
-    customerEmail: string
-    customerName: string
-    customerId: string
+    adminId: string
     quantity: number
+    subscriptionTime: number
     zones: string[]
+    transactionRef: number | null
+    amount: number
+    description: string | null
+    transactionImageId: string | null
+    transactionImageUrl: string | null
     _count: AdminTransactionCountAggregateOutputType | null
     _avg: AdminTransactionAvgAggregateOutputType | null
     _sum: AdminTransactionSumAggregateOutputType | null
@@ -36893,91 +35386,114 @@ export namespace Prisma {
 
   export type AdminTransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
+    name?: boolean
     status?: boolean
+    archived?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
+    adminId?: boolean
     quantity?: boolean
+    subscriptionTime?: boolean
     zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    transactionRef?: boolean
+    amount?: boolean
+    description?: boolean
+    transactionImageId?: boolean
+    transactionImageUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    redeemCode?: boolean | AdminTransaction$redeemCodeArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
+    name?: boolean
     status?: boolean
+    archived?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
+    adminId?: boolean
     quantity?: boolean
+    subscriptionTime?: boolean
     zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    transactionRef?: boolean
+    amount?: boolean
+    description?: boolean
+    transactionImageId?: boolean
+    transactionImageUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
+    name?: boolean
     status?: boolean
+    archived?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
+    adminId?: boolean
     quantity?: boolean
+    subscriptionTime?: boolean
     zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    transactionRef?: boolean
+    amount?: boolean
+    description?: boolean
+    transactionImageId?: boolean
+    transactionImageUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectScalar = {
     id?: boolean
-    transactionName?: boolean
+    name?: boolean
     status?: boolean
+    archived?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
+    adminId?: boolean
     quantity?: boolean
+    subscriptionTime?: boolean
     zones?: boolean
+    transactionRef?: boolean
+    amount?: boolean
+    description?: boolean
+    transactionImageId?: boolean
+    transactionImageUrl?: boolean
   }
 
-  export type AdminTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionName" | "status" | "createdAt" | "expiredAt" | "updatedAt" | "customerEmail" | "customerName" | "customerId" | "quantity" | "zones", ExtArgs["result"]["adminTransaction"]>
+  export type AdminTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "archived" | "createdAt" | "updatedAt" | "adminId" | "quantity" | "subscriptionTime" | "zones" | "transactionRef" | "amount" | "description" | "transactionImageId" | "transactionImageUrl", ExtArgs["result"]["adminTransaction"]>
   export type AdminTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    redeemCode?: boolean | AdminTransaction$redeemCodeArgs<ExtArgs>
   }
   export type AdminTransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type AdminTransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
 
   export type $AdminTransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AdminTransaction"
     objects: {
-      customer: Prisma.$AdminPayload<ExtArgs>
+      admin: Prisma.$AdminPayload<ExtArgs>
+      redeemCode: Prisma.$RedeemCodePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transactionName: string
+      name: string
       status: string
+      archived: boolean
       createdAt: Date
-      expiredAt: Date
       updatedAt: Date
-      customerEmail: string
-      customerName: string
-      customerId: string
+      adminId: string
       quantity: number
+      subscriptionTime: number
       zones: string[]
+      transactionRef: number | null
+      amount: number
+      description: string | null
+      transactionImageId: string | null
+      transactionImageUrl: string | null
     }, ExtArgs["result"]["adminTransaction"]>
     composites: {}
   }
@@ -37372,7 +35888,8 @@ export namespace Prisma {
    */
   export interface Prisma__AdminTransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    redeemCode<T extends AdminTransaction$redeemCodeArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransaction$redeemCodeArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -37403,16 +35920,20 @@ export namespace Prisma {
    */
   interface AdminTransactionFieldRefs {
     readonly id: FieldRef<"AdminTransaction", 'String'>
-    readonly transactionName: FieldRef<"AdminTransaction", 'String'>
+    readonly name: FieldRef<"AdminTransaction", 'String'>
     readonly status: FieldRef<"AdminTransaction", 'String'>
+    readonly archived: FieldRef<"AdminTransaction", 'Boolean'>
     readonly createdAt: FieldRef<"AdminTransaction", 'DateTime'>
-    readonly expiredAt: FieldRef<"AdminTransaction", 'DateTime'>
     readonly updatedAt: FieldRef<"AdminTransaction", 'DateTime'>
-    readonly customerEmail: FieldRef<"AdminTransaction", 'String'>
-    readonly customerName: FieldRef<"AdminTransaction", 'String'>
-    readonly customerId: FieldRef<"AdminTransaction", 'String'>
+    readonly adminId: FieldRef<"AdminTransaction", 'String'>
     readonly quantity: FieldRef<"AdminTransaction", 'Int'>
+    readonly subscriptionTime: FieldRef<"AdminTransaction", 'Int'>
     readonly zones: FieldRef<"AdminTransaction", 'String[]'>
+    readonly transactionRef: FieldRef<"AdminTransaction", 'Int'>
+    readonly amount: FieldRef<"AdminTransaction", 'Int'>
+    readonly description: FieldRef<"AdminTransaction", 'String'>
+    readonly transactionImageId: FieldRef<"AdminTransaction", 'String'>
+    readonly transactionImageUrl: FieldRef<"AdminTransaction", 'String'>
   }
     
 
@@ -37809,6 +36330,25 @@ export namespace Prisma {
   }
 
   /**
+   * AdminTransaction.redeemCode
+   */
+  export type AdminTransaction$redeemCodeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RedeemCode
+     */
+    select?: RedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RedeemCode
+     */
+    omit?: RedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RedeemCodeInclude<ExtArgs> | null
+    where?: RedeemCodeWhereInput
+  }
+
+  /**
    * AdminTransaction without action
    */
   export type AdminTransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -37828,452 +36368,468 @@ export namespace Prisma {
 
 
   /**
-   * Model AdminTransactionArchive
+   * Model RedeemCode
    */
 
-  export type AggregateAdminTransactionArchive = {
-    _count: AdminTransactionArchiveCountAggregateOutputType | null
-    _avg: AdminTransactionArchiveAvgAggregateOutputType | null
-    _sum: AdminTransactionArchiveSumAggregateOutputType | null
-    _min: AdminTransactionArchiveMinAggregateOutputType | null
-    _max: AdminTransactionArchiveMaxAggregateOutputType | null
+  export type AggregateRedeemCode = {
+    _count: RedeemCodeCountAggregateOutputType | null
+    _avg: RedeemCodeAvgAggregateOutputType | null
+    _sum: RedeemCodeSumAggregateOutputType | null
+    _min: RedeemCodeMinAggregateOutputType | null
+    _max: RedeemCodeMaxAggregateOutputType | null
   }
 
-  export type AdminTransactionArchiveAvgAggregateOutputType = {
-    quantity: number | null
+  export type RedeemCodeAvgAggregateOutputType = {
+    currentAmount: number | null
+    maxAmount: number | null
   }
 
-  export type AdminTransactionArchiveSumAggregateOutputType = {
-    quantity: number | null
+  export type RedeemCodeSumAggregateOutputType = {
+    currentAmount: number | null
+    maxAmount: number | null
   }
 
-  export type AdminTransactionArchiveMinAggregateOutputType = {
+  export type RedeemCodeMinAggregateOutputType = {
     id: string | null
-    transactionName: string | null
-    status: string | null
-    createdAt: Date | null
+    suspend: boolean | null
+    transactionId: string | null
+    adminId: string | null
+    code: string | null
     expiredAt: Date | null
+    currentAmount: number | null
+    maxAmount: number | null
+    createdAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
   }
 
-  export type AdminTransactionArchiveMaxAggregateOutputType = {
+  export type RedeemCodeMaxAggregateOutputType = {
     id: string | null
-    transactionName: string | null
-    status: string | null
-    createdAt: Date | null
+    suspend: boolean | null
+    transactionId: string | null
+    adminId: string | null
+    code: string | null
     expiredAt: Date | null
+    currentAmount: number | null
+    maxAmount: number | null
+    createdAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
   }
 
-  export type AdminTransactionArchiveCountAggregateOutputType = {
+  export type RedeemCodeCountAggregateOutputType = {
     id: number
-    transactionName: number
-    status: number
-    createdAt: number
+    suspend: number
+    transactionId: number
+    adminId: number
+    code: number
     expiredAt: number
+    currentAmount: number
+    maxAmount: number
+    data: number
+    createdAt: number
     updatedAt: number
-    customerEmail: number
-    customerName: number
-    customerId: number
-    quantity: number
-    zones: number
     _all: number
   }
 
 
-  export type AdminTransactionArchiveAvgAggregateInputType = {
-    quantity?: true
+  export type RedeemCodeAvgAggregateInputType = {
+    currentAmount?: true
+    maxAmount?: true
   }
 
-  export type AdminTransactionArchiveSumAggregateInputType = {
-    quantity?: true
+  export type RedeemCodeSumAggregateInputType = {
+    currentAmount?: true
+    maxAmount?: true
   }
 
-  export type AdminTransactionArchiveMinAggregateInputType = {
+  export type RedeemCodeMinAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
+    suspend?: true
+    transactionId?: true
+    adminId?: true
+    code?: true
     expiredAt?: true
+    currentAmount?: true
+    maxAmount?: true
+    createdAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
   }
 
-  export type AdminTransactionArchiveMaxAggregateInputType = {
+  export type RedeemCodeMaxAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
+    suspend?: true
+    transactionId?: true
+    adminId?: true
+    code?: true
     expiredAt?: true
+    currentAmount?: true
+    maxAmount?: true
+    createdAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
   }
 
-  export type AdminTransactionArchiveCountAggregateInputType = {
+  export type RedeemCodeCountAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
+    suspend?: true
+    transactionId?: true
+    adminId?: true
+    code?: true
     expiredAt?: true
+    currentAmount?: true
+    maxAmount?: true
+    data?: true
+    createdAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
-    zones?: true
     _all?: true
   }
 
-  export type AdminTransactionArchiveAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AdminTransactionArchive to aggregate.
+     * Filter which RedeemCode to aggregate.
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AdminTransactionArchives to fetch.
+     * Determine the order of RedeemCodes to fetch.
      */
-    orderBy?: AdminTransactionArchiveOrderByWithRelationInput | AdminTransactionArchiveOrderByWithRelationInput[]
+    orderBy?: RedeemCodeOrderByWithRelationInput | RedeemCodeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AdminTransactionArchiveWhereUniqueInput
+    cursor?: RedeemCodeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AdminTransactionArchives from the position of the cursor.
+     * Take `±n` RedeemCodes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AdminTransactionArchives.
+     * Skip the first `n` RedeemCodes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned AdminTransactionArchives
+     * Count returned RedeemCodes
     **/
-    _count?: true | AdminTransactionArchiveCountAggregateInputType
+    _count?: true | RedeemCodeCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AdminTransactionArchiveAvgAggregateInputType
+    _avg?: RedeemCodeAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AdminTransactionArchiveSumAggregateInputType
+    _sum?: RedeemCodeSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AdminTransactionArchiveMinAggregateInputType
+    _min?: RedeemCodeMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AdminTransactionArchiveMaxAggregateInputType
+    _max?: RedeemCodeMaxAggregateInputType
   }
 
-  export type GetAdminTransactionArchiveAggregateType<T extends AdminTransactionArchiveAggregateArgs> = {
-        [P in keyof T & keyof AggregateAdminTransactionArchive]: P extends '_count' | 'count'
+  export type GetRedeemCodeAggregateType<T extends RedeemCodeAggregateArgs> = {
+        [P in keyof T & keyof AggregateRedeemCode]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAdminTransactionArchive[P]>
-      : GetScalarType<T[P], AggregateAdminTransactionArchive[P]>
+        : GetScalarType<T[P], AggregateRedeemCode[P]>
+      : GetScalarType<T[P], AggregateRedeemCode[P]>
   }
 
 
 
 
-  export type AdminTransactionArchiveGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AdminTransactionArchiveWhereInput
-    orderBy?: AdminTransactionArchiveOrderByWithAggregationInput | AdminTransactionArchiveOrderByWithAggregationInput[]
-    by: AdminTransactionArchiveScalarFieldEnum[] | AdminTransactionArchiveScalarFieldEnum
-    having?: AdminTransactionArchiveScalarWhereWithAggregatesInput
+  export type RedeemCodeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RedeemCodeWhereInput
+    orderBy?: RedeemCodeOrderByWithAggregationInput | RedeemCodeOrderByWithAggregationInput[]
+    by: RedeemCodeScalarFieldEnum[] | RedeemCodeScalarFieldEnum
+    having?: RedeemCodeScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AdminTransactionArchiveCountAggregateInputType | true
-    _avg?: AdminTransactionArchiveAvgAggregateInputType
-    _sum?: AdminTransactionArchiveSumAggregateInputType
-    _min?: AdminTransactionArchiveMinAggregateInputType
-    _max?: AdminTransactionArchiveMaxAggregateInputType
+    _count?: RedeemCodeCountAggregateInputType | true
+    _avg?: RedeemCodeAvgAggregateInputType
+    _sum?: RedeemCodeSumAggregateInputType
+    _min?: RedeemCodeMinAggregateInputType
+    _max?: RedeemCodeMaxAggregateInputType
   }
 
-  export type AdminTransactionArchiveGroupByOutputType = {
+  export type RedeemCodeGroupByOutputType = {
     id: string
-    transactionName: string
-    status: string
-    createdAt: Date
+    suspend: boolean
+    transactionId: string
+    adminId: string
+    code: string
     expiredAt: Date
+    currentAmount: number
+    maxAmount: number
+    data: string[]
+    createdAt: Date
     updatedAt: Date
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity: number
-    zones: string[]
-    _count: AdminTransactionArchiveCountAggregateOutputType | null
-    _avg: AdminTransactionArchiveAvgAggregateOutputType | null
-    _sum: AdminTransactionArchiveSumAggregateOutputType | null
-    _min: AdminTransactionArchiveMinAggregateOutputType | null
-    _max: AdminTransactionArchiveMaxAggregateOutputType | null
+    _count: RedeemCodeCountAggregateOutputType | null
+    _avg: RedeemCodeAvgAggregateOutputType | null
+    _sum: RedeemCodeSumAggregateOutputType | null
+    _min: RedeemCodeMinAggregateOutputType | null
+    _max: RedeemCodeMaxAggregateOutputType | null
   }
 
-  type GetAdminTransactionArchiveGroupByPayload<T extends AdminTransactionArchiveGroupByArgs> = Prisma.PrismaPromise<
+  type GetRedeemCodeGroupByPayload<T extends RedeemCodeGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AdminTransactionArchiveGroupByOutputType, T['by']> &
+      PickEnumerable<RedeemCodeGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AdminTransactionArchiveGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof RedeemCodeGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AdminTransactionArchiveGroupByOutputType[P]>
-            : GetScalarType<T[P], AdminTransactionArchiveGroupByOutputType[P]>
+              : GetScalarType<T[P], RedeemCodeGroupByOutputType[P]>
+            : GetScalarType<T[P], RedeemCodeGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AdminTransactionArchiveSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RedeemCodeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    adminId?: boolean
+    code?: boolean
     expiredAt?: boolean
+    currentAmount?: boolean
+    maxAmount?: boolean
+    data?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["adminTransactionArchive"]>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    redemeers?: boolean | RedeemCode$redemeersArgs<ExtArgs>
+    _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["redeemCode"]>
 
-  export type AdminTransactionArchiveSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RedeemCodeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    adminId?: boolean
+    code?: boolean
     expiredAt?: boolean
+    currentAmount?: boolean
+    maxAmount?: boolean
+    data?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["adminTransactionArchive"]>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["redeemCode"]>
 
-  export type AdminTransactionArchiveSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RedeemCodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    adminId?: boolean
+    code?: boolean
     expiredAt?: boolean
+    currentAmount?: boolean
+    maxAmount?: boolean
+    data?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["adminTransactionArchive"]>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["redeemCode"]>
 
-  export type AdminTransactionArchiveSelectScalar = {
+  export type RedeemCodeSelectScalar = {
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    adminId?: boolean
+    code?: boolean
     expiredAt?: boolean
+    currentAmount?: boolean
+    maxAmount?: boolean
+    data?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
   }
 
-  export type AdminTransactionArchiveOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionName" | "status" | "createdAt" | "expiredAt" | "updatedAt" | "customerEmail" | "customerName" | "customerId" | "quantity" | "zones", ExtArgs["result"]["adminTransactionArchive"]>
-  export type AdminTransactionArchiveInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+  export type RedeemCodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "suspend" | "transactionId" | "adminId" | "code" | "expiredAt" | "currentAmount" | "maxAmount" | "data" | "createdAt" | "updatedAt", ExtArgs["result"]["redeemCode"]>
+  export type RedeemCodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    redemeers?: boolean | RedeemCode$redemeersArgs<ExtArgs>
+    _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AdminTransactionArchiveIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+  export type RedeemCodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
-  export type AdminTransactionArchiveIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AdminDefaultArgs<ExtArgs>
+  export type RedeemCodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
 
-  export type $AdminTransactionArchivePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AdminTransactionArchive"
+  export type $RedeemCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RedeemCode"
     objects: {
-      customer: Prisma.$AdminPayload<ExtArgs>
+      transaction: Prisma.$AdminTransactionPayload<ExtArgs>
+      admin: Prisma.$AdminPayload<ExtArgs>
+      redemeers: Prisma.$CodeRedemeerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transactionName: string
-      status: string
-      createdAt: Date
+      suspend: boolean
+      transactionId: string
+      adminId: string
+      code: string
       expiredAt: Date
+      currentAmount: number
+      maxAmount: number
+      data: string[]
+      createdAt: Date
       updatedAt: Date
-      customerEmail: string
-      customerName: string
-      customerId: string
-      quantity: number
-      zones: string[]
-    }, ExtArgs["result"]["adminTransactionArchive"]>
+    }, ExtArgs["result"]["redeemCode"]>
     composites: {}
   }
 
-  type AdminTransactionArchiveGetPayload<S extends boolean | null | undefined | AdminTransactionArchiveDefaultArgs> = $Result.GetResult<Prisma.$AdminTransactionArchivePayload, S>
+  type RedeemCodeGetPayload<S extends boolean | null | undefined | RedeemCodeDefaultArgs> = $Result.GetResult<Prisma.$RedeemCodePayload, S>
 
-  type AdminTransactionArchiveCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AdminTransactionArchiveFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AdminTransactionArchiveCountAggregateInputType | true
+  type RedeemCodeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RedeemCodeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RedeemCodeCountAggregateInputType | true
     }
 
-  export interface AdminTransactionArchiveDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdminTransactionArchive'], meta: { name: 'AdminTransactionArchive' } }
+  export interface RedeemCodeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RedeemCode'], meta: { name: 'RedeemCode' } }
     /**
-     * Find zero or one AdminTransactionArchive that matches the filter.
-     * @param {AdminTransactionArchiveFindUniqueArgs} args - Arguments to find a AdminTransactionArchive
+     * Find zero or one RedeemCode that matches the filter.
+     * @param {RedeemCodeFindUniqueArgs} args - Arguments to find a RedeemCode
      * @example
-     * // Get one AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.findUnique({
+     * // Get one RedeemCode
+     * const redeemCode = await prisma.redeemCode.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends AdminTransactionArchiveFindUniqueArgs>(args: SelectSubset<T, AdminTransactionArchiveFindUniqueArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends RedeemCodeFindUniqueArgs>(args: SelectSubset<T, RedeemCodeFindUniqueArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one AdminTransactionArchive that matches the filter or throw an error with `error.code='P2025'`
+     * Find one RedeemCode that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AdminTransactionArchiveFindUniqueOrThrowArgs} args - Arguments to find a AdminTransactionArchive
+     * @param {RedeemCodeFindUniqueOrThrowArgs} args - Arguments to find a RedeemCode
      * @example
-     * // Get one AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.findUniqueOrThrow({
+     * // Get one RedeemCode
+     * const redeemCode = await prisma.redeemCode.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AdminTransactionArchiveFindUniqueOrThrowArgs>(args: SelectSubset<T, AdminTransactionArchiveFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends RedeemCodeFindUniqueOrThrowArgs>(args: SelectSubset<T, RedeemCodeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first AdminTransactionArchive that matches the filter.
+     * Find the first RedeemCode that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveFindFirstArgs} args - Arguments to find a AdminTransactionArchive
+     * @param {RedeemCodeFindFirstArgs} args - Arguments to find a RedeemCode
      * @example
-     * // Get one AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.findFirst({
+     * // Get one RedeemCode
+     * const redeemCode = await prisma.redeemCode.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends AdminTransactionArchiveFindFirstArgs>(args?: SelectSubset<T, AdminTransactionArchiveFindFirstArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends RedeemCodeFindFirstArgs>(args?: SelectSubset<T, RedeemCodeFindFirstArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first AdminTransactionArchive that matches the filter or
+     * Find the first RedeemCode that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveFindFirstOrThrowArgs} args - Arguments to find a AdminTransactionArchive
+     * @param {RedeemCodeFindFirstOrThrowArgs} args - Arguments to find a RedeemCode
      * @example
-     * // Get one AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.findFirstOrThrow({
+     * // Get one RedeemCode
+     * const redeemCode = await prisma.redeemCode.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends AdminTransactionArchiveFindFirstOrThrowArgs>(args?: SelectSubset<T, AdminTransactionArchiveFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends RedeemCodeFindFirstOrThrowArgs>(args?: SelectSubset<T, RedeemCodeFindFirstOrThrowArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more AdminTransactionArchives that matches the filter.
+     * Find zero or more RedeemCodes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RedeemCodeFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all AdminTransactionArchives
-     * const adminTransactionArchives = await prisma.adminTransactionArchive.findMany()
+     * // Get all RedeemCodes
+     * const redeemCodes = await prisma.redeemCode.findMany()
      * 
-     * // Get first 10 AdminTransactionArchives
-     * const adminTransactionArchives = await prisma.adminTransactionArchive.findMany({ take: 10 })
+     * // Get first 10 RedeemCodes
+     * const redeemCodes = await prisma.redeemCode.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const adminTransactionArchiveWithIdOnly = await prisma.adminTransactionArchive.findMany({ select: { id: true } })
+     * const redeemCodeWithIdOnly = await prisma.redeemCode.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AdminTransactionArchiveFindManyArgs>(args?: SelectSubset<T, AdminTransactionArchiveFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends RedeemCodeFindManyArgs>(args?: SelectSubset<T, RedeemCodeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a AdminTransactionArchive.
-     * @param {AdminTransactionArchiveCreateArgs} args - Arguments to create a AdminTransactionArchive.
+     * Create a RedeemCode.
+     * @param {RedeemCodeCreateArgs} args - Arguments to create a RedeemCode.
      * @example
-     * // Create one AdminTransactionArchive
-     * const AdminTransactionArchive = await prisma.adminTransactionArchive.create({
+     * // Create one RedeemCode
+     * const RedeemCode = await prisma.redeemCode.create({
      *   data: {
-     *     // ... data to create a AdminTransactionArchive
+     *     // ... data to create a RedeemCode
      *   }
      * })
      * 
      */
-    create<T extends AdminTransactionArchiveCreateArgs>(args: SelectSubset<T, AdminTransactionArchiveCreateArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends RedeemCodeCreateArgs>(args: SelectSubset<T, RedeemCodeCreateArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many AdminTransactionArchives.
-     * @param {AdminTransactionArchiveCreateManyArgs} args - Arguments to create many AdminTransactionArchives.
+     * Create many RedeemCodes.
+     * @param {RedeemCodeCreateManyArgs} args - Arguments to create many RedeemCodes.
      * @example
-     * // Create many AdminTransactionArchives
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.createMany({
+     * // Create many RedeemCodes
+     * const redeemCode = await prisma.redeemCode.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends AdminTransactionArchiveCreateManyArgs>(args?: SelectSubset<T, AdminTransactionArchiveCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends RedeemCodeCreateManyArgs>(args?: SelectSubset<T, RedeemCodeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many AdminTransactionArchives and returns the data saved in the database.
-     * @param {AdminTransactionArchiveCreateManyAndReturnArgs} args - Arguments to create many AdminTransactionArchives.
+     * Create many RedeemCodes and returns the data saved in the database.
+     * @param {RedeemCodeCreateManyAndReturnArgs} args - Arguments to create many RedeemCodes.
      * @example
-     * // Create many AdminTransactionArchives
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.createManyAndReturn({
+     * // Create many RedeemCodes
+     * const redeemCode = await prisma.redeemCode.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many AdminTransactionArchives and only return the `id`
-     * const adminTransactionArchiveWithIdOnly = await prisma.adminTransactionArchive.createManyAndReturn({
+     * // Create many RedeemCodes and only return the `id`
+     * const redeemCodeWithIdOnly = await prisma.redeemCode.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -38283,28 +36839,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AdminTransactionArchiveCreateManyAndReturnArgs>(args?: SelectSubset<T, AdminTransactionArchiveCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends RedeemCodeCreateManyAndReturnArgs>(args?: SelectSubset<T, RedeemCodeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a AdminTransactionArchive.
-     * @param {AdminTransactionArchiveDeleteArgs} args - Arguments to delete one AdminTransactionArchive.
+     * Delete a RedeemCode.
+     * @param {RedeemCodeDeleteArgs} args - Arguments to delete one RedeemCode.
      * @example
-     * // Delete one AdminTransactionArchive
-     * const AdminTransactionArchive = await prisma.adminTransactionArchive.delete({
+     * // Delete one RedeemCode
+     * const RedeemCode = await prisma.redeemCode.delete({
      *   where: {
-     *     // ... filter to delete one AdminTransactionArchive
+     *     // ... filter to delete one RedeemCode
      *   }
      * })
      * 
      */
-    delete<T extends AdminTransactionArchiveDeleteArgs>(args: SelectSubset<T, AdminTransactionArchiveDeleteArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends RedeemCodeDeleteArgs>(args: SelectSubset<T, RedeemCodeDeleteArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one AdminTransactionArchive.
-     * @param {AdminTransactionArchiveUpdateArgs} args - Arguments to update one AdminTransactionArchive.
+     * Update one RedeemCode.
+     * @param {RedeemCodeUpdateArgs} args - Arguments to update one RedeemCode.
      * @example
-     * // Update one AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.update({
+     * // Update one RedeemCode
+     * const redeemCode = await prisma.redeemCode.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38314,30 +36870,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AdminTransactionArchiveUpdateArgs>(args: SelectSubset<T, AdminTransactionArchiveUpdateArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends RedeemCodeUpdateArgs>(args: SelectSubset<T, RedeemCodeUpdateArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more AdminTransactionArchives.
-     * @param {AdminTransactionArchiveDeleteManyArgs} args - Arguments to filter AdminTransactionArchives to delete.
+     * Delete zero or more RedeemCodes.
+     * @param {RedeemCodeDeleteManyArgs} args - Arguments to filter RedeemCodes to delete.
      * @example
-     * // Delete a few AdminTransactionArchives
-     * const { count } = await prisma.adminTransactionArchive.deleteMany({
+     * // Delete a few RedeemCodes
+     * const { count } = await prisma.redeemCode.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends AdminTransactionArchiveDeleteManyArgs>(args?: SelectSubset<T, AdminTransactionArchiveDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends RedeemCodeDeleteManyArgs>(args?: SelectSubset<T, RedeemCodeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more AdminTransactionArchives.
+     * Update zero or more RedeemCodes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {RedeemCodeUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many AdminTransactionArchives
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.updateMany({
+     * // Update many RedeemCodes
+     * const redeemCode = await prisma.redeemCode.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38347,14 +36903,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AdminTransactionArchiveUpdateManyArgs>(args: SelectSubset<T, AdminTransactionArchiveUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends RedeemCodeUpdateManyArgs>(args: SelectSubset<T, RedeemCodeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more AdminTransactionArchives and returns the data updated in the database.
-     * @param {AdminTransactionArchiveUpdateManyAndReturnArgs} args - Arguments to update many AdminTransactionArchives.
+     * Update zero or more RedeemCodes and returns the data updated in the database.
+     * @param {RedeemCodeUpdateManyAndReturnArgs} args - Arguments to update many RedeemCodes.
      * @example
-     * // Update many AdminTransactionArchives
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.updateManyAndReturn({
+     * // Update many RedeemCodes
+     * const redeemCode = await prisma.redeemCode.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38363,8 +36919,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more AdminTransactionArchives and only return the `id`
-     * const adminTransactionArchiveWithIdOnly = await prisma.adminTransactionArchive.updateManyAndReturn({
+     * // Update zero or more RedeemCodes and only return the `id`
+     * const redeemCodeWithIdOnly = await prisma.redeemCode.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -38377,56 +36933,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AdminTransactionArchiveUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminTransactionArchiveUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends RedeemCodeUpdateManyAndReturnArgs>(args: SelectSubset<T, RedeemCodeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one AdminTransactionArchive.
-     * @param {AdminTransactionArchiveUpsertArgs} args - Arguments to update or create a AdminTransactionArchive.
+     * Create or update one RedeemCode.
+     * @param {RedeemCodeUpsertArgs} args - Arguments to update or create a RedeemCode.
      * @example
-     * // Update or create a AdminTransactionArchive
-     * const adminTransactionArchive = await prisma.adminTransactionArchive.upsert({
+     * // Update or create a RedeemCode
+     * const redeemCode = await prisma.redeemCode.upsert({
      *   create: {
-     *     // ... data to create a AdminTransactionArchive
+     *     // ... data to create a RedeemCode
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the AdminTransactionArchive we want to update
+     *     // ... the filter for the RedeemCode we want to update
      *   }
      * })
      */
-    upsert<T extends AdminTransactionArchiveUpsertArgs>(args: SelectSubset<T, AdminTransactionArchiveUpsertArgs<ExtArgs>>): Prisma__AdminTransactionArchiveClient<$Result.GetResult<Prisma.$AdminTransactionArchivePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends RedeemCodeUpsertArgs>(args: SelectSubset<T, RedeemCodeUpsertArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of AdminTransactionArchives.
+     * Count the number of RedeemCodes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveCountArgs} args - Arguments to filter AdminTransactionArchives to count.
+     * @param {RedeemCodeCountArgs} args - Arguments to filter RedeemCodes to count.
      * @example
-     * // Count the number of AdminTransactionArchives
-     * const count = await prisma.adminTransactionArchive.count({
+     * // Count the number of RedeemCodes
+     * const count = await prisma.redeemCode.count({
      *   where: {
-     *     // ... the filter for the AdminTransactionArchives we want to count
+     *     // ... the filter for the RedeemCodes we want to count
      *   }
      * })
     **/
-    count<T extends AdminTransactionArchiveCountArgs>(
-      args?: Subset<T, AdminTransactionArchiveCountArgs>,
+    count<T extends RedeemCodeCountArgs>(
+      args?: Subset<T, RedeemCodeCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AdminTransactionArchiveCountAggregateOutputType>
+          : GetScalarType<T['select'], RedeemCodeCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a AdminTransactionArchive.
+     * Allows you to perform aggregations operations on a RedeemCode.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {RedeemCodeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -38446,13 +37002,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AdminTransactionArchiveAggregateArgs>(args: Subset<T, AdminTransactionArchiveAggregateArgs>): Prisma.PrismaPromise<GetAdminTransactionArchiveAggregateType<T>>
+    aggregate<T extends RedeemCodeAggregateArgs>(args: Subset<T, RedeemCodeAggregateArgs>): Prisma.PrismaPromise<GetRedeemCodeAggregateType<T>>
 
     /**
-     * Group by AdminTransactionArchive.
+     * Group by RedeemCode.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AdminTransactionArchiveGroupByArgs} args - Group by arguments.
+     * @param {RedeemCodeGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -38467,14 +37023,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AdminTransactionArchiveGroupByArgs,
+      T extends RedeemCodeGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AdminTransactionArchiveGroupByArgs['orderBy'] }
-        : { orderBy?: AdminTransactionArchiveGroupByArgs['orderBy'] },
+        ? { orderBy: RedeemCodeGroupByArgs['orderBy'] }
+        : { orderBy?: RedeemCodeGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -38523,22 +37079,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AdminTransactionArchiveGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminTransactionArchiveGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, RedeemCodeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRedeemCodeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the AdminTransactionArchive model
+   * Fields of the RedeemCode model
    */
-  readonly fields: AdminTransactionArchiveFieldRefs;
+  readonly fields: RedeemCodeFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for AdminTransactionArchive.
+   * The delegate class that acts as a "Promise-like" for RedeemCode.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AdminTransactionArchiveClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__RedeemCodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transaction<T extends AdminTransactionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransactionDefaultArgs<ExtArgs>>): Prisma__AdminTransactionClient<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    redemeers<T extends RedeemCode$redemeersArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$redemeersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -38565,881 +37123,822 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the AdminTransactionArchive model
+   * Fields of the RedeemCode model
    */
-  interface AdminTransactionArchiveFieldRefs {
-    readonly id: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly transactionName: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly status: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly createdAt: FieldRef<"AdminTransactionArchive", 'DateTime'>
-    readonly expiredAt: FieldRef<"AdminTransactionArchive", 'DateTime'>
-    readonly updatedAt: FieldRef<"AdminTransactionArchive", 'DateTime'>
-    readonly customerEmail: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly customerName: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly customerId: FieldRef<"AdminTransactionArchive", 'String'>
-    readonly quantity: FieldRef<"AdminTransactionArchive", 'Int'>
-    readonly zones: FieldRef<"AdminTransactionArchive", 'String[]'>
+  interface RedeemCodeFieldRefs {
+    readonly id: FieldRef<"RedeemCode", 'String'>
+    readonly suspend: FieldRef<"RedeemCode", 'Boolean'>
+    readonly transactionId: FieldRef<"RedeemCode", 'String'>
+    readonly adminId: FieldRef<"RedeemCode", 'String'>
+    readonly code: FieldRef<"RedeemCode", 'String'>
+    readonly expiredAt: FieldRef<"RedeemCode", 'DateTime'>
+    readonly currentAmount: FieldRef<"RedeemCode", 'Int'>
+    readonly maxAmount: FieldRef<"RedeemCode", 'Int'>
+    readonly data: FieldRef<"RedeemCode", 'String[]'>
+    readonly createdAt: FieldRef<"RedeemCode", 'DateTime'>
+    readonly updatedAt: FieldRef<"RedeemCode", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * AdminTransactionArchive findUnique
+   * RedeemCode findUnique
    */
-  export type AdminTransactionArchiveFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter, which AdminTransactionArchive to fetch.
+     * Filter, which RedeemCode to fetch.
      */
-    where: AdminTransactionArchiveWhereUniqueInput
+    where: RedeemCodeWhereUniqueInput
   }
 
   /**
-   * AdminTransactionArchive findUniqueOrThrow
+   * RedeemCode findUniqueOrThrow
    */
-  export type AdminTransactionArchiveFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter, which AdminTransactionArchive to fetch.
+     * Filter, which RedeemCode to fetch.
      */
-    where: AdminTransactionArchiveWhereUniqueInput
+    where: RedeemCodeWhereUniqueInput
   }
 
   /**
-   * AdminTransactionArchive findFirst
+   * RedeemCode findFirst
    */
-  export type AdminTransactionArchiveFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter, which AdminTransactionArchive to fetch.
+     * Filter, which RedeemCode to fetch.
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AdminTransactionArchives to fetch.
+     * Determine the order of RedeemCodes to fetch.
      */
-    orderBy?: AdminTransactionArchiveOrderByWithRelationInput | AdminTransactionArchiveOrderByWithRelationInput[]
+    orderBy?: RedeemCodeOrderByWithRelationInput | RedeemCodeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AdminTransactionArchives.
+     * Sets the position for searching for RedeemCodes.
      */
-    cursor?: AdminTransactionArchiveWhereUniqueInput
+    cursor?: RedeemCodeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AdminTransactionArchives from the position of the cursor.
+     * Take `±n` RedeemCodes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AdminTransactionArchives.
+     * Skip the first `n` RedeemCodes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AdminTransactionArchives.
+     * Filter by unique combinations of RedeemCodes.
      */
-    distinct?: AdminTransactionArchiveScalarFieldEnum | AdminTransactionArchiveScalarFieldEnum[]
+    distinct?: RedeemCodeScalarFieldEnum | RedeemCodeScalarFieldEnum[]
   }
 
   /**
-   * AdminTransactionArchive findFirstOrThrow
+   * RedeemCode findFirstOrThrow
    */
-  export type AdminTransactionArchiveFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter, which AdminTransactionArchive to fetch.
+     * Filter, which RedeemCode to fetch.
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AdminTransactionArchives to fetch.
+     * Determine the order of RedeemCodes to fetch.
      */
-    orderBy?: AdminTransactionArchiveOrderByWithRelationInput | AdminTransactionArchiveOrderByWithRelationInput[]
+    orderBy?: RedeemCodeOrderByWithRelationInput | RedeemCodeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AdminTransactionArchives.
+     * Sets the position for searching for RedeemCodes.
      */
-    cursor?: AdminTransactionArchiveWhereUniqueInput
+    cursor?: RedeemCodeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AdminTransactionArchives from the position of the cursor.
+     * Take `±n` RedeemCodes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AdminTransactionArchives.
+     * Skip the first `n` RedeemCodes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AdminTransactionArchives.
+     * Filter by unique combinations of RedeemCodes.
      */
-    distinct?: AdminTransactionArchiveScalarFieldEnum | AdminTransactionArchiveScalarFieldEnum[]
+    distinct?: RedeemCodeScalarFieldEnum | RedeemCodeScalarFieldEnum[]
   }
 
   /**
-   * AdminTransactionArchive findMany
+   * RedeemCode findMany
    */
-  export type AdminTransactionArchiveFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter, which AdminTransactionArchives to fetch.
+     * Filter, which RedeemCodes to fetch.
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AdminTransactionArchives to fetch.
+     * Determine the order of RedeemCodes to fetch.
      */
-    orderBy?: AdminTransactionArchiveOrderByWithRelationInput | AdminTransactionArchiveOrderByWithRelationInput[]
+    orderBy?: RedeemCodeOrderByWithRelationInput | RedeemCodeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing AdminTransactionArchives.
+     * Sets the position for listing RedeemCodes.
      */
-    cursor?: AdminTransactionArchiveWhereUniqueInput
+    cursor?: RedeemCodeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AdminTransactionArchives from the position of the cursor.
+     * Take `±n` RedeemCodes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AdminTransactionArchives.
+     * Skip the first `n` RedeemCodes.
      */
     skip?: number
-    distinct?: AdminTransactionArchiveScalarFieldEnum | AdminTransactionArchiveScalarFieldEnum[]
+    distinct?: RedeemCodeScalarFieldEnum | RedeemCodeScalarFieldEnum[]
   }
 
   /**
-   * AdminTransactionArchive create
+   * RedeemCode create
    */
-  export type AdminTransactionArchiveCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * The data needed to create a AdminTransactionArchive.
+     * The data needed to create a RedeemCode.
      */
-    data: XOR<AdminTransactionArchiveCreateInput, AdminTransactionArchiveUncheckedCreateInput>
+    data: XOR<RedeemCodeCreateInput, RedeemCodeUncheckedCreateInput>
   }
 
   /**
-   * AdminTransactionArchive createMany
+   * RedeemCode createMany
    */
-  export type AdminTransactionArchiveCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many AdminTransactionArchives.
+     * The data used to create many RedeemCodes.
      */
-    data: AdminTransactionArchiveCreateManyInput | AdminTransactionArchiveCreateManyInput[]
+    data: RedeemCodeCreateManyInput | RedeemCodeCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * AdminTransactionArchive createManyAndReturn
+   * RedeemCode createManyAndReturn
    */
-  export type AdminTransactionArchiveCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelectCreateManyAndReturn<ExtArgs> | null
+    select?: RedeemCodeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
-     * The data used to create many AdminTransactionArchives.
+     * The data used to create many RedeemCodes.
      */
-    data: AdminTransactionArchiveCreateManyInput | AdminTransactionArchiveCreateManyInput[]
+    data: RedeemCodeCreateManyInput | RedeemCodeCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: RedeemCodeIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AdminTransactionArchive update
+   * RedeemCode update
    */
-  export type AdminTransactionArchiveUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * The data needed to update a AdminTransactionArchive.
+     * The data needed to update a RedeemCode.
      */
-    data: XOR<AdminTransactionArchiveUpdateInput, AdminTransactionArchiveUncheckedUpdateInput>
+    data: XOR<RedeemCodeUpdateInput, RedeemCodeUncheckedUpdateInput>
     /**
-     * Choose, which AdminTransactionArchive to update.
+     * Choose, which RedeemCode to update.
      */
-    where: AdminTransactionArchiveWhereUniqueInput
+    where: RedeemCodeWhereUniqueInput
   }
 
   /**
-   * AdminTransactionArchive updateMany
+   * RedeemCode updateMany
    */
-  export type AdminTransactionArchiveUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update AdminTransactionArchives.
+     * The data used to update RedeemCodes.
      */
-    data: XOR<AdminTransactionArchiveUpdateManyMutationInput, AdminTransactionArchiveUncheckedUpdateManyInput>
+    data: XOR<RedeemCodeUpdateManyMutationInput, RedeemCodeUncheckedUpdateManyInput>
     /**
-     * Filter which AdminTransactionArchives to update
+     * Filter which RedeemCodes to update
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
-     * Limit how many AdminTransactionArchives to update.
+     * Limit how many RedeemCodes to update.
      */
     limit?: number
   }
 
   /**
-   * AdminTransactionArchive updateManyAndReturn
+   * RedeemCode updateManyAndReturn
    */
-  export type AdminTransactionArchiveUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: RedeemCodeSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
-     * The data used to update AdminTransactionArchives.
+     * The data used to update RedeemCodes.
      */
-    data: XOR<AdminTransactionArchiveUpdateManyMutationInput, AdminTransactionArchiveUncheckedUpdateManyInput>
+    data: XOR<RedeemCodeUpdateManyMutationInput, RedeemCodeUncheckedUpdateManyInput>
     /**
-     * Filter which AdminTransactionArchives to update
+     * Filter which RedeemCodes to update
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
-     * Limit how many AdminTransactionArchives to update.
+     * Limit how many RedeemCodes to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: RedeemCodeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AdminTransactionArchive upsert
+   * RedeemCode upsert
    */
-  export type AdminTransactionArchiveUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * The filter to search for the AdminTransactionArchive to update in case it exists.
+     * The filter to search for the RedeemCode to update in case it exists.
      */
-    where: AdminTransactionArchiveWhereUniqueInput
+    where: RedeemCodeWhereUniqueInput
     /**
-     * In case the AdminTransactionArchive found by the `where` argument doesn't exist, create a new AdminTransactionArchive with this data.
+     * In case the RedeemCode found by the `where` argument doesn't exist, create a new RedeemCode with this data.
      */
-    create: XOR<AdminTransactionArchiveCreateInput, AdminTransactionArchiveUncheckedCreateInput>
+    create: XOR<RedeemCodeCreateInput, RedeemCodeUncheckedCreateInput>
     /**
-     * In case the AdminTransactionArchive was found with the provided `where` argument, update it with this data.
+     * In case the RedeemCode was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AdminTransactionArchiveUpdateInput, AdminTransactionArchiveUncheckedUpdateInput>
+    update: XOR<RedeemCodeUpdateInput, RedeemCodeUncheckedUpdateInput>
   }
 
   /**
-   * AdminTransactionArchive delete
+   * RedeemCode delete
    */
-  export type AdminTransactionArchiveDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the RedeemCode
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: RedeemCodeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the RedeemCode
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: RedeemCodeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: RedeemCodeInclude<ExtArgs> | null
     /**
-     * Filter which AdminTransactionArchive to delete.
+     * Filter which RedeemCode to delete.
      */
-    where: AdminTransactionArchiveWhereUniqueInput
+    where: RedeemCodeWhereUniqueInput
   }
 
   /**
-   * AdminTransactionArchive deleteMany
+   * RedeemCode deleteMany
    */
-  export type AdminTransactionArchiveDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCodeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AdminTransactionArchives to delete
+     * Filter which RedeemCodes to delete
      */
-    where?: AdminTransactionArchiveWhereInput
+    where?: RedeemCodeWhereInput
     /**
-     * Limit how many AdminTransactionArchives to delete.
+     * Limit how many RedeemCodes to delete.
      */
     limit?: number
   }
 
   /**
-   * AdminTransactionArchive without action
+   * RedeemCode.redemeers
    */
-  export type AdminTransactionArchiveDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCode$redemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AdminTransactionArchive
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: AdminTransactionArchiveSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AdminTransactionArchive
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: AdminTransactionArchiveOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AdminTransactionArchiveInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
+    where?: CodeRedemeerWhereInput
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    cursor?: CodeRedemeerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+  }
+
+  /**
+   * RedeemCode without action
+   */
+  export type RedeemCodeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RedeemCode
+     */
+    select?: RedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RedeemCode
+     */
+    omit?: RedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RedeemCodeInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model UserTransaction
+   * Model CodeRedemeer
    */
 
-  export type AggregateUserTransaction = {
-    _count: UserTransactionCountAggregateOutputType | null
-    _avg: UserTransactionAvgAggregateOutputType | null
-    _sum: UserTransactionSumAggregateOutputType | null
-    _min: UserTransactionMinAggregateOutputType | null
-    _max: UserTransactionMaxAggregateOutputType | null
+  export type AggregateCodeRedemeer = {
+    _count: CodeRedemeerCountAggregateOutputType | null
+    _min: CodeRedemeerMinAggregateOutputType | null
+    _max: CodeRedemeerMaxAggregateOutputType | null
   }
 
-  export type UserTransactionAvgAggregateOutputType = {
-    quantity: number | null
-  }
-
-  export type UserTransactionSumAggregateOutputType = {
-    quantity: number | null
-  }
-
-  export type UserTransactionMinAggregateOutputType = {
+  export type CodeRedemeerMinAggregateOutputType = {
     id: string | null
-    transactionName: string | null
-    status: string | null
+    banned: boolean | null
+    userId: string | null
+    codeId: string | null
     createdAt: Date | null
-    expiredAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
   }
 
-  export type UserTransactionMaxAggregateOutputType = {
+  export type CodeRedemeerMaxAggregateOutputType = {
     id: string | null
-    transactionName: string | null
-    status: string | null
+    banned: boolean | null
+    userId: string | null
+    codeId: string | null
     createdAt: Date | null
-    expiredAt: Date | null
     updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
   }
 
-  export type UserTransactionCountAggregateOutputType = {
+  export type CodeRedemeerCountAggregateOutputType = {
     id: number
-    transactionName: number
-    status: number
+    banned: number
+    userId: number
+    codeId: number
     createdAt: number
-    expiredAt: number
     updatedAt: number
-    customerEmail: number
-    customerName: number
-    customerId: number
-    quantity: number
-    zones: number
     _all: number
   }
 
 
-  export type UserTransactionAvgAggregateInputType = {
-    quantity?: true
-  }
-
-  export type UserTransactionSumAggregateInputType = {
-    quantity?: true
-  }
-
-  export type UserTransactionMinAggregateInputType = {
+  export type CodeRedemeerMinAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
+    banned?: true
+    userId?: true
+    codeId?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
   }
 
-  export type UserTransactionMaxAggregateInputType = {
+  export type CodeRedemeerMaxAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
+    banned?: true
+    userId?: true
+    codeId?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
   }
 
-  export type UserTransactionCountAggregateInputType = {
+  export type CodeRedemeerCountAggregateInputType = {
     id?: true
-    transactionName?: true
-    status?: true
+    banned?: true
+    userId?: true
+    codeId?: true
     createdAt?: true
-    expiredAt?: true
     updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
-    zones?: true
     _all?: true
   }
 
-  export type UserTransactionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserTransaction to aggregate.
+     * Filter which CodeRedemeer to aggregate.
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserTransactions to fetch.
+     * Determine the order of CodeRedemeers to fetch.
      */
-    orderBy?: UserTransactionOrderByWithRelationInput | UserTransactionOrderByWithRelationInput[]
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserTransactionWhereUniqueInput
+    cursor?: CodeRedemeerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserTransactions from the position of the cursor.
+     * Take `±n` CodeRedemeers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserTransactions.
+     * Skip the first `n` CodeRedemeers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserTransactions
+     * Count returned CodeRedemeers
     **/
-    _count?: true | UserTransactionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: UserTransactionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserTransactionSumAggregateInputType
+    _count?: true | CodeRedemeerCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserTransactionMinAggregateInputType
+    _min?: CodeRedemeerMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserTransactionMaxAggregateInputType
+    _max?: CodeRedemeerMaxAggregateInputType
   }
 
-  export type GetUserTransactionAggregateType<T extends UserTransactionAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserTransaction]: P extends '_count' | 'count'
+  export type GetCodeRedemeerAggregateType<T extends CodeRedemeerAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodeRedemeer]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserTransaction[P]>
-      : GetScalarType<T[P], AggregateUserTransaction[P]>
+        : GetScalarType<T[P], AggregateCodeRedemeer[P]>
+      : GetScalarType<T[P], AggregateCodeRedemeer[P]>
   }
 
 
 
 
-  export type UserTransactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserTransactionWhereInput
-    orderBy?: UserTransactionOrderByWithAggregationInput | UserTransactionOrderByWithAggregationInput[]
-    by: UserTransactionScalarFieldEnum[] | UserTransactionScalarFieldEnum
-    having?: UserTransactionScalarWhereWithAggregatesInput
+  export type CodeRedemeerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeRedemeerWhereInput
+    orderBy?: CodeRedemeerOrderByWithAggregationInput | CodeRedemeerOrderByWithAggregationInput[]
+    by: CodeRedemeerScalarFieldEnum[] | CodeRedemeerScalarFieldEnum
+    having?: CodeRedemeerScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserTransactionCountAggregateInputType | true
-    _avg?: UserTransactionAvgAggregateInputType
-    _sum?: UserTransactionSumAggregateInputType
-    _min?: UserTransactionMinAggregateInputType
-    _max?: UserTransactionMaxAggregateInputType
+    _count?: CodeRedemeerCountAggregateInputType | true
+    _min?: CodeRedemeerMinAggregateInputType
+    _max?: CodeRedemeerMaxAggregateInputType
   }
 
-  export type UserTransactionGroupByOutputType = {
+  export type CodeRedemeerGroupByOutputType = {
     id: string
-    transactionName: string
-    status: string
+    banned: boolean
+    userId: string
+    codeId: string
     createdAt: Date
-    expiredAt: Date
     updatedAt: Date
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity: number
-    zones: string[]
-    _count: UserTransactionCountAggregateOutputType | null
-    _avg: UserTransactionAvgAggregateOutputType | null
-    _sum: UserTransactionSumAggregateOutputType | null
-    _min: UserTransactionMinAggregateOutputType | null
-    _max: UserTransactionMaxAggregateOutputType | null
+    _count: CodeRedemeerCountAggregateOutputType | null
+    _min: CodeRedemeerMinAggregateOutputType | null
+    _max: CodeRedemeerMaxAggregateOutputType | null
   }
 
-  type GetUserTransactionGroupByPayload<T extends UserTransactionGroupByArgs> = Prisma.PrismaPromise<
+  type GetCodeRedemeerGroupByPayload<T extends CodeRedemeerGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserTransactionGroupByOutputType, T['by']> &
+      PickEnumerable<CodeRedemeerGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserTransactionGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CodeRedemeerGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserTransactionGroupByOutputType[P]>
-            : GetScalarType<T[P], UserTransactionGroupByOutputType[P]>
+              : GetScalarType<T[P], CodeRedemeerGroupByOutputType[P]>
+            : GetScalarType<T[P], CodeRedemeerGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserTransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedemeerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
+    banned?: boolean
+    userId?: boolean
+    codeId?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransaction"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeRedemeer"]>
 
-  export type UserTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedemeerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
+    banned?: boolean
+    userId?: boolean
+    codeId?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransaction"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeRedemeer"]>
 
-  export type UserTransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedemeerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
+    banned?: boolean
+    userId?: boolean
+    codeId?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransaction"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["codeRedemeer"]>
 
-  export type UserTransactionSelectScalar = {
+  export type CodeRedemeerSelectScalar = {
     id?: boolean
-    transactionName?: boolean
-    status?: boolean
+    banned?: boolean
+    userId?: boolean
+    codeId?: boolean
     createdAt?: boolean
-    expiredAt?: boolean
     updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
   }
 
-  export type UserTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionName" | "status" | "createdAt" | "expiredAt" | "updatedAt" | "customerEmail" | "customerName" | "customerId" | "quantity" | "zones", ExtArgs["result"]["userTransaction"]>
-  export type UserTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
+  export type CodeRedemeerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "banned" | "userId" | "codeId" | "createdAt" | "updatedAt", ExtArgs["result"]["codeRedemeer"]>
+  export type CodeRedemeerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
   }
-  export type UserTransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
+  export type CodeRedemeerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
   }
-  export type UserTransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
+  export type CodeRedemeerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
   }
 
-  export type $UserTransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserTransaction"
+  export type $CodeRedemeerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodeRedemeer"
     objects: {
-      customer: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+      code: Prisma.$RedeemCodePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transactionName: string
-      status: string
+      banned: boolean
+      userId: string
+      codeId: string
       createdAt: Date
-      expiredAt: Date
       updatedAt: Date
-      customerEmail: string
-      customerName: string
-      customerId: string
-      quantity: number
-      zones: string[]
-    }, ExtArgs["result"]["userTransaction"]>
+    }, ExtArgs["result"]["codeRedemeer"]>
     composites: {}
   }
 
-  type UserTransactionGetPayload<S extends boolean | null | undefined | UserTransactionDefaultArgs> = $Result.GetResult<Prisma.$UserTransactionPayload, S>
+  type CodeRedemeerGetPayload<S extends boolean | null | undefined | CodeRedemeerDefaultArgs> = $Result.GetResult<Prisma.$CodeRedemeerPayload, S>
 
-  type UserTransactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserTransactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserTransactionCountAggregateInputType | true
+  type CodeRedemeerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodeRedemeerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodeRedemeerCountAggregateInputType | true
     }
 
-  export interface UserTransactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserTransaction'], meta: { name: 'UserTransaction' } }
+  export interface CodeRedemeerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeRedemeer'], meta: { name: 'CodeRedemeer' } }
     /**
-     * Find zero or one UserTransaction that matches the filter.
-     * @param {UserTransactionFindUniqueArgs} args - Arguments to find a UserTransaction
+     * Find zero or one CodeRedemeer that matches the filter.
+     * @param {CodeRedemeerFindUniqueArgs} args - Arguments to find a CodeRedemeer
      * @example
-     * // Get one UserTransaction
-     * const userTransaction = await prisma.userTransaction.findUnique({
+     * // Get one CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserTransactionFindUniqueArgs>(args: SelectSubset<T, UserTransactionFindUniqueArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CodeRedemeerFindUniqueArgs>(args: SelectSubset<T, CodeRedemeerFindUniqueArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserTransaction that matches the filter or throw an error with `error.code='P2025'`
+     * Find one CodeRedemeer that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserTransactionFindUniqueOrThrowArgs} args - Arguments to find a UserTransaction
+     * @param {CodeRedemeerFindUniqueOrThrowArgs} args - Arguments to find a CodeRedemeer
      * @example
-     * // Get one UserTransaction
-     * const userTransaction = await prisma.userTransaction.findUniqueOrThrow({
+     * // Get one CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserTransactionFindUniqueOrThrowArgs>(args: SelectSubset<T, UserTransactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CodeRedemeerFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeRedemeerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserTransaction that matches the filter.
+     * Find the first CodeRedemeer that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionFindFirstArgs} args - Arguments to find a UserTransaction
+     * @param {CodeRedemeerFindFirstArgs} args - Arguments to find a CodeRedemeer
      * @example
-     * // Get one UserTransaction
-     * const userTransaction = await prisma.userTransaction.findFirst({
+     * // Get one CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserTransactionFindFirstArgs>(args?: SelectSubset<T, UserTransactionFindFirstArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CodeRedemeerFindFirstArgs>(args?: SelectSubset<T, CodeRedemeerFindFirstArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserTransaction that matches the filter or
+     * Find the first CodeRedemeer that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionFindFirstOrThrowArgs} args - Arguments to find a UserTransaction
+     * @param {CodeRedemeerFindFirstOrThrowArgs} args - Arguments to find a CodeRedemeer
      * @example
-     * // Get one UserTransaction
-     * const userTransaction = await prisma.userTransaction.findFirstOrThrow({
+     * // Get one CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserTransactionFindFirstOrThrowArgs>(args?: SelectSubset<T, UserTransactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CodeRedemeerFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeRedemeerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserTransactions that matches the filter.
+     * Find zero or more CodeRedemeers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CodeRedemeerFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserTransactions
-     * const userTransactions = await prisma.userTransaction.findMany()
+     * // Get all CodeRedemeers
+     * const codeRedemeers = await prisma.codeRedemeer.findMany()
      * 
-     * // Get first 10 UserTransactions
-     * const userTransactions = await prisma.userTransaction.findMany({ take: 10 })
+     * // Get first 10 CodeRedemeers
+     * const codeRedemeers = await prisma.codeRedemeer.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userTransactionWithIdOnly = await prisma.userTransaction.findMany({ select: { id: true } })
+     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserTransactionFindManyArgs>(args?: SelectSubset<T, UserTransactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CodeRedemeerFindManyArgs>(args?: SelectSubset<T, CodeRedemeerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserTransaction.
-     * @param {UserTransactionCreateArgs} args - Arguments to create a UserTransaction.
+     * Create a CodeRedemeer.
+     * @param {CodeRedemeerCreateArgs} args - Arguments to create a CodeRedemeer.
      * @example
-     * // Create one UserTransaction
-     * const UserTransaction = await prisma.userTransaction.create({
+     * // Create one CodeRedemeer
+     * const CodeRedemeer = await prisma.codeRedemeer.create({
      *   data: {
-     *     // ... data to create a UserTransaction
+     *     // ... data to create a CodeRedemeer
      *   }
      * })
      * 
      */
-    create<T extends UserTransactionCreateArgs>(args: SelectSubset<T, UserTransactionCreateArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CodeRedemeerCreateArgs>(args: SelectSubset<T, CodeRedemeerCreateArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserTransactions.
-     * @param {UserTransactionCreateManyArgs} args - Arguments to create many UserTransactions.
+     * Create many CodeRedemeers.
+     * @param {CodeRedemeerCreateManyArgs} args - Arguments to create many CodeRedemeers.
      * @example
-     * // Create many UserTransactions
-     * const userTransaction = await prisma.userTransaction.createMany({
+     * // Create many CodeRedemeers
+     * const codeRedemeer = await prisma.codeRedemeer.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserTransactionCreateManyArgs>(args?: SelectSubset<T, UserTransactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CodeRedemeerCreateManyArgs>(args?: SelectSubset<T, CodeRedemeerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserTransactions and returns the data saved in the database.
-     * @param {UserTransactionCreateManyAndReturnArgs} args - Arguments to create many UserTransactions.
+     * Create many CodeRedemeers and returns the data saved in the database.
+     * @param {CodeRedemeerCreateManyAndReturnArgs} args - Arguments to create many CodeRedemeers.
      * @example
-     * // Create many UserTransactions
-     * const userTransaction = await prisma.userTransaction.createManyAndReturn({
+     * // Create many CodeRedemeers
+     * const codeRedemeer = await prisma.codeRedemeer.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserTransactions and only return the `id`
-     * const userTransactionWithIdOnly = await prisma.userTransaction.createManyAndReturn({
+     * // Create many CodeRedemeers and only return the `id`
+     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -39449,28 +37948,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserTransactionCreateManyAndReturnArgs>(args?: SelectSubset<T, UserTransactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CodeRedemeerCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeRedemeerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserTransaction.
-     * @param {UserTransactionDeleteArgs} args - Arguments to delete one UserTransaction.
+     * Delete a CodeRedemeer.
+     * @param {CodeRedemeerDeleteArgs} args - Arguments to delete one CodeRedemeer.
      * @example
-     * // Delete one UserTransaction
-     * const UserTransaction = await prisma.userTransaction.delete({
+     * // Delete one CodeRedemeer
+     * const CodeRedemeer = await prisma.codeRedemeer.delete({
      *   where: {
-     *     // ... filter to delete one UserTransaction
+     *     // ... filter to delete one CodeRedemeer
      *   }
      * })
      * 
      */
-    delete<T extends UserTransactionDeleteArgs>(args: SelectSubset<T, UserTransactionDeleteArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CodeRedemeerDeleteArgs>(args: SelectSubset<T, CodeRedemeerDeleteArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserTransaction.
-     * @param {UserTransactionUpdateArgs} args - Arguments to update one UserTransaction.
+     * Update one CodeRedemeer.
+     * @param {CodeRedemeerUpdateArgs} args - Arguments to update one CodeRedemeer.
      * @example
-     * // Update one UserTransaction
-     * const userTransaction = await prisma.userTransaction.update({
+     * // Update one CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39480,30 +37979,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserTransactionUpdateArgs>(args: SelectSubset<T, UserTransactionUpdateArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CodeRedemeerUpdateArgs>(args: SelectSubset<T, CodeRedemeerUpdateArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserTransactions.
-     * @param {UserTransactionDeleteManyArgs} args - Arguments to filter UserTransactions to delete.
+     * Delete zero or more CodeRedemeers.
+     * @param {CodeRedemeerDeleteManyArgs} args - Arguments to filter CodeRedemeers to delete.
      * @example
-     * // Delete a few UserTransactions
-     * const { count } = await prisma.userTransaction.deleteMany({
+     * // Delete a few CodeRedemeers
+     * const { count } = await prisma.codeRedemeer.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserTransactionDeleteManyArgs>(args?: SelectSubset<T, UserTransactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CodeRedemeerDeleteManyArgs>(args?: SelectSubset<T, CodeRedemeerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserTransactions.
+     * Update zero or more CodeRedemeers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CodeRedemeerUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserTransactions
-     * const userTransaction = await prisma.userTransaction.updateMany({
+     * // Update many CodeRedemeers
+     * const codeRedemeer = await prisma.codeRedemeer.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39513,14 +38012,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserTransactionUpdateManyArgs>(args: SelectSubset<T, UserTransactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CodeRedemeerUpdateManyArgs>(args: SelectSubset<T, CodeRedemeerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserTransactions and returns the data updated in the database.
-     * @param {UserTransactionUpdateManyAndReturnArgs} args - Arguments to update many UserTransactions.
+     * Update zero or more CodeRedemeers and returns the data updated in the database.
+     * @param {CodeRedemeerUpdateManyAndReturnArgs} args - Arguments to update many CodeRedemeers.
      * @example
-     * // Update many UserTransactions
-     * const userTransaction = await prisma.userTransaction.updateManyAndReturn({
+     * // Update many CodeRedemeers
+     * const codeRedemeer = await prisma.codeRedemeer.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39529,8 +38028,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserTransactions and only return the `id`
-     * const userTransactionWithIdOnly = await prisma.userTransaction.updateManyAndReturn({
+     * // Update zero or more CodeRedemeers and only return the `id`
+     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -39543,56 +38042,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserTransactionUpdateManyAndReturnArgs>(args: SelectSubset<T, UserTransactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CodeRedemeerUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeRedemeerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserTransaction.
-     * @param {UserTransactionUpsertArgs} args - Arguments to update or create a UserTransaction.
+     * Create or update one CodeRedemeer.
+     * @param {CodeRedemeerUpsertArgs} args - Arguments to update or create a CodeRedemeer.
      * @example
-     * // Update or create a UserTransaction
-     * const userTransaction = await prisma.userTransaction.upsert({
+     * // Update or create a CodeRedemeer
+     * const codeRedemeer = await prisma.codeRedemeer.upsert({
      *   create: {
-     *     // ... data to create a UserTransaction
+     *     // ... data to create a CodeRedemeer
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserTransaction we want to update
+     *     // ... the filter for the CodeRedemeer we want to update
      *   }
      * })
      */
-    upsert<T extends UserTransactionUpsertArgs>(args: SelectSubset<T, UserTransactionUpsertArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CodeRedemeerUpsertArgs>(args: SelectSubset<T, CodeRedemeerUpsertArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserTransactions.
+     * Count the number of CodeRedemeers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionCountArgs} args - Arguments to filter UserTransactions to count.
+     * @param {CodeRedemeerCountArgs} args - Arguments to filter CodeRedemeers to count.
      * @example
-     * // Count the number of UserTransactions
-     * const count = await prisma.userTransaction.count({
+     * // Count the number of CodeRedemeers
+     * const count = await prisma.codeRedemeer.count({
      *   where: {
-     *     // ... the filter for the UserTransactions we want to count
+     *     // ... the filter for the CodeRedemeers we want to count
      *   }
      * })
     **/
-    count<T extends UserTransactionCountArgs>(
-      args?: Subset<T, UserTransactionCountArgs>,
+    count<T extends CodeRedemeerCountArgs>(
+      args?: Subset<T, CodeRedemeerCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserTransactionCountAggregateOutputType>
+          : GetScalarType<T['select'], CodeRedemeerCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserTransaction.
+     * Allows you to perform aggregations operations on a CodeRedemeer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CodeRedemeerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -39612,13 +38111,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserTransactionAggregateArgs>(args: Subset<T, UserTransactionAggregateArgs>): Prisma.PrismaPromise<GetUserTransactionAggregateType<T>>
+    aggregate<T extends CodeRedemeerAggregateArgs>(args: Subset<T, CodeRedemeerAggregateArgs>): Prisma.PrismaPromise<GetCodeRedemeerAggregateType<T>>
 
     /**
-     * Group by UserTransaction.
+     * Group by CodeRedemeer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionGroupByArgs} args - Group by arguments.
+     * @param {CodeRedemeerGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -39633,14 +38132,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserTransactionGroupByArgs,
+      T extends CodeRedemeerGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserTransactionGroupByArgs['orderBy'] }
-        : { orderBy?: UserTransactionGroupByArgs['orderBy'] },
+        ? { orderBy: CodeRedemeerGroupByArgs['orderBy'] }
+        : { orderBy?: CodeRedemeerGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -39689,22 +38188,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserTransactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CodeRedemeerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeRedemeerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserTransaction model
+   * Fields of the CodeRedemeer model
    */
-  readonly fields: UserTransactionFieldRefs;
+  readonly fields: CodeRedemeerFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserTransaction.
+   * The delegate class that acts as a "Promise-like" for CodeRedemeer.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserTransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CodeRedemeerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    code<T extends RedeemCodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCodeDefaultArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -39731,1597 +38231,426 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserTransaction model
+   * Fields of the CodeRedemeer model
    */
-  interface UserTransactionFieldRefs {
-    readonly id: FieldRef<"UserTransaction", 'String'>
-    readonly transactionName: FieldRef<"UserTransaction", 'String'>
-    readonly status: FieldRef<"UserTransaction", 'String'>
-    readonly createdAt: FieldRef<"UserTransaction", 'DateTime'>
-    readonly expiredAt: FieldRef<"UserTransaction", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserTransaction", 'DateTime'>
-    readonly customerEmail: FieldRef<"UserTransaction", 'String'>
-    readonly customerName: FieldRef<"UserTransaction", 'String'>
-    readonly customerId: FieldRef<"UserTransaction", 'String'>
-    readonly quantity: FieldRef<"UserTransaction", 'Int'>
-    readonly zones: FieldRef<"UserTransaction", 'String[]'>
+  interface CodeRedemeerFieldRefs {
+    readonly id: FieldRef<"CodeRedemeer", 'String'>
+    readonly banned: FieldRef<"CodeRedemeer", 'Boolean'>
+    readonly userId: FieldRef<"CodeRedemeer", 'String'>
+    readonly codeId: FieldRef<"CodeRedemeer", 'String'>
+    readonly createdAt: FieldRef<"CodeRedemeer", 'DateTime'>
+    readonly updatedAt: FieldRef<"CodeRedemeer", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserTransaction findUnique
+   * CodeRedemeer findUnique
    */
-  export type UserTransactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter, which UserTransaction to fetch.
+     * Filter, which CodeRedemeer to fetch.
      */
-    where: UserTransactionWhereUniqueInput
+    where: CodeRedemeerWhereUniqueInput
   }
 
   /**
-   * UserTransaction findUniqueOrThrow
+   * CodeRedemeer findUniqueOrThrow
    */
-  export type UserTransactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter, which UserTransaction to fetch.
+     * Filter, which CodeRedemeer to fetch.
      */
-    where: UserTransactionWhereUniqueInput
+    where: CodeRedemeerWhereUniqueInput
   }
 
   /**
-   * UserTransaction findFirst
+   * CodeRedemeer findFirst
    */
-  export type UserTransactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter, which UserTransaction to fetch.
+     * Filter, which CodeRedemeer to fetch.
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserTransactions to fetch.
+     * Determine the order of CodeRedemeers to fetch.
      */
-    orderBy?: UserTransactionOrderByWithRelationInput | UserTransactionOrderByWithRelationInput[]
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserTransactions.
+     * Sets the position for searching for CodeRedemeers.
      */
-    cursor?: UserTransactionWhereUniqueInput
+    cursor?: CodeRedemeerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserTransactions from the position of the cursor.
+     * Take `±n` CodeRedemeers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserTransactions.
+     * Skip the first `n` CodeRedemeers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserTransactions.
+     * Filter by unique combinations of CodeRedemeers.
      */
-    distinct?: UserTransactionScalarFieldEnum | UserTransactionScalarFieldEnum[]
+    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
   }
 
   /**
-   * UserTransaction findFirstOrThrow
+   * CodeRedemeer findFirstOrThrow
    */
-  export type UserTransactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter, which UserTransaction to fetch.
+     * Filter, which CodeRedemeer to fetch.
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserTransactions to fetch.
+     * Determine the order of CodeRedemeers to fetch.
      */
-    orderBy?: UserTransactionOrderByWithRelationInput | UserTransactionOrderByWithRelationInput[]
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserTransactions.
+     * Sets the position for searching for CodeRedemeers.
      */
-    cursor?: UserTransactionWhereUniqueInput
+    cursor?: CodeRedemeerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserTransactions from the position of the cursor.
+     * Take `±n` CodeRedemeers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserTransactions.
+     * Skip the first `n` CodeRedemeers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserTransactions.
+     * Filter by unique combinations of CodeRedemeers.
      */
-    distinct?: UserTransactionScalarFieldEnum | UserTransactionScalarFieldEnum[]
+    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
   }
 
   /**
-   * UserTransaction findMany
+   * CodeRedemeer findMany
    */
-  export type UserTransactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter, which UserTransactions to fetch.
+     * Filter, which CodeRedemeers to fetch.
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserTransactions to fetch.
+     * Determine the order of CodeRedemeers to fetch.
      */
-    orderBy?: UserTransactionOrderByWithRelationInput | UserTransactionOrderByWithRelationInput[]
+    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserTransactions.
+     * Sets the position for listing CodeRedemeers.
      */
-    cursor?: UserTransactionWhereUniqueInput
+    cursor?: CodeRedemeerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserTransactions from the position of the cursor.
+     * Take `±n` CodeRedemeers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserTransactions.
+     * Skip the first `n` CodeRedemeers.
      */
     skip?: number
-    distinct?: UserTransactionScalarFieldEnum | UserTransactionScalarFieldEnum[]
+    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
   }
 
   /**
-   * UserTransaction create
+   * CodeRedemeer create
    */
-  export type UserTransactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserTransaction.
+     * The data needed to create a CodeRedemeer.
      */
-    data: XOR<UserTransactionCreateInput, UserTransactionUncheckedCreateInput>
+    data: XOR<CodeRedemeerCreateInput, CodeRedemeerUncheckedCreateInput>
   }
 
   /**
-   * UserTransaction createMany
+   * CodeRedemeer createMany
    */
-  export type UserTransactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserTransactions.
+     * The data used to create many CodeRedemeers.
      */
-    data: UserTransactionCreateManyInput | UserTransactionCreateManyInput[]
+    data: CodeRedemeerCreateManyInput | CodeRedemeerCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserTransaction createManyAndReturn
+   * CodeRedemeer createManyAndReturn
    */
-  export type UserTransactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CodeRedemeerSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
-     * The data used to create many UserTransactions.
+     * The data used to create many CodeRedemeers.
      */
-    data: UserTransactionCreateManyInput | UserTransactionCreateManyInput[]
+    data: CodeRedemeerCreateManyInput | CodeRedemeerCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: CodeRedemeerIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserTransaction update
+   * CodeRedemeer update
    */
-  export type UserTransactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserTransaction.
+     * The data needed to update a CodeRedemeer.
      */
-    data: XOR<UserTransactionUpdateInput, UserTransactionUncheckedUpdateInput>
+    data: XOR<CodeRedemeerUpdateInput, CodeRedemeerUncheckedUpdateInput>
     /**
-     * Choose, which UserTransaction to update.
+     * Choose, which CodeRedemeer to update.
      */
-    where: UserTransactionWhereUniqueInput
+    where: CodeRedemeerWhereUniqueInput
   }
 
   /**
-   * UserTransaction updateMany
+   * CodeRedemeer updateMany
    */
-  export type UserTransactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserTransactions.
+     * The data used to update CodeRedemeers.
      */
-    data: XOR<UserTransactionUpdateManyMutationInput, UserTransactionUncheckedUpdateManyInput>
+    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyInput>
     /**
-     * Filter which UserTransactions to update
+     * Filter which CodeRedemeers to update
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
-     * Limit how many UserTransactions to update.
+     * Limit how many CodeRedemeers to update.
      */
     limit?: number
   }
 
   /**
-   * UserTransaction updateManyAndReturn
+   * CodeRedemeer updateManyAndReturn
    */
-  export type UserTransactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CodeRedemeerSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
-     * The data used to update UserTransactions.
+     * The data used to update CodeRedemeers.
      */
-    data: XOR<UserTransactionUpdateManyMutationInput, UserTransactionUncheckedUpdateManyInput>
+    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyInput>
     /**
-     * Filter which UserTransactions to update
+     * Filter which CodeRedemeers to update
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
-     * Limit how many UserTransactions to update.
+     * Limit how many CodeRedemeers to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: CodeRedemeerIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserTransaction upsert
+   * CodeRedemeer upsert
    */
-  export type UserTransactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserTransaction to update in case it exists.
+     * The filter to search for the CodeRedemeer to update in case it exists.
      */
-    where: UserTransactionWhereUniqueInput
+    where: CodeRedemeerWhereUniqueInput
     /**
-     * In case the UserTransaction found by the `where` argument doesn't exist, create a new UserTransaction with this data.
+     * In case the CodeRedemeer found by the `where` argument doesn't exist, create a new CodeRedemeer with this data.
      */
-    create: XOR<UserTransactionCreateInput, UserTransactionUncheckedCreateInput>
+    create: XOR<CodeRedemeerCreateInput, CodeRedemeerUncheckedCreateInput>
     /**
-     * In case the UserTransaction was found with the provided `where` argument, update it with this data.
+     * In case the CodeRedemeer was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserTransactionUpdateInput, UserTransactionUncheckedUpdateInput>
+    update: XOR<CodeRedemeerUpdateInput, CodeRedemeerUncheckedUpdateInput>
   }
 
   /**
-   * UserTransaction delete
+   * CodeRedemeer delete
    */
-  export type UserTransactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
     /**
-     * Filter which UserTransaction to delete.
+     * Filter which CodeRedemeer to delete.
      */
-    where: UserTransactionWhereUniqueInput
+    where: CodeRedemeerWhereUniqueInput
   }
 
   /**
-   * UserTransaction deleteMany
+   * CodeRedemeer deleteMany
    */
-  export type UserTransactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserTransactions to delete
+     * Filter which CodeRedemeers to delete
      */
-    where?: UserTransactionWhereInput
+    where?: CodeRedemeerWhereInput
     /**
-     * Limit how many UserTransactions to delete.
+     * Limit how many CodeRedemeers to delete.
      */
     limit?: number
   }
 
   /**
-   * UserTransaction without action
+   * CodeRedemeer without action
    */
-  export type UserTransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedemeerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserTransaction
+     * Select specific fields to fetch from the CodeRedemeer
      */
-    select?: UserTransactionSelect<ExtArgs> | null
+    select?: CodeRedemeerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserTransaction
+     * Omit specific fields from the CodeRedemeer
      */
-    omit?: UserTransactionOmit<ExtArgs> | null
+    omit?: CodeRedemeerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserTransactionInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model UserTransactionArchive
-   */
-
-  export type AggregateUserTransactionArchive = {
-    _count: UserTransactionArchiveCountAggregateOutputType | null
-    _avg: UserTransactionArchiveAvgAggregateOutputType | null
-    _sum: UserTransactionArchiveSumAggregateOutputType | null
-    _min: UserTransactionArchiveMinAggregateOutputType | null
-    _max: UserTransactionArchiveMaxAggregateOutputType | null
-  }
-
-  export type UserTransactionArchiveAvgAggregateOutputType = {
-    quantity: number | null
-  }
-
-  export type UserTransactionArchiveSumAggregateOutputType = {
-    quantity: number | null
-  }
-
-  export type UserTransactionArchiveMinAggregateOutputType = {
-    id: string | null
-    transactionName: string | null
-    status: string | null
-    createdAt: Date | null
-    expiredAt: Date | null
-    updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
-  }
-
-  export type UserTransactionArchiveMaxAggregateOutputType = {
-    id: string | null
-    transactionName: string | null
-    status: string | null
-    createdAt: Date | null
-    expiredAt: Date | null
-    updatedAt: Date | null
-    customerEmail: string | null
-    customerName: string | null
-    customerId: string | null
-    quantity: number | null
-  }
-
-  export type UserTransactionArchiveCountAggregateOutputType = {
-    id: number
-    transactionName: number
-    status: number
-    createdAt: number
-    expiredAt: number
-    updatedAt: number
-    customerEmail: number
-    customerName: number
-    customerId: number
-    quantity: number
-    zones: number
-    _all: number
-  }
-
-
-  export type UserTransactionArchiveAvgAggregateInputType = {
-    quantity?: true
-  }
-
-  export type UserTransactionArchiveSumAggregateInputType = {
-    quantity?: true
-  }
-
-  export type UserTransactionArchiveMinAggregateInputType = {
-    id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
-    expiredAt?: true
-    updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
-  }
-
-  export type UserTransactionArchiveMaxAggregateInputType = {
-    id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
-    expiredAt?: true
-    updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
-  }
-
-  export type UserTransactionArchiveCountAggregateInputType = {
-    id?: true
-    transactionName?: true
-    status?: true
-    createdAt?: true
-    expiredAt?: true
-    updatedAt?: true
-    customerEmail?: true
-    customerName?: true
-    customerId?: true
-    quantity?: true
-    zones?: true
-    _all?: true
-  }
-
-  export type UserTransactionArchiveAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which UserTransactionArchive to aggregate.
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserTransactionArchives to fetch.
-     */
-    orderBy?: UserTransactionArchiveOrderByWithRelationInput | UserTransactionArchiveOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: UserTransactionArchiveWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserTransactionArchives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserTransactionArchives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned UserTransactionArchives
-    **/
-    _count?: true | UserTransactionArchiveCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: UserTransactionArchiveAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserTransactionArchiveSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: UserTransactionArchiveMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: UserTransactionArchiveMaxAggregateInputType
-  }
-
-  export type GetUserTransactionArchiveAggregateType<T extends UserTransactionArchiveAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserTransactionArchive]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUserTransactionArchive[P]>
-      : GetScalarType<T[P], AggregateUserTransactionArchive[P]>
-  }
-
-
-
-
-  export type UserTransactionArchiveGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserTransactionArchiveWhereInput
-    orderBy?: UserTransactionArchiveOrderByWithAggregationInput | UserTransactionArchiveOrderByWithAggregationInput[]
-    by: UserTransactionArchiveScalarFieldEnum[] | UserTransactionArchiveScalarFieldEnum
-    having?: UserTransactionArchiveScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: UserTransactionArchiveCountAggregateInputType | true
-    _avg?: UserTransactionArchiveAvgAggregateInputType
-    _sum?: UserTransactionArchiveSumAggregateInputType
-    _min?: UserTransactionArchiveMinAggregateInputType
-    _max?: UserTransactionArchiveMaxAggregateInputType
-  }
-
-  export type UserTransactionArchiveGroupByOutputType = {
-    id: string
-    transactionName: string
-    status: string
-    createdAt: Date
-    expiredAt: Date
-    updatedAt: Date
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity: number
-    zones: string[]
-    _count: UserTransactionArchiveCountAggregateOutputType | null
-    _avg: UserTransactionArchiveAvgAggregateOutputType | null
-    _sum: UserTransactionArchiveSumAggregateOutputType | null
-    _min: UserTransactionArchiveMinAggregateOutputType | null
-    _max: UserTransactionArchiveMaxAggregateOutputType | null
-  }
-
-  type GetUserTransactionArchiveGroupByPayload<T extends UserTransactionArchiveGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UserTransactionArchiveGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserTransactionArchiveGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserTransactionArchiveGroupByOutputType[P]>
-            : GetScalarType<T[P], UserTransactionArchiveGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type UserTransactionArchiveSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
-    expiredAt?: boolean
-    updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransactionArchive"]>
-
-  export type UserTransactionArchiveSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
-    expiredAt?: boolean
-    updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransactionArchive"]>
-
-  export type UserTransactionArchiveSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
-    expiredAt?: boolean
-    updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userTransactionArchive"]>
-
-  export type UserTransactionArchiveSelectScalar = {
-    id?: boolean
-    transactionName?: boolean
-    status?: boolean
-    createdAt?: boolean
-    expiredAt?: boolean
-    updatedAt?: boolean
-    customerEmail?: boolean
-    customerName?: boolean
-    customerId?: boolean
-    quantity?: boolean
-    zones?: boolean
-  }
-
-  export type UserTransactionArchiveOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionName" | "status" | "createdAt" | "expiredAt" | "updatedAt" | "customerEmail" | "customerName" | "customerId" | "quantity" | "zones", ExtArgs["result"]["userTransactionArchive"]>
-  export type UserTransactionArchiveInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserTransactionArchiveIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type UserTransactionArchiveIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $UserTransactionArchivePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserTransactionArchive"
-    objects: {
-      customer: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      transactionName: string
-      status: string
-      createdAt: Date
-      expiredAt: Date
-      updatedAt: Date
-      customerEmail: string
-      customerName: string
-      customerId: string
-      quantity: number
-      zones: string[]
-    }, ExtArgs["result"]["userTransactionArchive"]>
-    composites: {}
-  }
-
-  type UserTransactionArchiveGetPayload<S extends boolean | null | undefined | UserTransactionArchiveDefaultArgs> = $Result.GetResult<Prisma.$UserTransactionArchivePayload, S>
-
-  type UserTransactionArchiveCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserTransactionArchiveFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserTransactionArchiveCountAggregateInputType | true
-    }
-
-  export interface UserTransactionArchiveDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserTransactionArchive'], meta: { name: 'UserTransactionArchive' } }
-    /**
-     * Find zero or one UserTransactionArchive that matches the filter.
-     * @param {UserTransactionArchiveFindUniqueArgs} args - Arguments to find a UserTransactionArchive
-     * @example
-     * // Get one UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends UserTransactionArchiveFindUniqueArgs>(args: SelectSubset<T, UserTransactionArchiveFindUniqueArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one UserTransactionArchive that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {UserTransactionArchiveFindUniqueOrThrowArgs} args - Arguments to find a UserTransactionArchive
-     * @example
-     * // Get one UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends UserTransactionArchiveFindUniqueOrThrowArgs>(args: SelectSubset<T, UserTransactionArchiveFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first UserTransactionArchive that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveFindFirstArgs} args - Arguments to find a UserTransactionArchive
-     * @example
-     * // Get one UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends UserTransactionArchiveFindFirstArgs>(args?: SelectSubset<T, UserTransactionArchiveFindFirstArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first UserTransactionArchive that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveFindFirstOrThrowArgs} args - Arguments to find a UserTransactionArchive
-     * @example
-     * // Get one UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends UserTransactionArchiveFindFirstOrThrowArgs>(args?: SelectSubset<T, UserTransactionArchiveFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more UserTransactionArchives that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all UserTransactionArchives
-     * const userTransactionArchives = await prisma.userTransactionArchive.findMany()
-     * 
-     * // Get first 10 UserTransactionArchives
-     * const userTransactionArchives = await prisma.userTransactionArchive.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const userTransactionArchiveWithIdOnly = await prisma.userTransactionArchive.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends UserTransactionArchiveFindManyArgs>(args?: SelectSubset<T, UserTransactionArchiveFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a UserTransactionArchive.
-     * @param {UserTransactionArchiveCreateArgs} args - Arguments to create a UserTransactionArchive.
-     * @example
-     * // Create one UserTransactionArchive
-     * const UserTransactionArchive = await prisma.userTransactionArchive.create({
-     *   data: {
-     *     // ... data to create a UserTransactionArchive
-     *   }
-     * })
-     * 
-     */
-    create<T extends UserTransactionArchiveCreateArgs>(args: SelectSubset<T, UserTransactionArchiveCreateArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many UserTransactionArchives.
-     * @param {UserTransactionArchiveCreateManyArgs} args - Arguments to create many UserTransactionArchives.
-     * @example
-     * // Create many UserTransactionArchives
-     * const userTransactionArchive = await prisma.userTransactionArchive.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends UserTransactionArchiveCreateManyArgs>(args?: SelectSubset<T, UserTransactionArchiveCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many UserTransactionArchives and returns the data saved in the database.
-     * @param {UserTransactionArchiveCreateManyAndReturnArgs} args - Arguments to create many UserTransactionArchives.
-     * @example
-     * // Create many UserTransactionArchives
-     * const userTransactionArchive = await prisma.userTransactionArchive.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many UserTransactionArchives and only return the `id`
-     * const userTransactionArchiveWithIdOnly = await prisma.userTransactionArchive.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends UserTransactionArchiveCreateManyAndReturnArgs>(args?: SelectSubset<T, UserTransactionArchiveCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a UserTransactionArchive.
-     * @param {UserTransactionArchiveDeleteArgs} args - Arguments to delete one UserTransactionArchive.
-     * @example
-     * // Delete one UserTransactionArchive
-     * const UserTransactionArchive = await prisma.userTransactionArchive.delete({
-     *   where: {
-     *     // ... filter to delete one UserTransactionArchive
-     *   }
-     * })
-     * 
-     */
-    delete<T extends UserTransactionArchiveDeleteArgs>(args: SelectSubset<T, UserTransactionArchiveDeleteArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one UserTransactionArchive.
-     * @param {UserTransactionArchiveUpdateArgs} args - Arguments to update one UserTransactionArchive.
-     * @example
-     * // Update one UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends UserTransactionArchiveUpdateArgs>(args: SelectSubset<T, UserTransactionArchiveUpdateArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more UserTransactionArchives.
-     * @param {UserTransactionArchiveDeleteManyArgs} args - Arguments to filter UserTransactionArchives to delete.
-     * @example
-     * // Delete a few UserTransactionArchives
-     * const { count } = await prisma.userTransactionArchive.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends UserTransactionArchiveDeleteManyArgs>(args?: SelectSubset<T, UserTransactionArchiveDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more UserTransactionArchives.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many UserTransactionArchives
-     * const userTransactionArchive = await prisma.userTransactionArchive.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends UserTransactionArchiveUpdateManyArgs>(args: SelectSubset<T, UserTransactionArchiveUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more UserTransactionArchives and returns the data updated in the database.
-     * @param {UserTransactionArchiveUpdateManyAndReturnArgs} args - Arguments to update many UserTransactionArchives.
-     * @example
-     * // Update many UserTransactionArchives
-     * const userTransactionArchive = await prisma.userTransactionArchive.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more UserTransactionArchives and only return the `id`
-     * const userTransactionArchiveWithIdOnly = await prisma.userTransactionArchive.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserTransactionArchiveUpdateManyAndReturnArgs>(args: SelectSubset<T, UserTransactionArchiveUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one UserTransactionArchive.
-     * @param {UserTransactionArchiveUpsertArgs} args - Arguments to update or create a UserTransactionArchive.
-     * @example
-     * // Update or create a UserTransactionArchive
-     * const userTransactionArchive = await prisma.userTransactionArchive.upsert({
-     *   create: {
-     *     // ... data to create a UserTransactionArchive
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the UserTransactionArchive we want to update
-     *   }
-     * })
-     */
-    upsert<T extends UserTransactionArchiveUpsertArgs>(args: SelectSubset<T, UserTransactionArchiveUpsertArgs<ExtArgs>>): Prisma__UserTransactionArchiveClient<$Result.GetResult<Prisma.$UserTransactionArchivePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of UserTransactionArchives.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveCountArgs} args - Arguments to filter UserTransactionArchives to count.
-     * @example
-     * // Count the number of UserTransactionArchives
-     * const count = await prisma.userTransactionArchive.count({
-     *   where: {
-     *     // ... the filter for the UserTransactionArchives we want to count
-     *   }
-     * })
-    **/
-    count<T extends UserTransactionArchiveCountArgs>(
-      args?: Subset<T, UserTransactionArchiveCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserTransactionArchiveCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a UserTransactionArchive.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends UserTransactionArchiveAggregateArgs>(args: Subset<T, UserTransactionArchiveAggregateArgs>): Prisma.PrismaPromise<GetUserTransactionArchiveAggregateType<T>>
-
-    /**
-     * Group by UserTransactionArchive.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserTransactionArchiveGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends UserTransactionArchiveGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserTransactionArchiveGroupByArgs['orderBy'] }
-        : { orderBy?: UserTransactionArchiveGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, UserTransactionArchiveGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserTransactionArchiveGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the UserTransactionArchive model
-   */
-  readonly fields: UserTransactionArchiveFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for UserTransactionArchive.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__UserTransactionArchiveClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the UserTransactionArchive model
-   */
-  interface UserTransactionArchiveFieldRefs {
-    readonly id: FieldRef<"UserTransactionArchive", 'String'>
-    readonly transactionName: FieldRef<"UserTransactionArchive", 'String'>
-    readonly status: FieldRef<"UserTransactionArchive", 'String'>
-    readonly createdAt: FieldRef<"UserTransactionArchive", 'DateTime'>
-    readonly expiredAt: FieldRef<"UserTransactionArchive", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserTransactionArchive", 'DateTime'>
-    readonly customerEmail: FieldRef<"UserTransactionArchive", 'String'>
-    readonly customerName: FieldRef<"UserTransactionArchive", 'String'>
-    readonly customerId: FieldRef<"UserTransactionArchive", 'String'>
-    readonly quantity: FieldRef<"UserTransactionArchive", 'Int'>
-    readonly zones: FieldRef<"UserTransactionArchive", 'String[]'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * UserTransactionArchive findUnique
-   */
-  export type UserTransactionArchiveFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter, which UserTransactionArchive to fetch.
-     */
-    where: UserTransactionArchiveWhereUniqueInput
-  }
-
-  /**
-   * UserTransactionArchive findUniqueOrThrow
-   */
-  export type UserTransactionArchiveFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter, which UserTransactionArchive to fetch.
-     */
-    where: UserTransactionArchiveWhereUniqueInput
-  }
-
-  /**
-   * UserTransactionArchive findFirst
-   */
-  export type UserTransactionArchiveFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter, which UserTransactionArchive to fetch.
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserTransactionArchives to fetch.
-     */
-    orderBy?: UserTransactionArchiveOrderByWithRelationInput | UserTransactionArchiveOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for UserTransactionArchives.
-     */
-    cursor?: UserTransactionArchiveWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserTransactionArchives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserTransactionArchives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of UserTransactionArchives.
-     */
-    distinct?: UserTransactionArchiveScalarFieldEnum | UserTransactionArchiveScalarFieldEnum[]
-  }
-
-  /**
-   * UserTransactionArchive findFirstOrThrow
-   */
-  export type UserTransactionArchiveFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter, which UserTransactionArchive to fetch.
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserTransactionArchives to fetch.
-     */
-    orderBy?: UserTransactionArchiveOrderByWithRelationInput | UserTransactionArchiveOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for UserTransactionArchives.
-     */
-    cursor?: UserTransactionArchiveWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserTransactionArchives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserTransactionArchives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of UserTransactionArchives.
-     */
-    distinct?: UserTransactionArchiveScalarFieldEnum | UserTransactionArchiveScalarFieldEnum[]
-  }
-
-  /**
-   * UserTransactionArchive findMany
-   */
-  export type UserTransactionArchiveFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter, which UserTransactionArchives to fetch.
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of UserTransactionArchives to fetch.
-     */
-    orderBy?: UserTransactionArchiveOrderByWithRelationInput | UserTransactionArchiveOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing UserTransactionArchives.
-     */
-    cursor?: UserTransactionArchiveWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` UserTransactionArchives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` UserTransactionArchives.
-     */
-    skip?: number
-    distinct?: UserTransactionArchiveScalarFieldEnum | UserTransactionArchiveScalarFieldEnum[]
-  }
-
-  /**
-   * UserTransactionArchive create
-   */
-  export type UserTransactionArchiveCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * The data needed to create a UserTransactionArchive.
-     */
-    data: XOR<UserTransactionArchiveCreateInput, UserTransactionArchiveUncheckedCreateInput>
-  }
-
-  /**
-   * UserTransactionArchive createMany
-   */
-  export type UserTransactionArchiveCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many UserTransactionArchives.
-     */
-    data: UserTransactionArchiveCreateManyInput | UserTransactionArchiveCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * UserTransactionArchive createManyAndReturn
-   */
-  export type UserTransactionArchiveCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * The data used to create many UserTransactionArchives.
-     */
-    data: UserTransactionArchiveCreateManyInput | UserTransactionArchiveCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * UserTransactionArchive update
-   */
-  export type UserTransactionArchiveUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * The data needed to update a UserTransactionArchive.
-     */
-    data: XOR<UserTransactionArchiveUpdateInput, UserTransactionArchiveUncheckedUpdateInput>
-    /**
-     * Choose, which UserTransactionArchive to update.
-     */
-    where: UserTransactionArchiveWhereUniqueInput
-  }
-
-  /**
-   * UserTransactionArchive updateMany
-   */
-  export type UserTransactionArchiveUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update UserTransactionArchives.
-     */
-    data: XOR<UserTransactionArchiveUpdateManyMutationInput, UserTransactionArchiveUncheckedUpdateManyInput>
-    /**
-     * Filter which UserTransactionArchives to update
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * Limit how many UserTransactionArchives to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * UserTransactionArchive updateManyAndReturn
-   */
-  export type UserTransactionArchiveUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * The data used to update UserTransactionArchives.
-     */
-    data: XOR<UserTransactionArchiveUpdateManyMutationInput, UserTransactionArchiveUncheckedUpdateManyInput>
-    /**
-     * Filter which UserTransactionArchives to update
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * Limit how many UserTransactionArchives to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * UserTransactionArchive upsert
-   */
-  export type UserTransactionArchiveUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * The filter to search for the UserTransactionArchive to update in case it exists.
-     */
-    where: UserTransactionArchiveWhereUniqueInput
-    /**
-     * In case the UserTransactionArchive found by the `where` argument doesn't exist, create a new UserTransactionArchive with this data.
-     */
-    create: XOR<UserTransactionArchiveCreateInput, UserTransactionArchiveUncheckedCreateInput>
-    /**
-     * In case the UserTransactionArchive was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<UserTransactionArchiveUpdateInput, UserTransactionArchiveUncheckedUpdateInput>
-  }
-
-  /**
-   * UserTransactionArchive delete
-   */
-  export type UserTransactionArchiveDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
-    /**
-     * Filter which UserTransactionArchive to delete.
-     */
-    where: UserTransactionArchiveWhereUniqueInput
-  }
-
-  /**
-   * UserTransactionArchive deleteMany
-   */
-  export type UserTransactionArchiveDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which UserTransactionArchives to delete
-     */
-    where?: UserTransactionArchiveWhereInput
-    /**
-     * Limit how many UserTransactionArchives to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * UserTransactionArchive without action
-   */
-  export type UserTransactionArchiveDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserTransactionArchive
-     */
-    select?: UserTransactionArchiveSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserTransactionArchive
-     */
-    omit?: UserTransactionArchiveOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserTransactionArchiveInclude<ExtArgs> | null
+    include?: CodeRedemeerInclude<ExtArgs> | null
   }
 
 
@@ -43762,20 +41091,6 @@ export namespace Prisma {
   export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
 
 
-  export const AccessContentScalarFieldEnum: {
-    id: 'id',
-    expired: 'expired',
-    quota: 'quota',
-    currentQuota: 'currentQuota',
-    ownerId: 'ownerId',
-    zones: 'zones',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type AccessContentScalarFieldEnum = (typeof AccessContentScalarFieldEnum)[keyof typeof AccessContentScalarFieldEnum]
-
-
   export const UserScalarFieldEnum: {
     id: 'id',
     authId: 'authId',
@@ -44130,70 +41445,52 @@ export namespace Prisma {
 
   export const AdminTransactionScalarFieldEnum: {
     id: 'id',
-    transactionName: 'transactionName',
+    name: 'name',
     status: 'status',
+    archived: 'archived',
     createdAt: 'createdAt',
-    expiredAt: 'expiredAt',
     updatedAt: 'updatedAt',
-    customerEmail: 'customerEmail',
-    customerName: 'customerName',
-    customerId: 'customerId',
+    adminId: 'adminId',
     quantity: 'quantity',
-    zones: 'zones'
+    subscriptionTime: 'subscriptionTime',
+    zones: 'zones',
+    transactionRef: 'transactionRef',
+    amount: 'amount',
+    description: 'description',
+    transactionImageId: 'transactionImageId',
+    transactionImageUrl: 'transactionImageUrl'
   };
 
   export type AdminTransactionScalarFieldEnum = (typeof AdminTransactionScalarFieldEnum)[keyof typeof AdminTransactionScalarFieldEnum]
 
 
-  export const AdminTransactionArchiveScalarFieldEnum: {
+  export const RedeemCodeScalarFieldEnum: {
     id: 'id',
-    transactionName: 'transactionName',
-    status: 'status',
-    createdAt: 'createdAt',
+    suspend: 'suspend',
+    transactionId: 'transactionId',
+    adminId: 'adminId',
+    code: 'code',
     expiredAt: 'expiredAt',
-    updatedAt: 'updatedAt',
-    customerEmail: 'customerEmail',
-    customerName: 'customerName',
-    customerId: 'customerId',
-    quantity: 'quantity',
-    zones: 'zones'
+    currentAmount: 'currentAmount',
+    maxAmount: 'maxAmount',
+    data: 'data',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
-  export type AdminTransactionArchiveScalarFieldEnum = (typeof AdminTransactionArchiveScalarFieldEnum)[keyof typeof AdminTransactionArchiveScalarFieldEnum]
+  export type RedeemCodeScalarFieldEnum = (typeof RedeemCodeScalarFieldEnum)[keyof typeof RedeemCodeScalarFieldEnum]
 
 
-  export const UserTransactionScalarFieldEnum: {
+  export const CodeRedemeerScalarFieldEnum: {
     id: 'id',
-    transactionName: 'transactionName',
-    status: 'status',
+    banned: 'banned',
+    userId: 'userId',
+    codeId: 'codeId',
     createdAt: 'createdAt',
-    expiredAt: 'expiredAt',
-    updatedAt: 'updatedAt',
-    customerEmail: 'customerEmail',
-    customerName: 'customerName',
-    customerId: 'customerId',
-    quantity: 'quantity',
-    zones: 'zones'
+    updatedAt: 'updatedAt'
   };
 
-  export type UserTransactionScalarFieldEnum = (typeof UserTransactionScalarFieldEnum)[keyof typeof UserTransactionScalarFieldEnum]
-
-
-  export const UserTransactionArchiveScalarFieldEnum: {
-    id: 'id',
-    transactionName: 'transactionName',
-    status: 'status',
-    createdAt: 'createdAt',
-    expiredAt: 'expiredAt',
-    updatedAt: 'updatedAt',
-    customerEmail: 'customerEmail',
-    customerName: 'customerName',
-    customerId: 'customerId',
-    quantity: 'quantity',
-    zones: 'zones'
-  };
-
-  export type UserTransactionArchiveScalarFieldEnum = (typeof UserTransactionArchiveScalarFieldEnum)[keyof typeof UserTransactionArchiveScalarFieldEnum]
+  export type CodeRedemeerScalarFieldEnum = (typeof CodeRedemeerScalarFieldEnum)[keyof typeof CodeRedemeerScalarFieldEnum]
 
 
   export const MultiplayerRoomScalarFieldEnum: {
@@ -44319,20 +41616,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Role'
    */
   export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
@@ -44364,6 +41647,20 @@ export namespace Prisma {
    * Reference to a field of type 'AccountType[]'
    */
   export type ListEnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -44712,84 +42009,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
   }
 
-  export type AccessContentWhereInput = {
-    AND?: AccessContentWhereInput | AccessContentWhereInput[]
-    OR?: AccessContentWhereInput[]
-    NOT?: AccessContentWhereInput | AccessContentWhereInput[]
-    id?: StringFilter<"AccessContent"> | string
-    expired?: DateTimeFilter<"AccessContent"> | Date | string
-    quota?: IntFilter<"AccessContent"> | number
-    currentQuota?: IntFilter<"AccessContent"> | number
-    ownerId?: StringNullableFilter<"AccessContent"> | string | null
-    zones?: StringNullableListFilter<"AccessContent">
-    createdAt?: DateTimeFilter<"AccessContent"> | Date | string
-    updatedAt?: DateTimeFilter<"AccessContent"> | Date | string
-    owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    userAccesses?: UserListRelationFilter
-    redemeers?: UserListRelationFilter
-  }
-
-  export type AccessContentOrderByWithRelationInput = {
-    id?: SortOrder
-    expired?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    ownerId?: SortOrderInput | SortOrder
-    zones?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    owner?: UserOrderByWithRelationInput
-    userAccesses?: UserOrderByRelationAggregateInput
-    redemeers?: UserOrderByRelationAggregateInput
-  }
-
-  export type AccessContentWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: AccessContentWhereInput | AccessContentWhereInput[]
-    OR?: AccessContentWhereInput[]
-    NOT?: AccessContentWhereInput | AccessContentWhereInput[]
-    expired?: DateTimeFilter<"AccessContent"> | Date | string
-    quota?: IntFilter<"AccessContent"> | number
-    currentQuota?: IntFilter<"AccessContent"> | number
-    ownerId?: StringNullableFilter<"AccessContent"> | string | null
-    zones?: StringNullableListFilter<"AccessContent">
-    createdAt?: DateTimeFilter<"AccessContent"> | Date | string
-    updatedAt?: DateTimeFilter<"AccessContent"> | Date | string
-    owner?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    userAccesses?: UserListRelationFilter
-    redemeers?: UserListRelationFilter
-  }, "id">
-
-  export type AccessContentOrderByWithAggregationInput = {
-    id?: SortOrder
-    expired?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    ownerId?: SortOrderInput | SortOrder
-    zones?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: AccessContentCountOrderByAggregateInput
-    _avg?: AccessContentAvgOrderByAggregateInput
-    _max?: AccessContentMaxOrderByAggregateInput
-    _min?: AccessContentMinOrderByAggregateInput
-    _sum?: AccessContentSumOrderByAggregateInput
-  }
-
-  export type AccessContentScalarWhereWithAggregatesInput = {
-    AND?: AccessContentScalarWhereWithAggregatesInput | AccessContentScalarWhereWithAggregatesInput[]
-    OR?: AccessContentScalarWhereWithAggregatesInput[]
-    NOT?: AccessContentScalarWhereWithAggregatesInput | AccessContentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"AccessContent"> | string
-    expired?: DateTimeWithAggregatesFilter<"AccessContent"> | Date | string
-    quota?: IntWithAggregatesFilter<"AccessContent"> | number
-    currentQuota?: IntWithAggregatesFilter<"AccessContent"> | number
-    ownerId?: StringNullableWithAggregatesFilter<"AccessContent"> | string | null
-    zones?: StringNullableListFilter<"AccessContent">
-    createdAt?: DateTimeWithAggregatesFilter<"AccessContent"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"AccessContent"> | Date | string
-  }
-
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -44820,20 +42039,15 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    ownedAccesses?: AccessContentListRelationFilter
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
-    userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
-    redeemedAccesses?: AccessContentListRelationFilter
     userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     voucherRedemeer?: VoucherRedemeerListRelationFilter
-    userTransactionArchive?: UserTransactionArchiveListRelationFilter
-    userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -44842,6 +42056,7 @@ export namespace Prisma {
     championships?: ChampionshipListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
+    redemeedCodes?: CodeRedemeerListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -44871,20 +42086,15 @@ export namespace Prisma {
     username?: SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
-    ownedAccesses?: AccessContentOrderByRelationAggregateInput
     city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
     school?: SchoolOrderByWithRelationInput
     admin?: AdminOrderByWithRelationInput
-    userAccesses?: AccessContentOrderByRelationAggregateInput
     zones?: ZoneOrderByRelationAggregateInput
-    redeemedAccesses?: AccessContentOrderByRelationAggregateInput
     userLogin?: UserLoginOrderByRelationAggregateInput
     bannerVisitor?: BannerVisitorOrderByRelationAggregateInput
     testParticipant?: TestParticipantOrderByRelationAggregateInput
     voucherRedemeer?: VoucherRedemeerOrderByRelationAggregateInput
-    userTransactionArchive?: UserTransactionArchiveOrderByRelationAggregateInput
-    userTransaction?: UserTransactionOrderByRelationAggregateInput
     multiPlayerMember?: MultiPlayerMemberOrderByRelationAggregateInput
     subLevels?: SubLevelOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
@@ -44893,6 +42103,7 @@ export namespace Prisma {
     championships?: ChampionshipOrderByRelationAggregateInput
     gempoRecords?: GempoRecordOrderByRelationAggregateInput
     championshipRecords?: ChampionshipRecordOrderByRelationAggregateInput
+    redemeedCodes?: CodeRedemeerOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -44925,20 +42136,15 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    ownedAccesses?: AccessContentListRelationFilter
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
-    userAccesses?: AccessContentListRelationFilter
     zones?: ZoneListRelationFilter
-    redeemedAccesses?: AccessContentListRelationFilter
     userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     voucherRedemeer?: VoucherRedemeerListRelationFilter
-    userTransactionArchive?: UserTransactionArchiveListRelationFilter
-    userTransaction?: UserTransactionListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -44947,6 +42153,7 @@ export namespace Prisma {
     championships?: ChampionshipListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
+    redemeedCodes?: CodeRedemeerListRelationFilter
   }, "id" | "authId" | "email" | "schoolIdentity" | "adminId" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -45798,7 +43005,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
     adminTransaction?: AdminTransactionListRelationFilter
-    adminTransactionArchive?: AdminTransactionArchiveListRelationFilter
+    RedeemCode?: RedeemCodeListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -45822,7 +43029,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryOrderByRelationAggregateInput
     banner?: BannerOrderByRelationAggregateInput
     adminTransaction?: AdminTransactionOrderByRelationAggregateInput
-    adminTransactionArchive?: AdminTransactionArchiveOrderByRelationAggregateInput
+    RedeemCode?: RedeemCodeOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -45849,7 +43056,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
     adminTransaction?: AdminTransactionListRelationFilter
-    adminTransactionArchive?: AdminTransactionArchiveListRelationFilter
+    RedeemCode?: RedeemCodeListRelationFilter
   }, "id" | "authId" | "email">
 
   export type AdminOrderByWithAggregationInput = {
@@ -46706,32 +43913,42 @@ export namespace Prisma {
     OR?: AdminTransactionWhereInput[]
     NOT?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
     id?: StringFilter<"AdminTransaction"> | string
-    transactionName?: StringFilter<"AdminTransaction"> | string
+    name?: StringFilter<"AdminTransaction"> | string
     status?: StringFilter<"AdminTransaction"> | string
+    archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    customerEmail?: StringFilter<"AdminTransaction"> | string
-    customerName?: StringFilter<"AdminTransaction"> | string
-    customerId?: StringFilter<"AdminTransaction"> | string
+    adminId?: StringFilter<"AdminTransaction"> | string
     quantity?: IntFilter<"AdminTransaction"> | number
+    subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    customer?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    amount?: IntFilter<"AdminTransaction"> | number
+    description?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    redeemCode?: XOR<RedeemCodeNullableScalarRelationFilter, RedeemCodeWhereInput> | null
   }
 
   export type AdminTransactionOrderByWithRelationInput = {
     id?: SortOrder
-    transactionName?: SortOrder
+    name?: SortOrder
     status?: SortOrder
+    archived?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
+    adminId?: SortOrder
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
     zones?: SortOrder
-    customer?: AdminOrderByWithRelationInput
+    transactionRef?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    description?: SortOrderInput | SortOrder
+    transactionImageId?: SortOrderInput | SortOrder
+    transactionImageUrl?: SortOrderInput | SortOrder
+    admin?: AdminOrderByWithRelationInput
+    redeemCode?: RedeemCodeOrderByWithRelationInput
   }
 
   export type AdminTransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -46739,31 +43956,40 @@ export namespace Prisma {
     AND?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
     OR?: AdminTransactionWhereInput[]
     NOT?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
-    transactionName?: StringFilter<"AdminTransaction"> | string
+    name?: StringFilter<"AdminTransaction"> | string
     status?: StringFilter<"AdminTransaction"> | string
+    archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    customerEmail?: StringFilter<"AdminTransaction"> | string
-    customerName?: StringFilter<"AdminTransaction"> | string
-    customerId?: StringFilter<"AdminTransaction"> | string
+    adminId?: StringFilter<"AdminTransaction"> | string
     quantity?: IntFilter<"AdminTransaction"> | number
+    subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    customer?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    amount?: IntFilter<"AdminTransaction"> | number
+    description?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    redeemCode?: XOR<RedeemCodeNullableScalarRelationFilter, RedeemCodeWhereInput> | null
   }, "id">
 
   export type AdminTransactionOrderByWithAggregationInput = {
     id?: SortOrder
-    transactionName?: SortOrder
+    name?: SortOrder
     status?: SortOrder
+    archived?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
+    adminId?: SortOrder
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
     zones?: SortOrder
+    transactionRef?: SortOrderInput | SortOrder
+    amount?: SortOrder
+    description?: SortOrderInput | SortOrder
+    transactionImageId?: SortOrderInput | SortOrder
+    transactionImageUrl?: SortOrderInput | SortOrder
     _count?: AdminTransactionCountOrderByAggregateInput
     _avg?: AdminTransactionAvgOrderByAggregateInput
     _max?: AdminTransactionMaxOrderByAggregateInput
@@ -46776,277 +44002,176 @@ export namespace Prisma {
     OR?: AdminTransactionScalarWhereWithAggregatesInput[]
     NOT?: AdminTransactionScalarWhereWithAggregatesInput | AdminTransactionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AdminTransaction"> | string
-    transactionName?: StringWithAggregatesFilter<"AdminTransaction"> | string
+    name?: StringWithAggregatesFilter<"AdminTransaction"> | string
     status?: StringWithAggregatesFilter<"AdminTransaction"> | string
+    archived?: BoolWithAggregatesFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"AdminTransaction"> | Date | string
-    expiredAt?: DateTimeWithAggregatesFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdminTransaction"> | Date | string
-    customerEmail?: StringWithAggregatesFilter<"AdminTransaction"> | string
-    customerName?: StringWithAggregatesFilter<"AdminTransaction"> | string
-    customerId?: StringWithAggregatesFilter<"AdminTransaction"> | string
+    adminId?: StringWithAggregatesFilter<"AdminTransaction"> | string
     quantity?: IntWithAggregatesFilter<"AdminTransaction"> | number
+    subscriptionTime?: IntWithAggregatesFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
+    transactionRef?: IntNullableWithAggregatesFilter<"AdminTransaction"> | number | null
+    amount?: IntWithAggregatesFilter<"AdminTransaction"> | number
+    description?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
+    transactionImageId?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
+    transactionImageUrl?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
   }
 
-  export type AdminTransactionArchiveWhereInput = {
-    AND?: AdminTransactionArchiveWhereInput | AdminTransactionArchiveWhereInput[]
-    OR?: AdminTransactionArchiveWhereInput[]
-    NOT?: AdminTransactionArchiveWhereInput | AdminTransactionArchiveWhereInput[]
-    id?: StringFilter<"AdminTransactionArchive"> | string
-    transactionName?: StringFilter<"AdminTransactionArchive"> | string
-    status?: StringFilter<"AdminTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"AdminTransactionArchive"> | string
-    customerName?: StringFilter<"AdminTransactionArchive"> | string
-    customerId?: StringFilter<"AdminTransactionArchive"> | string
-    quantity?: IntFilter<"AdminTransactionArchive"> | number
-    zones?: StringNullableListFilter<"AdminTransactionArchive">
-    customer?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+  export type RedeemCodeWhereInput = {
+    AND?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
+    OR?: RedeemCodeWhereInput[]
+    NOT?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
+    id?: StringFilter<"RedeemCode"> | string
+    suspend?: BoolFilter<"RedeemCode"> | boolean
+    transactionId?: StringFilter<"RedeemCode"> | string
+    adminId?: StringFilter<"RedeemCode"> | string
+    code?: StringFilter<"RedeemCode"> | string
+    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    currentAmount?: IntFilter<"RedeemCode"> | number
+    maxAmount?: IntFilter<"RedeemCode"> | number
+    data?: StringNullableListFilter<"RedeemCode">
+    createdAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    redemeers?: CodeRedemeerListRelationFilter
   }
 
-  export type AdminTransactionArchiveOrderByWithRelationInput = {
+  export type RedeemCodeOrderByWithRelationInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    adminId?: SortOrder
+    code?: SortOrder
     expiredAt?: SortOrder
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    customer?: AdminOrderByWithRelationInput
+    transaction?: AdminTransactionOrderByWithRelationInput
+    admin?: AdminOrderByWithRelationInput
+    redemeers?: CodeRedemeerOrderByRelationAggregateInput
   }
 
-  export type AdminTransactionArchiveWhereUniqueInput = Prisma.AtLeast<{
+  export type RedeemCodeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: AdminTransactionArchiveWhereInput | AdminTransactionArchiveWhereInput[]
-    OR?: AdminTransactionArchiveWhereInput[]
-    NOT?: AdminTransactionArchiveWhereInput | AdminTransactionArchiveWhereInput[]
-    transactionName?: StringFilter<"AdminTransactionArchive"> | string
-    status?: StringFilter<"AdminTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"AdminTransactionArchive"> | string
-    customerName?: StringFilter<"AdminTransactionArchive"> | string
-    customerId?: StringFilter<"AdminTransactionArchive"> | string
-    quantity?: IntFilter<"AdminTransactionArchive"> | number
-    zones?: StringNullableListFilter<"AdminTransactionArchive">
-    customer?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    transactionId?: string
+    code?: string
+    AND?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
+    OR?: RedeemCodeWhereInput[]
+    NOT?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
+    suspend?: BoolFilter<"RedeemCode"> | boolean
+    adminId?: StringFilter<"RedeemCode"> | string
+    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    currentAmount?: IntFilter<"RedeemCode"> | number
+    maxAmount?: IntFilter<"RedeemCode"> | number
+    data?: StringNullableListFilter<"RedeemCode">
+    createdAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    redemeers?: CodeRedemeerListRelationFilter
+  }, "id" | "transactionId" | "code">
+
+  export type RedeemCodeOrderByWithAggregationInput = {
+    id?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    adminId?: SortOrder
+    code?: SortOrder
+    expiredAt?: SortOrder
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RedeemCodeCountOrderByAggregateInput
+    _avg?: RedeemCodeAvgOrderByAggregateInput
+    _max?: RedeemCodeMaxOrderByAggregateInput
+    _min?: RedeemCodeMinOrderByAggregateInput
+    _sum?: RedeemCodeSumOrderByAggregateInput
+  }
+
+  export type RedeemCodeScalarWhereWithAggregatesInput = {
+    AND?: RedeemCodeScalarWhereWithAggregatesInput | RedeemCodeScalarWhereWithAggregatesInput[]
+    OR?: RedeemCodeScalarWhereWithAggregatesInput[]
+    NOT?: RedeemCodeScalarWhereWithAggregatesInput | RedeemCodeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RedeemCode"> | string
+    suspend?: BoolWithAggregatesFilter<"RedeemCode"> | boolean
+    transactionId?: StringWithAggregatesFilter<"RedeemCode"> | string
+    adminId?: StringWithAggregatesFilter<"RedeemCode"> | string
+    code?: StringWithAggregatesFilter<"RedeemCode"> | string
+    expiredAt?: DateTimeWithAggregatesFilter<"RedeemCode"> | Date | string
+    currentAmount?: IntWithAggregatesFilter<"RedeemCode"> | number
+    maxAmount?: IntWithAggregatesFilter<"RedeemCode"> | number
+    data?: StringNullableListFilter<"RedeemCode">
+    createdAt?: DateTimeWithAggregatesFilter<"RedeemCode"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"RedeemCode"> | Date | string
+  }
+
+  export type CodeRedemeerWhereInput = {
+    AND?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
+    OR?: CodeRedemeerWhereInput[]
+    NOT?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
+    id?: StringFilter<"CodeRedemeer"> | string
+    banned?: BoolFilter<"CodeRedemeer"> | boolean
+    userId?: StringFilter<"CodeRedemeer"> | string
+    codeId?: StringFilter<"CodeRedemeer"> | string
+    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    code?: XOR<RedeemCodeScalarRelationFilter, RedeemCodeWhereInput>
+  }
+
+  export type CodeRedemeerOrderByWithRelationInput = {
+    id?: SortOrder
+    banned?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    code?: RedeemCodeOrderByWithRelationInput
+  }
+
+  export type CodeRedemeerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
+    OR?: CodeRedemeerWhereInput[]
+    NOT?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
+    banned?: BoolFilter<"CodeRedemeer"> | boolean
+    userId?: StringFilter<"CodeRedemeer"> | string
+    codeId?: StringFilter<"CodeRedemeer"> | string
+    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    code?: XOR<RedeemCodeScalarRelationFilter, RedeemCodeWhereInput>
   }, "id">
 
-  export type AdminTransactionArchiveOrderByWithAggregationInput = {
+  export type CodeRedemeerOrderByWithAggregationInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
+    banned?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    _count?: AdminTransactionArchiveCountOrderByAggregateInput
-    _avg?: AdminTransactionArchiveAvgOrderByAggregateInput
-    _max?: AdminTransactionArchiveMaxOrderByAggregateInput
-    _min?: AdminTransactionArchiveMinOrderByAggregateInput
-    _sum?: AdminTransactionArchiveSumOrderByAggregateInput
+    _count?: CodeRedemeerCountOrderByAggregateInput
+    _max?: CodeRedemeerMaxOrderByAggregateInput
+    _min?: CodeRedemeerMinOrderByAggregateInput
   }
 
-  export type AdminTransactionArchiveScalarWhereWithAggregatesInput = {
-    AND?: AdminTransactionArchiveScalarWhereWithAggregatesInput | AdminTransactionArchiveScalarWhereWithAggregatesInput[]
-    OR?: AdminTransactionArchiveScalarWhereWithAggregatesInput[]
-    NOT?: AdminTransactionArchiveScalarWhereWithAggregatesInput | AdminTransactionArchiveScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    transactionName?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    status?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"AdminTransactionArchive"> | Date | string
-    expiredAt?: DateTimeWithAggregatesFilter<"AdminTransactionArchive"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"AdminTransactionArchive"> | Date | string
-    customerEmail?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    customerName?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    customerId?: StringWithAggregatesFilter<"AdminTransactionArchive"> | string
-    quantity?: IntWithAggregatesFilter<"AdminTransactionArchive"> | number
-    zones?: StringNullableListFilter<"AdminTransactionArchive">
-  }
-
-  export type UserTransactionWhereInput = {
-    AND?: UserTransactionWhereInput | UserTransactionWhereInput[]
-    OR?: UserTransactionWhereInput[]
-    NOT?: UserTransactionWhereInput | UserTransactionWhereInput[]
-    id?: StringFilter<"UserTransaction"> | string
-    transactionName?: StringFilter<"UserTransaction"> | string
-    status?: StringFilter<"UserTransaction"> | string
-    createdAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    customerEmail?: StringFilter<"UserTransaction"> | string
-    customerName?: StringFilter<"UserTransaction"> | string
-    customerId?: StringFilter<"UserTransaction"> | string
-    quantity?: IntFilter<"UserTransaction"> | number
-    zones?: StringNullableListFilter<"UserTransaction">
-    customer?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type UserTransactionOrderByWithRelationInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    customer?: UserOrderByWithRelationInput
-  }
-
-  export type UserTransactionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: UserTransactionWhereInput | UserTransactionWhereInput[]
-    OR?: UserTransactionWhereInput[]
-    NOT?: UserTransactionWhereInput | UserTransactionWhereInput[]
-    transactionName?: StringFilter<"UserTransaction"> | string
-    status?: StringFilter<"UserTransaction"> | string
-    createdAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    customerEmail?: StringFilter<"UserTransaction"> | string
-    customerName?: StringFilter<"UserTransaction"> | string
-    customerId?: StringFilter<"UserTransaction"> | string
-    quantity?: IntFilter<"UserTransaction"> | number
-    zones?: StringNullableListFilter<"UserTransaction">
-    customer?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type UserTransactionOrderByWithAggregationInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    _count?: UserTransactionCountOrderByAggregateInput
-    _avg?: UserTransactionAvgOrderByAggregateInput
-    _max?: UserTransactionMaxOrderByAggregateInput
-    _min?: UserTransactionMinOrderByAggregateInput
-    _sum?: UserTransactionSumOrderByAggregateInput
-  }
-
-  export type UserTransactionScalarWhereWithAggregatesInput = {
-    AND?: UserTransactionScalarWhereWithAggregatesInput | UserTransactionScalarWhereWithAggregatesInput[]
-    OR?: UserTransactionScalarWhereWithAggregatesInput[]
-    NOT?: UserTransactionScalarWhereWithAggregatesInput | UserTransactionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"UserTransaction"> | string
-    transactionName?: StringWithAggregatesFilter<"UserTransaction"> | string
-    status?: StringWithAggregatesFilter<"UserTransaction"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"UserTransaction"> | Date | string
-    expiredAt?: DateTimeWithAggregatesFilter<"UserTransaction"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserTransaction"> | Date | string
-    customerEmail?: StringWithAggregatesFilter<"UserTransaction"> | string
-    customerName?: StringWithAggregatesFilter<"UserTransaction"> | string
-    customerId?: StringWithAggregatesFilter<"UserTransaction"> | string
-    quantity?: IntWithAggregatesFilter<"UserTransaction"> | number
-    zones?: StringNullableListFilter<"UserTransaction">
-  }
-
-  export type UserTransactionArchiveWhereInput = {
-    AND?: UserTransactionArchiveWhereInput | UserTransactionArchiveWhereInput[]
-    OR?: UserTransactionArchiveWhereInput[]
-    NOT?: UserTransactionArchiveWhereInput | UserTransactionArchiveWhereInput[]
-    id?: StringFilter<"UserTransactionArchive"> | string
-    transactionName?: StringFilter<"UserTransactionArchive"> | string
-    status?: StringFilter<"UserTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"UserTransactionArchive"> | string
-    customerName?: StringFilter<"UserTransactionArchive"> | string
-    customerId?: StringFilter<"UserTransactionArchive"> | string
-    quantity?: IntFilter<"UserTransactionArchive"> | number
-    zones?: StringNullableListFilter<"UserTransactionArchive">
-    customer?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type UserTransactionArchiveOrderByWithRelationInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    customer?: UserOrderByWithRelationInput
-  }
-
-  export type UserTransactionArchiveWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: UserTransactionArchiveWhereInput | UserTransactionArchiveWhereInput[]
-    OR?: UserTransactionArchiveWhereInput[]
-    NOT?: UserTransactionArchiveWhereInput | UserTransactionArchiveWhereInput[]
-    transactionName?: StringFilter<"UserTransactionArchive"> | string
-    status?: StringFilter<"UserTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"UserTransactionArchive"> | string
-    customerName?: StringFilter<"UserTransactionArchive"> | string
-    customerId?: StringFilter<"UserTransactionArchive"> | string
-    quantity?: IntFilter<"UserTransactionArchive"> | number
-    zones?: StringNullableListFilter<"UserTransactionArchive">
-    customer?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type UserTransactionArchiveOrderByWithAggregationInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-    _count?: UserTransactionArchiveCountOrderByAggregateInput
-    _avg?: UserTransactionArchiveAvgOrderByAggregateInput
-    _max?: UserTransactionArchiveMaxOrderByAggregateInput
-    _min?: UserTransactionArchiveMinOrderByAggregateInput
-    _sum?: UserTransactionArchiveSumOrderByAggregateInput
-  }
-
-  export type UserTransactionArchiveScalarWhereWithAggregatesInput = {
-    AND?: UserTransactionArchiveScalarWhereWithAggregatesInput | UserTransactionArchiveScalarWhereWithAggregatesInput[]
-    OR?: UserTransactionArchiveScalarWhereWithAggregatesInput[]
-    NOT?: UserTransactionArchiveScalarWhereWithAggregatesInput | UserTransactionArchiveScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    transactionName?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    status?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"UserTransactionArchive"> | Date | string
-    expiredAt?: DateTimeWithAggregatesFilter<"UserTransactionArchive"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"UserTransactionArchive"> | Date | string
-    customerEmail?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    customerName?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    customerId?: StringWithAggregatesFilter<"UserTransactionArchive"> | string
-    quantity?: IntWithAggregatesFilter<"UserTransactionArchive"> | number
-    zones?: StringNullableListFilter<"UserTransactionArchive">
+  export type CodeRedemeerScalarWhereWithAggregatesInput = {
+    AND?: CodeRedemeerScalarWhereWithAggregatesInput | CodeRedemeerScalarWhereWithAggregatesInput[]
+    OR?: CodeRedemeerScalarWhereWithAggregatesInput[]
+    NOT?: CodeRedemeerScalarWhereWithAggregatesInput | CodeRedemeerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CodeRedemeer"> | string
+    banned?: BoolWithAggregatesFilter<"CodeRedemeer"> | boolean
+    userId?: StringWithAggregatesFilter<"CodeRedemeer"> | string
+    codeId?: StringWithAggregatesFilter<"CodeRedemeer"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CodeRedemeer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CodeRedemeer"> | Date | string
   }
 
   export type MultiplayerRoomWhereInput = {
@@ -47515,90 +44640,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AccessContentCreateInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
-    redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentUncheckedCreateInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    ownerId?: string | null
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
-    redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
-    redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
-    redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentCreateManyInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    ownerId?: string | null
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AccessContentUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccessContentUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type UserCreateInput = {
     id?: string
     authId: string
@@ -47622,20 +44663,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -47644,6 +44680,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -47673,16 +44710,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -47691,6 +44723,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -47716,20 +44749,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -47738,6 +44766,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -47767,16 +44796,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -47785,6 +44809,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -48732,8 +45757,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -48753,8 +45778,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -48774,8 +45799,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -48795,8 +45820,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -49678,390 +46703,292 @@ export namespace Prisma {
 
   export type AdminTransactionCreateInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    customer: AdminCreateNestedOneWithoutAdminTransactionInput
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    admin: AdminCreateNestedOneWithoutAdminTransactionInput
+    redeemCode?: RedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
   export type AdminTransactionUncheckedCreateInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
+    adminId: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    redeemCode?: RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type AdminTransactionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    customer?: AdminUpdateOneRequiredWithoutAdminTransactionNestedInput
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: AdminUpdateOneRequiredWithoutAdminTransactionNestedInput
+    redeemCode?: RedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
   export type AdminTransactionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    redeemCode?: RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type AdminTransactionCreateManyInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
+    adminId: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
   }
 
   export type AdminTransactionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AdminTransactionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type AdminTransactionArchiveCreateInput = {
+  export type RedeemCodeCreateInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
-    customer: AdminCreateNestedOneWithoutAdminTransactionArchiveInput
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
   }
 
-  export type AdminTransactionArchiveUncheckedCreateInput = {
+  export type RedeemCodeUncheckedCreateInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+    adminId: string
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
+    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
   }
 
-  export type AdminTransactionArchiveUpdateInput = {
+  export type RedeemCodeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
-    customer?: AdminUpdateOneRequiredWithoutAdminTransactionArchiveNestedInput
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
+    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
   }
 
-  export type AdminTransactionArchiveUncheckedUpdateInput = {
+  export type RedeemCodeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
+    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
-  export type AdminTransactionArchiveCreateManyInput = {
+  export type RedeemCodeCreateManyInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+    adminId: string
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
   }
 
-  export type AdminTransactionArchiveUpdateManyMutationInput = {
+  export type RedeemCodeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
   }
 
-  export type AdminTransactionArchiveUncheckedUpdateManyInput = {
+  export type RedeemCodeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
   }
 
-  export type UserTransactionCreateInput = {
+  export type CodeRedemeerCreateInput = {
     id?: string
-    transactionName: string
-    status: string
+    banned?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
-    customer: UserCreateNestedOneWithoutUserTransactionInput
+    user: UserCreateNestedOneWithoutRedemeedCodesInput
+    code: RedeemCodeCreateNestedOneWithoutRedemeersInput
   }
 
-  export type UserTransactionUncheckedCreateInput = {
+  export type CodeRedemeerUncheckedCreateInput = {
     id?: string
-    transactionName: string
-    status: string
+    banned?: boolean
+    userId: string
+    codeId: string
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
   }
 
-  export type UserTransactionUpdateInput = {
+  export type CodeRedemeerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
-    customer?: UserUpdateOneRequiredWithoutUserTransactionNestedInput
+    user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
+    code?: RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput
   }
 
-  export type UserTransactionUncheckedUpdateInput = {
+  export type CodeRedemeerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
   }
 
-  export type UserTransactionCreateManyInput = {
+  export type CodeRedemeerCreateManyInput = {
     id?: string
-    transactionName: string
-    status: string
+    banned?: boolean
+    userId: string
+    codeId: string
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
   }
 
-  export type UserTransactionUpdateManyMutationInput = {
+  export type CodeRedemeerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
   }
 
-  export type UserTransactionUncheckedUpdateManyInput = {
+  export type CodeRedemeerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    codeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveCreateInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-    customer: UserCreateNestedOneWithoutUserTransactionArchiveInput
-  }
-
-  export type UserTransactionArchiveUncheckedCreateInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-    customer?: UserUpdateOneRequiredWithoutUserTransactionArchiveNestedInput
-  }
-
-  export type UserTransactionArchiveUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveCreateManyInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    customerId: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
   }
 
   export type MultiplayerRoomCreateInput = {
@@ -50553,125 +47480,6 @@ export namespace Prisma {
     latitude?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type AccessContentCountOrderByAggregateInput = {
-    id?: SortOrder
-    expired?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    ownerId?: SortOrder
-    zones?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type AccessContentAvgOrderByAggregateInput = {
-    quota?: SortOrder
-    currentQuota?: SortOrder
-  }
-
-  export type AccessContentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    expired?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type AccessContentMinOrderByAggregateInput = {
-    id?: SortOrder
-    expired?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type AccessContentSumOrderByAggregateInput = {
-    quota?: SortOrder
-    currentQuota?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type EnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -50702,6 +47510,17 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type IntNullableListFilter<$PrismaModel = never> = {
     equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     has?: number | IntFieldRefInput<$PrismaModel> | null
@@ -50710,10 +47529,19 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type AccessContentListRelationFilter = {
-    every?: AccessContentWhereInput
-    some?: AccessContentWhereInput
-    none?: AccessContentWhereInput
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type CityNullableScalarRelationFilter = {
@@ -50766,18 +47594,6 @@ export namespace Prisma {
     none?: VoucherRedemeerWhereInput
   }
 
-  export type UserTransactionArchiveListRelationFilter = {
-    every?: UserTransactionArchiveWhereInput
-    some?: UserTransactionArchiveWhereInput
-    none?: UserTransactionArchiveWhereInput
-  }
-
-  export type UserTransactionListRelationFilter = {
-    every?: UserTransactionWhereInput
-    some?: UserTransactionWhereInput
-    none?: UserTransactionWhereInput
-  }
-
   export type MultiPlayerMemberListRelationFilter = {
     every?: MultiPlayerMemberWhereInput
     some?: MultiPlayerMemberWhereInput
@@ -50826,8 +47642,15 @@ export namespace Prisma {
     none?: ChampionshipRecordWhereInput
   }
 
-  export type AccessContentOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type CodeRedemeerListRelationFilter = {
+    every?: CodeRedemeerWhereInput
+    some?: CodeRedemeerWhereInput
+    none?: CodeRedemeerWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ZoneOrderByRelationAggregateInput = {
@@ -50847,14 +47670,6 @@ export namespace Prisma {
   }
 
   export type VoucherRedemeerOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserTransactionArchiveOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserTransactionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50887,6 +47702,10 @@ export namespace Prisma {
   }
 
   export type ChampionshipRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CodeRedemeerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -51027,6 +47846,40 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -51493,6 +48346,11 @@ export namespace Prisma {
     not?: NestedEnumRoleNullableFilter<$PrismaModel> | $Enums.Role | null
   }
 
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type AdminOperationHistoryListRelationFilter = {
     every?: AdminOperationHistoryWhereInput
     some?: AdminOperationHistoryWhereInput
@@ -51511,10 +48369,10 @@ export namespace Prisma {
     none?: AdminTransactionWhereInput
   }
 
-  export type AdminTransactionArchiveListRelationFilter = {
-    every?: AdminTransactionArchiveWhereInput
-    some?: AdminTransactionArchiveWhereInput
-    none?: AdminTransactionArchiveWhereInput
+  export type RedeemCodeListRelationFilter = {
+    every?: RedeemCodeWhereInput
+    some?: RedeemCodeWhereInput
+    none?: RedeemCodeWhereInput
   }
 
   export type AdminOperationHistoryOrderByRelationAggregateInput = {
@@ -51529,7 +48387,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type AdminTransactionArchiveOrderByRelationAggregateInput = {
+  export type RedeemCodeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -52088,6 +48946,14 @@ export namespace Prisma {
     not?: NestedEnumVoucherTypeFilter<$PrismaModel> | $Enums.VoucherType
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type VoucherCountOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
@@ -52177,196 +49043,189 @@ export namespace Prisma {
     voucherId?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type RedeemCodeNullableScalarRelationFilter = {
+    is?: RedeemCodeWhereInput | null
+    isNot?: RedeemCodeWhereInput | null
+  }
+
   export type AdminTransactionCountOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
+    name?: SortOrder
     status?: SortOrder
+    archived?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
+    adminId?: SortOrder
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
     zones?: SortOrder
+    transactionRef?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    transactionImageId?: SortOrder
+    transactionImageUrl?: SortOrder
   }
 
   export type AdminTransactionAvgOrderByAggregateInput = {
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
+    transactionRef?: SortOrder
+    amount?: SortOrder
   }
 
   export type AdminTransactionMaxOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
+    name?: SortOrder
     status?: SortOrder
+    archived?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
+    adminId?: SortOrder
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
+    transactionRef?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    transactionImageId?: SortOrder
+    transactionImageUrl?: SortOrder
   }
 
   export type AdminTransactionMinOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
+    name?: SortOrder
     status?: SortOrder
+    archived?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
+    adminId?: SortOrder
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
+    transactionRef?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    transactionImageId?: SortOrder
+    transactionImageUrl?: SortOrder
   }
 
   export type AdminTransactionSumOrderByAggregateInput = {
     quantity?: SortOrder
+    subscriptionTime?: SortOrder
+    transactionRef?: SortOrder
+    amount?: SortOrder
   }
 
-  export type AdminTransactionArchiveCountOrderByAggregateInput = {
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type AdminTransactionScalarRelationFilter = {
+    is?: AdminTransactionWhereInput
+    isNot?: AdminTransactionWhereInput
+  }
+
+  export type RedeemCodeCountOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    adminId?: SortOrder
+    code?: SortOrder
     expiredAt?: SortOrder
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
   }
 
-  export type AdminTransactionArchiveAvgOrderByAggregateInput = {
-    quantity?: SortOrder
+  export type RedeemCodeAvgOrderByAggregateInput = {
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
   }
 
-  export type AdminTransactionArchiveMaxOrderByAggregateInput = {
+  export type RedeemCodeMaxOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    adminId?: SortOrder
+    code?: SortOrder
     expiredAt?: SortOrder
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
   }
 
-  export type AdminTransactionArchiveMinOrderByAggregateInput = {
+  export type RedeemCodeMinOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    adminId?: SortOrder
+    code?: SortOrder
     expiredAt?: SortOrder
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
   }
 
-  export type AdminTransactionArchiveSumOrderByAggregateInput = {
-    quantity?: SortOrder
+  export type RedeemCodeSumOrderByAggregateInput = {
+    currentAmount?: SortOrder
+    maxAmount?: SortOrder
   }
 
-  export type UserTransactionCountOrderByAggregateInput = {
+  export type RedeemCodeScalarRelationFilter = {
+    is?: RedeemCodeWhereInput
+    isNot?: RedeemCodeWhereInput
+  }
+
+  export type CodeRedemeerCountOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
+    banned?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
   }
 
-  export type UserTransactionAvgOrderByAggregateInput = {
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionMaxOrderByAggregateInput = {
+  export type CodeRedemeerMaxOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
+    banned?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
   }
 
-  export type UserTransactionMinOrderByAggregateInput = {
+  export type CodeRedemeerMinOrderByAggregateInput = {
     id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
+    banned?: SortOrder
+    userId?: SortOrder
+    codeId?: SortOrder
     createdAt?: SortOrder
-    expiredAt?: SortOrder
     updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionSumOrderByAggregateInput = {
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionArchiveCountOrderByAggregateInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-    zones?: SortOrder
-  }
-
-  export type UserTransactionArchiveAvgOrderByAggregateInput = {
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionArchiveMaxOrderByAggregateInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionArchiveMinOrderByAggregateInput = {
-    id?: SortOrder
-    transactionName?: SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    expiredAt?: SortOrder
-    updatedAt?: SortOrder
-    customerEmail?: SortOrder
-    customerName?: SortOrder
-    customerId?: SortOrder
-    quantity?: SortOrder
-  }
-
-  export type UserTransactionArchiveSumOrderByAggregateInput = {
-    quantity?: SortOrder
   }
 
   export type MultiplayerRoomCountOrderByAggregateInput = {
@@ -53115,128 +49974,8 @@ export namespace Prisma {
     deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
   }
 
-  export type AccessContentCreatezonesInput = {
-    set: string[]
-  }
-
-  export type UserCreateNestedOneWithoutOwnedAccessesInput = {
-    create?: XOR<UserCreateWithoutOwnedAccessesInput, UserUncheckedCreateWithoutOwnedAccessesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutOwnedAccessesInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedManyWithoutUserAccessesInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserCreateNestedManyWithoutRedeemedAccessesInput = {
-    create?: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput> | UserCreateWithoutRedeemedAccessesInput[] | UserUncheckedCreateWithoutRedeemedAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutRedeemedAccessesInput | UserCreateOrConnectWithoutRedeemedAccessesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserUncheckedCreateNestedManyWithoutUserAccessesInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput = {
-    create?: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput> | UserCreateWithoutRedeemedAccessesInput[] | UserUncheckedCreateWithoutRedeemedAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutRedeemedAccessesInput | UserCreateOrConnectWithoutRedeemedAccessesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type AccessContentUpdatezonesInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdateOneWithoutOwnedAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutOwnedAccessesInput, UserUncheckedCreateWithoutOwnedAccessesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutOwnedAccessesInput
-    upsert?: UserUpsertWithoutOwnedAccessesInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOwnedAccessesInput, UserUpdateWithoutOwnedAccessesInput>, UserUncheckedUpdateWithoutOwnedAccessesInput>
-  }
-
-  export type UserUpdateManyWithoutUserAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutUserAccessesInput | UserUpsertWithWhereUniqueWithoutUserAccessesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutUserAccessesInput | UserUpdateWithWhereUniqueWithoutUserAccessesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutUserAccessesInput | UserUpdateManyWithWhereWithoutUserAccessesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type UserUpdateManyWithoutRedeemedAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput> | UserCreateWithoutRedeemedAccessesInput[] | UserUncheckedCreateWithoutRedeemedAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutRedeemedAccessesInput | UserCreateOrConnectWithoutRedeemedAccessesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput | UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutRedeemedAccessesInput | UserUpdateWithWhereUniqueWithoutRedeemedAccessesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutRedeemedAccessesInput | UserUpdateManyWithWhereWithoutRedeemedAccessesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type UserUncheckedUpdateManyWithoutUserAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput> | UserCreateWithoutUserAccessesInput[] | UserUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutUserAccessesInput | UserCreateOrConnectWithoutUserAccessesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutUserAccessesInput | UserUpsertWithWhereUniqueWithoutUserAccessesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutUserAccessesInput | UserUpdateWithWhereUniqueWithoutUserAccessesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutUserAccessesInput | UserUpdateManyWithWhereWithoutUserAccessesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput = {
-    create?: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput> | UserCreateWithoutRedeemedAccessesInput[] | UserUncheckedCreateWithoutRedeemedAccessesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutRedeemedAccessesInput | UserCreateOrConnectWithoutRedeemedAccessesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput | UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutRedeemedAccessesInput | UserUpdateWithWhereUniqueWithoutRedeemedAccessesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutRedeemedAccessesInput | UserUpdateManyWithWhereWithoutRedeemedAccessesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
   export type UserCreateinventoryInput = {
     set: number[]
-  }
-
-  export type AccessContentCreateNestedManyWithoutOwnerInput = {
-    create?: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput> | AccessContentCreateWithoutOwnerInput[] | AccessContentUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutOwnerInput | AccessContentCreateOrConnectWithoutOwnerInput[]
-    createMany?: AccessContentCreateManyOwnerInputEnvelope
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
   export type CityCreateNestedOneWithoutUsersInput = {
@@ -53263,23 +50002,11 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type AccessContentCreateNestedManyWithoutUserAccessesInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-  }
-
   export type ZoneCreateNestedManyWithoutUserInput = {
     create?: XOR<ZoneCreateWithoutUserInput, ZoneUncheckedCreateWithoutUserInput> | ZoneCreateWithoutUserInput[] | ZoneUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ZoneCreateOrConnectWithoutUserInput | ZoneCreateOrConnectWithoutUserInput[]
     createMany?: ZoneCreateManyUserInputEnvelope
     connect?: ZoneWhereUniqueInput | ZoneWhereUniqueInput[]
-  }
-
-  export type AccessContentCreateNestedManyWithoutRedemeersInput = {
-    create?: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput> | AccessContentCreateWithoutRedemeersInput[] | AccessContentUncheckedCreateWithoutRedemeersInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutRedemeersInput | AccessContentCreateOrConnectWithoutRedemeersInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
   export type UserLoginCreateNestedManyWithoutUserInput = {
@@ -53308,20 +50035,6 @@ export namespace Prisma {
     connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
     createMany?: VoucherRedemeerCreateManyUserInputEnvelope
     connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-  }
-
-  export type UserTransactionArchiveCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput> | UserTransactionArchiveCreateWithoutCustomerInput[] | UserTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionArchiveCreateOrConnectWithoutCustomerInput | UserTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    createMany?: UserTransactionArchiveCreateManyCustomerInputEnvelope
-    connect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-  }
-
-  export type UserTransactionCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput> | UserTransactionCreateWithoutCustomerInput[] | UserTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionCreateOrConnectWithoutCustomerInput | UserTransactionCreateOrConnectWithoutCustomerInput[]
-    createMany?: UserTransactionCreateManyCustomerInputEnvelope
-    connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
   }
 
   export type MultiPlayerMemberCreateNestedManyWithoutUserInput = {
@@ -53380,17 +50093,11 @@ export namespace Prisma {
     connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
   }
 
-  export type AccessContentUncheckedCreateNestedManyWithoutOwnerInput = {
-    create?: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput> | AccessContentCreateWithoutOwnerInput[] | AccessContentUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutOwnerInput | AccessContentCreateOrConnectWithoutOwnerInput[]
-    createMany?: AccessContentCreateManyOwnerInputEnvelope
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-  }
-
-  export type AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
+  export type CodeRedemeerCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
+    createMany?: CodeRedemeerCreateManyUserInputEnvelope
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
   }
 
   export type ZoneUncheckedCreateNestedManyWithoutUserInput = {
@@ -53398,12 +50105,6 @@ export namespace Prisma {
     connectOrCreate?: ZoneCreateOrConnectWithoutUserInput | ZoneCreateOrConnectWithoutUserInput[]
     createMany?: ZoneCreateManyUserInputEnvelope
     connect?: ZoneWhereUniqueInput | ZoneWhereUniqueInput[]
-  }
-
-  export type AccessContentUncheckedCreateNestedManyWithoutRedemeersInput = {
-    create?: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput> | AccessContentCreateWithoutRedemeersInput[] | AccessContentUncheckedCreateWithoutRedemeersInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutRedemeersInput | AccessContentCreateOrConnectWithoutRedemeersInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
   }
 
   export type UserLoginUncheckedCreateNestedManyWithoutUserInput = {
@@ -53432,20 +50133,6 @@ export namespace Prisma {
     connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
     createMany?: VoucherRedemeerCreateManyUserInputEnvelope
     connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-  }
-
-  export type UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput> | UserTransactionArchiveCreateWithoutCustomerInput[] | UserTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionArchiveCreateOrConnectWithoutCustomerInput | UserTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    createMany?: UserTransactionArchiveCreateManyCustomerInputEnvelope
-    connect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-  }
-
-  export type UserTransactionUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput> | UserTransactionCreateWithoutCustomerInput[] | UserTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionCreateOrConnectWithoutCustomerInput | UserTransactionCreateOrConnectWithoutCustomerInput[]
-    createMany?: UserTransactionCreateManyCustomerInputEnvelope
-    connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
   }
 
   export type MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput = {
@@ -53504,6 +50191,13 @@ export namespace Prisma {
     connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
   }
 
+  export type CodeRedemeerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
+    createMany?: CodeRedemeerCreateManyUserInputEnvelope
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  }
+
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
   }
@@ -53520,23 +50214,17 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateinventoryInput = {
     set?: number[]
     push?: number | number[]
-  }
-
-  export type AccessContentUpdateManyWithoutOwnerNestedInput = {
-    create?: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput> | AccessContentCreateWithoutOwnerInput[] | AccessContentUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutOwnerInput | AccessContentCreateOrConnectWithoutOwnerInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutOwnerInput | AccessContentUpsertWithWhereUniqueWithoutOwnerInput[]
-    createMany?: AccessContentCreateManyOwnerInputEnvelope
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutOwnerInput | AccessContentUpdateWithWhereUniqueWithoutOwnerInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutOwnerInput | AccessContentUpdateManyWithWhereWithoutOwnerInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
   export type CityUpdateOneWithoutUsersNestedInput = {
@@ -53579,19 +50267,6 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutUserInput, AdminUpdateWithoutUserInput>, AdminUncheckedUpdateWithoutUserInput>
   }
 
-  export type AccessContentUpdateManyWithoutUserAccessesNestedInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput | AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput[]
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput | AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutUserAccessesInput | AccessContentUpdateManyWithWhereWithoutUserAccessesInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
-  }
-
   export type ZoneUpdateManyWithoutUserNestedInput = {
     create?: XOR<ZoneCreateWithoutUserInput, ZoneUncheckedCreateWithoutUserInput> | ZoneCreateWithoutUserInput[] | ZoneUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ZoneCreateOrConnectWithoutUserInput | ZoneCreateOrConnectWithoutUserInput[]
@@ -53604,19 +50279,6 @@ export namespace Prisma {
     update?: ZoneUpdateWithWhereUniqueWithoutUserInput | ZoneUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ZoneUpdateManyWithWhereWithoutUserInput | ZoneUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ZoneScalarWhereInput | ZoneScalarWhereInput[]
-  }
-
-  export type AccessContentUpdateManyWithoutRedemeersNestedInput = {
-    create?: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput> | AccessContentCreateWithoutRedemeersInput[] | AccessContentUncheckedCreateWithoutRedemeersInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutRedemeersInput | AccessContentCreateOrConnectWithoutRedemeersInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutRedemeersInput | AccessContentUpsertWithWhereUniqueWithoutRedemeersInput[]
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutRedemeersInput | AccessContentUpdateWithWhereUniqueWithoutRedemeersInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutRedemeersInput | AccessContentUpdateManyWithWhereWithoutRedemeersInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
   export type UserLoginUpdateManyWithoutUserNestedInput = {
@@ -53673,34 +50335,6 @@ export namespace Prisma {
     update?: VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput | VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutUserInput | VoucherRedemeerUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-  }
-
-  export type UserTransactionArchiveUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput> | UserTransactionArchiveCreateWithoutCustomerInput[] | UserTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionArchiveCreateOrConnectWithoutCustomerInput | UserTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    upsert?: UserTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput | UserTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: UserTransactionArchiveCreateManyCustomerInputEnvelope
-    set?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    disconnect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    delete?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    connect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    update?: UserTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput | UserTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: UserTransactionArchiveUpdateManyWithWhereWithoutCustomerInput | UserTransactionArchiveUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: UserTransactionArchiveScalarWhereInput | UserTransactionArchiveScalarWhereInput[]
-  }
-
-  export type UserTransactionUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput> | UserTransactionCreateWithoutCustomerInput[] | UserTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionCreateOrConnectWithoutCustomerInput | UserTransactionCreateOrConnectWithoutCustomerInput[]
-    upsert?: UserTransactionUpsertWithWhereUniqueWithoutCustomerInput | UserTransactionUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: UserTransactionCreateManyCustomerInputEnvelope
-    set?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    disconnect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    delete?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    update?: UserTransactionUpdateWithWhereUniqueWithoutCustomerInput | UserTransactionUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: UserTransactionUpdateManyWithWhereWithoutCustomerInput | UserTransactionUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
   }
 
   export type MultiPlayerMemberUpdateManyWithoutUserNestedInput = {
@@ -53815,31 +50449,22 @@ export namespace Prisma {
     deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
   }
 
-  export type AccessContentUncheckedUpdateManyWithoutOwnerNestedInput = {
-    create?: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput> | AccessContentCreateWithoutOwnerInput[] | AccessContentUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutOwnerInput | AccessContentCreateOrConnectWithoutOwnerInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutOwnerInput | AccessContentUpsertWithWhereUniqueWithoutOwnerInput[]
-    createMany?: AccessContentCreateManyOwnerInputEnvelope
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutOwnerInput | AccessContentUpdateWithWhereUniqueWithoutOwnerInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutOwnerInput | AccessContentUpdateManyWithWhereWithoutOwnerInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
+  export type CodeRedemeerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
+    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutUserInput | CodeRedemeerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeRedemeerCreateManyUserInputEnvelope
+    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    update?: CodeRedemeerUpdateWithWhereUniqueWithoutUserInput | CodeRedemeerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutUserInput | CodeRedemeerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
   }
 
-  export type AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput = {
-    create?: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput> | AccessContentCreateWithoutUserAccessesInput[] | AccessContentUncheckedCreateWithoutUserAccessesInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutUserAccessesInput | AccessContentCreateOrConnectWithoutUserAccessesInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput | AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput[]
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput | AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutUserAccessesInput | AccessContentUpdateManyWithWhereWithoutUserAccessesInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type ZoneUncheckedUpdateManyWithoutUserNestedInput = {
@@ -53854,19 +50479,6 @@ export namespace Prisma {
     update?: ZoneUpdateWithWhereUniqueWithoutUserInput | ZoneUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ZoneUpdateManyWithWhereWithoutUserInput | ZoneUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ZoneScalarWhereInput | ZoneScalarWhereInput[]
-  }
-
-  export type AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput = {
-    create?: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput> | AccessContentCreateWithoutRedemeersInput[] | AccessContentUncheckedCreateWithoutRedemeersInput[]
-    connectOrCreate?: AccessContentCreateOrConnectWithoutRedemeersInput | AccessContentCreateOrConnectWithoutRedemeersInput[]
-    upsert?: AccessContentUpsertWithWhereUniqueWithoutRedemeersInput | AccessContentUpsertWithWhereUniqueWithoutRedemeersInput[]
-    set?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    disconnect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    delete?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    connect?: AccessContentWhereUniqueInput | AccessContentWhereUniqueInput[]
-    update?: AccessContentUpdateWithWhereUniqueWithoutRedemeersInput | AccessContentUpdateWithWhereUniqueWithoutRedemeersInput[]
-    updateMany?: AccessContentUpdateManyWithWhereWithoutRedemeersInput | AccessContentUpdateManyWithWhereWithoutRedemeersInput[]
-    deleteMany?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
   }
 
   export type UserLoginUncheckedUpdateManyWithoutUserNestedInput = {
@@ -53923,34 +50535,6 @@ export namespace Prisma {
     update?: VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput | VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutUserInput | VoucherRedemeerUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-  }
-
-  export type UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput> | UserTransactionArchiveCreateWithoutCustomerInput[] | UserTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionArchiveCreateOrConnectWithoutCustomerInput | UserTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    upsert?: UserTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput | UserTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: UserTransactionArchiveCreateManyCustomerInputEnvelope
-    set?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    disconnect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    delete?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    connect?: UserTransactionArchiveWhereUniqueInput | UserTransactionArchiveWhereUniqueInput[]
-    update?: UserTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput | UserTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: UserTransactionArchiveUpdateManyWithWhereWithoutCustomerInput | UserTransactionArchiveUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: UserTransactionArchiveScalarWhereInput | UserTransactionArchiveScalarWhereInput[]
-  }
-
-  export type UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput> | UserTransactionCreateWithoutCustomerInput[] | UserTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: UserTransactionCreateOrConnectWithoutCustomerInput | UserTransactionCreateOrConnectWithoutCustomerInput[]
-    upsert?: UserTransactionUpsertWithWhereUniqueWithoutCustomerInput | UserTransactionUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: UserTransactionCreateManyCustomerInputEnvelope
-    set?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    disconnect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    delete?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
-    update?: UserTransactionUpdateWithWhereUniqueWithoutCustomerInput | UserTransactionUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: UserTransactionUpdateManyWithWhereWithoutCustomerInput | UserTransactionUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
   }
 
   export type MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput = {
@@ -54063,6 +50647,20 @@ export namespace Prisma {
     update?: ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput | ChampionshipRecordUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ChampionshipRecordUpdateManyWithWhereWithoutUserInput | ChampionshipRecordUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
+  }
+
+  export type CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
+    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutUserInput | CodeRedemeerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeRedemeerCreateManyUserInputEnvelope
+    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    update?: CodeRedemeerUpdateWithWhereUniqueWithoutUserInput | CodeRedemeerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutUserInput | CodeRedemeerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutZonesInput = {
@@ -54243,18 +50841,18 @@ export namespace Prisma {
     connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
-  export type AdminTransactionCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput> | AdminTransactionCreateWithoutCustomerInput[] | AdminTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionCreateOrConnectWithoutCustomerInput | AdminTransactionCreateOrConnectWithoutCustomerInput[]
-    createMany?: AdminTransactionCreateManyCustomerInputEnvelope
+  export type AdminTransactionCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminTransactionCreateManyAdminInputEnvelope
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
   }
 
-  export type AdminTransactionArchiveCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput> | AdminTransactionArchiveCreateWithoutCustomerInput[] | AdminTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionArchiveCreateOrConnectWithoutCustomerInput | AdminTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    createMany?: AdminTransactionArchiveCreateManyCustomerInputEnvelope
-    connect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
+  export type RedeemCodeCreateNestedManyWithoutAdminInput = {
+    create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
+    createMany?: RedeemCodeCreateManyAdminInputEnvelope
+    connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedOneWithoutAdminInput = {
@@ -54291,18 +50889,18 @@ export namespace Prisma {
     connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
-  export type AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput> | AdminTransactionCreateWithoutCustomerInput[] | AdminTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionCreateOrConnectWithoutCustomerInput | AdminTransactionCreateOrConnectWithoutCustomerInput[]
-    createMany?: AdminTransactionCreateManyCustomerInputEnvelope
+  export type AdminTransactionUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminTransactionCreateManyAdminInputEnvelope
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
   }
 
-  export type AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput> | AdminTransactionArchiveCreateWithoutCustomerInput[] | AdminTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionArchiveCreateOrConnectWithoutCustomerInput | AdminTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    createMany?: AdminTransactionArchiveCreateManyCustomerInputEnvelope
-    connect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
+  export type RedeemCodeUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
+    createMany?: RedeemCodeCreateManyAdminInputEnvelope
+    connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
   }
 
   export type NullableEnumRoleFieldUpdateOperationsInput = {
@@ -54405,32 +51003,32 @@ export namespace Prisma {
     deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
-  export type AdminTransactionUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput> | AdminTransactionCreateWithoutCustomerInput[] | AdminTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionCreateOrConnectWithoutCustomerInput | AdminTransactionCreateOrConnectWithoutCustomerInput[]
-    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutCustomerInput | AdminTransactionUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: AdminTransactionCreateManyCustomerInputEnvelope
+  export type AdminTransactionUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutAdminInput | AdminTransactionUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminTransactionCreateManyAdminInputEnvelope
     set?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     disconnect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     delete?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
-    update?: AdminTransactionUpdateWithWhereUniqueWithoutCustomerInput | AdminTransactionUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: AdminTransactionUpdateManyWithWhereWithoutCustomerInput | AdminTransactionUpdateManyWithWhereWithoutCustomerInput[]
+    update?: AdminTransactionUpdateWithWhereUniqueWithoutAdminInput | AdminTransactionUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminTransactionUpdateManyWithWhereWithoutAdminInput | AdminTransactionUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
   }
 
-  export type AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput> | AdminTransactionArchiveCreateWithoutCustomerInput[] | AdminTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionArchiveCreateOrConnectWithoutCustomerInput | AdminTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    upsert?: AdminTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput | AdminTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: AdminTransactionArchiveCreateManyCustomerInputEnvelope
-    set?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    disconnect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    delete?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    connect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    update?: AdminTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput | AdminTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: AdminTransactionArchiveUpdateManyWithWhereWithoutCustomerInput | AdminTransactionArchiveUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: AdminTransactionArchiveScalarWhereInput | AdminTransactionArchiveScalarWhereInput[]
+  export type RedeemCodeUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
+    upsert?: RedeemCodeUpsertWithWhereUniqueWithoutAdminInput | RedeemCodeUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: RedeemCodeCreateManyAdminInputEnvelope
+    set?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    disconnect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    delete?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    update?: RedeemCodeUpdateWithWhereUniqueWithoutAdminInput | RedeemCodeUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: RedeemCodeUpdateManyWithWhereWithoutAdminInput | RedeemCodeUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateOneWithoutAdminNestedInput = {
@@ -54499,32 +51097,32 @@ export namespace Prisma {
     deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
-  export type AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput> | AdminTransactionCreateWithoutCustomerInput[] | AdminTransactionUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionCreateOrConnectWithoutCustomerInput | AdminTransactionCreateOrConnectWithoutCustomerInput[]
-    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutCustomerInput | AdminTransactionUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: AdminTransactionCreateManyCustomerInputEnvelope
+  export type AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutAdminInput | AdminTransactionUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminTransactionCreateManyAdminInputEnvelope
     set?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     disconnect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     delete?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
-    update?: AdminTransactionUpdateWithWhereUniqueWithoutCustomerInput | AdminTransactionUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: AdminTransactionUpdateManyWithWhereWithoutCustomerInput | AdminTransactionUpdateManyWithWhereWithoutCustomerInput[]
+    update?: AdminTransactionUpdateWithWhereUniqueWithoutAdminInput | AdminTransactionUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminTransactionUpdateManyWithWhereWithoutAdminInput | AdminTransactionUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
   }
 
-  export type AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput> | AdminTransactionArchiveCreateWithoutCustomerInput[] | AdminTransactionArchiveUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: AdminTransactionArchiveCreateOrConnectWithoutCustomerInput | AdminTransactionArchiveCreateOrConnectWithoutCustomerInput[]
-    upsert?: AdminTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput | AdminTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: AdminTransactionArchiveCreateManyCustomerInputEnvelope
-    set?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    disconnect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    delete?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    connect?: AdminTransactionArchiveWhereUniqueInput | AdminTransactionArchiveWhereUniqueInput[]
-    update?: AdminTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput | AdminTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: AdminTransactionArchiveUpdateManyWithWhereWithoutCustomerInput | AdminTransactionArchiveUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: AdminTransactionArchiveScalarWhereInput | AdminTransactionArchiveScalarWhereInput[]
+  export type RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
+    upsert?: RedeemCodeUpsertWithWhereUniqueWithoutAdminInput | RedeemCodeUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: RedeemCodeCreateManyAdminInputEnvelope
+    set?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    disconnect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    delete?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+    update?: RedeemCodeUpdateWithWhereUniqueWithoutAdminInput | RedeemCodeUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: RedeemCodeUpdateManyWithWhereWithoutAdminInput | RedeemCodeUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
   }
 
   export type AdminCreateNestedOneWithoutOperationHistoriesInput = {
@@ -55095,9 +51693,29 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
+  export type RedeemCodeCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutTransactionInput
+    connect?: RedeemCodeWhereUniqueInput
+  }
+
+  export type RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutTransactionInput
+    connect?: RedeemCodeWhereUniqueInput
+  }
+
   export type AdminTransactionUpdatezonesInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type AdminUpdateOneRequiredWithoutAdminTransactionNestedInput = {
@@ -55108,73 +51726,131 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutAdminTransactionInput, AdminUpdateWithoutAdminTransactionInput>, AdminUncheckedUpdateWithoutAdminTransactionInput>
   }
 
-  export type AdminTransactionArchiveCreatezonesInput = {
+  export type RedeemCodeUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutTransactionInput
+    upsert?: RedeemCodeUpsertWithoutTransactionInput
+    disconnect?: RedeemCodeWhereInput | boolean
+    delete?: RedeemCodeWhereInput | boolean
+    connect?: RedeemCodeWhereUniqueInput
+    update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutTransactionInput, RedeemCodeUpdateWithoutTransactionInput>, RedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutTransactionInput
+    upsert?: RedeemCodeUpsertWithoutTransactionInput
+    disconnect?: RedeemCodeWhereInput | boolean
+    delete?: RedeemCodeWhereInput | boolean
+    connect?: RedeemCodeWhereUniqueInput
+    update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutTransactionInput, RedeemCodeUpdateWithoutTransactionInput>, RedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type RedeemCodeCreatedataInput = {
     set: string[]
   }
 
-  export type AdminCreateNestedOneWithoutAdminTransactionArchiveInput = {
-    create?: XOR<AdminCreateWithoutAdminTransactionArchiveInput, AdminUncheckedCreateWithoutAdminTransactionArchiveInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutAdminTransactionArchiveInput
+  export type AdminTransactionCreateNestedOneWithoutRedeemCodeInput = {
+    create?: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutRedeemCodeInput
+    connect?: AdminTransactionWhereUniqueInput
+  }
+
+  export type AdminCreateNestedOneWithoutRedeemCodeInput = {
+    create?: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodeInput
     connect?: AdminWhereUniqueInput
   }
 
-  export type AdminTransactionArchiveUpdatezonesInput = {
+  export type CodeRedemeerCreateNestedManyWithoutCodeInput = {
+    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
+    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  }
+
+  export type CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput = {
+    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
+    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  }
+
+  export type RedeemCodeUpdatedataInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type AdminUpdateOneRequiredWithoutAdminTransactionArchiveNestedInput = {
-    create?: XOR<AdminCreateWithoutAdminTransactionArchiveInput, AdminUncheckedCreateWithoutAdminTransactionArchiveInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutAdminTransactionArchiveInput
-    upsert?: AdminUpsertWithoutAdminTransactionArchiveInput
+  export type AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput = {
+    create?: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutRedeemCodeInput
+    upsert?: AdminTransactionUpsertWithoutRedeemCodeInput
+    connect?: AdminTransactionWhereUniqueInput
+    update?: XOR<XOR<AdminTransactionUpdateToOneWithWhereWithoutRedeemCodeInput, AdminTransactionUpdateWithoutRedeemCodeInput>, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
+  }
+
+  export type AdminUpdateOneRequiredWithoutRedeemCodeNestedInput = {
+    create?: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodeInput
+    upsert?: AdminUpsertWithoutRedeemCodeInput
     connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutAdminTransactionArchiveInput, AdminUpdateWithoutAdminTransactionArchiveInput>, AdminUncheckedUpdateWithoutAdminTransactionArchiveInput>
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutRedeemCodeInput, AdminUpdateWithoutRedeemCodeInput>, AdminUncheckedUpdateWithoutRedeemCodeInput>
   }
 
-  export type UserTransactionCreatezonesInput = {
-    set: string[]
+  export type CodeRedemeerUpdateManyWithoutCodeNestedInput = {
+    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
+    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput | CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput[]
+    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
+    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    update?: CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput | CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput[]
+    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutCodeInput | CodeRedemeerUpdateManyWithWhereWithoutCodeInput[]
+    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutUserTransactionInput = {
-    create?: XOR<UserCreateWithoutUserTransactionInput, UserUncheckedCreateWithoutUserTransactionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserTransactionInput
+  export type CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput = {
+    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
+    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput | CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput[]
+    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
+    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+    update?: CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput | CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput[]
+    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutCodeInput | CodeRedemeerUpdateManyWithWhereWithoutCodeInput[]
+    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutRedemeedCodesInput = {
+    create?: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRedemeedCodesInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserTransactionUpdatezonesInput = {
-    set?: string[]
-    push?: string | string[]
+  export type RedeemCodeCreateNestedOneWithoutRedemeersInput = {
+    create?: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedemeersInput
+    connect?: RedeemCodeWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutUserTransactionNestedInput = {
-    create?: XOR<UserCreateWithoutUserTransactionInput, UserUncheckedCreateWithoutUserTransactionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserTransactionInput
-    upsert?: UserUpsertWithoutUserTransactionInput
+  export type UserUpdateOneRequiredWithoutRedemeedCodesNestedInput = {
+    create?: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRedemeedCodesInput
+    upsert?: UserUpsertWithoutRedemeedCodesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserTransactionInput, UserUpdateWithoutUserTransactionInput>, UserUncheckedUpdateWithoutUserTransactionInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRedemeedCodesInput, UserUpdateWithoutRedemeedCodesInput>, UserUncheckedUpdateWithoutRedemeedCodesInput>
   }
 
-  export type UserTransactionArchiveCreatezonesInput = {
-    set: string[]
-  }
-
-  export type UserCreateNestedOneWithoutUserTransactionArchiveInput = {
-    create?: XOR<UserCreateWithoutUserTransactionArchiveInput, UserUncheckedCreateWithoutUserTransactionArchiveInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserTransactionArchiveInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserTransactionArchiveUpdatezonesInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdateOneRequiredWithoutUserTransactionArchiveNestedInput = {
-    create?: XOR<UserCreateWithoutUserTransactionArchiveInput, UserUncheckedCreateWithoutUserTransactionArchiveInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUserTransactionArchiveInput
-    upsert?: UserUpsertWithoutUserTransactionArchiveInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserTransactionArchiveInput, UserUpdateWithoutUserTransactionArchiveInput>, UserUncheckedUpdateWithoutUserTransactionArchiveInput>
+  export type RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedemeersInput
+    upsert?: RedeemCodeUpsertWithoutRedemeersInput
+    connect?: RedeemCodeWhereUniqueInput
+    update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutRedemeersInput, RedeemCodeUpdateWithoutRedemeersInput>, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
   }
 
   export type MultiPlayerMemberCreateNestedManyWithoutRoomInput = {
@@ -55341,64 +52017,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -55427,6 +52045,20 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -55469,6 +52101,50 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRoleNullableFilter<$PrismaModel = never> = {
@@ -55596,6 +52272,33 @@ export namespace Prisma {
     _max?: NestedEnumVoucherTypeFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type CityCreateWithoutProvinceInput = {
     id?: string
     name: string
@@ -55697,19 +52400,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55718,6 +52416,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProvinceInput = {
@@ -55746,16 +52445,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55764,6 +52458,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProvinceInput = {
@@ -55840,8 +52535,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutProvinceInput = {
@@ -55860,8 +52555,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutProvinceInput = {
@@ -56163,19 +52858,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56184,6 +52874,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCityInput = {
@@ -56212,16 +52903,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56230,6 +52916,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCityInput = {
@@ -56296,8 +52983,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutCityInput = {
@@ -56316,8 +53003,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutCityInput = {
@@ -56544,19 +53231,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56565,6 +53247,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSchoolInput = {
@@ -56593,16 +53276,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56611,6 +53289,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSchoolInput = {
@@ -56660,8 +53339,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutSchoolInput = {
@@ -56680,8 +53359,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutSchoolInput = {
@@ -56824,466 +53503,6 @@ export namespace Prisma {
     data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyWithoutSchoolInput>
   }
 
-  export type UserCreateWithoutOwnedAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutOwnedAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutOwnedAccessesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutOwnedAccessesInput, UserUncheckedCreateWithoutOwnedAccessesInput>
-  }
-
-  export type UserCreateWithoutUserAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutUserAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutUserAccessesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-  }
-
-  export type UserCreateWithoutRedeemedAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutRedeemedAccessesInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutRedeemedAccessesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput>
-  }
-
-  export type UserUpsertWithoutOwnedAccessesInput = {
-    update: XOR<UserUpdateWithoutOwnedAccessesInput, UserUncheckedUpdateWithoutOwnedAccessesInput>
-    create: XOR<UserCreateWithoutOwnedAccessesInput, UserUncheckedCreateWithoutOwnedAccessesInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutOwnedAccessesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutOwnedAccessesInput, UserUncheckedUpdateWithoutOwnedAccessesInput>
-  }
-
-  export type UserUpdateWithoutOwnedAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutOwnedAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutUserAccessesInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
-    create: XOR<UserCreateWithoutUserAccessesInput, UserUncheckedCreateWithoutUserAccessesInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutUserAccessesInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutUserAccessesInput, UserUncheckedUpdateWithoutUserAccessesInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutUserAccessesInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutUserAccessesInput>
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutRedeemedAccessesInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutRedeemedAccessesInput, UserUncheckedUpdateWithoutRedeemedAccessesInput>
-    create: XOR<UserCreateWithoutRedeemedAccessesInput, UserUncheckedCreateWithoutRedeemedAccessesInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutRedeemedAccessesInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutRedeemedAccessesInput, UserUncheckedUpdateWithoutRedeemedAccessesInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutRedeemedAccessesInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutRedeemedAccessesInput>
-  }
-
-  export type AccessContentCreateWithoutOwnerInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
-    redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentUncheckedCreateWithoutOwnerInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
-    redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentCreateOrConnectWithoutOwnerInput = {
-    where: AccessContentWhereUniqueInput
-    create: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput>
-  }
-
-  export type AccessContentCreateManyOwnerInputEnvelope = {
-    data: AccessContentCreateManyOwnerInput | AccessContentCreateManyOwnerInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CityCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -57403,8 +53622,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutUserInput = {
@@ -57423,42 +53642,13 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutUserInput = {
     where: AdminWhereUniqueInput
     create: XOR<AdminCreateWithoutUserInput, AdminUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccessContentCreateWithoutUserAccessesInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    redemeers?: UserCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentUncheckedCreateWithoutUserAccessesInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    ownerId?: string | null
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    redemeers?: UserUncheckedCreateNestedManyWithoutRedeemedAccessesInput
-  }
-
-  export type AccessContentCreateOrConnectWithoutUserAccessesInput = {
-    where: AccessContentWhereUniqueInput
-    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
   }
 
   export type ZoneCreateWithoutUserInput = {
@@ -57495,35 +53685,6 @@ export namespace Prisma {
   export type ZoneCreateManyUserInputEnvelope = {
     data: ZoneCreateManyUserInput | ZoneCreateManyUserInput[]
     skipDuplicates?: boolean
-  }
-
-  export type AccessContentCreateWithoutRedemeersInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    owner?: UserCreateNestedOneWithoutOwnedAccessesInput
-    userAccesses?: UserCreateNestedManyWithoutUserAccessesInput
-  }
-
-  export type AccessContentUncheckedCreateWithoutRedemeersInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    ownerId?: string | null
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userAccesses?: UserUncheckedCreateNestedManyWithoutUserAccessesInput
-  }
-
-  export type AccessContentCreateOrConnectWithoutRedemeersInput = {
-    where: AccessContentWhereUniqueInput
-    create: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput>
   }
 
   export type UserLoginCreateWithoutUserInput = {
@@ -57624,78 +53785,6 @@ export namespace Prisma {
 
   export type VoucherRedemeerCreateManyUserInputEnvelope = {
     data: VoucherRedemeerCreateManyUserInput | VoucherRedemeerCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserTransactionArchiveCreateWithoutCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUncheckedCreateWithoutCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveCreateOrConnectWithoutCustomerInput = {
-    where: UserTransactionArchiveWhereUniqueInput
-    create: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type UserTransactionArchiveCreateManyCustomerInputEnvelope = {
-    data: UserTransactionArchiveCreateManyCustomerInput | UserTransactionArchiveCreateManyCustomerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserTransactionCreateWithoutCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
-  }
-
-  export type UserTransactionUncheckedCreateWithoutCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
-  }
-
-  export type UserTransactionCreateOrConnectWithoutCustomerInput = {
-    where: UserTransactionWhereUniqueInput
-    create: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type UserTransactionCreateManyCustomerInputEnvelope = {
-    data: UserTransactionCreateManyCustomerInput | UserTransactionCreateManyCustomerInput[]
     skipDuplicates?: boolean
   }
 
@@ -57993,34 +54082,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AccessContentUpsertWithWhereUniqueWithoutOwnerInput = {
-    where: AccessContentWhereUniqueInput
-    update: XOR<AccessContentUpdateWithoutOwnerInput, AccessContentUncheckedUpdateWithoutOwnerInput>
-    create: XOR<AccessContentCreateWithoutOwnerInput, AccessContentUncheckedCreateWithoutOwnerInput>
+  export type CodeRedemeerCreateWithoutUserInput = {
+    id?: string
+    banned?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    code: RedeemCodeCreateNestedOneWithoutRedemeersInput
   }
 
-  export type AccessContentUpdateWithWhereUniqueWithoutOwnerInput = {
-    where: AccessContentWhereUniqueInput
-    data: XOR<AccessContentUpdateWithoutOwnerInput, AccessContentUncheckedUpdateWithoutOwnerInput>
+  export type CodeRedemeerUncheckedCreateWithoutUserInput = {
+    id?: string
+    banned?: boolean
+    codeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type AccessContentUpdateManyWithWhereWithoutOwnerInput = {
-    where: AccessContentScalarWhereInput
-    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyWithoutOwnerInput>
+  export type CodeRedemeerCreateOrConnectWithoutUserInput = {
+    where: CodeRedemeerWhereUniqueInput
+    create: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput>
   }
 
-  export type AccessContentScalarWhereInput = {
-    AND?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
-    OR?: AccessContentScalarWhereInput[]
-    NOT?: AccessContentScalarWhereInput | AccessContentScalarWhereInput[]
-    id?: StringFilter<"AccessContent"> | string
-    expired?: DateTimeFilter<"AccessContent"> | Date | string
-    quota?: IntFilter<"AccessContent"> | number
-    currentQuota?: IntFilter<"AccessContent"> | number
-    ownerId?: StringNullableFilter<"AccessContent"> | string | null
-    zones?: StringNullableListFilter<"AccessContent">
-    createdAt?: DateTimeFilter<"AccessContent"> | Date | string
-    updatedAt?: DateTimeFilter<"AccessContent"> | Date | string
+  export type CodeRedemeerCreateManyUserInputEnvelope = {
+    data: CodeRedemeerCreateManyUserInput | CodeRedemeerCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type CityUpsertWithoutUsersInput = {
@@ -58171,8 +54256,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutUserInput = {
@@ -58191,24 +54276,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-  }
-
-  export type AccessContentUpsertWithWhereUniqueWithoutUserAccessesInput = {
-    where: AccessContentWhereUniqueInput
-    update: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
-    create: XOR<AccessContentCreateWithoutUserAccessesInput, AccessContentUncheckedCreateWithoutUserAccessesInput>
-  }
-
-  export type AccessContentUpdateWithWhereUniqueWithoutUserAccessesInput = {
-    where: AccessContentWhereUniqueInput
-    data: XOR<AccessContentUpdateWithoutUserAccessesInput, AccessContentUncheckedUpdateWithoutUserAccessesInput>
-  }
-
-  export type AccessContentUpdateManyWithWhereWithoutUserAccessesInput = {
-    where: AccessContentScalarWhereInput
-    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyWithoutUserAccessesInput>
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ZoneUpsertWithWhereUniqueWithoutUserInput = {
@@ -58242,22 +54311,6 @@ export namespace Prisma {
     lastLevelUnlock?: StringFilter<"Zone"> | string
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
-  }
-
-  export type AccessContentUpsertWithWhereUniqueWithoutRedemeersInput = {
-    where: AccessContentWhereUniqueInput
-    update: XOR<AccessContentUpdateWithoutRedemeersInput, AccessContentUncheckedUpdateWithoutRedemeersInput>
-    create: XOR<AccessContentCreateWithoutRedemeersInput, AccessContentUncheckedCreateWithoutRedemeersInput>
-  }
-
-  export type AccessContentUpdateWithWhereUniqueWithoutRedemeersInput = {
-    where: AccessContentWhereUniqueInput
-    data: XOR<AccessContentUpdateWithoutRedemeersInput, AccessContentUncheckedUpdateWithoutRedemeersInput>
-  }
-
-  export type AccessContentUpdateManyWithWhereWithoutRedemeersInput = {
-    where: AccessContentScalarWhereInput
-    data: XOR<AccessContentUpdateManyMutationInput, AccessContentUncheckedUpdateManyWithoutRedemeersInput>
   }
 
   export type UserLoginUpsertWithWhereUniqueWithoutUserInput = {
@@ -58368,72 +54421,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"VoucherRedemeer"> | Date | string
     voucherId?: IntFilter<"VoucherRedemeer"> | number
     userId?: StringFilter<"VoucherRedemeer"> | string
-  }
-
-  export type UserTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput = {
-    where: UserTransactionArchiveWhereUniqueInput
-    update: XOR<UserTransactionArchiveUpdateWithoutCustomerInput, UserTransactionArchiveUncheckedUpdateWithoutCustomerInput>
-    create: XOR<UserTransactionArchiveCreateWithoutCustomerInput, UserTransactionArchiveUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type UserTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput = {
-    where: UserTransactionArchiveWhereUniqueInput
-    data: XOR<UserTransactionArchiveUpdateWithoutCustomerInput, UserTransactionArchiveUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type UserTransactionArchiveUpdateManyWithWhereWithoutCustomerInput = {
-    where: UserTransactionArchiveScalarWhereInput
-    data: XOR<UserTransactionArchiveUpdateManyMutationInput, UserTransactionArchiveUncheckedUpdateManyWithoutCustomerInput>
-  }
-
-  export type UserTransactionArchiveScalarWhereInput = {
-    AND?: UserTransactionArchiveScalarWhereInput | UserTransactionArchiveScalarWhereInput[]
-    OR?: UserTransactionArchiveScalarWhereInput[]
-    NOT?: UserTransactionArchiveScalarWhereInput | UserTransactionArchiveScalarWhereInput[]
-    id?: StringFilter<"UserTransactionArchive"> | string
-    transactionName?: StringFilter<"UserTransactionArchive"> | string
-    status?: StringFilter<"UserTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"UserTransactionArchive"> | string
-    customerName?: StringFilter<"UserTransactionArchive"> | string
-    customerId?: StringFilter<"UserTransactionArchive"> | string
-    quantity?: IntFilter<"UserTransactionArchive"> | number
-    zones?: StringNullableListFilter<"UserTransactionArchive">
-  }
-
-  export type UserTransactionUpsertWithWhereUniqueWithoutCustomerInput = {
-    where: UserTransactionWhereUniqueInput
-    update: XOR<UserTransactionUpdateWithoutCustomerInput, UserTransactionUncheckedUpdateWithoutCustomerInput>
-    create: XOR<UserTransactionCreateWithoutCustomerInput, UserTransactionUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type UserTransactionUpdateWithWhereUniqueWithoutCustomerInput = {
-    where: UserTransactionWhereUniqueInput
-    data: XOR<UserTransactionUpdateWithoutCustomerInput, UserTransactionUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type UserTransactionUpdateManyWithWhereWithoutCustomerInput = {
-    where: UserTransactionScalarWhereInput
-    data: XOR<UserTransactionUpdateManyMutationInput, UserTransactionUncheckedUpdateManyWithoutCustomerInput>
-  }
-
-  export type UserTransactionScalarWhereInput = {
-    AND?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
-    OR?: UserTransactionScalarWhereInput[]
-    NOT?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
-    id?: StringFilter<"UserTransaction"> | string
-    transactionName?: StringFilter<"UserTransaction"> | string
-    status?: StringFilter<"UserTransaction"> | string
-    createdAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
-    customerEmail?: StringFilter<"UserTransaction"> | string
-    customerName?: StringFilter<"UserTransaction"> | string
-    customerId?: StringFilter<"UserTransaction"> | string
-    quantity?: IntFilter<"UserTransaction"> | number
-    zones?: StringNullableListFilter<"UserTransaction">
   }
 
   export type MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput = {
@@ -58703,6 +54690,34 @@ export namespace Prisma {
     userId?: StringFilter<"ChampionshipRecord"> | string
   }
 
+  export type CodeRedemeerUpsertWithWhereUniqueWithoutUserInput = {
+    where: CodeRedemeerWhereUniqueInput
+    update: XOR<CodeRedemeerUpdateWithoutUserInput, CodeRedemeerUncheckedUpdateWithoutUserInput>
+    create: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput>
+  }
+
+  export type CodeRedemeerUpdateWithWhereUniqueWithoutUserInput = {
+    where: CodeRedemeerWhereUniqueInput
+    data: XOR<CodeRedemeerUpdateWithoutUserInput, CodeRedemeerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CodeRedemeerUpdateManyWithWhereWithoutUserInput = {
+    where: CodeRedemeerScalarWhereInput
+    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CodeRedemeerScalarWhereInput = {
+    AND?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+    OR?: CodeRedemeerScalarWhereInput[]
+    NOT?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+    id?: StringFilter<"CodeRedemeer"> | string
+    banned?: BoolFilter<"CodeRedemeer"> | boolean
+    userId?: StringFilter<"CodeRedemeer"> | string
+    codeId?: StringFilter<"CodeRedemeer"> | string
+    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+  }
+
   export type UserCreateWithoutZonesInput = {
     id?: string
     authId: string
@@ -58726,19 +54741,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58747,6 +54757,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutZonesInput = {
@@ -58776,15 +54787,10 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58793,6 +54799,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutZonesInput = {
@@ -58834,19 +54841,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58855,6 +54857,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutZonesInput = {
@@ -58884,15 +54887,10 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58901,6 +54899,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutLevelsInput = {
@@ -58926,20 +54925,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58947,6 +54941,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLevelsInput = {
@@ -58976,16 +54971,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58993,6 +54983,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLevelsInput = {
@@ -59034,20 +55025,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -59055,6 +55041,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLevelsInput = {
@@ -59084,16 +55071,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59101,6 +55083,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSubLevelsInput = {
@@ -59126,20 +55109,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -59147,6 +55125,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubLevelsInput = {
@@ -59176,16 +55155,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -59193,6 +55167,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubLevelsInput = {
@@ -59234,20 +55209,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -59255,6 +55225,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubLevelsInput = {
@@ -59284,16 +55255,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59301,6 +55267,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutInnerLevelsInput = {
@@ -59326,20 +55293,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -59347,6 +55309,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInnerLevelsInput = {
@@ -59376,16 +55339,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -59393,6 +55351,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInnerLevelsInput = {
@@ -59434,20 +55393,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -59455,6 +55409,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInnerLevelsInput = {
@@ -59484,16 +55439,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59501,6 +55451,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutGemposInput = {
@@ -59526,20 +55477,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59547,6 +55493,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGemposInput = {
@@ -59576,16 +55523,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -59593,6 +55535,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGemposInput = {
@@ -59634,20 +55577,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -59655,6 +55593,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGemposInput = {
@@ -59684,16 +55623,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59701,6 +55635,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutChampionshipsInput = {
@@ -59726,20 +55661,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59747,6 +55677,7 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChampionshipsInput = {
@@ -59776,16 +55707,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -59793,6 +55719,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChampionshipsInput = {
@@ -59834,20 +55761,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -59855,6 +55777,7 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChampionshipsInput = {
@@ -59884,16 +55807,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59901,6 +55819,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutGempoRecordsInput = {
@@ -59926,20 +55845,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59947,6 +55861,7 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGempoRecordsInput = {
@@ -59976,16 +55891,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -59993,6 +55903,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGempoRecordsInput = {
@@ -60034,20 +55945,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60055,6 +55961,7 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGempoRecordsInput = {
@@ -60084,16 +55991,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60101,6 +56003,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutChampionshipRecordsInput = {
@@ -60126,20 +56029,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -60147,6 +56045,7 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChampionshipRecordsInput = {
@@ -60176,16 +56075,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -60193,6 +56087,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChampionshipRecordsInput = {
@@ -60234,20 +56129,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60255,6 +56145,7 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChampionshipRecordsInput = {
@@ -60284,16 +56175,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60301,6 +56187,7 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutUserLoginInput = {
@@ -60326,19 +56213,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -60347,6 +56229,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserLoginInput = {
@@ -60376,15 +56259,10 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -60393,6 +56271,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserLoginInput = {
@@ -60434,19 +56313,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60455,6 +56329,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserLoginInput = {
@@ -60484,15 +56359,10 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60501,6 +56371,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAdminInput = {
@@ -60526,19 +56397,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -60547,6 +56413,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAdminInput = {
@@ -60575,16 +56442,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -60593,6 +56455,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAdminInput = {
@@ -60811,75 +56674,87 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AdminTransactionCreateWithoutCustomerInput = {
+  export type AdminTransactionCreateWithoutAdminInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    redeemCode?: RedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
-  export type AdminTransactionUncheckedCreateWithoutCustomerInput = {
+  export type AdminTransactionUncheckedCreateWithoutAdminInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    redeemCode?: RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
-  export type AdminTransactionCreateOrConnectWithoutCustomerInput = {
+  export type AdminTransactionCreateOrConnectWithoutAdminInput = {
     where: AdminTransactionWhereUniqueInput
-    create: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput>
+    create: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput>
   }
 
-  export type AdminTransactionCreateManyCustomerInputEnvelope = {
-    data: AdminTransactionCreateManyCustomerInput | AdminTransactionCreateManyCustomerInput[]
+  export type AdminTransactionCreateManyAdminInputEnvelope = {
+    data: AdminTransactionCreateManyAdminInput | AdminTransactionCreateManyAdminInput[]
     skipDuplicates?: boolean
   }
 
-  export type AdminTransactionArchiveCreateWithoutCustomerInput = {
+  export type RedeemCodeCreateWithoutAdminInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
   }
 
-  export type AdminTransactionArchiveUncheckedCreateWithoutCustomerInput = {
+  export type RedeemCodeUncheckedCreateWithoutAdminInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
+    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
   }
 
-  export type AdminTransactionArchiveCreateOrConnectWithoutCustomerInput = {
-    where: AdminTransactionArchiveWhereUniqueInput
-    create: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput>
+  export type RedeemCodeCreateOrConnectWithoutAdminInput = {
+    where: RedeemCodeWhereUniqueInput
+    create: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput>
   }
 
-  export type AdminTransactionArchiveCreateManyCustomerInputEnvelope = {
-    data: AdminTransactionArchiveCreateManyCustomerInput | AdminTransactionArchiveCreateManyCustomerInput[]
+  export type RedeemCodeCreateManyAdminInputEnvelope = {
+    data: RedeemCodeCreateManyAdminInput | RedeemCodeCreateManyAdminInput[]
     skipDuplicates?: boolean
   }
 
@@ -60917,19 +56792,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60938,6 +56808,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAdminInput = {
@@ -60966,16 +56837,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60984,6 +56850,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminInput = {
@@ -61196,20 +57063,20 @@ export namespace Prisma {
     adminId?: StringFilter<"Banner"> | string
   }
 
-  export type AdminTransactionUpsertWithWhereUniqueWithoutCustomerInput = {
+  export type AdminTransactionUpsertWithWhereUniqueWithoutAdminInput = {
     where: AdminTransactionWhereUniqueInput
-    update: XOR<AdminTransactionUpdateWithoutCustomerInput, AdminTransactionUncheckedUpdateWithoutCustomerInput>
-    create: XOR<AdminTransactionCreateWithoutCustomerInput, AdminTransactionUncheckedCreateWithoutCustomerInput>
+    update: XOR<AdminTransactionUpdateWithoutAdminInput, AdminTransactionUncheckedUpdateWithoutAdminInput>
+    create: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput>
   }
 
-  export type AdminTransactionUpdateWithWhereUniqueWithoutCustomerInput = {
+  export type AdminTransactionUpdateWithWhereUniqueWithoutAdminInput = {
     where: AdminTransactionWhereUniqueInput
-    data: XOR<AdminTransactionUpdateWithoutCustomerInput, AdminTransactionUncheckedUpdateWithoutCustomerInput>
+    data: XOR<AdminTransactionUpdateWithoutAdminInput, AdminTransactionUncheckedUpdateWithoutAdminInput>
   }
 
-  export type AdminTransactionUpdateManyWithWhereWithoutCustomerInput = {
+  export type AdminTransactionUpdateManyWithWhereWithoutAdminInput = {
     where: AdminTransactionScalarWhereInput
-    data: XOR<AdminTransactionUpdateManyMutationInput, AdminTransactionUncheckedUpdateManyWithoutCustomerInput>
+    data: XOR<AdminTransactionUpdateManyMutationInput, AdminTransactionUncheckedUpdateManyWithoutAdminInput>
   }
 
   export type AdminTransactionScalarWhereInput = {
@@ -61217,49 +57084,53 @@ export namespace Prisma {
     OR?: AdminTransactionScalarWhereInput[]
     NOT?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
     id?: StringFilter<"AdminTransaction"> | string
-    transactionName?: StringFilter<"AdminTransaction"> | string
+    name?: StringFilter<"AdminTransaction"> | string
     status?: StringFilter<"AdminTransaction"> | string
+    archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
-    customerEmail?: StringFilter<"AdminTransaction"> | string
-    customerName?: StringFilter<"AdminTransaction"> | string
-    customerId?: StringFilter<"AdminTransaction"> | string
+    adminId?: StringFilter<"AdminTransaction"> | string
     quantity?: IntFilter<"AdminTransaction"> | number
+    subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
+    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    amount?: IntFilter<"AdminTransaction"> | number
+    description?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
+    transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
   }
 
-  export type AdminTransactionArchiveUpsertWithWhereUniqueWithoutCustomerInput = {
-    where: AdminTransactionArchiveWhereUniqueInput
-    update: XOR<AdminTransactionArchiveUpdateWithoutCustomerInput, AdminTransactionArchiveUncheckedUpdateWithoutCustomerInput>
-    create: XOR<AdminTransactionArchiveCreateWithoutCustomerInput, AdminTransactionArchiveUncheckedCreateWithoutCustomerInput>
+  export type RedeemCodeUpsertWithWhereUniqueWithoutAdminInput = {
+    where: RedeemCodeWhereUniqueInput
+    update: XOR<RedeemCodeUpdateWithoutAdminInput, RedeemCodeUncheckedUpdateWithoutAdminInput>
+    create: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput>
   }
 
-  export type AdminTransactionArchiveUpdateWithWhereUniqueWithoutCustomerInput = {
-    where: AdminTransactionArchiveWhereUniqueInput
-    data: XOR<AdminTransactionArchiveUpdateWithoutCustomerInput, AdminTransactionArchiveUncheckedUpdateWithoutCustomerInput>
+  export type RedeemCodeUpdateWithWhereUniqueWithoutAdminInput = {
+    where: RedeemCodeWhereUniqueInput
+    data: XOR<RedeemCodeUpdateWithoutAdminInput, RedeemCodeUncheckedUpdateWithoutAdminInput>
   }
 
-  export type AdminTransactionArchiveUpdateManyWithWhereWithoutCustomerInput = {
-    where: AdminTransactionArchiveScalarWhereInput
-    data: XOR<AdminTransactionArchiveUpdateManyMutationInput, AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerInput>
+  export type RedeemCodeUpdateManyWithWhereWithoutAdminInput = {
+    where: RedeemCodeScalarWhereInput
+    data: XOR<RedeemCodeUpdateManyMutationInput, RedeemCodeUncheckedUpdateManyWithoutAdminInput>
   }
 
-  export type AdminTransactionArchiveScalarWhereInput = {
-    AND?: AdminTransactionArchiveScalarWhereInput | AdminTransactionArchiveScalarWhereInput[]
-    OR?: AdminTransactionArchiveScalarWhereInput[]
-    NOT?: AdminTransactionArchiveScalarWhereInput | AdminTransactionArchiveScalarWhereInput[]
-    id?: StringFilter<"AdminTransactionArchive"> | string
-    transactionName?: StringFilter<"AdminTransactionArchive"> | string
-    status?: StringFilter<"AdminTransactionArchive"> | string
-    createdAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    expiredAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    updatedAt?: DateTimeFilter<"AdminTransactionArchive"> | Date | string
-    customerEmail?: StringFilter<"AdminTransactionArchive"> | string
-    customerName?: StringFilter<"AdminTransactionArchive"> | string
-    customerId?: StringFilter<"AdminTransactionArchive"> | string
-    quantity?: IntFilter<"AdminTransactionArchive"> | number
-    zones?: StringNullableListFilter<"AdminTransactionArchive">
+  export type RedeemCodeScalarWhereInput = {
+    AND?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
+    OR?: RedeemCodeScalarWhereInput[]
+    NOT?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
+    id?: StringFilter<"RedeemCode"> | string
+    suspend?: BoolFilter<"RedeemCode"> | boolean
+    transactionId?: StringFilter<"RedeemCode"> | string
+    adminId?: StringFilter<"RedeemCode"> | string
+    code?: StringFilter<"RedeemCode"> | string
+    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    currentAmount?: IntFilter<"RedeemCode"> | number
+    maxAmount?: IntFilter<"RedeemCode"> | number
+    data?: StringNullableListFilter<"RedeemCode">
+    createdAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
   }
 
   export type AdminCreateWithoutOperationHistoriesInput = {
@@ -61278,8 +57149,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
@@ -61298,8 +57169,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
@@ -61323,8 +57194,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationsInput = {
@@ -61343,8 +57214,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationsInput = {
@@ -61379,8 +57250,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
@@ -61399,8 +57270,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUpsertWithoutOperationsInput = {
@@ -61430,8 +57301,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationsInput = {
@@ -61450,8 +57321,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateWithoutAuthorityInput = {
@@ -61470,8 +57341,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutAuthorityInput = {
@@ -61490,8 +57361,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutAuthorityInput = {
@@ -61629,8 +57500,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutAuthorityInput = {
@@ -61649,8 +57520,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminAuthorityInput = {
@@ -61768,8 +57639,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutBannerInput = {
@@ -61788,8 +57659,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutBannerInput = {
@@ -61862,8 +57733,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutBannerInput = {
@@ -61882,8 +57753,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type BannerLocationUpsertWithWhereUniqueWithoutBannerInput = {
@@ -62145,19 +58016,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -62166,6 +58032,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBannerVisitorInput = {
@@ -62195,15 +58062,10 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -62212,6 +58074,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBannerVisitorInput = {
@@ -62288,19 +58151,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -62309,6 +58167,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBannerVisitorInput = {
@@ -62338,15 +58197,10 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -62355,6 +58209,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TestParticipantCreateWithoutTestInput = {
@@ -62469,19 +58324,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -62490,6 +58340,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestParticipantInput = {
@@ -62519,15 +58370,10 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -62536,6 +58382,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestParticipantInput = {
@@ -62654,19 +58501,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -62675,6 +58517,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestParticipantInput = {
@@ -62704,15 +58547,10 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -62721,6 +58559,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TestParticipantRecordUpsertWithWhereUniqueWithoutParticipantInput = {
@@ -62899,19 +58738,14 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -62920,6 +58754,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutVoucherRedemeerInput = {
@@ -62949,15 +58784,10 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -62966,6 +58796,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutVoucherRedemeerInput = {
@@ -63039,19 +58870,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63060,6 +58886,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutVoucherRedemeerInput = {
@@ -63089,15 +58916,10 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63106,6 +58928,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AdminCreateWithoutAdminTransactionInput = {
@@ -63125,7 +58948,7 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransactionArchive?: AdminTransactionArchiveCreateNestedManyWithoutCustomerInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutAdminTransactionInput = {
@@ -63145,12 +58968,45 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutAdminTransactionInput = {
     where: AdminWhereUniqueInput
     create: XOR<AdminCreateWithoutAdminTransactionInput, AdminUncheckedCreateWithoutAdminTransactionInput>
+  }
+
+  export type RedeemCodeCreateWithoutTransactionInput = {
+    id?: string
+    suspend?: boolean
+    code: string
+    expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
+  }
+
+  export type RedeemCodeUncheckedCreateWithoutTransactionInput = {
+    id?: string
+    suspend?: boolean
+    adminId: string
+    code: string
+    expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
+  }
+
+  export type RedeemCodeCreateOrConnectWithoutTransactionInput = {
+    where: RedeemCodeWhereUniqueInput
+    create: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
   }
 
   export type AdminUpsertWithoutAdminTransactionInput = {
@@ -63181,7 +59037,7 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutAdminTransactionInput = {
@@ -63201,10 +59057,90 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
-  export type AdminCreateWithoutAdminTransactionArchiveInput = {
+  export type RedeemCodeUpsertWithoutTransactionInput = {
+    update: XOR<RedeemCodeUpdateWithoutTransactionInput, RedeemCodeUncheckedUpdateWithoutTransactionInput>
+    create: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
+    where?: RedeemCodeWhereInput
+  }
+
+  export type RedeemCodeUpdateToOneWithWhereWithoutTransactionInput = {
+    where?: RedeemCodeWhereInput
+    data: XOR<RedeemCodeUpdateWithoutTransactionInput, RedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type RedeemCodeUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    code?: StringFieldUpdateOperationsInput | string
+    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
+    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
+  }
+
+  export type RedeemCodeUncheckedUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
+  }
+
+  export type AdminTransactionCreateWithoutRedeemCodeInput = {
+    id?: string
+    name: string
+    status: string
+    archived?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quantity?: number
+    subscriptionTime: number
+    zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    admin: AdminCreateNestedOneWithoutAdminTransactionInput
+  }
+
+  export type AdminTransactionUncheckedCreateWithoutRedeemCodeInput = {
+    id?: string
+    name: string
+    status: string
+    archived?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adminId: string
+    quantity?: number
+    subscriptionTime: number
+    zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+  }
+
+  export type AdminTransactionCreateOrConnectWithoutRedeemCodeInput = {
+    where: AdminTransactionWhereUniqueInput
+    create: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
+  }
+
+  export type AdminCreateWithoutRedeemCodeInput = {
     id?: string
     authId: string
     email: string
@@ -63221,10 +59157,10 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
   }
 
-  export type AdminUncheckedCreateWithoutAdminTransactionArchiveInput = {
+  export type AdminUncheckedCreateWithoutRedeemCodeInput = {
     id?: string
     authId: string
     email: string
@@ -63241,26 +59177,99 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutCustomerInput
+    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
   }
 
-  export type AdminCreateOrConnectWithoutAdminTransactionArchiveInput = {
+  export type AdminCreateOrConnectWithoutRedeemCodeInput = {
     where: AdminWhereUniqueInput
-    create: XOR<AdminCreateWithoutAdminTransactionArchiveInput, AdminUncheckedCreateWithoutAdminTransactionArchiveInput>
+    create: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
   }
 
-  export type AdminUpsertWithoutAdminTransactionArchiveInput = {
-    update: XOR<AdminUpdateWithoutAdminTransactionArchiveInput, AdminUncheckedUpdateWithoutAdminTransactionArchiveInput>
-    create: XOR<AdminCreateWithoutAdminTransactionArchiveInput, AdminUncheckedCreateWithoutAdminTransactionArchiveInput>
+  export type CodeRedemeerCreateWithoutCodeInput = {
+    id?: string
+    banned?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRedemeedCodesInput
+  }
+
+  export type CodeRedemeerUncheckedCreateWithoutCodeInput = {
+    id?: string
+    banned?: boolean
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CodeRedemeerCreateOrConnectWithoutCodeInput = {
+    where: CodeRedemeerWhereUniqueInput
+    create: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput>
+  }
+
+  export type CodeRedemeerCreateManyCodeInputEnvelope = {
+    data: CodeRedemeerCreateManyCodeInput | CodeRedemeerCreateManyCodeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminTransactionUpsertWithoutRedeemCodeInput = {
+    update: XOR<AdminTransactionUpdateWithoutRedeemCodeInput, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
+    create: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
+    where?: AdminTransactionWhereInput
+  }
+
+  export type AdminTransactionUpdateToOneWithWhereWithoutRedeemCodeInput = {
+    where?: AdminTransactionWhereInput
+    data: XOR<AdminTransactionUpdateWithoutRedeemCodeInput, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
+  }
+
+  export type AdminTransactionUpdateWithoutRedeemCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+    zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: AdminUpdateOneRequiredWithoutAdminTransactionNestedInput
+  }
+
+  export type AdminTransactionUncheckedUpdateWithoutRedeemCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+    zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AdminUpsertWithoutRedeemCodeInput = {
+    update: XOR<AdminUpdateWithoutRedeemCodeInput, AdminUncheckedUpdateWithoutRedeemCodeInput>
+    create: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
     where?: AdminWhereInput
   }
 
-  export type AdminUpdateToOneWithWhereWithoutAdminTransactionArchiveInput = {
+  export type AdminUpdateToOneWithWhereWithoutRedeemCodeInput = {
     where?: AdminWhereInput
-    data: XOR<AdminUpdateWithoutAdminTransactionArchiveInput, AdminUncheckedUpdateWithoutAdminTransactionArchiveInput>
+    data: XOR<AdminUpdateWithoutRedeemCodeInput, AdminUncheckedUpdateWithoutRedeemCodeInput>
   }
 
-  export type AdminUpdateWithoutAdminTransactionArchiveInput = {
+  export type AdminUpdateWithoutRedeemCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63277,10 +59286,10 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
   }
 
-  export type AdminUncheckedUpdateWithoutAdminTransactionArchiveInput = {
+  export type AdminUncheckedUpdateWithoutRedeemCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63297,10 +59306,26 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
   }
 
-  export type UserCreateWithoutUserTransactionInput = {
+  export type CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput = {
+    where: CodeRedemeerWhereUniqueInput
+    update: XOR<CodeRedemeerUpdateWithoutCodeInput, CodeRedemeerUncheckedUpdateWithoutCodeInput>
+    create: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput>
+  }
+
+  export type CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput = {
+    where: CodeRedemeerWhereUniqueInput
+    data: XOR<CodeRedemeerUpdateWithoutCodeInput, CodeRedemeerUncheckedUpdateWithoutCodeInput>
+  }
+
+  export type CodeRedemeerUpdateManyWithWhereWithoutCodeInput = {
+    where: CodeRedemeerScalarWhereInput
+    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyWithoutCodeInput>
+  }
+
+  export type UserCreateWithoutRedemeedCodesInput = {
     id?: string
     authId: string
     email: string
@@ -63323,19 +59348,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -63346,7 +59367,7 @@ export namespace Prisma {
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutUserTransactionInput = {
+  export type UserUncheckedCreateWithoutRedemeedCodesInput = {
     id?: string
     authId: string
     email: string
@@ -63373,15 +59394,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -63392,23 +59409,56 @@ export namespace Prisma {
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutUserTransactionInput = {
+  export type UserCreateOrConnectWithoutRedemeedCodesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserTransactionInput, UserUncheckedCreateWithoutUserTransactionInput>
+    create: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
   }
 
-  export type UserUpsertWithoutUserTransactionInput = {
-    update: XOR<UserUpdateWithoutUserTransactionInput, UserUncheckedUpdateWithoutUserTransactionInput>
-    create: XOR<UserCreateWithoutUserTransactionInput, UserUncheckedCreateWithoutUserTransactionInput>
+  export type RedeemCodeCreateWithoutRedemeersInput = {
+    id?: string
+    suspend?: boolean
+    code: string
+    expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+  }
+
+  export type RedeemCodeUncheckedCreateWithoutRedemeersInput = {
+    id?: string
+    suspend?: boolean
+    transactionId: string
+    adminId: string
+    code: string
+    expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RedeemCodeCreateOrConnectWithoutRedemeersInput = {
+    where: RedeemCodeWhereUniqueInput
+    create: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+  }
+
+  export type UserUpsertWithoutRedemeedCodesInput = {
+    update: XOR<UserUpdateWithoutRedemeedCodesInput, UserUncheckedUpdateWithoutRedemeedCodesInput>
+    create: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUserTransactionInput = {
+  export type UserUpdateToOneWithWhereWithoutRedemeedCodesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserTransactionInput, UserUncheckedUpdateWithoutUserTransactionInput>
+    data: XOR<UserUpdateWithoutRedemeedCodesInput, UserUncheckedUpdateWithoutRedemeedCodesInput>
   }
 
-  export type UserUpdateWithoutUserTransactionInput = {
+  export type UserUpdateWithoutRedemeedCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63431,19 +59481,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63454,7 +59500,7 @@ export namespace Prisma {
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserTransactionInput = {
+  export type UserUncheckedUpdateWithoutRedemeedCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63481,15 +59527,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63500,204 +59542,43 @@ export namespace Prisma {
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserCreateWithoutUserTransactionArchiveInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+  export type RedeemCodeUpsertWithoutRedemeersInput = {
+    update: XOR<RedeemCodeUpdateWithoutRedemeersInput, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
+    create: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+    where?: RedeemCodeWhereInput
   }
 
-  export type UserUncheckedCreateWithoutUserTransactionArchiveInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+  export type RedeemCodeUpdateToOneWithWhereWithoutRedemeersInput = {
+    where?: RedeemCodeWhereInput
+    data: XOR<RedeemCodeUpdateWithoutRedemeersInput, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
   }
 
-  export type UserCreateOrConnectWithoutUserTransactionArchiveInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUserTransactionArchiveInput, UserUncheckedCreateWithoutUserTransactionArchiveInput>
-  }
-
-  export type UserUpsertWithoutUserTransactionArchiveInput = {
-    update: XOR<UserUpdateWithoutUserTransactionArchiveInput, UserUncheckedUpdateWithoutUserTransactionArchiveInput>
-    create: XOR<UserCreateWithoutUserTransactionArchiveInput, UserUncheckedCreateWithoutUserTransactionArchiveInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutUserTransactionArchiveInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUserTransactionArchiveInput, UserUncheckedUpdateWithoutUserTransactionArchiveInput>
-  }
-
-  export type UserUpdateWithoutUserTransactionArchiveInput = {
+  export type RedeemCodeUpdateWithoutRedemeersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
+    code?: StringFieldUpdateOperationsInput | string
+    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUserTransactionArchiveInput = {
+  export type RedeemCodeUncheckedUpdateWithoutRedemeersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MultiPlayerMemberCreateWithoutRoomInput = {
@@ -63775,20 +59656,15 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentCreateNestedManyWithoutOwnerInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
     admin?: AdminCreateNestedOneWithoutUserInput
-    userAccesses?: AccessContentCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionCreateNestedManyWithoutCustomerInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -63796,6 +59672,7 @@ export namespace Prisma {
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMultiPlayerMemberInput = {
@@ -63825,16 +59702,11 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    ownedAccesses?: AccessContentUncheckedCreateNestedManyWithoutOwnerInput
-    userAccesses?: AccessContentUncheckedCreateNestedManyWithoutUserAccessesInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    redeemedAccesses?: AccessContentUncheckedCreateNestedManyWithoutRedemeersInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedCreateNestedManyWithoutCustomerInput
-    userTransaction?: UserTransactionUncheckedCreateNestedManyWithoutCustomerInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -63842,6 +59714,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMultiPlayerMemberInput = {
@@ -63918,20 +59791,15 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -63939,6 +59807,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMultiPlayerMemberInput = {
@@ -63968,16 +59837,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63985,6 +59849,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MultiplayerRoomUpsertWithoutMembersInput = {
@@ -64203,19 +60068,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64224,6 +60084,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProvinceInput = {
@@ -64252,16 +60113,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64270,6 +60126,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutProvinceInput = {
@@ -64355,8 +60212,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutProvinceInput = {
@@ -64375,8 +60232,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutProvinceInput = {
@@ -64506,19 +60363,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64527,6 +60379,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCityInput = {
@@ -64555,16 +60408,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64573,6 +60421,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutCityInput = {
@@ -64660,8 +60509,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutCityInput = {
@@ -64680,8 +60529,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutCityInput = {
@@ -64761,19 +60610,14 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64782,6 +60626,7 @@ export namespace Prisma {
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSchoolInput = {
@@ -64810,16 +60655,11 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64828,6 +60668,7 @@ export namespace Prisma {
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSchoolInput = {
@@ -64897,8 +60738,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutSchoolInput = {
@@ -64917,8 +60758,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    adminTransactionArchive?: AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
+    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutSchoolInput = {
@@ -64932,258 +60773,6 @@ export namespace Prisma {
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserUpdateWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    redeemedAccesses?: AccessContentUncheckedUpdateManyWithoutRedemeersNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserUpdateWithoutRedeemedAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUpdateManyWithoutOwnerNestedInput
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    userAccesses?: AccessContentUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutRedeemedAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    ownedAccesses?: AccessContentUncheckedUpdateManyWithoutOwnerNestedInput
-    userAccesses?: AccessContentUncheckedUpdateManyWithoutUserAccessesNestedInput
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
-    userTransactionArchive?: UserTransactionArchiveUncheckedUpdateManyWithoutCustomerNestedInput
-    userTransaction?: UserTransactionUncheckedUpdateManyWithoutCustomerNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutRedeemedAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AccessContentCreateManyOwnerInput = {
-    id?: string
-    expired: Date | string
-    quota: number
-    currentQuota: number
-    zones?: AccessContentCreatezonesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type ZoneCreateManyUserInput = {
@@ -65227,32 +60816,6 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     voucherId: number
-  }
-
-  export type UserTransactionArchiveCreateManyCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionArchiveCreatezonesInput | string[]
-  }
-
-  export type UserTransactionCreateManyCustomerInput = {
-    id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
-    expiredAt: Date | string
-    updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: UserTransactionCreatezonesInput | string[]
   }
 
   export type MultiPlayerMemberCreateManyUserInput = {
@@ -65362,73 +60925,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AccessContentUpdateWithoutOwnerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
-    redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateWithoutOwnerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
-    redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateManyWithoutOwnerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccessContentUpdateWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    redemeers?: UserUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    redemeers?: UserUncheckedUpdateManyWithoutRedeemedAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateManyWithoutUserAccessesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type CodeRedemeerCreateManyUserInput = {
+    id?: string
+    banned?: boolean
+    codeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ZoneUpdateWithoutUserInput = {
@@ -65466,41 +60968,6 @@ export namespace Prisma {
     lastSubLevelId?: StringFieldUpdateOperationsInput | string
     lastInnerLevelId?: StringFieldUpdateOperationsInput | string
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccessContentUpdateWithoutRedemeersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneWithoutOwnedAccessesNestedInput
-    userAccesses?: UserUpdateManyWithoutUserAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateWithoutRedemeersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userAccesses?: UserUncheckedUpdateManyWithoutUserAccessesNestedInput
-  }
-
-  export type AccessContentUncheckedUpdateManyWithoutRedemeersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expired?: DateTimeFieldUpdateOperationsInput | Date | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    ownerId?: NullableStringFieldUpdateOperationsInput | string | null
-    zones?: AccessContentUpdatezonesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -65594,84 +61061,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     voucherId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UserTransactionArchiveUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionArchiveUncheckedUpdateManyWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionArchiveUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
-  }
-
-  export type UserTransactionUncheckedUpdateManyWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: UserTransactionUpdatezonesInput | string[]
   }
 
   export type MultiPlayerMemberUpdateWithoutUserInput = {
@@ -65995,6 +61384,30 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CodeRedemeerUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    code?: RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput
+  }
+
+  export type CodeRedemeerUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    codeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeRedemeerUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    codeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AdminAuthorityCreateManyAdminInput = {
     id?: string
     provinceId: string
@@ -66025,30 +61438,34 @@ export namespace Prisma {
     isHide?: boolean
   }
 
-  export type AdminTransactionCreateManyCustomerInput = {
+  export type AdminTransactionCreateManyAdminInput = {
     id?: string
-    transactionName: string
+    name: string
     status: string
+    archived?: boolean
     createdAt?: Date | string
-    expiredAt: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
     quantity?: number
+    subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: number | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
   }
 
-  export type AdminTransactionArchiveCreateManyCustomerInput = {
+  export type RedeemCodeCreateManyAdminInput = {
     id?: string
-    transactionName: string
-    status: string
-    createdAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+    code: string
     expiredAt: Date | string
+    currentAmount: number
+    maxAmount: number
+    data?: RedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
     updatedAt?: Date | string
-    customerEmail: string
-    customerName: string
-    quantity?: number
-    zones?: AdminTransactionArchiveCreatezonesInput | string[]
   }
 
   export type AdminAuthorityUpdateWithoutAdminInput = {
@@ -66149,82 +61566,98 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type AdminTransactionUpdateWithoutCustomerInput = {
+  export type AdminTransactionUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    redeemCode?: RedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
-  export type AdminTransactionUncheckedUpdateWithoutCustomerInput = {
+  export type AdminTransactionUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    redeemCode?: RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
-  export type AdminTransactionUncheckedUpdateManyWithoutCustomerInput = {
+  export type AdminTransactionUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type AdminTransactionArchiveUpdateWithoutCustomerInput = {
+  export type RedeemCodeUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
   }
 
-  export type AdminTransactionArchiveUncheckedUpdateWithoutCustomerInput = {
+  export type RedeemCodeUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
+    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
-  export type AdminTransactionArchiveUncheckedUpdateManyWithoutCustomerInput = {
+  export type RedeemCodeUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionName?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentAmount?: IntFieldUpdateOperationsInput | number
+    maxAmount?: IntFieldUpdateOperationsInput | number
+    data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerEmail?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    zones?: AdminTransactionArchiveUpdatezonesInput | string[]
   }
 
   export type CityUpdateWithoutAdminAuthorityInput = {
@@ -66506,6 +61939,38 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CodeRedemeerCreateManyCodeInput = {
+    id?: string
+    banned?: boolean
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CodeRedemeerUpdateWithoutCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
+  }
+
+  export type CodeRedemeerUncheckedUpdateWithoutCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeRedemeerUncheckedUpdateManyWithoutCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banned?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MultiPlayerMemberCreateManyRoomInput = {
