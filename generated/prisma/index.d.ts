@@ -4056,7 +4056,8 @@ export namespace Prisma {
     operationHistories: number
     operations: number
     banner: number
-    adminTransaction: number
+    transactions: number
+    transactionProcessed: number
     RedeemCode: number
   }
 
@@ -4065,7 +4066,8 @@ export namespace Prisma {
     operationHistories?: boolean | AdminCountOutputTypeCountOperationHistoriesArgs
     operations?: boolean | AdminCountOutputTypeCountOperationsArgs
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
-    adminTransaction?: boolean | AdminCountOutputTypeCountAdminTransactionArgs
+    transactions?: boolean | AdminCountOutputTypeCountTransactionsArgs
+    transactionProcessed?: boolean | AdminCountOutputTypeCountTransactionProcessedArgs
     RedeemCode?: boolean | AdminCountOutputTypeCountRedeemCodeArgs
   }
 
@@ -4111,7 +4113,14 @@ export namespace Prisma {
   /**
    * AdminCountOutputType without action
    */
-  export type AdminCountOutputTypeCountAdminTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AdminCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminTransactionWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountTransactionProcessedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AdminTransactionWhereInput
   }
 
@@ -20587,7 +20596,8 @@ export namespace Prisma {
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
     operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
-    adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
+    transactions?: boolean | Admin$transactionsArgs<ExtArgs>
+    transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
@@ -20650,7 +20660,8 @@ export namespace Prisma {
     operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
     operations?: boolean | Admin$operationsArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
-    adminTransaction?: boolean | Admin$adminTransactionArgs<ExtArgs>
+    transactions?: boolean | Admin$transactionsArgs<ExtArgs>
+    transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -20676,7 +20687,8 @@ export namespace Prisma {
       operationHistories: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       operations: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       banner: Prisma.$BannerPayload<ExtArgs>[]
-      adminTransaction: Prisma.$AdminTransactionPayload<ExtArgs>[]
+      transactions: Prisma.$AdminTransactionPayload<ExtArgs>[]
+      transactionProcessed: Prisma.$AdminTransactionPayload<ExtArgs>[]
       RedeemCode: Prisma.$RedeemCodePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -21093,7 +21105,8 @@ export namespace Prisma {
     operationHistories<T extends Admin$operationHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     operations<T extends Admin$operationsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     banner<T extends Admin$bannerArgs<ExtArgs> = {}>(args?: Subset<T, Admin$bannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    adminTransaction<T extends Admin$adminTransactionArgs<ExtArgs> = {}>(args?: Subset<T, Admin$adminTransactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Admin$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactionProcessed<T extends Admin$transactionProcessedArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionProcessedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RedeemCode<T extends Admin$RedeemCodeArgs<ExtArgs> = {}>(args?: Subset<T, Admin$RedeemCodeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -21703,9 +21716,33 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.adminTransaction
+   * Admin.transactions
    */
-  export type Admin$adminTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Admin$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminTransaction
+     */
+    select?: AdminTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminTransaction
+     */
+    omit?: AdminTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminTransactionInclude<ExtArgs> | null
+    where?: AdminTransactionWhereInput
+    orderBy?: AdminTransactionOrderByWithRelationInput | AdminTransactionOrderByWithRelationInput[]
+    cursor?: AdminTransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminTransactionScalarFieldEnum | AdminTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * Admin.transactionProcessed
+   */
+  export type Admin$transactionProcessedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the AdminTransaction
      */
@@ -35166,6 +35203,8 @@ export namespace Prisma {
     description: string | null
     transactionImageId: string | null
     transactionImageUrl: string | null
+    processedById: string | null
+    processedAt: Date | null
   }
 
   export type AdminTransactionMaxAggregateOutputType = {
@@ -35183,6 +35222,8 @@ export namespace Prisma {
     description: string | null
     transactionImageId: string | null
     transactionImageUrl: string | null
+    processedById: string | null
+    processedAt: Date | null
   }
 
   export type AdminTransactionCountAggregateOutputType = {
@@ -35201,6 +35242,8 @@ export namespace Prisma {
     description: number
     transactionImageId: number
     transactionImageUrl: number
+    processedById: number
+    processedAt: number
     _all: number
   }
 
@@ -35232,6 +35275,8 @@ export namespace Prisma {
     description?: true
     transactionImageId?: true
     transactionImageUrl?: true
+    processedById?: true
+    processedAt?: true
   }
 
   export type AdminTransactionMaxAggregateInputType = {
@@ -35249,6 +35294,8 @@ export namespace Prisma {
     description?: true
     transactionImageId?: true
     transactionImageUrl?: true
+    processedById?: true
+    processedAt?: true
   }
 
   export type AdminTransactionCountAggregateInputType = {
@@ -35267,6 +35314,8 @@ export namespace Prisma {
     description?: true
     transactionImageId?: true
     transactionImageUrl?: true
+    processedById?: true
+    processedAt?: true
     _all?: true
   }
 
@@ -35372,6 +35421,8 @@ export namespace Prisma {
     description: string | null
     transactionImageId: string | null
     transactionImageUrl: string | null
+    processedById: string | null
+    processedAt: Date | null
     _count: AdminTransactionCountAggregateOutputType | null
     _avg: AdminTransactionAvgAggregateOutputType | null
     _sum: AdminTransactionSumAggregateOutputType | null
@@ -35409,8 +35460,11 @@ export namespace Prisma {
     description?: boolean
     transactionImageId?: boolean
     transactionImageUrl?: boolean
+    processedById?: boolean
+    processedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     redeemCode?: boolean | AdminTransaction$redeemCodeArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -35429,7 +35483,10 @@ export namespace Prisma {
     description?: boolean
     transactionImageId?: boolean
     transactionImageUrl?: boolean
+    processedById?: boolean
+    processedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -35448,7 +35505,10 @@ export namespace Prisma {
     description?: boolean
     transactionImageId?: boolean
     transactionImageUrl?: boolean
+    processedById?: boolean
+    processedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }, ExtArgs["result"]["adminTransaction"]>
 
   export type AdminTransactionSelectScalar = {
@@ -35467,18 +35527,23 @@ export namespace Prisma {
     description?: boolean
     transactionImageId?: boolean
     transactionImageUrl?: boolean
+    processedById?: boolean
+    processedAt?: boolean
   }
 
-  export type AdminTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "archived" | "createdAt" | "updatedAt" | "adminId" | "quantity" | "subscriptionTime" | "zones" | "transactionRef" | "amount" | "description" | "transactionImageId" | "transactionImageUrl", ExtArgs["result"]["adminTransaction"]>
+  export type AdminTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "archived" | "createdAt" | "updatedAt" | "adminId" | "quantity" | "subscriptionTime" | "zones" | "transactionRef" | "amount" | "description" | "transactionImageId" | "transactionImageUrl" | "processedById" | "processedAt", ExtArgs["result"]["adminTransaction"]>
   export type AdminTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     redeemCode?: boolean | AdminTransaction$redeemCodeArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }
   export type AdminTransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }
   export type AdminTransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
+    processedBy?: boolean | AdminTransaction$processedByArgs<ExtArgs>
   }
 
   export type $AdminTransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -35486,6 +35551,7 @@ export namespace Prisma {
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>
       redeemCode: Prisma.$RedeemCodePayload<ExtArgs> | null
+      processedBy: Prisma.$AdminPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -35503,6 +35569,8 @@ export namespace Prisma {
       description: string | null
       transactionImageId: string | null
       transactionImageUrl: string | null
+      processedById: string | null
+      processedAt: Date | null
     }, ExtArgs["result"]["adminTransaction"]>
     composites: {}
   }
@@ -35899,6 +35967,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     redeemCode<T extends AdminTransaction$redeemCodeArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransaction$redeemCodeArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    processedBy<T extends AdminTransaction$processedByArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransaction$processedByArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -35943,6 +36012,8 @@ export namespace Prisma {
     readonly description: FieldRef<"AdminTransaction", 'String'>
     readonly transactionImageId: FieldRef<"AdminTransaction", 'String'>
     readonly transactionImageUrl: FieldRef<"AdminTransaction", 'String'>
+    readonly processedById: FieldRef<"AdminTransaction", 'String'>
+    readonly processedAt: FieldRef<"AdminTransaction", 'DateTime'>
   }
     
 
@@ -36355,6 +36426,25 @@ export namespace Prisma {
      */
     include?: RedeemCodeInclude<ExtArgs> | null
     where?: RedeemCodeWhereInput
+  }
+
+  /**
+   * AdminTransaction.processedBy
+   */
+  export type AdminTransaction$processedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Admin
+     */
+    select?: AdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Admin
+     */
+    omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    where?: AdminWhereInput
   }
 
   /**
@@ -41467,7 +41557,9 @@ export namespace Prisma {
     amount: 'amount',
     description: 'description',
     transactionImageId: 'transactionImageId',
-    transactionImageUrl: 'transactionImageUrl'
+    transactionImageUrl: 'transactionImageUrl',
+    processedById: 'processedById',
+    processedAt: 'processedAt'
   };
 
   export type AdminTransactionScalarFieldEnum = (typeof AdminTransactionScalarFieldEnum)[keyof typeof AdminTransactionScalarFieldEnum]
@@ -43027,7 +43119,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryListRelationFilter
     operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
-    adminTransaction?: AdminTransactionListRelationFilter
+    transactions?: AdminTransactionListRelationFilter
+    transactionProcessed?: AdminTransactionListRelationFilter
     RedeemCode?: RedeemCodeListRelationFilter
   }
 
@@ -43051,7 +43144,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryOrderByRelationAggregateInput
     operations?: AdminOperationHistoryOrderByRelationAggregateInput
     banner?: BannerOrderByRelationAggregateInput
-    adminTransaction?: AdminTransactionOrderByRelationAggregateInput
+    transactions?: AdminTransactionOrderByRelationAggregateInput
+    transactionProcessed?: AdminTransactionOrderByRelationAggregateInput
     RedeemCode?: RedeemCodeOrderByRelationAggregateInput
   }
 
@@ -43078,7 +43172,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryListRelationFilter
     operations?: AdminOperationHistoryListRelationFilter
     banner?: BannerListRelationFilter
-    adminTransaction?: AdminTransactionListRelationFilter
+    transactions?: AdminTransactionListRelationFilter
+    transactionProcessed?: AdminTransactionListRelationFilter
     RedeemCode?: RedeemCodeListRelationFilter
   }, "id" | "authId" | "email">
 
@@ -43950,8 +44045,11 @@ export namespace Prisma {
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedById?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedAt?: DateTimeNullableFilter<"AdminTransaction"> | Date | string | null
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     redeemCode?: XOR<RedeemCodeNullableScalarRelationFilter, RedeemCodeWhereInput> | null
+    processedBy?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
   }
 
   export type AdminTransactionOrderByWithRelationInput = {
@@ -43970,8 +44068,11 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     transactionImageId?: SortOrderInput | SortOrder
     transactionImageUrl?: SortOrderInput | SortOrder
+    processedById?: SortOrderInput | SortOrder
+    processedAt?: SortOrderInput | SortOrder
     admin?: AdminOrderByWithRelationInput
     redeemCode?: RedeemCodeOrderByWithRelationInput
+    processedBy?: AdminOrderByWithRelationInput
   }
 
   export type AdminTransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -43993,8 +44094,11 @@ export namespace Prisma {
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedById?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedAt?: DateTimeNullableFilter<"AdminTransaction"> | Date | string | null
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     redeemCode?: XOR<RedeemCodeNullableScalarRelationFilter, RedeemCodeWhereInput> | null
+    processedBy?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
   }, "id">
 
   export type AdminTransactionOrderByWithAggregationInput = {
@@ -44013,6 +44117,8 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     transactionImageId?: SortOrderInput | SortOrder
     transactionImageUrl?: SortOrderInput | SortOrder
+    processedById?: SortOrderInput | SortOrder
+    processedAt?: SortOrderInput | SortOrder
     _count?: AdminTransactionCountOrderByAggregateInput
     _avg?: AdminTransactionAvgOrderByAggregateInput
     _max?: AdminTransactionMaxOrderByAggregateInput
@@ -44039,6 +44145,8 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
     transactionImageUrl?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
+    processedById?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
+    processedAt?: DateTimeNullableWithAggregatesFilter<"AdminTransaction"> | Date | string | null
   }
 
   export type RedeemCodeWhereInput = {
@@ -45780,7 +45888,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -45801,7 +45910,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -45822,7 +45932,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -45843,7 +45954,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -46739,8 +46851,10 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
-    admin: AdminCreateNestedOneWithoutAdminTransactionInput
+    processedAt?: Date | string | null
+    admin: AdminCreateNestedOneWithoutTransactionsInput
     redeemCode?: RedeemCodeCreateNestedOneWithoutTransactionInput
+    processedBy?: AdminCreateNestedOneWithoutTransactionProcessedInput
   }
 
   export type AdminTransactionUncheckedCreateInput = {
@@ -46759,6 +46873,8 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedById?: string | null
+    processedAt?: Date | string | null
     redeemCode?: RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -46777,8 +46893,10 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    admin?: AdminUpdateOneRequiredWithoutAdminTransactionNestedInput
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    admin?: AdminUpdateOneRequiredWithoutTransactionsNestedInput
     redeemCode?: RedeemCodeUpdateOneWithoutTransactionNestedInput
+    processedBy?: AdminUpdateOneWithoutTransactionProcessedNestedInput
   }
 
   export type AdminTransactionUncheckedUpdateInput = {
@@ -46797,6 +46915,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     redeemCode?: RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
@@ -46816,6 +46936,8 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedById?: string | null
+    processedAt?: Date | string | null
   }
 
   export type AdminTransactionUpdateManyMutationInput = {
@@ -46833,6 +46955,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AdminTransactionUncheckedUpdateManyInput = {
@@ -46851,6 +46974,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RedeemCodeCreateInput = {
@@ -49094,6 +49219,8 @@ export namespace Prisma {
     description?: SortOrder
     transactionImageId?: SortOrder
     transactionImageUrl?: SortOrder
+    processedById?: SortOrder
+    processedAt?: SortOrder
   }
 
   export type AdminTransactionAvgOrderByAggregateInput = {
@@ -49117,6 +49244,8 @@ export namespace Prisma {
     description?: SortOrder
     transactionImageId?: SortOrder
     transactionImageUrl?: SortOrder
+    processedById?: SortOrder
+    processedAt?: SortOrder
   }
 
   export type AdminTransactionMinOrderByAggregateInput = {
@@ -49134,6 +49263,8 @@ export namespace Prisma {
     description?: SortOrder
     transactionImageId?: SortOrder
     transactionImageUrl?: SortOrder
+    processedById?: SortOrder
+    processedAt?: SortOrder
   }
 
   export type AdminTransactionSumOrderByAggregateInput = {
@@ -50859,6 +50990,13 @@ export namespace Prisma {
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
   }
 
+  export type AdminTransactionCreateNestedManyWithoutProcessedByInput = {
+    create?: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput> | AdminTransactionCreateWithoutProcessedByInput[] | AdminTransactionUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutProcessedByInput | AdminTransactionCreateOrConnectWithoutProcessedByInput[]
+    createMany?: AdminTransactionCreateManyProcessedByInputEnvelope
+    connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+  }
+
   export type RedeemCodeCreateNestedManyWithoutAdminInput = {
     create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
@@ -50904,6 +51042,13 @@ export namespace Prisma {
     create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
     createMany?: AdminTransactionCreateManyAdminInputEnvelope
+    connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+  }
+
+  export type AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput = {
+    create?: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput> | AdminTransactionCreateWithoutProcessedByInput[] | AdminTransactionUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutProcessedByInput | AdminTransactionCreateOrConnectWithoutProcessedByInput[]
+    createMany?: AdminTransactionCreateManyProcessedByInputEnvelope
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
   }
 
@@ -51028,6 +51173,20 @@ export namespace Prisma {
     deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
   }
 
+  export type AdminTransactionUpdateManyWithoutProcessedByNestedInput = {
+    create?: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput> | AdminTransactionCreateWithoutProcessedByInput[] | AdminTransactionUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutProcessedByInput | AdminTransactionCreateOrConnectWithoutProcessedByInput[]
+    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutProcessedByInput | AdminTransactionUpsertWithWhereUniqueWithoutProcessedByInput[]
+    createMany?: AdminTransactionCreateManyProcessedByInputEnvelope
+    set?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    disconnect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    delete?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    update?: AdminTransactionUpdateWithWhereUniqueWithoutProcessedByInput | AdminTransactionUpdateWithWhereUniqueWithoutProcessedByInput[]
+    updateMany?: AdminTransactionUpdateManyWithWhereWithoutProcessedByInput | AdminTransactionUpdateManyWithWhereWithoutProcessedByInput[]
+    deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
+  }
+
   export type RedeemCodeUpdateManyWithoutAdminNestedInput = {
     create?: XOR<RedeemCodeCreateWithoutAdminInput, RedeemCodeUncheckedCreateWithoutAdminInput> | RedeemCodeCreateWithoutAdminInput[] | RedeemCodeUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
@@ -51119,6 +51278,20 @@ export namespace Prisma {
     connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
     update?: AdminTransactionUpdateWithWhereUniqueWithoutAdminInput | AdminTransactionUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: AdminTransactionUpdateManyWithWhereWithoutAdminInput | AdminTransactionUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
+  }
+
+  export type AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput = {
+    create?: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput> | AdminTransactionCreateWithoutProcessedByInput[] | AdminTransactionUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: AdminTransactionCreateOrConnectWithoutProcessedByInput | AdminTransactionCreateOrConnectWithoutProcessedByInput[]
+    upsert?: AdminTransactionUpsertWithWhereUniqueWithoutProcessedByInput | AdminTransactionUpsertWithWhereUniqueWithoutProcessedByInput[]
+    createMany?: AdminTransactionCreateManyProcessedByInputEnvelope
+    set?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    disconnect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    delete?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    connect?: AdminTransactionWhereUniqueInput | AdminTransactionWhereUniqueInput[]
+    update?: AdminTransactionUpdateWithWhereUniqueWithoutProcessedByInput | AdminTransactionUpdateWithWhereUniqueWithoutProcessedByInput[]
+    updateMany?: AdminTransactionUpdateManyWithWhereWithoutProcessedByInput | AdminTransactionUpdateManyWithWhereWithoutProcessedByInput[]
     deleteMany?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
   }
 
@@ -51698,9 +51871,9 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type AdminCreateNestedOneWithoutAdminTransactionInput = {
-    create?: XOR<AdminCreateWithoutAdminTransactionInput, AdminUncheckedCreateWithoutAdminTransactionInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutAdminTransactionInput
+  export type AdminCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<AdminCreateWithoutTransactionsInput, AdminUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTransactionsInput
     connect?: AdminWhereUniqueInput
   }
 
@@ -51708,6 +51881,12 @@ export namespace Prisma {
     create?: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
     connectOrCreate?: RedeemCodeCreateOrConnectWithoutTransactionInput
     connect?: RedeemCodeWhereUniqueInput
+  }
+
+  export type AdminCreateNestedOneWithoutTransactionProcessedInput = {
+    create?: XOR<AdminCreateWithoutTransactionProcessedInput, AdminUncheckedCreateWithoutTransactionProcessedInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTransactionProcessedInput
+    connect?: AdminWhereUniqueInput
   }
 
   export type RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput = {
@@ -51725,12 +51904,12 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type AdminUpdateOneRequiredWithoutAdminTransactionNestedInput = {
-    create?: XOR<AdminCreateWithoutAdminTransactionInput, AdminUncheckedCreateWithoutAdminTransactionInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutAdminTransactionInput
-    upsert?: AdminUpsertWithoutAdminTransactionInput
+  export type AdminUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<AdminCreateWithoutTransactionsInput, AdminUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTransactionsInput
+    upsert?: AdminUpsertWithoutTransactionsInput
     connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutAdminTransactionInput, AdminUpdateWithoutAdminTransactionInput>, AdminUncheckedUpdateWithoutAdminTransactionInput>
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutTransactionsInput, AdminUpdateWithoutTransactionsInput>, AdminUncheckedUpdateWithoutTransactionsInput>
   }
 
   export type RedeemCodeUpdateOneWithoutTransactionNestedInput = {
@@ -51741,6 +51920,16 @@ export namespace Prisma {
     delete?: RedeemCodeWhereInput | boolean
     connect?: RedeemCodeWhereUniqueInput
     update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutTransactionInput, RedeemCodeUpdateWithoutTransactionInput>, RedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type AdminUpdateOneWithoutTransactionProcessedNestedInput = {
+    create?: XOR<AdminCreateWithoutTransactionProcessedInput, AdminUncheckedCreateWithoutTransactionProcessedInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTransactionProcessedInput
+    upsert?: AdminUpsertWithoutTransactionProcessedInput
+    disconnect?: AdminWhereInput | boolean
+    delete?: AdminWhereInput | boolean
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutTransactionProcessedInput, AdminUpdateWithoutTransactionProcessedInput>, AdminUncheckedUpdateWithoutTransactionProcessedInput>
   }
 
   export type RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput = {
@@ -52532,7 +52721,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -52552,7 +52742,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -52980,7 +53171,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -53000,7 +53192,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -53336,7 +53529,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -53356,7 +53550,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -53619,7 +53814,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -53639,7 +53835,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -54253,7 +54450,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -54273,7 +54471,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -56686,7 +56885,9 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedAt?: Date | string | null
     redeemCode?: RedeemCodeCreateNestedOneWithoutTransactionInput
+    processedBy?: AdminCreateNestedOneWithoutTransactionProcessedInput
   }
 
   export type AdminTransactionUncheckedCreateWithoutAdminInput = {
@@ -56704,6 +56905,8 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedById?: string | null
+    processedAt?: Date | string | null
     redeemCode?: RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -56714,6 +56917,56 @@ export namespace Prisma {
 
   export type AdminTransactionCreateManyAdminInputEnvelope = {
     data: AdminTransactionCreateManyAdminInput | AdminTransactionCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminTransactionCreateWithoutProcessedByInput = {
+    id?: string
+    name: string
+    status?: $Enums.Transaction
+    archived?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quantity?: number
+    subscriptionTime: number
+    zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: string | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    processedAt?: Date | string | null
+    admin: AdminCreateNestedOneWithoutTransactionsInput
+    redeemCode?: RedeemCodeCreateNestedOneWithoutTransactionInput
+  }
+
+  export type AdminTransactionUncheckedCreateWithoutProcessedByInput = {
+    id?: string
+    name: string
+    status?: $Enums.Transaction
+    archived?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adminId: string
+    quantity?: number
+    subscriptionTime: number
+    zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: string | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    processedAt?: Date | string | null
+    redeemCode?: RedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
+  }
+
+  export type AdminTransactionCreateOrConnectWithoutProcessedByInput = {
+    where: AdminTransactionWhereUniqueInput
+    create: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput>
+  }
+
+  export type AdminTransactionCreateManyProcessedByInputEnvelope = {
+    data: AdminTransactionCreateManyProcessedByInput | AdminTransactionCreateManyProcessedByInput[]
     skipDuplicates?: boolean
   }
 
@@ -57095,6 +57348,24 @@ export namespace Prisma {
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageUrl?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedById?: StringNullableFilter<"AdminTransaction"> | string | null
+    processedAt?: DateTimeNullableFilter<"AdminTransaction"> | Date | string | null
+  }
+
+  export type AdminTransactionUpsertWithWhereUniqueWithoutProcessedByInput = {
+    where: AdminTransactionWhereUniqueInput
+    update: XOR<AdminTransactionUpdateWithoutProcessedByInput, AdminTransactionUncheckedUpdateWithoutProcessedByInput>
+    create: XOR<AdminTransactionCreateWithoutProcessedByInput, AdminTransactionUncheckedCreateWithoutProcessedByInput>
+  }
+
+  export type AdminTransactionUpdateWithWhereUniqueWithoutProcessedByInput = {
+    where: AdminTransactionWhereUniqueInput
+    data: XOR<AdminTransactionUpdateWithoutProcessedByInput, AdminTransactionUncheckedUpdateWithoutProcessedByInput>
+  }
+
+  export type AdminTransactionUpdateManyWithWhereWithoutProcessedByInput = {
+    where: AdminTransactionScalarWhereInput
+    data: XOR<AdminTransactionUpdateManyMutationInput, AdminTransactionUncheckedUpdateManyWithoutProcessedByInput>
   }
 
   export type RedeemCodeUpsertWithWhereUniqueWithoutAdminInput = {
@@ -57146,7 +57417,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -57166,7 +57438,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -57191,7 +57464,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -57211,7 +57485,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -57247,7 +57522,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -57267,7 +57543,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -57298,7 +57575,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -57318,7 +57596,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -57338,7 +57617,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -57358,7 +57638,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -57497,7 +57778,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -57517,7 +57799,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -57636,7 +57919,8 @@ export namespace Prisma {
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
@@ -57656,7 +57940,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -57730,7 +58015,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -57750,7 +58036,8 @@ export namespace Prisma {
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -58928,7 +59215,7 @@ export namespace Prisma {
     redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type AdminCreateWithoutAdminTransactionInput = {
+  export type AdminCreateWithoutTransactionsInput = {
     id?: string
     authId: string
     email: string
@@ -58945,10 +59232,11 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
-  export type AdminUncheckedCreateWithoutAdminTransactionInput = {
+  export type AdminUncheckedCreateWithoutTransactionsInput = {
     id?: string
     authId: string
     email: string
@@ -58965,12 +59253,13 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
-  export type AdminCreateOrConnectWithoutAdminTransactionInput = {
+  export type AdminCreateOrConnectWithoutTransactionsInput = {
     where: AdminWhereUniqueInput
-    create: XOR<AdminCreateWithoutAdminTransactionInput, AdminUncheckedCreateWithoutAdminTransactionInput>
+    create: XOR<AdminCreateWithoutTransactionsInput, AdminUncheckedCreateWithoutTransactionsInput>
   }
 
   export type RedeemCodeCreateWithoutTransactionInput = {
@@ -59006,18 +59295,65 @@ export namespace Prisma {
     create: XOR<RedeemCodeCreateWithoutTransactionInput, RedeemCodeUncheckedCreateWithoutTransactionInput>
   }
 
-  export type AdminUpsertWithoutAdminTransactionInput = {
-    update: XOR<AdminUpdateWithoutAdminTransactionInput, AdminUncheckedUpdateWithoutAdminTransactionInput>
-    create: XOR<AdminCreateWithoutAdminTransactionInput, AdminUncheckedCreateWithoutAdminTransactionInput>
+  export type AdminCreateWithoutTransactionProcessedInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutTransactionProcessedInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutTransactionProcessedInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutTransactionProcessedInput, AdminUncheckedCreateWithoutTransactionProcessedInput>
+  }
+
+  export type AdminUpsertWithoutTransactionsInput = {
+    update: XOR<AdminUpdateWithoutTransactionsInput, AdminUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<AdminCreateWithoutTransactionsInput, AdminUncheckedCreateWithoutTransactionsInput>
     where?: AdminWhereInput
   }
 
-  export type AdminUpdateToOneWithWhereWithoutAdminTransactionInput = {
+  export type AdminUpdateToOneWithWhereWithoutTransactionsInput = {
     where?: AdminWhereInput
-    data: XOR<AdminUpdateWithoutAdminTransactionInput, AdminUncheckedUpdateWithoutAdminTransactionInput>
+    data: XOR<AdminUpdateWithoutTransactionsInput, AdminUncheckedUpdateWithoutTransactionsInput>
   }
 
-  export type AdminUpdateWithoutAdminTransactionInput = {
+  export type AdminUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -59034,10 +59370,11 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
-  export type AdminUncheckedUpdateWithoutAdminTransactionInput = {
+  export type AdminUncheckedUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -59054,6 +59391,7 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -59096,6 +59434,59 @@ export namespace Prisma {
     redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
+  export type AdminUpsertWithoutTransactionProcessedInput = {
+    update: XOR<AdminUpdateWithoutTransactionProcessedInput, AdminUncheckedUpdateWithoutTransactionProcessedInput>
+    create: XOR<AdminCreateWithoutTransactionProcessedInput, AdminUncheckedCreateWithoutTransactionProcessedInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutTransactionProcessedInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutTransactionProcessedInput, AdminUncheckedUpdateWithoutTransactionProcessedInput>
+  }
+
+  export type AdminUpdateWithoutTransactionProcessedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutTransactionProcessedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+  }
+
   export type AdminTransactionCreateWithoutRedeemCodeInput = {
     id?: string
     name: string
@@ -59111,7 +59502,9 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
-    admin: AdminCreateNestedOneWithoutAdminTransactionInput
+    processedAt?: Date | string | null
+    admin: AdminCreateNestedOneWithoutTransactionsInput
+    processedBy?: AdminCreateNestedOneWithoutTransactionProcessedInput
   }
 
   export type AdminTransactionUncheckedCreateWithoutRedeemCodeInput = {
@@ -59130,6 +59523,8 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedById?: string | null
+    processedAt?: Date | string | null
   }
 
   export type AdminTransactionCreateOrConnectWithoutRedeemCodeInput = {
@@ -59154,7 +59549,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
   }
 
   export type AdminUncheckedCreateWithoutRedeemCodeInput = {
@@ -59174,7 +59570,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
-    adminTransaction?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
   }
 
   export type AdminCreateOrConnectWithoutRedeemCodeInput = {
@@ -59234,7 +59631,9 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    admin?: AdminUpdateOneRequiredWithoutAdminTransactionNestedInput
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    admin?: AdminUpdateOneRequiredWithoutTransactionsNestedInput
+    processedBy?: AdminUpdateOneWithoutTransactionProcessedNestedInput
   }
 
   export type AdminTransactionUncheckedUpdateWithoutRedeemCodeInput = {
@@ -59253,6 +59652,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AdminUpsertWithoutRedeemCodeInput = {
@@ -59283,7 +59684,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutRedeemCodeInput = {
@@ -59303,7 +59705,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
   }
 
   export type CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput = {
@@ -60209,7 +60612,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -60229,7 +60633,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -60506,7 +60911,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -60526,7 +60932,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -60735,7 +61142,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
@@ -60755,7 +61163,8 @@ export namespace Prisma {
     operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
-    adminTransaction?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -61450,6 +61859,27 @@ export namespace Prisma {
     description?: string | null
     transactionImageId?: string | null
     transactionImageUrl?: string | null
+    processedById?: string | null
+    processedAt?: Date | string | null
+  }
+
+  export type AdminTransactionCreateManyProcessedByInput = {
+    id?: string
+    name: string
+    status?: $Enums.Transaction
+    archived?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adminId: string
+    quantity?: number
+    subscriptionTime: number
+    zones?: AdminTransactionCreatezonesInput | string[]
+    transactionRef?: string | null
+    amount: number
+    description?: string | null
+    transactionImageId?: string | null
+    transactionImageUrl?: string | null
+    processedAt?: Date | string | null
   }
 
   export type RedeemCodeCreateManyAdminInput = {
@@ -61578,7 +62008,9 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     redeemCode?: RedeemCodeUpdateOneWithoutTransactionNestedInput
+    processedBy?: AdminUpdateOneWithoutTransactionProcessedNestedInput
   }
 
   export type AdminTransactionUncheckedUpdateWithoutAdminInput = {
@@ -61596,6 +62028,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     redeemCode?: RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
@@ -61614,6 +62048,67 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedById?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AdminTransactionUpdateWithoutProcessedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    archived?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+    zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    admin?: AdminUpdateOneRequiredWithoutTransactionsNestedInput
+    redeemCode?: RedeemCodeUpdateOneWithoutTransactionNestedInput
+  }
+
+  export type AdminTransactionUncheckedUpdateWithoutProcessedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    archived?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+    zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    redeemCode?: RedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
+  }
+
+  export type AdminTransactionUncheckedUpdateManyWithoutProcessedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    archived?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+    zones?: AdminTransactionUpdatezonesInput | string[]
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RedeemCodeUpdateWithoutAdminInput = {

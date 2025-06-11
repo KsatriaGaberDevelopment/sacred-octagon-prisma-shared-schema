@@ -309,26 +309,27 @@ model UserLogin {
 }
 
 model Admin {
-  id                 String                  @id @default(cuid())
-  authId             String                  @unique
-  email              String                  @unique
-  name               String
-  suspend            Boolean                 @default(false)
-  role               Role?
-  user               User?
-  provinceId         String?
-  cityId             String?
-  schoolId           String?
-  province           Province?               @relation(fields: [provinceId], references: [id])
-  city               City?                   @relation(fields: [cityId], references: [id])
-  school             School?                 @relation(fields: [schoolId], references: [id])
-  authority          AdminAuthority[]
-  createdAt          DateTime                @default(now())
-  updatedAt          DateTime                @updatedAt
-  operationHistories AdminOperationHistory[] @relation("OperationHistory")
-  operations         AdminOperationHistory[] @relation("Operations")
-  banner             Banner[]
-  adminTransaction   AdminTransaction[]
+  id                   String                  @id @default(cuid())
+  authId               String                  @unique
+  email                String                  @unique
+  name                 String
+  suspend              Boolean                 @default(false)
+  role                 Role?
+  user                 User?
+  provinceId           String?
+  cityId               String?
+  schoolId             String?
+  province             Province?               @relation(fields: [provinceId], references: [id])
+  city                 City?                   @relation(fields: [cityId], references: [id])
+  school               School?                 @relation(fields: [schoolId], references: [id])
+  authority            AdminAuthority[]
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
+  operationHistories   AdminOperationHistory[] @relation("OperationHistory")
+  operations           AdminOperationHistory[] @relation("Operations")
+  banner               Banner[]
+  transactions         AdminTransaction[]      @relation("transactions")
+  transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
   //adminTransactionArchive AdminTransactionArchive[]
 
   RedeemCode RedeemCode[]
@@ -495,7 +496,7 @@ model AdminTransaction {
   createdAt           DateTime    @default(now())
   updatedAt           DateTime    @updatedAt
   adminId             String
-  admin               Admin       @relation(fields: [adminId], references: [id])
+  admin               Admin       @relation("transactions", fields: [adminId], references: [id])
   quantity            Int         @default(0)
   subscriptionTime    Int
   zones               String[]
@@ -505,6 +506,9 @@ model AdminTransaction {
   transactionImageId  String?
   transactionImageUrl String?
   redeemCode          RedeemCode?
+  processedById       String?
+  processedBy         Admin?      @relation("transactionProcessed", fields: [processedById], references: [id])
+  processedAt         DateTime?
 
   @@index([name])
   @@index([status])

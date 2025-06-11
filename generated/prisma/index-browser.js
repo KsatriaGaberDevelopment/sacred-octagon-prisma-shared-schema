@@ -448,7 +448,9 @@ exports.Prisma.AdminTransactionScalarFieldEnum = {
   amount: 'amount',
   description: 'description',
   transactionImageId: 'transactionImageId',
-  transactionImageUrl: 'transactionImageUrl'
+  transactionImageUrl: 'transactionImageUrl',
+  processedById: 'processedById',
+  processedAt: 'processedAt'
 };
 
 exports.Prisma.RedeemCodeScalarFieldEnum = {
