@@ -27133,6 +27133,8 @@ export namespace Prisma {
     startedAt: Date | null
     endedAt: Date | null
     description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TestMaxAggregateOutputType = {
@@ -27151,6 +27153,8 @@ export namespace Prisma {
     startedAt: Date | null
     endedAt: Date | null
     description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TestCountAggregateOutputType = {
@@ -27169,6 +27173,8 @@ export namespace Prisma {
     startedAt: number
     endedAt: number
     description: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -27205,6 +27211,8 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     description?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TestMaxAggregateInputType = {
@@ -27223,6 +27231,8 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     description?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TestCountAggregateInputType = {
@@ -27241,6 +27251,8 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     description?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -27346,6 +27358,8 @@ export namespace Prisma {
     startedAt: Date
     endedAt: Date | null
     description: string | null
+    createdAt: Date
+    updatedAt: Date
     _count: TestCountAggregateOutputType | null
     _avg: TestAvgAggregateOutputType | null
     _sum: TestSumAggregateOutputType | null
@@ -27383,6 +27397,8 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     participants?: boolean | Test$participantsArgs<ExtArgs>
     _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
@@ -27403,6 +27419,8 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -27421,6 +27439,8 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectScalar = {
@@ -27439,9 +27459,11 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "question" | "duration" | "passedPoint" | "remidialCount" | "type" | "quota" | "currentQuota" | "code" | "zoneId" | "startedAt" | "endedAt" | "description", ExtArgs["result"]["test"]>
+  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "question" | "duration" | "passedPoint" | "remidialCount" | "type" | "quota" | "currentQuota" | "code" | "zoneId" | "startedAt" | "endedAt" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["test"]>
   export type TestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     participants?: boolean | Test$participantsArgs<ExtArgs>
     _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
@@ -27470,6 +27492,8 @@ export namespace Prisma {
       startedAt: Date
       endedAt: Date | null
       description: string | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["test"]>
     composites: {}
   }
@@ -27909,6 +27933,8 @@ export namespace Prisma {
     readonly startedAt: FieldRef<"Test", 'DateTime'>
     readonly endedAt: FieldRef<"Test", 'DateTime'>
     readonly description: FieldRef<"Test", 'String'>
+    readonly createdAt: FieldRef<"Test", 'DateTime'>
+    readonly updatedAt: FieldRef<"Test", 'DateTime'>
   }
     
 
@@ -38959,7 +38985,9 @@ export namespace Prisma {
     zoneId: 'zoneId',
     startedAt: 'startedAt',
     endedAt: 'endedAt',
-    description: 'description'
+    description: 'description',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
@@ -40986,6 +41014,8 @@ export namespace Prisma {
     startedAt?: DateTimeFilter<"Test"> | Date | string
     endedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
     description?: StringNullableFilter<"Test"> | string | null
+    createdAt?: DateTimeFilter<"Test"> | Date | string
+    updatedAt?: DateTimeFilter<"Test"> | Date | string
     participants?: TestParticipantListRelationFilter
   }
 
@@ -41005,6 +41035,8 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     participants?: TestParticipantOrderByRelationAggregateInput
   }
 
@@ -41027,6 +41059,8 @@ export namespace Prisma {
     startedAt?: DateTimeFilter<"Test"> | Date | string
     endedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
     description?: StringNullableFilter<"Test"> | string | null
+    createdAt?: DateTimeFilter<"Test"> | Date | string
+    updatedAt?: DateTimeFilter<"Test"> | Date | string
     participants?: TestParticipantListRelationFilter
   }, "id">
 
@@ -41046,6 +41080,8 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: TestCountOrderByAggregateInput
     _avg?: TestAvgOrderByAggregateInput
     _max?: TestMaxOrderByAggregateInput
@@ -41072,6 +41108,8 @@ export namespace Prisma {
     startedAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
     endedAt?: DateTimeNullableWithAggregatesFilter<"Test"> | Date | string | null
     description?: StringNullableWithAggregatesFilter<"Test"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
   }
 
   export type TestParticipantWhereInput = {
@@ -43628,6 +43666,8 @@ export namespace Prisma {
     startedAt: Date | string
     endedAt?: Date | string | null
     description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     participants?: TestParticipantCreateNestedManyWithoutTestInput
   }
 
@@ -43647,6 +43687,8 @@ export namespace Prisma {
     startedAt: Date | string
     endedAt?: Date | string | null
     description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     participants?: TestParticipantUncheckedCreateNestedManyWithoutTestInput
   }
 
@@ -43666,6 +43708,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     participants?: TestParticipantUpdateManyWithoutTestNestedInput
   }
 
@@ -43685,6 +43729,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     participants?: TestParticipantUncheckedUpdateManyWithoutTestNestedInput
   }
 
@@ -43704,6 +43750,8 @@ export namespace Prisma {
     startedAt: Date | string
     endedAt?: Date | string | null
     description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TestUpdateManyMutationInput = {
@@ -43722,6 +43770,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestUncheckedUpdateManyInput = {
@@ -43740,6 +43790,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestParticipantCreateInput = {
@@ -45969,6 +46021,8 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TestAvgOrderByAggregateInput = {
@@ -45995,6 +46049,8 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TestMinOrderByAggregateInput = {
@@ -46013,6 +46069,8 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TestSumOrderByAggregateInput = {
@@ -55381,6 +55439,8 @@ export namespace Prisma {
     startedAt: Date | string
     endedAt?: Date | string | null
     description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TestUncheckedCreateWithoutParticipantsInput = {
@@ -55399,6 +55459,8 @@ export namespace Prisma {
     startedAt: Date | string
     endedAt?: Date | string | null
     description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TestCreateOrConnectWithoutParticipantsInput = {
@@ -55550,6 +55612,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestUncheckedUpdateWithoutParticipantsInput = {
@@ -55568,6 +55632,8 @@ export namespace Prisma {
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpsertWithoutTestParticipantInput = {

@@ -407,6 +407,8 @@ model Test {
   endedAt       DateTime?
   description   String?
   participants  TestParticipant[]
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
 
   @@index([category])
   @@index([category, type, question, startedAt, endedAt])

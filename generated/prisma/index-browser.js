@@ -371,7 +371,9 @@ exports.Prisma.TestScalarFieldEnum = {
   zoneId: 'zoneId',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
-  description: 'description'
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TestParticipantScalarFieldEnum = {
