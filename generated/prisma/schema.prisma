@@ -525,7 +525,7 @@ model RedeemCode {
   adminId       String
   admin         Admin            @relation(fields: [adminId], references: [id])
   redemeers     CodeRedemeer[]
-  code          String           @unique
+  code          String           @unique @default(cuid())
   expiredAt     DateTime
   currentAmount Int
   maxAmount     Int

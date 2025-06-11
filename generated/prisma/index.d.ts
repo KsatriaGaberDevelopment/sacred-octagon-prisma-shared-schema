@@ -46981,7 +46981,7 @@ export namespace Prisma {
   export type RedeemCodeCreateInput = {
     id?: string
     suspend?: boolean
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -46998,7 +46998,7 @@ export namespace Prisma {
     suspend?: boolean
     transactionId: string
     adminId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -47043,7 +47043,7 @@ export namespace Prisma {
     suspend?: boolean
     transactionId: string
     adminId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -56973,7 +56973,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutAdminInput = {
     id?: string
     suspend?: boolean
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -56988,7 +56988,7 @@ export namespace Prisma {
     id?: string
     suspend?: boolean
     transactionId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -59265,7 +59265,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutTransactionInput = {
     id?: string
     suspend?: boolean
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -59280,7 +59280,7 @@ export namespace Prisma {
     id?: string
     suspend?: boolean
     adminId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -59817,7 +59817,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutRedemeersInput = {
     id?: string
     suspend?: boolean
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -59833,7 +59833,7 @@ export namespace Prisma {
     suspend?: boolean
     transactionId: string
     adminId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
@@ -61886,7 +61886,7 @@ export namespace Prisma {
     id?: string
     suspend?: boolean
     transactionId: string
-    code: string
+    code?: string
     expiredAt: Date | string
     currentAmount: number
     maxAmount: number
