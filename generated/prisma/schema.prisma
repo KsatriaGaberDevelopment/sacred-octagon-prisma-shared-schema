@@ -108,7 +108,7 @@ model User {
   userLogin           UserLogin[]
   bannerVisitor       BannerVisitor[]
   testParticipant     TestParticipant[]
-  voucherRedemeer     VoucherRedemeer[]
+  //voucherRedemeer     VoucherRedemeer[]
   //userTransactionArchive UserTransactionArchive[]
   //userTransaction        UserTransaction[]
   multiPlayerMember   MultiPlayerMember[]
@@ -330,9 +330,7 @@ model Admin {
   banner               Banner[]
   transactions         AdminTransaction[]      @relation("transactions")
   transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
-  //adminTransactionArchive AdminTransactionArchive[]
-
-  RedeemCode RedeemCode[]
+  redeemCodes          RedeemCode[]
 }
 
 model AdminOperationHistory {
@@ -395,7 +393,7 @@ model BannerVisitor {
 model Test {
   id            String            @id @default(cuid())
   name          String            @default("")
-  category      TestCategory
+  category      Role
   question      QuestionType
   duration      Int               @default(0)
   passedPoint   Int               @default(0)
@@ -467,26 +465,26 @@ model Setting {
   updatedAt DateTime @updatedAt
 }
 
-model Voucher {
-  id           Int               @id @default(autoincrement())
-  code         String            @unique
-  quota        Int               @default(0)
-  currentQuota Int               @default(0)
-  startedAt    DateTime
-  endedAt      DateTime?
-  type         VoucherType       @default(Discount)
-  zones        String[]
-  redemeers    VoucherRedemeer[]
-}
-
-model VoucherRedemeer {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  voucherId Int
-  voucher   Voucher  @relation(fields: [voucherId], references: [id])
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-}
+// model Voucher {
+//   id           Int               @id @default(autoincrement())
+//   code         String            @unique
+//   quota        Int               @default(0)
+//   currentQuota Int               @default(0)
+//   startedAt    DateTime
+//   endedAt      DateTime?
+//   type         VoucherType       @default(Discount)
+//   zones        String[]
+//   redemeers    VoucherRedemeer[]
+// }
+//
+// model VoucherRedemeer {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   voucherId Int
+//   voucher   Voucher  @relation(fields: [voucherId], references: [id])
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id])
+// }
 
 model AdminTransaction {
   id                  String      @id @default(cuid())
@@ -542,10 +540,12 @@ model CodeRedemeer {
   userId    String
   user      User       @relation(fields: [userId], references: [id])
   codeId    String
-  code      RedeemCode @relation(fields: [codeId], references: [id])
+  code      RedeemCode @relation(fields: [codeId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 
+  @@unique([id, userId])
+  @@unique([codeId, userId])
   @@index([codeId])
   @@index([userId])
   @@index([banned])
@@ -667,11 +667,6 @@ enum TestType {
   PostTest
   FirstPreTest
   Contest
-}
-
-enum TestCategory {
-  Teacher
-  Student
 }
 
 enum Operation {

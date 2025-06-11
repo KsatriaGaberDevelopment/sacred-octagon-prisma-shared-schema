@@ -134,16 +134,6 @@ export type Background = $Result.DefaultSelection<Prisma.$BackgroundPayload>
  */
 export type Setting = $Result.DefaultSelection<Prisma.$SettingPayload>
 /**
- * Model Voucher
- * 
- */
-export type Voucher = $Result.DefaultSelection<Prisma.$VoucherPayload>
-/**
- * Model VoucherRedemeer
- * 
- */
-export type VoucherRedemeer = $Result.DefaultSelection<Prisma.$VoucherRedemeerPayload>
-/**
  * Model AdminTransaction
  * 
  */
@@ -222,14 +212,6 @@ export const TestType: {
 export type TestType = (typeof TestType)[keyof typeof TestType]
 
 
-export const TestCategory: {
-  Teacher: 'Teacher',
-  Student: 'Student'
-};
-
-export type TestCategory = (typeof TestCategory)[keyof typeof TestCategory]
-
-
 export const Operation: {
   None: 'None',
   Create: 'Create',
@@ -269,10 +251,6 @@ export const QuestionType: typeof $Enums.QuestionType
 export type TestType = $Enums.TestType
 
 export const TestType: typeof $Enums.TestType
-
-export type TestCategory = $Enums.TestCategory
-
-export const TestCategory: typeof $Enums.TestCategory
 
 export type Operation = $Enums.Operation
 
@@ -646,26 +624,6 @@ export class PrismaClient<
     * ```
     */
   get setting(): Prisma.SettingDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.voucher`: Exposes CRUD operations for the **Voucher** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Vouchers
-    * const vouchers = await prisma.voucher.findMany()
-    * ```
-    */
-  get voucher(): Prisma.VoucherDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.voucherRedemeer`: Exposes CRUD operations for the **VoucherRedemeer** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more VoucherRedemeers
-    * const voucherRedemeers = await prisma.voucherRedemeer.findMany()
-    * ```
-    */
-  get voucherRedemeer(): Prisma.VoucherRedemeerDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.adminTransaction`: Exposes CRUD operations for the **AdminTransaction** model.
@@ -1180,8 +1138,6 @@ export namespace Prisma {
     TestParticipantRecord: 'TestParticipantRecord',
     Background: 'Background',
     Setting: 'Setting',
-    Voucher: 'Voucher',
-    VoucherRedemeer: 'VoucherRedemeer',
     AdminTransaction: 'AdminTransaction',
     RedeemCode: 'RedeemCode',
     CodeRedemeer: 'CodeRedemeer',
@@ -1205,7 +1161,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "voucher" | "voucherRedemeer" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2985,154 +2941,6 @@ export namespace Prisma {
           }
         }
       }
-      Voucher: {
-        payload: Prisma.$VoucherPayload<ExtArgs>
-        fields: Prisma.VoucherFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.VoucherFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.VoucherFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          findFirst: {
-            args: Prisma.VoucherFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.VoucherFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          findMany: {
-            args: Prisma.VoucherFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
-          }
-          create: {
-            args: Prisma.VoucherCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          createMany: {
-            args: Prisma.VoucherCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.VoucherCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
-          }
-          delete: {
-            args: Prisma.VoucherDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          update: {
-            args: Prisma.VoucherUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          deleteMany: {
-            args: Prisma.VoucherDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.VoucherUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.VoucherUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>[]
-          }
-          upsert: {
-            args: Prisma.VoucherUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherPayload>
-          }
-          aggregate: {
-            args: Prisma.VoucherAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVoucher>
-          }
-          groupBy: {
-            args: Prisma.VoucherGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VoucherGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.VoucherCountArgs<ExtArgs>
-            result: $Utils.Optional<VoucherCountAggregateOutputType> | number
-          }
-        }
-      }
-      VoucherRedemeer: {
-        payload: Prisma.$VoucherRedemeerPayload<ExtArgs>
-        fields: Prisma.VoucherRedemeerFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.VoucherRedemeerFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.VoucherRedemeerFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          findFirst: {
-            args: Prisma.VoucherRedemeerFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.VoucherRedemeerFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          findMany: {
-            args: Prisma.VoucherRedemeerFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>[]
-          }
-          create: {
-            args: Prisma.VoucherRedemeerCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          createMany: {
-            args: Prisma.VoucherRedemeerCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.VoucherRedemeerCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>[]
-          }
-          delete: {
-            args: Prisma.VoucherRedemeerDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          update: {
-            args: Prisma.VoucherRedemeerUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          deleteMany: {
-            args: Prisma.VoucherRedemeerDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.VoucherRedemeerUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.VoucherRedemeerUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>[]
-          }
-          upsert: {
-            args: Prisma.VoucherRedemeerUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VoucherRedemeerPayload>
-          }
-          aggregate: {
-            args: Prisma.VoucherRedemeerAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVoucherRedemeer>
-          }
-          groupBy: {
-            args: Prisma.VoucherRedemeerGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VoucherRedemeerGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.VoucherRedemeerCountArgs<ExtArgs>
-            result: $Utils.Optional<VoucherRedemeerCountAggregateOutputType> | number
-          }
-        }
-      }
       AdminTransaction: {
         payload: Prisma.$AdminTransactionPayload<ExtArgs>
         fields: Prisma.AdminTransactionFieldRefs
@@ -3611,8 +3419,6 @@ export namespace Prisma {
     testParticipantRecord?: TestParticipantRecordOmit
     background?: BackgroundOmit
     setting?: SettingOmit
-    voucher?: VoucherOmit
-    voucherRedemeer?: VoucherRedemeerOmit
     adminTransaction?: AdminTransactionOmit
     redeemCode?: RedeemCodeOmit
     codeRedemeer?: CodeRedemeerOmit
@@ -3908,7 +3714,6 @@ export namespace Prisma {
     userLogin: number
     bannerVisitor: number
     testParticipant: number
-    voucherRedemeer: number
     multiPlayerMember: number
     subLevels: number
     innerLevels: number
@@ -3925,7 +3730,6 @@ export namespace Prisma {
     userLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
     bannerVisitor?: boolean | UserCountOutputTypeCountBannerVisitorArgs
     testParticipant?: boolean | UserCountOutputTypeCountTestParticipantArgs
-    voucherRedemeer?: boolean | UserCountOutputTypeCountVoucherRedemeerArgs
     multiPlayerMember?: boolean | UserCountOutputTypeCountMultiPlayerMemberArgs
     subLevels?: boolean | UserCountOutputTypeCountSubLevelsArgs
     innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
@@ -3974,13 +3778,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTestParticipantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TestParticipantWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountVoucherRedemeerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VoucherRedemeerWhereInput
   }
 
   /**
@@ -4058,7 +3855,7 @@ export namespace Prisma {
     banner: number
     transactions: number
     transactionProcessed: number
-    RedeemCode: number
+    redeemCodes: number
   }
 
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4068,7 +3865,7 @@ export namespace Prisma {
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
     transactions?: boolean | AdminCountOutputTypeCountTransactionsArgs
     transactionProcessed?: boolean | AdminCountOutputTypeCountTransactionProcessedArgs
-    RedeemCode?: boolean | AdminCountOutputTypeCountRedeemCodeArgs
+    redeemCodes?: boolean | AdminCountOutputTypeCountRedeemCodesArgs
   }
 
   // Custom InputTypes
@@ -4127,7 +3924,7 @@ export namespace Prisma {
   /**
    * AdminCountOutputType without action
    */
-  export type AdminCountOutputTypeCountRedeemCodeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AdminCountOutputTypeCountRedeemCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RedeemCodeWhereInput
   }
 
@@ -4302,37 +4099,6 @@ export namespace Prisma {
    */
   export type TestParticipantCountOutputTypeCountRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TestParticipantRecordWhereInput
-  }
-
-
-  /**
-   * Count Type VoucherCountOutputType
-   */
-
-  export type VoucherCountOutputType = {
-    redemeers: number
-  }
-
-  export type VoucherCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    redemeers?: boolean | VoucherCountOutputTypeCountRedemeersArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * VoucherCountOutputType without action
-   */
-  export type VoucherCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherCountOutputType
-     */
-    select?: VoucherCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * VoucherCountOutputType without action
-   */
-  export type VoucherCountOutputTypeCountRedemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VoucherRedemeerWhereInput
   }
 
 
@@ -8573,7 +8339,6 @@ export namespace Prisma {
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
-    voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -8691,7 +8456,6 @@ export namespace Prisma {
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
-    voucherRedemeer?: boolean | User$voucherRedemeerArgs<ExtArgs>
     multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -8727,7 +8491,6 @@ export namespace Prisma {
       userLogin: Prisma.$UserLoginPayload<ExtArgs>[]
       bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs>[]
       testParticipant: Prisma.$TestParticipantPayload<ExtArgs>[]
-      voucherRedemeer: Prisma.$VoucherRedemeerPayload<ExtArgs>[]
       multiPlayerMember: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
       subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
@@ -9167,7 +8930,6 @@ export namespace Prisma {
     userLogin<T extends User$userLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$userLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testParticipant<T extends User$testParticipantArgs<ExtArgs> = {}>(args?: Subset<T, User$testParticipantArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    voucherRedemeer<T extends User$voucherRedemeerArgs<ExtArgs> = {}>(args?: Subset<T, User$voucherRedemeerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     multiPlayerMember<T extends User$multiPlayerMemberArgs<ExtArgs> = {}>(args?: Subset<T, User$multiPlayerMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subLevels<T extends User$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -9797,30 +9559,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TestParticipantScalarFieldEnum | TestParticipantScalarFieldEnum[]
-  }
-
-  /**
-   * User.voucherRedemeer
-   */
-  export type User$voucherRedemeerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    where?: VoucherRedemeerWhereInput
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    cursor?: VoucherRedemeerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
   }
 
   /**
@@ -20598,7 +20336,7 @@ export namespace Prisma {
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
-    RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
+    redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -20662,7 +20400,7 @@ export namespace Prisma {
     banner?: boolean | Admin$bannerArgs<ExtArgs>
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
-    RedeemCode?: boolean | Admin$RedeemCodeArgs<ExtArgs>
+    redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -20689,7 +20427,7 @@ export namespace Prisma {
       banner: Prisma.$BannerPayload<ExtArgs>[]
       transactions: Prisma.$AdminTransactionPayload<ExtArgs>[]
       transactionProcessed: Prisma.$AdminTransactionPayload<ExtArgs>[]
-      RedeemCode: Prisma.$RedeemCodePayload<ExtArgs>[]
+      redeemCodes: Prisma.$RedeemCodePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -21107,7 +20845,7 @@ export namespace Prisma {
     banner<T extends Admin$bannerArgs<ExtArgs> = {}>(args?: Subset<T, Admin$bannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactions<T extends Admin$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactionProcessed<T extends Admin$transactionProcessedArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionProcessedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    RedeemCode<T extends Admin$RedeemCodeArgs<ExtArgs> = {}>(args?: Subset<T, Admin$RedeemCodeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    redeemCodes<T extends Admin$redeemCodesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$redeemCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -21764,9 +21502,9 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.RedeemCode
+   * Admin.redeemCodes
    */
-  export type Admin$RedeemCodeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Admin$redeemCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the RedeemCode
      */
@@ -27382,7 +27120,7 @@ export namespace Prisma {
   export type TestMinAggregateOutputType = {
     id: string | null
     name: string | null
-    category: $Enums.TestCategory | null
+    category: $Enums.Role | null
     question: $Enums.QuestionType | null
     duration: number | null
     passedPoint: number | null
@@ -27400,7 +27138,7 @@ export namespace Prisma {
   export type TestMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    category: $Enums.TestCategory | null
+    category: $Enums.Role | null
     question: $Enums.QuestionType | null
     duration: number | null
     passedPoint: number | null
@@ -27595,7 +27333,7 @@ export namespace Prisma {
   export type TestGroupByOutputType = {
     id: string
     name: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration: number
     passedPoint: number
@@ -27719,7 +27457,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      category: $Enums.TestCategory
+      category: $Enums.Role
       question: $Enums.QuestionType
       duration: number
       passedPoint: number
@@ -28158,7 +27896,7 @@ export namespace Prisma {
   interface TestFieldRefs {
     readonly id: FieldRef<"Test", 'String'>
     readonly name: FieldRef<"Test", 'String'>
-    readonly category: FieldRef<"Test", 'TestCategory'>
+    readonly category: FieldRef<"Test", 'Role'>
     readonly question: FieldRef<"Test", 'QuestionType'>
     readonly duration: FieldRef<"Test", 'Int'>
     readonly passedPoint: FieldRef<"Test", 'Int'>
@@ -32923,2244 +32661,6 @@ export namespace Prisma {
      * Omit specific fields from the Setting
      */
     omit?: SettingOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Voucher
-   */
-
-  export type AggregateVoucher = {
-    _count: VoucherCountAggregateOutputType | null
-    _avg: VoucherAvgAggregateOutputType | null
-    _sum: VoucherSumAggregateOutputType | null
-    _min: VoucherMinAggregateOutputType | null
-    _max: VoucherMaxAggregateOutputType | null
-  }
-
-  export type VoucherAvgAggregateOutputType = {
-    id: number | null
-    quota: number | null
-    currentQuota: number | null
-  }
-
-  export type VoucherSumAggregateOutputType = {
-    id: number | null
-    quota: number | null
-    currentQuota: number | null
-  }
-
-  export type VoucherMinAggregateOutputType = {
-    id: number | null
-    code: string | null
-    quota: number | null
-    currentQuota: number | null
-    startedAt: Date | null
-    endedAt: Date | null
-    type: $Enums.VoucherType | null
-  }
-
-  export type VoucherMaxAggregateOutputType = {
-    id: number | null
-    code: string | null
-    quota: number | null
-    currentQuota: number | null
-    startedAt: Date | null
-    endedAt: Date | null
-    type: $Enums.VoucherType | null
-  }
-
-  export type VoucherCountAggregateOutputType = {
-    id: number
-    code: number
-    quota: number
-    currentQuota: number
-    startedAt: number
-    endedAt: number
-    type: number
-    zones: number
-    _all: number
-  }
-
-
-  export type VoucherAvgAggregateInputType = {
-    id?: true
-    quota?: true
-    currentQuota?: true
-  }
-
-  export type VoucherSumAggregateInputType = {
-    id?: true
-    quota?: true
-    currentQuota?: true
-  }
-
-  export type VoucherMinAggregateInputType = {
-    id?: true
-    code?: true
-    quota?: true
-    currentQuota?: true
-    startedAt?: true
-    endedAt?: true
-    type?: true
-  }
-
-  export type VoucherMaxAggregateInputType = {
-    id?: true
-    code?: true
-    quota?: true
-    currentQuota?: true
-    startedAt?: true
-    endedAt?: true
-    type?: true
-  }
-
-  export type VoucherCountAggregateInputType = {
-    id?: true
-    code?: true
-    quota?: true
-    currentQuota?: true
-    startedAt?: true
-    endedAt?: true
-    type?: true
-    zones?: true
-    _all?: true
-  }
-
-  export type VoucherAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Voucher to aggregate.
-     */
-    where?: VoucherWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Vouchers to fetch.
-     */
-    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: VoucherWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Vouchers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Vouchers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Vouchers
-    **/
-    _count?: true | VoucherCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: VoucherAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: VoucherSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: VoucherMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: VoucherMaxAggregateInputType
-  }
-
-  export type GetVoucherAggregateType<T extends VoucherAggregateArgs> = {
-        [P in keyof T & keyof AggregateVoucher]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateVoucher[P]>
-      : GetScalarType<T[P], AggregateVoucher[P]>
-  }
-
-
-
-
-  export type VoucherGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VoucherWhereInput
-    orderBy?: VoucherOrderByWithAggregationInput | VoucherOrderByWithAggregationInput[]
-    by: VoucherScalarFieldEnum[] | VoucherScalarFieldEnum
-    having?: VoucherScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: VoucherCountAggregateInputType | true
-    _avg?: VoucherAvgAggregateInputType
-    _sum?: VoucherSumAggregateInputType
-    _min?: VoucherMinAggregateInputType
-    _max?: VoucherMaxAggregateInputType
-  }
-
-  export type VoucherGroupByOutputType = {
-    id: number
-    code: string
-    quota: number
-    currentQuota: number
-    startedAt: Date
-    endedAt: Date | null
-    type: $Enums.VoucherType
-    zones: string[]
-    _count: VoucherCountAggregateOutputType | null
-    _avg: VoucherAvgAggregateOutputType | null
-    _sum: VoucherSumAggregateOutputType | null
-    _min: VoucherMinAggregateOutputType | null
-    _max: VoucherMaxAggregateOutputType | null
-  }
-
-  type GetVoucherGroupByPayload<T extends VoucherGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<VoucherGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof VoucherGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], VoucherGroupByOutputType[P]>
-            : GetScalarType<T[P], VoucherGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type VoucherSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    code?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    startedAt?: boolean
-    endedAt?: boolean
-    type?: boolean
-    zones?: boolean
-    redemeers?: boolean | Voucher$redemeersArgs<ExtArgs>
-    _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["voucher"]>
-
-  export type VoucherSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    code?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    startedAt?: boolean
-    endedAt?: boolean
-    type?: boolean
-    zones?: boolean
-  }, ExtArgs["result"]["voucher"]>
-
-  export type VoucherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    code?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    startedAt?: boolean
-    endedAt?: boolean
-    type?: boolean
-    zones?: boolean
-  }, ExtArgs["result"]["voucher"]>
-
-  export type VoucherSelectScalar = {
-    id?: boolean
-    code?: boolean
-    quota?: boolean
-    currentQuota?: boolean
-    startedAt?: boolean
-    endedAt?: boolean
-    type?: boolean
-    zones?: boolean
-  }
-
-  export type VoucherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "quota" | "currentQuota" | "startedAt" | "endedAt" | "type" | "zones", ExtArgs["result"]["voucher"]>
-  export type VoucherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    redemeers?: boolean | Voucher$redemeersArgs<ExtArgs>
-    _count?: boolean | VoucherCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type VoucherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type VoucherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $VoucherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Voucher"
-    objects: {
-      redemeers: Prisma.$VoucherRedemeerPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      code: string
-      quota: number
-      currentQuota: number
-      startedAt: Date
-      endedAt: Date | null
-      type: $Enums.VoucherType
-      zones: string[]
-    }, ExtArgs["result"]["voucher"]>
-    composites: {}
-  }
-
-  type VoucherGetPayload<S extends boolean | null | undefined | VoucherDefaultArgs> = $Result.GetResult<Prisma.$VoucherPayload, S>
-
-  type VoucherCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<VoucherFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: VoucherCountAggregateInputType | true
-    }
-
-  export interface VoucherDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Voucher'], meta: { name: 'Voucher' } }
-    /**
-     * Find zero or one Voucher that matches the filter.
-     * @param {VoucherFindUniqueArgs} args - Arguments to find a Voucher
-     * @example
-     * // Get one Voucher
-     * const voucher = await prisma.voucher.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends VoucherFindUniqueArgs>(args: SelectSubset<T, VoucherFindUniqueArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Voucher that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {VoucherFindUniqueOrThrowArgs} args - Arguments to find a Voucher
-     * @example
-     * // Get one Voucher
-     * const voucher = await prisma.voucher.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends VoucherFindUniqueOrThrowArgs>(args: SelectSubset<T, VoucherFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Voucher that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherFindFirstArgs} args - Arguments to find a Voucher
-     * @example
-     * // Get one Voucher
-     * const voucher = await prisma.voucher.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends VoucherFindFirstArgs>(args?: SelectSubset<T, VoucherFindFirstArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Voucher that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherFindFirstOrThrowArgs} args - Arguments to find a Voucher
-     * @example
-     * // Get one Voucher
-     * const voucher = await prisma.voucher.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends VoucherFindFirstOrThrowArgs>(args?: SelectSubset<T, VoucherFindFirstOrThrowArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Vouchers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Vouchers
-     * const vouchers = await prisma.voucher.findMany()
-     * 
-     * // Get first 10 Vouchers
-     * const vouchers = await prisma.voucher.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const voucherWithIdOnly = await prisma.voucher.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends VoucherFindManyArgs>(args?: SelectSubset<T, VoucherFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Voucher.
-     * @param {VoucherCreateArgs} args - Arguments to create a Voucher.
-     * @example
-     * // Create one Voucher
-     * const Voucher = await prisma.voucher.create({
-     *   data: {
-     *     // ... data to create a Voucher
-     *   }
-     * })
-     * 
-     */
-    create<T extends VoucherCreateArgs>(args: SelectSubset<T, VoucherCreateArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Vouchers.
-     * @param {VoucherCreateManyArgs} args - Arguments to create many Vouchers.
-     * @example
-     * // Create many Vouchers
-     * const voucher = await prisma.voucher.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends VoucherCreateManyArgs>(args?: SelectSubset<T, VoucherCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Vouchers and returns the data saved in the database.
-     * @param {VoucherCreateManyAndReturnArgs} args - Arguments to create many Vouchers.
-     * @example
-     * // Create many Vouchers
-     * const voucher = await prisma.voucher.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Vouchers and only return the `id`
-     * const voucherWithIdOnly = await prisma.voucher.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends VoucherCreateManyAndReturnArgs>(args?: SelectSubset<T, VoucherCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Voucher.
-     * @param {VoucherDeleteArgs} args - Arguments to delete one Voucher.
-     * @example
-     * // Delete one Voucher
-     * const Voucher = await prisma.voucher.delete({
-     *   where: {
-     *     // ... filter to delete one Voucher
-     *   }
-     * })
-     * 
-     */
-    delete<T extends VoucherDeleteArgs>(args: SelectSubset<T, VoucherDeleteArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Voucher.
-     * @param {VoucherUpdateArgs} args - Arguments to update one Voucher.
-     * @example
-     * // Update one Voucher
-     * const voucher = await prisma.voucher.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends VoucherUpdateArgs>(args: SelectSubset<T, VoucherUpdateArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Vouchers.
-     * @param {VoucherDeleteManyArgs} args - Arguments to filter Vouchers to delete.
-     * @example
-     * // Delete a few Vouchers
-     * const { count } = await prisma.voucher.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends VoucherDeleteManyArgs>(args?: SelectSubset<T, VoucherDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Vouchers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Vouchers
-     * const voucher = await prisma.voucher.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends VoucherUpdateManyArgs>(args: SelectSubset<T, VoucherUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Vouchers and returns the data updated in the database.
-     * @param {VoucherUpdateManyAndReturnArgs} args - Arguments to update many Vouchers.
-     * @example
-     * // Update many Vouchers
-     * const voucher = await prisma.voucher.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Vouchers and only return the `id`
-     * const voucherWithIdOnly = await prisma.voucher.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends VoucherUpdateManyAndReturnArgs>(args: SelectSubset<T, VoucherUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Voucher.
-     * @param {VoucherUpsertArgs} args - Arguments to update or create a Voucher.
-     * @example
-     * // Update or create a Voucher
-     * const voucher = await prisma.voucher.upsert({
-     *   create: {
-     *     // ... data to create a Voucher
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Voucher we want to update
-     *   }
-     * })
-     */
-    upsert<T extends VoucherUpsertArgs>(args: SelectSubset<T, VoucherUpsertArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Vouchers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherCountArgs} args - Arguments to filter Vouchers to count.
-     * @example
-     * // Count the number of Vouchers
-     * const count = await prisma.voucher.count({
-     *   where: {
-     *     // ... the filter for the Vouchers we want to count
-     *   }
-     * })
-    **/
-    count<T extends VoucherCountArgs>(
-      args?: Subset<T, VoucherCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], VoucherCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Voucher.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends VoucherAggregateArgs>(args: Subset<T, VoucherAggregateArgs>): Prisma.PrismaPromise<GetVoucherAggregateType<T>>
-
-    /**
-     * Group by Voucher.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends VoucherGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: VoucherGroupByArgs['orderBy'] }
-        : { orderBy?: VoucherGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, VoucherGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVoucherGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Voucher model
-   */
-  readonly fields: VoucherFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Voucher.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__VoucherClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    redemeers<T extends Voucher$redemeersArgs<ExtArgs> = {}>(args?: Subset<T, Voucher$redemeersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Voucher model
-   */
-  interface VoucherFieldRefs {
-    readonly id: FieldRef<"Voucher", 'Int'>
-    readonly code: FieldRef<"Voucher", 'String'>
-    readonly quota: FieldRef<"Voucher", 'Int'>
-    readonly currentQuota: FieldRef<"Voucher", 'Int'>
-    readonly startedAt: FieldRef<"Voucher", 'DateTime'>
-    readonly endedAt: FieldRef<"Voucher", 'DateTime'>
-    readonly type: FieldRef<"Voucher", 'VoucherType'>
-    readonly zones: FieldRef<"Voucher", 'String[]'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Voucher findUnique
-   */
-  export type VoucherFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter, which Voucher to fetch.
-     */
-    where: VoucherWhereUniqueInput
-  }
-
-  /**
-   * Voucher findUniqueOrThrow
-   */
-  export type VoucherFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter, which Voucher to fetch.
-     */
-    where: VoucherWhereUniqueInput
-  }
-
-  /**
-   * Voucher findFirst
-   */
-  export type VoucherFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter, which Voucher to fetch.
-     */
-    where?: VoucherWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Vouchers to fetch.
-     */
-    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Vouchers.
-     */
-    cursor?: VoucherWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Vouchers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Vouchers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Vouchers.
-     */
-    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
-  }
-
-  /**
-   * Voucher findFirstOrThrow
-   */
-  export type VoucherFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter, which Voucher to fetch.
-     */
-    where?: VoucherWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Vouchers to fetch.
-     */
-    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Vouchers.
-     */
-    cursor?: VoucherWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Vouchers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Vouchers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Vouchers.
-     */
-    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
-  }
-
-  /**
-   * Voucher findMany
-   */
-  export type VoucherFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter, which Vouchers to fetch.
-     */
-    where?: VoucherWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Vouchers to fetch.
-     */
-    orderBy?: VoucherOrderByWithRelationInput | VoucherOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Vouchers.
-     */
-    cursor?: VoucherWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Vouchers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Vouchers.
-     */
-    skip?: number
-    distinct?: VoucherScalarFieldEnum | VoucherScalarFieldEnum[]
-  }
-
-  /**
-   * Voucher create
-   */
-  export type VoucherCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Voucher.
-     */
-    data: XOR<VoucherCreateInput, VoucherUncheckedCreateInput>
-  }
-
-  /**
-   * Voucher createMany
-   */
-  export type VoucherCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Vouchers.
-     */
-    data: VoucherCreateManyInput | VoucherCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Voucher createManyAndReturn
-   */
-  export type VoucherCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * The data used to create many Vouchers.
-     */
-    data: VoucherCreateManyInput | VoucherCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Voucher update
-   */
-  export type VoucherUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Voucher.
-     */
-    data: XOR<VoucherUpdateInput, VoucherUncheckedUpdateInput>
-    /**
-     * Choose, which Voucher to update.
-     */
-    where: VoucherWhereUniqueInput
-  }
-
-  /**
-   * Voucher updateMany
-   */
-  export type VoucherUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Vouchers.
-     */
-    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyInput>
-    /**
-     * Filter which Vouchers to update
-     */
-    where?: VoucherWhereInput
-    /**
-     * Limit how many Vouchers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Voucher updateManyAndReturn
-   */
-  export type VoucherUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * The data used to update Vouchers.
-     */
-    data: XOR<VoucherUpdateManyMutationInput, VoucherUncheckedUpdateManyInput>
-    /**
-     * Filter which Vouchers to update
-     */
-    where?: VoucherWhereInput
-    /**
-     * Limit how many Vouchers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Voucher upsert
-   */
-  export type VoucherUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Voucher to update in case it exists.
-     */
-    where: VoucherWhereUniqueInput
-    /**
-     * In case the Voucher found by the `where` argument doesn't exist, create a new Voucher with this data.
-     */
-    create: XOR<VoucherCreateInput, VoucherUncheckedCreateInput>
-    /**
-     * In case the Voucher was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<VoucherUpdateInput, VoucherUncheckedUpdateInput>
-  }
-
-  /**
-   * Voucher delete
-   */
-  export type VoucherDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-    /**
-     * Filter which Voucher to delete.
-     */
-    where: VoucherWhereUniqueInput
-  }
-
-  /**
-   * Voucher deleteMany
-   */
-  export type VoucherDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Vouchers to delete
-     */
-    where?: VoucherWhereInput
-    /**
-     * Limit how many Vouchers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Voucher.redemeers
-   */
-  export type Voucher$redemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    where?: VoucherRedemeerWhereInput
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    cursor?: VoucherRedemeerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
-  }
-
-  /**
-   * Voucher without action
-   */
-  export type VoucherDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Voucher
-     */
-    select?: VoucherSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Voucher
-     */
-    omit?: VoucherOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model VoucherRedemeer
-   */
-
-  export type AggregateVoucherRedemeer = {
-    _count: VoucherRedemeerCountAggregateOutputType | null
-    _avg: VoucherRedemeerAvgAggregateOutputType | null
-    _sum: VoucherRedemeerSumAggregateOutputType | null
-    _min: VoucherRedemeerMinAggregateOutputType | null
-    _max: VoucherRedemeerMaxAggregateOutputType | null
-  }
-
-  export type VoucherRedemeerAvgAggregateOutputType = {
-    id: number | null
-    voucherId: number | null
-  }
-
-  export type VoucherRedemeerSumAggregateOutputType = {
-    id: number | null
-    voucherId: number | null
-  }
-
-  export type VoucherRedemeerMinAggregateOutputType = {
-    id: number | null
-    createdAt: Date | null
-    voucherId: number | null
-    userId: string | null
-  }
-
-  export type VoucherRedemeerMaxAggregateOutputType = {
-    id: number | null
-    createdAt: Date | null
-    voucherId: number | null
-    userId: string | null
-  }
-
-  export type VoucherRedemeerCountAggregateOutputType = {
-    id: number
-    createdAt: number
-    voucherId: number
-    userId: number
-    _all: number
-  }
-
-
-  export type VoucherRedemeerAvgAggregateInputType = {
-    id?: true
-    voucherId?: true
-  }
-
-  export type VoucherRedemeerSumAggregateInputType = {
-    id?: true
-    voucherId?: true
-  }
-
-  export type VoucherRedemeerMinAggregateInputType = {
-    id?: true
-    createdAt?: true
-    voucherId?: true
-    userId?: true
-  }
-
-  export type VoucherRedemeerMaxAggregateInputType = {
-    id?: true
-    createdAt?: true
-    voucherId?: true
-    userId?: true
-  }
-
-  export type VoucherRedemeerCountAggregateInputType = {
-    id?: true
-    createdAt?: true
-    voucherId?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type VoucherRedemeerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which VoucherRedemeer to aggregate.
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of VoucherRedemeers to fetch.
-     */
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: VoucherRedemeerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` VoucherRedemeers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` VoucherRedemeers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned VoucherRedemeers
-    **/
-    _count?: true | VoucherRedemeerCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: VoucherRedemeerAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: VoucherRedemeerSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: VoucherRedemeerMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: VoucherRedemeerMaxAggregateInputType
-  }
-
-  export type GetVoucherRedemeerAggregateType<T extends VoucherRedemeerAggregateArgs> = {
-        [P in keyof T & keyof AggregateVoucherRedemeer]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateVoucherRedemeer[P]>
-      : GetScalarType<T[P], AggregateVoucherRedemeer[P]>
-  }
-
-
-
-
-  export type VoucherRedemeerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VoucherRedemeerWhereInput
-    orderBy?: VoucherRedemeerOrderByWithAggregationInput | VoucherRedemeerOrderByWithAggregationInput[]
-    by: VoucherRedemeerScalarFieldEnum[] | VoucherRedemeerScalarFieldEnum
-    having?: VoucherRedemeerScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: VoucherRedemeerCountAggregateInputType | true
-    _avg?: VoucherRedemeerAvgAggregateInputType
-    _sum?: VoucherRedemeerSumAggregateInputType
-    _min?: VoucherRedemeerMinAggregateInputType
-    _max?: VoucherRedemeerMaxAggregateInputType
-  }
-
-  export type VoucherRedemeerGroupByOutputType = {
-    id: number
-    createdAt: Date
-    voucherId: number
-    userId: string
-    _count: VoucherRedemeerCountAggregateOutputType | null
-    _avg: VoucherRedemeerAvgAggregateOutputType | null
-    _sum: VoucherRedemeerSumAggregateOutputType | null
-    _min: VoucherRedemeerMinAggregateOutputType | null
-    _max: VoucherRedemeerMaxAggregateOutputType | null
-  }
-
-  type GetVoucherRedemeerGroupByPayload<T extends VoucherRedemeerGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<VoucherRedemeerGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof VoucherRedemeerGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], VoucherRedemeerGroupByOutputType[P]>
-            : GetScalarType<T[P], VoucherRedemeerGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type VoucherRedemeerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    createdAt?: boolean
-    voucherId?: boolean
-    userId?: boolean
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["voucherRedemeer"]>
-
-  export type VoucherRedemeerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    createdAt?: boolean
-    voucherId?: boolean
-    userId?: boolean
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["voucherRedemeer"]>
-
-  export type VoucherRedemeerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    createdAt?: boolean
-    voucherId?: boolean
-    userId?: boolean
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["voucherRedemeer"]>
-
-  export type VoucherRedemeerSelectScalar = {
-    id?: boolean
-    createdAt?: boolean
-    voucherId?: boolean
-    userId?: boolean
-  }
-
-  export type VoucherRedemeerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "voucherId" | "userId", ExtArgs["result"]["voucherRedemeer"]>
-  export type VoucherRedemeerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type VoucherRedemeerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type VoucherRedemeerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    voucher?: boolean | VoucherDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $VoucherRedemeerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "VoucherRedemeer"
-    objects: {
-      voucher: Prisma.$VoucherPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      createdAt: Date
-      voucherId: number
-      userId: string
-    }, ExtArgs["result"]["voucherRedemeer"]>
-    composites: {}
-  }
-
-  type VoucherRedemeerGetPayload<S extends boolean | null | undefined | VoucherRedemeerDefaultArgs> = $Result.GetResult<Prisma.$VoucherRedemeerPayload, S>
-
-  type VoucherRedemeerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<VoucherRedemeerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: VoucherRedemeerCountAggregateInputType | true
-    }
-
-  export interface VoucherRedemeerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VoucherRedemeer'], meta: { name: 'VoucherRedemeer' } }
-    /**
-     * Find zero or one VoucherRedemeer that matches the filter.
-     * @param {VoucherRedemeerFindUniqueArgs} args - Arguments to find a VoucherRedemeer
-     * @example
-     * // Get one VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends VoucherRedemeerFindUniqueArgs>(args: SelectSubset<T, VoucherRedemeerFindUniqueArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one VoucherRedemeer that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {VoucherRedemeerFindUniqueOrThrowArgs} args - Arguments to find a VoucherRedemeer
-     * @example
-     * // Get one VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends VoucherRedemeerFindUniqueOrThrowArgs>(args: SelectSubset<T, VoucherRedemeerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first VoucherRedemeer that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerFindFirstArgs} args - Arguments to find a VoucherRedemeer
-     * @example
-     * // Get one VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends VoucherRedemeerFindFirstArgs>(args?: SelectSubset<T, VoucherRedemeerFindFirstArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first VoucherRedemeer that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerFindFirstOrThrowArgs} args - Arguments to find a VoucherRedemeer
-     * @example
-     * // Get one VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends VoucherRedemeerFindFirstOrThrowArgs>(args?: SelectSubset<T, VoucherRedemeerFindFirstOrThrowArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more VoucherRedemeers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all VoucherRedemeers
-     * const voucherRedemeers = await prisma.voucherRedemeer.findMany()
-     * 
-     * // Get first 10 VoucherRedemeers
-     * const voucherRedemeers = await prisma.voucherRedemeer.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const voucherRedemeerWithIdOnly = await prisma.voucherRedemeer.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends VoucherRedemeerFindManyArgs>(args?: SelectSubset<T, VoucherRedemeerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a VoucherRedemeer.
-     * @param {VoucherRedemeerCreateArgs} args - Arguments to create a VoucherRedemeer.
-     * @example
-     * // Create one VoucherRedemeer
-     * const VoucherRedemeer = await prisma.voucherRedemeer.create({
-     *   data: {
-     *     // ... data to create a VoucherRedemeer
-     *   }
-     * })
-     * 
-     */
-    create<T extends VoucherRedemeerCreateArgs>(args: SelectSubset<T, VoucherRedemeerCreateArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many VoucherRedemeers.
-     * @param {VoucherRedemeerCreateManyArgs} args - Arguments to create many VoucherRedemeers.
-     * @example
-     * // Create many VoucherRedemeers
-     * const voucherRedemeer = await prisma.voucherRedemeer.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends VoucherRedemeerCreateManyArgs>(args?: SelectSubset<T, VoucherRedemeerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many VoucherRedemeers and returns the data saved in the database.
-     * @param {VoucherRedemeerCreateManyAndReturnArgs} args - Arguments to create many VoucherRedemeers.
-     * @example
-     * // Create many VoucherRedemeers
-     * const voucherRedemeer = await prisma.voucherRedemeer.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many VoucherRedemeers and only return the `id`
-     * const voucherRedemeerWithIdOnly = await prisma.voucherRedemeer.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends VoucherRedemeerCreateManyAndReturnArgs>(args?: SelectSubset<T, VoucherRedemeerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a VoucherRedemeer.
-     * @param {VoucherRedemeerDeleteArgs} args - Arguments to delete one VoucherRedemeer.
-     * @example
-     * // Delete one VoucherRedemeer
-     * const VoucherRedemeer = await prisma.voucherRedemeer.delete({
-     *   where: {
-     *     // ... filter to delete one VoucherRedemeer
-     *   }
-     * })
-     * 
-     */
-    delete<T extends VoucherRedemeerDeleteArgs>(args: SelectSubset<T, VoucherRedemeerDeleteArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one VoucherRedemeer.
-     * @param {VoucherRedemeerUpdateArgs} args - Arguments to update one VoucherRedemeer.
-     * @example
-     * // Update one VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends VoucherRedemeerUpdateArgs>(args: SelectSubset<T, VoucherRedemeerUpdateArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more VoucherRedemeers.
-     * @param {VoucherRedemeerDeleteManyArgs} args - Arguments to filter VoucherRedemeers to delete.
-     * @example
-     * // Delete a few VoucherRedemeers
-     * const { count } = await prisma.voucherRedemeer.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends VoucherRedemeerDeleteManyArgs>(args?: SelectSubset<T, VoucherRedemeerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more VoucherRedemeers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many VoucherRedemeers
-     * const voucherRedemeer = await prisma.voucherRedemeer.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends VoucherRedemeerUpdateManyArgs>(args: SelectSubset<T, VoucherRedemeerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more VoucherRedemeers and returns the data updated in the database.
-     * @param {VoucherRedemeerUpdateManyAndReturnArgs} args - Arguments to update many VoucherRedemeers.
-     * @example
-     * // Update many VoucherRedemeers
-     * const voucherRedemeer = await prisma.voucherRedemeer.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more VoucherRedemeers and only return the `id`
-     * const voucherRedemeerWithIdOnly = await prisma.voucherRedemeer.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends VoucherRedemeerUpdateManyAndReturnArgs>(args: SelectSubset<T, VoucherRedemeerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one VoucherRedemeer.
-     * @param {VoucherRedemeerUpsertArgs} args - Arguments to update or create a VoucherRedemeer.
-     * @example
-     * // Update or create a VoucherRedemeer
-     * const voucherRedemeer = await prisma.voucherRedemeer.upsert({
-     *   create: {
-     *     // ... data to create a VoucherRedemeer
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the VoucherRedemeer we want to update
-     *   }
-     * })
-     */
-    upsert<T extends VoucherRedemeerUpsertArgs>(args: SelectSubset<T, VoucherRedemeerUpsertArgs<ExtArgs>>): Prisma__VoucherRedemeerClient<$Result.GetResult<Prisma.$VoucherRedemeerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of VoucherRedemeers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerCountArgs} args - Arguments to filter VoucherRedemeers to count.
-     * @example
-     * // Count the number of VoucherRedemeers
-     * const count = await prisma.voucherRedemeer.count({
-     *   where: {
-     *     // ... the filter for the VoucherRedemeers we want to count
-     *   }
-     * })
-    **/
-    count<T extends VoucherRedemeerCountArgs>(
-      args?: Subset<T, VoucherRedemeerCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], VoucherRedemeerCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a VoucherRedemeer.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends VoucherRedemeerAggregateArgs>(args: Subset<T, VoucherRedemeerAggregateArgs>): Prisma.PrismaPromise<GetVoucherRedemeerAggregateType<T>>
-
-    /**
-     * Group by VoucherRedemeer.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {VoucherRedemeerGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends VoucherRedemeerGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: VoucherRedemeerGroupByArgs['orderBy'] }
-        : { orderBy?: VoucherRedemeerGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, VoucherRedemeerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVoucherRedemeerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the VoucherRedemeer model
-   */
-  readonly fields: VoucherRedemeerFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for VoucherRedemeer.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__VoucherRedemeerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    voucher<T extends VoucherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VoucherDefaultArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the VoucherRedemeer model
-   */
-  interface VoucherRedemeerFieldRefs {
-    readonly id: FieldRef<"VoucherRedemeer", 'Int'>
-    readonly createdAt: FieldRef<"VoucherRedemeer", 'DateTime'>
-    readonly voucherId: FieldRef<"VoucherRedemeer", 'Int'>
-    readonly userId: FieldRef<"VoucherRedemeer", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * VoucherRedemeer findUnique
-   */
-  export type VoucherRedemeerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter, which VoucherRedemeer to fetch.
-     */
-    where: VoucherRedemeerWhereUniqueInput
-  }
-
-  /**
-   * VoucherRedemeer findUniqueOrThrow
-   */
-  export type VoucherRedemeerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter, which VoucherRedemeer to fetch.
-     */
-    where: VoucherRedemeerWhereUniqueInput
-  }
-
-  /**
-   * VoucherRedemeer findFirst
-   */
-  export type VoucherRedemeerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter, which VoucherRedemeer to fetch.
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of VoucherRedemeers to fetch.
-     */
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for VoucherRedemeers.
-     */
-    cursor?: VoucherRedemeerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` VoucherRedemeers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` VoucherRedemeers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of VoucherRedemeers.
-     */
-    distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
-  }
-
-  /**
-   * VoucherRedemeer findFirstOrThrow
-   */
-  export type VoucherRedemeerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter, which VoucherRedemeer to fetch.
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of VoucherRedemeers to fetch.
-     */
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for VoucherRedemeers.
-     */
-    cursor?: VoucherRedemeerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` VoucherRedemeers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` VoucherRedemeers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of VoucherRedemeers.
-     */
-    distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
-  }
-
-  /**
-   * VoucherRedemeer findMany
-   */
-  export type VoucherRedemeerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter, which VoucherRedemeers to fetch.
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of VoucherRedemeers to fetch.
-     */
-    orderBy?: VoucherRedemeerOrderByWithRelationInput | VoucherRedemeerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing VoucherRedemeers.
-     */
-    cursor?: VoucherRedemeerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` VoucherRedemeers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` VoucherRedemeers.
-     */
-    skip?: number
-    distinct?: VoucherRedemeerScalarFieldEnum | VoucherRedemeerScalarFieldEnum[]
-  }
-
-  /**
-   * VoucherRedemeer create
-   */
-  export type VoucherRedemeerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * The data needed to create a VoucherRedemeer.
-     */
-    data: XOR<VoucherRedemeerCreateInput, VoucherRedemeerUncheckedCreateInput>
-  }
-
-  /**
-   * VoucherRedemeer createMany
-   */
-  export type VoucherRedemeerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many VoucherRedemeers.
-     */
-    data: VoucherRedemeerCreateManyInput | VoucherRedemeerCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * VoucherRedemeer createManyAndReturn
-   */
-  export type VoucherRedemeerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * The data used to create many VoucherRedemeers.
-     */
-    data: VoucherRedemeerCreateManyInput | VoucherRedemeerCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * VoucherRedemeer update
-   */
-  export type VoucherRedemeerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * The data needed to update a VoucherRedemeer.
-     */
-    data: XOR<VoucherRedemeerUpdateInput, VoucherRedemeerUncheckedUpdateInput>
-    /**
-     * Choose, which VoucherRedemeer to update.
-     */
-    where: VoucherRedemeerWhereUniqueInput
-  }
-
-  /**
-   * VoucherRedemeer updateMany
-   */
-  export type VoucherRedemeerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update VoucherRedemeers.
-     */
-    data: XOR<VoucherRedemeerUpdateManyMutationInput, VoucherRedemeerUncheckedUpdateManyInput>
-    /**
-     * Filter which VoucherRedemeers to update
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * Limit how many VoucherRedemeers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * VoucherRedemeer updateManyAndReturn
-   */
-  export type VoucherRedemeerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * The data used to update VoucherRedemeers.
-     */
-    data: XOR<VoucherRedemeerUpdateManyMutationInput, VoucherRedemeerUncheckedUpdateManyInput>
-    /**
-     * Filter which VoucherRedemeers to update
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * Limit how many VoucherRedemeers to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * VoucherRedemeer upsert
-   */
-  export type VoucherRedemeerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * The filter to search for the VoucherRedemeer to update in case it exists.
-     */
-    where: VoucherRedemeerWhereUniqueInput
-    /**
-     * In case the VoucherRedemeer found by the `where` argument doesn't exist, create a new VoucherRedemeer with this data.
-     */
-    create: XOR<VoucherRedemeerCreateInput, VoucherRedemeerUncheckedCreateInput>
-    /**
-     * In case the VoucherRedemeer was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<VoucherRedemeerUpdateInput, VoucherRedemeerUncheckedUpdateInput>
-  }
-
-  /**
-   * VoucherRedemeer delete
-   */
-  export type VoucherRedemeerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
-    /**
-     * Filter which VoucherRedemeer to delete.
-     */
-    where: VoucherRedemeerWhereUniqueInput
-  }
-
-  /**
-   * VoucherRedemeer deleteMany
-   */
-  export type VoucherRedemeerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which VoucherRedemeers to delete
-     */
-    where?: VoucherRedemeerWhereInput
-    /**
-     * Limit how many VoucherRedemeers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * VoucherRedemeer without action
-   */
-  export type VoucherRedemeerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the VoucherRedemeer
-     */
-    select?: VoucherRedemeerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the VoucherRedemeer
-     */
-    omit?: VoucherRedemeerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: VoucherRedemeerInclude<ExtArgs> | null
   }
 
 
@@ -41518,30 +39018,6 @@ export namespace Prisma {
   export type SettingScalarFieldEnum = (typeof SettingScalarFieldEnum)[keyof typeof SettingScalarFieldEnum]
 
 
-  export const VoucherScalarFieldEnum: {
-    id: 'id',
-    code: 'code',
-    quota: 'quota',
-    currentQuota: 'currentQuota',
-    startedAt: 'startedAt',
-    endedAt: 'endedAt',
-    type: 'type',
-    zones: 'zones'
-  };
-
-  export type VoucherScalarFieldEnum = (typeof VoucherScalarFieldEnum)[keyof typeof VoucherScalarFieldEnum]
-
-
-  export const VoucherRedemeerScalarFieldEnum: {
-    id: 'id',
-    createdAt: 'createdAt',
-    voucherId: 'voucherId',
-    userId: 'userId'
-  };
-
-  export type VoucherRedemeerScalarFieldEnum = (typeof VoucherRedemeerScalarFieldEnum)[keyof typeof VoucherRedemeerScalarFieldEnum]
-
-
   export const AdminTransactionScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -41780,20 +39256,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'TestCategory'
-   */
-  export type EnumTestCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TestCategory'>
-    
-
-
-  /**
-   * Reference to a field of type 'TestCategory[]'
-   */
-  export type ListEnumTestCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TestCategory[]'>
-    
-
-
-  /**
    * Reference to a field of type 'QuestionType'
    */
   export type EnumQuestionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QuestionType'>
@@ -41832,20 +39294,6 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
-   * Reference to a field of type 'VoucherType'
-   */
-  export type EnumVoucherTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VoucherType'>
-    
-
-
-  /**
-   * Reference to a field of type 'VoucherType[]'
-   */
-  export type ListEnumVoucherTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VoucherType[]'>
     
 
 
@@ -42162,7 +39610,6 @@ export namespace Prisma {
     userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
-    voucherRedemeer?: VoucherRedemeerListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -42209,7 +39656,6 @@ export namespace Prisma {
     userLogin?: UserLoginOrderByRelationAggregateInput
     bannerVisitor?: BannerVisitorOrderByRelationAggregateInput
     testParticipant?: TestParticipantOrderByRelationAggregateInput
-    voucherRedemeer?: VoucherRedemeerOrderByRelationAggregateInput
     multiPlayerMember?: MultiPlayerMemberOrderByRelationAggregateInput
     subLevels?: SubLevelOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
@@ -42259,7 +39705,6 @@ export namespace Prisma {
     userLogin?: UserLoginListRelationFilter
     bannerVisitor?: BannerVisitorListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
-    voucherRedemeer?: VoucherRedemeerListRelationFilter
     multiPlayerMember?: MultiPlayerMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -43121,7 +40566,7 @@ export namespace Prisma {
     banner?: BannerListRelationFilter
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
-    RedeemCode?: RedeemCodeListRelationFilter
+    redeemCodes?: RedeemCodeListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -43146,7 +40591,7 @@ export namespace Prisma {
     banner?: BannerOrderByRelationAggregateInput
     transactions?: AdminTransactionOrderByRelationAggregateInput
     transactionProcessed?: AdminTransactionOrderByRelationAggregateInput
-    RedeemCode?: RedeemCodeOrderByRelationAggregateInput
+    redeemCodes?: RedeemCodeOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -43174,7 +40619,7 @@ export namespace Prisma {
     banner?: BannerListRelationFilter
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
-    RedeemCode?: RedeemCodeListRelationFilter
+    redeemCodes?: RedeemCodeListRelationFilter
   }, "id" | "authId" | "email">
 
   export type AdminOrderByWithAggregationInput = {
@@ -43528,7 +40973,7 @@ export namespace Prisma {
     NOT?: TestWhereInput | TestWhereInput[]
     id?: StringFilter<"Test"> | string
     name?: StringFilter<"Test"> | string
-    category?: EnumTestCategoryFilter<"Test"> | $Enums.TestCategory
+    category?: EnumRoleFilter<"Test"> | $Enums.Role
     question?: EnumQuestionTypeFilter<"Test"> | $Enums.QuestionType
     duration?: IntFilter<"Test"> | number
     passedPoint?: IntFilter<"Test"> | number
@@ -43569,7 +41014,7 @@ export namespace Prisma {
     OR?: TestWhereInput[]
     NOT?: TestWhereInput | TestWhereInput[]
     name?: StringFilter<"Test"> | string
-    category?: EnumTestCategoryFilter<"Test"> | $Enums.TestCategory
+    category?: EnumRoleFilter<"Test"> | $Enums.Role
     question?: EnumQuestionTypeFilter<"Test"> | $Enums.QuestionType
     duration?: IntFilter<"Test"> | number
     passedPoint?: IntFilter<"Test"> | number
@@ -43614,7 +41059,7 @@ export namespace Prisma {
     NOT?: TestScalarWhereWithAggregatesInput | TestScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Test"> | string
     name?: StringWithAggregatesFilter<"Test"> | string
-    category?: EnumTestCategoryWithAggregatesFilter<"Test"> | $Enums.TestCategory
+    category?: EnumRoleWithAggregatesFilter<"Test"> | $Enums.Role
     question?: EnumQuestionTypeWithAggregatesFilter<"Test"> | $Enums.QuestionType
     duration?: IntWithAggregatesFilter<"Test"> | number
     passedPoint?: IntWithAggregatesFilter<"Test"> | number
@@ -43899,133 +41344,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Setting"> | Date | string
   }
 
-  export type VoucherWhereInput = {
-    AND?: VoucherWhereInput | VoucherWhereInput[]
-    OR?: VoucherWhereInput[]
-    NOT?: VoucherWhereInput | VoucherWhereInput[]
-    id?: IntFilter<"Voucher"> | number
-    code?: StringFilter<"Voucher"> | string
-    quota?: IntFilter<"Voucher"> | number
-    currentQuota?: IntFilter<"Voucher"> | number
-    startedAt?: DateTimeFilter<"Voucher"> | Date | string
-    endedAt?: DateTimeNullableFilter<"Voucher"> | Date | string | null
-    type?: EnumVoucherTypeFilter<"Voucher"> | $Enums.VoucherType
-    zones?: StringNullableListFilter<"Voucher">
-    redemeers?: VoucherRedemeerListRelationFilter
-  }
-
-  export type VoucherOrderByWithRelationInput = {
-    id?: SortOrder
-    code?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrderInput | SortOrder
-    type?: SortOrder
-    zones?: SortOrder
-    redemeers?: VoucherRedemeerOrderByRelationAggregateInput
-  }
-
-  export type VoucherWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    code?: string
-    AND?: VoucherWhereInput | VoucherWhereInput[]
-    OR?: VoucherWhereInput[]
-    NOT?: VoucherWhereInput | VoucherWhereInput[]
-    quota?: IntFilter<"Voucher"> | number
-    currentQuota?: IntFilter<"Voucher"> | number
-    startedAt?: DateTimeFilter<"Voucher"> | Date | string
-    endedAt?: DateTimeNullableFilter<"Voucher"> | Date | string | null
-    type?: EnumVoucherTypeFilter<"Voucher"> | $Enums.VoucherType
-    zones?: StringNullableListFilter<"Voucher">
-    redemeers?: VoucherRedemeerListRelationFilter
-  }, "id" | "code">
-
-  export type VoucherOrderByWithAggregationInput = {
-    id?: SortOrder
-    code?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrderInput | SortOrder
-    type?: SortOrder
-    zones?: SortOrder
-    _count?: VoucherCountOrderByAggregateInput
-    _avg?: VoucherAvgOrderByAggregateInput
-    _max?: VoucherMaxOrderByAggregateInput
-    _min?: VoucherMinOrderByAggregateInput
-    _sum?: VoucherSumOrderByAggregateInput
-  }
-
-  export type VoucherScalarWhereWithAggregatesInput = {
-    AND?: VoucherScalarWhereWithAggregatesInput | VoucherScalarWhereWithAggregatesInput[]
-    OR?: VoucherScalarWhereWithAggregatesInput[]
-    NOT?: VoucherScalarWhereWithAggregatesInput | VoucherScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Voucher"> | number
-    code?: StringWithAggregatesFilter<"Voucher"> | string
-    quota?: IntWithAggregatesFilter<"Voucher"> | number
-    currentQuota?: IntWithAggregatesFilter<"Voucher"> | number
-    startedAt?: DateTimeWithAggregatesFilter<"Voucher"> | Date | string
-    endedAt?: DateTimeNullableWithAggregatesFilter<"Voucher"> | Date | string | null
-    type?: EnumVoucherTypeWithAggregatesFilter<"Voucher"> | $Enums.VoucherType
-    zones?: StringNullableListFilter<"Voucher">
-  }
-
-  export type VoucherRedemeerWhereInput = {
-    AND?: VoucherRedemeerWhereInput | VoucherRedemeerWhereInput[]
-    OR?: VoucherRedemeerWhereInput[]
-    NOT?: VoucherRedemeerWhereInput | VoucherRedemeerWhereInput[]
-    id?: IntFilter<"VoucherRedemeer"> | number
-    createdAt?: DateTimeFilter<"VoucherRedemeer"> | Date | string
-    voucherId?: IntFilter<"VoucherRedemeer"> | number
-    userId?: StringFilter<"VoucherRedemeer"> | string
-    voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type VoucherRedemeerOrderByWithRelationInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    voucherId?: SortOrder
-    userId?: SortOrder
-    voucher?: VoucherOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type VoucherRedemeerWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: VoucherRedemeerWhereInput | VoucherRedemeerWhereInput[]
-    OR?: VoucherRedemeerWhereInput[]
-    NOT?: VoucherRedemeerWhereInput | VoucherRedemeerWhereInput[]
-    createdAt?: DateTimeFilter<"VoucherRedemeer"> | Date | string
-    voucherId?: IntFilter<"VoucherRedemeer"> | number
-    userId?: StringFilter<"VoucherRedemeer"> | string
-    voucher?: XOR<VoucherScalarRelationFilter, VoucherWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type VoucherRedemeerOrderByWithAggregationInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    voucherId?: SortOrder
-    userId?: SortOrder
-    _count?: VoucherRedemeerCountOrderByAggregateInput
-    _avg?: VoucherRedemeerAvgOrderByAggregateInput
-    _max?: VoucherRedemeerMaxOrderByAggregateInput
-    _min?: VoucherRedemeerMinOrderByAggregateInput
-    _sum?: VoucherRedemeerSumOrderByAggregateInput
-  }
-
-  export type VoucherRedemeerScalarWhereWithAggregatesInput = {
-    AND?: VoucherRedemeerScalarWhereWithAggregatesInput | VoucherRedemeerScalarWhereWithAggregatesInput[]
-    OR?: VoucherRedemeerScalarWhereWithAggregatesInput[]
-    NOT?: VoucherRedemeerScalarWhereWithAggregatesInput | VoucherRedemeerScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"VoucherRedemeer"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"VoucherRedemeer"> | Date | string
-    voucherId?: IntWithAggregatesFilter<"VoucherRedemeer"> | number
-    userId?: StringWithAggregatesFilter<"VoucherRedemeer"> | string
-  }
-
   export type AdminTransactionWhereInput = {
     AND?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
     OR?: AdminTransactionWhereInput[]
@@ -44269,6 +41587,8 @@ export namespace Prisma {
 
   export type CodeRedemeerWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    id_userId?: CodeRedemeerIdUserIdCompoundUniqueInput
+    codeId_userId?: CodeRedemeerCodeIdUserIdCompoundUniqueInput
     AND?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
     OR?: CodeRedemeerWhereInput[]
     NOT?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
@@ -44279,7 +41599,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     code?: XOR<RedeemCodeScalarRelationFilter, RedeemCodeWhereInput>
-  }, "id">
+  }, "id" | "id_userId" | "codeId_userId">
 
   export type CodeRedemeerOrderByWithAggregationInput = {
     id?: SortOrder
@@ -44802,7 +42122,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -44845,7 +42164,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -44888,7 +42206,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -44931,7 +42248,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -45890,7 +43206,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -45912,7 +43228,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -45934,7 +43250,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -45956,7 +43272,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -46299,7 +43615,7 @@ export namespace Prisma {
   export type TestCreateInput = {
     id?: string
     name?: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration?: number
     passedPoint?: number
@@ -46318,7 +43634,7 @@ export namespace Prisma {
   export type TestUncheckedCreateInput = {
     id?: string
     name?: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration?: number
     passedPoint?: number
@@ -46337,7 +43653,7 @@ export namespace Prisma {
   export type TestUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -46356,7 +43672,7 @@ export namespace Prisma {
   export type TestUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -46375,7 +43691,7 @@ export namespace Prisma {
   export type TestCreateManyInput = {
     id?: string
     name?: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration?: number
     passedPoint?: number
@@ -46393,7 +43709,7 @@ export namespace Prisma {
   export type TestUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -46411,7 +43727,7 @@ export namespace Prisma {
   export type TestUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -46714,128 +44030,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VoucherCreateInput = {
-    code: string
-    quota?: number
-    currentQuota?: number
-    startedAt: Date | string
-    endedAt?: Date | string | null
-    type?: $Enums.VoucherType
-    zones?: VoucherCreatezonesInput | string[]
-    redemeers?: VoucherRedemeerCreateNestedManyWithoutVoucherInput
-  }
-
-  export type VoucherUncheckedCreateInput = {
-    id?: number
-    code: string
-    quota?: number
-    currentQuota?: number
-    startedAt: Date | string
-    endedAt?: Date | string | null
-    type?: $Enums.VoucherType
-    zones?: VoucherCreatezonesInput | string[]
-    redemeers?: VoucherRedemeerUncheckedCreateNestedManyWithoutVoucherInput
-  }
-
-  export type VoucherUpdateInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-    redemeers?: VoucherRedemeerUpdateManyWithoutVoucherNestedInput
-  }
-
-  export type VoucherUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-    redemeers?: VoucherRedemeerUncheckedUpdateManyWithoutVoucherNestedInput
-  }
-
-  export type VoucherCreateManyInput = {
-    id?: number
-    code: string
-    quota?: number
-    currentQuota?: number
-    startedAt: Date | string
-    endedAt?: Date | string | null
-    type?: $Enums.VoucherType
-    zones?: VoucherCreatezonesInput | string[]
-  }
-
-  export type VoucherUpdateManyMutationInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-  }
-
-  export type VoucherUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-  }
-
-  export type VoucherRedemeerCreateInput = {
-    createdAt?: Date | string
-    voucher: VoucherCreateNestedOneWithoutRedemeersInput
-    user: UserCreateNestedOneWithoutVoucherRedemeerInput
-  }
-
-  export type VoucherRedemeerUncheckedCreateInput = {
-    id?: number
-    createdAt?: Date | string
-    voucherId: number
-    userId: string
-  }
-
-  export type VoucherRedemeerUpdateInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher?: VoucherUpdateOneRequiredWithoutRedemeersNestedInput
-    user?: UserUpdateOneRequiredWithoutVoucherRedemeerNestedInput
-  }
-
-  export type VoucherRedemeerUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucherId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type VoucherRedemeerCreateManyInput = {
-    id?: number
-    createdAt?: Date | string
-    voucherId: number
-    userId: string
-  }
-
-  export type VoucherRedemeerUpdateManyMutationInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type VoucherRedemeerUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucherId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type AdminTransactionCreateInput = {
     id?: string
     name: string
@@ -46989,7 +44183,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
-    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+    admin: AdminCreateNestedOneWithoutRedeemCodesInput
     redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
   }
 
@@ -47019,7 +44213,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
-    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
     redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
   }
 
@@ -47736,12 +44930,6 @@ export namespace Prisma {
     none?: TestParticipantWhereInput
   }
 
-  export type VoucherRedemeerListRelationFilter = {
-    every?: VoucherRedemeerWhereInput
-    some?: VoucherRedemeerWhereInput
-    none?: VoucherRedemeerWhereInput
-  }
-
   export type MultiPlayerMemberListRelationFilter = {
     every?: MultiPlayerMemberWhereInput
     some?: MultiPlayerMemberWhereInput
@@ -47814,10 +45002,6 @@ export namespace Prisma {
   }
 
   export type TestParticipantOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type VoucherRedemeerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -48755,13 +45939,6 @@ export namespace Prisma {
     traffic?: SortOrder
   }
 
-  export type EnumTestCategoryFilter<$PrismaModel = never> = {
-    equals?: $Enums.TestCategory | EnumTestCategoryFieldRefInput<$PrismaModel>
-    in?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    not?: NestedEnumTestCategoryFilter<$PrismaModel> | $Enums.TestCategory
-  }
-
   export type EnumQuestionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.QuestionType | EnumQuestionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.QuestionType[] | ListEnumQuestionTypeFieldRefInput<$PrismaModel>
@@ -48844,16 +46021,6 @@ export namespace Prisma {
     remidialCount?: SortOrder
     quota?: SortOrder
     currentQuota?: SortOrder
-  }
-
-  export type EnumTestCategoryWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TestCategory | EnumTestCategoryFieldRefInput<$PrismaModel>
-    in?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    not?: NestedEnumTestCategoryWithAggregatesFilter<$PrismaModel> | $Enums.TestCategory
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTestCategoryFilter<$PrismaModel>
-    _max?: NestedEnumTestCategoryFilter<$PrismaModel>
   }
 
   export type EnumQuestionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -49087,11 +46254,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumVoucherTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.VoucherType | EnumVoucherTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumVoucherTypeFilter<$PrismaModel> | $Enums.VoucherType
+  export type EnumTransactionFilter<$PrismaModel = never> = {
+    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
+    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionFilter<$PrismaModel> | $Enums.Transaction
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -49100,102 +46267,6 @@ export namespace Prisma {
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
-  }
-
-  export type VoucherCountOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrder
-    type?: SortOrder
-    zones?: SortOrder
-  }
-
-  export type VoucherAvgOrderByAggregateInput = {
-    id?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-  }
-
-  export type VoucherMaxOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrder
-    type?: SortOrder
-  }
-
-  export type VoucherMinOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrder
-    type?: SortOrder
-  }
-
-  export type VoucherSumOrderByAggregateInput = {
-    id?: SortOrder
-    quota?: SortOrder
-    currentQuota?: SortOrder
-  }
-
-  export type EnumVoucherTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.VoucherType | EnumVoucherTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumVoucherTypeWithAggregatesFilter<$PrismaModel> | $Enums.VoucherType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumVoucherTypeFilter<$PrismaModel>
-    _max?: NestedEnumVoucherTypeFilter<$PrismaModel>
-  }
-
-  export type VoucherScalarRelationFilter = {
-    is?: VoucherWhereInput
-    isNot?: VoucherWhereInput
-  }
-
-  export type VoucherRedemeerCountOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    voucherId?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type VoucherRedemeerAvgOrderByAggregateInput = {
-    id?: SortOrder
-    voucherId?: SortOrder
-  }
-
-  export type VoucherRedemeerMaxOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    voucherId?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type VoucherRedemeerMinOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    voucherId?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type VoucherRedemeerSumOrderByAggregateInput = {
-    id?: SortOrder
-    voucherId?: SortOrder
-  }
-
-  export type EnumTransactionFilter<$PrismaModel = never> = {
-    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
-    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
-    not?: NestedEnumTransactionFilter<$PrismaModel> | $Enums.Transaction
   }
 
   export type RedeemCodeNullableScalarRelationFilter = {
@@ -49341,6 +46412,16 @@ export namespace Prisma {
   export type RedeemCodeScalarRelationFilter = {
     is?: RedeemCodeWhereInput
     isNot?: RedeemCodeWhereInput
+  }
+
+  export type CodeRedemeerIdUserIdCompoundUniqueInput = {
+    id: string
+    userId: string
+  }
+
+  export type CodeRedemeerCodeIdUserIdCompoundUniqueInput = {
+    codeId: string
+    userId: string
   }
 
   export type CodeRedemeerCountOrderByAggregateInput = {
@@ -50172,13 +47253,6 @@ export namespace Prisma {
     connect?: TestParticipantWhereUniqueInput | TestParticipantWhereUniqueInput[]
   }
 
-  export type VoucherRedemeerCreateNestedManyWithoutUserInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput> | VoucherRedemeerCreateWithoutUserInput[] | VoucherRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
-    createMany?: VoucherRedemeerCreateManyUserInputEnvelope
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-  }
-
   export type MultiPlayerMemberCreateNestedManyWithoutUserInput = {
     create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
     connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
@@ -50268,13 +47342,6 @@ export namespace Prisma {
     connectOrCreate?: TestParticipantCreateOrConnectWithoutUserInput | TestParticipantCreateOrConnectWithoutUserInput[]
     createMany?: TestParticipantCreateManyUserInputEnvelope
     connect?: TestParticipantWhereUniqueInput | TestParticipantWhereUniqueInput[]
-  }
-
-  export type VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput> | VoucherRedemeerCreateWithoutUserInput[] | VoucherRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
-    createMany?: VoucherRedemeerCreateManyUserInputEnvelope
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
   }
 
   export type MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput = {
@@ -50465,20 +47532,6 @@ export namespace Prisma {
     deleteMany?: TestParticipantScalarWhereInput | TestParticipantScalarWhereInput[]
   }
 
-  export type VoucherRedemeerUpdateManyWithoutUserNestedInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput> | VoucherRedemeerCreateWithoutUserInput[] | VoucherRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
-    upsert?: VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput | VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: VoucherRedemeerCreateManyUserInputEnvelope
-    set?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    disconnect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    delete?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    update?: VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput | VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutUserInput | VoucherRedemeerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-  }
-
   export type MultiPlayerMemberUpdateManyWithoutUserNestedInput = {
     create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
     connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
@@ -50663,20 +47716,6 @@ export namespace Prisma {
     update?: TestParticipantUpdateWithWhereUniqueWithoutUserInput | TestParticipantUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TestParticipantUpdateManyWithWhereWithoutUserInput | TestParticipantUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TestParticipantScalarWhereInput | TestParticipantScalarWhereInput[]
-  }
-
-  export type VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput> | VoucherRedemeerCreateWithoutUserInput[] | VoucherRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutUserInput | VoucherRedemeerCreateOrConnectWithoutUserInput[]
-    upsert?: VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput | VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: VoucherRedemeerCreateManyUserInputEnvelope
-    set?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    disconnect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    delete?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    update?: VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput | VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutUserInput | VoucherRedemeerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
   }
 
   export type MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput = {
@@ -51660,10 +48699,6 @@ export namespace Prisma {
     connect?: TestParticipantWhereUniqueInput | TestParticipantWhereUniqueInput[]
   }
 
-  export type EnumTestCategoryFieldUpdateOperationsInput = {
-    set?: $Enums.TestCategory
-  }
-
   export type EnumQuestionTypeFieldUpdateOperationsInput = {
     set?: $Enums.QuestionType
   }
@@ -51784,89 +48819,6 @@ export namespace Prisma {
     update?: XOR<XOR<TestParticipantUpdateToOneWithWhereWithoutRecordsInput, TestParticipantUpdateWithoutRecordsInput>, TestParticipantUncheckedUpdateWithoutRecordsInput>
   }
 
-  export type VoucherCreatezonesInput = {
-    set: string[]
-  }
-
-  export type VoucherRedemeerCreateNestedManyWithoutVoucherInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput> | VoucherRedemeerCreateWithoutVoucherInput[] | VoucherRedemeerUncheckedCreateWithoutVoucherInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutVoucherInput | VoucherRedemeerCreateOrConnectWithoutVoucherInput[]
-    createMany?: VoucherRedemeerCreateManyVoucherInputEnvelope
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-  }
-
-  export type VoucherRedemeerUncheckedCreateNestedManyWithoutVoucherInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput> | VoucherRedemeerCreateWithoutVoucherInput[] | VoucherRedemeerUncheckedCreateWithoutVoucherInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutVoucherInput | VoucherRedemeerCreateOrConnectWithoutVoucherInput[]
-    createMany?: VoucherRedemeerCreateManyVoucherInputEnvelope
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-  }
-
-  export type EnumVoucherTypeFieldUpdateOperationsInput = {
-    set?: $Enums.VoucherType
-  }
-
-  export type VoucherUpdatezonesInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type VoucherRedemeerUpdateManyWithoutVoucherNestedInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput> | VoucherRedemeerCreateWithoutVoucherInput[] | VoucherRedemeerUncheckedCreateWithoutVoucherInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutVoucherInput | VoucherRedemeerCreateOrConnectWithoutVoucherInput[]
-    upsert?: VoucherRedemeerUpsertWithWhereUniqueWithoutVoucherInput | VoucherRedemeerUpsertWithWhereUniqueWithoutVoucherInput[]
-    createMany?: VoucherRedemeerCreateManyVoucherInputEnvelope
-    set?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    disconnect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    delete?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    update?: VoucherRedemeerUpdateWithWhereUniqueWithoutVoucherInput | VoucherRedemeerUpdateWithWhereUniqueWithoutVoucherInput[]
-    updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutVoucherInput | VoucherRedemeerUpdateManyWithWhereWithoutVoucherInput[]
-    deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-  }
-
-  export type VoucherRedemeerUncheckedUpdateManyWithoutVoucherNestedInput = {
-    create?: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput> | VoucherRedemeerCreateWithoutVoucherInput[] | VoucherRedemeerUncheckedCreateWithoutVoucherInput[]
-    connectOrCreate?: VoucherRedemeerCreateOrConnectWithoutVoucherInput | VoucherRedemeerCreateOrConnectWithoutVoucherInput[]
-    upsert?: VoucherRedemeerUpsertWithWhereUniqueWithoutVoucherInput | VoucherRedemeerUpsertWithWhereUniqueWithoutVoucherInput[]
-    createMany?: VoucherRedemeerCreateManyVoucherInputEnvelope
-    set?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    disconnect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    delete?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    connect?: VoucherRedemeerWhereUniqueInput | VoucherRedemeerWhereUniqueInput[]
-    update?: VoucherRedemeerUpdateWithWhereUniqueWithoutVoucherInput | VoucherRedemeerUpdateWithWhereUniqueWithoutVoucherInput[]
-    updateMany?: VoucherRedemeerUpdateManyWithWhereWithoutVoucherInput | VoucherRedemeerUpdateManyWithWhereWithoutVoucherInput[]
-    deleteMany?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-  }
-
-  export type VoucherCreateNestedOneWithoutRedemeersInput = {
-    create?: XOR<VoucherCreateWithoutRedemeersInput, VoucherUncheckedCreateWithoutRedemeersInput>
-    connectOrCreate?: VoucherCreateOrConnectWithoutRedemeersInput
-    connect?: VoucherWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutVoucherRedemeerInput = {
-    create?: XOR<UserCreateWithoutVoucherRedemeerInput, UserUncheckedCreateWithoutVoucherRedemeerInput>
-    connectOrCreate?: UserCreateOrConnectWithoutVoucherRedemeerInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type VoucherUpdateOneRequiredWithoutRedemeersNestedInput = {
-    create?: XOR<VoucherCreateWithoutRedemeersInput, VoucherUncheckedCreateWithoutRedemeersInput>
-    connectOrCreate?: VoucherCreateOrConnectWithoutRedemeersInput
-    upsert?: VoucherUpsertWithoutRedemeersInput
-    connect?: VoucherWhereUniqueInput
-    update?: XOR<XOR<VoucherUpdateToOneWithWhereWithoutRedemeersInput, VoucherUpdateWithoutRedemeersInput>, VoucherUncheckedUpdateWithoutRedemeersInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutVoucherRedemeerNestedInput = {
-    create?: XOR<UserCreateWithoutVoucherRedemeerInput, UserUncheckedCreateWithoutVoucherRedemeerInput>
-    connectOrCreate?: UserCreateOrConnectWithoutVoucherRedemeerInput
-    upsert?: UserUpsertWithoutVoucherRedemeerInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutVoucherRedemeerInput, UserUpdateWithoutVoucherRedemeerInput>, UserUncheckedUpdateWithoutVoucherRedemeerInput>
-  }
-
   export type AdminTransactionCreatezonesInput = {
     set: string[]
   }
@@ -51952,9 +48904,9 @@ export namespace Prisma {
     connect?: AdminTransactionWhereUniqueInput
   }
 
-  export type AdminCreateNestedOneWithoutRedeemCodeInput = {
-    create?: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodeInput
+  export type AdminCreateNestedOneWithoutRedeemCodesInput = {
+    create?: XOR<AdminCreateWithoutRedeemCodesInput, AdminUncheckedCreateWithoutRedeemCodesInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodesInput
     connect?: AdminWhereUniqueInput
   }
 
@@ -51985,12 +48937,12 @@ export namespace Prisma {
     update?: XOR<XOR<AdminTransactionUpdateToOneWithWhereWithoutRedeemCodeInput, AdminTransactionUpdateWithoutRedeemCodeInput>, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
   }
 
-  export type AdminUpdateOneRequiredWithoutRedeemCodeNestedInput = {
-    create?: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodeInput
-    upsert?: AdminUpsertWithoutRedeemCodeInput
+  export type AdminUpdateOneRequiredWithoutRedeemCodesNestedInput = {
+    create?: XOR<AdminCreateWithoutRedeemCodesInput, AdminUncheckedCreateWithoutRedeemCodesInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutRedeemCodesInput
+    upsert?: AdminUpsertWithoutRedeemCodesInput
     connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutRedeemCodeInput, AdminUpdateWithoutRedeemCodeInput>, AdminUncheckedUpdateWithoutRedeemCodeInput>
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutRedeemCodesInput, AdminUpdateWithoutRedeemCodesInput>, AdminUncheckedUpdateWithoutRedeemCodesInput>
   }
 
   export type CodeRedemeerUpdateManyWithoutCodeNestedInput = {
@@ -52377,13 +49329,6 @@ export namespace Prisma {
     _max?: NestedEnumOperationFilter<$PrismaModel>
   }
 
-  export type NestedEnumTestCategoryFilter<$PrismaModel = never> = {
-    equals?: $Enums.TestCategory | EnumTestCategoryFieldRefInput<$PrismaModel>
-    in?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    not?: NestedEnumTestCategoryFilter<$PrismaModel> | $Enums.TestCategory
-  }
-
   export type NestedEnumQuestionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.QuestionType | EnumQuestionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.QuestionType[] | ListEnumQuestionTypeFieldRefInput<$PrismaModel>
@@ -52396,16 +49341,6 @@ export namespace Prisma {
     in?: $Enums.TestType[] | ListEnumTestTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.TestType[] | ListEnumTestTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumTestTypeFilter<$PrismaModel> | $Enums.TestType
-  }
-
-  export type NestedEnumTestCategoryWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TestCategory | EnumTestCategoryFieldRefInput<$PrismaModel>
-    in?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TestCategory[] | ListEnumTestCategoryFieldRefInput<$PrismaModel>
-    not?: NestedEnumTestCategoryWithAggregatesFilter<$PrismaModel> | $Enums.TestCategory
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTestCategoryFilter<$PrismaModel>
-    _max?: NestedEnumTestCategoryFilter<$PrismaModel>
   }
 
   export type NestedEnumQuestionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -52449,23 +49384,6 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type NestedEnumVoucherTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.VoucherType | EnumVoucherTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumVoucherTypeFilter<$PrismaModel> | $Enums.VoucherType
-  }
-
-  export type NestedEnumVoucherTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.VoucherType | EnumVoucherTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VoucherType[] | ListEnumVoucherTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumVoucherTypeWithAggregatesFilter<$PrismaModel> | $Enums.VoucherType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumVoucherTypeFilter<$PrismaModel>
-    _max?: NestedEnumVoucherTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumTransactionFilter<$PrismaModel = never> = {
@@ -52593,7 +49511,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -52635,7 +49552,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -52723,7 +49639,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutProvinceInput = {
@@ -52744,7 +49660,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutProvinceInput = {
@@ -53053,7 +49969,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -53095,7 +50010,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -53173,7 +50087,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutCityInput = {
@@ -53194,7 +50108,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutCityInput = {
@@ -53428,7 +50342,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -53470,7 +50383,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -53531,7 +50443,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutSchoolInput = {
@@ -53552,7 +50464,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutSchoolInput = {
@@ -53816,7 +50728,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutUserInput = {
@@ -53837,7 +50749,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutUserInput = {
@@ -53958,27 +50870,6 @@ export namespace Prisma {
 
   export type TestParticipantCreateManyUserInputEnvelope = {
     data: TestParticipantCreateManyUserInput | TestParticipantCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VoucherRedemeerCreateWithoutUserInput = {
-    createdAt?: Date | string
-    voucher: VoucherCreateNestedOneWithoutRedemeersInput
-  }
-
-  export type VoucherRedemeerUncheckedCreateWithoutUserInput = {
-    id?: number
-    createdAt?: Date | string
-    voucherId: number
-  }
-
-  export type VoucherRedemeerCreateOrConnectWithoutUserInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    create: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput>
-  }
-
-  export type VoucherRedemeerCreateManyUserInputEnvelope = {
-    data: VoucherRedemeerCreateManyUserInput | VoucherRedemeerCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -54452,7 +51343,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutUserInput = {
@@ -54473,7 +51364,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ZoneUpsertWithWhereUniqueWithoutUserInput = {
@@ -54591,32 +51482,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
-  }
-
-  export type VoucherRedemeerUpsertWithWhereUniqueWithoutUserInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    update: XOR<VoucherRedemeerUpdateWithoutUserInput, VoucherRedemeerUncheckedUpdateWithoutUserInput>
-    create: XOR<VoucherRedemeerCreateWithoutUserInput, VoucherRedemeerUncheckedCreateWithoutUserInput>
-  }
-
-  export type VoucherRedemeerUpdateWithWhereUniqueWithoutUserInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    data: XOR<VoucherRedemeerUpdateWithoutUserInput, VoucherRedemeerUncheckedUpdateWithoutUserInput>
-  }
-
-  export type VoucherRedemeerUpdateManyWithWhereWithoutUserInput = {
-    where: VoucherRedemeerScalarWhereInput
-    data: XOR<VoucherRedemeerUpdateManyMutationInput, VoucherRedemeerUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type VoucherRedemeerScalarWhereInput = {
-    AND?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-    OR?: VoucherRedemeerScalarWhereInput[]
-    NOT?: VoucherRedemeerScalarWhereInput | VoucherRedemeerScalarWhereInput[]
-    id?: IntFilter<"VoucherRedemeer"> | number
-    createdAt?: DateTimeFilter<"VoucherRedemeer"> | Date | string
-    voucherId?: IntFilter<"VoucherRedemeer"> | number
-    userId?: StringFilter<"VoucherRedemeer"> | string
   }
 
   export type MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput = {
@@ -54944,7 +51809,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -54986,7 +51850,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55044,7 +51907,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -55086,7 +51948,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -55129,7 +51990,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55171,7 +52031,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55229,7 +52088,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -55271,7 +52129,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -55313,7 +52170,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -55355,7 +52211,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -55413,7 +52268,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -55455,7 +52309,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -55497,7 +52350,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -55539,7 +52391,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -55597,7 +52448,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -55639,7 +52489,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -55681,7 +52530,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55723,7 +52571,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55781,7 +52628,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -55823,7 +52669,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -55865,7 +52710,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55907,7 +52751,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55965,7 +52808,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -56007,7 +52849,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -56049,7 +52890,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56091,7 +52931,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56149,7 +52988,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -56191,7 +53029,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -56233,7 +53070,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56275,7 +53111,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56333,7 +53168,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -56375,7 +53209,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -56416,7 +53249,6 @@ export namespace Prisma {
     zones?: ZoneCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56458,7 +53290,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56516,7 +53347,6 @@ export namespace Prisma {
     zones?: ZoneUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -56558,7 +53388,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -56600,7 +53429,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -56642,7 +53470,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57049,7 +53876,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57091,7 +53917,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57419,7 +54244,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
@@ -57440,7 +54265,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
@@ -57466,7 +54291,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationsInput = {
@@ -57487,7 +54312,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationsInput = {
@@ -57524,7 +54349,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
@@ -57545,7 +54370,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUpsertWithoutOperationsInput = {
@@ -57577,7 +54402,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationsInput = {
@@ -57598,7 +54423,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateWithoutAuthorityInput = {
@@ -57619,7 +54444,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutAuthorityInput = {
@@ -57640,7 +54465,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutAuthorityInput = {
@@ -57780,7 +54605,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutAuthorityInput = {
@@ -57801,7 +54626,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminAuthorityInput = {
@@ -57921,7 +54746,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutBannerInput = {
@@ -57942,7 +54767,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutBannerInput = {
@@ -58017,7 +54842,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutBannerInput = {
@@ -58038,7 +54863,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type BannerLocationUpsertWithWhereUniqueWithoutBannerInput = {
@@ -58307,7 +55132,6 @@ export namespace Prisma {
     zones?: ZoneCreateNestedManyWithoutUserInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58349,7 +55173,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58442,7 +55265,6 @@ export namespace Prisma {
     zones?: ZoneUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58484,7 +55306,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58547,7 +55368,7 @@ export namespace Prisma {
   export type TestCreateWithoutParticipantsInput = {
     id?: string
     name?: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration?: number
     passedPoint?: number
@@ -58565,7 +55386,7 @@ export namespace Prisma {
   export type TestUncheckedCreateWithoutParticipantsInput = {
     id?: string
     name?: string
-    category: $Enums.TestCategory
+    category: $Enums.Role
     question: $Enums.QuestionType
     duration?: number
     passedPoint?: number
@@ -58615,7 +55436,6 @@ export namespace Prisma {
     zones?: ZoneCreateNestedManyWithoutUserInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58657,7 +55477,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58718,7 +55537,7 @@ export namespace Prisma {
   export type TestUpdateWithoutParticipantsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -58736,7 +55555,7 @@ export namespace Prisma {
   export type TestUncheckedUpdateWithoutParticipantsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: EnumTestCategoryFieldUpdateOperationsInput | $Enums.TestCategory
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
     duration?: IntFieldUpdateOperationsInput | number
     passedPoint?: IntFieldUpdateOperationsInput | number
@@ -58792,7 +55611,6 @@ export namespace Prisma {
     zones?: ZoneUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58834,7 +55652,6 @@ export namespace Prisma {
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58936,285 +55753,6 @@ export namespace Prisma {
     highscore?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type VoucherRedemeerCreateWithoutVoucherInput = {
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutVoucherRedemeerInput
-  }
-
-  export type VoucherRedemeerUncheckedCreateWithoutVoucherInput = {
-    id?: number
-    createdAt?: Date | string
-    userId: string
-  }
-
-  export type VoucherRedemeerCreateOrConnectWithoutVoucherInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    create: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput>
-  }
-
-  export type VoucherRedemeerCreateManyVoucherInputEnvelope = {
-    data: VoucherRedemeerCreateManyVoucherInput | VoucherRedemeerCreateManyVoucherInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type VoucherRedemeerUpsertWithWhereUniqueWithoutVoucherInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    update: XOR<VoucherRedemeerUpdateWithoutVoucherInput, VoucherRedemeerUncheckedUpdateWithoutVoucherInput>
-    create: XOR<VoucherRedemeerCreateWithoutVoucherInput, VoucherRedemeerUncheckedCreateWithoutVoucherInput>
-  }
-
-  export type VoucherRedemeerUpdateWithWhereUniqueWithoutVoucherInput = {
-    where: VoucherRedemeerWhereUniqueInput
-    data: XOR<VoucherRedemeerUpdateWithoutVoucherInput, VoucherRedemeerUncheckedUpdateWithoutVoucherInput>
-  }
-
-  export type VoucherRedemeerUpdateManyWithWhereWithoutVoucherInput = {
-    where: VoucherRedemeerScalarWhereInput
-    data: XOR<VoucherRedemeerUpdateManyMutationInput, VoucherRedemeerUncheckedUpdateManyWithoutVoucherInput>
-  }
-
-  export type VoucherCreateWithoutRedemeersInput = {
-    code: string
-    quota?: number
-    currentQuota?: number
-    startedAt: Date | string
-    endedAt?: Date | string | null
-    type?: $Enums.VoucherType
-    zones?: VoucherCreatezonesInput | string[]
-  }
-
-  export type VoucherUncheckedCreateWithoutRedemeersInput = {
-    id?: number
-    code: string
-    quota?: number
-    currentQuota?: number
-    startedAt: Date | string
-    endedAt?: Date | string | null
-    type?: $Enums.VoucherType
-    zones?: VoucherCreatezonesInput | string[]
-  }
-
-  export type VoucherCreateOrConnectWithoutRedemeersInput = {
-    where: VoucherWhereUniqueInput
-    create: XOR<VoucherCreateWithoutRedemeersInput, VoucherUncheckedCreateWithoutRedemeersInput>
-  }
-
-  export type UserCreateWithoutVoucherRedemeerInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    city?: CityCreateNestedOneWithoutUsersInput
-    province?: ProvinceCreateNestedOneWithoutUsersInput
-    school?: SchoolCreateNestedOneWithoutUsersInput
-    admin?: AdminCreateNestedOneWithoutUserInput
-    zones?: ZoneCreateNestedManyWithoutUserInput
-    userLogin?: UserLoginCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    levels?: LevelCreateNestedManyWithoutUserInput
-    gempos?: GempoCreateNestedManyWithoutUserInput
-    championships?: ChampionshipCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutVoucherRedemeerInput = {
-    id?: string
-    authId: string
-    email: string
-    role?: $Enums.Role
-    suspend?: boolean
-    accountType?: $Enums.AccountType
-    firstTest?: boolean
-    fullname?: string
-    birthDate?: Date | string | null
-    grade?: number
-    lastGradeUpdateAt?: Date | string | null
-    schoolIdentity: string
-    loginAt?: Date | string | null
-    logoutAt?: Date | string | null
-    playTime?: number
-    characterUsed?: string
-    inventory?: UserCreateinventoryInput | number[]
-    schoolId?: string | null
-    cityId?: string | null
-    provinceId?: string | null
-    adminId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    username: string
-    lastIdZoneUnlocked?: string
-    lastIdZonePosition?: string
-    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
-    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
-    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
-    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
-    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
-    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
-    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutVoucherRedemeerInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutVoucherRedemeerInput, UserUncheckedCreateWithoutVoucherRedemeerInput>
-  }
-
-  export type VoucherUpsertWithoutRedemeersInput = {
-    update: XOR<VoucherUpdateWithoutRedemeersInput, VoucherUncheckedUpdateWithoutRedemeersInput>
-    create: XOR<VoucherCreateWithoutRedemeersInput, VoucherUncheckedCreateWithoutRedemeersInput>
-    where?: VoucherWhereInput
-  }
-
-  export type VoucherUpdateToOneWithWhereWithoutRedemeersInput = {
-    where?: VoucherWhereInput
-    data: XOR<VoucherUpdateWithoutRedemeersInput, VoucherUncheckedUpdateWithoutRedemeersInput>
-  }
-
-  export type VoucherUpdateWithoutRedemeersInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-  }
-
-  export type VoucherUncheckedUpdateWithoutRedemeersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    code?: StringFieldUpdateOperationsInput | string
-    quota?: IntFieldUpdateOperationsInput | number
-    currentQuota?: IntFieldUpdateOperationsInput | number
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    type?: EnumVoucherTypeFieldUpdateOperationsInput | $Enums.VoucherType
-    zones?: VoucherUpdatezonesInput | string[]
-  }
-
-  export type UserUpsertWithoutVoucherRedemeerInput = {
-    update: XOR<UserUpdateWithoutVoucherRedemeerInput, UserUncheckedUpdateWithoutVoucherRedemeerInput>
-    create: XOR<UserCreateWithoutVoucherRedemeerInput, UserUncheckedCreateWithoutVoucherRedemeerInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutVoucherRedemeerInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutVoucherRedemeerInput, UserUncheckedUpdateWithoutVoucherRedemeerInput>
-  }
-
-  export type UserUpdateWithoutVoucherRedemeerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    city?: CityUpdateOneWithoutUsersNestedInput
-    province?: ProvinceUpdateOneWithoutUsersNestedInput
-    school?: SchoolUpdateOneWithoutUsersNestedInput
-    admin?: AdminUpdateOneWithoutUserNestedInput
-    zones?: ZoneUpdateManyWithoutUserNestedInput
-    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    levels?: LevelUpdateManyWithoutUserNestedInput
-    gempos?: GempoUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutVoucherRedemeerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    authId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    suspend?: BoolFieldUpdateOperationsInput | boolean
-    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-    firstTest?: BoolFieldUpdateOperationsInput | boolean
-    fullname?: StringFieldUpdateOperationsInput | string
-    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    grade?: IntFieldUpdateOperationsInput | number
-    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    schoolIdentity?: StringFieldUpdateOperationsInput | string
-    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    playTime?: IntFieldUpdateOperationsInput | number
-    characterUsed?: StringFieldUpdateOperationsInput | string
-    inventory?: UserUpdateinventoryInput | number[]
-    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
-    cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    adminId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    username?: StringFieldUpdateOperationsInput | string
-    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
-    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
-    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
-    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
-    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
-    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
-    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
-    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
-    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
   export type AdminCreateWithoutTransactionsInput = {
     id?: string
     authId: string
@@ -59233,7 +55771,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionsInput = {
@@ -59254,7 +55792,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionsInput = {
@@ -59272,7 +55810,7 @@ export namespace Prisma {
     data?: RedeemCodeCreatedataInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+    admin: AdminCreateNestedOneWithoutRedeemCodesInput
     redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
   }
 
@@ -59313,7 +55851,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
-    RedeemCode?: RedeemCodeCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionProcessedInput = {
@@ -59334,7 +55872,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
-    RedeemCode?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionProcessedInput = {
@@ -59371,7 +55909,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionsInput = {
@@ -59392,7 +55930,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type RedeemCodeUpsertWithoutTransactionInput = {
@@ -59416,7 +55954,7 @@ export namespace Prisma {
     data?: RedeemCodeUpdatedataInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
     redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
   }
 
@@ -59463,7 +56001,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionProcessedInput = {
@@ -59484,7 +56022,7 @@ export namespace Prisma {
     operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminTransactionCreateWithoutRedeemCodeInput = {
@@ -59532,7 +56070,7 @@ export namespace Prisma {
     create: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
   }
 
-  export type AdminCreateWithoutRedeemCodeInput = {
+  export type AdminCreateWithoutRedeemCodesInput = {
     id?: string
     authId: string
     email: string
@@ -59553,7 +56091,7 @@ export namespace Prisma {
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
   }
 
-  export type AdminUncheckedCreateWithoutRedeemCodeInput = {
+  export type AdminUncheckedCreateWithoutRedeemCodesInput = {
     id?: string
     authId: string
     email: string
@@ -59574,9 +56112,9 @@ export namespace Prisma {
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
   }
 
-  export type AdminCreateOrConnectWithoutRedeemCodeInput = {
+  export type AdminCreateOrConnectWithoutRedeemCodesInput = {
     where: AdminWhereUniqueInput
-    create: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
+    create: XOR<AdminCreateWithoutRedeemCodesInput, AdminUncheckedCreateWithoutRedeemCodesInput>
   }
 
   export type CodeRedemeerCreateWithoutCodeInput = {
@@ -59656,18 +56194,18 @@ export namespace Prisma {
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AdminUpsertWithoutRedeemCodeInput = {
-    update: XOR<AdminUpdateWithoutRedeemCodeInput, AdminUncheckedUpdateWithoutRedeemCodeInput>
-    create: XOR<AdminCreateWithoutRedeemCodeInput, AdminUncheckedCreateWithoutRedeemCodeInput>
+  export type AdminUpsertWithoutRedeemCodesInput = {
+    update: XOR<AdminUpdateWithoutRedeemCodesInput, AdminUncheckedUpdateWithoutRedeemCodesInput>
+    create: XOR<AdminCreateWithoutRedeemCodesInput, AdminUncheckedCreateWithoutRedeemCodesInput>
     where?: AdminWhereInput
   }
 
-  export type AdminUpdateToOneWithWhereWithoutRedeemCodeInput = {
+  export type AdminUpdateToOneWithWhereWithoutRedeemCodesInput = {
     where?: AdminWhereInput
-    data: XOR<AdminUpdateWithoutRedeemCodeInput, AdminUncheckedUpdateWithoutRedeemCodeInput>
+    data: XOR<AdminUpdateWithoutRedeemCodesInput, AdminUncheckedUpdateWithoutRedeemCodesInput>
   }
 
-  export type AdminUpdateWithoutRedeemCodeInput = {
+  export type AdminUpdateWithoutRedeemCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -59688,7 +56226,7 @@ export namespace Prisma {
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
   }
 
-  export type AdminUncheckedUpdateWithoutRedeemCodeInput = {
+  export type AdminUncheckedUpdateWithoutRedeemCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -59756,7 +56294,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59798,7 +56335,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -59825,7 +56361,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
-    admin: AdminCreateNestedOneWithoutRedeemCodeInput
+    admin: AdminCreateNestedOneWithoutRedeemCodesInput
   }
 
   export type RedeemCodeUncheckedCreateWithoutRedemeersInput = {
@@ -59889,7 +56425,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -59931,7 +56466,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59964,7 +56498,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
-    admin?: AdminUpdateOneRequiredWithoutRedeemCodeNestedInput
+    admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateWithoutRedemeersInput = {
@@ -60064,7 +56598,6 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -60106,7 +56639,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
-    voucherRedemeer?: VoucherRedemeerUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -60199,7 +56731,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -60241,7 +56772,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60475,7 +57005,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60517,7 +57046,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60614,7 +57142,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutProvinceInput = {
@@ -60635,7 +57163,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutProvinceInput = {
@@ -60772,7 +57300,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60814,7 +57341,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -60913,7 +57439,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutCityInput = {
@@ -60934,7 +57460,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutCityInput = {
@@ -61021,7 +57547,6 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -61063,7 +57588,6 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
-    voucherRedemeer?: VoucherRedemeerUncheckedUpdateManyWithoutUserNestedInput
     multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61144,7 +57668,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutSchoolInput = {
@@ -61165,7 +57689,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
-    RedeemCode?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutSchoolInput = {
@@ -61216,12 +57740,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
-  }
-
-  export type VoucherRedemeerCreateManyUserInput = {
-    id?: number
-    createdAt?: Date | string
-    voucherId: number
   }
 
   export type MultiPlayerMemberCreateManyUserInput = {
@@ -61450,23 +57968,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type VoucherRedemeerUpdateWithoutUserInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucher?: VoucherUpdateOneRequiredWithoutRedemeersNestedInput
-  }
-
-  export type VoucherRedemeerUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucherId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type VoucherRedemeerUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    voucherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type MultiPlayerMemberUpdateWithoutUserInput = {
@@ -62408,29 +58909,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     answers?: JsonNullValueInput | InputJsonValue
-  }
-
-  export type VoucherRedemeerCreateManyVoucherInput = {
-    id?: number
-    createdAt?: Date | string
-    userId: string
-  }
-
-  export type VoucherRedemeerUpdateWithoutVoucherInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutVoucherRedemeerNestedInput
-  }
-
-  export type VoucherRedemeerUncheckedUpdateWithoutVoucherInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type VoucherRedemeerUncheckedUpdateManyWithoutVoucherInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CodeRedemeerCreateManyCodeInput = {

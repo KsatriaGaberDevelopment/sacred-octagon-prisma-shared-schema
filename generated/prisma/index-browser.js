@@ -415,24 +415,6 @@ exports.Prisma.SettingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.VoucherScalarFieldEnum = {
-  id: 'id',
-  code: 'code',
-  quota: 'quota',
-  currentQuota: 'currentQuota',
-  startedAt: 'startedAt',
-  endedAt: 'endedAt',
-  type: 'type',
-  zones: 'zones'
-};
-
-exports.Prisma.VoucherRedemeerScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  voucherId: 'voucherId',
-  userId: 'userId'
-};
-
 exports.Prisma.AdminTransactionScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -550,11 +532,6 @@ exports.Operation = exports.$Enums.Operation = {
   Delete: 'Delete'
 };
 
-exports.TestCategory = exports.$Enums.TestCategory = {
-  Teacher: 'Teacher',
-  Student: 'Student'
-};
-
 exports.QuestionType = exports.$Enums.QuestionType = {
   Addition: 'Addition',
   Multiplication: 'Multiplication',
@@ -568,11 +545,6 @@ exports.TestType = exports.$Enums.TestType = {
   PostTest: 'PostTest',
   FirstPreTest: 'FirstPreTest',
   Contest: 'Contest'
-};
-
-exports.VoucherType = exports.$Enums.VoucherType = {
-  Discount: 'Discount',
-  FixedPrice: 'FixedPrice'
 };
 
 exports.Transaction = exports.$Enums.Transaction = {
@@ -606,8 +578,6 @@ exports.Prisma.ModelName = {
   TestParticipantRecord: 'TestParticipantRecord',
   Background: 'Background',
   Setting: 'Setting',
-  Voucher: 'Voucher',
-  VoucherRedemeer: 'VoucherRedemeer',
   AdminTransaction: 'AdminTransaction',
   RedeemCode: 'RedeemCode',
   CodeRedemeer: 'CodeRedemeer',
