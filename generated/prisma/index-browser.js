@@ -573,6 +573,12 @@ exports.VoucherType = exports.$Enums.VoucherType = {
   FixedPrice: 'FixedPrice'
 };
 
+exports.Transaction = exports.$Enums.Transaction = {
+  Pending: 'Pending',
+  Cancelled: 'Cancelled',
+  Settlement: 'Settlement'
+};
+
 exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',

@@ -490,7 +490,7 @@ model VoucherRedemeer {
 model AdminTransaction {
   id                  String      @id @default(cuid())
   name                String
-  status              String
+  status              Transaction @default(Pending)
   archived            Boolean     @default(false)
   createdAt           DateTime    @default(now())
   updatedAt           DateTime    @updatedAt
@@ -499,12 +499,18 @@ model AdminTransaction {
   quantity            Int         @default(0)
   subscriptionTime    Int
   zones               String[]
-  transactionRef      Int?
+  transactionRef      String?
   amount              Int
   description         String?
   transactionImageId  String?
   transactionImageUrl String?
   redeemCode          RedeemCode?
+
+  @@index([name])
+  @@index([status])
+  @@index([adminId])
+  @@index([transactionRef])
+  @@index([archived])
 }
 
 model RedeemCode {
@@ -669,4 +675,10 @@ enum Operation {
   Create
   Update
   Delete
+}
+
+enum Transaction {
+  Pending
+  Cancelled
+  Settlement
 }

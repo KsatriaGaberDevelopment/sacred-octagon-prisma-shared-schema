@@ -239,6 +239,15 @@ export const Operation: {
 
 export type Operation = (typeof Operation)[keyof typeof Operation]
 
+
+export const Transaction: {
+  Pending: 'Pending',
+  Cancelled: 'Cancelled',
+  Settlement: 'Settlement'
+};
+
+export type Transaction = (typeof Transaction)[keyof typeof Transaction]
+
 }
 
 export type Role = $Enums.Role
@@ -268,6 +277,10 @@ export const TestCategory: typeof $Enums.TestCategory
 export type Operation = $Enums.Operation
 
 export const Operation: typeof $Enums.Operation
+
+export type Transaction = $Enums.Transaction
+
+export const Transaction: typeof $Enums.Transaction
 
 /**
  * ##  Prisma Client ʲˢ
@@ -35129,28 +35142,26 @@ export namespace Prisma {
   export type AdminTransactionAvgAggregateOutputType = {
     quantity: number | null
     subscriptionTime: number | null
-    transactionRef: number | null
     amount: number | null
   }
 
   export type AdminTransactionSumAggregateOutputType = {
     quantity: number | null
     subscriptionTime: number | null
-    transactionRef: number | null
     amount: number | null
   }
 
   export type AdminTransactionMinAggregateOutputType = {
     id: string | null
     name: string | null
-    status: string | null
+    status: $Enums.Transaction | null
     archived: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     adminId: string | null
     quantity: number | null
     subscriptionTime: number | null
-    transactionRef: number | null
+    transactionRef: string | null
     amount: number | null
     description: string | null
     transactionImageId: string | null
@@ -35160,14 +35171,14 @@ export namespace Prisma {
   export type AdminTransactionMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    status: string | null
+    status: $Enums.Transaction | null
     archived: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     adminId: string | null
     quantity: number | null
     subscriptionTime: number | null
-    transactionRef: number | null
+    transactionRef: string | null
     amount: number | null
     description: string | null
     transactionImageId: string | null
@@ -35197,14 +35208,12 @@ export namespace Prisma {
   export type AdminTransactionAvgAggregateInputType = {
     quantity?: true
     subscriptionTime?: true
-    transactionRef?: true
     amount?: true
   }
 
   export type AdminTransactionSumAggregateInputType = {
     quantity?: true
     subscriptionTime?: true
-    transactionRef?: true
     amount?: true
   }
 
@@ -35350,7 +35359,7 @@ export namespace Prisma {
   export type AdminTransactionGroupByOutputType = {
     id: string
     name: string
-    status: string
+    status: $Enums.Transaction
     archived: boolean
     createdAt: Date
     updatedAt: Date
@@ -35358,7 +35367,7 @@ export namespace Prisma {
     quantity: number
     subscriptionTime: number
     zones: string[]
-    transactionRef: number | null
+    transactionRef: string | null
     amount: number
     description: string | null
     transactionImageId: string | null
@@ -35481,7 +35490,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      status: string
+      status: $Enums.Transaction
       archived: boolean
       createdAt: Date
       updatedAt: Date
@@ -35489,7 +35498,7 @@ export namespace Prisma {
       quantity: number
       subscriptionTime: number
       zones: string[]
-      transactionRef: number | null
+      transactionRef: string | null
       amount: number
       description: string | null
       transactionImageId: string | null
@@ -35921,7 +35930,7 @@ export namespace Prisma {
   interface AdminTransactionFieldRefs {
     readonly id: FieldRef<"AdminTransaction", 'String'>
     readonly name: FieldRef<"AdminTransaction", 'String'>
-    readonly status: FieldRef<"AdminTransaction", 'String'>
+    readonly status: FieldRef<"AdminTransaction", 'Transaction'>
     readonly archived: FieldRef<"AdminTransaction", 'Boolean'>
     readonly createdAt: FieldRef<"AdminTransaction", 'DateTime'>
     readonly updatedAt: FieldRef<"AdminTransaction", 'DateTime'>
@@ -35929,7 +35938,7 @@ export namespace Prisma {
     readonly quantity: FieldRef<"AdminTransaction", 'Int'>
     readonly subscriptionTime: FieldRef<"AdminTransaction", 'Int'>
     readonly zones: FieldRef<"AdminTransaction", 'String[]'>
-    readonly transactionRef: FieldRef<"AdminTransaction", 'Int'>
+    readonly transactionRef: FieldRef<"AdminTransaction", 'String'>
     readonly amount: FieldRef<"AdminTransaction", 'Int'>
     readonly description: FieldRef<"AdminTransaction", 'String'>
     readonly transactionImageId: FieldRef<"AdminTransaction", 'String'>
@@ -41746,6 +41755,20 @@ export namespace Prisma {
    */
   export type ListEnumVoucherTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VoucherType[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Transaction'
+   */
+  export type EnumTransactionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Transaction'>
+    
+
+
+  /**
+   * Reference to a field of type 'Transaction[]'
+   */
+  export type ListEnumTransactionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Transaction[]'>
+    
   /**
    * Deep Input Types
    */
@@ -43914,7 +43937,7 @@ export namespace Prisma {
     NOT?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
     id?: StringFilter<"AdminTransaction"> | string
     name?: StringFilter<"AdminTransaction"> | string
-    status?: StringFilter<"AdminTransaction"> | string
+    status?: EnumTransactionFilter<"AdminTransaction"> | $Enums.Transaction
     archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
@@ -43922,7 +43945,7 @@ export namespace Prisma {
     quantity?: IntFilter<"AdminTransaction"> | number
     subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    transactionRef?: StringNullableFilter<"AdminTransaction"> | string | null
     amount?: IntFilter<"AdminTransaction"> | number
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
@@ -43957,7 +43980,7 @@ export namespace Prisma {
     OR?: AdminTransactionWhereInput[]
     NOT?: AdminTransactionWhereInput | AdminTransactionWhereInput[]
     name?: StringFilter<"AdminTransaction"> | string
-    status?: StringFilter<"AdminTransaction"> | string
+    status?: EnumTransactionFilter<"AdminTransaction"> | $Enums.Transaction
     archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
@@ -43965,7 +43988,7 @@ export namespace Prisma {
     quantity?: IntFilter<"AdminTransaction"> | number
     subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    transactionRef?: StringNullableFilter<"AdminTransaction"> | string | null
     amount?: IntFilter<"AdminTransaction"> | number
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
@@ -44003,7 +44026,7 @@ export namespace Prisma {
     NOT?: AdminTransactionScalarWhereWithAggregatesInput | AdminTransactionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AdminTransaction"> | string
     name?: StringWithAggregatesFilter<"AdminTransaction"> | string
-    status?: StringWithAggregatesFilter<"AdminTransaction"> | string
+    status?: EnumTransactionWithAggregatesFilter<"AdminTransaction"> | $Enums.Transaction
     archived?: BoolWithAggregatesFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdminTransaction"> | Date | string
@@ -44011,7 +44034,7 @@ export namespace Prisma {
     quantity?: IntWithAggregatesFilter<"AdminTransaction"> | number
     subscriptionTime?: IntWithAggregatesFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    transactionRef?: IntNullableWithAggregatesFilter<"AdminTransaction"> | number | null
+    transactionRef?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
     amount?: IntWithAggregatesFilter<"AdminTransaction"> | number
     description?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableWithAggregatesFilter<"AdminTransaction"> | string | null
@@ -46704,14 +46727,14 @@ export namespace Prisma {
   export type AdminTransactionCreateInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -46723,7 +46746,7 @@ export namespace Prisma {
   export type AdminTransactionUncheckedCreateInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46731,7 +46754,7 @@ export namespace Prisma {
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -46742,14 +46765,14 @@ export namespace Prisma {
   export type AdminTransactionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46761,7 +46784,7 @@ export namespace Prisma {
   export type AdminTransactionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46769,7 +46792,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46780,7 +46803,7 @@ export namespace Prisma {
   export type AdminTransactionCreateManyInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46788,7 +46811,7 @@ export namespace Prisma {
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -46798,14 +46821,14 @@ export namespace Prisma {
   export type AdminTransactionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46815,7 +46838,7 @@ export namespace Prisma {
   export type AdminTransactionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46823,7 +46846,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49043,15 +49066,11 @@ export namespace Prisma {
     voucherId?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type EnumTransactionFilter<$PrismaModel = never> = {
+    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
+    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionFilter<$PrismaModel> | $Enums.Transaction
   }
 
   export type RedeemCodeNullableScalarRelationFilter = {
@@ -49080,7 +49099,6 @@ export namespace Prisma {
   export type AdminTransactionAvgOrderByAggregateInput = {
     quantity?: SortOrder
     subscriptionTime?: SortOrder
-    transactionRef?: SortOrder
     amount?: SortOrder
   }
 
@@ -49121,24 +49139,17 @@ export namespace Prisma {
   export type AdminTransactionSumOrderByAggregateInput = {
     quantity?: SortOrder
     subscriptionTime?: SortOrder
-    transactionRef?: SortOrder
     amount?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type EnumTransactionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
+    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionWithAggregatesFilter<$PrismaModel> | $Enums.Transaction
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransactionFilter<$PrismaModel>
+    _max?: NestedEnumTransactionFilter<$PrismaModel>
   }
 
   export type AdminTransactionScalarRelationFilter = {
@@ -51705,17 +51716,13 @@ export namespace Prisma {
     connect?: RedeemCodeWhereUniqueInput
   }
 
+  export type EnumTransactionFieldUpdateOperationsInput = {
+    set?: $Enums.Transaction
+  }
+
   export type AdminTransactionUpdatezonesInput = {
     set?: string[]
     push?: string | string[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type AdminUpdateOneRequiredWithoutAdminTransactionNestedInput = {
@@ -52272,31 +52279,21 @@ export namespace Prisma {
     _max?: NestedEnumVoucherTypeFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type NestedEnumTransactionFilter<$PrismaModel = never> = {
+    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
+    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionFilter<$PrismaModel> | $Enums.Transaction
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type NestedEnumTransactionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Transaction | EnumTransactionFieldRefInput<$PrismaModel>
+    in?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Transaction[] | ListEnumTransactionFieldRefInput<$PrismaModel>
+    not?: NestedEnumTransactionWithAggregatesFilter<$PrismaModel> | $Enums.Transaction
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTransactionFilter<$PrismaModel>
+    _max?: NestedEnumTransactionFilter<$PrismaModel>
   }
 
   export type CityCreateWithoutProvinceInput = {
@@ -56677,14 +56674,14 @@ export namespace Prisma {
   export type AdminTransactionCreateWithoutAdminInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -56695,14 +56692,14 @@ export namespace Prisma {
   export type AdminTransactionUncheckedCreateWithoutAdminInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -57085,7 +57082,7 @@ export namespace Prisma {
     NOT?: AdminTransactionScalarWhereInput | AdminTransactionScalarWhereInput[]
     id?: StringFilter<"AdminTransaction"> | string
     name?: StringFilter<"AdminTransaction"> | string
-    status?: StringFilter<"AdminTransaction"> | string
+    status?: EnumTransactionFilter<"AdminTransaction"> | $Enums.Transaction
     archived?: BoolFilter<"AdminTransaction"> | boolean
     createdAt?: DateTimeFilter<"AdminTransaction"> | Date | string
     updatedAt?: DateTimeFilter<"AdminTransaction"> | Date | string
@@ -57093,7 +57090,7 @@ export namespace Prisma {
     quantity?: IntFilter<"AdminTransaction"> | number
     subscriptionTime?: IntFilter<"AdminTransaction"> | number
     zones?: StringNullableListFilter<"AdminTransaction">
-    transactionRef?: IntNullableFilter<"AdminTransaction"> | number | null
+    transactionRef?: StringNullableFilter<"AdminTransaction"> | string | null
     amount?: IntFilter<"AdminTransaction"> | number
     description?: StringNullableFilter<"AdminTransaction"> | string | null
     transactionImageId?: StringNullableFilter<"AdminTransaction"> | string | null
@@ -59102,14 +59099,14 @@ export namespace Prisma {
   export type AdminTransactionCreateWithoutRedeemCodeInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -59120,7 +59117,7 @@ export namespace Prisma {
   export type AdminTransactionUncheckedCreateWithoutRedeemCodeInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59128,7 +59125,7 @@ export namespace Prisma {
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -59225,14 +59222,14 @@ export namespace Prisma {
   export type AdminTransactionUpdateWithoutRedeemCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59243,7 +59240,7 @@ export namespace Prisma {
   export type AdminTransactionUncheckedUpdateWithoutRedeemCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59251,7 +59248,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61441,14 +61438,14 @@ export namespace Prisma {
   export type AdminTransactionCreateManyAdminInput = {
     id?: string
     name: string
-    status: string
+    status?: $Enums.Transaction
     archived?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     quantity?: number
     subscriptionTime: number
     zones?: AdminTransactionCreatezonesInput | string[]
-    transactionRef?: number | null
+    transactionRef?: string | null
     amount: number
     description?: string | null
     transactionImageId?: string | null
@@ -61569,14 +61566,14 @@ export namespace Prisma {
   export type AdminTransactionUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61587,14 +61584,14 @@ export namespace Prisma {
   export type AdminTransactionUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61605,14 +61602,14 @@ export namespace Prisma {
   export type AdminTransactionUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     archived?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     quantity?: IntFieldUpdateOperationsInput | number
     subscriptionTime?: IntFieldUpdateOperationsInput | number
     zones?: AdminTransactionUpdatezonesInput | string[]
-    transactionRef?: NullableIntFieldUpdateOperationsInput | number | null
+    transactionRef?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     transactionImageId?: NullableStringFieldUpdateOperationsInput | string | null
