@@ -401,7 +401,7 @@ model Test {
   remidialCount Int               @default(-1)
   type          TestType
   quota         Int               @default(-1)
-  currentQuota  Int               @default(-1)
+  currentQuota  Int               @default(0)
   code          String?
   zoneId        String?
   startedAt     DateTime
