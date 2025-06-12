@@ -331,6 +331,7 @@ model Admin {
   transactions         AdminTransaction[]      @relation("transactions")
   transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
   redeemCodes          RedeemCode[]
+  tests                Test[]
 }
 
 model AdminOperationHistory {
@@ -409,8 +410,12 @@ model Test {
   participants  TestParticipant[]
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
+  adminId       String
+  admin         Admin             @relation(fields: [adminId], references: [id])
 
   @@index([category])
+  @@index([type, question])
+  @@index([type, question, category])
   @@index([category, type, question, startedAt, endedAt])
 }
 

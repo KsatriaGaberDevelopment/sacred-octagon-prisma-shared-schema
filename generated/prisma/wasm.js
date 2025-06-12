@@ -373,7 +373,8 @@ exports.Prisma.TestScalarFieldEnum = {
   endedAt: 'endedAt',
   description: 'description',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  adminId: 'adminId'
 };
 
 exports.Prisma.TestParticipantScalarFieldEnum = {

@@ -3856,6 +3856,7 @@ export namespace Prisma {
     transactions: number
     transactionProcessed: number
     redeemCodes: number
+    tests: number
   }
 
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3866,6 +3867,7 @@ export namespace Prisma {
     transactions?: boolean | AdminCountOutputTypeCountTransactionsArgs
     transactionProcessed?: boolean | AdminCountOutputTypeCountTransactionProcessedArgs
     redeemCodes?: boolean | AdminCountOutputTypeCountRedeemCodesArgs
+    tests?: boolean | AdminCountOutputTypeCountTestsArgs
   }
 
   // Custom InputTypes
@@ -3926,6 +3928,13 @@ export namespace Prisma {
    */
   export type AdminCountOutputTypeCountRedeemCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RedeemCodeWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestWhereInput
   }
 
 
@@ -20337,6 +20346,7 @@ export namespace Prisma {
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
+    tests?: boolean | Admin$testsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -20401,6 +20411,7 @@ export namespace Prisma {
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
+    tests?: boolean | Admin$testsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -20428,6 +20439,7 @@ export namespace Prisma {
       transactions: Prisma.$AdminTransactionPayload<ExtArgs>[]
       transactionProcessed: Prisma.$AdminTransactionPayload<ExtArgs>[]
       redeemCodes: Prisma.$RedeemCodePayload<ExtArgs>[]
+      tests: Prisma.$TestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -20846,6 +20858,7 @@ export namespace Prisma {
     transactions<T extends Admin$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactionProcessed<T extends Admin$transactionProcessedArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionProcessedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     redeemCodes<T extends Admin$redeemCodesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$redeemCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tests<T extends Admin$testsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$testsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -21523,6 +21536,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RedeemCodeScalarFieldEnum | RedeemCodeScalarFieldEnum[]
+  }
+
+  /**
+   * Admin.tests
+   */
+  export type Admin$testsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Test
+     */
+    select?: TestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Test
+     */
+    omit?: TestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TestInclude<ExtArgs> | null
+    where?: TestWhereInput
+    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
+    cursor?: TestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
   }
 
   /**
@@ -27135,6 +27172,7 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    adminId: string | null
   }
 
   export type TestMaxAggregateOutputType = {
@@ -27155,6 +27193,7 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    adminId: string | null
   }
 
   export type TestCountAggregateOutputType = {
@@ -27175,6 +27214,7 @@ export namespace Prisma {
     description: number
     createdAt: number
     updatedAt: number
+    adminId: number
     _all: number
   }
 
@@ -27213,6 +27253,7 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    adminId?: true
   }
 
   export type TestMaxAggregateInputType = {
@@ -27233,6 +27274,7 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    adminId?: true
   }
 
   export type TestCountAggregateInputType = {
@@ -27253,6 +27295,7 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    adminId?: true
     _all?: true
   }
 
@@ -27360,6 +27403,7 @@ export namespace Prisma {
     description: string | null
     createdAt: Date
     updatedAt: Date
+    adminId: string
     _count: TestCountAggregateOutputType | null
     _avg: TestAvgAggregateOutputType | null
     _sum: TestSumAggregateOutputType | null
@@ -27399,7 +27443,9 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adminId?: boolean
     participants?: boolean | Test$participantsArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
     _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
@@ -27421,6 +27467,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adminId?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -27441,6 +27489,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adminId?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectScalar = {
@@ -27461,20 +27511,27 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adminId?: boolean
   }
 
-  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "question" | "duration" | "passedPoint" | "remidialCount" | "type" | "quota" | "currentQuota" | "code" | "zoneId" | "startedAt" | "endedAt" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["test"]>
+  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "question" | "duration" | "passedPoint" | "remidialCount" | "type" | "quota" | "currentQuota" | "code" | "zoneId" | "startedAt" | "endedAt" | "description" | "createdAt" | "updatedAt" | "adminId", ExtArgs["result"]["test"]>
   export type TestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     participants?: boolean | Test$participantsArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
     _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type TestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type TestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type TestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
 
   export type $TestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Test"
     objects: {
       participants: Prisma.$TestParticipantPayload<ExtArgs>[]
+      admin: Prisma.$AdminPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -27494,6 +27551,7 @@ export namespace Prisma {
       description: string | null
       createdAt: Date
       updatedAt: Date
+      adminId: string
     }, ExtArgs["result"]["test"]>
     composites: {}
   }
@@ -27889,6 +27947,7 @@ export namespace Prisma {
   export interface Prisma__TestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     participants<T extends Test$participantsArgs<ExtArgs> = {}>(args?: Subset<T, Test$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -27935,6 +27994,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Test", 'String'>
     readonly createdAt: FieldRef<"Test", 'DateTime'>
     readonly updatedAt: FieldRef<"Test", 'DateTime'>
+    readonly adminId: FieldRef<"Test", 'String'>
   }
     
 
@@ -28184,6 +28244,10 @@ export namespace Prisma {
      */
     data: TestCreateManyInput | TestCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TestIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -28254,6 +28318,10 @@ export namespace Prisma {
      * Limit how many Tests to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TestIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -38987,7 +39055,8 @@ export namespace Prisma {
     endedAt: 'endedAt',
     description: 'description',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    adminId: 'adminId'
   };
 
   export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
@@ -40595,6 +40664,7 @@ export namespace Prisma {
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
     redeemCodes?: RedeemCodeListRelationFilter
+    tests?: TestListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -40620,6 +40690,7 @@ export namespace Prisma {
     transactions?: AdminTransactionOrderByRelationAggregateInput
     transactionProcessed?: AdminTransactionOrderByRelationAggregateInput
     redeemCodes?: RedeemCodeOrderByRelationAggregateInput
+    tests?: TestOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -40648,6 +40719,7 @@ export namespace Prisma {
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
     redeemCodes?: RedeemCodeListRelationFilter
+    tests?: TestListRelationFilter
   }, "id" | "authId" | "email">
 
   export type AdminOrderByWithAggregationInput = {
@@ -41016,7 +41088,9 @@ export namespace Prisma {
     description?: StringNullableFilter<"Test"> | string | null
     createdAt?: DateTimeFilter<"Test"> | Date | string
     updatedAt?: DateTimeFilter<"Test"> | Date | string
+    adminId?: StringFilter<"Test"> | string
     participants?: TestParticipantListRelationFilter
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }
 
   export type TestOrderByWithRelationInput = {
@@ -41037,7 +41111,9 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adminId?: SortOrder
     participants?: TestParticipantOrderByRelationAggregateInput
+    admin?: AdminOrderByWithRelationInput
   }
 
   export type TestWhereUniqueInput = Prisma.AtLeast<{
@@ -41061,7 +41137,9 @@ export namespace Prisma {
     description?: StringNullableFilter<"Test"> | string | null
     createdAt?: DateTimeFilter<"Test"> | Date | string
     updatedAt?: DateTimeFilter<"Test"> | Date | string
+    adminId?: StringFilter<"Test"> | string
     participants?: TestParticipantListRelationFilter
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }, "id">
 
   export type TestOrderByWithAggregationInput = {
@@ -41082,6 +41160,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adminId?: SortOrder
     _count?: TestCountOrderByAggregateInput
     _avg?: TestAvgOrderByAggregateInput
     _max?: TestMaxOrderByAggregateInput
@@ -41110,6 +41189,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Test"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
+    adminId?: StringWithAggregatesFilter<"Test"> | string
   }
 
   export type TestParticipantWhereInput = {
@@ -43245,6 +43325,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -43267,6 +43348,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -43289,6 +43371,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -43311,6 +43394,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -43669,6 +43753,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     participants?: TestParticipantCreateNestedManyWithoutTestInput
+    admin: AdminCreateNestedOneWithoutTestsInput
   }
 
   export type TestUncheckedCreateInput = {
@@ -43689,6 +43774,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    adminId: string
     participants?: TestParticipantUncheckedCreateNestedManyWithoutTestInput
   }
 
@@ -43711,6 +43797,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     participants?: TestParticipantUpdateManyWithoutTestNestedInput
+    admin?: AdminUpdateOneRequiredWithoutTestsNestedInput
   }
 
   export type TestUncheckedUpdateInput = {
@@ -43731,6 +43818,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
     participants?: TestParticipantUncheckedUpdateManyWithoutTestNestedInput
   }
 
@@ -43752,6 +43840,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    adminId: string
   }
 
   export type TestUpdateManyMutationInput = {
@@ -43792,6 +43881,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
   }
 
   export type TestParticipantCreateInput = {
@@ -45759,6 +45849,12 @@ export namespace Prisma {
     none?: RedeemCodeWhereInput
   }
 
+  export type TestListRelationFilter = {
+    every?: TestWhereInput
+    some?: TestWhereInput
+    none?: TestWhereInput
+  }
+
   export type AdminOperationHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -45772,6 +45868,10 @@ export namespace Prisma {
   }
 
   export type RedeemCodeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -46023,6 +46123,7 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adminId?: SortOrder
   }
 
   export type TestAvgOrderByAggregateInput = {
@@ -46051,6 +46152,7 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adminId?: SortOrder
   }
 
   export type TestMinOrderByAggregateInput = {
@@ -46071,6 +46173,7 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adminId?: SortOrder
   }
 
   export type TestSumOrderByAggregateInput = {
@@ -48101,6 +48204,13 @@ export namespace Prisma {
     connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
   }
 
+  export type TestCreateNestedManyWithoutAdminInput = {
+    create?: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput> | TestCreateWithoutAdminInput[] | TestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: TestCreateOrConnectWithoutAdminInput | TestCreateOrConnectWithoutAdminInput[]
+    createMany?: TestCreateManyAdminInputEnvelope
+    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedOneWithoutAdminInput = {
     create?: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
     connectOrCreate?: UserCreateOrConnectWithoutAdminInput
@@ -48154,6 +48264,13 @@ export namespace Prisma {
     connectOrCreate?: RedeemCodeCreateOrConnectWithoutAdminInput | RedeemCodeCreateOrConnectWithoutAdminInput[]
     createMany?: RedeemCodeCreateManyAdminInputEnvelope
     connect?: RedeemCodeWhereUniqueInput | RedeemCodeWhereUniqueInput[]
+  }
+
+  export type TestUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput> | TestCreateWithoutAdminInput[] | TestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: TestCreateOrConnectWithoutAdminInput | TestCreateOrConnectWithoutAdminInput[]
+    createMany?: TestCreateManyAdminInputEnvelope
+    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
   }
 
   export type NullableEnumRoleFieldUpdateOperationsInput = {
@@ -48298,6 +48415,20 @@ export namespace Prisma {
     deleteMany?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
   }
 
+  export type TestUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput> | TestCreateWithoutAdminInput[] | TestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: TestCreateOrConnectWithoutAdminInput | TestCreateOrConnectWithoutAdminInput[]
+    upsert?: TestUpsertWithWhereUniqueWithoutAdminInput | TestUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: TestCreateManyAdminInputEnvelope
+    set?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    disconnect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    delete?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    update?: TestUpdateWithWhereUniqueWithoutAdminInput | TestUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: TestUpdateManyWithWhereWithoutAdminInput | TestUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: TestScalarWhereInput | TestScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateOneWithoutAdminNestedInput = {
     create?: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
     connectOrCreate?: UserCreateOrConnectWithoutAdminInput
@@ -48404,6 +48535,20 @@ export namespace Prisma {
     update?: RedeemCodeUpdateWithWhereUniqueWithoutAdminInput | RedeemCodeUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: RedeemCodeUpdateManyWithWhereWithoutAdminInput | RedeemCodeUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
+  }
+
+  export type TestUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput> | TestCreateWithoutAdminInput[] | TestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: TestCreateOrConnectWithoutAdminInput | TestCreateOrConnectWithoutAdminInput[]
+    upsert?: TestUpsertWithWhereUniqueWithoutAdminInput | TestUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: TestCreateManyAdminInputEnvelope
+    set?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    disconnect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    delete?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+    update?: TestUpdateWithWhereUniqueWithoutAdminInput | TestUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: TestUpdateManyWithWhereWithoutAdminInput | TestUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: TestScalarWhereInput | TestScalarWhereInput[]
   }
 
   export type AdminCreateNestedOneWithoutOperationHistoriesInput = {
@@ -48750,6 +48895,12 @@ export namespace Prisma {
     connect?: TestParticipantWhereUniqueInput | TestParticipantWhereUniqueInput[]
   }
 
+  export type AdminCreateNestedOneWithoutTestsInput = {
+    create?: XOR<AdminCreateWithoutTestsInput, AdminUncheckedCreateWithoutTestsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTestsInput
+    connect?: AdminWhereUniqueInput
+  }
+
   export type TestParticipantUncheckedCreateNestedManyWithoutTestInput = {
     create?: XOR<TestParticipantCreateWithoutTestInput, TestParticipantUncheckedCreateWithoutTestInput> | TestParticipantCreateWithoutTestInput[] | TestParticipantUncheckedCreateWithoutTestInput[]
     connectOrCreate?: TestParticipantCreateOrConnectWithoutTestInput | TestParticipantCreateOrConnectWithoutTestInput[]
@@ -48777,6 +48928,14 @@ export namespace Prisma {
     update?: TestParticipantUpdateWithWhereUniqueWithoutTestInput | TestParticipantUpdateWithWhereUniqueWithoutTestInput[]
     updateMany?: TestParticipantUpdateManyWithWhereWithoutTestInput | TestParticipantUpdateManyWithWhereWithoutTestInput[]
     deleteMany?: TestParticipantScalarWhereInput | TestParticipantScalarWhereInput[]
+  }
+
+  export type AdminUpdateOneRequiredWithoutTestsNestedInput = {
+    create?: XOR<AdminCreateWithoutTestsInput, AdminUncheckedCreateWithoutTestsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutTestsInput
+    upsert?: AdminUpsertWithoutTestsInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutTestsInput, AdminUpdateWithoutTestsInput>, AdminUncheckedUpdateWithoutTestsInput>
   }
 
   export type TestParticipantUncheckedUpdateManyWithoutTestNestedInput = {
@@ -49698,6 +49857,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutProvinceInput = {
@@ -49719,6 +49879,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutProvinceInput = {
@@ -50146,6 +50307,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutCityInput = {
@@ -50167,6 +50329,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutCityInput = {
@@ -50502,6 +50665,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutSchoolInput = {
@@ -50523,6 +50687,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutSchoolInput = {
@@ -50787,6 +50952,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutUserInput = {
@@ -50808,6 +50974,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutUserInput = {
@@ -51402,6 +51569,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutUserInput = {
@@ -51423,6 +51591,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ZoneUpsertWithWhereUniqueWithoutUserInput = {
@@ -53893,6 +54062,58 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TestCreateWithoutAdminInput = {
+    id?: string
+    name?: string
+    category: $Enums.Role
+    question: $Enums.QuestionType
+    duration?: number
+    passedPoint?: number
+    remidialCount?: number
+    type: $Enums.TestType
+    quota?: number
+    currentQuota?: number
+    code?: string | null
+    zoneId?: string | null
+    startedAt: Date | string
+    endedAt?: Date | string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    participants?: TestParticipantCreateNestedManyWithoutTestInput
+  }
+
+  export type TestUncheckedCreateWithoutAdminInput = {
+    id?: string
+    name?: string
+    category: $Enums.Role
+    question: $Enums.QuestionType
+    duration?: number
+    passedPoint?: number
+    remidialCount?: number
+    type: $Enums.TestType
+    quota?: number
+    currentQuota?: number
+    code?: string | null
+    zoneId?: string | null
+    startedAt: Date | string
+    endedAt?: Date | string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    participants?: TestParticipantUncheckedCreateNestedManyWithoutTestInput
+  }
+
+  export type TestCreateOrConnectWithoutAdminInput = {
+    where: TestWhereUniqueInput
+    create: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput>
+  }
+
+  export type TestCreateManyAdminInputEnvelope = {
+    data: TestCreateManyAdminInput | TestCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutAdminInput = {
     update: XOR<UserUpdateWithoutAdminInput, UserUncheckedUpdateWithoutAdminInput>
     create: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
@@ -54284,6 +54505,46 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
   }
 
+  export type TestUpsertWithWhereUniqueWithoutAdminInput = {
+    where: TestWhereUniqueInput
+    update: XOR<TestUpdateWithoutAdminInput, TestUncheckedUpdateWithoutAdminInput>
+    create: XOR<TestCreateWithoutAdminInput, TestUncheckedCreateWithoutAdminInput>
+  }
+
+  export type TestUpdateWithWhereUniqueWithoutAdminInput = {
+    where: TestWhereUniqueInput
+    data: XOR<TestUpdateWithoutAdminInput, TestUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type TestUpdateManyWithWhereWithoutAdminInput = {
+    where: TestScalarWhereInput
+    data: XOR<TestUpdateManyMutationInput, TestUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type TestScalarWhereInput = {
+    AND?: TestScalarWhereInput | TestScalarWhereInput[]
+    OR?: TestScalarWhereInput[]
+    NOT?: TestScalarWhereInput | TestScalarWhereInput[]
+    id?: StringFilter<"Test"> | string
+    name?: StringFilter<"Test"> | string
+    category?: EnumRoleFilter<"Test"> | $Enums.Role
+    question?: EnumQuestionTypeFilter<"Test"> | $Enums.QuestionType
+    duration?: IntFilter<"Test"> | number
+    passedPoint?: IntFilter<"Test"> | number
+    remidialCount?: IntFilter<"Test"> | number
+    type?: EnumTestTypeFilter<"Test"> | $Enums.TestType
+    quota?: IntFilter<"Test"> | number
+    currentQuota?: IntFilter<"Test"> | number
+    code?: StringNullableFilter<"Test"> | string | null
+    zoneId?: StringNullableFilter<"Test"> | string | null
+    startedAt?: DateTimeFilter<"Test"> | Date | string
+    endedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
+    description?: StringNullableFilter<"Test"> | string | null
+    createdAt?: DateTimeFilter<"Test"> | Date | string
+    updatedAt?: DateTimeFilter<"Test"> | Date | string
+    adminId?: StringFilter<"Test"> | string
+  }
+
   export type AdminCreateWithoutOperationHistoriesInput = {
     id?: string
     authId: string
@@ -54303,6 +54564,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
@@ -54324,6 +54586,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
@@ -54350,6 +54613,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationsInput = {
@@ -54371,6 +54635,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationsInput = {
@@ -54408,6 +54673,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
@@ -54429,6 +54695,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUpsertWithoutOperationsInput = {
@@ -54461,6 +54728,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationsInput = {
@@ -54482,6 +54750,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateWithoutAuthorityInput = {
@@ -54503,6 +54772,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutAuthorityInput = {
@@ -54524,6 +54794,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutAuthorityInput = {
@@ -54664,6 +54935,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutAuthorityInput = {
@@ -54685,6 +54957,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminAuthorityInput = {
@@ -54805,6 +55078,7 @@ export namespace Prisma {
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutBannerInput = {
@@ -54826,6 +55100,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutBannerInput = {
@@ -54901,6 +55176,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutBannerInput = {
@@ -54922,6 +55198,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type BannerLocationUpsertWithWhereUniqueWithoutBannerInput = {
@@ -55407,6 +55684,55 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AdminCreateWithoutTestsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutTestsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutTestsInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutTestsInput, AdminUncheckedCreateWithoutTestsInput>
+  }
+
   export type TestParticipantUpsertWithWhereUniqueWithoutTestInput = {
     where: TestParticipantWhereUniqueInput
     update: XOR<TestParticipantUpdateWithoutTestInput, TestParticipantUncheckedUpdateWithoutTestInput>
@@ -55421,6 +55747,61 @@ export namespace Prisma {
   export type TestParticipantUpdateManyWithWhereWithoutTestInput = {
     where: TestParticipantScalarWhereInput
     data: XOR<TestParticipantUpdateManyMutationInput, TestParticipantUncheckedUpdateManyWithoutTestInput>
+  }
+
+  export type AdminUpsertWithoutTestsInput = {
+    update: XOR<AdminUpdateWithoutTestsInput, AdminUncheckedUpdateWithoutTestsInput>
+    create: XOR<AdminCreateWithoutTestsInput, AdminUncheckedCreateWithoutTestsInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutTestsInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutTestsInput, AdminUncheckedUpdateWithoutTestsInput>
+  }
+
+  export type AdminUpdateWithoutTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type TestCreateWithoutParticipantsInput = {
@@ -55441,6 +55822,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    admin: AdminCreateNestedOneWithoutTestsInput
   }
 
   export type TestUncheckedCreateWithoutParticipantsInput = {
@@ -55461,6 +55843,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    adminId: string
   }
 
   export type TestCreateOrConnectWithoutParticipantsInput = {
@@ -55614,6 +55997,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateOneRequiredWithoutTestsNestedInput
   }
 
   export type TestUncheckedUpdateWithoutParticipantsInput = {
@@ -55634,6 +56018,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUpsertWithoutTestParticipantInput = {
@@ -55838,6 +56223,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionsInput = {
@@ -55859,6 +56245,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionsInput = {
@@ -55918,6 +56305,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionProcessedInput = {
@@ -55939,6 +56327,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionProcessedInput = {
@@ -55976,6 +56365,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionsInput = {
@@ -55997,6 +56387,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type RedeemCodeUpsertWithoutTransactionInput = {
@@ -56068,6 +56459,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionProcessedInput = {
@@ -56089,6 +56481,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminTransactionCreateWithoutRedeemCodeInput = {
@@ -56155,6 +56548,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    tests?: TestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutRedeemCodesInput = {
@@ -56176,6 +56570,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutRedeemCodesInput = {
@@ -56290,6 +56685,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutRedeemCodesInput = {
@@ -56311,6 +56707,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput = {
@@ -57209,6 +57606,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutProvinceInput = {
@@ -57230,6 +57628,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutProvinceInput = {
@@ -57506,6 +57905,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutCityInput = {
@@ -57527,6 +57927,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutCityInput = {
@@ -57735,6 +58136,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutSchoolInput = {
@@ -57756,6 +58158,7 @@ export namespace Prisma {
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutSchoolInput = {
@@ -58462,6 +58865,26 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type TestCreateManyAdminInput = {
+    id?: string
+    name?: string
+    category: $Enums.Role
+    question: $Enums.QuestionType
+    duration?: number
+    passedPoint?: number
+    remidialCount?: number
+    type: $Enums.TestType
+    quota?: number
+    currentQuota?: number
+    code?: string | null
+    zoneId?: string | null
+    startedAt: Date | string
+    endedAt?: Date | string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AdminAuthorityUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
@@ -58715,6 +59138,68 @@ export namespace Prisma {
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
+    duration?: IntFieldUpdateOperationsInput | number
+    passedPoint?: IntFieldUpdateOperationsInput | number
+    remidialCount?: IntFieldUpdateOperationsInput | number
+    type?: EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    zoneId?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: TestParticipantUpdateManyWithoutTestNestedInput
+  }
+
+  export type TestUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
+    duration?: IntFieldUpdateOperationsInput | number
+    passedPoint?: IntFieldUpdateOperationsInput | number
+    remidialCount?: IntFieldUpdateOperationsInput | number
+    type?: EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    zoneId?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participants?: TestParticipantUncheckedUpdateManyWithoutTestNestedInput
+  }
+
+  export type TestUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    question?: EnumQuestionTypeFieldUpdateOperationsInput | $Enums.QuestionType
+    duration?: IntFieldUpdateOperationsInput | number
+    passedPoint?: IntFieldUpdateOperationsInput | number
+    remidialCount?: IntFieldUpdateOperationsInput | number
+    type?: EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+    quota?: IntFieldUpdateOperationsInput | number
+    currentQuota?: IntFieldUpdateOperationsInput | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    zoneId?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
