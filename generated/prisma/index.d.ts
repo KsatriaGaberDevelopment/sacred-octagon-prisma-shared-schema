@@ -9811,8 +9811,24 @@ export namespace Prisma {
 
   export type AggregateZone = {
     _count: ZoneCountAggregateOutputType | null
+    _avg: ZoneAvgAggregateOutputType | null
+    _sum: ZoneSumAggregateOutputType | null
     _min: ZoneMinAggregateOutputType | null
     _max: ZoneMaxAggregateOutputType | null
+  }
+
+  export type ZoneAvgAggregateOutputType = {
+    pretest: number | null
+    pretestTryCount: number | null
+    posttest: number | null
+    posttestTryCount: number | null
+  }
+
+  export type ZoneSumAggregateOutputType = {
+    pretest: number | null
+    pretestTryCount: number | null
+    posttest: number | null
+    posttestTryCount: number | null
   }
 
   export type ZoneMinAggregateOutputType = {
@@ -9827,6 +9843,10 @@ export namespace Prisma {
     lastLevelUnlock: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    pretest: number | null
+    pretestTryCount: number | null
+    posttest: number | null
+    posttestTryCount: number | null
   }
 
   export type ZoneMaxAggregateOutputType = {
@@ -9841,6 +9861,10 @@ export namespace Prisma {
     lastLevelUnlock: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    pretest: number | null
+    pretestTryCount: number | null
+    posttest: number | null
+    posttestTryCount: number | null
   }
 
   export type ZoneCountAggregateOutputType = {
@@ -9855,9 +9879,27 @@ export namespace Prisma {
     lastLevelUnlock: number
     createdAt: number
     updatedAt: number
+    pretest: number
+    pretestTryCount: number
+    posttest: number
+    posttestTryCount: number
     _all: number
   }
 
+
+  export type ZoneAvgAggregateInputType = {
+    pretest?: true
+    pretestTryCount?: true
+    posttest?: true
+    posttestTryCount?: true
+  }
+
+  export type ZoneSumAggregateInputType = {
+    pretest?: true
+    pretestTryCount?: true
+    posttest?: true
+    posttestTryCount?: true
+  }
 
   export type ZoneMinAggregateInputType = {
     id?: true
@@ -9871,6 +9913,10 @@ export namespace Prisma {
     lastLevelUnlock?: true
     createdAt?: true
     updatedAt?: true
+    pretest?: true
+    pretestTryCount?: true
+    posttest?: true
+    posttestTryCount?: true
   }
 
   export type ZoneMaxAggregateInputType = {
@@ -9885,6 +9931,10 @@ export namespace Prisma {
     lastLevelUnlock?: true
     createdAt?: true
     updatedAt?: true
+    pretest?: true
+    pretestTryCount?: true
+    posttest?: true
+    posttestTryCount?: true
   }
 
   export type ZoneCountAggregateInputType = {
@@ -9899,6 +9949,10 @@ export namespace Prisma {
     lastLevelUnlock?: true
     createdAt?: true
     updatedAt?: true
+    pretest?: true
+    pretestTryCount?: true
+    posttest?: true
+    posttestTryCount?: true
     _all?: true
   }
 
@@ -9940,6 +9994,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ZoneAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ZoneSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ZoneMinAggregateInputType
@@ -9970,6 +10036,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ZoneCountAggregateInputType | true
+    _avg?: ZoneAvgAggregateInputType
+    _sum?: ZoneSumAggregateInputType
     _min?: ZoneMinAggregateInputType
     _max?: ZoneMaxAggregateInputType
   }
@@ -9986,7 +10054,13 @@ export namespace Prisma {
     lastLevelUnlock: string
     createdAt: Date
     updatedAt: Date
+    pretest: number
+    pretestTryCount: number
+    posttest: number
+    posttestTryCount: number
     _count: ZoneCountAggregateOutputType | null
+    _avg: ZoneAvgAggregateOutputType | null
+    _sum: ZoneSumAggregateOutputType | null
     _min: ZoneMinAggregateOutputType | null
     _max: ZoneMaxAggregateOutputType | null
   }
@@ -10017,6 +10091,10 @@ export namespace Prisma {
     lastLevelUnlock?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pretest?: boolean
+    pretestTryCount?: boolean
+    posttest?: boolean
+    posttestTryCount?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["zone"]>
 
@@ -10032,6 +10110,10 @@ export namespace Prisma {
     lastLevelUnlock?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pretest?: boolean
+    pretestTryCount?: boolean
+    posttest?: boolean
+    posttestTryCount?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["zone"]>
 
@@ -10047,6 +10129,10 @@ export namespace Prisma {
     lastLevelUnlock?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pretest?: boolean
+    pretestTryCount?: boolean
+    posttest?: boolean
+    posttestTryCount?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["zone"]>
 
@@ -10062,9 +10148,13 @@ export namespace Prisma {
     lastLevelUnlock?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pretest?: boolean
+    pretestTryCount?: boolean
+    posttest?: boolean
+    posttestTryCount?: boolean
   }
 
-  export type ZoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "userId" | "isComplete" | "completedAt" | "lastLevelId" | "lastSubLevelId" | "lastInnerLevelId" | "lastLevelUnlock" | "createdAt" | "updatedAt", ExtArgs["result"]["zone"]>
+  export type ZoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inGameId" | "userId" | "isComplete" | "completedAt" | "lastLevelId" | "lastSubLevelId" | "lastInnerLevelId" | "lastLevelUnlock" | "createdAt" | "updatedAt" | "pretest" | "pretestTryCount" | "posttest" | "posttestTryCount", ExtArgs["result"]["zone"]>
   export type ZoneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -10092,6 +10182,10 @@ export namespace Prisma {
       lastLevelUnlock: string
       createdAt: Date
       updatedAt: Date
+      pretest: number
+      pretestTryCount: number
+      posttest: number
+      posttestTryCount: number
     }, ExtArgs["result"]["zone"]>
     composites: {}
   }
@@ -10527,6 +10621,10 @@ export namespace Prisma {
     readonly lastLevelUnlock: FieldRef<"Zone", 'String'>
     readonly createdAt: FieldRef<"Zone", 'DateTime'>
     readonly updatedAt: FieldRef<"Zone", 'DateTime'>
+    readonly pretest: FieldRef<"Zone", 'Int'>
+    readonly pretestTryCount: FieldRef<"Zone", 'Int'>
+    readonly posttest: FieldRef<"Zone", 'Int'>
+    readonly posttestTryCount: FieldRef<"Zone", 'Int'>
   }
     
 
@@ -28457,8 +28555,6 @@ export namespace Prisma {
     id: string | null
     testId: string | null
     userId: string | null
-    firstTimeAt: Date | null
-    lastTestAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     highscore: number | null
@@ -28468,8 +28564,6 @@ export namespace Prisma {
     id: string | null
     testId: string | null
     userId: string | null
-    firstTimeAt: Date | null
-    lastTestAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     highscore: number | null
@@ -28479,8 +28573,6 @@ export namespace Prisma {
     id: number
     testId: number
     userId: number
-    firstTimeAt: number
-    lastTestAt: number
     createdAt: number
     updatedAt: number
     highscore: number
@@ -28500,8 +28592,6 @@ export namespace Prisma {
     id?: true
     testId?: true
     userId?: true
-    firstTimeAt?: true
-    lastTestAt?: true
     createdAt?: true
     updatedAt?: true
     highscore?: true
@@ -28511,8 +28601,6 @@ export namespace Prisma {
     id?: true
     testId?: true
     userId?: true
-    firstTimeAt?: true
-    lastTestAt?: true
     createdAt?: true
     updatedAt?: true
     highscore?: true
@@ -28522,8 +28610,6 @@ export namespace Prisma {
     id?: true
     testId?: true
     userId?: true
-    firstTimeAt?: true
-    lastTestAt?: true
     createdAt?: true
     updatedAt?: true
     highscore?: true
@@ -28620,8 +28706,6 @@ export namespace Prisma {
     id: string
     testId: string
     userId: string
-    firstTimeAt: Date | null
-    lastTestAt: Date | null
     createdAt: Date
     updatedAt: Date
     highscore: number
@@ -28650,8 +28734,6 @@ export namespace Prisma {
     id?: boolean
     testId?: boolean
     userId?: boolean
-    firstTimeAt?: boolean
-    lastTestAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
@@ -28665,8 +28747,6 @@ export namespace Prisma {
     id?: boolean
     testId?: boolean
     userId?: boolean
-    firstTimeAt?: boolean
-    lastTestAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
@@ -28678,8 +28758,6 @@ export namespace Prisma {
     id?: boolean
     testId?: boolean
     userId?: boolean
-    firstTimeAt?: boolean
-    lastTestAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
@@ -28691,14 +28769,12 @@ export namespace Prisma {
     id?: boolean
     testId?: boolean
     userId?: boolean
-    firstTimeAt?: boolean
-    lastTestAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     highscore?: boolean
   }
 
-  export type TestParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "testId" | "userId" | "firstTimeAt" | "lastTestAt" | "createdAt" | "updatedAt" | "highscore", ExtArgs["result"]["testParticipant"]>
+  export type TestParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "testId" | "userId" | "createdAt" | "updatedAt" | "highscore", ExtArgs["result"]["testParticipant"]>
   export type TestParticipantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     test?: boolean | TestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -28725,8 +28801,6 @@ export namespace Prisma {
       id: string
       testId: string
       userId: string
-      firstTimeAt: Date | null
-      lastTestAt: Date | null
       createdAt: Date
       updatedAt: Date
       highscore: number
@@ -29159,8 +29233,6 @@ export namespace Prisma {
     readonly id: FieldRef<"TestParticipant", 'String'>
     readonly testId: FieldRef<"TestParticipant", 'String'>
     readonly userId: FieldRef<"TestParticipant", 'String'>
-    readonly firstTimeAt: FieldRef<"TestParticipant", 'DateTime'>
-    readonly lastTestAt: FieldRef<"TestParticipant", 'DateTime'>
     readonly createdAt: FieldRef<"TestParticipant", 'DateTime'>
     readonly updatedAt: FieldRef<"TestParticipant", 'DateTime'>
     readonly highscore: FieldRef<"TestParticipant", 'Float'>
@@ -38827,7 +38899,11 @@ export namespace Prisma {
     lastInnerLevelId: 'lastInnerLevelId',
     lastLevelUnlock: 'lastLevelUnlock',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    pretest: 'pretest',
+    pretestTryCount: 'pretestTryCount',
+    posttest: 'posttest',
+    posttestTryCount: 'posttestTryCount'
   };
 
   export type ZoneScalarFieldEnum = (typeof ZoneScalarFieldEnum)[keyof typeof ZoneScalarFieldEnum]
@@ -39066,8 +39142,6 @@ export namespace Prisma {
     id: 'id',
     testId: 'testId',
     userId: 'userId',
-    firstTimeAt: 'firstTimeAt',
-    lastTestAt: 'lastTestAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     highscore: 'highscore'
@@ -39894,6 +39968,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFilter<"Zone"> | string
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
+    pretest?: IntFilter<"Zone"> | number
+    pretestTryCount?: IntFilter<"Zone"> | number
+    posttest?: IntFilter<"Zone"> | number
+    posttestTryCount?: IntFilter<"Zone"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -39909,6 +39987,10 @@ export namespace Prisma {
     lastLevelUnlock?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -39928,6 +40010,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFilter<"Zone"> | string
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
+    pretest?: IntFilter<"Zone"> | number
+    pretestTryCount?: IntFilter<"Zone"> | number
+    posttest?: IntFilter<"Zone"> | number
+    posttestTryCount?: IntFilter<"Zone"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_inGameId">
 
@@ -39943,9 +40029,15 @@ export namespace Prisma {
     lastLevelUnlock?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
     _count?: ZoneCountOrderByAggregateInput
+    _avg?: ZoneAvgOrderByAggregateInput
     _max?: ZoneMaxOrderByAggregateInput
     _min?: ZoneMinOrderByAggregateInput
+    _sum?: ZoneSumOrderByAggregateInput
   }
 
   export type ZoneScalarWhereWithAggregatesInput = {
@@ -39963,6 +40055,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringWithAggregatesFilter<"Zone"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Zone"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Zone"> | Date | string
+    pretest?: IntWithAggregatesFilter<"Zone"> | number
+    pretestTryCount?: IntWithAggregatesFilter<"Zone"> | number
+    posttest?: IntWithAggregatesFilter<"Zone"> | number
+    posttestTryCount?: IntWithAggregatesFilter<"Zone"> | number
   }
 
   export type LevelWhereInput = {
@@ -41199,8 +41295,6 @@ export namespace Prisma {
     id?: StringFilter<"TestParticipant"> | string
     testId?: StringFilter<"TestParticipant"> | string
     userId?: StringFilter<"TestParticipant"> | string
-    firstTimeAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
-    lastTestAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
@@ -41213,8 +41307,6 @@ export namespace Prisma {
     id?: SortOrder
     testId?: SortOrder
     userId?: SortOrder
-    firstTimeAt?: SortOrderInput | SortOrder
-    lastTestAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
@@ -41231,8 +41323,6 @@ export namespace Prisma {
     NOT?: TestParticipantWhereInput | TestParticipantWhereInput[]
     testId?: StringFilter<"TestParticipant"> | string
     userId?: StringFilter<"TestParticipant"> | string
-    firstTimeAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
-    lastTestAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
@@ -41245,8 +41335,6 @@ export namespace Prisma {
     id?: SortOrder
     testId?: SortOrder
     userId?: SortOrder
-    firstTimeAt?: SortOrderInput | SortOrder
-    lastTestAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
@@ -41264,8 +41352,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"TestParticipant"> | string
     testId?: StringWithAggregatesFilter<"TestParticipant"> | string
     userId?: StringWithAggregatesFilter<"TestParticipant"> | string
-    firstTimeAt?: DateTimeNullableWithAggregatesFilter<"TestParticipant"> | Date | string | null
-    lastTestAt?: DateTimeNullableWithAggregatesFilter<"TestParticipant"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TestParticipant"> | Date | string
     highscore?: FloatWithAggregatesFilter<"TestParticipant"> | number
@@ -42471,6 +42557,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
     user: UserCreateNestedOneWithoutZonesInput
   }
 
@@ -42486,6 +42576,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
   }
 
   export type ZoneUpdateInput = {
@@ -42499,6 +42593,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutZonesNestedInput
   }
 
@@ -42514,6 +42612,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ZoneCreateManyInput = {
@@ -42528,6 +42630,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
   }
 
   export type ZoneUpdateManyMutationInput = {
@@ -42541,6 +42647,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ZoneUncheckedUpdateManyInput = {
@@ -42555,6 +42665,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type LevelCreateInput = {
@@ -43886,8 +44000,6 @@ export namespace Prisma {
 
   export type TestParticipantCreateInput = {
     id?: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -43900,8 +44012,6 @@ export namespace Prisma {
     id?: string
     testId: string
     userId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -43910,8 +44020,6 @@ export namespace Prisma {
 
   export type TestParticipantUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -43924,8 +44032,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     testId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -43936,8 +44042,6 @@ export namespace Prisma {
     id?: string
     testId: string
     userId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -43945,8 +44049,6 @@ export namespace Prisma {
 
   export type TestParticipantUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -43956,8 +44058,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     testId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -45378,6 +45478,17 @@ export namespace Prisma {
     lastLevelUnlock?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
+  }
+
+  export type ZoneAvgOrderByAggregateInput = {
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
   }
 
   export type ZoneMaxOrderByAggregateInput = {
@@ -45392,6 +45503,10 @@ export namespace Prisma {
     lastLevelUnlock?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
   }
 
   export type ZoneMinOrderByAggregateInput = {
@@ -45406,6 +45521,17 @@ export namespace Prisma {
     lastLevelUnlock?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
+  }
+
+  export type ZoneSumOrderByAggregateInput = {
+    pretest?: SortOrder
+    pretestTryCount?: SortOrder
+    posttest?: SortOrder
+    posttestTryCount?: SortOrder
   }
 
   export type LevelUserIdInGameIdCompoundUniqueInput = {
@@ -46228,8 +46354,6 @@ export namespace Prisma {
     id?: SortOrder
     testId?: SortOrder
     userId?: SortOrder
-    firstTimeAt?: SortOrder
-    lastTestAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
@@ -46243,8 +46367,6 @@ export namespace Prisma {
     id?: SortOrder
     testId?: SortOrder
     userId?: SortOrder
-    firstTimeAt?: SortOrder
-    lastTestAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
@@ -46254,8 +46376,6 @@ export namespace Prisma {
     id?: SortOrder
     testId?: SortOrder
     userId?: SortOrder
-    firstTimeAt?: SortOrder
-    lastTestAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     highscore?: SortOrder
@@ -50993,6 +51113,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
   }
 
   export type ZoneUncheckedCreateWithoutUserInput = {
@@ -51006,6 +51130,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
   }
 
   export type ZoneCreateOrConnectWithoutUserInput = {
@@ -51068,8 +51196,6 @@ export namespace Prisma {
 
   export type TestParticipantCreateWithoutUserInput = {
     id?: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -51080,8 +51206,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedCreateWithoutUserInput = {
     id?: string
     testId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -51625,6 +51749,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFilter<"Zone"> | string
     createdAt?: DateTimeFilter<"Zone"> | Date | string
     updatedAt?: DateTimeFilter<"Zone"> | Date | string
+    pretest?: IntFilter<"Zone"> | number
+    pretestTryCount?: IntFilter<"Zone"> | number
+    posttest?: IntFilter<"Zone"> | number
+    posttestTryCount?: IntFilter<"Zone"> | number
   }
 
   export type UserLoginUpsertWithWhereUniqueWithoutUserInput = {
@@ -51704,8 +51832,6 @@ export namespace Prisma {
     id?: StringFilter<"TestParticipant"> | string
     testId?: StringFilter<"TestParticipant"> | string
     userId?: StringFilter<"TestParticipant"> | string
-    firstTimeAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
-    lastTestAt?: DateTimeNullableFilter<"TestParticipant"> | Date | string | null
     createdAt?: DateTimeFilter<"TestParticipant"> | Date | string
     updatedAt?: DateTimeFilter<"TestParticipant"> | Date | string
     highscore?: FloatFilter<"TestParticipant"> | number
@@ -55654,8 +55780,6 @@ export namespace Prisma {
 
   export type TestParticipantCreateWithoutTestInput = {
     id?: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -55666,8 +55790,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedCreateWithoutTestInput = {
     id?: string
     userId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -56146,8 +56268,6 @@ export namespace Prisma {
 
   export type TestParticipantCreateWithoutRecordsInput = {
     id?: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -56159,8 +56279,6 @@ export namespace Prisma {
     id?: string
     testId: string
     userId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -56184,8 +56302,6 @@ export namespace Prisma {
 
   export type TestParticipantUpdateWithoutRecordsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -56197,8 +56313,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     testId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -58185,6 +58299,10 @@ export namespace Prisma {
     lastLevelUnlock?: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    pretest?: number
+    pretestTryCount?: number
+    posttest?: number
+    posttestTryCount?: number
   }
 
   export type UserLoginCreateManyUserInput = {
@@ -58204,8 +58322,6 @@ export namespace Prisma {
   export type TestParticipantCreateManyUserInput = {
     id?: string
     testId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -58337,6 +58453,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ZoneUncheckedUpdateWithoutUserInput = {
@@ -58350,6 +58470,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ZoneUncheckedUpdateManyWithoutUserInput = {
@@ -58363,6 +58487,10 @@ export namespace Prisma {
     lastLevelUnlock?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pretest?: IntFieldUpdateOperationsInput | number
+    pretestTryCount?: IntFieldUpdateOperationsInput | number
+    posttest?: IntFieldUpdateOperationsInput | number
+    posttestTryCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserLoginUpdateWithoutUserInput = {
@@ -58409,8 +58537,6 @@ export namespace Prisma {
 
   export type TestParticipantUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -58421,8 +58547,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     testId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -58432,8 +58556,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     testId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -59383,8 +59505,6 @@ export namespace Prisma {
   export type TestParticipantCreateManyTestInput = {
     id?: string
     userId: string
-    firstTimeAt?: Date | string | null
-    lastTestAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highscore?: number
@@ -59392,8 +59512,6 @@ export namespace Prisma {
 
   export type TestParticipantUpdateWithoutTestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -59404,8 +59522,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedUpdateWithoutTestInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number
@@ -59415,8 +59531,6 @@ export namespace Prisma {
   export type TestParticipantUncheckedUpdateManyWithoutTestInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    firstTimeAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    lastTestAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highscore?: FloatFieldUpdateOperationsInput | number

@@ -190,7 +190,11 @@ exports.Prisma.ZoneScalarFieldEnum = {
   lastInnerLevelId: 'lastInnerLevelId',
   lastLevelUnlock: 'lastLevelUnlock',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  pretest: 'pretest',
+  pretestTryCount: 'pretestTryCount',
+  posttest: 'posttest',
+  posttestTryCount: 'posttestTryCount'
 };
 
 exports.Prisma.LevelScalarFieldEnum = {
@@ -381,8 +385,6 @@ exports.Prisma.TestParticipantScalarFieldEnum = {
   id: 'id',
   testId: 'testId',
   userId: 'userId',
-  firstTimeAt: 'firstTimeAt',
-  lastTestAt: 'lastTestAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   highscore: 'highscore'
