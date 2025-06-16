@@ -20237,6 +20237,9 @@ export namespace Prisma {
     email: string | null
     name: string | null
     suspend: boolean | null
+    authenticatorSecret: string | null
+    authenticatorQrUrl: string | null
+    authenticatorEnabled: boolean | null
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
@@ -20251,6 +20254,9 @@ export namespace Prisma {
     email: string | null
     name: string | null
     suspend: boolean | null
+    authenticatorSecret: string | null
+    authenticatorQrUrl: string | null
+    authenticatorEnabled: boolean | null
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
@@ -20265,6 +20271,9 @@ export namespace Prisma {
     email: number
     name: number
     suspend: number
+    authenticatorSecret: number
+    authenticatorQrUrl: number
+    authenticatorEnabled: number
     role: number
     provinceId: number
     cityId: number
@@ -20281,6 +20290,9 @@ export namespace Prisma {
     email?: true
     name?: true
     suspend?: true
+    authenticatorSecret?: true
+    authenticatorQrUrl?: true
+    authenticatorEnabled?: true
     role?: true
     provinceId?: true
     cityId?: true
@@ -20295,6 +20307,9 @@ export namespace Prisma {
     email?: true
     name?: true
     suspend?: true
+    authenticatorSecret?: true
+    authenticatorQrUrl?: true
+    authenticatorEnabled?: true
     role?: true
     provinceId?: true
     cityId?: true
@@ -20309,6 +20324,9 @@ export namespace Prisma {
     email?: true
     name?: true
     suspend?: true
+    authenticatorSecret?: true
+    authenticatorQrUrl?: true
+    authenticatorEnabled?: true
     role?: true
     provinceId?: true
     cityId?: true
@@ -20396,6 +20414,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend: boolean
+    authenticatorSecret: string | null
+    authenticatorQrUrl: string | null
+    authenticatorEnabled: boolean
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
@@ -20427,6 +20448,9 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     suspend?: boolean
+    authenticatorSecret?: boolean
+    authenticatorQrUrl?: boolean
+    authenticatorEnabled?: boolean
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
@@ -20454,6 +20478,9 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     suspend?: boolean
+    authenticatorSecret?: boolean
+    authenticatorQrUrl?: boolean
+    authenticatorEnabled?: boolean
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
@@ -20471,6 +20498,9 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     suspend?: boolean
+    authenticatorSecret?: boolean
+    authenticatorQrUrl?: boolean
+    authenticatorEnabled?: boolean
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
@@ -20488,6 +20518,9 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     suspend?: boolean
+    authenticatorSecret?: boolean
+    authenticatorQrUrl?: boolean
+    authenticatorEnabled?: boolean
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
@@ -20496,7 +20529,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "provinceId" | "cityId" | "schoolId" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "authenticatorSecret" | "authenticatorQrUrl" | "authenticatorEnabled" | "role" | "provinceId" | "cityId" | "schoolId" | "createdAt" | "updatedAt", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Admin$userArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
@@ -20545,6 +20578,9 @@ export namespace Prisma {
       email: string
       name: string
       suspend: boolean
+      authenticatorSecret: string | null
+      authenticatorQrUrl: string | null
+      authenticatorEnabled: boolean
       role: $Enums.Role | null
       provinceId: string | null
       cityId: string | null
@@ -20991,6 +21027,9 @@ export namespace Prisma {
     readonly email: FieldRef<"Admin", 'String'>
     readonly name: FieldRef<"Admin", 'String'>
     readonly suspend: FieldRef<"Admin", 'Boolean'>
+    readonly authenticatorSecret: FieldRef<"Admin", 'String'>
+    readonly authenticatorQrUrl: FieldRef<"Admin", 'String'>
+    readonly authenticatorEnabled: FieldRef<"Admin", 'Boolean'>
     readonly role: FieldRef<"Admin", 'Role'>
     readonly provinceId: FieldRef<"Admin", 'String'>
     readonly cityId: FieldRef<"Admin", 'String'>
@@ -39047,6 +39086,9 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     suspend: 'suspend',
+    authenticatorSecret: 'authenticatorSecret',
+    authenticatorQrUrl: 'authenticatorQrUrl',
+    authenticatorEnabled: 'authenticatorEnabled',
     role: 'role',
     provinceId: 'provinceId',
     cityId: 'cityId',
@@ -40743,6 +40785,9 @@ export namespace Prisma {
     email?: StringFilter<"Admin"> | string
     name?: StringFilter<"Admin"> | string
     suspend?: BoolFilter<"Admin"> | boolean
+    authenticatorSecret?: StringNullableFilter<"Admin"> | string | null
+    authenticatorQrUrl?: StringNullableFilter<"Admin"> | string | null
+    authenticatorEnabled?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
@@ -40769,6 +40814,9 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     suspend?: SortOrder
+    authenticatorSecret?: SortOrderInput | SortOrder
+    authenticatorQrUrl?: SortOrderInput | SortOrder
+    authenticatorEnabled?: SortOrder
     role?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
@@ -40798,6 +40846,9 @@ export namespace Prisma {
     NOT?: AdminWhereInput | AdminWhereInput[]
     name?: StringFilter<"Admin"> | string
     suspend?: BoolFilter<"Admin"> | boolean
+    authenticatorSecret?: StringNullableFilter<"Admin"> | string | null
+    authenticatorQrUrl?: StringNullableFilter<"Admin"> | string | null
+    authenticatorEnabled?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
@@ -40824,6 +40875,9 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     suspend?: SortOrder
+    authenticatorSecret?: SortOrderInput | SortOrder
+    authenticatorQrUrl?: SortOrderInput | SortOrder
+    authenticatorEnabled?: SortOrder
     role?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
@@ -40844,6 +40898,9 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Admin"> | string
     name?: StringWithAggregatesFilter<"Admin"> | string
     suspend?: BoolWithAggregatesFilter<"Admin"> | boolean
+    authenticatorSecret?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    authenticatorQrUrl?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    authenticatorEnabled?: BoolWithAggregatesFilter<"Admin"> | boolean
     role?: EnumRoleNullableWithAggregatesFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
@@ -43425,6 +43482,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43448,6 +43508,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -43471,6 +43534,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43494,6 +43560,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43517,6 +43586,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -43531,6 +43603,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43542,6 +43617,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46007,6 +46085,9 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     suspend?: SortOrder
+    authenticatorSecret?: SortOrder
+    authenticatorQrUrl?: SortOrder
+    authenticatorEnabled?: SortOrder
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
@@ -46021,6 +46102,9 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     suspend?: SortOrder
+    authenticatorSecret?: SortOrder
+    authenticatorQrUrl?: SortOrder
+    authenticatorEnabled?: SortOrder
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
@@ -46035,6 +46119,9 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     suspend?: SortOrder
+    authenticatorSecret?: SortOrder
+    authenticatorQrUrl?: SortOrder
+    authenticatorEnabled?: SortOrder
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
@@ -49964,6 +50051,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49986,6 +50076,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     cityId?: string | null
     schoolId?: string | null
@@ -50197,6 +50290,9 @@ export namespace Prisma {
     email?: StringFilter<"Admin"> | string
     name?: StringFilter<"Admin"> | string
     suspend?: BoolFilter<"Admin"> | boolean
+    authenticatorSecret?: StringNullableFilter<"Admin"> | string | null
+    authenticatorQrUrl?: StringNullableFilter<"Admin"> | string | null
+    authenticatorEnabled?: BoolFilter<"Admin"> | boolean
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
@@ -50414,6 +50510,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50436,6 +50535,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     schoolId?: string | null
@@ -50772,6 +50874,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -50794,6 +50899,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -51059,6 +51167,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -51081,6 +51192,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -51680,6 +51794,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -51702,6 +51819,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54677,6 +54797,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54699,6 +54822,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -54726,6 +54852,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54748,6 +54877,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -54786,6 +54918,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54808,6 +54943,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54841,6 +54979,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54863,6 +55004,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54885,6 +55029,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54907,6 +55054,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -55048,6 +55198,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55070,6 +55223,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55191,6 +55347,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55213,6 +55372,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -55289,6 +55451,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55311,6 +55476,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55812,6 +55980,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55834,6 +56005,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -55888,6 +56062,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55910,6 +56087,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56324,6 +56504,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56346,6 +56529,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -56406,6 +56592,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56428,6 +56617,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -56466,6 +56658,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56488,6 +56683,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56560,6 +56758,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56582,6 +56783,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56649,6 +56853,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56671,6 +56878,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -56786,6 +56996,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56808,6 +57021,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57466,6 +57682,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     cityId?: string | null
     schoolId?: string | null
@@ -57707,6 +57926,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57729,6 +57951,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57751,6 +57976,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57803,6 +58031,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     schoolId?: string | null
@@ -58006,6 +58237,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58028,6 +58262,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58050,6 +58287,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58091,6 +58331,9 @@ export namespace Prisma {
     email: string
     name: string
     suspend?: boolean
+    authenticatorSecret?: string | null
+    authenticatorQrUrl?: string | null
+    authenticatorEnabled?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
@@ -58237,6 +58480,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58259,6 +58505,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58281,6 +58530,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null

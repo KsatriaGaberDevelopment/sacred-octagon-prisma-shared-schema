@@ -321,6 +321,9 @@ model Admin {
   email                String                  @unique
   name                 String
   suspend              Boolean                 @default(false)
+  authenticatorSecret  String?
+  authenticatorQrUrl   String?
+  authenticatorEnabled Boolean                 @default(false)
   role                 Role?
   user                 User?
   provinceId           String?
