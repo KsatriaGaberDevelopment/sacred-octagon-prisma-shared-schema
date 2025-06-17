@@ -347,7 +347,7 @@ model Admin {
 
 model AdminLog {
   id        String   @id @default(cuid())
-  ipAddress String
+  ipAddress String?
   old       Json?
   new       Json?
   adminId   String

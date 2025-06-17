@@ -21991,7 +21991,7 @@ export namespace Prisma {
 
   export type AdminLogGroupByOutputType = {
     id: string
-    ipAddress: string
+    ipAddress: string | null
     old: JsonValue | null
     new: JsonValue | null
     adminId: string
@@ -22082,7 +22082,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      ipAddress: string
+      ipAddress: string | null
       old: Prisma.JsonValue | null
       new: Prisma.JsonValue | null
       adminId: string
@@ -42156,7 +42156,7 @@ export namespace Prisma {
     OR?: AdminLogWhereInput[]
     NOT?: AdminLogWhereInput | AdminLogWhereInput[]
     id?: StringFilter<"AdminLog"> | string
-    ipAddress?: StringFilter<"AdminLog"> | string
+    ipAddress?: StringNullableFilter<"AdminLog"> | string | null
     old?: JsonNullableFilter<"AdminLog">
     new?: JsonNullableFilter<"AdminLog">
     adminId?: StringFilter<"AdminLog"> | string
@@ -42168,7 +42168,7 @@ export namespace Prisma {
 
   export type AdminLogOrderByWithRelationInput = {
     id?: SortOrder
-    ipAddress?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
     old?: SortOrderInput | SortOrder
     new?: SortOrderInput | SortOrder
     adminId?: SortOrder
@@ -42183,7 +42183,7 @@ export namespace Prisma {
     AND?: AdminLogWhereInput | AdminLogWhereInput[]
     OR?: AdminLogWhereInput[]
     NOT?: AdminLogWhereInput | AdminLogWhereInput[]
-    ipAddress?: StringFilter<"AdminLog"> | string
+    ipAddress?: StringNullableFilter<"AdminLog"> | string | null
     old?: JsonNullableFilter<"AdminLog">
     new?: JsonNullableFilter<"AdminLog">
     adminId?: StringFilter<"AdminLog"> | string
@@ -42195,7 +42195,7 @@ export namespace Prisma {
 
   export type AdminLogOrderByWithAggregationInput = {
     id?: SortOrder
-    ipAddress?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
     old?: SortOrderInput | SortOrder
     new?: SortOrderInput | SortOrder
     adminId?: SortOrder
@@ -42212,7 +42212,7 @@ export namespace Prisma {
     OR?: AdminLogScalarWhereWithAggregatesInput[]
     NOT?: AdminLogScalarWhereWithAggregatesInput | AdminLogScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AdminLog"> | string
-    ipAddress?: StringWithAggregatesFilter<"AdminLog"> | string
+    ipAddress?: StringNullableWithAggregatesFilter<"AdminLog"> | string | null
     old?: JsonNullableWithAggregatesFilter<"AdminLog">
     new?: JsonNullableWithAggregatesFilter<"AdminLog">
     adminId?: StringWithAggregatesFilter<"AdminLog"> | string
@@ -44946,7 +44946,7 @@ export namespace Prisma {
 
   export type AdminLogCreateInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: string | null
@@ -44957,7 +44957,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedCreateInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     adminId: string
@@ -44968,7 +44968,7 @@ export namespace Prisma {
 
   export type AdminLogUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44979,7 +44979,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     adminId?: StringFieldUpdateOperationsInput | string
@@ -44990,7 +44990,7 @@ export namespace Prisma {
 
   export type AdminLogCreateManyInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     adminId: string
@@ -45001,7 +45001,7 @@ export namespace Prisma {
 
   export type AdminLogUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45011,7 +45011,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     adminId?: StringFieldUpdateOperationsInput | string
@@ -55931,7 +55931,7 @@ export namespace Prisma {
 
   export type AdminLogCreateWithoutAdminInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: string | null
@@ -55941,7 +55941,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedCreateWithoutAdminInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: string | null
@@ -56411,7 +56411,7 @@ export namespace Prisma {
     OR?: AdminLogScalarWhereInput[]
     NOT?: AdminLogScalarWhereInput | AdminLogScalarWhereInput[]
     id?: StringFilter<"AdminLog"> | string
-    ipAddress?: StringFilter<"AdminLog"> | string
+    ipAddress?: StringNullableFilter<"AdminLog"> | string | null
     old?: JsonNullableFilter<"AdminLog">
     new?: JsonNullableFilter<"AdminLog">
     adminId?: StringFilter<"AdminLog"> | string
@@ -61048,7 +61048,7 @@ export namespace Prisma {
 
   export type AdminLogCreateManyAdminInput = {
     id?: string
-    ipAddress: string
+    ipAddress?: string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: string | null
@@ -61377,7 +61377,7 @@ export namespace Prisma {
 
   export type AdminLogUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61387,7 +61387,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61397,7 +61397,7 @@ export namespace Prisma {
 
   export type AdminLogUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ipAddress?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     old?: NullableJsonNullValueInput | InputJsonValue
     new?: NullableJsonNullValueInput | InputJsonValue
     table?: NullableStringFieldUpdateOperationsInput | string | null
