@@ -342,6 +342,21 @@ model Admin {
   transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
   redeemCodes          RedeemCode[]
   tests                Test[]
+  logs                 AdminLog[]
+}
+
+model AdminLog {
+  id        String   @id @default(cuid())
+  ipAddress String
+  old       Json?
+  new       Json?
+  adminId   String
+  table     String?
+  operation String?
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
 }
 
 model AdminOperationHistory {

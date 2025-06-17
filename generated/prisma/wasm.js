@@ -322,6 +322,17 @@ exports.Prisma.AdminScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AdminLogScalarFieldEnum = {
+  id: 'id',
+  ipAddress: 'ipAddress',
+  old: 'old',
+  new: 'new',
+  adminId: 'adminId',
+  table: 'table',
+  operation: 'operation',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.AdminOperationHistoryScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
@@ -500,6 +511,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
@@ -576,6 +592,7 @@ exports.Prisma.ModelName = {
   ChampionshipRecord: 'ChampionshipRecord',
   UserLogin: 'UserLogin',
   Admin: 'Admin',
+  AdminLog: 'AdminLog',
   AdminOperationHistory: 'AdminOperationHistory',
   AdminAuthority: 'AdminAuthority',
   Banner: 'Banner',
