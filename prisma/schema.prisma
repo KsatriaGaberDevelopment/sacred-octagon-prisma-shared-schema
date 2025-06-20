@@ -248,7 +248,6 @@ model GempoRecord {
   id             String    @id @default(cuid())
   played         Int       @default(0)
   point          Int       @default(0)
-  correctAttempt Float     @default(0)
   lastPlayedAt   DateTime?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
@@ -256,6 +255,7 @@ model GempoRecord {
   inGameId       String
   userId         String
   zoneInGameId   String
+  correctAttempt Float     @default(0)
   user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, inGameId])
@@ -307,27 +307,29 @@ model UserLogin {
 }
 
 model Admin {
-  id                   String             @id @default(cuid())
-  authId               String             @unique
-  email                String             @unique
+  id                   String                  @id @default(cuid())
+  authId               String                  @unique
+  email                String                  @unique
   name                 String
-  suspend              Boolean            @default(false)
+  suspend              Boolean                 @default(false)
   role                 Role?
   provinceId           String?
   cityId               String?
   schoolId             String?
-  createdAt            DateTime           @default(now())
-  updatedAt            DateTime           @updatedAt
-  authenticatorEnabled Boolean            @default(false)
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
+  authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
-  city                 City?              @relation(fields: [cityId], references: [id])
-  province             Province?          @relation(fields: [provinceId], references: [id])
-  school               School?            @relation(fields: [schoolId], references: [id])
+  city                 City?                   @relation(fields: [cityId], references: [id])
+  province             Province?               @relation(fields: [provinceId], references: [id])
+  school               School?                 @relation(fields: [schoolId], references: [id])
   authority            AdminAuthority[]
   logs                 AdminLog[]
-  transactions         AdminTransaction[] @relation("transactions")
-  transactionProcessed AdminTransaction[] @relation("transactionProcessed")
+  operationHistories   AdminOperationHistory[] @relation("OperationHistory")
+  operations           AdminOperationHistory[] @relation("Operations")
+  transactions         AdminTransaction[]      @relation("transactions")
+  transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
   banner               Banner[]
   redeemCodes          RedeemCode[]
   tests                Test[]
@@ -354,6 +356,8 @@ model AdminOperationHistory {
   adminId   String
   opAdminId String
   operation Operation @default(None)
+  admin     Admin     @relation("OperationHistory", fields: [adminId], references: [id], onDelete: Cascade)
+  opAdmin   Admin     @relation("Operations", fields: [opAdminId], references: [id], onDelete: Cascade)
 
   @@id([id, createdAt], map: "AdminOperationHistory_pkey1")
 }

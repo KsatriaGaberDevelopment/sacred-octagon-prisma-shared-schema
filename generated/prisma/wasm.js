@@ -269,14 +269,14 @@ exports.Prisma.GempoRecordScalarFieldEnum = {
   id: 'id',
   played: 'played',
   point: 'point',
-  correctAttempt: 'correctAttempt',
   lastPlayedAt: 'lastPlayedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   gempoInGameId: 'gempoInGameId',
   inGameId: 'inGameId',
   userId: 'userId',
-  zoneInGameId: 'zoneInGameId'
+  zoneInGameId: 'zoneInGameId',
+  correctAttempt: 'correctAttempt'
 };
 
 exports.Prisma.ChampionshipRecordScalarFieldEnum = {

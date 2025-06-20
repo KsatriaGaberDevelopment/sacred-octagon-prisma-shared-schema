@@ -3933,6 +3933,8 @@ export namespace Prisma {
   export type AdminCountOutputType = {
     authority: number
     logs: number
+    operationHistories: number
+    operations: number
     transactions: number
     transactionProcessed: number
     banner: number
@@ -3943,6 +3945,8 @@ export namespace Prisma {
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     authority?: boolean | AdminCountOutputTypeCountAuthorityArgs
     logs?: boolean | AdminCountOutputTypeCountLogsArgs
+    operationHistories?: boolean | AdminCountOutputTypeCountOperationHistoriesArgs
+    operations?: boolean | AdminCountOutputTypeCountOperationsArgs
     transactions?: boolean | AdminCountOutputTypeCountTransactionsArgs
     transactionProcessed?: boolean | AdminCountOutputTypeCountTransactionProcessedArgs
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
@@ -3973,6 +3977,20 @@ export namespace Prisma {
    */
   export type AdminCountOutputTypeCountLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AdminLogWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountOperationHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminOperationHistoryWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountOperationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminOperationHistoryWhereInput
   }
 
   /**
@@ -16826,7 +16844,6 @@ export namespace Prisma {
     id: string | null
     played: number | null
     point: number | null
-    correctAttempt: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -16834,13 +16851,13 @@ export namespace Prisma {
     inGameId: string | null
     userId: string | null
     zoneInGameId: string | null
+    correctAttempt: number | null
   }
 
   export type GempoRecordMaxAggregateOutputType = {
     id: string | null
     played: number | null
     point: number | null
-    correctAttempt: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -16848,13 +16865,13 @@ export namespace Prisma {
     inGameId: string | null
     userId: string | null
     zoneInGameId: string | null
+    correctAttempt: number | null
   }
 
   export type GempoRecordCountAggregateOutputType = {
     id: number
     played: number
     point: number
-    correctAttempt: number
     lastPlayedAt: number
     createdAt: number
     updatedAt: number
@@ -16862,6 +16879,7 @@ export namespace Prisma {
     inGameId: number
     userId: number
     zoneInGameId: number
+    correctAttempt: number
     _all: number
   }
 
@@ -16882,7 +16900,6 @@ export namespace Prisma {
     id?: true
     played?: true
     point?: true
-    correctAttempt?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -16890,13 +16907,13 @@ export namespace Prisma {
     inGameId?: true
     userId?: true
     zoneInGameId?: true
+    correctAttempt?: true
   }
 
   export type GempoRecordMaxAggregateInputType = {
     id?: true
     played?: true
     point?: true
-    correctAttempt?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -16904,13 +16921,13 @@ export namespace Prisma {
     inGameId?: true
     userId?: true
     zoneInGameId?: true
+    correctAttempt?: true
   }
 
   export type GempoRecordCountAggregateInputType = {
     id?: true
     played?: true
     point?: true
-    correctAttempt?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -16918,6 +16935,7 @@ export namespace Prisma {
     inGameId?: true
     userId?: true
     zoneInGameId?: true
+    correctAttempt?: true
     _all?: true
   }
 
@@ -17011,7 +17029,6 @@ export namespace Prisma {
     id: string
     played: number
     point: number
-    correctAttempt: number
     lastPlayedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -17019,6 +17036,7 @@ export namespace Prisma {
     inGameId: string
     userId: string
     zoneInGameId: string
+    correctAttempt: number
     _count: GempoRecordCountAggregateOutputType | null
     _avg: GempoRecordAvgAggregateOutputType | null
     _sum: GempoRecordSumAggregateOutputType | null
@@ -17044,7 +17062,6 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
-    correctAttempt?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -17052,6 +17069,7 @@ export namespace Prisma {
     inGameId?: boolean
     userId?: boolean
     zoneInGameId?: boolean
+    correctAttempt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
@@ -17059,7 +17077,6 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
-    correctAttempt?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -17067,6 +17084,7 @@ export namespace Prisma {
     inGameId?: boolean
     userId?: boolean
     zoneInGameId?: boolean
+    correctAttempt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
@@ -17074,7 +17092,6 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
-    correctAttempt?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -17082,6 +17099,7 @@ export namespace Prisma {
     inGameId?: boolean
     userId?: boolean
     zoneInGameId?: boolean
+    correctAttempt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gempoRecord"]>
 
@@ -17089,7 +17107,6 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
-    correctAttempt?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -17097,9 +17114,10 @@ export namespace Prisma {
     inGameId?: boolean
     userId?: boolean
     zoneInGameId?: boolean
+    correctAttempt?: boolean
   }
 
-  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "played" | "point" | "correctAttempt" | "lastPlayedAt" | "createdAt" | "updatedAt" | "gempoInGameId" | "inGameId" | "userId" | "zoneInGameId", ExtArgs["result"]["gempoRecord"]>
+  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "played" | "point" | "lastPlayedAt" | "createdAt" | "updatedAt" | "gempoInGameId" | "inGameId" | "userId" | "zoneInGameId" | "correctAttempt", ExtArgs["result"]["gempoRecord"]>
   export type GempoRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -17119,7 +17137,6 @@ export namespace Prisma {
       id: string
       played: number
       point: number
-      correctAttempt: number
       lastPlayedAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -17127,6 +17144,7 @@ export namespace Prisma {
       inGameId: string
       userId: string
       zoneInGameId: string
+      correctAttempt: number
     }, ExtArgs["result"]["gempoRecord"]>
     composites: {}
   }
@@ -17554,7 +17572,6 @@ export namespace Prisma {
     readonly id: FieldRef<"GempoRecord", 'String'>
     readonly played: FieldRef<"GempoRecord", 'Int'>
     readonly point: FieldRef<"GempoRecord", 'Int'>
-    readonly correctAttempt: FieldRef<"GempoRecord", 'Float'>
     readonly lastPlayedAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly createdAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"GempoRecord", 'DateTime'>
@@ -17562,6 +17579,7 @@ export namespace Prisma {
     readonly inGameId: FieldRef<"GempoRecord", 'String'>
     readonly userId: FieldRef<"GempoRecord", 'String'>
     readonly zoneInGameId: FieldRef<"GempoRecord", 'String'>
+    readonly correctAttempt: FieldRef<"GempoRecord", 'Float'>
   }
     
 
@@ -20538,6 +20556,8 @@ export namespace Prisma {
     school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     logs?: boolean | Admin$logsArgs<ExtArgs>
+    operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
+    operations?: boolean | Admin$operationsArgs<ExtArgs>
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
@@ -20611,6 +20631,8 @@ export namespace Prisma {
     school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     logs?: boolean | Admin$logsArgs<ExtArgs>
+    operationHistories?: boolean | Admin$operationHistoriesArgs<ExtArgs>
+    operations?: boolean | Admin$operationsArgs<ExtArgs>
     transactions?: boolean | Admin$transactionsArgs<ExtArgs>
     transactionProcessed?: boolean | Admin$transactionProcessedArgs<ExtArgs>
     banner?: boolean | Admin$bannerArgs<ExtArgs>
@@ -20638,6 +20660,8 @@ export namespace Prisma {
       school: Prisma.$SchoolPayload<ExtArgs> | null
       authority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       logs: Prisma.$AdminLogPayload<ExtArgs>[]
+      operationHistories: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
+      operations: Prisma.$AdminOperationHistoryPayload<ExtArgs>[]
       transactions: Prisma.$AdminTransactionPayload<ExtArgs>[]
       transactionProcessed: Prisma.$AdminTransactionPayload<ExtArgs>[]
       banner: Prisma.$BannerPayload<ExtArgs>[]
@@ -21059,6 +21083,8 @@ export namespace Prisma {
     school<T extends Admin$schoolArgs<ExtArgs> = {}>(args?: Subset<T, Admin$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     authority<T extends Admin$authorityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$authorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     logs<T extends Admin$logsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operationHistories<T extends Admin$operationHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operations<T extends Admin$operationsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$operationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminOperationHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactions<T extends Admin$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactionProcessed<T extends Admin$transactionProcessedArgs<ExtArgs> = {}>(args?: Subset<T, Admin$transactionProcessedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     banner<T extends Admin$bannerArgs<ExtArgs> = {}>(args?: Subset<T, Admin$bannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -21606,6 +21632,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AdminLogScalarFieldEnum | AdminLogScalarFieldEnum[]
+  }
+
+  /**
+   * Admin.operationHistories
+   */
+  export type Admin$operationHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminOperationHistory
+     */
+    select?: AdminOperationHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminOperationHistory
+     */
+    omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    where?: AdminOperationHistoryWhereInput
+    orderBy?: AdminOperationHistoryOrderByWithRelationInput | AdminOperationHistoryOrderByWithRelationInput[]
+    cursor?: AdminOperationHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminOperationHistoryScalarFieldEnum | AdminOperationHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * Admin.operations
+   */
+  export type Admin$operationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminOperationHistory
+     */
+    select?: AdminOperationHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminOperationHistory
+     */
+    omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    where?: AdminOperationHistoryWhereInput
+    orderBy?: AdminOperationHistoryOrderByWithRelationInput | AdminOperationHistoryOrderByWithRelationInput[]
+    cursor?: AdminOperationHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminOperationHistoryScalarFieldEnum | AdminOperationHistoryScalarFieldEnum[]
   }
 
   /**
@@ -23019,6 +23093,8 @@ export namespace Prisma {
     adminId?: boolean
     opAdminId?: boolean
     operation?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -23027,6 +23103,8 @@ export namespace Prisma {
     adminId?: boolean
     opAdminId?: boolean
     operation?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -23035,6 +23113,8 @@ export namespace Prisma {
     adminId?: boolean
     opAdminId?: boolean
     operation?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminOperationHistory"]>
 
   export type AdminOperationHistorySelectScalar = {
@@ -23046,10 +23126,25 @@ export namespace Prisma {
   }
 
   export type AdminOperationHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "adminId" | "opAdminId" | "operation", ExtArgs["result"]["adminOperationHistory"]>
+  export type AdminOperationHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type AdminOperationHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type AdminOperationHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    opAdmin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
 
   export type $AdminOperationHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AdminOperationHistory"
-    objects: {}
+    objects: {
+      admin: Prisma.$AdminPayload<ExtArgs>
+      opAdmin: Prisma.$AdminPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       createdAt: Date
@@ -23450,6 +23545,8 @@ export namespace Prisma {
    */
   export interface Prisma__AdminOperationHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    opAdmin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23501,6 +23598,10 @@ export namespace Prisma {
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    /**
      * Filter, which AdminOperationHistory to fetch.
      */
     where: AdminOperationHistoryWhereUniqueInput
@@ -23519,6 +23620,10 @@ export namespace Prisma {
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    /**
      * Filter, which AdminOperationHistory to fetch.
      */
     where: AdminOperationHistoryWhereUniqueInput
@@ -23536,6 +23641,10 @@ export namespace Prisma {
      * Omit specific fields from the AdminOperationHistory
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
     /**
      * Filter, which AdminOperationHistory to fetch.
      */
@@ -23585,6 +23694,10 @@ export namespace Prisma {
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    /**
      * Filter, which AdminOperationHistory to fetch.
      */
     where?: AdminOperationHistoryWhereInput
@@ -23633,6 +23746,10 @@ export namespace Prisma {
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    /**
      * Filter, which AdminOperationHistories to fetch.
      */
     where?: AdminOperationHistoryWhereInput
@@ -23676,6 +23793,10 @@ export namespace Prisma {
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
+    /**
      * The data needed to create a AdminOperationHistory.
      */
     data: XOR<AdminOperationHistoryCreateInput, AdminOperationHistoryUncheckedCreateInput>
@@ -23709,6 +23830,10 @@ export namespace Prisma {
      */
     data: AdminOperationHistoryCreateManyInput | AdminOperationHistoryCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23723,6 +23848,10 @@ export namespace Prisma {
      * Omit specific fields from the AdminOperationHistory
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
     /**
      * The data needed to update a AdminOperationHistory.
      */
@@ -23775,6 +23904,10 @@ export namespace Prisma {
      * Limit how many AdminOperationHistories to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23789,6 +23922,10 @@ export namespace Prisma {
      * Omit specific fields from the AdminOperationHistory
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
     /**
      * The filter to search for the AdminOperationHistory to update in case it exists.
      */
@@ -23815,6 +23952,10 @@ export namespace Prisma {
      * Omit specific fields from the AdminOperationHistory
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
     /**
      * Filter which AdminOperationHistory to delete.
      */
@@ -23847,6 +23988,10 @@ export namespace Prisma {
      * Omit specific fields from the AdminOperationHistory
      */
     omit?: AdminOperationHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminOperationHistoryInclude<ExtArgs> | null
   }
 
 
@@ -40096,14 +40241,14 @@ export namespace Prisma {
     id: 'id',
     played: 'played',
     point: 'point',
-    correctAttempt: 'correctAttempt',
     lastPlayedAt: 'lastPlayedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     gempoInGameId: 'gempoInGameId',
     inGameId: 'inGameId',
     userId: 'userId',
-    zoneInGameId: 'zoneInGameId'
+    zoneInGameId: 'zoneInGameId',
+    correctAttempt: 'correctAttempt'
   };
 
   export type GempoRecordScalarFieldEnum = (typeof GempoRecordScalarFieldEnum)[keyof typeof GempoRecordScalarFieldEnum]
@@ -41616,7 +41761,6 @@ export namespace Prisma {
     id?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
-    correctAttempt?: FloatFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -41624,6 +41768,7 @@ export namespace Prisma {
     inGameId?: StringFilter<"GempoRecord"> | string
     userId?: StringFilter<"GempoRecord"> | string
     zoneInGameId?: StringFilter<"GempoRecord"> | string
+    correctAttempt?: FloatFilter<"GempoRecord"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -41631,7 +41776,6 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
-    correctAttempt?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -41639,6 +41783,7 @@ export namespace Prisma {
     inGameId?: SortOrder
     userId?: SortOrder
     zoneInGameId?: SortOrder
+    correctAttempt?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -41650,7 +41795,6 @@ export namespace Prisma {
     NOT?: GempoRecordWhereInput | GempoRecordWhereInput[]
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
-    correctAttempt?: FloatFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -41658,6 +41802,7 @@ export namespace Prisma {
     inGameId?: StringFilter<"GempoRecord"> | string
     userId?: StringFilter<"GempoRecord"> | string
     zoneInGameId?: StringFilter<"GempoRecord"> | string
+    correctAttempt?: FloatFilter<"GempoRecord"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_inGameId">
 
@@ -41665,7 +41810,6 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
-    correctAttempt?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -41673,6 +41817,7 @@ export namespace Prisma {
     inGameId?: SortOrder
     userId?: SortOrder
     zoneInGameId?: SortOrder
+    correctAttempt?: SortOrder
     _count?: GempoRecordCountOrderByAggregateInput
     _avg?: GempoRecordAvgOrderByAggregateInput
     _max?: GempoRecordMaxOrderByAggregateInput
@@ -41687,7 +41832,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"GempoRecord"> | string
     played?: IntWithAggregatesFilter<"GempoRecord"> | number
     point?: IntWithAggregatesFilter<"GempoRecord"> | number
-    correctAttempt?: FloatWithAggregatesFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableWithAggregatesFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
@@ -41695,6 +41839,7 @@ export namespace Prisma {
     inGameId?: StringWithAggregatesFilter<"GempoRecord"> | string
     userId?: StringWithAggregatesFilter<"GempoRecord"> | string
     zoneInGameId?: StringWithAggregatesFilter<"GempoRecord"> | string
+    correctAttempt?: FloatWithAggregatesFilter<"GempoRecord"> | number
   }
 
   export type ChampionshipRecordWhereInput = {
@@ -41888,6 +42033,8 @@ export namespace Prisma {
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     logs?: AdminLogListRelationFilter
+    operationHistories?: AdminOperationHistoryListRelationFilter
+    operations?: AdminOperationHistoryListRelationFilter
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
     banner?: BannerListRelationFilter
@@ -41916,6 +42063,8 @@ export namespace Prisma {
     school?: SchoolOrderByWithRelationInput
     authority?: AdminAuthorityOrderByRelationAggregateInput
     logs?: AdminLogOrderByRelationAggregateInput
+    operationHistories?: AdminOperationHistoryOrderByRelationAggregateInput
+    operations?: AdminOperationHistoryOrderByRelationAggregateInput
     transactions?: AdminTransactionOrderByRelationAggregateInput
     transactionProcessed?: AdminTransactionOrderByRelationAggregateInput
     banner?: BannerOrderByRelationAggregateInput
@@ -41947,6 +42096,8 @@ export namespace Prisma {
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     logs?: AdminLogListRelationFilter
+    operationHistories?: AdminOperationHistoryListRelationFilter
+    operations?: AdminOperationHistoryListRelationFilter
     transactions?: AdminTransactionListRelationFilter
     transactionProcessed?: AdminTransactionListRelationFilter
     banner?: BannerListRelationFilter
@@ -42074,6 +42225,8 @@ export namespace Prisma {
     adminId?: StringFilter<"AdminOperationHistory"> | string
     opAdminId?: StringFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    opAdmin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }
 
   export type AdminOperationHistoryOrderByWithRelationInput = {
@@ -42082,6 +42235,8 @@ export namespace Prisma {
     adminId?: SortOrder
     opAdminId?: SortOrder
     operation?: SortOrder
+    admin?: AdminOrderByWithRelationInput
+    opAdmin?: AdminOrderByWithRelationInput
   }
 
   export type AdminOperationHistoryWhereUniqueInput = Prisma.AtLeast<{
@@ -42094,6 +42249,8 @@ export namespace Prisma {
     adminId?: StringFilter<"AdminOperationHistory"> | string
     opAdminId?: StringFilter<"AdminOperationHistory"> | string
     operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    opAdmin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }, "id_createdAt">
 
   export type AdminOperationHistoryOrderByWithAggregationInput = {
@@ -44354,13 +44511,13 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     gempoInGameId: string
     inGameId: string
     zoneInGameId: string
+    correctAttempt?: number
     user: UserCreateNestedOneWithoutGempoRecordsInput
   }
 
@@ -44368,7 +44525,6 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44376,19 +44532,20 @@ export namespace Prisma {
     inGameId: string
     userId: string
     zoneInGameId: string
+    correctAttempt?: number
   }
 
   export type GempoRecordUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gempoInGameId?: StringFieldUpdateOperationsInput | string
     inGameId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutGempoRecordsNestedInput
   }
 
@@ -44396,7 +44553,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44404,13 +44560,13 @@ export namespace Prisma {
     inGameId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GempoRecordCreateManyInput = {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44418,26 +44574,26 @@ export namespace Prisma {
     inGameId: string
     userId: string
     zoneInGameId: string
+    correctAttempt?: number
   }
 
   export type GempoRecordUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gempoInGameId?: StringFieldUpdateOperationsInput | string
     inGameId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GempoRecordUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44445,6 +44601,7 @@ export namespace Prisma {
     inGameId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ChampionshipRecordCreateInput = {
@@ -44651,6 +44808,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -44676,6 +44835,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -44701,6 +44862,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -44726,6 +44889,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -44861,9 +45026,9 @@ export namespace Prisma {
   export type AdminOperationHistoryCreateInput = {
     id?: string
     createdAt?: Date | string
-    adminId: string
-    opAdminId: string
     operation?: $Enums.Operation
+    admin: AdminCreateNestedOneWithoutOperationHistoriesInput
+    opAdmin: AdminCreateNestedOneWithoutOperationsInput
   }
 
   export type AdminOperationHistoryUncheckedCreateInput = {
@@ -44877,9 +45042,9 @@ export namespace Prisma {
   export type AdminOperationHistoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    opAdminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+    admin?: AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput
+    opAdmin?: AdminUpdateOneRequiredWithoutOperationsNestedInput
   }
 
   export type AdminOperationHistoryUncheckedUpdateInput = {
@@ -44901,8 +45066,6 @@ export namespace Prisma {
   export type AdminOperationHistoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    adminId?: StringFieldUpdateOperationsInput | string
-    opAdminId?: StringFieldUpdateOperationsInput | string
     operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
@@ -47091,7 +47254,6 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
-    correctAttempt?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47099,6 +47261,7 @@ export namespace Prisma {
     inGameId?: SortOrder
     userId?: SortOrder
     zoneInGameId?: SortOrder
+    correctAttempt?: SortOrder
   }
 
   export type GempoRecordAvgOrderByAggregateInput = {
@@ -47111,7 +47274,6 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
-    correctAttempt?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47119,13 +47281,13 @@ export namespace Prisma {
     inGameId?: SortOrder
     userId?: SortOrder
     zoneInGameId?: SortOrder
+    correctAttempt?: SortOrder
   }
 
   export type GempoRecordMinOrderByAggregateInput = {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
-    correctAttempt?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47133,6 +47295,7 @@ export namespace Prisma {
     inGameId?: SortOrder
     userId?: SortOrder
     zoneInGameId?: SortOrder
+    correctAttempt?: SortOrder
   }
 
   export type GempoRecordSumOrderByAggregateInput = {
@@ -47262,6 +47425,12 @@ export namespace Prisma {
     none?: AdminLogWhereInput
   }
 
+  export type AdminOperationHistoryListRelationFilter = {
+    every?: AdminOperationHistoryWhereInput
+    some?: AdminOperationHistoryWhereInput
+    none?: AdminOperationHistoryWhereInput
+  }
+
   export type AdminTransactionListRelationFilter = {
     every?: AdminTransactionWhereInput
     some?: AdminTransactionWhereInput
@@ -47292,6 +47461,10 @@ export namespace Prisma {
   }
 
   export type AdminLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AdminOperationHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -49675,6 +49848,20 @@ export namespace Prisma {
     connect?: AdminLogWhereUniqueInput | AdminLogWhereUniqueInput[]
   }
 
+  export type AdminOperationHistoryCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput> | AdminOperationHistoryCreateWithoutAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutAdminInput | AdminOperationHistoryCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+  }
+
+  export type AdminOperationHistoryCreateNestedManyWithoutOpAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+  }
+
   export type AdminTransactionCreateNestedManyWithoutAdminInput = {
     create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
@@ -49728,6 +49915,20 @@ export namespace Prisma {
     connectOrCreate?: AdminLogCreateOrConnectWithoutAdminInput | AdminLogCreateOrConnectWithoutAdminInput[]
     createMany?: AdminLogCreateManyAdminInputEnvelope
     connect?: AdminLogWhereUniqueInput | AdminLogWhereUniqueInput[]
+  }
+
+  export type AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput> | AdminOperationHistoryCreateWithoutAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutAdminInput | AdminOperationHistoryCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+  }
+
+  export type AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
   }
 
   export type AdminTransactionUncheckedCreateNestedManyWithoutAdminInput = {
@@ -49831,6 +50032,34 @@ export namespace Prisma {
     update?: AdminLogUpdateWithWhereUniqueWithoutAdminInput | AdminLogUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: AdminLogUpdateManyWithWhereWithoutAdminInput | AdminLogUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: AdminLogScalarWhereInput | AdminLogScalarWhereInput[]
+  }
+
+  export type AdminOperationHistoryUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput> | AdminOperationHistoryCreateWithoutAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutAdminInput | AdminOperationHistoryCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+  }
+
+  export type AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
   }
 
   export type AdminTransactionUpdateManyWithoutAdminNestedInput = {
@@ -49941,6 +50170,34 @@ export namespace Prisma {
     deleteMany?: AdminLogScalarWhereInput | AdminLogScalarWhereInput[]
   }
 
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput> | AdminOperationHistoryCreateWithoutAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutAdminInput | AdminOperationHistoryCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput = {
+    create?: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput> | AdminOperationHistoryCreateWithoutOpAdminInput[] | AdminOperationHistoryUncheckedCreateWithoutOpAdminInput[]
+    connectOrCreate?: AdminOperationHistoryCreateOrConnectWithoutOpAdminInput | AdminOperationHistoryCreateOrConnectWithoutOpAdminInput[]
+    upsert?: AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput[]
+    createMany?: AdminOperationHistoryCreateManyOpAdminInputEnvelope
+    set?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    disconnect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    delete?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    connect?: AdminOperationHistoryWhereUniqueInput | AdminOperationHistoryWhereUniqueInput[]
+    update?: AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput | AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput[]
+    updateMany?: AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput | AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput[]
+    deleteMany?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+  }
+
   export type AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput = {
     create?: XOR<AdminTransactionCreateWithoutAdminInput, AdminTransactionUncheckedCreateWithoutAdminInput> | AdminTransactionCreateWithoutAdminInput[] | AdminTransactionUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminTransactionCreateOrConnectWithoutAdminInput | AdminTransactionCreateOrConnectWithoutAdminInput[]
@@ -50035,8 +50292,36 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutLogsInput, AdminUpdateWithoutLogsInput>, AdminUncheckedUpdateWithoutLogsInput>
   }
 
+  export type AdminCreateNestedOneWithoutOperationHistoriesInput = {
+    create?: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationHistoriesInput
+    connect?: AdminWhereUniqueInput
+  }
+
+  export type AdminCreateNestedOneWithoutOperationsInput = {
+    create?: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationsInput
+    connect?: AdminWhereUniqueInput
+  }
+
   export type EnumOperationFieldUpdateOperationsInput = {
     set?: $Enums.Operation
+  }
+
+  export type AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput = {
+    create?: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationHistoriesInput
+    upsert?: AdminUpsertWithoutOperationHistoriesInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutOperationHistoriesInput, AdminUpdateWithoutOperationHistoriesInput>, AdminUncheckedUpdateWithoutOperationHistoriesInput>
+  }
+
+  export type AdminUpdateOneRequiredWithoutOperationsNestedInput = {
+    create?: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutOperationsInput
+    upsert?: AdminUpsertWithoutOperationsInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutOperationsInput, AdminUpdateWithoutOperationsInput>, AdminUncheckedUpdateWithoutOperationsInput>
   }
 
   export type AdminAuthorityCreategradesInput = {
@@ -51105,6 +51390,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -51129,6 +51416,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -51577,6 +51866,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -51601,6 +51892,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -51959,6 +52252,8 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -51983,6 +52278,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -52473,26 +52770,26 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     gempoInGameId: string
     inGameId: string
     zoneInGameId: string
+    correctAttempt?: number
   }
 
   export type GempoRecordUncheckedCreateWithoutUserInput = {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     gempoInGameId: string
     inGameId: string
     zoneInGameId: string
+    correctAttempt?: number
   }
 
   export type GempoRecordCreateOrConnectWithoutUserInput = {
@@ -52702,6 +52999,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -52726,6 +53025,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -53084,7 +53385,6 @@ export namespace Prisma {
     id?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
-    correctAttempt?: FloatFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -53092,6 +53392,7 @@ export namespace Prisma {
     inGameId?: StringFilter<"GempoRecord"> | string
     userId?: StringFilter<"GempoRecord"> | string
     zoneInGameId?: StringFilter<"GempoRecord"> | string
+    correctAttempt?: FloatFilter<"GempoRecord"> | number
   }
 
   export type InnerLevelUpsertWithWhereUniqueWithoutUserInput = {
@@ -53286,6 +53587,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -53310,6 +53613,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -55280,6 +55585,54 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AdminOperationHistoryCreateWithoutAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    operation?: $Enums.Operation
+    opAdmin: AdminCreateNestedOneWithoutOperationsInput
+  }
+
+  export type AdminOperationHistoryUncheckedCreateWithoutAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    opAdminId: string
+    operation?: $Enums.Operation
+  }
+
+  export type AdminOperationHistoryCreateOrConnectWithoutAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    create: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminOperationHistoryCreateManyAdminInputEnvelope = {
+    data: AdminOperationHistoryCreateManyAdminInput | AdminOperationHistoryCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminOperationHistoryCreateWithoutOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    operation?: $Enums.Operation
+    admin: AdminCreateNestedOneWithoutOperationHistoriesInput
+  }
+
+  export type AdminOperationHistoryUncheckedCreateWithoutOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    adminId: string
+    operation?: $Enums.Operation
+  }
+
+  export type AdminOperationHistoryCreateOrConnectWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    create: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryCreateManyOpAdminInputEnvelope = {
+    data: AdminOperationHistoryCreateManyOpAdminInput | AdminOperationHistoryCreateManyOpAdminInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AdminTransactionCreateWithoutAdminInput = {
     id?: string
     createdAt?: Date | string
@@ -55758,6 +56111,49 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AdminLog"> | Date | string
   }
 
+  export type AdminOperationHistoryUpsertWithWhereUniqueWithoutAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    update: XOR<AdminOperationHistoryUpdateWithoutAdminInput, AdminOperationHistoryUncheckedUpdateWithoutAdminInput>
+    create: XOR<AdminOperationHistoryCreateWithoutAdminInput, AdminOperationHistoryUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateWithWhereUniqueWithoutAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    data: XOR<AdminOperationHistoryUpdateWithoutAdminInput, AdminOperationHistoryUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateManyWithWhereWithoutAdminInput = {
+    where: AdminOperationHistoryScalarWhereInput
+    data: XOR<AdminOperationHistoryUpdateManyMutationInput, AdminOperationHistoryUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type AdminOperationHistoryScalarWhereInput = {
+    AND?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+    OR?: AdminOperationHistoryScalarWhereInput[]
+    NOT?: AdminOperationHistoryScalarWhereInput | AdminOperationHistoryScalarWhereInput[]
+    id?: StringFilter<"AdminOperationHistory"> | string
+    createdAt?: DateTimeFilter<"AdminOperationHistory"> | Date | string
+    adminId?: StringFilter<"AdminOperationHistory"> | string
+    opAdminId?: StringFilter<"AdminOperationHistory"> | string
+    operation?: EnumOperationFilter<"AdminOperationHistory"> | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUpsertWithWhereUniqueWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    update: XOR<AdminOperationHistoryUpdateWithoutOpAdminInput, AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput>
+    create: XOR<AdminOperationHistoryCreateWithoutOpAdminInput, AdminOperationHistoryUncheckedCreateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateWithWhereUniqueWithoutOpAdminInput = {
+    where: AdminOperationHistoryWhereUniqueInput
+    data: XOR<AdminOperationHistoryUpdateWithoutOpAdminInput, AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput>
+  }
+
+  export type AdminOperationHistoryUpdateManyWithWhereWithoutOpAdminInput = {
+    where: AdminOperationHistoryScalarWhereInput
+    data: XOR<AdminOperationHistoryUpdateManyMutationInput, AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminInput>
+  }
+
   export type AdminTransactionUpsertWithWhereUniqueWithoutAdminInput = {
     where: AdminTransactionWhereUniqueInput
     update: XOR<AdminTransactionUpdateWithoutAdminInput, AdminTransactionUncheckedUpdateWithoutAdminInput>
@@ -56025,6 +56421,8 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutAdminInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -56049,6 +56447,8 @@ export namespace Prisma {
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -56089,6 +56489,8 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutAdminNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -56113,6 +56515,248 @@ export namespace Prisma {
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminCreateWithoutOperationHistoriesInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    city?: CityCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
+    user?: UserCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
+  }
+
+  export type AdminCreateWithoutOperationsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    city?: CityCreateNestedOneWithoutAdminInput
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
+    user?: UserCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutOperationsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutOperationsInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+  }
+
+  export type AdminUpsertWithoutOperationHistoriesInput = {
+    update: XOR<AdminUpdateWithoutOperationHistoriesInput, AdminUncheckedUpdateWithoutOperationHistoriesInput>
+    create: XOR<AdminCreateWithoutOperationHistoriesInput, AdminUncheckedCreateWithoutOperationHistoriesInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutOperationHistoriesInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutOperationHistoriesInput, AdminUncheckedUpdateWithoutOperationHistoriesInput>
+  }
+
+  export type AdminUpdateWithoutOperationHistoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: CityUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
+    user?: UserUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUpsertWithoutOperationsInput = {
+    update: XOR<AdminUpdateWithoutOperationsInput, AdminUncheckedUpdateWithoutOperationsInput>
+    create: XOR<AdminCreateWithoutOperationsInput, AdminUncheckedCreateWithoutOperationsInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutOperationsInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutOperationsInput, AdminUncheckedUpdateWithoutOperationsInput>
+  }
+
+  export type AdminUpdateWithoutOperationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: CityUpdateOneWithoutAdminNestedInput
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
+    user?: UserUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutOperationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -56137,6 +56781,8 @@ export namespace Prisma {
     province?: ProvinceCreateNestedOneWithoutAdminInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -56161,6 +56807,8 @@ export namespace Prisma {
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -56304,6 +56952,8 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutAdminNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -56328,6 +56978,8 @@ export namespace Prisma {
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -56426,6 +57078,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
@@ -56450,6 +57104,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
@@ -56533,6 +57189,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
@@ -56557,6 +57215,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
@@ -57059,6 +57719,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -57083,6 +57745,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -57151,6 +57815,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -57175,6 +57841,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -57607,6 +58275,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
@@ -57631,6 +58301,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
@@ -57660,6 +58332,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     banner?: BannerCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
@@ -57684,6 +58358,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
@@ -57757,6 +58433,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
@@ -57781,6 +58459,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
@@ -57816,6 +58496,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
@@ -57840,6 +58522,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
@@ -57929,6 +58613,8 @@ export namespace Prisma {
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
     banner?: BannerCreateNestedManyWithoutAdminInput
@@ -57953,6 +58639,8 @@ export namespace Prisma {
     authenticatorSecret?: string | null
     authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
     logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
     transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
     transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
@@ -58054,6 +58742,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -58078,6 +58768,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -58788,6 +59480,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -58812,6 +59506,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -59135,6 +59831,8 @@ export namespace Prisma {
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -59159,6 +59857,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -59433,6 +60133,8 @@ export namespace Prisma {
     province?: ProvinceUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUpdateManyWithoutAdminNestedInput
@@ -59457,6 +60159,8 @@ export namespace Prisma {
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
     transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
     transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
@@ -59665,13 +60369,13 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
-    correctAttempt?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     gempoInGameId: string
     inGameId: string
     zoneInGameId: string
+    correctAttempt?: number
   }
 
   export type InnerLevelCreateManyUserInput = {
@@ -59906,39 +60610,39 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gempoInGameId?: StringFieldUpdateOperationsInput | string
     inGameId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GempoRecordUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gempoInGameId?: StringFieldUpdateOperationsInput | string
     inGameId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GempoRecordUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
-    correctAttempt?: FloatFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gempoInGameId?: StringFieldUpdateOperationsInput | string
     inGameId?: StringFieldUpdateOperationsInput | string
     zoneInGameId?: StringFieldUpdateOperationsInput | string
+    correctAttempt?: FloatFieldUpdateOperationsInput | number
   }
 
   export type InnerLevelUpdateWithoutUserInput = {
@@ -60220,6 +60924,20 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type AdminOperationHistoryCreateManyAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    opAdminId: string
+    operation?: $Enums.Operation
+  }
+
+  export type AdminOperationHistoryCreateManyOpAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    adminId: string
+    operation?: $Enums.Operation
+  }
+
   export type AdminTransactionCreateManyAdminInput = {
     id?: string
     createdAt?: Date | string
@@ -60351,6 +61069,48 @@ export namespace Prisma {
     table?: NullableStringFieldUpdateOperationsInput | string | null
     operation?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminOperationHistoryUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+    opAdmin?: AdminUpdateOneRequiredWithoutOperationsNestedInput
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    opAdminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUpdateWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+    admin?: AdminUpdateOneRequiredWithoutOperationHistoriesNestedInput
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
+  }
+
+  export type AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    operation?: EnumOperationFieldUpdateOperationsInput | $Enums.Operation
   }
 
   export type AdminTransactionUpdateWithoutAdminInput = {
