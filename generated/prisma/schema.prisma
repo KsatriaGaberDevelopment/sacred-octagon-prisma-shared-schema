@@ -386,7 +386,7 @@ model Banner {
   thumbnailId    String
   admin          Admin            @relation(fields: [adminId], references: [id])
   bannerLocation BannerLocation[]
-  visitors       BannerVisitor?
+  visitors       BannerVisitor[]
 }
 
 model BannerLocation {

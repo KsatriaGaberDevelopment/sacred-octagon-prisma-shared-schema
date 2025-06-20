@@ -4075,10 +4075,12 @@ export namespace Prisma {
 
   export type BannerCountOutputType = {
     bannerLocation: number
+    visitors: number
   }
 
   export type BannerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bannerLocation?: boolean | BannerCountOutputTypeCountBannerLocationArgs
+    visitors?: boolean | BannerCountOutputTypeCountVisitorsArgs
   }
 
   // Custom InputTypes
@@ -4097,6 +4099,13 @@ export namespace Prisma {
    */
   export type BannerCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BannerLocationWhereInput
+  }
+
+  /**
+   * BannerCountOutputType without action
+   */
+  export type BannerCountOutputTypeCountVisitorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerVisitorWhereInput
   }
 
 
@@ -25384,7 +25393,7 @@ export namespace Prisma {
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>
       bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
-      visitors: Prisma.$BannerVisitorPayload<ExtArgs> | null
+      visitors: Prisma.$BannerVisitorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -25791,7 +25800,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     bannerLocation<T extends Banner$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Banner$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    visitors<T extends Banner$visitorsArgs<ExtArgs> = {}>(args?: Subset<T, Banner$visitorsArgs<ExtArgs>>): Prisma__BannerVisitorClient<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    visitors<T extends Banner$visitorsArgs<ExtArgs> = {}>(args?: Subset<T, Banner$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -26265,6 +26274,11 @@ export namespace Prisma {
      */
     include?: BannerVisitorInclude<ExtArgs> | null
     where?: BannerVisitorWhereInput
+    orderBy?: BannerVisitorOrderByWithRelationInput | BannerVisitorOrderByWithRelationInput[]
+    cursor?: BannerVisitorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerVisitorScalarFieldEnum | BannerVisitorScalarFieldEnum[]
   }
 
   /**
@@ -42350,7 +42364,7 @@ export namespace Prisma {
     thumbnailId?: StringFilter<"Banner"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     bannerLocation?: BannerLocationListRelationFilter
-    visitors?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
+    visitors?: BannerVisitorListRelationFilter
   }
 
   export type BannerOrderByWithRelationInput = {
@@ -42364,7 +42378,7 @@ export namespace Prisma {
     thumbnailId?: SortOrder
     admin?: AdminOrderByWithRelationInput
     bannerLocation?: BannerLocationOrderByRelationAggregateInput
-    visitors?: BannerVisitorOrderByWithRelationInput
+    visitors?: BannerVisitorOrderByRelationAggregateInput
   }
 
   export type BannerWhereUniqueInput = Prisma.AtLeast<{
@@ -42381,7 +42395,7 @@ export namespace Prisma {
     thumbnailId?: StringFilter<"Banner"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     bannerLocation?: BannerLocationListRelationFilter
-    visitors?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
+    visitors?: BannerVisitorListRelationFilter
   }, "id">
 
   export type BannerOrderByWithAggregationInput = {
@@ -45142,7 +45156,7 @@ export namespace Prisma {
     thumbnailId: string
     admin: AdminCreateNestedOneWithoutBannerInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateInput = {
@@ -45155,7 +45169,7 @@ export namespace Prisma {
     adminId: string
     thumbnailId: string
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorUncheckedCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUpdateInput = {
@@ -45168,7 +45182,7 @@ export namespace Prisma {
     thumbnailId?: StringFieldUpdateOperationsInput | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateInput = {
@@ -45181,7 +45195,7 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUncheckedUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerCreateManyInput = {
@@ -47699,6 +47713,16 @@ export namespace Prisma {
 
   export type AdminAuthoritySumOrderByAggregateInput = {
     grades?: SortOrder
+  }
+
+  export type BannerVisitorListRelationFilter = {
+    every?: BannerVisitorWhereInput
+    some?: BannerVisitorWhereInput
+    none?: BannerVisitorWhereInput
+  }
+
+  export type BannerVisitorOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type BannerCountOrderByAggregateInput = {
@@ -50450,10 +50474,11 @@ export namespace Prisma {
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
-  export type BannerVisitorCreateNestedOneWithoutBannerInput = {
-    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput
-    connect?: BannerVisitorWhereUniqueInput
+  export type BannerVisitorCreateNestedManyWithoutBannerInput = {
+    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput> | BannerVisitorCreateWithoutBannerInput[] | BannerVisitorUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput | BannerVisitorCreateOrConnectWithoutBannerInput[]
+    createMany?: BannerVisitorCreateManyBannerInputEnvelope
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
   export type BannerLocationUncheckedCreateNestedManyWithoutBannerInput = {
@@ -50463,10 +50488,11 @@ export namespace Prisma {
     connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
-  export type BannerVisitorUncheckedCreateNestedOneWithoutBannerInput = {
-    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput
-    connect?: BannerVisitorWhereUniqueInput
+  export type BannerVisitorUncheckedCreateNestedManyWithoutBannerInput = {
+    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput> | BannerVisitorCreateWithoutBannerInput[] | BannerVisitorUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput | BannerVisitorCreateOrConnectWithoutBannerInput[]
+    createMany?: BannerVisitorCreateManyBannerInputEnvelope
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
   export type AdminUpdateOneRequiredWithoutBannerNestedInput = {
@@ -50491,14 +50517,18 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
-  export type BannerVisitorUpdateOneWithoutBannerNestedInput = {
-    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput
-    upsert?: BannerVisitorUpsertWithoutBannerInput
-    disconnect?: BannerVisitorWhereInput | boolean
-    delete?: BannerVisitorWhereInput | boolean
-    connect?: BannerVisitorWhereUniqueInput
-    update?: XOR<XOR<BannerVisitorUpdateToOneWithWhereWithoutBannerInput, BannerVisitorUpdateWithoutBannerInput>, BannerVisitorUncheckedUpdateWithoutBannerInput>
+  export type BannerVisitorUpdateManyWithoutBannerNestedInput = {
+    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput> | BannerVisitorCreateWithoutBannerInput[] | BannerVisitorUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput | BannerVisitorCreateOrConnectWithoutBannerInput[]
+    upsert?: BannerVisitorUpsertWithWhereUniqueWithoutBannerInput | BannerVisitorUpsertWithWhereUniqueWithoutBannerInput[]
+    createMany?: BannerVisitorCreateManyBannerInputEnvelope
+    set?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    disconnect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    delete?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    update?: BannerVisitorUpdateWithWhereUniqueWithoutBannerInput | BannerVisitorUpdateWithWhereUniqueWithoutBannerInput[]
+    updateMany?: BannerVisitorUpdateManyWithWhereWithoutBannerInput | BannerVisitorUpdateManyWithWhereWithoutBannerInput[]
+    deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
   }
 
   export type BannerLocationUncheckedUpdateManyWithoutBannerNestedInput = {
@@ -50515,14 +50545,18 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
-  export type BannerVisitorUncheckedUpdateOneWithoutBannerNestedInput = {
-    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput
-    upsert?: BannerVisitorUpsertWithoutBannerInput
-    disconnect?: BannerVisitorWhereInput | boolean
-    delete?: BannerVisitorWhereInput | boolean
-    connect?: BannerVisitorWhereUniqueInput
-    update?: XOR<XOR<BannerVisitorUpdateToOneWithWhereWithoutBannerInput, BannerVisitorUpdateWithoutBannerInput>, BannerVisitorUncheckedUpdateWithoutBannerInput>
+  export type BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput = {
+    create?: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput> | BannerVisitorCreateWithoutBannerInput[] | BannerVisitorUncheckedCreateWithoutBannerInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutBannerInput | BannerVisitorCreateOrConnectWithoutBannerInput[]
+    upsert?: BannerVisitorUpsertWithWhereUniqueWithoutBannerInput | BannerVisitorUpsertWithWhereUniqueWithoutBannerInput[]
+    createMany?: BannerVisitorCreateManyBannerInputEnvelope
+    set?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    disconnect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    delete?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    update?: BannerVisitorUpdateWithWhereUniqueWithoutBannerInput | BannerVisitorUpdateWithWhereUniqueWithoutBannerInput[]
+    updateMany?: BannerVisitorUpdateManyWithWhereWithoutBannerInput | BannerVisitorUpdateManyWithWhereWithoutBannerInput[]
+    deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
   }
 
   export type BannerCreateNestedOneWithoutBannerLocationInput = {
@@ -55742,7 +55776,7 @@ export namespace Prisma {
     isHide?: boolean
     thumbnailId: string
     bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateWithoutAdminInput = {
@@ -55754,7 +55788,7 @@ export namespace Prisma {
     isHide?: boolean
     thumbnailId: string
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
-    visitors?: BannerVisitorUncheckedCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerCreateOrConnectWithoutAdminInput = {
@@ -57161,6 +57195,11 @@ export namespace Prisma {
     create: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
   }
 
+  export type BannerVisitorCreateManyBannerInputEnvelope = {
+    data: BannerVisitorCreateManyBannerInput | BannerVisitorCreateManyBannerInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AdminUpsertWithoutBannerInput = {
     update: XOR<AdminUpdateWithoutBannerInput, AdminUncheckedUpdateWithoutBannerInput>
     create: XOR<AdminCreateWithoutBannerInput, AdminUncheckedCreateWithoutBannerInput>
@@ -57240,31 +57279,32 @@ export namespace Prisma {
     data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutBannerInput>
   }
 
-  export type BannerVisitorUpsertWithoutBannerInput = {
+  export type BannerVisitorUpsertWithWhereUniqueWithoutBannerInput = {
+    where: BannerVisitorWhereUniqueInput
     update: XOR<BannerVisitorUpdateWithoutBannerInput, BannerVisitorUncheckedUpdateWithoutBannerInput>
     create: XOR<BannerVisitorCreateWithoutBannerInput, BannerVisitorUncheckedCreateWithoutBannerInput>
-    where?: BannerVisitorWhereInput
   }
 
-  export type BannerVisitorUpdateToOneWithWhereWithoutBannerInput = {
-    where?: BannerVisitorWhereInput
+  export type BannerVisitorUpdateWithWhereUniqueWithoutBannerInput = {
+    where: BannerVisitorWhereUniqueInput
     data: XOR<BannerVisitorUpdateWithoutBannerInput, BannerVisitorUncheckedUpdateWithoutBannerInput>
   }
 
-  export type BannerVisitorUpdateWithoutBannerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    traffic?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutBannerVisitorNestedInput
+  export type BannerVisitorUpdateManyWithWhereWithoutBannerInput = {
+    where: BannerVisitorScalarWhereInput
+    data: XOR<BannerVisitorUpdateManyMutationInput, BannerVisitorUncheckedUpdateManyWithoutBannerInput>
   }
 
-  export type BannerVisitorUncheckedUpdateWithoutBannerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    traffic?: IntFieldUpdateOperationsInput | number
+  export type BannerVisitorScalarWhereInput = {
+    AND?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
+    OR?: BannerVisitorScalarWhereInput[]
+    NOT?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
+    id?: StringFilter<"BannerVisitor"> | string
+    bannerId?: StringFilter<"BannerVisitor"> | string
+    userId?: StringFilter<"BannerVisitor"> | string
+    createdAt?: DateTimeFilter<"BannerVisitor"> | Date | string
+    updatedAt?: DateTimeFilter<"BannerVisitor"> | Date | string
+    traffic?: IntFilter<"BannerVisitor"> | number
   }
 
   export type BannerCreateWithoutBannerLocationInput = {
@@ -57276,7 +57316,7 @@ export namespace Prisma {
     isHide?: boolean
     thumbnailId: string
     admin: AdminCreateNestedOneWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
   export type BannerUncheckedCreateWithoutBannerLocationInput = {
@@ -57288,7 +57328,7 @@ export namespace Prisma {
     isHide?: boolean
     adminId: string
     thumbnailId: string
-    visitors?: BannerVisitorUncheckedCreateNestedOneWithoutBannerInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
   export type BannerCreateOrConnectWithoutBannerLocationInput = {
@@ -57386,7 +57426,7 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateWithoutBannerLocationInput = {
@@ -57398,7 +57438,7 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
-    visitors?: BannerVisitorUncheckedUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type ProvinceUpsertWithoutBannerLocationInput = {
@@ -61240,7 +61280,7 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
     bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateWithoutAdminInput = {
@@ -61252,7 +61292,7 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
-    visitors?: BannerVisitorUncheckedUpdateOneWithoutBannerNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
   export type BannerUncheckedUpdateManyWithoutAdminInput = {
@@ -61454,6 +61494,14 @@ export namespace Prisma {
     provinceId: string
   }
 
+  export type BannerVisitorCreateManyBannerInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traffic?: number
+  }
+
   export type BannerLocationUpdateWithoutBannerInput = {
     id?: StringFieldUpdateOperationsInput | string
     province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
@@ -61469,6 +61517,30 @@ export namespace Prisma {
   export type BannerLocationUncheckedUpdateManyWithoutBannerInput = {
     id?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BannerVisitorUpdateWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutBannerVisitorNestedInput
+  }
+
+  export type BannerVisitorUncheckedUpdateWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BannerVisitorUncheckedUpdateManyWithoutBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
   }
 
   export type CityUpdateWithoutBannerLocationInput = {
