@@ -181,7 +181,6 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.ZoneScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
   userId: 'userId',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
@@ -191,45 +190,42 @@ exports.Prisma.ZoneScalarFieldEnum = {
   lastLevelUnlock: 'lastLevelUnlock',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  pretest: 'pretest',
-  pretestTryCount: 'pretestTryCount',
+  inGameId: 'inGameId',
   posttest: 'posttest',
-  posttestTryCount: 'posttestTryCount'
+  posttestTryCount: 'posttestTryCount',
+  pretest: 'pretest',
+  pretestTryCount: 'pretestTryCount'
 };
 
 exports.Prisma.LevelScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  inGameId: 'inGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.SubLevelScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
-  levelInGameId: 'levelInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
   completedAt: 'completedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  inGameId: 'inGameId',
+  levelInGameId: 'levelInGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.InnerLevelScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
-  levelInGameId: 'levelInGameId',
-  subLevelInGameId: 'subLevelInGameId',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
   isComplete: 'isComplete',
@@ -240,49 +236,51 @@ exports.Prisma.InnerLevelScalarFieldEnum = {
   played: 'played',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  inGameId: 'inGameId',
+  levelInGameId: 'levelInGameId',
+  subLevelInGameId: 'subLevelInGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.GempoScalarFieldEnum = {
   id: 'id',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  inGameId: 'inGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.ChampionshipScalarFieldEnum = {
   id: 'id',
   isUnlock: 'isUnlock',
   unlockedAt: 'unlockedAt',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  inGameId: 'inGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.GempoRecordScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
-  gempoInGameId: 'gempoInGameId',
   played: 'played',
   point: 'point',
+  correctAttempt: 'correctAttempt',
   lastPlayedAt: 'lastPlayedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  gempoInGameId: 'gempoInGameId',
+  inGameId: 'inGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.ChampionshipRecordScalarFieldEnum = {
   id: 'id',
-  inGameId: 'inGameId',
-  zoneInGameId: 'zoneInGameId',
-  championshipInGameId: 'championshipInGameId',
   teamWin: 'teamWin',
   teamLose: 'teamLose',
   teamPlayed: 'teamPlayed',
@@ -295,7 +293,10 @@ exports.Prisma.ChampionshipRecordScalarFieldEnum = {
   soloLastPlayedAt: 'soloLastPlayedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  championshipInGameId: 'championshipInGameId',
+  inGameId: 'inGameId',
+  userId: 'userId',
+  zoneInGameId: 'zoneInGameId'
 };
 
 exports.Prisma.UserLoginScalarFieldEnum = {
@@ -311,15 +312,15 @@ exports.Prisma.AdminScalarFieldEnum = {
   email: 'email',
   name: 'name',
   suspend: 'suspend',
-  authenticatorSecret: 'authenticatorSecret',
-  authenticatorQrUrl: 'authenticatorQrUrl',
-  authenticatorEnabled: 'authenticatorEnabled',
   role: 'role',
   provinceId: 'provinceId',
   cityId: 'cityId',
   schoolId: 'schoolId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  authenticatorEnabled: 'authenticatorEnabled',
+  authenticatorQrUrl: 'authenticatorQrUrl',
+  authenticatorSecret: 'authenticatorSecret'
 };
 
 exports.Prisma.AdminLogScalarFieldEnum = {
@@ -350,13 +351,13 @@ exports.Prisma.AdminAuthorityScalarFieldEnum = {
 
 exports.Prisma.BannerScalarFieldEnum = {
   id: 'id',
-  thumbnailId: 'thumbnailId',
   thumbnail: 'thumbnail',
   link: 'link',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
   isHide: 'isHide',
-  adminId: 'adminId'
+  adminId: 'adminId',
+  thumbnailId: 'thumbnailId'
 };
 
 exports.Prisma.BannerLocationScalarFieldEnum = {
@@ -377,7 +378,6 @@ exports.Prisma.BannerVisitorScalarFieldEnum = {
 exports.Prisma.TestScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  category: 'category',
   question: 'question',
   duration: 'duration',
   passedPoint: 'passedPoint',
@@ -390,6 +390,7 @@ exports.Prisma.TestScalarFieldEnum = {
   startedAt: 'startedAt',
   endedAt: 'endedAt',
   description: 'description',
+  category: 'category',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   adminId: 'adminId'
@@ -418,11 +419,11 @@ exports.Prisma.TestParticipantRecordScalarFieldEnum = {
 exports.Prisma.BackgroundScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  thumbnailId: 'thumbnailId',
   thumbnail: 'thumbnail',
   isUse: 'isUse',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  thumbnailId: 'thumbnailId'
 };
 
 exports.Prisma.SettingScalarFieldEnum = {
@@ -436,27 +437,26 @@ exports.Prisma.SettingScalarFieldEnum = {
 
 exports.Prisma.AdminTransactionScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  status: 'status',
-  archived: 'archived',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  adminId: 'adminId',
   quantity: 'quantity',
-  subscriptionTime: 'subscriptionTime',
   zones: 'zones',
-  transactionRef: 'transactionRef',
+  adminId: 'adminId',
   amount: 'amount',
+  archived: 'archived',
   description: 'description',
+  name: 'name',
+  subscriptionTime: 'subscriptionTime',
   transactionImageId: 'transactionImageId',
   transactionImageUrl: 'transactionImageUrl',
-  processedById: 'processedById',
-  processedAt: 'processedAt'
+  transactionRef: 'transactionRef',
+  status: 'status',
+  processedAt: 'processedAt',
+  processedById: 'processedById'
 };
 
 exports.Prisma.RedeemCodeScalarFieldEnum = {
   id: 'id',
-  suspend: 'suspend',
   transactionId: 'transactionId',
   adminId: 'adminId',
   code: 'code',
@@ -465,7 +465,8 @@ exports.Prisma.RedeemCodeScalarFieldEnum = {
   maxAmount: 'maxAmount',
   data: 'data',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  suspend: 'suspend'
 };
 
 exports.Prisma.CodeRedemeerScalarFieldEnum = {
