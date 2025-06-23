@@ -235,6 +235,16 @@ export const Transaction: {
 
 export type Transaction = (typeof Transaction)[keyof typeof Transaction]
 
+
+export const EducationLevel: {
+  NONE: 'NONE',
+  SD: 'SD',
+  SMP: 'SMP',
+  SMA: 'SMA'
+};
+
+export type EducationLevel = (typeof EducationLevel)[keyof typeof EducationLevel]
+
 }
 
 export type Role = $Enums.Role
@@ -264,6 +274,10 @@ export const Operation: typeof $Enums.Operation
 export type Transaction = $Enums.Transaction
 
 export const Transaction: typeof $Enums.Transaction
+
+export type EducationLevel = $Enums.EducationLevel
+
+export const EducationLevel: typeof $Enums.EducationLevel
 
 /**
  * ##  Prisma Client ʲˢ
@@ -6844,6 +6858,7 @@ export namespace Prisma {
   export type SchoolMinAggregateOutputType = {
     id: string | null
     identity: string | null
+    level: $Enums.EducationLevel | null
     name: string | null
     longitude: number | null
     latitude: number | null
@@ -6856,6 +6871,7 @@ export namespace Prisma {
   export type SchoolMaxAggregateOutputType = {
     id: string | null
     identity: string | null
+    level: $Enums.EducationLevel | null
     name: string | null
     longitude: number | null
     latitude: number | null
@@ -6868,6 +6884,7 @@ export namespace Prisma {
   export type SchoolCountAggregateOutputType = {
     id: number
     identity: number
+    level: number
     name: number
     longitude: number
     latitude: number
@@ -6892,6 +6909,7 @@ export namespace Prisma {
   export type SchoolMinAggregateInputType = {
     id?: true
     identity?: true
+    level?: true
     name?: true
     longitude?: true
     latitude?: true
@@ -6904,6 +6922,7 @@ export namespace Prisma {
   export type SchoolMaxAggregateInputType = {
     id?: true
     identity?: true
+    level?: true
     name?: true
     longitude?: true
     latitude?: true
@@ -6916,6 +6935,7 @@ export namespace Prisma {
   export type SchoolCountAggregateInputType = {
     id?: true
     identity?: true
+    level?: true
     name?: true
     longitude?: true
     latitude?: true
@@ -7015,6 +7035,7 @@ export namespace Prisma {
   export type SchoolGroupByOutputType = {
     id: string
     identity: string
+    level: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -7046,6 +7067,7 @@ export namespace Prisma {
   export type SchoolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     identity?: boolean
+    level?: boolean
     name?: boolean
     longitude?: boolean
     latitude?: boolean
@@ -7064,6 +7086,7 @@ export namespace Prisma {
   export type SchoolSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     identity?: boolean
+    level?: boolean
     name?: boolean
     longitude?: boolean
     latitude?: boolean
@@ -7078,6 +7101,7 @@ export namespace Prisma {
   export type SchoolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     identity?: boolean
+    level?: boolean
     name?: boolean
     longitude?: boolean
     latitude?: boolean
@@ -7092,6 +7116,7 @@ export namespace Prisma {
   export type SchoolSelectScalar = {
     id?: boolean
     identity?: boolean
+    level?: boolean
     name?: boolean
     longitude?: boolean
     latitude?: boolean
@@ -7101,7 +7126,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "identity" | "name" | "longitude" | "latitude" | "cityId" | "provinceId" | "createdAt" | "updatedAt", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "identity" | "level" | "name" | "longitude" | "latitude" | "cityId" | "provinceId" | "createdAt" | "updatedAt", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | School$adminArgs<ExtArgs>
     city?: boolean | CityDefaultArgs<ExtArgs>
@@ -7131,6 +7156,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       identity: string
+      level: $Enums.EducationLevel
       name: string
       longitude: number
       latitude: number
@@ -7568,6 +7594,7 @@ export namespace Prisma {
   interface SchoolFieldRefs {
     readonly id: FieldRef<"School", 'String'>
     readonly identity: FieldRef<"School", 'String'>
+    readonly level: FieldRef<"School", 'EducationLevel'>
     readonly name: FieldRef<"School", 'String'>
     readonly longitude: FieldRef<"School", 'Float'>
     readonly latitude: FieldRef<"School", 'Float'>
@@ -40103,6 +40130,7 @@ export namespace Prisma {
   export const SchoolScalarFieldEnum: {
     id: 'id',
     identity: 'identity',
+    level: 'level',
     name: 'name',
     longitude: 'longitude',
     latitude: 'latitude',
@@ -40649,6 +40677,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'EducationLevel'
+   */
+  export type EnumEducationLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EducationLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'EducationLevel[]'
+   */
+  export type ListEnumEducationLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EducationLevel[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Role'
    */
   export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
@@ -40945,6 +40987,7 @@ export namespace Prisma {
     NOT?: SchoolWhereInput | SchoolWhereInput[]
     id?: StringFilter<"School"> | string
     identity?: StringFilter<"School"> | string
+    level?: EnumEducationLevelFilter<"School"> | $Enums.EducationLevel
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
@@ -40962,6 +41005,7 @@ export namespace Prisma {
   export type SchoolOrderByWithRelationInput = {
     id?: SortOrder
     identity?: SortOrder
+    level?: SortOrder
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
@@ -40982,6 +41026,7 @@ export namespace Prisma {
     AND?: SchoolWhereInput | SchoolWhereInput[]
     OR?: SchoolWhereInput[]
     NOT?: SchoolWhereInput | SchoolWhereInput[]
+    level?: EnumEducationLevelFilter<"School"> | $Enums.EducationLevel
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
@@ -40999,6 +41044,7 @@ export namespace Prisma {
   export type SchoolOrderByWithAggregationInput = {
     id?: SortOrder
     identity?: SortOrder
+    level?: SortOrder
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
@@ -41019,6 +41065,7 @@ export namespace Prisma {
     NOT?: SchoolScalarWhereWithAggregatesInput | SchoolScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"School"> | string
     identity?: StringWithAggregatesFilter<"School"> | string
+    level?: EnumEducationLevelWithAggregatesFilter<"School"> | $Enums.EducationLevel
     name?: StringWithAggregatesFilter<"School"> | string
     longitude?: FloatWithAggregatesFilter<"School"> | number
     latitude?: FloatWithAggregatesFilter<"School"> | number
@@ -43583,6 +43630,7 @@ export namespace Prisma {
   export type SchoolCreateInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -43598,6 +43646,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -43613,6 +43662,7 @@ export namespace Prisma {
   export type SchoolUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -43628,6 +43678,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -43643,6 +43694,7 @@ export namespace Prisma {
   export type SchoolCreateManyInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -43655,6 +43707,7 @@ export namespace Prisma {
   export type SchoolUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -43665,6 +43718,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -46500,6 +46554,13 @@ export namespace Prisma {
     latitude?: SortOrder
   }
 
+  export type EnumEducationLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
+  }
+
   export type CityScalarRelationFilter = {
     is?: CityWhereInput
     isNot?: CityWhereInput
@@ -46508,6 +46569,7 @@ export namespace Prisma {
   export type SchoolCountOrderByAggregateInput = {
     id?: SortOrder
     identity?: SortOrder
+    level?: SortOrder
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
@@ -46525,6 +46587,7 @@ export namespace Prisma {
   export type SchoolMaxOrderByAggregateInput = {
     id?: SortOrder
     identity?: SortOrder
+    level?: SortOrder
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
@@ -46537,6 +46600,7 @@ export namespace Prisma {
   export type SchoolMinOrderByAggregateInput = {
     id?: SortOrder
     identity?: SortOrder
+    level?: SortOrder
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
@@ -46549,6 +46613,16 @@ export namespace Prisma {
   export type SchoolSumOrderByAggregateInput = {
     longitude?: SortOrder
     latitude?: SortOrder
+  }
+
+  export type EnumEducationLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel> | $Enums.EducationLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEducationLevelFilter<$PrismaModel>
+    _max?: NestedEnumEducationLevelFilter<$PrismaModel>
   }
 
   export type EnumRoleFilter<$PrismaModel = never> = {
@@ -48979,6 +49053,10 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
+  export type EnumEducationLevelFieldUpdateOperationsInput = {
+    set?: $Enums.EducationLevel
+  }
+
   export type AdminUpdateManyWithoutSchoolNestedInput = {
     create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
@@ -51147,6 +51225,23 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumEducationLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
+  }
+
+  export type NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel> | $Enums.EducationLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEducationLevelFilter<$PrismaModel>
+    _max?: NestedEnumEducationLevelFilter<$PrismaModel>
+  }
+
   export type NestedEnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -51561,6 +51656,7 @@ export namespace Prisma {
   export type SchoolCreateWithoutProvinceInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -51575,6 +51671,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateWithoutProvinceInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -51827,6 +51924,7 @@ export namespace Prisma {
     NOT?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
     id?: StringFilter<"School"> | string
     identity?: StringFilter<"School"> | string
+    level?: EnumEducationLevelFilter<"School"> | $Enums.EducationLevel
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
@@ -51984,6 +52082,7 @@ export namespace Prisma {
   export type SchoolCreateWithoutCityInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -51998,6 +52097,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateWithoutCityInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -53146,6 +53246,7 @@ export namespace Prisma {
   export type SchoolCreateWithoutUsersInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -53160,6 +53261,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateWithoutUsersInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -53752,6 +53854,7 @@ export namespace Prisma {
   export type SchoolUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -53766,6 +53869,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -55533,6 +55637,7 @@ export namespace Prisma {
   export type SchoolCreateWithoutAdminInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -55547,6 +55652,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateWithoutAdminInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -56074,6 +56180,7 @@ export namespace Prisma {
   export type SchoolUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -56088,6 +56195,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -56929,6 +57037,7 @@ export namespace Prisma {
   export type SchoolCreateWithoutAdminAuthorityInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -56943,6 +57052,7 @@ export namespace Prisma {
   export type SchoolUncheckedCreateWithoutAdminAuthorityInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -59468,6 +59578,7 @@ export namespace Prisma {
   export type SchoolCreateManyProvinceInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -59654,6 +59765,7 @@ export namespace Prisma {
   export type SchoolUpdateWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -59668,6 +59780,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -59682,6 +59795,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateManyWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -59819,6 +59933,7 @@ export namespace Prisma {
   export type SchoolCreateManyCityInput = {
     id?: string
     identity: string
+    level?: $Enums.EducationLevel
     name: string
     longitude: number
     latitude: number
@@ -59926,6 +60041,7 @@ export namespace Prisma {
   export type SchoolUpdateWithoutCityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -59940,6 +60056,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateWithoutCityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -59954,6 +60071,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateManyWithoutCityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -61452,6 +61570,7 @@ export namespace Prisma {
   export type SchoolUpdateWithoutAdminAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -61466,6 +61585,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateWithoutAdminAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -61480,6 +61600,7 @@ export namespace Prisma {
   export type SchoolUncheckedUpdateManyWithoutAdminAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number

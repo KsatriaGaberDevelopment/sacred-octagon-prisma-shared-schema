@@ -51,6 +51,7 @@ model City {
 model School {
   id             String           @id @default(cuid())
   identity       String           @unique
+  level          EducationLevel   @default(NONE)
   name           String
   longitude      Float
   latitude       Float
@@ -436,6 +437,7 @@ model Test {
   @@index([type, question])
   @@index([type, question, category])
   @@index([category, type, question, startedAt, endedAt])
+  @@index([zoneId, type])
 }
 
 model TestParticipant {
@@ -635,4 +637,11 @@ enum Transaction {
   Pending
   Cancelled
   Settlement
+}
+
+enum EducationLevel {
+  NONE
+  SD
+  SMP
+  SMA
 }

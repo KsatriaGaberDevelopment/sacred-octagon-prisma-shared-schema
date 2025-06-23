@@ -141,6 +141,7 @@ exports.Prisma.CityScalarFieldEnum = {
 exports.Prisma.SchoolScalarFieldEnum = {
   id: 'id',
   identity: 'identity',
+  level: 'level',
   name: 'name',
   longitude: 'longitude',
   latitude: 'latitude',
@@ -536,6 +537,13 @@ exports.Prisma.JsonNullValueFilter = {
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
 };
+exports.EducationLevel = exports.$Enums.EducationLevel = {
+  NONE: 'NONE',
+  SD: 'SD',
+  SMP: 'SMP',
+  SMA: 'SMA'
+};
+
 exports.Role = exports.$Enums.Role = {
   Developer: 'Developer',
   SuperAdmin: 'SuperAdmin',

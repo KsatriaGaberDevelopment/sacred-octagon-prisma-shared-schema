@@ -51,6 +51,7 @@ model City {
 model School {
   id             String           @id @default(cuid())
   identity       String           @unique
+  level          EducationLevel   @default(NONE)
   name           String
   longitude      Float
   latitude       Float
@@ -164,7 +165,7 @@ model SubLevel {
   id            String    @id @default(cuid())
   isUnlock      Boolean   @default(false)
   unlockedAt    DateTime? @db.Timestamptz(3)
-  isComplete    Boolean   @default(false) 
+  isComplete    Boolean   @default(false)
   completedAt   DateTime? @db.Timestamptz(3)
   createdAt     DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt     DateTime  @updatedAt @db.Timestamptz(3)
@@ -436,6 +437,7 @@ model Test {
   @@index([type, question])
   @@index([type, question, category])
   @@index([category, type, question, startedAt, endedAt])
+  @@index([zoneId, type])
 }
 
 model TestParticipant {
@@ -635,4 +637,11 @@ enum Transaction {
   Pending
   Cancelled
   Settlement
+}
+
+enum EducationLevel {
+  NONE
+  SD
+  SMP
+  SMA
 }
