@@ -15,8 +15,8 @@ model Province {
   longitude      Float
   latitude       Float
   geoId          String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  createdAt      DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
   adminAuthority AdminAuthority[]
   bannerLocation BannerLocation[]
@@ -36,8 +36,8 @@ model City {
   latitude       Float
   geoId          String
   provinceId     String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  createdAt      DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
   province       Province         @relation(fields: [provinceId], references: [id])
   schools        School[]
@@ -56,8 +56,8 @@ model School {
   latitude       Float
   cityId         String
   provinceId     String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  createdAt      DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
   city           City             @relation(fields: [cityId], references: [id])
   province       Province         @relation(fields: [provinceId], references: [id])
@@ -76,12 +76,12 @@ model User {
   accountType         AccountType          @default(Self)
   firstTest           Boolean              @default(false)
   fullname            String               @default("")
-  birthDate           DateTime?
+  birthDate           DateTime?            @db.Timestamptz(3)
   grade               Int                  @default(0)
-  lastGradeUpdateAt   DateTime?
+  lastGradeUpdateAt   DateTime?            @db.Timestamptz(3)
   schoolIdentity      String               @unique
-  loginAt             DateTime?
-  logoutAt            DateTime?
+  loginAt             DateTime?            @db.Timestamptz(3)
+  logoutAt            DateTime?            @db.Timestamptz(3)
   playTime            Int                  @default(0)
   characterUsed       String               @default("")
   inventory           Int[]                @default([0, 0, 0])
@@ -89,8 +89,8 @@ model User {
   cityId              String?
   provinceId          String?
   adminId             String?              @unique
-  createdAt           DateTime             @default(now())
-  updatedAt           DateTime             @updatedAt
+  createdAt           DateTime             @default(now()) @db.Timestamptz(3)
+  updatedAt           DateTime             @updatedAt @db.Timestamptz(3)
   username            String               @unique
   lastIdZoneUnlocked  String               @default("")
   lastIdZonePosition  String               @default("")
@@ -122,13 +122,13 @@ model Zone {
   id               String    @id @default(cuid())
   userId           String
   isComplete       Boolean   @default(false)
-  completedAt      DateTime?
+  completedAt      DateTime? @db.Timestamptz(3)
   lastLevelId      String    @default("")
   lastSubLevelId   String    @default("")
   lastInnerLevelId String    @default("")
   lastLevelUnlock  String    @default("")
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  createdAt        DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(3)
   inGameId         String
   posttest         Int       @default(0)
   posttestTryCount Int       @default(0)
@@ -144,11 +144,11 @@ model Zone {
 model Level {
   id           String    @id @default(cuid())
   isUnlock     Boolean   @default(false)
-  unlockedAt   DateTime?
+  unlockedAt   DateTime? @db.Timestamptz(3)
   isComplete   Boolean   @default(false)
-  completedAt  DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  completedAt  DateTime? @db.Timestamptz(3)
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
   inGameId     String
   userId       String
   zoneInGameId String
@@ -163,11 +163,11 @@ model Level {
 model SubLevel {
   id            String    @id @default(cuid())
   isUnlock      Boolean   @default(false)
-  unlockedAt    DateTime?
+  unlockedAt    DateTime? @db.Timestamptz(3)
   isComplete    Boolean   @default(false)
-  completedAt   DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  completedAt   DateTime? @db.Timestamptz(3)
+  createdAt     DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime  @updatedAt @db.Timestamptz(3)
   inGameId      String
   levelInGameId String
   userId        String
@@ -184,15 +184,15 @@ model SubLevel {
 model InnerLevel {
   id               String    @id @default(cuid())
   isUnlock         Boolean   @default(false)
-  unlockedAt       DateTime?
+  unlockedAt       DateTime? @db.Timestamptz(3)
   isComplete       Boolean   @default(false)
-  completedAt      DateTime?
+  completedAt      DateTime? @db.Timestamptz(3)
   correctAttempt   Float     @default(0)
   playTime         Int       @default(0)
   point            Int       @default(0)
   played           Int       @default(0)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  createdAt        DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime  @updatedAt @db.Timestamptz(3)
   inGameId         String
   levelInGameId    String
   subLevelInGameId String
@@ -211,9 +211,9 @@ model InnerLevel {
 model Gempo {
   id           String    @id @default(cuid())
   isUnlock     Boolean   @default(false)
-  unlockedAt   DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  unlockedAt   DateTime? @db.Timestamptz(3)
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
   inGameId     String
   userId       String
   zoneInGameId String
@@ -229,9 +229,9 @@ model Gempo {
 model Championship {
   id           String    @id @default(cuid())
   isUnlock     Boolean   @default(false)
-  unlockedAt   DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  unlockedAt   DateTime? @db.Timestamptz(3)
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
   inGameId     String
   userId       String
   zoneInGameId String
@@ -248,9 +248,9 @@ model GempoRecord {
   id             String    @id @default(cuid())
   played         Int       @default(0)
   point          Int       @default(0)
-  lastPlayedAt   DateTime?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  lastPlayedAt   DateTime? @db.Timestamptz(3)
+  createdAt      DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime  @updatedAt @db.Timestamptz(3)
   gempoInGameId  String
   inGameId       String
   userId         String
@@ -273,14 +273,14 @@ model ChampionshipRecord {
   teamLose             Int       @default(0)
   teamPlayed           Int       @default(0)
   teamPoint            Int       @default(0)
-  teamLastPlayedAt     DateTime?
+  teamLastPlayedAt     DateTime? @db.Timestamptz(3)
   soloWin              Int       @default(0)
   soloLose             Int       @default(0)
   soloPlayed           Int       @default(0)
   soloPoint            Int       @default(0)
-  soloLastPlayedAt     DateTime?
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
+  soloLastPlayedAt     DateTime? @db.Timestamptz(3)
+  createdAt            DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime  @updatedAt @db.Timestamptz(3)
   championshipInGameId String
   inGameId             String
   userId               String
@@ -299,8 +299,8 @@ model ChampionshipRecord {
 model UserLogin {
   id         String    @id @default(cuid())
   userId     String
-  loginDate  DateTime
-  logoutDate DateTime?
+  loginDate  DateTime  @db.Timestamptz(3)
+  logoutDate DateTime? @db.Timestamptz(3)
   user       User      @relation(fields: [userId], references: [id])
 
   @@index([userId])
@@ -316,8 +316,8 @@ model Admin {
   provinceId           String?
   cityId               String?
   schoolId             String?
-  createdAt            DateTime                @default(now())
-  updatedAt            DateTime                @updatedAt
+  createdAt            DateTime                @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime                @updatedAt @db.Timestamptz(3)
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
@@ -344,7 +344,7 @@ model AdminLog {
   adminId   String
   table     String?
   operation String?
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
   admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
 
   @@index([adminId])
@@ -379,8 +379,8 @@ model Banner {
   id             String           @id @default(cuid())
   thumbnail      String
   link           String?
-  startedAt      DateTime?
-  endedAt        DateTime?
+  startedAt      DateTime?        @db.Timestamptz(3)
+  endedAt        DateTime?        @db.Timestamptz(3)
   isHide         Boolean          @default(false)
   adminId        String
   thumbnailId    String
@@ -402,8 +402,8 @@ model BannerVisitor {
   id        String   @id @default(cuid())
   bannerId  String   @unique
   userId    String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
   traffic   Int      @default(0)
   banner    Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -421,12 +421,12 @@ model Test {
   currentQuota  Int               @default(0)
   code          String?
   zoneId        String?
-  startedAt     DateTime
-  endedAt       DateTime?
+  startedAt     DateTime          @db.Timestamptz(3)
+  endedAt       DateTime?         @db.Timestamptz(3)
   description   String?
   category      Role
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
+  createdAt     DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime          @updatedAt @db.Timestamptz(3)
   adminId       String
   admin         Admin             @relation(fields: [adminId], references: [id])
   participants  TestParticipant[]
@@ -442,8 +442,8 @@ model TestParticipant {
   id        String                  @id @default(cuid())
   testId    String
   userId    String
-  createdAt DateTime                @default(now())
-  updatedAt DateTime                @updatedAt
+  createdAt DateTime                @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime                @updatedAt @db.Timestamptz(3)
   highscore Float                   @default(0)
   test      Test                    @relation(fields: [testId], references: [id], onDelete: Cascade)
   user      User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -457,11 +457,11 @@ model TestParticipant {
 model TestParticipantRecord {
   id            String          @id @default(cuid())
   participantId String
-  startedAt     DateTime?
-  endedAt       DateTime?
+  startedAt     DateTime?       @db.Timestamptz(3)
+  endedAt       DateTime?       @db.Timestamptz(3)
   score         Float           @default(0)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  createdAt     DateTime        @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime        @updatedAt @db.Timestamptz(3)
   answers       Json
   participant   TestParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
 
@@ -473,8 +473,8 @@ model Background {
   name        String
   thumbnail   String
   isUse       Boolean
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
   thumbnailId String
 }
 
@@ -483,14 +483,14 @@ model Setting {
   name      String
   title     String
   content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
 }
 
 model AdminTransaction {
   id                  String      @id @default(cuid())
-  createdAt           DateTime    @default(now())
-  updatedAt           DateTime    @updatedAt
+  createdAt           DateTime    @default(now()) @db.Timestamptz(3)
+  updatedAt           DateTime    @updatedAt @db.Timestamptz(3)
   quantity            Int         @default(0)
   zones               String[]
   adminId             String
@@ -503,7 +503,7 @@ model AdminTransaction {
   transactionImageUrl String?
   transactionRef      String?
   status              Transaction @default(Pending)
-  processedAt         DateTime?
+  processedAt         DateTime?   @db.Timestamptz(3)
   processedById       String?
   admin               Admin       @relation("transactions", fields: [adminId], references: [id])
   processedBy         Admin?      @relation("transactionProcessed", fields: [processedById], references: [id])
@@ -521,12 +521,12 @@ model RedeemCode {
   transactionId String           @unique
   adminId       String
   code          String           @unique @default(cuid())
-  expiredAt     DateTime
+  expiredAt     DateTime         @db.Timestamptz(3)
   currentAmount Int
   maxAmount     Int
   data          String[]
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
+  createdAt     DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime         @updatedAt @db.Timestamptz(3)
   suspend       Boolean          @default(false)
   redemeers     CodeRedemeer[]
   admin         Admin            @relation(fields: [adminId], references: [id])
@@ -540,8 +540,8 @@ model CodeRedemeer {
   banned    Boolean    @default(false)
   userId    String
   codeId    String
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  createdAt DateTime   @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime   @updatedAt @db.Timestamptz(3)
   code      RedeemCode @relation(fields: [codeId], references: [id], onDelete: Cascade)
   user      User       @relation(fields: [userId], references: [id])
 
@@ -559,13 +559,13 @@ model MultiplayerRoom {
   max           Int                 @default(2)
   gameplayId    String              @unique
   botOwner      String
-  startedAt     DateTime?
-  endedAt       DateTime?
-  expiredAt     DateTime?
+  startedAt     DateTime?           @db.Timestamptz(3)
+  endedAt       DateTime?           @db.Timestamptz(3)
+  expiredAt     DateTime?           @db.Timestamptz(3)
   isStarted     Boolean             @default(false)
   isEnded       Boolean             @default(false)
-  createdAt     DateTime            @default(now())
-  updatedAt     DateTime            @updatedAt
+  createdAt     DateTime            @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime            @updatedAt @db.Timestamptz(3)
   currentMember Int                 @default(0)
   members       MultiPlayerMember[]
 
@@ -583,8 +583,8 @@ model MultiPlayerMember {
   isReady      Boolean         @default(false)
   isComplete   Boolean         @default(false)
   isBot        Boolean         @default(false)
-  joinedAt     DateTime        @default(now())
-  finishedAt   DateTime?
+  joinedAt     DateTime        @default(now()) @db.Timestamptz(3)
+  finishedAt   DateTime?       @db.Timestamptz(3)
   isDisconnect Boolean         @default(false)
   room         MultiplayerRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
   user         User            @relation(fields: [userId], references: [id])
