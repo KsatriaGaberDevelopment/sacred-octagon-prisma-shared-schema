@@ -14,7 +14,7 @@ model Province {
   name           String
   longitude      Float
   latitude       Float
-  geoId          String
+  geoId          String           @default("")
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
@@ -23,6 +23,7 @@ model Province {
   cities         City[]
   schools        School[]
   users          User[]
+  subdistricts   Subdistrict[]
 
   @@index([id])
   @@index([name])
@@ -34,18 +35,41 @@ model City {
   name           String
   longitude      Float
   latitude       Float
-  geoId          String
+  geoId          String           @default("")
   provinceId     String
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
   province       Province         @relation(fields: [provinceId], references: [id])
   schools        School[]
+  subdistricts   Subdistrict[]
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToCity")
   bannerLocation BannerLocation[] @relation("BannerLocationToCity")
 
   @@index([provinceId])
+}
+
+model Subdistrict {
+  id             String           @id @default(cuid())
+  name           String
+  longitude      Float
+  latitude       Float
+  geoId          String           @default("")
+  provinceId     String
+  cityId         String
+  createdAt      DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
+  province       Province         @relation(fields: [provinceId], references: [id])
+  city           City             @relation(fields: [cityId], references: [id])
+  schools        School[]
+  users          User[]
+  admins         Admin[]
+  adminAuthority AdminAuthority[]
+  bannerLocation BannerLocation[]
+
+  @@index([provinceId])
+  @@index([cityId])
 }
 
 model School {
@@ -55,17 +79,21 @@ model School {
   name           String
   longitude      Float
   latitude       Float
-  cityId         String
-  provinceId     String
+  cityId         String?
+  provinceId     String?
+  subdistrictId  String?
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
-  city           City             @relation(fields: [cityId], references: [id])
-  province       Province         @relation(fields: [provinceId], references: [id])
+  city           City?            @relation(fields: [cityId], references: [id])
+  province       Province?        @relation(fields: [provinceId], references: [id])
+  subdistrict    Subdistrict?     @relation(fields: [subdistrictId], references: [id])
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToSchool")
 
   @@index([cityId])
+  @@index([provinceId])
+  @@index([subdistrictId])
 }
 
 model User {
@@ -89,6 +117,7 @@ model User {
   schoolId            String?
   cityId              String?
   provinceId          String?
+  subdisctrictId      String?
   adminId             String?              @unique
   createdAt           DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime             @updatedAt @db.Timestamptz(3)
@@ -110,6 +139,7 @@ model User {
   city                City?                @relation(fields: [cityId], references: [id])
   province            Province?            @relation(fields: [provinceId], references: [id])
   school              School?              @relation(fields: [schoolId], references: [id])
+  subdisctrict        Subdistrict?         @relation(fields: [subdisctrictId], references: [id])
   userLogin           UserLogin[]
   zones               Zone[]
 
@@ -117,6 +147,7 @@ model User {
   @@index([cityId])
   @@index([schoolId])
   @@index([authId])
+  @@index([subdisctrictId])
 }
 
 model Zone {
@@ -316,14 +347,16 @@ model Admin {
   role                 Role?
   provinceId           String?
   cityId               String?
+  subdistrictId        String?
   schoolId             String?
   createdAt            DateTime                @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime                @updatedAt @db.Timestamptz(3)
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
-  city                 City?                   @relation(fields: [cityId], references: [id])
   province             Province?               @relation(fields: [provinceId], references: [id])
+  city                 City?                   @relation(fields: [cityId], references: [id])
+  subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
   school               School?                 @relation(fields: [schoolId], references: [id])
   authority            AdminAuthority[]
   logs                 AdminLog[]
@@ -364,14 +397,15 @@ model AdminOperationHistory {
 }
 
 model AdminAuthority {
-  id         String   @id @default(cuid())
-  adminId    String
-  provinceId String
-  grades     Int[]
-  admin      Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  province   Province @relation(fields: [provinceId], references: [id])
-  cities     City[]   @relation("AdminAuthorityToCity")
-  schools    School[] @relation("AdminAuthorityToSchool")
+  id           String        @id @default(cuid())
+  adminId      String
+  provinceId   String
+  grades       Int[]
+  admin        Admin         @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  province     Province      @relation(fields: [provinceId], references: [id])
+  cities       City[]        @relation("AdminAuthorityToCity")
+  subdistricts Subdistrict[]
+  schools      School[]      @relation("AdminAuthorityToSchool")
 
   @@index([provinceId])
 }
@@ -391,12 +425,13 @@ model Banner {
 }
 
 model BannerLocation {
-  id         String   @id @default(cuid())
-  bannerId   String
-  provinceId String
-  banner     Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  province   Province @relation(fields: [provinceId], references: [id])
-  cities     City[]   @relation("BannerLocationToCity")
+  id            String        @id @default(cuid())
+  bannerId      String
+  provinceId    String
+  banner        Banner        @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  province      Province      @relation(fields: [provinceId], references: [id])
+  cities        City[]        @relation("BannerLocationToCity")
+  subdisctricts Subdistrict[]
 }
 
 model BannerVisitor {

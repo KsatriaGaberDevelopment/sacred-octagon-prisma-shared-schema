@@ -24,6 +24,11 @@ export type Province = $Result.DefaultSelection<Prisma.$ProvincePayload>
  */
 export type City = $Result.DefaultSelection<Prisma.$CityPayload>
 /**
+ * Model Subdistrict
+ * 
+ */
+export type Subdistrict = $Result.DefaultSelection<Prisma.$SubdistrictPayload>
+/**
  * Model School
  * 
  */
@@ -423,6 +428,16 @@ export class PrismaClient<
     * ```
     */
   get city(): Prisma.CityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.subdistrict`: Exposes CRUD operations for the **Subdistrict** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Subdistricts
+    * const subdistricts = await prisma.subdistrict.findMany()
+    * ```
+    */
+  get subdistrict(): Prisma.SubdistrictDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.school`: Exposes CRUD operations for the **School** model.
@@ -1145,6 +1160,7 @@ export namespace Prisma {
   export const ModelName: {
     Province: 'Province',
     City: 'City',
+    Subdistrict: 'Subdistrict',
     School: 'School',
     User: 'User',
     Zone: 'Zone',
@@ -1191,7 +1207,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1340,6 +1356,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CityCountArgs<ExtArgs>
             result: $Utils.Optional<CityCountAggregateOutputType> | number
+          }
+        }
+      }
+      Subdistrict: {
+        payload: Prisma.$SubdistrictPayload<ExtArgs>
+        fields: Prisma.SubdistrictFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubdistrictFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubdistrictFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          findFirst: {
+            args: Prisma.SubdistrictFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubdistrictFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          findMany: {
+            args: Prisma.SubdistrictFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>[]
+          }
+          create: {
+            args: Prisma.SubdistrictCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          createMany: {
+            args: Prisma.SubdistrictCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SubdistrictCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>[]
+          }
+          delete: {
+            args: Prisma.SubdistrictDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          update: {
+            args: Prisma.SubdistrictUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubdistrictDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubdistrictUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SubdistrictUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>[]
+          }
+          upsert: {
+            args: Prisma.SubdistrictUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubdistrictPayload>
+          }
+          aggregate: {
+            args: Prisma.SubdistrictAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubdistrict>
+          }
+          groupBy: {
+            args: Prisma.SubdistrictGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubdistrictGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubdistrictCountArgs<ExtArgs>
+            result: $Utils.Optional<SubdistrictCountAggregateOutputType> | number
           }
         }
       }
@@ -3501,6 +3591,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     province?: ProvinceOmit
     city?: CityOmit
+    subdistrict?: SubdistrictOmit
     school?: SchoolOmit
     user?: UserOmit
     zone?: ZoneOmit
@@ -3629,6 +3720,7 @@ export namespace Prisma {
     cities: number
     schools: number
     users: number
+    subdistricts: number
   }
 
   export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3638,6 +3730,7 @@ export namespace Prisma {
     cities?: boolean | ProvinceCountOutputTypeCountCitiesArgs
     schools?: boolean | ProvinceCountOutputTypeCountSchoolsArgs
     users?: boolean | ProvinceCountOutputTypeCountUsersArgs
+    subdistricts?: boolean | ProvinceCountOutputTypeCountSubdistrictsArgs
   }
 
   // Custom InputTypes
@@ -3693,6 +3786,13 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeCountSubdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
+  }
+
 
   /**
    * Count Type CityCountOutputType
@@ -3701,6 +3801,7 @@ export namespace Prisma {
   export type CityCountOutputType = {
     admin: number
     schools: number
+    subdistricts: number
     users: number
     adminAuthority: number
     bannerLocation: number
@@ -3709,6 +3810,7 @@ export namespace Prisma {
   export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | CityCountOutputTypeCountAdminArgs
     schools?: boolean | CityCountOutputTypeCountSchoolsArgs
+    subdistricts?: boolean | CityCountOutputTypeCountSubdistrictsArgs
     users?: boolean | CityCountOutputTypeCountUsersArgs
     adminAuthority?: boolean | CityCountOutputTypeCountAdminAuthorityArgs
     bannerLocation?: boolean | CityCountOutputTypeCountBannerLocationArgs
@@ -3742,6 +3844,13 @@ export namespace Prisma {
   /**
    * CityCountOutputType without action
    */
+  export type CityCountOutputTypeCountSubdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
+  }
+
+  /**
+   * CityCountOutputType without action
+   */
   export type CityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
   }
@@ -3757,6 +3866,73 @@ export namespace Prisma {
    * CityCountOutputType without action
    */
   export type CityCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerLocationWhereInput
+  }
+
+
+  /**
+   * Count Type SubdistrictCountOutputType
+   */
+
+  export type SubdistrictCountOutputType = {
+    schools: number
+    users: number
+    admins: number
+    adminAuthority: number
+    bannerLocation: number
+  }
+
+  export type SubdistrictCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    schools?: boolean | SubdistrictCountOutputTypeCountSchoolsArgs
+    users?: boolean | SubdistrictCountOutputTypeCountUsersArgs
+    admins?: boolean | SubdistrictCountOutputTypeCountAdminsArgs
+    adminAuthority?: boolean | SubdistrictCountOutputTypeCountAdminAuthorityArgs
+    bannerLocation?: boolean | SubdistrictCountOutputTypeCountBannerLocationArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubdistrictCountOutputType
+     */
+    select?: SubdistrictCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeCountSchoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SchoolWhereInput
+  }
+
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeCountAdminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminWhereInput
+  }
+
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeCountAdminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuthorityWhereInput
+  }
+
+  /**
+   * SubdistrictCountOutputType without action
+   */
+  export type SubdistrictCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BannerLocationWhereInput
   }
 
@@ -4049,11 +4225,13 @@ export namespace Prisma {
 
   export type AdminAuthorityCountOutputType = {
     cities: number
+    subdistricts: number
     schools: number
   }
 
   export type AdminAuthorityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cities?: boolean | AdminAuthorityCountOutputTypeCountCitiesArgs
+    subdistricts?: boolean | AdminAuthorityCountOutputTypeCountSubdistrictsArgs
     schools?: boolean | AdminAuthorityCountOutputTypeCountSchoolsArgs
   }
 
@@ -4073,6 +4251,13 @@ export namespace Prisma {
    */
   export type AdminAuthorityCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CityWhereInput
+  }
+
+  /**
+   * AdminAuthorityCountOutputType without action
+   */
+  export type AdminAuthorityCountOutputTypeCountSubdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
   }
 
   /**
@@ -4129,10 +4314,12 @@ export namespace Prisma {
 
   export type BannerLocationCountOutputType = {
     cities: number
+    subdisctricts: number
   }
 
   export type BannerLocationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cities?: boolean | BannerLocationCountOutputTypeCountCitiesArgs
+    subdisctricts?: boolean | BannerLocationCountOutputTypeCountSubdisctrictsArgs
   }
 
   // Custom InputTypes
@@ -4151,6 +4338,13 @@ export namespace Prisma {
    */
   export type BannerLocationCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CityWhereInput
+  }
+
+  /**
+   * BannerLocationCountOutputType without action
+   */
+  export type BannerLocationCountOutputTypeCountSubdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
   }
 
 
@@ -4506,6 +4700,7 @@ export namespace Prisma {
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
+    subdistricts?: boolean | Province$subdistrictsArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["province"]>
 
@@ -4547,6 +4742,7 @@ export namespace Prisma {
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
+    subdistricts?: boolean | Province$subdistrictsArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4561,6 +4757,7 @@ export namespace Prisma {
       cities: Prisma.$CityPayload<ExtArgs>[]
       schools: Prisma.$SchoolPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
+      subdistricts: Prisma.$SubdistrictPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4970,6 +5167,7 @@ export namespace Prisma {
     cities<T extends Province$citiesArgs<ExtArgs> = {}>(args?: Subset<T, Province$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schools<T extends Province$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, Province$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Province$usersArgs<ExtArgs> = {}>(args?: Subset<T, Province$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subdistricts<T extends Province$subdistrictsArgs<ExtArgs> = {}>(args?: Subset<T, Province$subdistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5538,6 +5736,30 @@ export namespace Prisma {
   }
 
   /**
+   * Province.subdistricts
+   */
+  export type Province$subdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    cursor?: SubdistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
    * Province without action
    */
   export type ProvinceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5785,6 +6007,7 @@ export namespace Prisma {
     admin?: boolean | City$adminArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     schools?: boolean | City$schoolsArgs<ExtArgs>
+    subdistricts?: boolean | City$subdistrictsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
@@ -5831,6 +6054,7 @@ export namespace Prisma {
     admin?: boolean | City$adminArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     schools?: boolean | City$schoolsArgs<ExtArgs>
+    subdistricts?: boolean | City$subdistrictsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
     bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
@@ -5849,6 +6073,7 @@ export namespace Prisma {
       admin: Prisma.$AdminPayload<ExtArgs>[]
       province: Prisma.$ProvincePayload<ExtArgs>
       schools: Prisma.$SchoolPayload<ExtArgs>[]
+      subdistricts: Prisma.$SubdistrictPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
@@ -6259,6 +6484,7 @@ export namespace Prisma {
     admin<T extends City$adminArgs<ExtArgs> = {}>(args?: Subset<T, City$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     schools<T extends City$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, City$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subdistricts<T extends City$subdistrictsArgs<ExtArgs> = {}>(args?: Subset<T, City$subdistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends City$usersArgs<ExtArgs> = {}>(args?: Subset<T, City$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends City$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, City$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bannerLocation<T extends City$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, City$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -6743,6 +6969,30 @@ export namespace Prisma {
   }
 
   /**
+   * City.subdistricts
+   */
+  export type City$subdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    cursor?: SubdistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
    * City.users
    */
   export type City$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6834,6 +7084,1304 @@ export namespace Prisma {
 
 
   /**
+   * Model Subdistrict
+   */
+
+  export type AggregateSubdistrict = {
+    _count: SubdistrictCountAggregateOutputType | null
+    _avg: SubdistrictAvgAggregateOutputType | null
+    _sum: SubdistrictSumAggregateOutputType | null
+    _min: SubdistrictMinAggregateOutputType | null
+    _max: SubdistrictMaxAggregateOutputType | null
+  }
+
+  export type SubdistrictAvgAggregateOutputType = {
+    longitude: number | null
+    latitude: number | null
+  }
+
+  export type SubdistrictSumAggregateOutputType = {
+    longitude: number | null
+    latitude: number | null
+  }
+
+  export type SubdistrictMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    longitude: number | null
+    latitude: number | null
+    geoId: string | null
+    provinceId: string | null
+    cityId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubdistrictMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    longitude: number | null
+    latitude: number | null
+    geoId: string | null
+    provinceId: string | null
+    cityId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubdistrictCountAggregateOutputType = {
+    id: number
+    name: number
+    longitude: number
+    latitude: number
+    geoId: number
+    provinceId: number
+    cityId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SubdistrictAvgAggregateInputType = {
+    longitude?: true
+    latitude?: true
+  }
+
+  export type SubdistrictSumAggregateInputType = {
+    longitude?: true
+    latitude?: true
+  }
+
+  export type SubdistrictMinAggregateInputType = {
+    id?: true
+    name?: true
+    longitude?: true
+    latitude?: true
+    geoId?: true
+    provinceId?: true
+    cityId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubdistrictMaxAggregateInputType = {
+    id?: true
+    name?: true
+    longitude?: true
+    latitude?: true
+    geoId?: true
+    provinceId?: true
+    cityId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubdistrictCountAggregateInputType = {
+    id?: true
+    name?: true
+    longitude?: true
+    latitude?: true
+    geoId?: true
+    provinceId?: true
+    cityId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SubdistrictAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subdistrict to aggregate.
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subdistricts to fetch.
+     */
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubdistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subdistricts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subdistricts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Subdistricts
+    **/
+    _count?: true | SubdistrictCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SubdistrictAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SubdistrictSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubdistrictMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubdistrictMaxAggregateInputType
+  }
+
+  export type GetSubdistrictAggregateType<T extends SubdistrictAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubdistrict]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubdistrict[P]>
+      : GetScalarType<T[P], AggregateSubdistrict[P]>
+  }
+
+
+
+
+  export type SubdistrictGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithAggregationInput | SubdistrictOrderByWithAggregationInput[]
+    by: SubdistrictScalarFieldEnum[] | SubdistrictScalarFieldEnum
+    having?: SubdistrictScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubdistrictCountAggregateInputType | true
+    _avg?: SubdistrictAvgAggregateInputType
+    _sum?: SubdistrictSumAggregateInputType
+    _min?: SubdistrictMinAggregateInputType
+    _max?: SubdistrictMaxAggregateInputType
+  }
+
+  export type SubdistrictGroupByOutputType = {
+    id: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId: string
+    provinceId: string
+    cityId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: SubdistrictCountAggregateOutputType | null
+    _avg: SubdistrictAvgAggregateOutputType | null
+    _sum: SubdistrictSumAggregateOutputType | null
+    _min: SubdistrictMinAggregateOutputType | null
+    _max: SubdistrictMaxAggregateOutputType | null
+  }
+
+  type GetSubdistrictGroupByPayload<T extends SubdistrictGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubdistrictGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubdistrictGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubdistrictGroupByOutputType[P]>
+            : GetScalarType<T[P], SubdistrictGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubdistrictSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    geoId?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+    schools?: boolean | Subdistrict$schoolsArgs<ExtArgs>
+    users?: boolean | Subdistrict$usersArgs<ExtArgs>
+    admins?: boolean | Subdistrict$adminsArgs<ExtArgs>
+    adminAuthority?: boolean | Subdistrict$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | Subdistrict$bannerLocationArgs<ExtArgs>
+    _count?: boolean | SubdistrictCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subdistrict"]>
+
+  export type SubdistrictSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    geoId?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subdistrict"]>
+
+  export type SubdistrictSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    geoId?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subdistrict"]>
+
+  export type SubdistrictSelectScalar = {
+    id?: boolean
+    name?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    geoId?: boolean
+    provinceId?: boolean
+    cityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SubdistrictOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "longitude" | "latitude" | "geoId" | "provinceId" | "cityId" | "createdAt" | "updatedAt", ExtArgs["result"]["subdistrict"]>
+  export type SubdistrictInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+    schools?: boolean | Subdistrict$schoolsArgs<ExtArgs>
+    users?: boolean | Subdistrict$usersArgs<ExtArgs>
+    admins?: boolean | Subdistrict$adminsArgs<ExtArgs>
+    adminAuthority?: boolean | Subdistrict$adminAuthorityArgs<ExtArgs>
+    bannerLocation?: boolean | Subdistrict$bannerLocationArgs<ExtArgs>
+    _count?: boolean | SubdistrictCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SubdistrictIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+  }
+  export type SubdistrictIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | CityDefaultArgs<ExtArgs>
+  }
+
+  export type $SubdistrictPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Subdistrict"
+    objects: {
+      province: Prisma.$ProvincePayload<ExtArgs>
+      city: Prisma.$CityPayload<ExtArgs>
+      schools: Prisma.$SchoolPayload<ExtArgs>[]
+      users: Prisma.$UserPayload<ExtArgs>[]
+      admins: Prisma.$AdminPayload<ExtArgs>[]
+      adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
+      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      longitude: number
+      latitude: number
+      geoId: string
+      provinceId: string
+      cityId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["subdistrict"]>
+    composites: {}
+  }
+
+  type SubdistrictGetPayload<S extends boolean | null | undefined | SubdistrictDefaultArgs> = $Result.GetResult<Prisma.$SubdistrictPayload, S>
+
+  type SubdistrictCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubdistrictFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubdistrictCountAggregateInputType | true
+    }
+
+  export interface SubdistrictDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Subdistrict'], meta: { name: 'Subdistrict' } }
+    /**
+     * Find zero or one Subdistrict that matches the filter.
+     * @param {SubdistrictFindUniqueArgs} args - Arguments to find a Subdistrict
+     * @example
+     * // Get one Subdistrict
+     * const subdistrict = await prisma.subdistrict.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubdistrictFindUniqueArgs>(args: SelectSubset<T, SubdistrictFindUniqueArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Subdistrict that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubdistrictFindUniqueOrThrowArgs} args - Arguments to find a Subdistrict
+     * @example
+     * // Get one Subdistrict
+     * const subdistrict = await prisma.subdistrict.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubdistrictFindUniqueOrThrowArgs>(args: SelectSubset<T, SubdistrictFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subdistrict that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictFindFirstArgs} args - Arguments to find a Subdistrict
+     * @example
+     * // Get one Subdistrict
+     * const subdistrict = await prisma.subdistrict.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubdistrictFindFirstArgs>(args?: SelectSubset<T, SubdistrictFindFirstArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subdistrict that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictFindFirstOrThrowArgs} args - Arguments to find a Subdistrict
+     * @example
+     * // Get one Subdistrict
+     * const subdistrict = await prisma.subdistrict.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubdistrictFindFirstOrThrowArgs>(args?: SelectSubset<T, SubdistrictFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Subdistricts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Subdistricts
+     * const subdistricts = await prisma.subdistrict.findMany()
+     * 
+     * // Get first 10 Subdistricts
+     * const subdistricts = await prisma.subdistrict.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const subdistrictWithIdOnly = await prisma.subdistrict.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SubdistrictFindManyArgs>(args?: SelectSubset<T, SubdistrictFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Subdistrict.
+     * @param {SubdistrictCreateArgs} args - Arguments to create a Subdistrict.
+     * @example
+     * // Create one Subdistrict
+     * const Subdistrict = await prisma.subdistrict.create({
+     *   data: {
+     *     // ... data to create a Subdistrict
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubdistrictCreateArgs>(args: SelectSubset<T, SubdistrictCreateArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Subdistricts.
+     * @param {SubdistrictCreateManyArgs} args - Arguments to create many Subdistricts.
+     * @example
+     * // Create many Subdistricts
+     * const subdistrict = await prisma.subdistrict.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubdistrictCreateManyArgs>(args?: SelectSubset<T, SubdistrictCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Subdistricts and returns the data saved in the database.
+     * @param {SubdistrictCreateManyAndReturnArgs} args - Arguments to create many Subdistricts.
+     * @example
+     * // Create many Subdistricts
+     * const subdistrict = await prisma.subdistrict.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Subdistricts and only return the `id`
+     * const subdistrictWithIdOnly = await prisma.subdistrict.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SubdistrictCreateManyAndReturnArgs>(args?: SelectSubset<T, SubdistrictCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Subdistrict.
+     * @param {SubdistrictDeleteArgs} args - Arguments to delete one Subdistrict.
+     * @example
+     * // Delete one Subdistrict
+     * const Subdistrict = await prisma.subdistrict.delete({
+     *   where: {
+     *     // ... filter to delete one Subdistrict
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubdistrictDeleteArgs>(args: SelectSubset<T, SubdistrictDeleteArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Subdistrict.
+     * @param {SubdistrictUpdateArgs} args - Arguments to update one Subdistrict.
+     * @example
+     * // Update one Subdistrict
+     * const subdistrict = await prisma.subdistrict.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubdistrictUpdateArgs>(args: SelectSubset<T, SubdistrictUpdateArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Subdistricts.
+     * @param {SubdistrictDeleteManyArgs} args - Arguments to filter Subdistricts to delete.
+     * @example
+     * // Delete a few Subdistricts
+     * const { count } = await prisma.subdistrict.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubdistrictDeleteManyArgs>(args?: SelectSubset<T, SubdistrictDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Subdistricts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Subdistricts
+     * const subdistrict = await prisma.subdistrict.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubdistrictUpdateManyArgs>(args: SelectSubset<T, SubdistrictUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Subdistricts and returns the data updated in the database.
+     * @param {SubdistrictUpdateManyAndReturnArgs} args - Arguments to update many Subdistricts.
+     * @example
+     * // Update many Subdistricts
+     * const subdistrict = await prisma.subdistrict.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Subdistricts and only return the `id`
+     * const subdistrictWithIdOnly = await prisma.subdistrict.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SubdistrictUpdateManyAndReturnArgs>(args: SelectSubset<T, SubdistrictUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Subdistrict.
+     * @param {SubdistrictUpsertArgs} args - Arguments to update or create a Subdistrict.
+     * @example
+     * // Update or create a Subdistrict
+     * const subdistrict = await prisma.subdistrict.upsert({
+     *   create: {
+     *     // ... data to create a Subdistrict
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Subdistrict we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubdistrictUpsertArgs>(args: SelectSubset<T, SubdistrictUpsertArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Subdistricts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictCountArgs} args - Arguments to filter Subdistricts to count.
+     * @example
+     * // Count the number of Subdistricts
+     * const count = await prisma.subdistrict.count({
+     *   where: {
+     *     // ... the filter for the Subdistricts we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubdistrictCountArgs>(
+      args?: Subset<T, SubdistrictCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubdistrictCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Subdistrict.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubdistrictAggregateArgs>(args: Subset<T, SubdistrictAggregateArgs>): Prisma.PrismaPromise<GetSubdistrictAggregateType<T>>
+
+    /**
+     * Group by Subdistrict.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubdistrictGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubdistrictGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubdistrictGroupByArgs['orderBy'] }
+        : { orderBy?: SubdistrictGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubdistrictGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubdistrictGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Subdistrict model
+   */
+  readonly fields: SubdistrictFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Subdistrict.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubdistrictClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    city<T extends CityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CityDefaultArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    schools<T extends Subdistrict$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends Subdistrict$usersArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    admins<T extends Subdistrict$adminsArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$adminsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminAuthority<T extends Subdistrict$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bannerLocation<T extends Subdistrict$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Subdistrict model
+   */
+  interface SubdistrictFieldRefs {
+    readonly id: FieldRef<"Subdistrict", 'String'>
+    readonly name: FieldRef<"Subdistrict", 'String'>
+    readonly longitude: FieldRef<"Subdistrict", 'Float'>
+    readonly latitude: FieldRef<"Subdistrict", 'Float'>
+    readonly geoId: FieldRef<"Subdistrict", 'String'>
+    readonly provinceId: FieldRef<"Subdistrict", 'String'>
+    readonly cityId: FieldRef<"Subdistrict", 'String'>
+    readonly createdAt: FieldRef<"Subdistrict", 'DateTime'>
+    readonly updatedAt: FieldRef<"Subdistrict", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Subdistrict findUnique
+   */
+  export type SubdistrictFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Subdistrict to fetch.
+     */
+    where: SubdistrictWhereUniqueInput
+  }
+
+  /**
+   * Subdistrict findUniqueOrThrow
+   */
+  export type SubdistrictFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Subdistrict to fetch.
+     */
+    where: SubdistrictWhereUniqueInput
+  }
+
+  /**
+   * Subdistrict findFirst
+   */
+  export type SubdistrictFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Subdistrict to fetch.
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subdistricts to fetch.
+     */
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subdistricts.
+     */
+    cursor?: SubdistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subdistricts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subdistricts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subdistricts.
+     */
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict findFirstOrThrow
+   */
+  export type SubdistrictFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Subdistrict to fetch.
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subdistricts to fetch.
+     */
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subdistricts.
+     */
+    cursor?: SubdistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subdistricts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subdistricts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subdistricts.
+     */
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict findMany
+   */
+  export type SubdistrictFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Subdistricts to fetch.
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subdistricts to fetch.
+     */
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Subdistricts.
+     */
+    cursor?: SubdistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subdistricts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subdistricts.
+     */
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict create
+   */
+  export type SubdistrictCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Subdistrict.
+     */
+    data: XOR<SubdistrictCreateInput, SubdistrictUncheckedCreateInput>
+  }
+
+  /**
+   * Subdistrict createMany
+   */
+  export type SubdistrictCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Subdistricts.
+     */
+    data: SubdistrictCreateManyInput | SubdistrictCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Subdistrict createManyAndReturn
+   */
+  export type SubdistrictCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * The data used to create many Subdistricts.
+     */
+    data: SubdistrictCreateManyInput | SubdistrictCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Subdistrict update
+   */
+  export type SubdistrictUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Subdistrict.
+     */
+    data: XOR<SubdistrictUpdateInput, SubdistrictUncheckedUpdateInput>
+    /**
+     * Choose, which Subdistrict to update.
+     */
+    where: SubdistrictWhereUniqueInput
+  }
+
+  /**
+   * Subdistrict updateMany
+   */
+  export type SubdistrictUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Subdistricts.
+     */
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyInput>
+    /**
+     * Filter which Subdistricts to update
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * Limit how many Subdistricts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subdistrict updateManyAndReturn
+   */
+  export type SubdistrictUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * The data used to update Subdistricts.
+     */
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyInput>
+    /**
+     * Filter which Subdistricts to update
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * Limit how many Subdistricts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Subdistrict upsert
+   */
+  export type SubdistrictUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Subdistrict to update in case it exists.
+     */
+    where: SubdistrictWhereUniqueInput
+    /**
+     * In case the Subdistrict found by the `where` argument doesn't exist, create a new Subdistrict with this data.
+     */
+    create: XOR<SubdistrictCreateInput, SubdistrictUncheckedCreateInput>
+    /**
+     * In case the Subdistrict was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubdistrictUpdateInput, SubdistrictUncheckedUpdateInput>
+  }
+
+  /**
+   * Subdistrict delete
+   */
+  export type SubdistrictDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    /**
+     * Filter which Subdistrict to delete.
+     */
+    where: SubdistrictWhereUniqueInput
+  }
+
+  /**
+   * Subdistrict deleteMany
+   */
+  export type SubdistrictDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subdistricts to delete
+     */
+    where?: SubdistrictWhereInput
+    /**
+     * Limit how many Subdistricts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subdistrict.schools
+   */
+  export type Subdistrict$schoolsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the School
+     */
+    select?: SchoolSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the School
+     */
+    omit?: SchoolOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SchoolInclude<ExtArgs> | null
+    where?: SchoolWhereInput
+    orderBy?: SchoolOrderByWithRelationInput | SchoolOrderByWithRelationInput[]
+    cursor?: SchoolWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SchoolScalarFieldEnum | SchoolScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict.users
+   */
+  export type Subdistrict$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict.admins
+   */
+  export type Subdistrict$adminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Admin
+     */
+    select?: AdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Admin
+     */
+    omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    where?: AdminWhereInput
+    orderBy?: AdminOrderByWithRelationInput | AdminOrderByWithRelationInput[]
+    cursor?: AdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminScalarFieldEnum | AdminScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict.adminAuthority
+   */
+  export type Subdistrict$adminAuthorityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuthority
+     */
+    select?: AdminAuthoritySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuthority
+     */
+    omit?: AdminAuthorityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuthorityInclude<ExtArgs> | null
+    where?: AdminAuthorityWhereInput
+    orderBy?: AdminAuthorityOrderByWithRelationInput | AdminAuthorityOrderByWithRelationInput[]
+    cursor?: AdminAuthorityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminAuthorityScalarFieldEnum | AdminAuthorityScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict.bannerLocation
+   */
+  export type Subdistrict$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BannerLocation
+     */
+    select?: BannerLocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BannerLocation
+     */
+    omit?: BannerLocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerLocationInclude<ExtArgs> | null
+    where?: BannerLocationWhereInput
+    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
+    cursor?: BannerLocationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+  }
+
+  /**
+   * Subdistrict without action
+   */
+  export type SubdistrictDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model School
    */
 
@@ -6864,6 +8412,7 @@ export namespace Prisma {
     latitude: number | null
     cityId: string | null
     provinceId: string | null
+    subdistrictId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6877,6 +8426,7 @@ export namespace Prisma {
     latitude: number | null
     cityId: string | null
     provinceId: string | null
+    subdistrictId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6890,6 +8440,7 @@ export namespace Prisma {
     latitude: number
     cityId: number
     provinceId: number
+    subdistrictId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -6915,6 +8466,7 @@ export namespace Prisma {
     latitude?: true
     cityId?: true
     provinceId?: true
+    subdistrictId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6928,6 +8480,7 @@ export namespace Prisma {
     latitude?: true
     cityId?: true
     provinceId?: true
+    subdistrictId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6941,6 +8494,7 @@ export namespace Prisma {
     latitude?: true
     cityId?: true
     provinceId?: true
+    subdistrictId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7039,8 +8593,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId: string | null
+    provinceId: string | null
+    subdistrictId: string | null
     createdAt: Date
     updatedAt: Date
     _count: SchoolCountAggregateOutputType | null
@@ -7073,11 +8628,13 @@ export namespace Prisma {
     latitude?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdistrictId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     admin?: boolean | School$adminArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
     adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
@@ -7092,10 +8649,12 @@ export namespace Prisma {
     latitude?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdistrictId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
   }, ExtArgs["result"]["school"]>
 
   export type SchoolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7107,10 +8666,12 @@ export namespace Prisma {
     latitude?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdistrictId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
   }, ExtArgs["result"]["school"]>
 
   export type SchoolSelectScalar = {
@@ -7122,34 +8683,39 @@ export namespace Prisma {
     latitude?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdistrictId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "identity" | "level" | "name" | "longitude" | "latitude" | "cityId" | "provinceId" | "createdAt" | "updatedAt", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "identity" | "level" | "name" | "longitude" | "latitude" | "cityId" | "provinceId" | "subdistrictId" | "createdAt" | "updatedAt", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | School$adminArgs<ExtArgs>
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
     users?: boolean | School$usersArgs<ExtArgs>
     adminAuthority?: boolean | School$adminAuthorityArgs<ExtArgs>
     _count?: boolean | SchoolCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SchoolIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
   }
   export type SchoolIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    city?: boolean | CityDefaultArgs<ExtArgs>
-    province?: boolean | ProvinceDefaultArgs<ExtArgs>
+    city?: boolean | School$cityArgs<ExtArgs>
+    province?: boolean | School$provinceArgs<ExtArgs>
+    subdistrict?: boolean | School$subdistrictArgs<ExtArgs>
   }
 
   export type $SchoolPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "School"
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>[]
-      city: Prisma.$CityPayload<ExtArgs>
-      province: Prisma.$ProvincePayload<ExtArgs>
+      city: Prisma.$CityPayload<ExtArgs> | null
+      province: Prisma.$ProvincePayload<ExtArgs> | null
+      subdistrict: Prisma.$SubdistrictPayload<ExtArgs> | null
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
     }
@@ -7160,8 +8726,9 @@ export namespace Prisma {
       name: string
       longitude: number
       latitude: number
-      cityId: string
-      provinceId: string
+      cityId: string | null
+      provinceId: string | null
+      subdistrictId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["school"]>
@@ -7559,8 +9126,9 @@ export namespace Prisma {
   export interface Prisma__SchoolClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends School$adminArgs<ExtArgs> = {}>(args?: Subset<T, School$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    city<T extends CityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CityDefaultArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    city<T extends School$cityArgs<ExtArgs> = {}>(args?: Subset<T, School$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    province<T extends School$provinceArgs<ExtArgs> = {}>(args?: Subset<T, School$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    subdistrict<T extends School$subdistrictArgs<ExtArgs> = {}>(args?: Subset<T, School$subdistrictArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     users<T extends School$usersArgs<ExtArgs> = {}>(args?: Subset<T, School$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends School$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, School$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -7600,6 +9168,7 @@ export namespace Prisma {
     readonly latitude: FieldRef<"School", 'Float'>
     readonly cityId: FieldRef<"School", 'String'>
     readonly provinceId: FieldRef<"School", 'String'>
+    readonly subdistrictId: FieldRef<"School", 'String'>
     readonly createdAt: FieldRef<"School", 'DateTime'>
     readonly updatedAt: FieldRef<"School", 'DateTime'>
   }
@@ -8022,6 +9591,63 @@ export namespace Prisma {
   }
 
   /**
+   * School.city
+   */
+  export type School$cityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the City
+     */
+    omit?: CityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+  }
+
+  /**
+   * School.province
+   */
+  export type School$provinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    where?: ProvinceWhereInput
+  }
+
+  /**
+   * School.subdistrict
+   */
+  export type School$subdistrictArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+  }
+
+  /**
    * School.users
    */
   export type School$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8132,6 +9758,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
+    subdisctrictId: string | null
     adminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8160,6 +9787,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
+    subdisctrictId: string | null
     adminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8189,6 +9817,7 @@ export namespace Prisma {
     schoolId: number
     cityId: number
     provinceId: number
+    subdisctrictId: number
     adminId: number
     createdAt: number
     updatedAt: number
@@ -8231,6 +9860,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
+    subdisctrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -8259,6 +9889,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
+    subdisctrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -8288,6 +9919,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
+    subdisctrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -8404,6 +10036,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
+    subdisctrictId: string | null
     adminId: string | null
     createdAt: Date
     updatedAt: Date
@@ -8452,6 +10085,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdisctrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8473,6 +10107,7 @@ export namespace Prisma {
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -8499,6 +10134,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdisctrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8509,6 +10145,7 @@ export namespace Prisma {
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8532,6 +10169,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdisctrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8542,6 +10180,7 @@ export namespace Prisma {
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -8565,6 +10204,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
+    subdisctrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8573,7 +10213,7 @@ export namespace Prisma {
     lastIdZonePosition?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "subdisctrictId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     championships?: boolean | User$championshipsArgs<ExtArgs>
@@ -8590,6 +10230,7 @@ export namespace Prisma {
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -8599,12 +10240,14 @@ export namespace Prisma {
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | User$adminArgs<ExtArgs>
     city?: boolean | User$cityArgs<ExtArgs>
     province?: boolean | User$provinceArgs<ExtArgs>
     school?: boolean | User$schoolArgs<ExtArgs>
+    subdisctrict?: boolean | User$subdisctrictArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8625,6 +10268,7 @@ export namespace Prisma {
       city: Prisma.$CityPayload<ExtArgs> | null
       province: Prisma.$ProvincePayload<ExtArgs> | null
       school: Prisma.$SchoolPayload<ExtArgs> | null
+      subdisctrict: Prisma.$SubdistrictPayload<ExtArgs> | null
       userLogin: Prisma.$UserLoginPayload<ExtArgs>[]
       zones: Prisma.$ZonePayload<ExtArgs>[]
     }
@@ -8649,6 +10293,7 @@ export namespace Prisma {
       schoolId: string | null
       cityId: string | null
       provinceId: string | null
+      subdisctrictId: string | null
       adminId: string | null
       createdAt: Date
       updatedAt: Date
@@ -9064,6 +10709,7 @@ export namespace Prisma {
     city<T extends User$cityArgs<ExtArgs> = {}>(args?: Subset<T, User$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     province<T extends User$provinceArgs<ExtArgs> = {}>(args?: Subset<T, User$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     school<T extends User$schoolArgs<ExtArgs> = {}>(args?: Subset<T, User$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    subdisctrict<T extends User$subdisctrictArgs<ExtArgs> = {}>(args?: Subset<T, User$subdisctrictArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     userLogin<T extends User$userLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$userLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     zones<T extends User$zonesArgs<ExtArgs> = {}>(args?: Subset<T, User$zonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -9115,6 +10761,7 @@ export namespace Prisma {
     readonly schoolId: FieldRef<"User", 'String'>
     readonly cityId: FieldRef<"User", 'String'>
     readonly provinceId: FieldRef<"User", 'String'>
+    readonly subdisctrictId: FieldRef<"User", 'String'>
     readonly adminId: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -9849,6 +11496,25 @@ export namespace Prisma {
      */
     include?: SchoolInclude<ExtArgs> | null
     where?: SchoolWhereInput
+  }
+
+  /**
+   * User.subdisctrict
+   */
+  export type User$subdisctrictArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
   }
 
   /**
@@ -20370,6 +22036,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
+    subdistrictId: string | null
     schoolId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -20387,6 +22054,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
+    subdistrictId: string | null
     schoolId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -20404,6 +22072,7 @@ export namespace Prisma {
     role: number
     provinceId: number
     cityId: number
+    subdistrictId: number
     schoolId: number
     createdAt: number
     updatedAt: number
@@ -20423,6 +22092,7 @@ export namespace Prisma {
     role?: true
     provinceId?: true
     cityId?: true
+    subdistrictId?: true
     schoolId?: true
     createdAt?: true
     updatedAt?: true
@@ -20440,6 +22110,7 @@ export namespace Prisma {
     role?: true
     provinceId?: true
     cityId?: true
+    subdistrictId?: true
     schoolId?: true
     createdAt?: true
     updatedAt?: true
@@ -20457,6 +22128,7 @@ export namespace Prisma {
     role?: true
     provinceId?: true
     cityId?: true
+    subdistrictId?: true
     schoolId?: true
     createdAt?: true
     updatedAt?: true
@@ -20547,6 +22219,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     provinceId: string | null
     cityId: string | null
+    subdistrictId: string | null
     schoolId: string | null
     createdAt: Date
     updatedAt: Date
@@ -20581,14 +22254,16 @@ export namespace Prisma {
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
+    subdistrictId?: boolean
     schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: boolean
     authenticatorSecret?: boolean
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     logs?: boolean | Admin$logsArgs<ExtArgs>
@@ -20612,14 +22287,16 @@ export namespace Prisma {
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
+    subdistrictId?: boolean
     schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: boolean
     authenticatorSecret?: boolean
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -20632,14 +22309,16 @@ export namespace Prisma {
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
+    subdistrictId?: boolean
     schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: boolean
     authenticatorSecret?: boolean
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -20652,6 +22331,7 @@ export namespace Prisma {
     role?: boolean
     provinceId?: boolean
     cityId?: boolean
+    subdistrictId?: boolean
     schoolId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -20660,10 +22340,11 @@ export namespace Prisma {
     authenticatorSecret?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "provinceId" | "cityId" | "schoolId" | "createdAt" | "updatedAt" | "authenticatorEnabled" | "authenticatorQrUrl" | "authenticatorSecret", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "name" | "suspend" | "role" | "provinceId" | "cityId" | "subdistrictId" | "schoolId" | "createdAt" | "updatedAt" | "authenticatorEnabled" | "authenticatorQrUrl" | "authenticatorSecret", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
     authority?: boolean | Admin$authorityArgs<ExtArgs>
     logs?: boolean | Admin$logsArgs<ExtArgs>
@@ -20678,21 +22359,24 @@ export namespace Prisma {
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
   }
   export type AdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    city?: boolean | Admin$cityArgs<ExtArgs>
     province?: boolean | Admin$provinceArgs<ExtArgs>
+    city?: boolean | Admin$cityArgs<ExtArgs>
+    subdistrict?: boolean | Admin$subdistrictArgs<ExtArgs>
     school?: boolean | Admin$schoolArgs<ExtArgs>
   }
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
     objects: {
-      city: Prisma.$CityPayload<ExtArgs> | null
       province: Prisma.$ProvincePayload<ExtArgs> | null
+      city: Prisma.$CityPayload<ExtArgs> | null
+      subdistrict: Prisma.$SubdistrictPayload<ExtArgs> | null
       school: Prisma.$SchoolPayload<ExtArgs> | null
       authority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
       logs: Prisma.$AdminLogPayload<ExtArgs>[]
@@ -20714,6 +22398,7 @@ export namespace Prisma {
       role: $Enums.Role | null
       provinceId: string | null
       cityId: string | null
+      subdistrictId: string | null
       schoolId: string | null
       createdAt: Date
       updatedAt: Date
@@ -21114,8 +22799,9 @@ export namespace Prisma {
    */
   export interface Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    city<T extends Admin$cityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     province<T extends Admin$provinceArgs<ExtArgs> = {}>(args?: Subset<T, Admin$provinceArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    city<T extends Admin$cityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    subdistrict<T extends Admin$subdistrictArgs<ExtArgs> = {}>(args?: Subset<T, Admin$subdistrictArgs<ExtArgs>>): Prisma__SubdistrictClient<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     school<T extends Admin$schoolArgs<ExtArgs> = {}>(args?: Subset<T, Admin$schoolArgs<ExtArgs>>): Prisma__SchoolClient<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     authority<T extends Admin$authorityArgs<ExtArgs> = {}>(args?: Subset<T, Admin$authorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     logs<T extends Admin$logsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -21164,6 +22850,7 @@ export namespace Prisma {
     readonly role: FieldRef<"Admin", 'Role'>
     readonly provinceId: FieldRef<"Admin", 'String'>
     readonly cityId: FieldRef<"Admin", 'String'>
+    readonly subdistrictId: FieldRef<"Admin", 'String'>
     readonly schoolId: FieldRef<"Admin", 'String'>
     readonly createdAt: FieldRef<"Admin", 'DateTime'>
     readonly updatedAt: FieldRef<"Admin", 'DateTime'>
@@ -21566,6 +23253,25 @@ export namespace Prisma {
   }
 
   /**
+   * Admin.province
+   */
+  export type Admin$provinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Province
+     */
+    select?: ProvinceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Province
+     */
+    omit?: ProvinceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinceInclude<ExtArgs> | null
+    where?: ProvinceWhereInput
+  }
+
+  /**
    * Admin.city
    */
   export type Admin$cityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -21585,22 +23291,22 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.province
+   * Admin.subdistrict
    */
-  export type Admin$provinceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Admin$subdistrictArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Province
+     * Select specific fields to fetch from the Subdistrict
      */
-    select?: ProvinceSelect<ExtArgs> | null
+    select?: SubdistrictSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Province
+     * Omit specific fields from the Subdistrict
      */
-    omit?: ProvinceOmit<ExtArgs> | null
+    omit?: SubdistrictOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProvinceInclude<ExtArgs> | null
-    where?: ProvinceWhereInput
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
   }
 
   /**
@@ -24220,6 +25926,7 @@ export namespace Prisma {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     cities?: boolean | AdminAuthority$citiesArgs<ExtArgs>
+    subdistricts?: boolean | AdminAuthority$subdistrictsArgs<ExtArgs>
     schools?: boolean | AdminAuthority$schoolsArgs<ExtArgs>
     _count?: boolean | AdminAuthorityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuthority"]>
@@ -24254,6 +25961,7 @@ export namespace Prisma {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     cities?: boolean | AdminAuthority$citiesArgs<ExtArgs>
+    subdistricts?: boolean | AdminAuthority$subdistrictsArgs<ExtArgs>
     schools?: boolean | AdminAuthority$schoolsArgs<ExtArgs>
     _count?: boolean | AdminAuthorityCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -24272,6 +25980,7 @@ export namespace Prisma {
       admin: Prisma.$AdminPayload<ExtArgs>
       province: Prisma.$ProvincePayload<ExtArgs>
       cities: Prisma.$CityPayload<ExtArgs>[]
+      subdistricts: Prisma.$SubdistrictPayload<ExtArgs>[]
       schools: Prisma.$SchoolPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -24676,6 +26385,7 @@ export namespace Prisma {
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     cities<T extends AdminAuthority$citiesArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subdistricts<T extends AdminAuthority$subdistrictsArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$subdistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schools<T extends AdminAuthority$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, AdminAuthority$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -25127,6 +26837,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * AdminAuthority.subdistricts
+   */
+  export type AdminAuthority$subdistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    cursor?: SubdistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
   }
 
   /**
@@ -26478,6 +28212,7 @@ export namespace Prisma {
     banner?: boolean | BannerDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
+    subdisctricts?: boolean | BannerLocation$subdisctrictsArgs<ExtArgs>
     _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bannerLocation"]>
 
@@ -26508,6 +28243,7 @@ export namespace Prisma {
     banner?: boolean | BannerDefaultArgs<ExtArgs>
     province?: boolean | ProvinceDefaultArgs<ExtArgs>
     cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
+    subdisctricts?: boolean | BannerLocation$subdisctrictsArgs<ExtArgs>
     _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BannerLocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -26525,6 +28261,7 @@ export namespace Prisma {
       banner: Prisma.$BannerPayload<ExtArgs>
       province: Prisma.$ProvincePayload<ExtArgs>
       cities: Prisma.$CityPayload<ExtArgs>[]
+      subdisctricts: Prisma.$SubdistrictPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -26927,6 +28664,7 @@ export namespace Prisma {
     banner<T extends BannerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BannerDefaultArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     province<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     cities<T extends BannerLocation$citiesArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subdisctricts<T extends BannerLocation$subdisctrictsArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$subdisctrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -27376,6 +29114,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * BannerLocation.subdisctricts
+   */
+  export type BannerLocation$subdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    cursor?: SubdistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
   }
 
   /**
@@ -40127,6 +41889,21 @@ export namespace Prisma {
   export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
 
 
+  export const SubdistrictScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    longitude: 'longitude',
+    latitude: 'latitude',
+    geoId: 'geoId',
+    provinceId: 'provinceId',
+    cityId: 'cityId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SubdistrictScalarFieldEnum = (typeof SubdistrictScalarFieldEnum)[keyof typeof SubdistrictScalarFieldEnum]
+
+
   export const SchoolScalarFieldEnum: {
     id: 'id',
     identity: 'identity',
@@ -40136,6 +41913,7 @@ export namespace Prisma {
     latitude: 'latitude',
     cityId: 'cityId',
     provinceId: 'provinceId',
+    subdistrictId: 'subdistrictId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -40164,6 +41942,7 @@ export namespace Prisma {
     schoolId: 'schoolId',
     cityId: 'cityId',
     provinceId: 'provinceId',
+    subdisctrictId: 'subdisctrictId',
     adminId: 'adminId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -40338,6 +42117,7 @@ export namespace Prisma {
     role: 'role',
     provinceId: 'provinceId',
     cityId: 'cityId',
+    subdistrictId: 'subdistrictId',
     schoolId: 'schoolId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -40829,6 +42609,7 @@ export namespace Prisma {
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
   }
 
   export type ProvinceOrderByWithRelationInput = {
@@ -40845,6 +42626,7 @@ export namespace Prisma {
     cities?: CityOrderByRelationAggregateInput
     schools?: SchoolOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
+    subdistricts?: SubdistrictOrderByRelationAggregateInput
   }
 
   export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
@@ -40864,6 +42646,7 @@ export namespace Prisma {
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
   }, "id">
 
   export type ProvinceOrderByWithAggregationInput = {
@@ -40909,6 +42692,7 @@ export namespace Prisma {
     admin?: AdminListRelationFilter
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     schools?: SchoolListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
@@ -40926,6 +42710,7 @@ export namespace Prisma {
     admin?: AdminOrderByRelationAggregateInput
     province?: ProvinceOrderByWithRelationInput
     schools?: SchoolOrderByRelationAggregateInput
+    subdistricts?: SubdistrictOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
     bannerLocation?: BannerLocationOrderByRelationAggregateInput
@@ -40946,6 +42731,7 @@ export namespace Prisma {
     admin?: AdminListRelationFilter
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     schools?: SchoolListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
     bannerLocation?: BannerLocationListRelationFilter
@@ -40981,6 +42767,101 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"City"> | Date | string
   }
 
+  export type SubdistrictWhereInput = {
+    AND?: SubdistrictWhereInput | SubdistrictWhereInput[]
+    OR?: SubdistrictWhereInput[]
+    NOT?: SubdistrictWhereInput | SubdistrictWhereInput[]
+    id?: StringFilter<"Subdistrict"> | string
+    name?: StringFilter<"Subdistrict"> | string
+    longitude?: FloatFilter<"Subdistrict"> | number
+    latitude?: FloatFilter<"Subdistrict"> | number
+    geoId?: StringFilter<"Subdistrict"> | string
+    provinceId?: StringFilter<"Subdistrict"> | string
+    cityId?: StringFilter<"Subdistrict"> | string
+    createdAt?: DateTimeFilter<"Subdistrict"> | Date | string
+    updatedAt?: DateTimeFilter<"Subdistrict"> | Date | string
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    city?: XOR<CityScalarRelationFilter, CityWhereInput>
+    schools?: SchoolListRelationFilter
+    users?: UserListRelationFilter
+    admins?: AdminListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
+  }
+
+  export type SubdistrictOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    geoId?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    province?: ProvinceOrderByWithRelationInput
+    city?: CityOrderByWithRelationInput
+    schools?: SchoolOrderByRelationAggregateInput
+    users?: UserOrderByRelationAggregateInput
+    admins?: AdminOrderByRelationAggregateInput
+    adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
+    bannerLocation?: BannerLocationOrderByRelationAggregateInput
+  }
+
+  export type SubdistrictWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SubdistrictWhereInput | SubdistrictWhereInput[]
+    OR?: SubdistrictWhereInput[]
+    NOT?: SubdistrictWhereInput | SubdistrictWhereInput[]
+    name?: StringFilter<"Subdistrict"> | string
+    longitude?: FloatFilter<"Subdistrict"> | number
+    latitude?: FloatFilter<"Subdistrict"> | number
+    geoId?: StringFilter<"Subdistrict"> | string
+    provinceId?: StringFilter<"Subdistrict"> | string
+    cityId?: StringFilter<"Subdistrict"> | string
+    createdAt?: DateTimeFilter<"Subdistrict"> | Date | string
+    updatedAt?: DateTimeFilter<"Subdistrict"> | Date | string
+    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    city?: XOR<CityScalarRelationFilter, CityWhereInput>
+    schools?: SchoolListRelationFilter
+    users?: UserListRelationFilter
+    admins?: AdminListRelationFilter
+    adminAuthority?: AdminAuthorityListRelationFilter
+    bannerLocation?: BannerLocationListRelationFilter
+  }, "id">
+
+  export type SubdistrictOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    geoId?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SubdistrictCountOrderByAggregateInput
+    _avg?: SubdistrictAvgOrderByAggregateInput
+    _max?: SubdistrictMaxOrderByAggregateInput
+    _min?: SubdistrictMinOrderByAggregateInput
+    _sum?: SubdistrictSumOrderByAggregateInput
+  }
+
+  export type SubdistrictScalarWhereWithAggregatesInput = {
+    AND?: SubdistrictScalarWhereWithAggregatesInput | SubdistrictScalarWhereWithAggregatesInput[]
+    OR?: SubdistrictScalarWhereWithAggregatesInput[]
+    NOT?: SubdistrictScalarWhereWithAggregatesInput | SubdistrictScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Subdistrict"> | string
+    name?: StringWithAggregatesFilter<"Subdistrict"> | string
+    longitude?: FloatWithAggregatesFilter<"Subdistrict"> | number
+    latitude?: FloatWithAggregatesFilter<"Subdistrict"> | number
+    geoId?: StringWithAggregatesFilter<"Subdistrict"> | string
+    provinceId?: StringWithAggregatesFilter<"Subdistrict"> | string
+    cityId?: StringWithAggregatesFilter<"Subdistrict"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Subdistrict"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Subdistrict"> | Date | string
+  }
+
   export type SchoolWhereInput = {
     AND?: SchoolWhereInput | SchoolWhereInput[]
     OR?: SchoolWhereInput[]
@@ -40991,13 +42872,15 @@ export namespace Prisma {
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
-    cityId?: StringFilter<"School"> | string
-    provinceId?: StringFilter<"School"> | string
+    cityId?: StringNullableFilter<"School"> | string | null
+    provinceId?: StringNullableFilter<"School"> | string | null
+    subdistrictId?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
     admin?: AdminListRelationFilter
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    subdistrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
   }
@@ -41009,13 +42892,15 @@ export namespace Prisma {
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
-    cityId?: SortOrder
-    provinceId?: SortOrder
+    cityId?: SortOrderInput | SortOrder
+    provinceId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     admin?: AdminOrderByRelationAggregateInput
     city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
+    subdistrict?: SubdistrictOrderByWithRelationInput
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
   }
@@ -41030,13 +42915,15 @@ export namespace Prisma {
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
-    cityId?: StringFilter<"School"> | string
-    provinceId?: StringFilter<"School"> | string
+    cityId?: StringNullableFilter<"School"> | string | null
+    provinceId?: StringNullableFilter<"School"> | string | null
+    subdistrictId?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
     admin?: AdminListRelationFilter
-    city?: XOR<CityScalarRelationFilter, CityWhereInput>
-    province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    subdistrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
   }, "id" | "identity">
@@ -41048,8 +42935,9 @@ export namespace Prisma {
     name?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
-    cityId?: SortOrder
-    provinceId?: SortOrder
+    cityId?: SortOrderInput | SortOrder
+    provinceId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: SchoolCountOrderByAggregateInput
@@ -41069,8 +42957,9 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"School"> | string
     longitude?: FloatWithAggregatesFilter<"School"> | number
     latitude?: FloatWithAggregatesFilter<"School"> | number
-    cityId?: StringWithAggregatesFilter<"School"> | string
-    provinceId?: StringWithAggregatesFilter<"School"> | string
+    cityId?: StringNullableWithAggregatesFilter<"School"> | string | null
+    provinceId?: StringNullableWithAggregatesFilter<"School"> | string | null
+    subdistrictId?: StringNullableWithAggregatesFilter<"School"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
   }
@@ -41099,6 +42988,7 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
+    subdisctrictId?: StringNullableFilter<"User"> | string | null
     adminId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -41120,6 +43010,7 @@ export namespace Prisma {
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
+    subdisctrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     userLogin?: UserLoginListRelationFilter
     zones?: ZoneListRelationFilter
   }
@@ -41145,6 +43036,7 @@ export namespace Prisma {
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
+    subdisctrictId?: SortOrderInput | SortOrder
     adminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -41166,6 +43058,7 @@ export namespace Prisma {
     city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
     school?: SchoolOrderByWithRelationInput
+    subdisctrict?: SubdistrictOrderByWithRelationInput
     userLogin?: UserLoginOrderByRelationAggregateInput
     zones?: ZoneOrderByRelationAggregateInput
   }
@@ -41196,6 +43089,7 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
+    subdisctrictId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
@@ -41215,6 +43109,7 @@ export namespace Prisma {
     city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
+    subdisctrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     userLogin?: UserLoginListRelationFilter
     zones?: ZoneListRelationFilter
   }, "id" | "authId" | "email" | "schoolIdentity" | "adminId" | "username">
@@ -41240,6 +43135,7 @@ export namespace Prisma {
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
+    subdisctrictId?: SortOrderInput | SortOrder
     adminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -41277,6 +43173,7 @@ export namespace Prisma {
     schoolId?: StringNullableWithAggregatesFilter<"User"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"User"> | string | null
     provinceId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    subdisctrictId?: StringNullableWithAggregatesFilter<"User"> | string | null
     adminId?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -42083,14 +43980,16 @@ export namespace Prisma {
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
+    subdistrictId?: StringNullableFilter<"Admin"> | string | null
     schoolId?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     authenticatorEnabled?: BoolFilter<"Admin"> | boolean
     authenticatorQrUrl?: StringNullableFilter<"Admin"> | string | null
     authenticatorSecret?: StringNullableFilter<"Admin"> | string | null
-    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    subdistrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     logs?: AdminLogListRelationFilter
@@ -42113,14 +44012,16 @@ export namespace Prisma {
     role?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     schoolId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     authenticatorEnabled?: SortOrder
     authenticatorQrUrl?: SortOrderInput | SortOrder
     authenticatorSecret?: SortOrderInput | SortOrder
-    city?: CityOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
+    city?: CityOrderByWithRelationInput
+    subdistrict?: SubdistrictOrderByWithRelationInput
     school?: SchoolOrderByWithRelationInput
     authority?: AdminAuthorityOrderByRelationAggregateInput
     logs?: AdminLogOrderByRelationAggregateInput
@@ -42146,14 +44047,16 @@ export namespace Prisma {
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
+    subdistrictId?: StringNullableFilter<"Admin"> | string | null
     schoolId?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
     authenticatorEnabled?: BoolFilter<"Admin"> | boolean
     authenticatorQrUrl?: StringNullableFilter<"Admin"> | string | null
     authenticatorSecret?: StringNullableFilter<"Admin"> | string | null
-    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
     province?: XOR<ProvinceNullableScalarRelationFilter, ProvinceWhereInput> | null
+    city?: XOR<CityNullableScalarRelationFilter, CityWhereInput> | null
+    subdistrict?: XOR<SubdistrictNullableScalarRelationFilter, SubdistrictWhereInput> | null
     school?: XOR<SchoolNullableScalarRelationFilter, SchoolWhereInput> | null
     authority?: AdminAuthorityListRelationFilter
     logs?: AdminLogListRelationFilter
@@ -42176,6 +44079,7 @@ export namespace Prisma {
     role?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     schoolId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -42199,6 +44103,7 @@ export namespace Prisma {
     role?: EnumRoleNullableWithAggregatesFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    subdistrictId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     schoolId?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
@@ -42347,6 +44252,7 @@ export namespace Prisma {
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     cities?: CityListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
     schools?: SchoolListRelationFilter
   }
 
@@ -42358,6 +44264,7 @@ export namespace Prisma {
     admin?: AdminOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
     cities?: CityOrderByRelationAggregateInput
+    subdistricts?: SubdistrictOrderByRelationAggregateInput
     schools?: SchoolOrderByRelationAggregateInput
   }
 
@@ -42372,6 +44279,7 @@ export namespace Prisma {
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     cities?: CityListRelationFilter
+    subdistricts?: SubdistrictListRelationFilter
     schools?: SchoolListRelationFilter
   }, "id">
 
@@ -42483,6 +44391,7 @@ export namespace Prisma {
     banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     cities?: CityListRelationFilter
+    subdisctricts?: SubdistrictListRelationFilter
   }
 
   export type BannerLocationOrderByWithRelationInput = {
@@ -42492,6 +44401,7 @@ export namespace Prisma {
     banner?: BannerOrderByWithRelationInput
     province?: ProvinceOrderByWithRelationInput
     cities?: CityOrderByRelationAggregateInput
+    subdisctricts?: SubdistrictOrderByRelationAggregateInput
   }
 
   export type BannerLocationWhereUniqueInput = Prisma.AtLeast<{
@@ -42504,6 +44414,7 @@ export namespace Prisma {
     banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
     province?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     cities?: CityListRelationFilter
+    subdisctricts?: SubdistrictListRelationFilter
   }, "id">
 
   export type BannerLocationOrderByWithAggregationInput = {
@@ -43442,7 +45353,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -43451,6 +45362,7 @@ export namespace Prisma {
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateInput = {
@@ -43458,7 +45370,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -43467,6 +45379,7 @@ export namespace Prisma {
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUpdateInput = {
@@ -43483,6 +45396,7 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateInput = {
@@ -43499,6 +45413,7 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceCreateManyInput = {
@@ -43506,7 +45421,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43536,12 +45451,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
@@ -43552,12 +45468,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
@@ -43574,6 +45491,7 @@ export namespace Prisma {
     admin?: AdminUpdateManyWithoutCityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
@@ -43590,6 +45508,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
@@ -43600,7 +45519,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43627,6 +45546,108 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SubdistrictCreateInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictCreateManyInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubdistrictUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubdistrictUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SchoolCreateInput = {
     id?: string
     identity: string
@@ -43637,8 +45658,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutSchoolInput
-    city: CityCreateNestedOneWithoutSchoolsInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
@@ -43650,8 +45672,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
@@ -43669,8 +45692,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutSchoolNestedInput
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
@@ -43682,8 +45706,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
@@ -43698,8 +45723,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43722,8 +45748,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -43766,6 +45793,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -43791,6 +45819,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43850,6 +45879,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -43875,6 +45905,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43917,6 +45948,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43971,6 +46003,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44871,8 +46904,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -44895,6 +46929,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -44925,8 +46960,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -44949,6 +46985,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -44976,6 +47013,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45007,6 +47045,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45151,6 +47190,7 @@ export namespace Prisma {
     admin: AdminCreateNestedOneWithoutAuthorityInput
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
     cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -45160,6 +47200,7 @@ export namespace Prisma {
     provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
     cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -45169,6 +47210,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
     cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -45178,6 +47220,7 @@ export namespace Prisma {
     provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
     cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -45289,6 +47332,7 @@ export namespace Prisma {
     banner: BannerCreateNestedOneWithoutBannerLocationInput
     province: ProvinceCreateNestedOneWithoutBannerLocationInput
     cities?: CityCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationUncheckedCreateInput = {
@@ -45296,6 +47340,7 @@ export namespace Prisma {
     bannerId: string
     provinceId: string
     cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationUpdateInput = {
@@ -45303,6 +47348,7 @@ export namespace Prisma {
     banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
     province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
     cities?: CityUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateInput = {
@@ -45310,6 +47356,7 @@ export namespace Prisma {
     bannerId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
     cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationCreateManyInput = {
@@ -46394,6 +48441,12 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
+  export type SubdistrictListRelationFilter = {
+    every?: SubdistrictWhereInput
+    some?: SubdistrictWhereInput
+    none?: SubdistrictWhereInput
+  }
+
   export type AdminOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -46415,6 +48468,10 @@ export namespace Prisma {
   }
 
   export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SubdistrictOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -46554,6 +48611,57 @@ export namespace Prisma {
     latitude?: SortOrder
   }
 
+  export type CityScalarRelationFilter = {
+    is?: CityWhereInput
+    isNot?: CityWhereInput
+  }
+
+  export type SubdistrictCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    geoId?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubdistrictAvgOrderByAggregateInput = {
+    longitude?: SortOrder
+    latitude?: SortOrder
+  }
+
+  export type SubdistrictMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    geoId?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubdistrictMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    geoId?: SortOrder
+    provinceId?: SortOrder
+    cityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubdistrictSumOrderByAggregateInput = {
+    longitude?: SortOrder
+    latitude?: SortOrder
+  }
+
   export type EnumEducationLevelFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
     in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
@@ -46561,9 +48669,39 @@ export namespace Prisma {
     not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
   }
 
-  export type CityScalarRelationFilter = {
-    is?: CityWhereInput
-    isNot?: CityWhereInput
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type CityNullableScalarRelationFilter = {
+    is?: CityWhereInput | null
+    isNot?: CityWhereInput | null
+  }
+
+  export type ProvinceNullableScalarRelationFilter = {
+    is?: ProvinceWhereInput | null
+    isNot?: ProvinceWhereInput | null
+  }
+
+  export type SubdistrictNullableScalarRelationFilter = {
+    is?: SubdistrictWhereInput | null
+    isNot?: SubdistrictWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type SchoolCountOrderByAggregateInput = {
@@ -46575,6 +48713,7 @@ export namespace Prisma {
     latitude?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdistrictId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -46593,6 +48732,7 @@ export namespace Prisma {
     latitude?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdistrictId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -46606,6 +48746,7 @@ export namespace Prisma {
     latitude?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdistrictId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -46623,6 +48764,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEducationLevelFilter<$PrismaModel>
     _max?: NestedEnumEducationLevelFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumRoleFilter<$PrismaModel = never> = {
@@ -46672,21 +48831,6 @@ export namespace Prisma {
     hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
     hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
     isEmpty?: boolean
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type BannerVisitorNullableScalarRelationFilter = {
@@ -46759,16 +48903,6 @@ export namespace Prisma {
     isNot?: AdminWhereInput | null
   }
 
-  export type CityNullableScalarRelationFilter = {
-    is?: CityWhereInput | null
-    isNot?: CityWhereInput | null
-  }
-
-  export type ProvinceNullableScalarRelationFilter = {
-    is?: ProvinceWhereInput | null
-    isNot?: ProvinceWhereInput | null
-  }
-
   export type SchoolNullableScalarRelationFilter = {
     is?: SchoolWhereInput | null
     isNot?: SchoolWhereInput | null
@@ -46784,11 +48918,6 @@ export namespace Prisma {
     every?: ZoneWhereInput
     some?: ZoneWhereInput
     none?: ZoneWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type ChampionshipOrderByRelationAggregateInput = {
@@ -46860,6 +48989,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdisctrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46894,6 +49024,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdisctrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46922,6 +49053,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
+    subdisctrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46992,24 +49124,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -47581,6 +49695,7 @@ export namespace Prisma {
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
+    subdistrictId?: SortOrder
     schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47598,6 +49713,7 @@ export namespace Prisma {
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
+    subdistrictId?: SortOrder
     schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -47615,6 +49731,7 @@ export namespace Prisma {
     role?: SortOrder
     provinceId?: SortOrder
     cityId?: SortOrder
+    subdistrictId?: SortOrder
     schoolId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -48559,6 +50676,13 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type SubdistrictCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput> | SubdistrictCreateWithoutProvinceInput[] | SubdistrictUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutProvinceInput | SubdistrictCreateOrConnectWithoutProvinceInput[]
+    createMany?: SubdistrictCreateManyProvinceInputEnvelope
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+  }
+
   export type AdminUncheckedCreateNestedManyWithoutProvinceInput = {
     create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
@@ -48599,6 +50723,13 @@ export namespace Prisma {
     connectOrCreate?: UserCreateOrConnectWithoutProvinceInput | UserCreateOrConnectWithoutProvinceInput[]
     createMany?: UserCreateManyProvinceInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type SubdistrictUncheckedCreateNestedManyWithoutProvinceInput = {
+    create?: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput> | SubdistrictCreateWithoutProvinceInput[] | SubdistrictUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutProvinceInput | SubdistrictCreateOrConnectWithoutProvinceInput[]
+    createMany?: SubdistrictCreateManyProvinceInputEnvelope
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -48701,6 +50832,20 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type SubdistrictUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput> | SubdistrictCreateWithoutProvinceInput[] | SubdistrictUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutProvinceInput | SubdistrictCreateOrConnectWithoutProvinceInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutProvinceInput | SubdistrictUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: SubdistrictCreateManyProvinceInputEnvelope
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutProvinceInput | SubdistrictUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutProvinceInput | SubdistrictUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+  }
+
   export type AdminUncheckedUpdateManyWithoutProvinceNestedInput = {
     create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
@@ -48785,6 +50930,20 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput> | SubdistrictCreateWithoutProvinceInput[] | SubdistrictUncheckedCreateWithoutProvinceInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutProvinceInput | SubdistrictCreateOrConnectWithoutProvinceInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutProvinceInput | SubdistrictUpsertWithWhereUniqueWithoutProvinceInput[]
+    createMany?: SubdistrictCreateManyProvinceInputEnvelope
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutProvinceInput | SubdistrictUpdateWithWhereUniqueWithoutProvinceInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutProvinceInput | SubdistrictUpdateManyWithWhereWithoutProvinceInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+  }
+
   export type AdminCreateNestedManyWithoutCityInput = {
     create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
@@ -48803,6 +50962,13 @@ export namespace Prisma {
     connectOrCreate?: SchoolCreateOrConnectWithoutCityInput | SchoolCreateOrConnectWithoutCityInput[]
     createMany?: SchoolCreateManyCityInputEnvelope
     connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+  }
+
+  export type SubdistrictCreateNestedManyWithoutCityInput = {
+    create?: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput> | SubdistrictCreateWithoutCityInput[] | SubdistrictUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutCityInput | SubdistrictCreateOrConnectWithoutCityInput[]
+    createMany?: SubdistrictCreateManyCityInputEnvelope
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type UserCreateNestedManyWithoutCityInput = {
@@ -48836,6 +51002,13 @@ export namespace Prisma {
     connectOrCreate?: SchoolCreateOrConnectWithoutCityInput | SchoolCreateOrConnectWithoutCityInput[]
     createMany?: SchoolCreateManyCityInputEnvelope
     connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+  }
+
+  export type SubdistrictUncheckedCreateNestedManyWithoutCityInput = {
+    create?: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput> | SubdistrictCreateWithoutCityInput[] | SubdistrictUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutCityInput | SubdistrictCreateOrConnectWithoutCityInput[]
+    createMany?: SubdistrictCreateManyCityInputEnvelope
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutCityInput = {
@@ -48891,6 +51064,20 @@ export namespace Prisma {
     update?: SchoolUpdateWithWhereUniqueWithoutCityInput | SchoolUpdateWithWhereUniqueWithoutCityInput[]
     updateMany?: SchoolUpdateManyWithWhereWithoutCityInput | SchoolUpdateManyWithWhereWithoutCityInput[]
     deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
+  }
+
+  export type SubdistrictUpdateManyWithoutCityNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput> | SubdistrictCreateWithoutCityInput[] | SubdistrictUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutCityInput | SubdistrictCreateOrConnectWithoutCityInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutCityInput | SubdistrictUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: SubdistrictCreateManyCityInputEnvelope
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutCityInput | SubdistrictUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutCityInput | SubdistrictUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutCityNestedInput = {
@@ -48961,6 +51148,20 @@ export namespace Prisma {
     deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
   }
 
+  export type SubdistrictUncheckedUpdateManyWithoutCityNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput> | SubdistrictCreateWithoutCityInput[] | SubdistrictUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutCityInput | SubdistrictCreateOrConnectWithoutCityInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutCityInput | SubdistrictUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: SubdistrictCreateManyCityInputEnvelope
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutCityInput | SubdistrictUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutCityInput | SubdistrictUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutCityNestedInput = {
     create?: XOR<UserCreateWithoutCityInput, UserUncheckedCreateWithoutCityInput> | UserCreateWithoutCityInput[] | UserUncheckedCreateWithoutCityInput[]
     connectOrCreate?: UserCreateOrConnectWithoutCityInput | UserCreateOrConnectWithoutCityInput[]
@@ -49001,6 +51202,236 @@ export namespace Prisma {
     deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
+  export type ProvinceCreateNestedOneWithoutSubdistrictsInput = {
+    create?: XOR<ProvinceCreateWithoutSubdistrictsInput, ProvinceUncheckedCreateWithoutSubdistrictsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutSubdistrictsInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
+  export type CityCreateNestedOneWithoutSubdistrictsInput = {
+    create?: XOR<CityCreateWithoutSubdistrictsInput, CityUncheckedCreateWithoutSubdistrictsInput>
+    connectOrCreate?: CityCreateOrConnectWithoutSubdistrictsInput
+    connect?: CityWhereUniqueInput
+  }
+
+  export type SchoolCreateNestedManyWithoutSubdistrictInput = {
+    create?: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput> | SchoolCreateWithoutSubdistrictInput[] | SchoolUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutSubdistrictInput | SchoolCreateOrConnectWithoutSubdistrictInput[]
+    createMany?: SchoolCreateManySubdistrictInputEnvelope
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedManyWithoutSubdisctrictInput = {
+    create?: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput> | UserCreateWithoutSubdisctrictInput[] | UserUncheckedCreateWithoutSubdisctrictInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutSubdisctrictInput | UserCreateOrConnectWithoutSubdisctrictInput[]
+    createMany?: UserCreateManySubdisctrictInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type AdminCreateNestedManyWithoutSubdistrictInput = {
+    create?: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput> | AdminCreateWithoutSubdistrictInput[] | AdminUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSubdistrictInput | AdminCreateOrConnectWithoutSubdistrictInput[]
+    createMany?: AdminCreateManySubdistrictInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+  }
+
+  export type AdminAuthorityCreateNestedManyWithoutSubdistrictsInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput> | AdminAuthorityCreateWithoutSubdistrictsInput[] | AdminAuthorityUncheckedCreateWithoutSubdistrictsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSubdistrictsInput | AdminAuthorityCreateOrConnectWithoutSubdistrictsInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+  }
+
+  export type BannerLocationCreateNestedManyWithoutSubdisctrictsInput = {
+    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  }
+
+  export type SchoolUncheckedCreateNestedManyWithoutSubdistrictInput = {
+    create?: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput> | SchoolCreateWithoutSubdistrictInput[] | SchoolUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutSubdistrictInput | SchoolCreateOrConnectWithoutSubdistrictInput[]
+    createMany?: SchoolCreateManySubdistrictInputEnvelope
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutSubdisctrictInput = {
+    create?: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput> | UserCreateWithoutSubdisctrictInput[] | UserUncheckedCreateWithoutSubdisctrictInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutSubdisctrictInput | UserCreateOrConnectWithoutSubdisctrictInput[]
+    createMany?: UserCreateManySubdisctrictInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type AdminUncheckedCreateNestedManyWithoutSubdistrictInput = {
+    create?: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput> | AdminCreateWithoutSubdistrictInput[] | AdminUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSubdistrictInput | AdminCreateOrConnectWithoutSubdistrictInput[]
+    createMany?: AdminCreateManySubdistrictInputEnvelope
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+  }
+
+  export type AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput> | AdminAuthorityCreateWithoutSubdistrictsInput[] | AdminAuthorityUncheckedCreateWithoutSubdistrictsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSubdistrictsInput | AdminAuthorityCreateOrConnectWithoutSubdistrictsInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+  }
+
+  export type BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput = {
+    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  }
+
+  export type ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput = {
+    create?: XOR<ProvinceCreateWithoutSubdistrictsInput, ProvinceUncheckedCreateWithoutSubdistrictsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutSubdistrictsInput
+    upsert?: ProvinceUpsertWithoutSubdistrictsInput
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutSubdistrictsInput, ProvinceUpdateWithoutSubdistrictsInput>, ProvinceUncheckedUpdateWithoutSubdistrictsInput>
+  }
+
+  export type CityUpdateOneRequiredWithoutSubdistrictsNestedInput = {
+    create?: XOR<CityCreateWithoutSubdistrictsInput, CityUncheckedCreateWithoutSubdistrictsInput>
+    connectOrCreate?: CityCreateOrConnectWithoutSubdistrictsInput
+    upsert?: CityUpsertWithoutSubdistrictsInput
+    connect?: CityWhereUniqueInput
+    update?: XOR<XOR<CityUpdateToOneWithWhereWithoutSubdistrictsInput, CityUpdateWithoutSubdistrictsInput>, CityUncheckedUpdateWithoutSubdistrictsInput>
+  }
+
+  export type SchoolUpdateManyWithoutSubdistrictNestedInput = {
+    create?: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput> | SchoolCreateWithoutSubdistrictInput[] | SchoolUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutSubdistrictInput | SchoolCreateOrConnectWithoutSubdistrictInput[]
+    upsert?: SchoolUpsertWithWhereUniqueWithoutSubdistrictInput | SchoolUpsertWithWhereUniqueWithoutSubdistrictInput[]
+    createMany?: SchoolCreateManySubdistrictInputEnvelope
+    set?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    disconnect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    delete?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    update?: SchoolUpdateWithWhereUniqueWithoutSubdistrictInput | SchoolUpdateWithWhereUniqueWithoutSubdistrictInput[]
+    updateMany?: SchoolUpdateManyWithWhereWithoutSubdistrictInput | SchoolUpdateManyWithWhereWithoutSubdistrictInput[]
+    deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
+  }
+
+  export type UserUpdateManyWithoutSubdisctrictNestedInput = {
+    create?: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput> | UserCreateWithoutSubdisctrictInput[] | UserUncheckedCreateWithoutSubdisctrictInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutSubdisctrictInput | UserCreateOrConnectWithoutSubdisctrictInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutSubdisctrictInput | UserUpsertWithWhereUniqueWithoutSubdisctrictInput[]
+    createMany?: UserCreateManySubdisctrictInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutSubdisctrictInput | UserUpdateWithWhereUniqueWithoutSubdisctrictInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutSubdisctrictInput | UserUpdateManyWithWhereWithoutSubdisctrictInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type AdminUpdateManyWithoutSubdistrictNestedInput = {
+    create?: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput> | AdminCreateWithoutSubdistrictInput[] | AdminUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSubdistrictInput | AdminCreateOrConnectWithoutSubdistrictInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutSubdistrictInput | AdminUpsertWithWhereUniqueWithoutSubdistrictInput[]
+    createMany?: AdminCreateManySubdistrictInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutSubdistrictInput | AdminUpdateWithWhereUniqueWithoutSubdistrictInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutSubdistrictInput | AdminUpdateManyWithWhereWithoutSubdistrictInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
+  export type AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput> | AdminAuthorityCreateWithoutSubdistrictsInput[] | AdminAuthorityUncheckedCreateWithoutSubdistrictsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSubdistrictsInput | AdminAuthorityCreateOrConnectWithoutSubdistrictsInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutSubdistrictsInput | AdminAuthorityUpsertWithWhereUniqueWithoutSubdistrictsInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutSubdistrictsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSubdistrictsInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSubdistrictsInput | AdminAuthorityUpdateManyWithWhereWithoutSubdistrictsInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type BannerLocationUpdateManyWithoutSubdisctrictsNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput | BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  }
+
+  export type SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput = {
+    create?: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput> | SchoolCreateWithoutSubdistrictInput[] | SchoolUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: SchoolCreateOrConnectWithoutSubdistrictInput | SchoolCreateOrConnectWithoutSubdistrictInput[]
+    upsert?: SchoolUpsertWithWhereUniqueWithoutSubdistrictInput | SchoolUpsertWithWhereUniqueWithoutSubdistrictInput[]
+    createMany?: SchoolCreateManySubdistrictInputEnvelope
+    set?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    disconnect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    delete?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    connect?: SchoolWhereUniqueInput | SchoolWhereUniqueInput[]
+    update?: SchoolUpdateWithWhereUniqueWithoutSubdistrictInput | SchoolUpdateWithWhereUniqueWithoutSubdistrictInput[]
+    updateMany?: SchoolUpdateManyWithWhereWithoutSubdistrictInput | SchoolUpdateManyWithWhereWithoutSubdistrictInput[]
+    deleteMany?: SchoolScalarWhereInput | SchoolScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutSubdisctrictNestedInput = {
+    create?: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput> | UserCreateWithoutSubdisctrictInput[] | UserUncheckedCreateWithoutSubdisctrictInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutSubdisctrictInput | UserCreateOrConnectWithoutSubdisctrictInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutSubdisctrictInput | UserUpsertWithWhereUniqueWithoutSubdisctrictInput[]
+    createMany?: UserCreateManySubdisctrictInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutSubdisctrictInput | UserUpdateWithWhereUniqueWithoutSubdisctrictInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutSubdisctrictInput | UserUpdateManyWithWhereWithoutSubdisctrictInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type AdminUncheckedUpdateManyWithoutSubdistrictNestedInput = {
+    create?: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput> | AdminCreateWithoutSubdistrictInput[] | AdminUncheckedCreateWithoutSubdistrictInput[]
+    connectOrCreate?: AdminCreateOrConnectWithoutSubdistrictInput | AdminCreateOrConnectWithoutSubdistrictInput[]
+    upsert?: AdminUpsertWithWhereUniqueWithoutSubdistrictInput | AdminUpsertWithWhereUniqueWithoutSubdistrictInput[]
+    createMany?: AdminCreateManySubdistrictInputEnvelope
+    set?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    disconnect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    delete?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    connect?: AdminWhereUniqueInput | AdminWhereUniqueInput[]
+    update?: AdminUpdateWithWhereUniqueWithoutSubdistrictInput | AdminUpdateWithWhereUniqueWithoutSubdistrictInput[]
+    updateMany?: AdminUpdateManyWithWhereWithoutSubdistrictInput | AdminUpdateManyWithWhereWithoutSubdistrictInput[]
+    deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
+  }
+
+  export type AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput = {
+    create?: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput> | AdminAuthorityCreateWithoutSubdistrictsInput[] | AdminAuthorityUncheckedCreateWithoutSubdistrictsInput[]
+    connectOrCreate?: AdminAuthorityCreateOrConnectWithoutSubdistrictsInput | AdminAuthorityCreateOrConnectWithoutSubdistrictsInput[]
+    upsert?: AdminAuthorityUpsertWithWhereUniqueWithoutSubdistrictsInput | AdminAuthorityUpsertWithWhereUniqueWithoutSubdistrictsInput[]
+    set?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    disconnect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    delete?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
+    update?: AdminAuthorityUpdateWithWhereUniqueWithoutSubdistrictsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSubdistrictsInput[]
+    updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSubdistrictsInput | AdminAuthorityUpdateManyWithWhereWithoutSubdistrictsInput[]
+    deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput = {
+    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
+    upsert?: BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
+    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+    update?: BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
+    updateMany?: BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput | BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput[]
+    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  }
+
   export type AdminCreateNestedManyWithoutSchoolInput = {
     create?: XOR<AdminCreateWithoutSchoolInput, AdminUncheckedCreateWithoutSchoolInput> | AdminCreateWithoutSchoolInput[] | AdminUncheckedCreateWithoutSchoolInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutSchoolInput | AdminCreateOrConnectWithoutSchoolInput[]
@@ -49018,6 +51449,12 @@ export namespace Prisma {
     create?: XOR<ProvinceCreateWithoutSchoolsInput, ProvinceUncheckedCreateWithoutSchoolsInput>
     connectOrCreate?: ProvinceCreateOrConnectWithoutSchoolsInput
     connect?: ProvinceWhereUniqueInput
+  }
+
+  export type SubdistrictCreateNestedOneWithoutSchoolsInput = {
+    create?: XOR<SubdistrictCreateWithoutSchoolsInput, SubdistrictUncheckedCreateWithoutSchoolsInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutSchoolsInput
+    connect?: SubdistrictWhereUniqueInput
   }
 
   export type UserCreateNestedManyWithoutSchoolInput = {
@@ -49071,20 +51508,34 @@ export namespace Prisma {
     deleteMany?: AdminScalarWhereInput | AdminScalarWhereInput[]
   }
 
-  export type CityUpdateOneRequiredWithoutSchoolsNestedInput = {
+  export type CityUpdateOneWithoutSchoolsNestedInput = {
     create?: XOR<CityCreateWithoutSchoolsInput, CityUncheckedCreateWithoutSchoolsInput>
     connectOrCreate?: CityCreateOrConnectWithoutSchoolsInput
     upsert?: CityUpsertWithoutSchoolsInput
+    disconnect?: CityWhereInput | boolean
+    delete?: CityWhereInput | boolean
     connect?: CityWhereUniqueInput
     update?: XOR<XOR<CityUpdateToOneWithWhereWithoutSchoolsInput, CityUpdateWithoutSchoolsInput>, CityUncheckedUpdateWithoutSchoolsInput>
   }
 
-  export type ProvinceUpdateOneRequiredWithoutSchoolsNestedInput = {
+  export type ProvinceUpdateOneWithoutSchoolsNestedInput = {
     create?: XOR<ProvinceCreateWithoutSchoolsInput, ProvinceUncheckedCreateWithoutSchoolsInput>
     connectOrCreate?: ProvinceCreateOrConnectWithoutSchoolsInput
     upsert?: ProvinceUpsertWithoutSchoolsInput
+    disconnect?: ProvinceWhereInput | boolean
+    delete?: ProvinceWhereInput | boolean
     connect?: ProvinceWhereUniqueInput
     update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutSchoolsInput, ProvinceUpdateWithoutSchoolsInput>, ProvinceUncheckedUpdateWithoutSchoolsInput>
+  }
+
+  export type SubdistrictUpdateOneWithoutSchoolsNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutSchoolsInput, SubdistrictUncheckedCreateWithoutSchoolsInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutSchoolsInput
+    upsert?: SubdistrictUpsertWithoutSchoolsInput
+    disconnect?: SubdistrictWhereInput | boolean
+    delete?: SubdistrictWhereInput | boolean
+    connect?: SubdistrictWhereUniqueInput
+    update?: XOR<XOR<SubdistrictUpdateToOneWithWhereWithoutSchoolsInput, SubdistrictUpdateWithoutSchoolsInput>, SubdistrictUncheckedUpdateWithoutSchoolsInput>
   }
 
   export type UserUpdateManyWithoutSchoolNestedInput = {
@@ -49112,6 +51563,10 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput | AdminAuthorityUpdateWithWhereUniqueWithoutSchoolsInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput | AdminAuthorityUpdateManyWithWhereWithoutSchoolsInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type AdminUncheckedUpdateManyWithoutSchoolNestedInput = {
@@ -49257,6 +51712,12 @@ export namespace Prisma {
     create?: XOR<SchoolCreateWithoutUsersInput, SchoolUncheckedCreateWithoutUsersInput>
     connectOrCreate?: SchoolCreateOrConnectWithoutUsersInput
     connect?: SchoolWhereUniqueInput
+  }
+
+  export type SubdistrictCreateNestedOneWithoutUsersInput = {
+    create?: XOR<SubdistrictCreateWithoutUsersInput, SubdistrictUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutUsersInput
+    connect?: SubdistrictWhereUniqueInput
   }
 
   export type UserLoginCreateNestedManyWithoutUserInput = {
@@ -49582,6 +52043,16 @@ export namespace Prisma {
     update?: XOR<XOR<SchoolUpdateToOneWithWhereWithoutUsersInput, SchoolUpdateWithoutUsersInput>, SchoolUncheckedUpdateWithoutUsersInput>
   }
 
+  export type SubdistrictUpdateOneWithoutUsersNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutUsersInput, SubdistrictUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutUsersInput
+    upsert?: SubdistrictUpsertWithoutUsersInput
+    disconnect?: SubdistrictWhereInput | boolean
+    delete?: SubdistrictWhereInput | boolean
+    connect?: SubdistrictWhereUniqueInput
+    update?: XOR<XOR<SubdistrictUpdateToOneWithWhereWithoutUsersInput, SubdistrictUpdateWithoutUsersInput>, SubdistrictUncheckedUpdateWithoutUsersInput>
+  }
+
   export type UserLoginUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserLoginCreateWithoutUserInput, UserLoginUncheckedCreateWithoutUserInput> | UserLoginCreateWithoutUserInput[] | UserLoginUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserLoginCreateOrConnectWithoutUserInput | UserLoginCreateOrConnectWithoutUserInput[]
@@ -49608,10 +52079,6 @@ export namespace Prisma {
     update?: ZoneUpdateWithWhereUniqueWithoutUserInput | ZoneUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ZoneUpdateManyWithWhereWithoutUserInput | ZoneUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ZoneScalarWhereInput | ZoneScalarWhereInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type BannerVisitorUncheckedUpdateOneWithoutUserNestedInput = {
@@ -49918,16 +52385,22 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserLoginInput, UserUpdateWithoutUserLoginInput>, UserUncheckedUpdateWithoutUserLoginInput>
   }
 
+  export type ProvinceCreateNestedOneWithoutAdminInput = {
+    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
+    connect?: ProvinceWhereUniqueInput
+  }
+
   export type CityCreateNestedOneWithoutAdminInput = {
     create?: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
     connectOrCreate?: CityCreateOrConnectWithoutAdminInput
     connect?: CityWhereUniqueInput
   }
 
-  export type ProvinceCreateNestedOneWithoutAdminInput = {
-    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
-    connect?: ProvinceWhereUniqueInput
+  export type SubdistrictCreateNestedOneWithoutAdminsInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminsInput, SubdistrictUncheckedCreateWithoutAdminsInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminsInput
+    connect?: SubdistrictWhereUniqueInput
   }
 
   export type SchoolCreateNestedOneWithoutAdminInput = {
@@ -50078,6 +52551,16 @@ export namespace Prisma {
     set?: $Enums.Role | null
   }
 
+  export type ProvinceUpdateOneWithoutAdminNestedInput = {
+    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
+    upsert?: ProvinceUpsertWithoutAdminInput
+    disconnect?: ProvinceWhereInput | boolean
+    delete?: ProvinceWhereInput | boolean
+    connect?: ProvinceWhereUniqueInput
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutAdminInput, ProvinceUpdateWithoutAdminInput>, ProvinceUncheckedUpdateWithoutAdminInput>
+  }
+
   export type CityUpdateOneWithoutAdminNestedInput = {
     create?: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
     connectOrCreate?: CityCreateOrConnectWithoutAdminInput
@@ -50088,14 +52571,14 @@ export namespace Prisma {
     update?: XOR<XOR<CityUpdateToOneWithWhereWithoutAdminInput, CityUpdateWithoutAdminInput>, CityUncheckedUpdateWithoutAdminInput>
   }
 
-  export type ProvinceUpdateOneWithoutAdminNestedInput = {
-    create?: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutAdminInput
-    upsert?: ProvinceUpsertWithoutAdminInput
-    disconnect?: ProvinceWhereInput | boolean
-    delete?: ProvinceWhereInput | boolean
-    connect?: ProvinceWhereUniqueInput
-    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutAdminInput, ProvinceUpdateWithoutAdminInput>, ProvinceUncheckedUpdateWithoutAdminInput>
+  export type SubdistrictUpdateOneWithoutAdminsNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminsInput, SubdistrictUncheckedCreateWithoutAdminsInput>
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminsInput
+    upsert?: SubdistrictUpsertWithoutAdminsInput
+    disconnect?: SubdistrictWhereInput | boolean
+    delete?: SubdistrictWhereInput | boolean
+    connect?: SubdistrictWhereUniqueInput
+    update?: XOR<XOR<SubdistrictUpdateToOneWithWhereWithoutAdminsInput, SubdistrictUpdateWithoutAdminsInput>, SubdistrictUncheckedUpdateWithoutAdminsInput>
   }
 
   export type SchoolUpdateOneWithoutAdminNestedInput = {
@@ -50448,6 +52931,12 @@ export namespace Prisma {
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
+  export type SubdistrictCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput> | SubdistrictCreateWithoutAdminAuthorityInput[] | SubdistrictUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminAuthorityInput | SubdistrictCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+  }
+
   export type SchoolCreateNestedManyWithoutAdminAuthorityInput = {
     create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
     connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
@@ -50458,6 +52947,12 @@ export namespace Prisma {
     create?: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput> | CityCreateWithoutAdminAuthorityInput[] | CityUncheckedCreateWithoutAdminAuthorityInput[]
     connectOrCreate?: CityCreateOrConnectWithoutAdminAuthorityInput | CityCreateOrConnectWithoutAdminAuthorityInput[]
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput> | SubdistrictCreateWithoutAdminAuthorityInput[] | SubdistrictUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminAuthorityInput | SubdistrictCreateOrConnectWithoutAdminAuthorityInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput = {
@@ -50500,6 +52995,19 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
+  export type SubdistrictUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput> | SubdistrictCreateWithoutAdminAuthorityInput[] | SubdistrictUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminAuthorityInput | SubdistrictCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutAdminAuthorityInput | SubdistrictUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutAdminAuthorityInput | SubdistrictUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutAdminAuthorityInput | SubdistrictUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+  }
+
   export type SchoolUpdateManyWithoutAdminAuthorityNestedInput = {
     create?: XOR<SchoolCreateWithoutAdminAuthorityInput, SchoolUncheckedCreateWithoutAdminAuthorityInput> | SchoolCreateWithoutAdminAuthorityInput[] | SchoolUncheckedCreateWithoutAdminAuthorityInput[]
     connectOrCreate?: SchoolCreateOrConnectWithoutAdminAuthorityInput | SchoolCreateOrConnectWithoutAdminAuthorityInput[]
@@ -50524,6 +53032,19 @@ export namespace Prisma {
     update?: CityUpdateWithWhereUniqueWithoutAdminAuthorityInput | CityUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
     updateMany?: CityUpdateManyWithWhereWithoutAdminAuthorityInput | CityUpdateManyWithWhereWithoutAdminAuthorityInput[]
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput> | SubdistrictCreateWithoutAdminAuthorityInput[] | SubdistrictUncheckedCreateWithoutAdminAuthorityInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutAdminAuthorityInput | SubdistrictCreateOrConnectWithoutAdminAuthorityInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutAdminAuthorityInput | SubdistrictUpsertWithWhereUniqueWithoutAdminAuthorityInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutAdminAuthorityInput | SubdistrictUpdateWithWhereUniqueWithoutAdminAuthorityInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutAdminAuthorityInput | SubdistrictUpdateManyWithWhereWithoutAdminAuthorityInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput = {
@@ -50655,10 +53176,22 @@ export namespace Prisma {
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
+  export type SubdistrictCreateNestedManyWithoutBannerLocationInput = {
+    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+  }
+
   export type CityUncheckedCreateNestedManyWithoutBannerLocationInput = {
     create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
     connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput = {
+    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type BannerUpdateOneRequiredWithoutBannerLocationNestedInput = {
@@ -50690,6 +53223,19 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
+  export type SubdistrictUpdateManyWithoutBannerLocationNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannerLocationInput | SubdistrictUpdateManyWithWhereWithoutBannerLocationInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+  }
+
   export type CityUncheckedUpdateManyWithoutBannerLocationNestedInput = {
     create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
     connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
@@ -50701,6 +53247,19 @@ export namespace Prisma {
     update?: CityUpdateWithWhereUniqueWithoutBannerLocationInput | CityUpdateWithWhereUniqueWithoutBannerLocationInput[]
     updateMany?: CityUpdateManyWithWhereWithoutBannerLocationInput | CityUpdateManyWithWhereWithoutBannerLocationInput[]
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannerLocationInput | SubdistrictUpdateManyWithWhereWithoutBannerLocationInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type BannerCreateNestedOneWithoutVisitorsInput = {
@@ -51232,6 +53791,20 @@ export namespace Prisma {
     not?: NestedEnumEducationLevelFilter<$PrismaModel> | $Enums.EducationLevel
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedEnumEducationLevelWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EducationLevel | EnumEducationLevelFieldRefInput<$PrismaModel>
     in?: $Enums.EducationLevel[] | ListEnumEducationLevelFieldRefInput<$PrismaModel>
@@ -51240,6 +53813,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEducationLevelFilter<$PrismaModel>
     _max?: NestedEnumEducationLevelFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumRoleFilter<$PrismaModel = never> = {
@@ -51270,20 +53871,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -51328,17 +53915,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -51353,23 +53929,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRoleNullableFilter<$PrismaModel = never> = {
@@ -51516,6 +54075,7 @@ export namespace Prisma {
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
     city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -51537,6 +54097,7 @@ export namespace Prisma {
     suspend?: boolean
     role?: $Enums.Role | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -51570,6 +54131,7 @@ export namespace Prisma {
     grades?: AdminAuthorityCreategradesInput | number[]
     admin: AdminCreateNestedOneWithoutAuthorityInput
     cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -51578,6 +54140,7 @@ export namespace Prisma {
     adminId: string
     grades?: AdminAuthorityCreategradesInput | number[]
     cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -51595,12 +54158,14 @@ export namespace Prisma {
     id?: string
     banner: BannerCreateNestedOneWithoutBannerLocationInput
     cities?: CityCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationUncheckedCreateWithoutProvinceInput = {
     id?: string
     bannerId: string
     cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationCreateOrConnectWithoutProvinceInput = {
@@ -51618,11 +54183,12 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
@@ -51633,11 +54199,12 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
@@ -51663,7 +54230,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutSchoolInput
-    city: CityCreateNestedOneWithoutSchoolsInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
@@ -51675,7 +54243,8 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
+    cityId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
@@ -51730,6 +54299,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -51754,6 +54324,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -51785,6 +54356,48 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SubdistrictCreateWithoutProvinceInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutProvinceInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutProvinceInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type SubdistrictCreateManyProvinceInputEnvelope = {
+    data: SubdistrictCreateManyProvinceInput | SubdistrictCreateManyProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AdminUpsertWithWhereUniqueWithoutProvinceInput = {
     where: AdminWhereUniqueInput
     update: XOR<AdminUpdateWithoutProvinceInput, AdminUncheckedUpdateWithoutProvinceInput>
@@ -51813,6 +54426,7 @@ export namespace Prisma {
     role?: EnumRoleNullableFilter<"Admin"> | $Enums.Role | null
     provinceId?: StringNullableFilter<"Admin"> | string | null
     cityId?: StringNullableFilter<"Admin"> | string | null
+    subdistrictId?: StringNullableFilter<"Admin"> | string | null
     schoolId?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     updatedAt?: DateTimeFilter<"Admin"> | Date | string
@@ -51928,8 +54542,9 @@ export namespace Prisma {
     name?: StringFilter<"School"> | string
     longitude?: FloatFilter<"School"> | number
     latitude?: FloatFilter<"School"> | number
-    cityId?: StringFilter<"School"> | string
-    provinceId?: StringFilter<"School"> | string
+    cityId?: StringNullableFilter<"School"> | string | null
+    provinceId?: StringNullableFilter<"School"> | string | null
+    subdistrictId?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
   }
@@ -51974,12 +54589,44 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
+    subdisctrictId?: StringNullableFilter<"User"> | string | null
     adminId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     username?: StringFilter<"User"> | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
+  }
+
+  export type SubdistrictUpsertWithWhereUniqueWithoutProvinceInput = {
+    where: SubdistrictWhereUniqueInput
+    update: XOR<SubdistrictUpdateWithoutProvinceInput, SubdistrictUncheckedUpdateWithoutProvinceInput>
+    create: XOR<SubdistrictCreateWithoutProvinceInput, SubdistrictUncheckedCreateWithoutProvinceInput>
+  }
+
+  export type SubdistrictUpdateWithWhereUniqueWithoutProvinceInput = {
+    where: SubdistrictWhereUniqueInput
+    data: XOR<SubdistrictUpdateWithoutProvinceInput, SubdistrictUncheckedUpdateWithoutProvinceInput>
+  }
+
+  export type SubdistrictUpdateManyWithWhereWithoutProvinceInput = {
+    where: SubdistrictScalarWhereInput
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutProvinceInput>
+  }
+
+  export type SubdistrictScalarWhereInput = {
+    AND?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+    OR?: SubdistrictScalarWhereInput[]
+    NOT?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
+    id?: StringFilter<"Subdistrict"> | string
+    name?: StringFilter<"Subdistrict"> | string
+    longitude?: FloatFilter<"Subdistrict"> | number
+    latitude?: FloatFilter<"Subdistrict"> | number
+    geoId?: StringFilter<"Subdistrict"> | string
+    provinceId?: StringFilter<"Subdistrict"> | string
+    cityId?: StringFilter<"Subdistrict"> | string
+    createdAt?: DateTimeFilter<"Subdistrict"> | Date | string
+    updatedAt?: DateTimeFilter<"Subdistrict"> | Date | string
   }
 
   export type AdminCreateWithoutCityInput = {
@@ -51995,6 +54642,7 @@ export namespace Prisma {
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -52016,6 +54664,7 @@ export namespace Prisma {
     suspend?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52049,7 +54698,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -52057,6 +54706,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutCitiesInput = {
@@ -52064,7 +54714,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -52072,6 +54722,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutCitiesInput = {
@@ -52089,7 +54740,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutSchoolInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
@@ -52101,7 +54753,8 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    provinceId: string
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
@@ -52116,6 +54769,48 @@ export namespace Prisma {
 
   export type SchoolCreateManyCityInputEnvelope = {
     data: SchoolCreateManyCityInput | SchoolCreateManyCityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubdistrictCreateWithoutCityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutCityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutCityInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput>
+  }
+
+  export type SubdistrictCreateManyCityInputEnvelope = {
+    data: SubdistrictCreateManyCityInput | SubdistrictCreateManyCityInput[]
     skipDuplicates?: boolean
   }
 
@@ -52156,6 +54851,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -52180,6 +54876,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52216,6 +54913,7 @@ export namespace Prisma {
     grades?: AdminAuthorityCreategradesInput | number[]
     admin: AdminCreateNestedOneWithoutAuthorityInput
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -52224,6 +54922,7 @@ export namespace Prisma {
     adminId: string
     provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -52236,12 +54935,14 @@ export namespace Prisma {
     id?: string
     banner: BannerCreateNestedOneWithoutBannerLocationInput
     province: ProvinceCreateNestedOneWithoutBannerLocationInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationUncheckedCreateWithoutCitiesInput = {
     id?: string
     bannerId: string
     provinceId: string
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationCreateOrConnectWithoutCitiesInput = {
@@ -52289,6 +54990,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutCitiesInput = {
@@ -52304,6 +55006,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutCityInput = {
@@ -52320,6 +55023,22 @@ export namespace Prisma {
   export type SchoolUpdateManyWithWhereWithoutCityInput = {
     where: SchoolScalarWhereInput
     data: XOR<SchoolUpdateManyMutationInput, SchoolUncheckedUpdateManyWithoutCityInput>
+  }
+
+  export type SubdistrictUpsertWithWhereUniqueWithoutCityInput = {
+    where: SubdistrictWhereUniqueInput
+    update: XOR<SubdistrictUpdateWithoutCityInput, SubdistrictUncheckedUpdateWithoutCityInput>
+    create: XOR<SubdistrictCreateWithoutCityInput, SubdistrictUncheckedCreateWithoutCityInput>
+  }
+
+  export type SubdistrictUpdateWithWhereUniqueWithoutCityInput = {
+    where: SubdistrictWhereUniqueInput
+    data: XOR<SubdistrictUpdateWithoutCityInput, SubdistrictUncheckedUpdateWithoutCityInput>
+  }
+
+  export type SubdistrictUpdateManyWithWhereWithoutCityInput = {
+    where: SubdistrictScalarWhereInput
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutCityInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutCityInput = {
@@ -52370,6 +55089,488 @@ export namespace Prisma {
     data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutCitiesInput>
   }
 
+  export type ProvinceCreateWithoutSubdistrictsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    cities?: CityCreateNestedManyWithoutProvinceInput
+    schools?: SchoolCreateNestedManyWithoutProvinceInput
+    users?: UserCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutSubdistrictsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutSubdistrictsInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutSubdistrictsInput, ProvinceUncheckedCreateWithoutSubdistrictsInput>
+  }
+
+  export type CityCreateWithoutSubdistrictsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminCreateNestedManyWithoutCityInput
+    province: ProvinceCreateNestedOneWithoutCitiesInput
+    schools?: SchoolCreateNestedManyWithoutCityInput
+    users?: UserCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityUncheckedCreateWithoutSubdistrictsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    users?: UserUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityCreateOrConnectWithoutSubdistrictsInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutSubdistrictsInput, CityUncheckedCreateWithoutSubdistrictsInput>
+  }
+
+  export type SchoolCreateWithoutSubdistrictInput = {
+    id?: string
+    identity: string
+    level?: $Enums.EducationLevel
+    name: string
+    longitude: number
+    latitude: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminCreateNestedManyWithoutSchoolInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    users?: UserCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
+  }
+
+  export type SchoolUncheckedCreateWithoutSubdistrictInput = {
+    id?: string
+    identity: string
+    level?: $Enums.EducationLevel
+    name: string
+    longitude: number
+    latitude: number
+    cityId?: string | null
+    provinceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
+    users?: UserUncheckedCreateNestedManyWithoutSchoolInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSchoolsInput
+  }
+
+  export type SchoolCreateOrConnectWithoutSubdistrictInput = {
+    where: SchoolWhereUniqueInput
+    create: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput>
+  }
+
+  export type SchoolCreateManySubdistrictInputEnvelope = {
+    data: SchoolCreateManySubdistrictInput | SchoolCreateManySubdistrictInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutSubdisctrictInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSubdisctrictInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSubdisctrictInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput>
+  }
+
+  export type UserCreateManySubdisctrictInputEnvelope = {
+    data: UserCreateManySubdisctrictInput | UserCreateManySubdisctrictInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminCreateWithoutSubdistrictInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
+    user?: UserCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutSubdistrictInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutSubdistrictInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput>
+  }
+
+  export type AdminCreateManySubdistrictInputEnvelope = {
+    data: AdminCreateManySubdistrictInput | AdminCreateManySubdistrictInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminAuthorityCreateWithoutSubdistrictsInput = {
+    id?: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    admin: AdminCreateNestedOneWithoutAuthorityInput
+    province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
+    cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
+  }
+
+  export type AdminAuthorityUncheckedCreateWithoutSubdistrictsInput = {
+    id?: string
+    adminId: string
+    provinceId: string
+    grades?: AdminAuthorityCreategradesInput | number[]
+    cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
+  }
+
+  export type AdminAuthorityCreateOrConnectWithoutSubdistrictsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    create: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput>
+  }
+
+  export type BannerLocationCreateWithoutSubdisctrictsInput = {
+    id?: string
+    banner: BannerCreateNestedOneWithoutBannerLocationInput
+    province: ProvinceCreateNestedOneWithoutBannerLocationInput
+    cities?: CityCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationUncheckedCreateWithoutSubdisctrictsInput = {
+    id?: string
+    bannerId: string
+    provinceId: string
+    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+  }
+
+  export type BannerLocationCreateOrConnectWithoutSubdisctrictsInput = {
+    where: BannerLocationWhereUniqueInput
+    create: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput>
+  }
+
+  export type ProvinceUpsertWithoutSubdistrictsInput = {
+    update: XOR<ProvinceUpdateWithoutSubdistrictsInput, ProvinceUncheckedUpdateWithoutSubdistrictsInput>
+    create: XOR<ProvinceCreateWithoutSubdistrictsInput, ProvinceUncheckedCreateWithoutSubdistrictsInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutSubdistrictsInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutSubdistrictsInput, ProvinceUncheckedUpdateWithoutSubdistrictsInput>
+  }
+
+  export type ProvinceUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
+    cities?: CityUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUpdateManyWithoutProvinceNestedInput
+    users?: UserUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
+    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
+    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type CityUpsertWithoutSubdistrictsInput = {
+    update: XOR<CityUpdateWithoutSubdistrictsInput, CityUncheckedUpdateWithoutSubdistrictsInput>
+    create: XOR<CityCreateWithoutSubdistrictsInput, CityUncheckedCreateWithoutSubdistrictsInput>
+    where?: CityWhereInput
+  }
+
+  export type CityUpdateToOneWithWhereWithoutSubdistrictsInput = {
+    where?: CityWhereInput
+    data: XOR<CityUpdateWithoutSubdistrictsInput, CityUncheckedUpdateWithoutSubdistrictsInput>
+  }
+
+  export type CityUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateManyWithoutCityNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type SchoolUpsertWithWhereUniqueWithoutSubdistrictInput = {
+    where: SchoolWhereUniqueInput
+    update: XOR<SchoolUpdateWithoutSubdistrictInput, SchoolUncheckedUpdateWithoutSubdistrictInput>
+    create: XOR<SchoolCreateWithoutSubdistrictInput, SchoolUncheckedCreateWithoutSubdistrictInput>
+  }
+
+  export type SchoolUpdateWithWhereUniqueWithoutSubdistrictInput = {
+    where: SchoolWhereUniqueInput
+    data: XOR<SchoolUpdateWithoutSubdistrictInput, SchoolUncheckedUpdateWithoutSubdistrictInput>
+  }
+
+  export type SchoolUpdateManyWithWhereWithoutSubdistrictInput = {
+    where: SchoolScalarWhereInput
+    data: XOR<SchoolUpdateManyMutationInput, SchoolUncheckedUpdateManyWithoutSubdistrictInput>
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutSubdisctrictInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutSubdisctrictInput, UserUncheckedUpdateWithoutSubdisctrictInput>
+    create: XOR<UserCreateWithoutSubdisctrictInput, UserUncheckedCreateWithoutSubdisctrictInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutSubdisctrictInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutSubdisctrictInput, UserUncheckedUpdateWithoutSubdisctrictInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutSubdisctrictInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutSubdisctrictInput>
+  }
+
+  export type AdminUpsertWithWhereUniqueWithoutSubdistrictInput = {
+    where: AdminWhereUniqueInput
+    update: XOR<AdminUpdateWithoutSubdistrictInput, AdminUncheckedUpdateWithoutSubdistrictInput>
+    create: XOR<AdminCreateWithoutSubdistrictInput, AdminUncheckedCreateWithoutSubdistrictInput>
+  }
+
+  export type AdminUpdateWithWhereUniqueWithoutSubdistrictInput = {
+    where: AdminWhereUniqueInput
+    data: XOR<AdminUpdateWithoutSubdistrictInput, AdminUncheckedUpdateWithoutSubdistrictInput>
+  }
+
+  export type AdminUpdateManyWithWhereWithoutSubdistrictInput = {
+    where: AdminScalarWhereInput
+    data: XOR<AdminUpdateManyMutationInput, AdminUncheckedUpdateManyWithoutSubdistrictInput>
+  }
+
+  export type AdminAuthorityUpsertWithWhereUniqueWithoutSubdistrictsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    update: XOR<AdminAuthorityUpdateWithoutSubdistrictsInput, AdminAuthorityUncheckedUpdateWithoutSubdistrictsInput>
+    create: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput>
+  }
+
+  export type AdminAuthorityUpdateWithWhereUniqueWithoutSubdistrictsInput = {
+    where: AdminAuthorityWhereUniqueInput
+    data: XOR<AdminAuthorityUpdateWithoutSubdistrictsInput, AdminAuthorityUncheckedUpdateWithoutSubdistrictsInput>
+  }
+
+  export type AdminAuthorityUpdateManyWithWhereWithoutSubdistrictsInput = {
+    where: AdminAuthorityScalarWhereInput
+    data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsInput>
+  }
+
+  export type BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput = {
+    where: BannerLocationWhereUniqueInput
+    update: XOR<BannerLocationUpdateWithoutSubdisctrictsInput, BannerLocationUncheckedUpdateWithoutSubdisctrictsInput>
+    create: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput>
+  }
+
+  export type BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput = {
+    where: BannerLocationWhereUniqueInput
+    data: XOR<BannerLocationUpdateWithoutSubdisctrictsInput, BannerLocationUncheckedUpdateWithoutSubdisctrictsInput>
+  }
+
+  export type BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput = {
+    where: BannerLocationScalarWhereInput
+    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutSubdisctrictsInput>
+  }
+
   export type AdminCreateWithoutSchoolInput = {
     id?: string
     authId: string
@@ -52382,8 +55583,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
@@ -52405,6 +55607,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     authenticatorEnabled?: boolean
@@ -52437,11 +55640,12 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     province: ProvinceCreateNestedOneWithoutCitiesInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
@@ -52452,11 +55656,12 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
@@ -52472,7 +55677,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -52480,6 +55685,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutSchoolsInput = {
@@ -52487,7 +55693,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -52495,11 +55701,49 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutSchoolsInput = {
     where: ProvinceWhereUniqueInput
     create: XOR<ProvinceCreateWithoutSchoolsInput, ProvinceUncheckedCreateWithoutSchoolsInput>
+  }
+
+  export type SubdistrictCreateWithoutSchoolsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutSchoolsInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutSchoolsInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutSchoolsInput, SubdistrictUncheckedCreateWithoutSchoolsInput>
   }
 
   export type UserCreateWithoutSchoolInput = {
@@ -52539,6 +55783,7 @@ export namespace Prisma {
     admin?: AdminCreateNestedOneWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -52563,6 +55808,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -52600,6 +55846,7 @@ export namespace Prisma {
     admin: AdminCreateNestedOneWithoutAuthorityInput
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
     cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityUncheckedCreateWithoutSchoolsInput = {
@@ -52608,6 +55855,7 @@ export namespace Prisma {
     provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
     cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
   export type AdminAuthorityCreateOrConnectWithoutSchoolsInput = {
@@ -52652,6 +55900,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutCityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
@@ -52667,6 +55916,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
@@ -52696,6 +55946,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutSchoolsInput = {
@@ -52711,6 +55962,50 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type SubdistrictUpsertWithoutSchoolsInput = {
+    update: XOR<SubdistrictUpdateWithoutSchoolsInput, SubdistrictUncheckedUpdateWithoutSchoolsInput>
+    create: XOR<SubdistrictCreateWithoutSchoolsInput, SubdistrictUncheckedCreateWithoutSchoolsInput>
+    where?: SubdistrictWhereInput
+  }
+
+  export type SubdistrictUpdateToOneWithWhereWithoutSchoolsInput = {
+    where?: SubdistrictWhereInput
+    data: XOR<SubdistrictUpdateWithoutSchoolsInput, SubdistrictUncheckedUpdateWithoutSchoolsInput>
+  }
+
+  export type SubdistrictUpdateWithoutSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutSchoolsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutSchoolInput = {
@@ -53128,8 +56423,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -53151,6 +56447,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -53178,12 +56475,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
@@ -53193,12 +56491,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
@@ -53213,7 +56512,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -53221,6 +56520,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutUsersInput = {
@@ -53228,7 +56528,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -53236,6 +56536,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutUsersInput = {
@@ -53253,8 +56554,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutSchoolInput
-    city: CityCreateNestedOneWithoutSchoolsInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
 
@@ -53265,8 +56567,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
@@ -53276,6 +56579,43 @@ export namespace Prisma {
   export type SchoolCreateOrConnectWithoutUsersInput = {
     where: SchoolWhereUniqueInput
     create: XOR<SchoolCreateWithoutUsersInput, SchoolUncheckedCreateWithoutUsersInput>
+  }
+
+  export type SubdistrictCreateWithoutUsersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutUsersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutUsersInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutUsersInput, SubdistrictUncheckedCreateWithoutUsersInput>
   }
 
   export type UserLoginCreateWithoutUserInput = {
@@ -53718,8 +57058,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -53741,6 +57082,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53780,6 +57122,7 @@ export namespace Prisma {
     admin?: AdminUpdateManyWithoutCityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
@@ -53795,6 +57138,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
@@ -53823,6 +57167,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUpdateManyWithoutProvinceNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutUsersInput = {
@@ -53838,6 +57183,7 @@ export namespace Prisma {
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinceNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type SchoolUpsertWithoutUsersInput = {
@@ -53861,8 +57207,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutSchoolNestedInput
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
 
@@ -53873,12 +57220,56 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SubdistrictUpsertWithoutUsersInput = {
+    update: XOR<SubdistrictUpdateWithoutUsersInput, SubdistrictUncheckedUpdateWithoutUsersInput>
+    create: XOR<SubdistrictCreateWithoutUsersInput, SubdistrictUncheckedCreateWithoutUsersInput>
+    where?: SubdistrictWhereInput
+  }
+
+  export type SubdistrictUpdateToOneWithWhereWithoutUsersInput = {
+    where?: SubdistrictWhereInput
+    data: XOR<SubdistrictUpdateWithoutUsersInput, SubdistrictUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type SubdistrictUpdateWithoutUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type UserLoginUpsertWithWhereUniqueWithoutUserInput = {
@@ -53982,6 +57373,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
   }
 
@@ -54006,6 +57398,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54080,6 +57473,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
   }
 
@@ -54104,6 +57498,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54161,6 +57556,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -54186,6 +57582,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54259,6 +57656,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -54284,6 +57682,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54341,6 +57740,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -54366,6 +57766,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54439,6 +57840,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -54464,6 +57866,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54521,6 +57924,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -54546,6 +57950,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54619,6 +58024,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -54644,6 +58050,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54701,6 +58108,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -54726,6 +58134,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54799,6 +58208,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -54824,6 +58234,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54881,6 +58292,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -54906,6 +58318,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54979,6 +58392,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -55004,6 +58418,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55061,6 +58476,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -55086,6 +58502,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55159,6 +58576,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -55184,6 +58602,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55241,6 +58660,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -55266,6 +58686,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55339,6 +58760,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -55364,6 +58786,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55422,6 +58845,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
 
@@ -55446,6 +58870,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55520,6 +58945,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
 
@@ -55544,6 +58970,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55564,16 +58991,54 @@ export namespace Prisma {
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type ProvinceCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
+    cities?: CityCreateNestedManyWithoutProvinceInput
+    schools?: SchoolCreateNestedManyWithoutProvinceInput
+    users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutAdminInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
+    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutAdminInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+  }
+
   export type CityCreateWithoutAdminInput = {
     id?: string
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
@@ -55584,11 +59049,12 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
@@ -55599,39 +59065,41 @@ export namespace Prisma {
     create: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
   }
 
-  export type ProvinceCreateWithoutAdminInput = {
+  export type SubdistrictCreateWithoutAdminsInput = {
     id?: string
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinceInput
-    cities?: CityCreateNestedManyWithoutProvinceInput
-    schools?: SchoolCreateNestedManyWithoutProvinceInput
-    users?: UserCreateNestedManyWithoutProvinceInput
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
   }
 
-  export type ProvinceUncheckedCreateWithoutAdminInput = {
+  export type SubdistrictUncheckedCreateWithoutAdminsInput = {
     id?: string
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
+    provinceId: string
+    cityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinceInput
-    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
-    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
-    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
-  export type ProvinceCreateOrConnectWithoutAdminInput = {
-    where: ProvinceWhereUniqueInput
-    create: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
+  export type SubdistrictCreateOrConnectWithoutAdminsInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutAdminsInput, SubdistrictUncheckedCreateWithoutAdminsInput>
   }
 
   export type SchoolCreateWithoutAdminInput = {
@@ -55643,8 +59111,9 @@ export namespace Prisma {
     latitude: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    city: CityCreateNestedOneWithoutSchoolsInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSchoolsInput
   }
@@ -55656,8 +59125,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutSchoolInput
@@ -55674,6 +59144,7 @@ export namespace Prisma {
     grades?: AdminAuthorityCreategradesInput | number[]
     province: ProvinceCreateNestedOneWithoutAdminAuthorityInput
     cities?: CityCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -55682,6 +59153,7 @@ export namespace Prisma {
     provinceId: string
     grades?: AdminAuthorityCreategradesInput | number[]
     cities?: CityUncheckedCreateNestedManyWithoutAdminAuthorityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutAdminAuthorityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutAdminAuthorityInput
   }
 
@@ -56034,6 +59506,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -56059,6 +59532,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -56082,47 +59556,6 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutAdminInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
-  }
-
-  export type CityUpsertWithoutAdminInput = {
-    update: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
-    create: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
-    where?: CityWhereInput
-  }
-
-  export type CityUpdateToOneWithWhereWithoutAdminInput = {
-    where?: CityWhereInput
-    data: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
-  }
-
-  export type CityUpdateWithoutAdminInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
-    schools?: SchoolUpdateManyWithoutCityNestedInput
-    users?: UserUpdateManyWithoutCityNestedInput
-    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
-  }
-
-  export type CityUncheckedUpdateWithoutAdminInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminInput = {
@@ -56149,6 +59582,7 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminInput = {
@@ -56164,6 +59598,93 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+  }
+
+  export type CityUpsertWithoutAdminInput = {
+    update: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
+    create: XOR<CityCreateWithoutAdminInput, CityUncheckedCreateWithoutAdminInput>
+    where?: CityWhereInput
+  }
+
+  export type CityUpdateToOneWithWhereWithoutAdminInput = {
+    where?: CityWhereInput
+    data: XOR<CityUpdateWithoutAdminInput, CityUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type CityUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type SubdistrictUpsertWithoutAdminsInput = {
+    update: XOR<SubdistrictUpdateWithoutAdminsInput, SubdistrictUncheckedUpdateWithoutAdminsInput>
+    create: XOR<SubdistrictCreateWithoutAdminsInput, SubdistrictUncheckedCreateWithoutAdminsInput>
+    where?: SubdistrictWhereInput
+  }
+
+  export type SubdistrictUpdateToOneWithWhereWithoutAdminsInput = {
+    where?: SubdistrictWhereInput
+    data: XOR<SubdistrictUpdateWithoutAdminsInput, SubdistrictUncheckedUpdateWithoutAdminsInput>
+  }
+
+  export type SubdistrictUpdateWithoutAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SchoolUpsertWithoutAdminInput = {
@@ -56186,8 +59707,9 @@ export namespace Prisma {
     latitude?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
@@ -56199,8 +59721,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
@@ -56502,6 +60025,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -56527,6 +60051,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -56559,8 +60084,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
@@ -56582,6 +60108,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56627,8 +60154,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
@@ -56650,6 +60178,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56679,8 +60208,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -56702,6 +60232,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56736,8 +60267,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -56759,6 +60291,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56804,8 +60337,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -56827,6 +60361,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56867,8 +60402,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -56890,6 +60426,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56919,8 +60456,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
     operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
@@ -56942,6 +60480,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56969,7 +60508,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -56977,6 +60516,7 @@ export namespace Prisma {
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutAdminAuthorityInput = {
@@ -56984,7 +60524,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -56992,6 +60532,7 @@ export namespace Prisma {
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutAdminAuthorityInput = {
@@ -57004,12 +60545,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
   }
@@ -57019,12 +60561,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
   }
@@ -57032,6 +60575,43 @@ export namespace Prisma {
   export type CityCreateOrConnectWithoutAdminAuthorityInput = {
     where: CityWhereUniqueInput
     create: XOR<CityCreateWithoutAdminAuthorityInput, CityUncheckedCreateWithoutAdminAuthorityInput>
+  }
+
+  export type SubdistrictCreateWithoutAdminAuthorityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutAdminAuthorityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutAdminAuthorityInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput>
   }
 
   export type SchoolCreateWithoutAdminAuthorityInput = {
@@ -57044,8 +60624,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutSchoolInput
-    city: CityCreateNestedOneWithoutSchoolsInput
-    province: ProvinceCreateNestedOneWithoutSchoolsInput
+    city?: CityCreateNestedOneWithoutSchoolsInput
+    province?: ProvinceCreateNestedOneWithoutSchoolsInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutSchoolsInput
     users?: UserCreateNestedManyWithoutSchoolInput
   }
 
@@ -57056,8 +60637,9 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
-    provinceId: string
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutSchoolInput
@@ -57092,8 +60674,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
@@ -57115,6 +60698,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57156,6 +60740,7 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -57171,6 +60756,7 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
@@ -57187,6 +60773,22 @@ export namespace Prisma {
   export type CityUpdateManyWithWhereWithoutAdminAuthorityInput = {
     where: CityScalarWhereInput
     data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutAdminAuthorityInput>
+  }
+
+  export type SubdistrictUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: SubdistrictWhereUniqueInput
+    update: XOR<SubdistrictUpdateWithoutAdminAuthorityInput, SubdistrictUncheckedUpdateWithoutAdminAuthorityInput>
+    create: XOR<SubdistrictCreateWithoutAdminAuthorityInput, SubdistrictUncheckedCreateWithoutAdminAuthorityInput>
+  }
+
+  export type SubdistrictUpdateWithWhereUniqueWithoutAdminAuthorityInput = {
+    where: SubdistrictWhereUniqueInput
+    data: XOR<SubdistrictUpdateWithoutAdminAuthorityInput, SubdistrictUncheckedUpdateWithoutAdminAuthorityInput>
+  }
+
+  export type SubdistrictUpdateManyWithWhereWithoutAdminAuthorityInput = {
+    where: SubdistrictScalarWhereInput
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutAdminAuthorityInput>
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
@@ -57217,8 +60819,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -57240,6 +60843,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57266,12 +60870,14 @@ export namespace Prisma {
     id?: string
     province: ProvinceCreateNestedOneWithoutBannerLocationInput
     cities?: CityCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationUncheckedCreateWithoutBannerInput = {
     id?: string
     provinceId: string
     cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
   }
 
   export type BannerLocationCreateOrConnectWithoutBannerInput = {
@@ -57333,8 +60939,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -57356,6 +60963,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57451,7 +61059,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
@@ -57459,6 +61067,7 @@ export namespace Prisma {
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutBannerLocationInput = {
@@ -57466,7 +61075,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
@@ -57474,6 +61083,7 @@ export namespace Prisma {
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
   export type ProvinceCreateOrConnectWithoutBannerLocationInput = {
@@ -57486,12 +61096,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutCityInput
     province: ProvinceCreateNestedOneWithoutCitiesInput
     schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
   }
@@ -57501,12 +61112,13 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutCityInput
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
   }
@@ -57514,6 +61126,43 @@ export namespace Prisma {
   export type CityCreateOrConnectWithoutBannerLocationInput = {
     where: CityWhereUniqueInput
     create: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type SubdistrictCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutBannerLocationInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdisctrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutBannerLocationInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput>
   }
 
   export type BannerUpsertWithoutBannerLocationInput = {
@@ -57575,6 +61224,7 @@ export namespace Prisma {
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutBannerLocationInput = {
@@ -57590,6 +61240,7 @@ export namespace Prisma {
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutBannerLocationInput = {
@@ -57606,6 +61257,22 @@ export namespace Prisma {
   export type CityUpdateManyWithWhereWithoutBannerLocationInput = {
     where: CityScalarWhereInput
     data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutBannerLocationInput>
+  }
+
+  export type SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput = {
+    where: SubdistrictWhereUniqueInput
+    update: XOR<SubdistrictUpdateWithoutBannerLocationInput, SubdistrictUncheckedUpdateWithoutBannerLocationInput>
+    create: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput>
+  }
+
+  export type SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput = {
+    where: SubdistrictWhereUniqueInput
+    data: XOR<SubdistrictUpdateWithoutBannerLocationInput, SubdistrictUncheckedUpdateWithoutBannerLocationInput>
+  }
+
+  export type SubdistrictUpdateManyWithWhereWithoutBannerLocationInput = {
+    where: SubdistrictScalarWhereInput
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutBannerLocationInput>
   }
 
   export type BannerCreateWithoutVisitorsInput = {
@@ -57674,6 +61341,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -57699,6 +61367,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57807,6 +61476,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -57832,6 +61502,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57864,8 +61535,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -57887,6 +61559,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57960,8 +61633,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -57983,6 +61657,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58100,6 +61775,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -58125,6 +61801,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58281,6 +61958,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -58306,6 +61984,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58420,8 +62099,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -58443,6 +62123,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58477,8 +62158,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -58500,6 +62182,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58578,8 +62261,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -58601,6 +62285,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58641,8 +62326,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -58664,6 +62350,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58758,8 +62445,9 @@ export namespace Prisma {
     authenticatorEnabled?: boolean
     authenticatorQrUrl?: string | null
     authenticatorSecret?: string | null
-    city?: CityCreateNestedOneWithoutAdminInput
     province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
     school?: SchoolCreateNestedOneWithoutAdminInput
     authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
     logs?: AdminLogCreateNestedManyWithoutAdminInput
@@ -58781,6 +62469,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58887,8 +62576,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -58910,6 +62600,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59048,6 +62739,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -59073,6 +62765,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59185,6 +62878,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -59210,6 +62904,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59354,6 +63049,7 @@ export namespace Prisma {
     city?: CityCreateNestedOneWithoutUsersInput
     province?: ProvinceCreateNestedOneWithoutUsersInput
     school?: SchoolCreateNestedOneWithoutUsersInput
+    subdisctrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
@@ -59379,6 +63075,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59493,6 +63190,7 @@ export namespace Prisma {
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -59518,6 +63216,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59546,6 +63245,7 @@ export namespace Prisma {
     suspend?: boolean
     role?: $Enums.Role | null
     cityId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59570,7 +63270,7 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    geoId: string
+    geoId?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -59582,7 +63282,8 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
-    cityId: string
+    cityId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -59607,12 +63308,24 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
+  }
+
+  export type SubdistrictCreateManyProvinceInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AdminUpdateWithoutProvinceInput = {
@@ -59628,6 +63341,7 @@ export namespace Prisma {
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -59649,6 +63363,7 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59675,6 +63390,7 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59688,6 +63404,7 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
     admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
     cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -59696,6 +63413,7 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
     cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -59709,12 +63427,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
     cities?: CityUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     bannerId?: StringFieldUpdateOperationsInput | string
     cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateManyWithoutProvinceInput = {
@@ -59732,6 +63452,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutCityNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
@@ -59747,6 +63468,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
@@ -59772,7 +63494,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutSchoolNestedInput
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
@@ -59784,7 +63507,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
@@ -59799,7 +63523,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -59841,6 +63566,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -59865,6 +63591,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59906,12 +63633,56 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SubdistrictUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutProvinceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminCreateManyCityInput = {
@@ -59922,6 +63693,7 @@ export namespace Prisma {
     suspend?: boolean
     role?: $Enums.Role | null
     provinceId?: string | null
+    subdistrictId?: string | null
     schoolId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59937,6 +63709,18 @@ export namespace Prisma {
     name: string
     longitude: number
     latitude: number
+    provinceId?: string | null
+    subdistrictId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubdistrictCreateManyCityInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
     provinceId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59962,6 +63746,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59983,6 +63768,7 @@ export namespace Prisma {
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     school?: SchoolUpdateOneWithoutAdminNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
@@ -60004,6 +63790,7 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60030,6 +63817,7 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60048,7 +63836,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutSchoolNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
   }
@@ -60060,7 +63849,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    provinceId?: StringFieldUpdateOperationsInput | string
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
@@ -60075,6 +63865,50 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubdistrictUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutCityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60117,6 +63951,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
     school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -60141,6 +63976,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60182,6 +64018,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60195,6 +64032,7 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
     admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -60203,6 +64041,7 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -60217,15 +64056,350 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
     province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     bannerId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateManyWithoutCitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SchoolCreateManySubdistrictInput = {
+    id?: string
+    identity: string
+    level?: $Enums.EducationLevel
+    name: string
+    longitude: number
+    latitude: number
+    cityId?: string | null
+    provinceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCreateManySubdisctrictInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+  }
+
+  export type AdminCreateManySubdistrictInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+  }
+
+  export type SchoolUpdateWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateManyWithoutSchoolNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    users?: UserUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SchoolUncheckedUpdateWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
+    users?: UserUncheckedUpdateManyWithoutSchoolNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSchoolsNestedInput
+  }
+
+  export type SchoolUncheckedUpdateManyWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    identity?: StringFieldUpdateOperationsInput | string
+    level?: EnumEducationLevelFieldUpdateOperationsInput | $Enums.EducationLevel
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpdateWithoutSubdisctrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSubdisctrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutSubdisctrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminUpdateWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
+    user?: UserUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateManyWithoutSubdistrictInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AdminAuthorityUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
+    cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+    cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+  }
+
+  export type AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    grades?: AdminAuthorityUpdategradesInput | number[]
+  }
+
+  export type BannerLocationUpdateWithoutSubdisctrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
+    cities?: CityUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateWithoutSubdisctrictsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+  }
+
+  export type BannerLocationUncheckedUpdateManyWithoutSubdisctrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
     bannerId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
@@ -60240,6 +64414,7 @@ export namespace Prisma {
     role?: $Enums.Role | null
     provinceId?: string | null
     cityId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     authenticatorEnabled?: boolean
@@ -60267,6 +64442,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
+    subdisctrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60287,8 +64463,9 @@ export namespace Prisma {
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
     authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: CityUpdateOneWithoutAdminNestedInput
     province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
     authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
     logs?: AdminLogUpdateManyWithoutAdminNestedInput
     operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
@@ -60310,6 +64487,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -60336,6 +64514,7 @@ export namespace Prisma {
     role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -60380,6 +64559,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
     province?: ProvinceUpdateOneWithoutUsersNestedInput
+    subdisctrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
@@ -60404,6 +64584,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60445,6 +64626,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -60459,6 +64641,7 @@ export namespace Prisma {
     admin?: AdminUpdateOneRequiredWithoutAuthorityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
     cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityUncheckedUpdateWithoutSchoolsInput = {
@@ -60467,6 +64650,7 @@ export namespace Prisma {
     provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
     cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
   export type AdminAuthorityUncheckedUpdateManyWithoutSchoolsInput = {
@@ -61182,6 +65366,7 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
     province?: ProvinceUpdateOneRequiredWithoutAdminAuthorityNestedInput
     cities?: CityUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -61190,6 +65375,7 @@ export namespace Prisma {
     provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
     cities?: CityUncheckedUpdateManyWithoutAdminAuthorityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutAdminAuthorityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutAdminAuthorityNestedInput
   }
 
@@ -61537,6 +65723,7 @@ export namespace Prisma {
     admin?: AdminUpdateManyWithoutCityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
   }
@@ -61552,6 +65739,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
   }
@@ -61567,6 +65755,50 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SubdistrictUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutAdminAuthorityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SchoolUpdateWithoutAdminAuthorityInput = {
     id?: StringFieldUpdateOperationsInput | string
     identity?: StringFieldUpdateOperationsInput | string
@@ -61577,8 +65809,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutSchoolNestedInput
-    city?: CityUpdateOneRequiredWithoutSchoolsNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutSchoolsNestedInput
+    city?: CityUpdateOneWithoutSchoolsNestedInput
+    province?: ProvinceUpdateOneWithoutSchoolsNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutSchoolsNestedInput
     users?: UserUpdateManyWithoutSchoolNestedInput
   }
 
@@ -61589,8 +65822,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutSchoolNestedInput
@@ -61604,8 +65838,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
-    cityId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -61627,12 +65862,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     province?: ProvinceUpdateOneRequiredWithoutBannerLocationNestedInput
     cities?: CityUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateWithoutBannerInput = {
     id?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
     cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
   }
 
   export type BannerLocationUncheckedUpdateManyWithoutBannerInput = {
@@ -61675,6 +65912,7 @@ export namespace Prisma {
     admin?: AdminUpdateManyWithoutCityNestedInput
     province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
     schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
   }
@@ -61690,6 +65928,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
   }
@@ -61701,6 +65940,50 @@ export namespace Prisma {
     latitude?: FloatFieldUpdateOperationsInput | number
     geoId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubdistrictUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdisctrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutBannerLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

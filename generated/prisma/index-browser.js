@@ -138,6 +138,18 @@ exports.Prisma.CityScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SubdistrictScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  longitude: 'longitude',
+  latitude: 'latitude',
+  geoId: 'geoId',
+  provinceId: 'provinceId',
+  cityId: 'cityId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SchoolScalarFieldEnum = {
   id: 'id',
   identity: 'identity',
@@ -147,6 +159,7 @@ exports.Prisma.SchoolScalarFieldEnum = {
   latitude: 'latitude',
   cityId: 'cityId',
   provinceId: 'provinceId',
+  subdistrictId: 'subdistrictId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -172,6 +185,7 @@ exports.Prisma.UserScalarFieldEnum = {
   schoolId: 'schoolId',
   cityId: 'cityId',
   provinceId: 'provinceId',
+  subdisctrictId: 'subdisctrictId',
   adminId: 'adminId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -316,6 +330,7 @@ exports.Prisma.AdminScalarFieldEnum = {
   role: 'role',
   provinceId: 'provinceId',
   cityId: 'cityId',
+  subdistrictId: 'subdistrictId',
   schoolId: 'schoolId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -589,6 +604,7 @@ exports.Transaction = exports.$Enums.Transaction = {
 exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',
+  Subdistrict: 'Subdistrict',
   School: 'School',
   User: 'User',
   Zone: 'Zone',
