@@ -117,7 +117,7 @@ model User {
   schoolId            String?
   cityId              String?
   provinceId          String?
-  subdisctrictId      String?
+  subdistrictId       String?
   adminId             String?              @unique
   createdAt           DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime             @updatedAt @db.Timestamptz(3)
@@ -139,7 +139,7 @@ model User {
   city                City?                @relation(fields: [cityId], references: [id])
   province            Province?            @relation(fields: [provinceId], references: [id])
   school              School?              @relation(fields: [schoolId], references: [id])
-  subdisctrict        Subdistrict?         @relation(fields: [subdisctrictId], references: [id])
+  subdisctrict        Subdistrict?         @relation(fields: [subdistrictId], references: [id])
   userLogin           UserLogin[]
   zones               Zone[]
 
@@ -147,7 +147,7 @@ model User {
   @@index([cityId])
   @@index([schoolId])
   @@index([authId])
-  @@index([subdisctrictId])
+  @@index([subdistrictId])
 }
 
 model Zone {

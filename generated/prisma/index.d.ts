@@ -9758,7 +9758,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
-    subdisctrictId: string | null
+    subdistrictId: string | null
     adminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9787,7 +9787,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
-    subdisctrictId: string | null
+    subdistrictId: string | null
     adminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9817,7 +9817,7 @@ export namespace Prisma {
     schoolId: number
     cityId: number
     provinceId: number
-    subdisctrictId: number
+    subdistrictId: number
     adminId: number
     createdAt: number
     updatedAt: number
@@ -9860,7 +9860,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
-    subdisctrictId?: true
+    subdistrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -9889,7 +9889,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
-    subdisctrictId?: true
+    subdistrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -9919,7 +9919,7 @@ export namespace Prisma {
     schoolId?: true
     cityId?: true
     provinceId?: true
-    subdisctrictId?: true
+    subdistrictId?: true
     adminId?: true
     createdAt?: true
     updatedAt?: true
@@ -10036,7 +10036,7 @@ export namespace Prisma {
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
-    subdisctrictId: string | null
+    subdistrictId: string | null
     adminId: string | null
     createdAt: Date
     updatedAt: Date
@@ -10085,7 +10085,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
-    subdisctrictId?: boolean
+    subdistrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -10134,7 +10134,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
-    subdisctrictId?: boolean
+    subdistrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -10169,7 +10169,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
-    subdisctrictId?: boolean
+    subdistrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -10204,7 +10204,7 @@ export namespace Prisma {
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
-    subdisctrictId?: boolean
+    subdistrictId?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -10213,7 +10213,7 @@ export namespace Prisma {
     lastIdZonePosition?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "subdisctrictId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "subdistrictId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     championships?: boolean | User$championshipsArgs<ExtArgs>
@@ -10293,7 +10293,7 @@ export namespace Prisma {
       schoolId: string | null
       cityId: string | null
       provinceId: string | null
-      subdisctrictId: string | null
+      subdistrictId: string | null
       adminId: string | null
       createdAt: Date
       updatedAt: Date
@@ -10761,7 +10761,7 @@ export namespace Prisma {
     readonly schoolId: FieldRef<"User", 'String'>
     readonly cityId: FieldRef<"User", 'String'>
     readonly provinceId: FieldRef<"User", 'String'>
-    readonly subdisctrictId: FieldRef<"User", 'String'>
+    readonly subdistrictId: FieldRef<"User", 'String'>
     readonly adminId: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -41942,7 +41942,7 @@ export namespace Prisma {
     schoolId: 'schoolId',
     cityId: 'cityId',
     provinceId: 'provinceId',
-    subdisctrictId: 'subdisctrictId',
+    subdistrictId: 'subdistrictId',
     adminId: 'adminId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -42988,7 +42988,7 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
-    subdisctrictId?: StringNullableFilter<"User"> | string | null
+    subdistrictId?: StringNullableFilter<"User"> | string | null
     adminId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -43036,7 +43036,7 @@ export namespace Prisma {
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
-    subdisctrictId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     adminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43089,7 +43089,7 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
-    subdisctrictId?: StringNullableFilter<"User"> | string | null
+    subdistrictId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
@@ -43135,7 +43135,7 @@ export namespace Prisma {
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
-    subdisctrictId?: SortOrderInput | SortOrder
+    subdistrictId?: SortOrderInput | SortOrder
     adminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43173,7 +43173,7 @@ export namespace Prisma {
     schoolId?: StringNullableWithAggregatesFilter<"User"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"User"> | string | null
     provinceId?: StringNullableWithAggregatesFilter<"User"> | string | null
-    subdisctrictId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    subdistrictId?: StringNullableWithAggregatesFilter<"User"> | string | null
     adminId?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -45819,7 +45819,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45905,7 +45905,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45948,7 +45948,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46003,7 +46003,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48989,7 +48989,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
-    subdisctrictId?: SortOrder
+    subdistrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -49024,7 +49024,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
-    subdisctrictId?: SortOrder
+    subdistrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -49053,7 +49053,7 @@ export namespace Prisma {
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
-    subdisctrictId?: SortOrder
+    subdistrictId?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -54324,7 +54324,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54589,7 +54589,7 @@ export namespace Prisma {
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
-    subdisctrictId?: StringNullableFilter<"User"> | string | null
+    subdistrictId?: StringNullableFilter<"User"> | string | null
     adminId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -54876,7 +54876,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55808,7 +55808,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57398,7 +57398,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57498,7 +57498,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57582,7 +57582,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57682,7 +57682,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57766,7 +57766,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57866,7 +57866,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57950,7 +57950,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58050,7 +58050,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58134,7 +58134,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58234,7 +58234,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58318,7 +58318,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58418,7 +58418,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58502,7 +58502,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58602,7 +58602,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58686,7 +58686,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58786,7 +58786,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58870,7 +58870,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58970,7 +58970,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59532,7 +59532,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -60051,7 +60051,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -61367,7 +61367,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61502,7 +61502,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61801,7 +61801,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61984,7 +61984,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -62765,7 +62765,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62904,7 +62904,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63075,7 +63075,7 @@ export namespace Prisma {
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63216,7 +63216,7 @@ export namespace Prisma {
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63308,7 +63308,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     cityId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63591,7 +63591,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63633,7 +63633,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63746,7 +63746,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     schoolId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -63976,7 +63976,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64018,7 +64018,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64442,7 +64442,7 @@ export namespace Prisma {
     inventory?: UserCreateinventoryInput | number[]
     cityId?: string | null
     provinceId?: string | null
-    subdisctrictId?: string | null
+    subdistrictId?: string | null
     adminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -64584,7 +64584,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64626,7 +64626,7 @@ export namespace Prisma {
     inventory?: UserUpdateinventoryInput | number[]
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
-    subdisctrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

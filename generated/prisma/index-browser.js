@@ -185,7 +185,7 @@ exports.Prisma.UserScalarFieldEnum = {
   schoolId: 'schoolId',
   cityId: 'cityId',
   provinceId: 'provinceId',
-  subdisctrictId: 'subdisctrictId',
+  subdistrictId: 'subdistrictId',
   adminId: 'adminId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
