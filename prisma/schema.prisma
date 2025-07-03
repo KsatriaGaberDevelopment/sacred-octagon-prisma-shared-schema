@@ -528,10 +528,10 @@ model AdminTransaction {
   id                  String      @id @default(cuid())
   createdAt           DateTime    @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime    @updatedAt @db.Timestamptz(3)
-  quantity            Int         @default(0)
+  quantity            Int         @default(0) // quota
   zones               String[]
   adminId             String
-  amount              Int
+  amount              Int //harga
   archived            Boolean     @default(false)
   description         String?
   name                String
@@ -558,7 +558,7 @@ model RedeemCode {
   transactionId String           @unique
   adminId       String
   code          String           @unique @default(cuid())
-  expiredAt     DateTime         @db.Timestamptz(3)
+  expiredAt     DateTime?        @db.Timestamptz(3)
   currentAmount Int
   maxAmount     Int
   data          String[]

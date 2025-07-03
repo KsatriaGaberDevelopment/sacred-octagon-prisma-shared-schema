@@ -37386,7 +37386,7 @@ export namespace Prisma {
     transactionId: string
     adminId: string
     code: string
-    expiredAt: Date
+    expiredAt: Date | null
     currentAmount: number
     maxAmount: number
     data: string[]
@@ -37506,7 +37506,7 @@ export namespace Prisma {
       transactionId: string
       adminId: string
       code: string
-      expiredAt: Date
+      expiredAt: Date | null
       currentAmount: number
       maxAmount: number
       data: string[]
@@ -45016,7 +45016,7 @@ export namespace Prisma {
     transactionId?: StringFilter<"RedeemCode"> | string
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
-    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
     currentAmount?: IntFilter<"RedeemCode"> | number
     maxAmount?: IntFilter<"RedeemCode"> | number
     data?: StringNullableListFilter<"RedeemCode">
@@ -45033,7 +45033,7 @@ export namespace Prisma {
     transactionId?: SortOrder
     adminId?: SortOrder
     code?: SortOrder
-    expiredAt?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
     currentAmount?: SortOrder
     maxAmount?: SortOrder
     data?: SortOrder
@@ -45053,7 +45053,7 @@ export namespace Prisma {
     OR?: RedeemCodeWhereInput[]
     NOT?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
     adminId?: StringFilter<"RedeemCode"> | string
-    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
     currentAmount?: IntFilter<"RedeemCode"> | number
     maxAmount?: IntFilter<"RedeemCode"> | number
     data?: StringNullableListFilter<"RedeemCode">
@@ -45070,7 +45070,7 @@ export namespace Prisma {
     transactionId?: SortOrder
     adminId?: SortOrder
     code?: SortOrder
-    expiredAt?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
     currentAmount?: SortOrder
     maxAmount?: SortOrder
     data?: SortOrder
@@ -45092,7 +45092,7 @@ export namespace Prisma {
     transactionId?: StringWithAggregatesFilter<"RedeemCode"> | string
     adminId?: StringWithAggregatesFilter<"RedeemCode"> | string
     code?: StringWithAggregatesFilter<"RedeemCode"> | string
-    expiredAt?: DateTimeWithAggregatesFilter<"RedeemCode"> | Date | string
+    expiredAt?: DateTimeNullableWithAggregatesFilter<"RedeemCode"> | Date | string | null
     currentAmount?: IntWithAggregatesFilter<"RedeemCode"> | number
     maxAmount?: IntWithAggregatesFilter<"RedeemCode"> | number
     data?: StringNullableListFilter<"RedeemCode">
@@ -48005,7 +48005,7 @@ export namespace Prisma {
   export type RedeemCodeCreateInput = {
     id?: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -48022,7 +48022,7 @@ export namespace Prisma {
     transactionId: string
     adminId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -48035,7 +48035,7 @@ export namespace Prisma {
   export type RedeemCodeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -48052,7 +48052,7 @@ export namespace Prisma {
     transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -48067,7 +48067,7 @@ export namespace Prisma {
     transactionId: string
     adminId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -48079,7 +48079,7 @@ export namespace Prisma {
   export type RedeemCodeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -48093,7 +48093,7 @@ export namespace Prisma {
     transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -59382,7 +59382,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutAdminInput = {
     id?: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -59397,7 +59397,7 @@ export namespace Prisma {
     id?: string
     transactionId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -59928,7 +59928,7 @@ export namespace Prisma {
     transactionId?: StringFilter<"RedeemCode"> | string
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
-    expiredAt?: DateTimeFilter<"RedeemCode"> | Date | string
+    expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
     currentAmount?: IntFilter<"RedeemCode"> | number
     maxAmount?: IntFilter<"RedeemCode"> | number
     data?: StringNullableListFilter<"RedeemCode">
@@ -62208,7 +62208,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutTransactionInput = {
     id?: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -62223,7 +62223,7 @@ export namespace Prisma {
     id?: string
     adminId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -62382,7 +62382,7 @@ export namespace Prisma {
   export type RedeemCodeUpdateWithoutTransactionInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -62397,7 +62397,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -62672,7 +62672,7 @@ export namespace Prisma {
   export type RedeemCodeCreateWithoutRedemeersInput = {
     id?: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -62688,7 +62688,7 @@ export namespace Prisma {
     transactionId: string
     adminId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -62805,7 +62805,7 @@ export namespace Prisma {
   export type RedeemCodeUpdateWithoutRedemeersInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -62821,7 +62821,7 @@ export namespace Prisma {
     transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -65332,7 +65332,7 @@ export namespace Prisma {
     id?: string
     transactionId: string
     code?: string
-    expiredAt: Date | string
+    expiredAt?: Date | string | null
     currentAmount: number
     maxAmount: number
     data?: RedeemCodeCreatedataInput | string[]
@@ -65612,7 +65612,7 @@ export namespace Prisma {
   export type RedeemCodeUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -65627,7 +65627,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     transactionId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
@@ -65641,7 +65641,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     transactionId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
     maxAmount?: IntFieldUpdateOperationsInput | number
     data?: RedeemCodeUpdatedataInput | string[]
