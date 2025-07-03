@@ -154,10 +154,10 @@ export type AdminTransaction = $Result.DefaultSelection<Prisma.$AdminTransaction
  */
 export type RedeemCode = $Result.DefaultSelection<Prisma.$RedeemCodePayload>
 /**
- * Model CodeRedemeer
+ * Model CodeRedeemer
  * 
  */
-export type CodeRedemeer = $Result.DefaultSelection<Prisma.$CodeRedemeerPayload>
+export type CodeRedeemer = $Result.DefaultSelection<Prisma.$CodeRedeemerPayload>
 /**
  * Model MultiplayerRoom
  * 
@@ -690,14 +690,14 @@ export class PrismaClient<
   get redeemCode(): Prisma.RedeemCodeDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.codeRedemeer`: Exposes CRUD operations for the **CodeRedemeer** model.
+   * `prisma.codeRedeemer`: Exposes CRUD operations for the **CodeRedeemer** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CodeRedemeers
-    * const codeRedemeers = await prisma.codeRedemeer.findMany()
+    * // Fetch zero or more CodeRedeemers
+    * const codeRedeemers = await prisma.codeRedeemer.findMany()
     * ```
     */
-  get codeRedemeer(): Prisma.CodeRedemeerDelegate<ExtArgs, ClientOptions>;
+  get codeRedeemer(): Prisma.CodeRedeemerDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.multiplayerRoom`: Exposes CRUD operations for the **MultiplayerRoom** model.
@@ -1186,7 +1186,7 @@ export namespace Prisma {
     Setting: 'Setting',
     AdminTransaction: 'AdminTransaction',
     RedeemCode: 'RedeemCode',
-    CodeRedemeer: 'CodeRedemeer',
+    CodeRedeemer: 'CodeRedeemer',
     MultiplayerRoom: 'MultiplayerRoom',
     MultiPlayerMember: 'MultiPlayerMember'
   };
@@ -1207,7 +1207,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedemeer" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "multiplayerRoom" | "multiPlayerMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3283,77 +3283,77 @@ export namespace Prisma {
           }
         }
       }
-      CodeRedemeer: {
-        payload: Prisma.$CodeRedemeerPayload<ExtArgs>
-        fields: Prisma.CodeRedemeerFieldRefs
+      CodeRedeemer: {
+        payload: Prisma.$CodeRedeemerPayload<ExtArgs>
+        fields: Prisma.CodeRedeemerFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CodeRedemeerFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload> | null
+            args: Prisma.CodeRedeemerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CodeRedemeerFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           findFirst: {
-            args: Prisma.CodeRedemeerFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload> | null
+            args: Prisma.CodeRedeemerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CodeRedemeerFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           findMany: {
-            args: Prisma.CodeRedemeerFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
+            args: Prisma.CodeRedeemerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>[]
           }
           create: {
-            args: Prisma.CodeRedemeerCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           createMany: {
-            args: Prisma.CodeRedemeerCreateManyArgs<ExtArgs>
+            args: Prisma.CodeRedeemerCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CodeRedemeerCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
+            args: Prisma.CodeRedeemerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>[]
           }
           delete: {
-            args: Prisma.CodeRedemeerDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           update: {
-            args: Prisma.CodeRedemeerUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           deleteMany: {
-            args: Prisma.CodeRedemeerDeleteManyArgs<ExtArgs>
+            args: Prisma.CodeRedeemerDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CodeRedemeerUpdateManyArgs<ExtArgs>
+            args: Prisma.CodeRedeemerUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CodeRedemeerUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>[]
+            args: Prisma.CodeRedeemerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>[]
           }
           upsert: {
-            args: Prisma.CodeRedemeerUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CodeRedemeerPayload>
+            args: Prisma.CodeRedeemerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeRedeemerPayload>
           }
           aggregate: {
-            args: Prisma.CodeRedemeerAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCodeRedemeer>
+            args: Prisma.CodeRedeemerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodeRedeemer>
           }
           groupBy: {
-            args: Prisma.CodeRedemeerGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CodeRedemeerGroupByOutputType>[]
+            args: Prisma.CodeRedeemerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodeRedeemerGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CodeRedemeerCountArgs<ExtArgs>
-            result: $Utils.Optional<CodeRedemeerCountAggregateOutputType> | number
+            args: Prisma.CodeRedeemerCountArgs<ExtArgs>
+            result: $Utils.Optional<CodeRedeemerCountAggregateOutputType> | number
           }
         }
       }
@@ -3617,7 +3617,7 @@ export namespace Prisma {
     setting?: SettingOmit
     adminTransaction?: AdminTransactionOmit
     redeemCode?: RedeemCodeOmit
-    codeRedemeer?: CodeRedemeerOmit
+    codeRedeemer?: CodeRedeemerOmit
     multiplayerRoom?: MultiplayerRoomOmit
     multiPlayerMember?: MultiPlayerMemberOmit
   }
@@ -4049,7 +4049,7 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountRedemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
   }
 
   /**
@@ -4415,11 +4415,11 @@ export namespace Prisma {
    */
 
   export type RedeemCodeCountOutputType = {
-    redemeers: number
+    redeemers: number
   }
 
   export type RedeemCodeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    redemeers?: boolean | RedeemCodeCountOutputTypeCountRedemeersArgs
+    redeemers?: boolean | RedeemCodeCountOutputTypeCountRedeemersArgs
   }
 
   // Custom InputTypes
@@ -4436,8 +4436,8 @@ export namespace Prisma {
   /**
    * RedeemCodeCountOutputType without action
    */
-  export type RedeemCodeCountOutputTypeCountRedemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CodeRedemeerWhereInput
+  export type RedeemCodeCountOutputTypeCountRedeemersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeRedeemerWhereInput
   }
 
 
@@ -10256,7 +10256,7 @@ export namespace Prisma {
       bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs> | null
       championships: Prisma.$ChampionshipPayload<ExtArgs>[]
       championshipRecords: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
-      redemeedCodes: Prisma.$CodeRedemeerPayload<ExtArgs>[]
+      redemeedCodes: Prisma.$CodeRedeemerPayload<ExtArgs>[]
       gempos: Prisma.$GempoPayload<ExtArgs>[]
       gempoRecords: Prisma.$GempoRecordPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
@@ -10697,7 +10697,7 @@ export namespace Prisma {
     bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma__BannerVisitorClient<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     championships<T extends User$championshipsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     championshipRecords<T extends User$championshipRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    redemeedCodes<T extends User$redemeedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redemeedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    redemeedCodes<T extends User$redemeedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redemeedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gempos<T extends User$gemposArgs<ExtArgs> = {}>(args?: Subset<T, User$gemposArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gempoRecords<T extends User$gempoRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$gempoRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11235,23 +11235,23 @@ export namespace Prisma {
    */
   export type User$redemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
-    where?: CodeRedemeerWhereInput
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
-    cursor?: CodeRedemeerWhereUniqueInput
+    include?: CodeRedeemerInclude<ExtArgs> | null
+    where?: CodeRedeemerWhereInput
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
+    cursor?: CodeRedeemerWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+    distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
   }
 
   /**
@@ -37383,7 +37383,7 @@ export namespace Prisma {
 
   export type RedeemCodeGroupByOutputType = {
     id: string
-    transactionId: string
+    transactionId: string | null
     adminId: string
     code: string
     expiredAt: Date | null
@@ -37426,9 +37426,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     suspend?: boolean
-    redemeers?: boolean | RedeemCode$redemeersArgs<ExtArgs>
+    redeemers?: boolean | RedeemCode$redeemersArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
     _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
@@ -37445,7 +37445,7 @@ export namespace Prisma {
     updatedAt?: boolean
     suspend?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
   export type RedeemCodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -37461,7 +37461,7 @@ export namespace Prisma {
     updatedAt?: boolean
     suspend?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
   export type RedeemCodeSelectScalar = {
@@ -37480,30 +37480,30 @@ export namespace Prisma {
 
   export type RedeemCodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionId" | "adminId" | "code" | "expiredAt" | "currentAmount" | "maxAmount" | "data" | "createdAt" | "updatedAt" | "suspend", ExtArgs["result"]["redeemCode"]>
   export type RedeemCodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    redemeers?: boolean | RedeemCode$redemeersArgs<ExtArgs>
+    redeemers?: boolean | RedeemCode$redeemersArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
     _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RedeemCodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
   }
   export type RedeemCodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
+    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
   }
 
   export type $RedeemCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RedeemCode"
     objects: {
-      redemeers: Prisma.$CodeRedemeerPayload<ExtArgs>[]
+      redeemers: Prisma.$CodeRedeemerPayload<ExtArgs>[]
       admin: Prisma.$AdminPayload<ExtArgs>
-      transaction: Prisma.$AdminTransactionPayload<ExtArgs>
+      transaction: Prisma.$AdminTransactionPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transactionId: string
+      transactionId: string | null
       adminId: string
       code: string
       expiredAt: Date | null
@@ -37907,9 +37907,9 @@ export namespace Prisma {
    */
   export interface Prisma__RedeemCodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    redemeers<T extends RedeemCode$redemeersArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$redemeersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    redeemers<T extends RedeemCode$redeemersArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$redeemersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    transaction<T extends AdminTransactionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransactionDefaultArgs<ExtArgs>>): Prisma__AdminTransactionClient<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transaction<T extends RedeemCode$transactionArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$transactionArgs<ExtArgs>>): Prisma__AdminTransactionClient<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -38346,27 +38346,46 @@ export namespace Prisma {
   }
 
   /**
-   * RedeemCode.redemeers
+   * RedeemCode.redeemers
    */
-  export type RedeemCode$redemeersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RedeemCode$redeemersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
-    where?: CodeRedemeerWhereInput
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
-    cursor?: CodeRedemeerWhereUniqueInput
+    include?: CodeRedeemerInclude<ExtArgs> | null
+    where?: CodeRedeemerWhereInput
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
+    cursor?: CodeRedeemerWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+    distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
+  }
+
+  /**
+   * RedeemCode.transaction
+   */
+  export type RedeemCode$transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminTransaction
+     */
+    select?: AdminTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminTransaction
+     */
+    omit?: AdminTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminTransactionInclude<ExtArgs> | null
+    where?: AdminTransactionWhereInput
   }
 
   /**
@@ -38389,16 +38408,16 @@ export namespace Prisma {
 
 
   /**
-   * Model CodeRedemeer
+   * Model CodeRedeemer
    */
 
-  export type AggregateCodeRedemeer = {
-    _count: CodeRedemeerCountAggregateOutputType | null
-    _min: CodeRedemeerMinAggregateOutputType | null
-    _max: CodeRedemeerMaxAggregateOutputType | null
+  export type AggregateCodeRedeemer = {
+    _count: CodeRedeemerCountAggregateOutputType | null
+    _min: CodeRedeemerMinAggregateOutputType | null
+    _max: CodeRedeemerMaxAggregateOutputType | null
   }
 
-  export type CodeRedemeerMinAggregateOutputType = {
+  export type CodeRedeemerMinAggregateOutputType = {
     id: string | null
     banned: boolean | null
     userId: string | null
@@ -38407,7 +38426,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type CodeRedemeerMaxAggregateOutputType = {
+  export type CodeRedeemerMaxAggregateOutputType = {
     id: string | null
     banned: boolean | null
     userId: string | null
@@ -38416,7 +38435,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type CodeRedemeerCountAggregateOutputType = {
+  export type CodeRedeemerCountAggregateOutputType = {
     id: number
     banned: number
     userId: number
@@ -38427,7 +38446,7 @@ export namespace Prisma {
   }
 
 
-  export type CodeRedemeerMinAggregateInputType = {
+  export type CodeRedeemerMinAggregateInputType = {
     id?: true
     banned?: true
     userId?: true
@@ -38436,7 +38455,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type CodeRedemeerMaxAggregateInputType = {
+  export type CodeRedeemerMaxAggregateInputType = {
     id?: true
     banned?: true
     userId?: true
@@ -38445,7 +38464,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type CodeRedemeerCountAggregateInputType = {
+  export type CodeRedeemerCountAggregateInputType = {
     id?: true
     banned?: true
     userId?: true
@@ -38455,105 +38474,105 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type CodeRedemeerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CodeRedemeer to aggregate.
+     * Filter which CodeRedeemer to aggregate.
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CodeRedemeers to fetch.
+     * Determine the order of CodeRedeemers to fetch.
      */
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CodeRedemeerWhereUniqueInput
+    cursor?: CodeRedeemerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CodeRedemeers from the position of the cursor.
+     * Take `±n` CodeRedeemers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CodeRedemeers.
+     * Skip the first `n` CodeRedeemers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned CodeRedemeers
+     * Count returned CodeRedeemers
     **/
-    _count?: true | CodeRedemeerCountAggregateInputType
+    _count?: true | CodeRedeemerCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CodeRedemeerMinAggregateInputType
+    _min?: CodeRedeemerMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CodeRedemeerMaxAggregateInputType
+    _max?: CodeRedeemerMaxAggregateInputType
   }
 
-  export type GetCodeRedemeerAggregateType<T extends CodeRedemeerAggregateArgs> = {
-        [P in keyof T & keyof AggregateCodeRedemeer]: P extends '_count' | 'count'
+  export type GetCodeRedeemerAggregateType<T extends CodeRedeemerAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodeRedeemer]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCodeRedemeer[P]>
-      : GetScalarType<T[P], AggregateCodeRedemeer[P]>
+        : GetScalarType<T[P], AggregateCodeRedeemer[P]>
+      : GetScalarType<T[P], AggregateCodeRedeemer[P]>
   }
 
 
 
 
-  export type CodeRedemeerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CodeRedemeerWhereInput
-    orderBy?: CodeRedemeerOrderByWithAggregationInput | CodeRedemeerOrderByWithAggregationInput[]
-    by: CodeRedemeerScalarFieldEnum[] | CodeRedemeerScalarFieldEnum
-    having?: CodeRedemeerScalarWhereWithAggregatesInput
+  export type CodeRedeemerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeRedeemerWhereInput
+    orderBy?: CodeRedeemerOrderByWithAggregationInput | CodeRedeemerOrderByWithAggregationInput[]
+    by: CodeRedeemerScalarFieldEnum[] | CodeRedeemerScalarFieldEnum
+    having?: CodeRedeemerScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CodeRedemeerCountAggregateInputType | true
-    _min?: CodeRedemeerMinAggregateInputType
-    _max?: CodeRedemeerMaxAggregateInputType
+    _count?: CodeRedeemerCountAggregateInputType | true
+    _min?: CodeRedeemerMinAggregateInputType
+    _max?: CodeRedeemerMaxAggregateInputType
   }
 
-  export type CodeRedemeerGroupByOutputType = {
+  export type CodeRedeemerGroupByOutputType = {
     id: string
     banned: boolean
     userId: string
     codeId: string
     createdAt: Date
     updatedAt: Date
-    _count: CodeRedemeerCountAggregateOutputType | null
-    _min: CodeRedemeerMinAggregateOutputType | null
-    _max: CodeRedemeerMaxAggregateOutputType | null
+    _count: CodeRedeemerCountAggregateOutputType | null
+    _min: CodeRedeemerMinAggregateOutputType | null
+    _max: CodeRedeemerMaxAggregateOutputType | null
   }
 
-  type GetCodeRedemeerGroupByPayload<T extends CodeRedemeerGroupByArgs> = Prisma.PrismaPromise<
+  type GetCodeRedeemerGroupByPayload<T extends CodeRedeemerGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CodeRedemeerGroupByOutputType, T['by']> &
+      PickEnumerable<CodeRedeemerGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CodeRedemeerGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CodeRedeemerGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CodeRedemeerGroupByOutputType[P]>
-            : GetScalarType<T[P], CodeRedemeerGroupByOutputType[P]>
+              : GetScalarType<T[P], CodeRedeemerGroupByOutputType[P]>
+            : GetScalarType<T[P], CodeRedeemerGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CodeRedemeerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedeemerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     banned?: boolean
     userId?: boolean
@@ -38562,9 +38581,9 @@ export namespace Prisma {
     updatedAt?: boolean
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["codeRedemeer"]>
+  }, ExtArgs["result"]["codeRedeemer"]>
 
-  export type CodeRedemeerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedeemerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     banned?: boolean
     userId?: boolean
@@ -38573,9 +38592,9 @@ export namespace Prisma {
     updatedAt?: boolean
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["codeRedemeer"]>
+  }, ExtArgs["result"]["codeRedeemer"]>
 
-  export type CodeRedemeerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CodeRedeemerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     banned?: boolean
     userId?: boolean
@@ -38584,9 +38603,9 @@ export namespace Prisma {
     updatedAt?: boolean
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["codeRedemeer"]>
+  }, ExtArgs["result"]["codeRedeemer"]>
 
-  export type CodeRedemeerSelectScalar = {
+  export type CodeRedeemerSelectScalar = {
     id?: boolean
     banned?: boolean
     userId?: boolean
@@ -38595,22 +38614,22 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CodeRedemeerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "banned" | "userId" | "codeId" | "createdAt" | "updatedAt", ExtArgs["result"]["codeRedemeer"]>
-  export type CodeRedemeerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "banned" | "userId" | "codeId" | "createdAt" | "updatedAt", ExtArgs["result"]["codeRedeemer"]>
+  export type CodeRedeemerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type CodeRedemeerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type CodeRedemeerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     code?: boolean | RedeemCodeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $CodeRedemeerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CodeRedemeer"
+  export type $CodeRedeemerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodeRedeemer"
     objects: {
       code: Prisma.$RedeemCodePayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
@@ -38622,136 +38641,136 @@ export namespace Prisma {
       codeId: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["codeRedemeer"]>
+    }, ExtArgs["result"]["codeRedeemer"]>
     composites: {}
   }
 
-  type CodeRedemeerGetPayload<S extends boolean | null | undefined | CodeRedemeerDefaultArgs> = $Result.GetResult<Prisma.$CodeRedemeerPayload, S>
+  type CodeRedeemerGetPayload<S extends boolean | null | undefined | CodeRedeemerDefaultArgs> = $Result.GetResult<Prisma.$CodeRedeemerPayload, S>
 
-  type CodeRedemeerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CodeRedemeerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CodeRedemeerCountAggregateInputType | true
+  type CodeRedeemerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodeRedeemerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodeRedeemerCountAggregateInputType | true
     }
 
-  export interface CodeRedemeerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeRedemeer'], meta: { name: 'CodeRedemeer' } }
+  export interface CodeRedeemerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeRedeemer'], meta: { name: 'CodeRedeemer' } }
     /**
-     * Find zero or one CodeRedemeer that matches the filter.
-     * @param {CodeRedemeerFindUniqueArgs} args - Arguments to find a CodeRedemeer
+     * Find zero or one CodeRedeemer that matches the filter.
+     * @param {CodeRedeemerFindUniqueArgs} args - Arguments to find a CodeRedeemer
      * @example
-     * // Get one CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.findUnique({
+     * // Get one CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CodeRedemeerFindUniqueArgs>(args: SelectSubset<T, CodeRedemeerFindUniqueArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CodeRedeemerFindUniqueArgs>(args: SelectSubset<T, CodeRedeemerFindUniqueArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one CodeRedemeer that matches the filter or throw an error with `error.code='P2025'`
+     * Find one CodeRedeemer that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CodeRedemeerFindUniqueOrThrowArgs} args - Arguments to find a CodeRedemeer
+     * @param {CodeRedeemerFindUniqueOrThrowArgs} args - Arguments to find a CodeRedeemer
      * @example
-     * // Get one CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.findUniqueOrThrow({
+     * // Get one CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CodeRedemeerFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeRedemeerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CodeRedeemerFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeRedeemerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CodeRedemeer that matches the filter.
+     * Find the first CodeRedeemer that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerFindFirstArgs} args - Arguments to find a CodeRedemeer
+     * @param {CodeRedeemerFindFirstArgs} args - Arguments to find a CodeRedeemer
      * @example
-     * // Get one CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.findFirst({
+     * // Get one CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CodeRedemeerFindFirstArgs>(args?: SelectSubset<T, CodeRedemeerFindFirstArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CodeRedeemerFindFirstArgs>(args?: SelectSubset<T, CodeRedeemerFindFirstArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CodeRedemeer that matches the filter or
+     * Find the first CodeRedeemer that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerFindFirstOrThrowArgs} args - Arguments to find a CodeRedemeer
+     * @param {CodeRedeemerFindFirstOrThrowArgs} args - Arguments to find a CodeRedeemer
      * @example
-     * // Get one CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.findFirstOrThrow({
+     * // Get one CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CodeRedemeerFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeRedemeerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CodeRedeemerFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeRedeemerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more CodeRedemeers that matches the filter.
+     * Find zero or more CodeRedeemers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CodeRedeemerFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CodeRedemeers
-     * const codeRedemeers = await prisma.codeRedemeer.findMany()
+     * // Get all CodeRedeemers
+     * const codeRedeemers = await prisma.codeRedeemer.findMany()
      * 
-     * // Get first 10 CodeRedemeers
-     * const codeRedemeers = await prisma.codeRedemeer.findMany({ take: 10 })
+     * // Get first 10 CodeRedeemers
+     * const codeRedeemers = await prisma.codeRedeemer.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.findMany({ select: { id: true } })
+     * const codeRedeemerWithIdOnly = await prisma.codeRedeemer.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CodeRedemeerFindManyArgs>(args?: SelectSubset<T, CodeRedemeerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CodeRedeemerFindManyArgs>(args?: SelectSubset<T, CodeRedeemerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a CodeRedemeer.
-     * @param {CodeRedemeerCreateArgs} args - Arguments to create a CodeRedemeer.
+     * Create a CodeRedeemer.
+     * @param {CodeRedeemerCreateArgs} args - Arguments to create a CodeRedeemer.
      * @example
-     * // Create one CodeRedemeer
-     * const CodeRedemeer = await prisma.codeRedemeer.create({
+     * // Create one CodeRedeemer
+     * const CodeRedeemer = await prisma.codeRedeemer.create({
      *   data: {
-     *     // ... data to create a CodeRedemeer
+     *     // ... data to create a CodeRedeemer
      *   }
      * })
      * 
      */
-    create<T extends CodeRedemeerCreateArgs>(args: SelectSubset<T, CodeRedemeerCreateArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CodeRedeemerCreateArgs>(args: SelectSubset<T, CodeRedeemerCreateArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many CodeRedemeers.
-     * @param {CodeRedemeerCreateManyArgs} args - Arguments to create many CodeRedemeers.
+     * Create many CodeRedeemers.
+     * @param {CodeRedeemerCreateManyArgs} args - Arguments to create many CodeRedeemers.
      * @example
-     * // Create many CodeRedemeers
-     * const codeRedemeer = await prisma.codeRedemeer.createMany({
+     * // Create many CodeRedeemers
+     * const codeRedeemer = await prisma.codeRedeemer.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CodeRedemeerCreateManyArgs>(args?: SelectSubset<T, CodeRedemeerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CodeRedeemerCreateManyArgs>(args?: SelectSubset<T, CodeRedeemerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many CodeRedemeers and returns the data saved in the database.
-     * @param {CodeRedemeerCreateManyAndReturnArgs} args - Arguments to create many CodeRedemeers.
+     * Create many CodeRedeemers and returns the data saved in the database.
+     * @param {CodeRedeemerCreateManyAndReturnArgs} args - Arguments to create many CodeRedeemers.
      * @example
-     * // Create many CodeRedemeers
-     * const codeRedemeer = await prisma.codeRedemeer.createManyAndReturn({
+     * // Create many CodeRedeemers
+     * const codeRedeemer = await prisma.codeRedeemer.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many CodeRedemeers and only return the `id`
-     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.createManyAndReturn({
+     * // Create many CodeRedeemers and only return the `id`
+     * const codeRedeemerWithIdOnly = await prisma.codeRedeemer.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -38761,28 +38780,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CodeRedemeerCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeRedemeerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CodeRedeemerCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeRedeemerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a CodeRedemeer.
-     * @param {CodeRedemeerDeleteArgs} args - Arguments to delete one CodeRedemeer.
+     * Delete a CodeRedeemer.
+     * @param {CodeRedeemerDeleteArgs} args - Arguments to delete one CodeRedeemer.
      * @example
-     * // Delete one CodeRedemeer
-     * const CodeRedemeer = await prisma.codeRedemeer.delete({
+     * // Delete one CodeRedeemer
+     * const CodeRedeemer = await prisma.codeRedeemer.delete({
      *   where: {
-     *     // ... filter to delete one CodeRedemeer
+     *     // ... filter to delete one CodeRedeemer
      *   }
      * })
      * 
      */
-    delete<T extends CodeRedemeerDeleteArgs>(args: SelectSubset<T, CodeRedemeerDeleteArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CodeRedeemerDeleteArgs>(args: SelectSubset<T, CodeRedeemerDeleteArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one CodeRedemeer.
-     * @param {CodeRedemeerUpdateArgs} args - Arguments to update one CodeRedemeer.
+     * Update one CodeRedeemer.
+     * @param {CodeRedeemerUpdateArgs} args - Arguments to update one CodeRedeemer.
      * @example
-     * // Update one CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.update({
+     * // Update one CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38792,30 +38811,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CodeRedemeerUpdateArgs>(args: SelectSubset<T, CodeRedemeerUpdateArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CodeRedeemerUpdateArgs>(args: SelectSubset<T, CodeRedeemerUpdateArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more CodeRedemeers.
-     * @param {CodeRedemeerDeleteManyArgs} args - Arguments to filter CodeRedemeers to delete.
+     * Delete zero or more CodeRedeemers.
+     * @param {CodeRedeemerDeleteManyArgs} args - Arguments to filter CodeRedeemers to delete.
      * @example
-     * // Delete a few CodeRedemeers
-     * const { count } = await prisma.codeRedemeer.deleteMany({
+     * // Delete a few CodeRedeemers
+     * const { count } = await prisma.codeRedeemer.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CodeRedemeerDeleteManyArgs>(args?: SelectSubset<T, CodeRedemeerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CodeRedeemerDeleteManyArgs>(args?: SelectSubset<T, CodeRedeemerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CodeRedemeers.
+     * Update zero or more CodeRedeemers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CodeRedeemerUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CodeRedemeers
-     * const codeRedemeer = await prisma.codeRedemeer.updateMany({
+     * // Update many CodeRedeemers
+     * const codeRedeemer = await prisma.codeRedeemer.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38825,14 +38844,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CodeRedemeerUpdateManyArgs>(args: SelectSubset<T, CodeRedemeerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CodeRedeemerUpdateManyArgs>(args: SelectSubset<T, CodeRedeemerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CodeRedemeers and returns the data updated in the database.
-     * @param {CodeRedemeerUpdateManyAndReturnArgs} args - Arguments to update many CodeRedemeers.
+     * Update zero or more CodeRedeemers and returns the data updated in the database.
+     * @param {CodeRedeemerUpdateManyAndReturnArgs} args - Arguments to update many CodeRedeemers.
      * @example
-     * // Update many CodeRedemeers
-     * const codeRedemeer = await prisma.codeRedemeer.updateManyAndReturn({
+     * // Update many CodeRedeemers
+     * const codeRedeemer = await prisma.codeRedeemer.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -38841,8 +38860,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more CodeRedemeers and only return the `id`
-     * const codeRedemeerWithIdOnly = await prisma.codeRedemeer.updateManyAndReturn({
+     * // Update zero or more CodeRedeemers and only return the `id`
+     * const codeRedeemerWithIdOnly = await prisma.codeRedeemer.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -38855,56 +38874,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CodeRedemeerUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeRedemeerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CodeRedeemerUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeRedeemerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one CodeRedemeer.
-     * @param {CodeRedemeerUpsertArgs} args - Arguments to update or create a CodeRedemeer.
+     * Create or update one CodeRedeemer.
+     * @param {CodeRedeemerUpsertArgs} args - Arguments to update or create a CodeRedeemer.
      * @example
-     * // Update or create a CodeRedemeer
-     * const codeRedemeer = await prisma.codeRedemeer.upsert({
+     * // Update or create a CodeRedeemer
+     * const codeRedeemer = await prisma.codeRedeemer.upsert({
      *   create: {
-     *     // ... data to create a CodeRedemeer
+     *     // ... data to create a CodeRedeemer
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CodeRedemeer we want to update
+     *     // ... the filter for the CodeRedeemer we want to update
      *   }
      * })
      */
-    upsert<T extends CodeRedemeerUpsertArgs>(args: SelectSubset<T, CodeRedemeerUpsertArgs<ExtArgs>>): Prisma__CodeRedemeerClient<$Result.GetResult<Prisma.$CodeRedemeerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CodeRedeemerUpsertArgs>(args: SelectSubset<T, CodeRedeemerUpsertArgs<ExtArgs>>): Prisma__CodeRedeemerClient<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of CodeRedemeers.
+     * Count the number of CodeRedeemers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerCountArgs} args - Arguments to filter CodeRedemeers to count.
+     * @param {CodeRedeemerCountArgs} args - Arguments to filter CodeRedeemers to count.
      * @example
-     * // Count the number of CodeRedemeers
-     * const count = await prisma.codeRedemeer.count({
+     * // Count the number of CodeRedeemers
+     * const count = await prisma.codeRedeemer.count({
      *   where: {
-     *     // ... the filter for the CodeRedemeers we want to count
+     *     // ... the filter for the CodeRedeemers we want to count
      *   }
      * })
     **/
-    count<T extends CodeRedemeerCountArgs>(
-      args?: Subset<T, CodeRedemeerCountArgs>,
+    count<T extends CodeRedeemerCountArgs>(
+      args?: Subset<T, CodeRedeemerCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CodeRedemeerCountAggregateOutputType>
+          : GetScalarType<T['select'], CodeRedeemerCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a CodeRedemeer.
+     * Allows you to perform aggregations operations on a CodeRedeemer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CodeRedeemerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -38924,13 +38943,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CodeRedemeerAggregateArgs>(args: Subset<T, CodeRedemeerAggregateArgs>): Prisma.PrismaPromise<GetCodeRedemeerAggregateType<T>>
+    aggregate<T extends CodeRedeemerAggregateArgs>(args: Subset<T, CodeRedeemerAggregateArgs>): Prisma.PrismaPromise<GetCodeRedeemerAggregateType<T>>
 
     /**
-     * Group by CodeRedemeer.
+     * Group by CodeRedeemer.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CodeRedemeerGroupByArgs} args - Group by arguments.
+     * @param {CodeRedeemerGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -38945,14 +38964,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CodeRedemeerGroupByArgs,
+      T extends CodeRedeemerGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CodeRedemeerGroupByArgs['orderBy'] }
-        : { orderBy?: CodeRedemeerGroupByArgs['orderBy'] },
+        ? { orderBy: CodeRedeemerGroupByArgs['orderBy'] }
+        : { orderBy?: CodeRedeemerGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -39001,20 +39020,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CodeRedemeerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeRedemeerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CodeRedeemerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeRedeemerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the CodeRedemeer model
+   * Fields of the CodeRedeemer model
    */
-  readonly fields: CodeRedemeerFieldRefs;
+  readonly fields: CodeRedeemerFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CodeRedemeer.
+   * The delegate class that acts as a "Promise-like" for CodeRedeemer.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CodeRedemeerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CodeRedeemerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     code<T extends RedeemCodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCodeDefaultArgs<ExtArgs>>): Prisma__RedeemCodeClient<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -39044,426 +39063,426 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the CodeRedemeer model
+   * Fields of the CodeRedeemer model
    */
-  interface CodeRedemeerFieldRefs {
-    readonly id: FieldRef<"CodeRedemeer", 'String'>
-    readonly banned: FieldRef<"CodeRedemeer", 'Boolean'>
-    readonly userId: FieldRef<"CodeRedemeer", 'String'>
-    readonly codeId: FieldRef<"CodeRedemeer", 'String'>
-    readonly createdAt: FieldRef<"CodeRedemeer", 'DateTime'>
-    readonly updatedAt: FieldRef<"CodeRedemeer", 'DateTime'>
+  interface CodeRedeemerFieldRefs {
+    readonly id: FieldRef<"CodeRedeemer", 'String'>
+    readonly banned: FieldRef<"CodeRedeemer", 'Boolean'>
+    readonly userId: FieldRef<"CodeRedeemer", 'String'>
+    readonly codeId: FieldRef<"CodeRedeemer", 'String'>
+    readonly createdAt: FieldRef<"CodeRedeemer", 'DateTime'>
+    readonly updatedAt: FieldRef<"CodeRedeemer", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * CodeRedemeer findUnique
+   * CodeRedeemer findUnique
    */
-  export type CodeRedemeerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter, which CodeRedemeer to fetch.
+     * Filter, which CodeRedeemer to fetch.
      */
-    where: CodeRedemeerWhereUniqueInput
+    where: CodeRedeemerWhereUniqueInput
   }
 
   /**
-   * CodeRedemeer findUniqueOrThrow
+   * CodeRedeemer findUniqueOrThrow
    */
-  export type CodeRedemeerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter, which CodeRedemeer to fetch.
+     * Filter, which CodeRedeemer to fetch.
      */
-    where: CodeRedemeerWhereUniqueInput
+    where: CodeRedeemerWhereUniqueInput
   }
 
   /**
-   * CodeRedemeer findFirst
+   * CodeRedeemer findFirst
    */
-  export type CodeRedemeerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter, which CodeRedemeer to fetch.
+     * Filter, which CodeRedeemer to fetch.
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CodeRedemeers to fetch.
+     * Determine the order of CodeRedeemers to fetch.
      */
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CodeRedemeers.
+     * Sets the position for searching for CodeRedeemers.
      */
-    cursor?: CodeRedemeerWhereUniqueInput
+    cursor?: CodeRedeemerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CodeRedemeers from the position of the cursor.
+     * Take `±n` CodeRedeemers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CodeRedemeers.
+     * Skip the first `n` CodeRedeemers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CodeRedemeers.
+     * Filter by unique combinations of CodeRedeemers.
      */
-    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+    distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
   }
 
   /**
-   * CodeRedemeer findFirstOrThrow
+   * CodeRedeemer findFirstOrThrow
    */
-  export type CodeRedemeerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter, which CodeRedemeer to fetch.
+     * Filter, which CodeRedeemer to fetch.
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CodeRedemeers to fetch.
+     * Determine the order of CodeRedeemers to fetch.
      */
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CodeRedemeers.
+     * Sets the position for searching for CodeRedeemers.
      */
-    cursor?: CodeRedemeerWhereUniqueInput
+    cursor?: CodeRedeemerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CodeRedemeers from the position of the cursor.
+     * Take `±n` CodeRedeemers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CodeRedemeers.
+     * Skip the first `n` CodeRedeemers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CodeRedemeers.
+     * Filter by unique combinations of CodeRedeemers.
      */
-    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+    distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
   }
 
   /**
-   * CodeRedemeer findMany
+   * CodeRedeemer findMany
    */
-  export type CodeRedemeerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter, which CodeRedemeers to fetch.
+     * Filter, which CodeRedeemers to fetch.
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CodeRedemeers to fetch.
+     * Determine the order of CodeRedeemers to fetch.
      */
-    orderBy?: CodeRedemeerOrderByWithRelationInput | CodeRedemeerOrderByWithRelationInput[]
+    orderBy?: CodeRedeemerOrderByWithRelationInput | CodeRedeemerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing CodeRedemeers.
+     * Sets the position for listing CodeRedeemers.
      */
-    cursor?: CodeRedemeerWhereUniqueInput
+    cursor?: CodeRedeemerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CodeRedemeers from the position of the cursor.
+     * Take `±n` CodeRedeemers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CodeRedemeers.
+     * Skip the first `n` CodeRedeemers.
      */
     skip?: number
-    distinct?: CodeRedemeerScalarFieldEnum | CodeRedemeerScalarFieldEnum[]
+    distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
   }
 
   /**
-   * CodeRedemeer create
+   * CodeRedeemer create
    */
-  export type CodeRedemeerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * The data needed to create a CodeRedemeer.
+     * The data needed to create a CodeRedeemer.
      */
-    data: XOR<CodeRedemeerCreateInput, CodeRedemeerUncheckedCreateInput>
+    data: XOR<CodeRedeemerCreateInput, CodeRedeemerUncheckedCreateInput>
   }
 
   /**
-   * CodeRedemeer createMany
+   * CodeRedeemer createMany
    */
-  export type CodeRedemeerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many CodeRedemeers.
+     * The data used to create many CodeRedeemers.
      */
-    data: CodeRedemeerCreateManyInput | CodeRedemeerCreateManyInput[]
+    data: CodeRedeemerCreateManyInput | CodeRedeemerCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CodeRedemeer createManyAndReturn
+   * CodeRedeemer createManyAndReturn
    */
-  export type CodeRedemeerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CodeRedeemerSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
-     * The data used to create many CodeRedemeers.
+     * The data used to create many CodeRedeemers.
      */
-    data: CodeRedemeerCreateManyInput | CodeRedemeerCreateManyInput[]
+    data: CodeRedeemerCreateManyInput | CodeRedeemerCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: CodeRedeemerIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CodeRedemeer update
+   * CodeRedeemer update
    */
-  export type CodeRedemeerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * The data needed to update a CodeRedemeer.
+     * The data needed to update a CodeRedeemer.
      */
-    data: XOR<CodeRedemeerUpdateInput, CodeRedemeerUncheckedUpdateInput>
+    data: XOR<CodeRedeemerUpdateInput, CodeRedeemerUncheckedUpdateInput>
     /**
-     * Choose, which CodeRedemeer to update.
+     * Choose, which CodeRedeemer to update.
      */
-    where: CodeRedemeerWhereUniqueInput
+    where: CodeRedeemerWhereUniqueInput
   }
 
   /**
-   * CodeRedemeer updateMany
+   * CodeRedeemer updateMany
    */
-  export type CodeRedemeerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CodeRedemeers.
+     * The data used to update CodeRedeemers.
      */
-    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyInput>
+    data: XOR<CodeRedeemerUpdateManyMutationInput, CodeRedeemerUncheckedUpdateManyInput>
     /**
-     * Filter which CodeRedemeers to update
+     * Filter which CodeRedeemers to update
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
-     * Limit how many CodeRedemeers to update.
+     * Limit how many CodeRedeemers to update.
      */
     limit?: number
   }
 
   /**
-   * CodeRedemeer updateManyAndReturn
+   * CodeRedeemer updateManyAndReturn
    */
-  export type CodeRedemeerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CodeRedeemerSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
-     * The data used to update CodeRedemeers.
+     * The data used to update CodeRedeemers.
      */
-    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyInput>
+    data: XOR<CodeRedeemerUpdateManyMutationInput, CodeRedeemerUncheckedUpdateManyInput>
     /**
-     * Filter which CodeRedemeers to update
+     * Filter which CodeRedeemers to update
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
-     * Limit how many CodeRedemeers to update.
+     * Limit how many CodeRedeemers to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: CodeRedeemerIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CodeRedemeer upsert
+   * CodeRedeemer upsert
    */
-  export type CodeRedemeerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * The filter to search for the CodeRedemeer to update in case it exists.
+     * The filter to search for the CodeRedeemer to update in case it exists.
      */
-    where: CodeRedemeerWhereUniqueInput
+    where: CodeRedeemerWhereUniqueInput
     /**
-     * In case the CodeRedemeer found by the `where` argument doesn't exist, create a new CodeRedemeer with this data.
+     * In case the CodeRedeemer found by the `where` argument doesn't exist, create a new CodeRedeemer with this data.
      */
-    create: XOR<CodeRedemeerCreateInput, CodeRedemeerUncheckedCreateInput>
+    create: XOR<CodeRedeemerCreateInput, CodeRedeemerUncheckedCreateInput>
     /**
-     * In case the CodeRedemeer was found with the provided `where` argument, update it with this data.
+     * In case the CodeRedeemer was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CodeRedemeerUpdateInput, CodeRedemeerUncheckedUpdateInput>
+    update: XOR<CodeRedeemerUpdateInput, CodeRedeemerUncheckedUpdateInput>
   }
 
   /**
-   * CodeRedemeer delete
+   * CodeRedeemer delete
    */
-  export type CodeRedemeerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
     /**
-     * Filter which CodeRedemeer to delete.
+     * Filter which CodeRedeemer to delete.
      */
-    where: CodeRedemeerWhereUniqueInput
+    where: CodeRedeemerWhereUniqueInput
   }
 
   /**
-   * CodeRedemeer deleteMany
+   * CodeRedeemer deleteMany
    */
-  export type CodeRedemeerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CodeRedemeers to delete
+     * Filter which CodeRedeemers to delete
      */
-    where?: CodeRedemeerWhereInput
+    where?: CodeRedeemerWhereInput
     /**
-     * Limit how many CodeRedemeers to delete.
+     * Limit how many CodeRedeemers to delete.
      */
     limit?: number
   }
 
   /**
-   * CodeRedemeer without action
+   * CodeRedeemer without action
    */
-  export type CodeRedemeerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CodeRedeemerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CodeRedemeer
+     * Select specific fields to fetch from the CodeRedeemer
      */
-    select?: CodeRedemeerSelect<ExtArgs> | null
+    select?: CodeRedeemerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CodeRedemeer
+     * Omit specific fields from the CodeRedeemer
      */
-    omit?: CodeRedemeerOmit<ExtArgs> | null
+    omit?: CodeRedeemerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CodeRedemeerInclude<ExtArgs> | null
+    include?: CodeRedeemerInclude<ExtArgs> | null
   }
 
 
@@ -42314,7 +42333,7 @@ export namespace Prisma {
   export type RedeemCodeScalarFieldEnum = (typeof RedeemCodeScalarFieldEnum)[keyof typeof RedeemCodeScalarFieldEnum]
 
 
-  export const CodeRedemeerScalarFieldEnum: {
+  export const CodeRedeemerScalarFieldEnum: {
     id: 'id',
     banned: 'banned',
     userId: 'userId',
@@ -42323,7 +42342,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type CodeRedemeerScalarFieldEnum = (typeof CodeRedemeerScalarFieldEnum)[keyof typeof CodeRedemeerScalarFieldEnum]
+  export type CodeRedeemerScalarFieldEnum = (typeof CodeRedeemerScalarFieldEnum)[keyof typeof CodeRedeemerScalarFieldEnum]
 
 
   export const MultiplayerRoomScalarFieldEnum: {
@@ -42998,7 +43017,7 @@ export namespace Prisma {
     bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
-    redemeedCodes?: CodeRedemeerListRelationFilter
+    redemeedCodes?: CodeRedeemerListRelationFilter
     gempos?: GempoListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -43046,7 +43065,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorOrderByWithRelationInput
     championships?: ChampionshipOrderByRelationAggregateInput
     championshipRecords?: ChampionshipRecordOrderByRelationAggregateInput
-    redemeedCodes?: CodeRedemeerOrderByRelationAggregateInput
+    redemeedCodes?: CodeRedeemerOrderByRelationAggregateInput
     gempos?: GempoOrderByRelationAggregateInput
     gempoRecords?: GempoRecordOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
@@ -43097,7 +43116,7 @@ export namespace Prisma {
     bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
-    redemeedCodes?: CodeRedemeerListRelationFilter
+    redemeedCodes?: CodeRedeemerListRelationFilter
     gempos?: GempoListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -45013,7 +45032,7 @@ export namespace Prisma {
     OR?: RedeemCodeWhereInput[]
     NOT?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
     id?: StringFilter<"RedeemCode"> | string
-    transactionId?: StringFilter<"RedeemCode"> | string
+    transactionId?: StringNullableFilter<"RedeemCode"> | string | null
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
@@ -45023,14 +45042,14 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RedeemCode"> | Date | string
     updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
     suspend?: BoolFilter<"RedeemCode"> | boolean
-    redemeers?: CodeRedemeerListRelationFilter
+    redeemers?: CodeRedeemerListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
+    transaction?: XOR<AdminTransactionNullableScalarRelationFilter, AdminTransactionWhereInput> | null
   }
 
   export type RedeemCodeOrderByWithRelationInput = {
     id?: SortOrder
-    transactionId?: SortOrder
+    transactionId?: SortOrderInput | SortOrder
     adminId?: SortOrder
     code?: SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -45040,7 +45059,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     suspend?: SortOrder
-    redemeers?: CodeRedemeerOrderByRelationAggregateInput
+    redeemers?: CodeRedeemerOrderByRelationAggregateInput
     admin?: AdminOrderByWithRelationInput
     transaction?: AdminTransactionOrderByWithRelationInput
   }
@@ -45060,14 +45079,14 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RedeemCode"> | Date | string
     updatedAt?: DateTimeFilter<"RedeemCode"> | Date | string
     suspend?: BoolFilter<"RedeemCode"> | boolean
-    redemeers?: CodeRedemeerListRelationFilter
+    redeemers?: CodeRedeemerListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
+    transaction?: XOR<AdminTransactionNullableScalarRelationFilter, AdminTransactionWhereInput> | null
   }, "id" | "transactionId" | "code">
 
   export type RedeemCodeOrderByWithAggregationInput = {
     id?: SortOrder
-    transactionId?: SortOrder
+    transactionId?: SortOrderInput | SortOrder
     adminId?: SortOrder
     code?: SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -45089,7 +45108,7 @@ export namespace Prisma {
     OR?: RedeemCodeScalarWhereWithAggregatesInput[]
     NOT?: RedeemCodeScalarWhereWithAggregatesInput | RedeemCodeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"RedeemCode"> | string
-    transactionId?: StringWithAggregatesFilter<"RedeemCode"> | string
+    transactionId?: StringNullableWithAggregatesFilter<"RedeemCode"> | string | null
     adminId?: StringWithAggregatesFilter<"RedeemCode"> | string
     code?: StringWithAggregatesFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableWithAggregatesFilter<"RedeemCode"> | Date | string | null
@@ -45101,21 +45120,21 @@ export namespace Prisma {
     suspend?: BoolWithAggregatesFilter<"RedeemCode"> | boolean
   }
 
-  export type CodeRedemeerWhereInput = {
-    AND?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
-    OR?: CodeRedemeerWhereInput[]
-    NOT?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
-    id?: StringFilter<"CodeRedemeer"> | string
-    banned?: BoolFilter<"CodeRedemeer"> | boolean
-    userId?: StringFilter<"CodeRedemeer"> | string
-    codeId?: StringFilter<"CodeRedemeer"> | string
-    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
-    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+  export type CodeRedeemerWhereInput = {
+    AND?: CodeRedeemerWhereInput | CodeRedeemerWhereInput[]
+    OR?: CodeRedeemerWhereInput[]
+    NOT?: CodeRedeemerWhereInput | CodeRedeemerWhereInput[]
+    id?: StringFilter<"CodeRedeemer"> | string
+    banned?: BoolFilter<"CodeRedeemer"> | boolean
+    userId?: StringFilter<"CodeRedeemer"> | string
+    codeId?: StringFilter<"CodeRedeemer"> | string
+    createdAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
     code?: XOR<RedeemCodeScalarRelationFilter, RedeemCodeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type CodeRedemeerOrderByWithRelationInput = {
+  export type CodeRedeemerOrderByWithRelationInput = {
     id?: SortOrder
     banned?: SortOrder
     userId?: SortOrder
@@ -45126,44 +45145,44 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
   }
 
-  export type CodeRedemeerWhereUniqueInput = Prisma.AtLeast<{
+  export type CodeRedeemerWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    id_userId?: CodeRedemeerIdUserIdCompoundUniqueInput
-    codeId_userId?: CodeRedemeerCodeIdUserIdCompoundUniqueInput
-    AND?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
-    OR?: CodeRedemeerWhereInput[]
-    NOT?: CodeRedemeerWhereInput | CodeRedemeerWhereInput[]
-    banned?: BoolFilter<"CodeRedemeer"> | boolean
-    userId?: StringFilter<"CodeRedemeer"> | string
-    codeId?: StringFilter<"CodeRedemeer"> | string
-    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
-    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+    id_userId?: CodeRedeemerIdUserIdCompoundUniqueInput
+    codeId_userId?: CodeRedeemerCodeIdUserIdCompoundUniqueInput
+    AND?: CodeRedeemerWhereInput | CodeRedeemerWhereInput[]
+    OR?: CodeRedeemerWhereInput[]
+    NOT?: CodeRedeemerWhereInput | CodeRedeemerWhereInput[]
+    banned?: BoolFilter<"CodeRedeemer"> | boolean
+    userId?: StringFilter<"CodeRedeemer"> | string
+    codeId?: StringFilter<"CodeRedeemer"> | string
+    createdAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
     code?: XOR<RedeemCodeScalarRelationFilter, RedeemCodeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "id_userId" | "codeId_userId">
 
-  export type CodeRedemeerOrderByWithAggregationInput = {
+  export type CodeRedeemerOrderByWithAggregationInput = {
     id?: SortOrder
     banned?: SortOrder
     userId?: SortOrder
     codeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CodeRedemeerCountOrderByAggregateInput
-    _max?: CodeRedemeerMaxOrderByAggregateInput
-    _min?: CodeRedemeerMinOrderByAggregateInput
+    _count?: CodeRedeemerCountOrderByAggregateInput
+    _max?: CodeRedeemerMaxOrderByAggregateInput
+    _min?: CodeRedeemerMinOrderByAggregateInput
   }
 
-  export type CodeRedemeerScalarWhereWithAggregatesInput = {
-    AND?: CodeRedemeerScalarWhereWithAggregatesInput | CodeRedemeerScalarWhereWithAggregatesInput[]
-    OR?: CodeRedemeerScalarWhereWithAggregatesInput[]
-    NOT?: CodeRedemeerScalarWhereWithAggregatesInput | CodeRedemeerScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CodeRedemeer"> | string
-    banned?: BoolWithAggregatesFilter<"CodeRedemeer"> | boolean
-    userId?: StringWithAggregatesFilter<"CodeRedemeer"> | string
-    codeId?: StringWithAggregatesFilter<"CodeRedemeer"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"CodeRedemeer"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CodeRedemeer"> | Date | string
+  export type CodeRedeemerScalarWhereWithAggregatesInput = {
+    AND?: CodeRedeemerScalarWhereWithAggregatesInput | CodeRedeemerScalarWhereWithAggregatesInput[]
+    OR?: CodeRedeemerScalarWhereWithAggregatesInput[]
+    NOT?: CodeRedeemerScalarWhereWithAggregatesInput | CodeRedeemerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CodeRedeemer"> | string
+    banned?: BoolWithAggregatesFilter<"CodeRedeemer"> | boolean
+    userId?: StringWithAggregatesFilter<"CodeRedeemer"> | string
+    codeId?: StringWithAggregatesFilter<"CodeRedeemer"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CodeRedeemer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CodeRedeemer"> | Date | string
   }
 
   export type MultiplayerRoomWhereInput = {
@@ -45781,7 +45800,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -45829,7 +45848,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -45867,7 +45886,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -45915,7 +45934,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -48012,14 +48031,14 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
+    redeemers?: CodeRedeemerCreateNestedManyWithoutCodeInput
     admin: AdminCreateNestedOneWithoutRedeemCodesInput
-    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
   export type RedeemCodeUncheckedCreateInput = {
     id?: string
-    transactionId: string
+    transactionId?: string | null
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -48029,7 +48048,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
+    redeemers?: CodeRedeemerUncheckedCreateNestedManyWithoutCodeInput
   }
 
   export type RedeemCodeUpdateInput = {
@@ -48042,14 +48061,14 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
+    redeemers?: CodeRedeemerUpdateManyWithoutCodeNestedInput
     admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
-    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: StringFieldUpdateOperationsInput | string
+    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48059,12 +48078,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
+    redeemers?: CodeRedeemerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
   export type RedeemCodeCreateManyInput = {
     id?: string
-    transactionId: string
+    transactionId?: string | null
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -48090,7 +48109,7 @@ export namespace Prisma {
 
   export type RedeemCodeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: StringFieldUpdateOperationsInput | string
+    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48102,16 +48121,16 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type CodeRedemeerCreateInput = {
+  export type CodeRedeemerCreateInput = {
     id?: string
     banned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    code: RedeemCodeCreateNestedOneWithoutRedemeersInput
+    code: RedeemCodeCreateNestedOneWithoutRedeemersInput
     user: UserCreateNestedOneWithoutRedemeedCodesInput
   }
 
-  export type CodeRedemeerUncheckedCreateInput = {
+  export type CodeRedeemerUncheckedCreateInput = {
     id?: string
     banned?: boolean
     userId: string
@@ -48120,16 +48139,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CodeRedemeerUpdateInput = {
+  export type CodeRedeemerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    code?: RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput
+    code?: RedeemCodeUpdateOneRequiredWithoutRedeemersNestedInput
     user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
   }
 
-  export type CodeRedemeerUncheckedUpdateInput = {
+  export type CodeRedeemerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
@@ -48138,7 +48157,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CodeRedemeerCreateManyInput = {
+  export type CodeRedeemerCreateManyInput = {
     id?: string
     banned?: boolean
     userId: string
@@ -48147,14 +48166,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CodeRedemeerUpdateManyMutationInput = {
+  export type CodeRedeemerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CodeRedemeerUncheckedUpdateManyInput = {
+  export type CodeRedeemerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
@@ -48850,10 +48869,10 @@ export namespace Prisma {
     none?: ChampionshipRecordWhereInput
   }
 
-  export type CodeRedemeerListRelationFilter = {
-    every?: CodeRedemeerWhereInput
-    some?: CodeRedemeerWhereInput
-    none?: CodeRedemeerWhereInput
+  export type CodeRedeemerListRelationFilter = {
+    every?: CodeRedeemerWhereInput
+    some?: CodeRedeemerWhereInput
+    none?: CodeRedeemerWhereInput
   }
 
   export type GempoListRelationFilter = {
@@ -48928,7 +48947,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CodeRedemeerOrderByRelationAggregateInput = {
+  export type CodeRedeemerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50425,9 +50444,9 @@ export namespace Prisma {
     _max?: NestedEnumTransactionFilter<$PrismaModel>
   }
 
-  export type AdminTransactionScalarRelationFilter = {
-    is?: AdminTransactionWhereInput
-    isNot?: AdminTransactionWhereInput
+  export type AdminTransactionNullableScalarRelationFilter = {
+    is?: AdminTransactionWhereInput | null
+    isNot?: AdminTransactionWhereInput | null
   }
 
   export type RedeemCodeCountOrderByAggregateInput = {
@@ -50485,17 +50504,17 @@ export namespace Prisma {
     isNot?: RedeemCodeWhereInput
   }
 
-  export type CodeRedemeerIdUserIdCompoundUniqueInput = {
+  export type CodeRedeemerIdUserIdCompoundUniqueInput = {
     id: string
     userId: string
   }
 
-  export type CodeRedemeerCodeIdUserIdCompoundUniqueInput = {
+  export type CodeRedeemerCodeIdUserIdCompoundUniqueInput = {
     codeId: string
     userId: string
   }
 
-  export type CodeRedemeerCountOrderByAggregateInput = {
+  export type CodeRedeemerCountOrderByAggregateInput = {
     id?: SortOrder
     banned?: SortOrder
     userId?: SortOrder
@@ -50504,7 +50523,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type CodeRedemeerMaxOrderByAggregateInput = {
+  export type CodeRedeemerMaxOrderByAggregateInput = {
     id?: SortOrder
     banned?: SortOrder
     userId?: SortOrder
@@ -50513,7 +50532,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type CodeRedemeerMinOrderByAggregateInput = {
+  export type CodeRedeemerMinOrderByAggregateInput = {
     id?: SortOrder
     banned?: SortOrder
     userId?: SortOrder
@@ -51634,11 +51653,11 @@ export namespace Prisma {
     connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
   }
 
-  export type CodeRedemeerCreateNestedManyWithoutUserInput = {
-    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
-    createMany?: CodeRedemeerCreateManyUserInputEnvelope
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  export type CodeRedeemerCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput> | CodeRedeemerCreateWithoutUserInput[] | CodeRedeemerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutUserInput | CodeRedeemerCreateOrConnectWithoutUserInput[]
+    createMany?: CodeRedeemerCreateManyUserInputEnvelope
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
   }
 
   export type GempoCreateNestedManyWithoutUserInput = {
@@ -51754,11 +51773,11 @@ export namespace Prisma {
     connect?: ChampionshipRecordWhereUniqueInput | ChampionshipRecordWhereUniqueInput[]
   }
 
-  export type CodeRedemeerUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
-    createMany?: CodeRedemeerCreateManyUserInputEnvelope
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  export type CodeRedeemerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput> | CodeRedeemerCreateWithoutUserInput[] | CodeRedeemerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutUserInput | CodeRedeemerCreateOrConnectWithoutUserInput[]
+    createMany?: CodeRedeemerCreateManyUserInputEnvelope
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
   }
 
   export type GempoUncheckedCreateNestedManyWithoutUserInput = {
@@ -51891,18 +51910,18 @@ export namespace Prisma {
     deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
   }
 
-  export type CodeRedemeerUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
-    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutUserInput | CodeRedemeerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CodeRedemeerCreateManyUserInputEnvelope
-    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    update?: CodeRedemeerUpdateWithWhereUniqueWithoutUserInput | CodeRedemeerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutUserInput | CodeRedemeerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+  export type CodeRedeemerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput> | CodeRedeemerCreateWithoutUserInput[] | CodeRedeemerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutUserInput | CodeRedeemerCreateOrConnectWithoutUserInput[]
+    upsert?: CodeRedeemerUpsertWithWhereUniqueWithoutUserInput | CodeRedeemerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeRedeemerCreateManyUserInputEnvelope
+    set?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    disconnect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    delete?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    update?: CodeRedeemerUpdateWithWhereUniqueWithoutUserInput | CodeRedeemerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeRedeemerUpdateManyWithWhereWithoutUserInput | CodeRedeemerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
   }
 
   export type GempoUpdateManyWithoutUserNestedInput = {
@@ -52119,18 +52138,18 @@ export namespace Prisma {
     deleteMany?: ChampionshipRecordScalarWhereInput | ChampionshipRecordScalarWhereInput[]
   }
 
-  export type CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput> | CodeRedemeerCreateWithoutUserInput[] | CodeRedemeerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutUserInput | CodeRedemeerCreateOrConnectWithoutUserInput[]
-    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutUserInput | CodeRedemeerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CodeRedemeerCreateManyUserInputEnvelope
-    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    update?: CodeRedemeerUpdateWithWhereUniqueWithoutUserInput | CodeRedemeerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutUserInput | CodeRedemeerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+  export type CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput> | CodeRedeemerCreateWithoutUserInput[] | CodeRedeemerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutUserInput | CodeRedeemerCreateOrConnectWithoutUserInput[]
+    upsert?: CodeRedeemerUpsertWithWhereUniqueWithoutUserInput | CodeRedeemerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CodeRedeemerCreateManyUserInputEnvelope
+    set?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    disconnect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    delete?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    update?: CodeRedeemerUpdateWithWhereUniqueWithoutUserInput | CodeRedeemerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CodeRedeemerUpdateManyWithWhereWithoutUserInput | CodeRedeemerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
   }
 
   export type GempoUncheckedUpdateManyWithoutUserNestedInput = {
@@ -53517,11 +53536,11 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type CodeRedemeerCreateNestedManyWithoutCodeInput = {
-    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
-    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  export type CodeRedeemerCreateNestedManyWithoutCodeInput = {
+    create?: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput> | CodeRedeemerCreateWithoutCodeInput[] | CodeRedeemerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutCodeInput | CodeRedeemerCreateOrConnectWithoutCodeInput[]
+    createMany?: CodeRedeemerCreateManyCodeInputEnvelope
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
   }
 
   export type AdminCreateNestedOneWithoutRedeemCodesInput = {
@@ -53536,11 +53555,11 @@ export namespace Prisma {
     connect?: AdminTransactionWhereUniqueInput
   }
 
-  export type CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput = {
-    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
-    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
+  export type CodeRedeemerUncheckedCreateNestedManyWithoutCodeInput = {
+    create?: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput> | CodeRedeemerCreateWithoutCodeInput[] | CodeRedeemerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutCodeInput | CodeRedeemerCreateOrConnectWithoutCodeInput[]
+    createMany?: CodeRedeemerCreateManyCodeInputEnvelope
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
   }
 
   export type RedeemCodeUpdatedataInput = {
@@ -53548,18 +53567,18 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type CodeRedemeerUpdateManyWithoutCodeNestedInput = {
-    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
-    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput | CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput[]
-    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
-    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    update?: CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput | CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput[]
-    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutCodeInput | CodeRedemeerUpdateManyWithWhereWithoutCodeInput[]
-    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+  export type CodeRedeemerUpdateManyWithoutCodeNestedInput = {
+    create?: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput> | CodeRedeemerCreateWithoutCodeInput[] | CodeRedeemerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutCodeInput | CodeRedeemerCreateOrConnectWithoutCodeInput[]
+    upsert?: CodeRedeemerUpsertWithWhereUniqueWithoutCodeInput | CodeRedeemerUpsertWithWhereUniqueWithoutCodeInput[]
+    createMany?: CodeRedeemerCreateManyCodeInputEnvelope
+    set?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    disconnect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    delete?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    update?: CodeRedeemerUpdateWithWhereUniqueWithoutCodeInput | CodeRedeemerUpdateWithWhereUniqueWithoutCodeInput[]
+    updateMany?: CodeRedeemerUpdateManyWithWhereWithoutCodeInput | CodeRedeemerUpdateManyWithWhereWithoutCodeInput[]
+    deleteMany?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
   }
 
   export type AdminUpdateOneRequiredWithoutRedeemCodesNestedInput = {
@@ -53570,31 +53589,33 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutRedeemCodesInput, AdminUpdateWithoutRedeemCodesInput>, AdminUncheckedUpdateWithoutRedeemCodesInput>
   }
 
-  export type AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput = {
+  export type AdminTransactionUpdateOneWithoutRedeemCodeNestedInput = {
     create?: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
     connectOrCreate?: AdminTransactionCreateOrConnectWithoutRedeemCodeInput
     upsert?: AdminTransactionUpsertWithoutRedeemCodeInput
+    disconnect?: AdminTransactionWhereInput | boolean
+    delete?: AdminTransactionWhereInput | boolean
     connect?: AdminTransactionWhereUniqueInput
     update?: XOR<XOR<AdminTransactionUpdateToOneWithWhereWithoutRedeemCodeInput, AdminTransactionUpdateWithoutRedeemCodeInput>, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
   }
 
-  export type CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput = {
-    create?: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput> | CodeRedemeerCreateWithoutCodeInput[] | CodeRedemeerUncheckedCreateWithoutCodeInput[]
-    connectOrCreate?: CodeRedemeerCreateOrConnectWithoutCodeInput | CodeRedemeerCreateOrConnectWithoutCodeInput[]
-    upsert?: CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput | CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput[]
-    createMany?: CodeRedemeerCreateManyCodeInputEnvelope
-    set?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    disconnect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    delete?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    connect?: CodeRedemeerWhereUniqueInput | CodeRedemeerWhereUniqueInput[]
-    update?: CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput | CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput[]
-    updateMany?: CodeRedemeerUpdateManyWithWhereWithoutCodeInput | CodeRedemeerUpdateManyWithWhereWithoutCodeInput[]
-    deleteMany?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
+  export type CodeRedeemerUncheckedUpdateManyWithoutCodeNestedInput = {
+    create?: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput> | CodeRedeemerCreateWithoutCodeInput[] | CodeRedeemerUncheckedCreateWithoutCodeInput[]
+    connectOrCreate?: CodeRedeemerCreateOrConnectWithoutCodeInput | CodeRedeemerCreateOrConnectWithoutCodeInput[]
+    upsert?: CodeRedeemerUpsertWithWhereUniqueWithoutCodeInput | CodeRedeemerUpsertWithWhereUniqueWithoutCodeInput[]
+    createMany?: CodeRedeemerCreateManyCodeInputEnvelope
+    set?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    disconnect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    delete?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    connect?: CodeRedeemerWhereUniqueInput | CodeRedeemerWhereUniqueInput[]
+    update?: CodeRedeemerUpdateWithWhereUniqueWithoutCodeInput | CodeRedeemerUpdateWithWhereUniqueWithoutCodeInput[]
+    updateMany?: CodeRedeemerUpdateManyWithWhereWithoutCodeInput | CodeRedeemerUpdateManyWithWhereWithoutCodeInput[]
+    deleteMany?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
   }
 
-  export type RedeemCodeCreateNestedOneWithoutRedemeersInput = {
-    create?: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
-    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedemeersInput
+  export type RedeemCodeCreateNestedOneWithoutRedeemersInput = {
+    create?: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedeemersInput
     connect?: RedeemCodeWhereUniqueInput
   }
 
@@ -53604,12 +53625,12 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput = {
-    create?: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
-    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedemeersInput
-    upsert?: RedeemCodeUpsertWithoutRedemeersInput
+  export type RedeemCodeUpdateOneRequiredWithoutRedeemersNestedInput = {
+    create?: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
+    connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedeemersInput
+    upsert?: RedeemCodeUpsertWithoutRedeemersInput
     connect?: RedeemCodeWhereUniqueInput
-    update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutRedemeersInput, RedeemCodeUpdateWithoutRedemeersInput>, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
+    update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutRedeemersInput, RedeemCodeUpdateWithoutRedeemersInput>, RedeemCodeUncheckedUpdateWithoutRedeemersInput>
   }
 
   export type UserUpdateOneRequiredWithoutRedemeedCodesNestedInput = {
@@ -54288,7 +54309,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -54334,7 +54355,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -54840,7 +54861,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -54886,7 +54907,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55231,7 +55252,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55277,7 +55298,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55772,7 +55793,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55818,7 +55839,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -56139,15 +56160,15 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CodeRedemeerCreateWithoutUserInput = {
+  export type CodeRedeemerCreateWithoutUserInput = {
     id?: string
     banned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    code: RedeemCodeCreateNestedOneWithoutRedemeersInput
+    code: RedeemCodeCreateNestedOneWithoutRedeemersInput
   }
 
-  export type CodeRedemeerUncheckedCreateWithoutUserInput = {
+  export type CodeRedeemerUncheckedCreateWithoutUserInput = {
     id?: string
     banned?: boolean
     codeId: string
@@ -56155,13 +56176,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CodeRedemeerCreateOrConnectWithoutUserInput = {
-    where: CodeRedemeerWhereUniqueInput
-    create: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput>
+  export type CodeRedeemerCreateOrConnectWithoutUserInput = {
+    where: CodeRedeemerWhereUniqueInput
+    create: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput>
   }
 
-  export type CodeRedemeerCreateManyUserInputEnvelope = {
-    data: CodeRedemeerCreateManyUserInput | CodeRedemeerCreateManyUserInput[]
+  export type CodeRedeemerCreateManyUserInputEnvelope = {
+    data: CodeRedeemerCreateManyUserInput | CodeRedeemerCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -56780,32 +56801,32 @@ export namespace Prisma {
     zoneInGameId?: StringFilter<"ChampionshipRecord"> | string
   }
 
-  export type CodeRedemeerUpsertWithWhereUniqueWithoutUserInput = {
-    where: CodeRedemeerWhereUniqueInput
-    update: XOR<CodeRedemeerUpdateWithoutUserInput, CodeRedemeerUncheckedUpdateWithoutUserInput>
-    create: XOR<CodeRedemeerCreateWithoutUserInput, CodeRedemeerUncheckedCreateWithoutUserInput>
+  export type CodeRedeemerUpsertWithWhereUniqueWithoutUserInput = {
+    where: CodeRedeemerWhereUniqueInput
+    update: XOR<CodeRedeemerUpdateWithoutUserInput, CodeRedeemerUncheckedUpdateWithoutUserInput>
+    create: XOR<CodeRedeemerCreateWithoutUserInput, CodeRedeemerUncheckedCreateWithoutUserInput>
   }
 
-  export type CodeRedemeerUpdateWithWhereUniqueWithoutUserInput = {
-    where: CodeRedemeerWhereUniqueInput
-    data: XOR<CodeRedemeerUpdateWithoutUserInput, CodeRedemeerUncheckedUpdateWithoutUserInput>
+  export type CodeRedeemerUpdateWithWhereUniqueWithoutUserInput = {
+    where: CodeRedeemerWhereUniqueInput
+    data: XOR<CodeRedeemerUpdateWithoutUserInput, CodeRedeemerUncheckedUpdateWithoutUserInput>
   }
 
-  export type CodeRedemeerUpdateManyWithWhereWithoutUserInput = {
-    where: CodeRedemeerScalarWhereInput
-    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyWithoutUserInput>
+  export type CodeRedeemerUpdateManyWithWhereWithoutUserInput = {
+    where: CodeRedeemerScalarWhereInput
+    data: XOR<CodeRedeemerUpdateManyMutationInput, CodeRedeemerUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type CodeRedemeerScalarWhereInput = {
-    AND?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
-    OR?: CodeRedemeerScalarWhereInput[]
-    NOT?: CodeRedemeerScalarWhereInput | CodeRedemeerScalarWhereInput[]
-    id?: StringFilter<"CodeRedemeer"> | string
-    banned?: BoolFilter<"CodeRedemeer"> | boolean
-    userId?: StringFilter<"CodeRedemeer"> | string
-    codeId?: StringFilter<"CodeRedemeer"> | string
-    createdAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
-    updatedAt?: DateTimeFilter<"CodeRedemeer"> | Date | string
+  export type CodeRedeemerScalarWhereInput = {
+    AND?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
+    OR?: CodeRedeemerScalarWhereInput[]
+    NOT?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
+    id?: StringFilter<"CodeRedeemer"> | string
+    banned?: BoolFilter<"CodeRedeemer"> | boolean
+    userId?: StringFilter<"CodeRedeemer"> | string
+    codeId?: StringFilter<"CodeRedeemer"> | string
+    createdAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
+    updatedAt?: DateTimeFilter<"CodeRedeemer"> | Date | string
   }
 
   export type GempoUpsertWithWhereUniqueWithoutUserInput = {
@@ -57361,7 +57382,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57408,7 +57429,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57461,7 +57482,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57508,7 +57529,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57545,7 +57566,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57592,7 +57613,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57645,7 +57666,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57692,7 +57713,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57729,7 +57750,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57776,7 +57797,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57829,7 +57850,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57876,7 +57897,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57913,7 +57934,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -57960,7 +57981,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58013,7 +58034,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58060,7 +58081,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58097,7 +58118,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -58144,7 +58165,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58197,7 +58218,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58244,7 +58265,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58280,7 +58301,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58327,7 +58348,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58380,7 +58401,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58427,7 +58448,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58465,7 +58486,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -58512,7 +58533,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58565,7 +58586,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58612,7 +58633,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58648,7 +58669,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58695,7 +58716,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58748,7 +58769,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58795,7 +58816,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58833,7 +58854,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58880,7 +58901,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58933,7 +58954,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58980,7 +59001,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59389,13 +59410,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
-    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    redeemers?: CodeRedeemerCreateNestedManyWithoutCodeInput
+    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
   export type RedeemCodeUncheckedCreateWithoutAdminInput = {
     id?: string
-    transactionId: string
+    transactionId?: string | null
     code?: string
     expiredAt?: Date | string | null
     currentAmount: number
@@ -59404,7 +59425,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
+    redeemers?: CodeRedeemerUncheckedCreateNestedManyWithoutCodeInput
   }
 
   export type RedeemCodeCreateOrConnectWithoutAdminInput = {
@@ -59495,7 +59516,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59541,7 +59562,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -59925,7 +59946,7 @@ export namespace Prisma {
     OR?: RedeemCodeScalarWhereInput[]
     NOT?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
     id?: StringFilter<"RedeemCode"> | string
-    transactionId?: StringFilter<"RedeemCode"> | string
+    transactionId?: StringNullableFilter<"RedeemCode"> | string | null
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
@@ -60014,7 +60035,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60060,7 +60081,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61329,7 +61350,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -61376,7 +61397,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -61464,7 +61485,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -61511,7 +61532,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61764,7 +61785,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -61811,7 +61832,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -61947,7 +61968,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -61994,7 +62015,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -62215,7 +62236,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerCreateNestedManyWithoutCodeInput
+    redeemers?: CodeRedeemerCreateNestedManyWithoutCodeInput
     admin: AdminCreateNestedOneWithoutRedeemCodesInput
   }
 
@@ -62230,7 +62251,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     suspend?: boolean
-    redemeers?: CodeRedemeerUncheckedCreateNestedManyWithoutCodeInput
+    redeemers?: CodeRedeemerUncheckedCreateNestedManyWithoutCodeInput
   }
 
   export type RedeemCodeCreateOrConnectWithoutTransactionInput = {
@@ -62389,7 +62410,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
+    redeemers?: CodeRedeemerUpdateManyWithoutCodeNestedInput
     admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
   }
 
@@ -62404,10 +62425,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
+    redeemers?: CodeRedeemerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
-  export type CodeRedemeerCreateWithoutCodeInput = {
+  export type CodeRedeemerCreateWithoutCodeInput = {
     id?: string
     banned?: boolean
     createdAt?: Date | string
@@ -62415,7 +62436,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutRedemeedCodesInput
   }
 
-  export type CodeRedemeerUncheckedCreateWithoutCodeInput = {
+  export type CodeRedeemerUncheckedCreateWithoutCodeInput = {
     id?: string
     banned?: boolean
     userId: string
@@ -62423,13 +62444,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CodeRedemeerCreateOrConnectWithoutCodeInput = {
-    where: CodeRedemeerWhereUniqueInput
-    create: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput>
+  export type CodeRedeemerCreateOrConnectWithoutCodeInput = {
+    where: CodeRedeemerWhereUniqueInput
+    create: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput>
   }
 
-  export type CodeRedemeerCreateManyCodeInputEnvelope = {
-    data: CodeRedemeerCreateManyCodeInput | CodeRedemeerCreateManyCodeInput[]
+  export type CodeRedeemerCreateManyCodeInputEnvelope = {
+    data: CodeRedeemerCreateManyCodeInput | CodeRedeemerCreateManyCodeInput[]
     skipDuplicates?: boolean
   }
 
@@ -62537,20 +62558,20 @@ export namespace Prisma {
     create: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
   }
 
-  export type CodeRedemeerUpsertWithWhereUniqueWithoutCodeInput = {
-    where: CodeRedemeerWhereUniqueInput
-    update: XOR<CodeRedemeerUpdateWithoutCodeInput, CodeRedemeerUncheckedUpdateWithoutCodeInput>
-    create: XOR<CodeRedemeerCreateWithoutCodeInput, CodeRedemeerUncheckedCreateWithoutCodeInput>
+  export type CodeRedeemerUpsertWithWhereUniqueWithoutCodeInput = {
+    where: CodeRedeemerWhereUniqueInput
+    update: XOR<CodeRedeemerUpdateWithoutCodeInput, CodeRedeemerUncheckedUpdateWithoutCodeInput>
+    create: XOR<CodeRedeemerCreateWithoutCodeInput, CodeRedeemerUncheckedCreateWithoutCodeInput>
   }
 
-  export type CodeRedemeerUpdateWithWhereUniqueWithoutCodeInput = {
-    where: CodeRedemeerWhereUniqueInput
-    data: XOR<CodeRedemeerUpdateWithoutCodeInput, CodeRedemeerUncheckedUpdateWithoutCodeInput>
+  export type CodeRedeemerUpdateWithWhereUniqueWithoutCodeInput = {
+    where: CodeRedeemerWhereUniqueInput
+    data: XOR<CodeRedeemerUpdateWithoutCodeInput, CodeRedeemerUncheckedUpdateWithoutCodeInput>
   }
 
-  export type CodeRedemeerUpdateManyWithWhereWithoutCodeInput = {
-    where: CodeRedemeerScalarWhereInput
-    data: XOR<CodeRedemeerUpdateManyMutationInput, CodeRedemeerUncheckedUpdateManyWithoutCodeInput>
+  export type CodeRedeemerUpdateManyWithWhereWithoutCodeInput = {
+    where: CodeRedeemerScalarWhereInput
+    data: XOR<CodeRedeemerUpdateManyMutationInput, CodeRedeemerUncheckedUpdateManyWithoutCodeInput>
   }
 
   export type AdminUpsertWithoutRedeemCodesInput = {
@@ -62669,7 +62690,7 @@ export namespace Prisma {
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type RedeemCodeCreateWithoutRedemeersInput = {
+  export type RedeemCodeCreateWithoutRedeemersInput = {
     id?: string
     code?: string
     expiredAt?: Date | string | null
@@ -62680,12 +62701,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     suspend?: boolean
     admin: AdminCreateNestedOneWithoutRedeemCodesInput
-    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
-  export type RedeemCodeUncheckedCreateWithoutRedemeersInput = {
+  export type RedeemCodeUncheckedCreateWithoutRedeemersInput = {
     id?: string
-    transactionId: string
+    transactionId?: string | null
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -62697,9 +62718,9 @@ export namespace Prisma {
     suspend?: boolean
   }
 
-  export type RedeemCodeCreateOrConnectWithoutRedemeersInput = {
+  export type RedeemCodeCreateOrConnectWithoutRedeemersInput = {
     where: RedeemCodeWhereUniqueInput
-    create: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+    create: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
   }
 
   export type UserCreateWithoutRedemeedCodesInput = {
@@ -62791,18 +62812,18 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
   }
 
-  export type RedeemCodeUpsertWithoutRedemeersInput = {
-    update: XOR<RedeemCodeUpdateWithoutRedemeersInput, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
-    create: XOR<RedeemCodeCreateWithoutRedemeersInput, RedeemCodeUncheckedCreateWithoutRedemeersInput>
+  export type RedeemCodeUpsertWithoutRedeemersInput = {
+    update: XOR<RedeemCodeUpdateWithoutRedeemersInput, RedeemCodeUncheckedUpdateWithoutRedeemersInput>
+    create: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
     where?: RedeemCodeWhereInput
   }
 
-  export type RedeemCodeUpdateToOneWithWhereWithoutRedemeersInput = {
+  export type RedeemCodeUpdateToOneWithWhereWithoutRedeemersInput = {
     where?: RedeemCodeWhereInput
-    data: XOR<RedeemCodeUpdateWithoutRedemeersInput, RedeemCodeUncheckedUpdateWithoutRedemeersInput>
+    data: XOR<RedeemCodeUpdateWithoutRedeemersInput, RedeemCodeUncheckedUpdateWithoutRedeemersInput>
   }
 
-  export type RedeemCodeUpdateWithoutRedemeersInput = {
+  export type RedeemCodeUpdateWithoutRedeemersInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62813,12 +62834,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
-    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
   }
 
-  export type RedeemCodeUncheckedUpdateWithoutRedemeersInput = {
+  export type RedeemCodeUncheckedUpdateWithoutRedeemersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: StringFieldUpdateOperationsInput | string
+    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -63038,7 +63059,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -63085,7 +63106,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedemeerUncheckedCreateNestedManyWithoutUserInput
+    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -63179,7 +63200,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63226,7 +63247,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63555,7 +63576,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63601,7 +63622,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63940,7 +63961,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63986,7 +64007,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64202,7 +64223,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64248,7 +64269,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64548,7 +64569,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64594,7 +64615,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedemeerUncheckedUpdateManyWithoutUserNestedInput
+    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64689,7 +64710,7 @@ export namespace Prisma {
     zoneInGameId: string
   }
 
-  export type CodeRedemeerCreateManyUserInput = {
+  export type CodeRedeemerCreateManyUserInput = {
     id?: string
     banned?: boolean
     codeId: string
@@ -64894,15 +64915,15 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type CodeRedemeerUpdateWithoutUserInput = {
+  export type CodeRedeemerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    code?: RedeemCodeUpdateOneRequiredWithoutRedemeersNestedInput
+    code?: RedeemCodeUpdateOneRequiredWithoutRedeemersNestedInput
   }
 
-  export type CodeRedemeerUncheckedUpdateWithoutUserInput = {
+  export type CodeRedeemerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     codeId?: StringFieldUpdateOperationsInput | string
@@ -64910,7 +64931,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CodeRedemeerUncheckedUpdateManyWithoutUserInput = {
+  export type CodeRedeemerUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     codeId?: StringFieldUpdateOperationsInput | string
@@ -65330,7 +65351,7 @@ export namespace Prisma {
 
   export type RedeemCodeCreateManyAdminInput = {
     id?: string
-    transactionId: string
+    transactionId?: string | null
     code?: string
     expiredAt?: Date | string | null
     currentAmount: number
@@ -65619,13 +65640,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUpdateManyWithoutCodeNestedInput
-    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
+    redeemers?: CodeRedeemerUpdateManyWithoutCodeNestedInput
+    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: StringFieldUpdateOperationsInput | string
+    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
@@ -65634,12 +65655,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
-    redemeers?: CodeRedemeerUncheckedUpdateManyWithoutCodeNestedInput
+    redeemers?: CodeRedeemerUncheckedUpdateManyWithoutCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: StringFieldUpdateOperationsInput | string
+    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
@@ -66062,7 +66083,7 @@ export namespace Prisma {
     answers?: JsonNullValueInput | InputJsonValue
   }
 
-  export type CodeRedemeerCreateManyCodeInput = {
+  export type CodeRedeemerCreateManyCodeInput = {
     id?: string
     banned?: boolean
     userId: string
@@ -66070,7 +66091,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CodeRedemeerUpdateWithoutCodeInput = {
+  export type CodeRedeemerUpdateWithoutCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66078,7 +66099,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
   }
 
-  export type CodeRedemeerUncheckedUpdateWithoutCodeInput = {
+  export type CodeRedeemerUncheckedUpdateWithoutCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
@@ -66086,7 +66107,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CodeRedemeerUncheckedUpdateManyWithoutCodeInput = {
+  export type CodeRedeemerUncheckedUpdateManyWithoutCodeInput = {
     id?: StringFieldUpdateOperationsInput | string
     banned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string

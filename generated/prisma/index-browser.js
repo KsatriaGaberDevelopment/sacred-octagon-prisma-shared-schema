@@ -485,7 +485,7 @@ exports.Prisma.RedeemCodeScalarFieldEnum = {
   suspend: 'suspend'
 };
 
-exports.Prisma.CodeRedemeerScalarFieldEnum = {
+exports.Prisma.CodeRedeemerScalarFieldEnum = {
   id: 'id',
   banned: 'banned',
   userId: 'userId',
@@ -630,7 +630,7 @@ exports.Prisma.ModelName = {
   Setting: 'Setting',
   AdminTransaction: 'AdminTransaction',
   RedeemCode: 'RedeemCode',
-  CodeRedemeer: 'CodeRedemeer',
+  CodeRedeemer: 'CodeRedeemer',
   MultiplayerRoom: 'MultiplayerRoom',
   MultiPlayerMember: 'MultiPlayerMember'
 };

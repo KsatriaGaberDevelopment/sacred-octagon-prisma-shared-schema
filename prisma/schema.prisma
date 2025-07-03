@@ -127,7 +127,7 @@ model User {
   bannerVisitor       BannerVisitor?
   championships       Championship[]
   championshipRecords ChampionshipRecord[]
-  redemeedCodes       CodeRedemeer[]
+  redemeedCodes       CodeRedeemer[]
   gempos              Gempo[]
   gempoRecords        GempoRecord[]
   innerLevels         InnerLevel[]
@@ -554,25 +554,25 @@ model AdminTransaction {
 }
 
 model RedeemCode {
-  id            String           @id @default(cuid())
-  transactionId String           @unique
+  id            String            @id @default(cuid())
+  transactionId String?           @unique
   adminId       String
-  code          String           @unique @default(cuid())
-  expiredAt     DateTime?        @db.Timestamptz(3)
+  code          String            @unique @default(cuid())
+  expiredAt     DateTime?         @db.Timestamptz(3)
   currentAmount Int
   maxAmount     Int
   data          String[]
-  createdAt     DateTime         @default(now()) @db.Timestamptz(3)
-  updatedAt     DateTime         @updatedAt @db.Timestamptz(3)
-  suspend       Boolean          @default(false)
-  redemeers     CodeRedemeer[]
-  admin         Admin            @relation(fields: [adminId], references: [id])
-  transaction   AdminTransaction @relation(fields: [transactionId], references: [id])
+  createdAt     DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime          @updatedAt @db.Timestamptz(3)
+  suspend       Boolean           @default(false)
+  redeemers     CodeRedeemer[]
+  admin         Admin             @relation(fields: [adminId], references: [id])
+  transaction   AdminTransaction? @relation(fields: [transactionId], references: [id])
 
   @@index([adminId])
 }
 
-model CodeRedemeer {
+model CodeRedeemer {
   id        String     @id @default(cuid())
   banned    Boolean    @default(false)
   userId    String
