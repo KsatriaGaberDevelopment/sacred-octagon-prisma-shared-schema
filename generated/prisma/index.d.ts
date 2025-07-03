@@ -37383,7 +37383,7 @@ export namespace Prisma {
 
   export type RedeemCodeGroupByOutputType = {
     id: string
-    transactionId: string | null
+    transactionId: string
     adminId: string
     code: string
     expiredAt: Date | null
@@ -37428,7 +37428,7 @@ export namespace Prisma {
     suspend?: boolean
     redeemers?: boolean | RedeemCode$redeemersArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
     _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
@@ -37445,7 +37445,7 @@ export namespace Prisma {
     updatedAt?: boolean
     suspend?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
   export type RedeemCodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -37461,7 +37461,7 @@ export namespace Prisma {
     updatedAt?: boolean
     suspend?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["redeemCode"]>
 
   export type RedeemCodeSelectScalar = {
@@ -37482,16 +37482,16 @@ export namespace Prisma {
   export type RedeemCodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     redeemers?: boolean | RedeemCode$redeemersArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
     _count?: boolean | RedeemCodeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RedeemCodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
   }
   export type RedeemCodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    transaction?: boolean | RedeemCode$transactionArgs<ExtArgs>
+    transaction?: boolean | AdminTransactionDefaultArgs<ExtArgs>
   }
 
   export type $RedeemCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -37499,11 +37499,11 @@ export namespace Prisma {
     objects: {
       redeemers: Prisma.$CodeRedeemerPayload<ExtArgs>[]
       admin: Prisma.$AdminPayload<ExtArgs>
-      transaction: Prisma.$AdminTransactionPayload<ExtArgs> | null
+      transaction: Prisma.$AdminTransactionPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      transactionId: string | null
+      transactionId: string
       adminId: string
       code: string
       expiredAt: Date | null
@@ -37909,7 +37909,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     redeemers<T extends RedeemCode$redeemersArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$redeemersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    transaction<T extends RedeemCode$transactionArgs<ExtArgs> = {}>(args?: Subset<T, RedeemCode$transactionArgs<ExtArgs>>): Prisma__AdminTransactionClient<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    transaction<T extends AdminTransactionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminTransactionDefaultArgs<ExtArgs>>): Prisma__AdminTransactionClient<$Result.GetResult<Prisma.$AdminTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -38367,25 +38367,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CodeRedeemerScalarFieldEnum | CodeRedeemerScalarFieldEnum[]
-  }
-
-  /**
-   * RedeemCode.transaction
-   */
-  export type RedeemCode$transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AdminTransaction
-     */
-    select?: AdminTransactionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AdminTransaction
-     */
-    omit?: AdminTransactionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminTransactionInclude<ExtArgs> | null
-    where?: AdminTransactionWhereInput
   }
 
   /**
@@ -45032,7 +45013,7 @@ export namespace Prisma {
     OR?: RedeemCodeWhereInput[]
     NOT?: RedeemCodeWhereInput | RedeemCodeWhereInput[]
     id?: StringFilter<"RedeemCode"> | string
-    transactionId?: StringNullableFilter<"RedeemCode"> | string | null
+    transactionId?: StringFilter<"RedeemCode"> | string
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
@@ -45044,12 +45025,12 @@ export namespace Prisma {
     suspend?: BoolFilter<"RedeemCode"> | boolean
     redeemers?: CodeRedeemerListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    transaction?: XOR<AdminTransactionNullableScalarRelationFilter, AdminTransactionWhereInput> | null
+    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
   }
 
   export type RedeemCodeOrderByWithRelationInput = {
     id?: SortOrder
-    transactionId?: SortOrderInput | SortOrder
+    transactionId?: SortOrder
     adminId?: SortOrder
     code?: SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -45081,12 +45062,12 @@ export namespace Prisma {
     suspend?: BoolFilter<"RedeemCode"> | boolean
     redeemers?: CodeRedeemerListRelationFilter
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    transaction?: XOR<AdminTransactionNullableScalarRelationFilter, AdminTransactionWhereInput> | null
+    transaction?: XOR<AdminTransactionScalarRelationFilter, AdminTransactionWhereInput>
   }, "id" | "transactionId" | "code">
 
   export type RedeemCodeOrderByWithAggregationInput = {
     id?: SortOrder
-    transactionId?: SortOrderInput | SortOrder
+    transactionId?: SortOrder
     adminId?: SortOrder
     code?: SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -45108,7 +45089,7 @@ export namespace Prisma {
     OR?: RedeemCodeScalarWhereWithAggregatesInput[]
     NOT?: RedeemCodeScalarWhereWithAggregatesInput | RedeemCodeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"RedeemCode"> | string
-    transactionId?: StringNullableWithAggregatesFilter<"RedeemCode"> | string | null
+    transactionId?: StringWithAggregatesFilter<"RedeemCode"> | string
     adminId?: StringWithAggregatesFilter<"RedeemCode"> | string
     code?: StringWithAggregatesFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableWithAggregatesFilter<"RedeemCode"> | Date | string | null
@@ -48033,12 +48014,12 @@ export namespace Prisma {
     suspend?: boolean
     redeemers?: CodeRedeemerCreateNestedManyWithoutCodeInput
     admin: AdminCreateNestedOneWithoutRedeemCodesInput
-    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
   export type RedeemCodeUncheckedCreateInput = {
     id?: string
-    transactionId?: string | null
+    transactionId: string
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -48063,12 +48044,12 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
     redeemers?: CodeRedeemerUpdateManyWithoutCodeNestedInput
     admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
-    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48083,7 +48064,7 @@ export namespace Prisma {
 
   export type RedeemCodeCreateManyInput = {
     id?: string
-    transactionId?: string | null
+    transactionId: string
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -48109,7 +48090,7 @@ export namespace Prisma {
 
   export type RedeemCodeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -50444,9 +50425,9 @@ export namespace Prisma {
     _max?: NestedEnumTransactionFilter<$PrismaModel>
   }
 
-  export type AdminTransactionNullableScalarRelationFilter = {
-    is?: AdminTransactionWhereInput | null
-    isNot?: AdminTransactionWhereInput | null
+  export type AdminTransactionScalarRelationFilter = {
+    is?: AdminTransactionWhereInput
+    isNot?: AdminTransactionWhereInput
   }
 
   export type RedeemCodeCountOrderByAggregateInput = {
@@ -53589,12 +53570,10 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutRedeemCodesInput, AdminUpdateWithoutRedeemCodesInput>, AdminUncheckedUpdateWithoutRedeemCodesInput>
   }
 
-  export type AdminTransactionUpdateOneWithoutRedeemCodeNestedInput = {
+  export type AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput = {
     create?: XOR<AdminTransactionCreateWithoutRedeemCodeInput, AdminTransactionUncheckedCreateWithoutRedeemCodeInput>
     connectOrCreate?: AdminTransactionCreateOrConnectWithoutRedeemCodeInput
     upsert?: AdminTransactionUpsertWithoutRedeemCodeInput
-    disconnect?: AdminTransactionWhereInput | boolean
-    delete?: AdminTransactionWhereInput | boolean
     connect?: AdminTransactionWhereUniqueInput
     update?: XOR<XOR<AdminTransactionUpdateToOneWithWhereWithoutRedeemCodeInput, AdminTransactionUpdateWithoutRedeemCodeInput>, AdminTransactionUncheckedUpdateWithoutRedeemCodeInput>
   }
@@ -59411,12 +59390,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     suspend?: boolean
     redeemers?: CodeRedeemerCreateNestedManyWithoutCodeInput
-    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
   export type RedeemCodeUncheckedCreateWithoutAdminInput = {
     id?: string
-    transactionId?: string | null
+    transactionId: string
     code?: string
     expiredAt?: Date | string | null
     currentAmount: number
@@ -59946,7 +59925,7 @@ export namespace Prisma {
     OR?: RedeemCodeScalarWhereInput[]
     NOT?: RedeemCodeScalarWhereInput | RedeemCodeScalarWhereInput[]
     id?: StringFilter<"RedeemCode"> | string
-    transactionId?: StringNullableFilter<"RedeemCode"> | string | null
+    transactionId?: StringFilter<"RedeemCode"> | string
     adminId?: StringFilter<"RedeemCode"> | string
     code?: StringFilter<"RedeemCode"> | string
     expiredAt?: DateTimeNullableFilter<"RedeemCode"> | Date | string | null
@@ -62701,12 +62680,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     suspend?: boolean
     admin: AdminCreateNestedOneWithoutRedeemCodesInput
-    transaction?: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
+    transaction: AdminTransactionCreateNestedOneWithoutRedeemCodeInput
   }
 
   export type RedeemCodeUncheckedCreateWithoutRedeemersInput = {
     id?: string
-    transactionId?: string | null
+    transactionId: string
     adminId: string
     code?: string
     expiredAt?: Date | string | null
@@ -62834,12 +62813,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     admin?: AdminUpdateOneRequiredWithoutRedeemCodesNestedInput
-    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateWithoutRedeemersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
     adminId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65351,7 +65330,7 @@ export namespace Prisma {
 
   export type RedeemCodeCreateManyAdminInput = {
     id?: string
-    transactionId?: string | null
+    transactionId: string
     code?: string
     expiredAt?: Date | string | null
     currentAmount: number
@@ -65641,12 +65620,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     suspend?: BoolFieldUpdateOperationsInput | boolean
     redeemers?: CodeRedeemerUpdateManyWithoutCodeNestedInput
-    transaction?: AdminTransactionUpdateOneWithoutRedeemCodeNestedInput
+    transaction?: AdminTransactionUpdateOneRequiredWithoutRedeemCodeNestedInput
   }
 
   export type RedeemCodeUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
@@ -65660,7 +65639,7 @@ export namespace Prisma {
 
   export type RedeemCodeUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    transactionId?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     currentAmount?: IntFieldUpdateOperationsInput | number
