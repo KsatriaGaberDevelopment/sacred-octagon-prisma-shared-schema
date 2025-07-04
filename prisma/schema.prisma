@@ -127,7 +127,7 @@ model User {
   bannerVisitor       BannerVisitor?
   championships       Championship[]
   championshipRecords ChampionshipRecord[]
-  redemeedCodes       CodeRedeemer[]
+  redeemedCodes       CodeRedeemer[]
   gempos              Gempo[]
   gempoRecords        GempoRecord[]
   innerLevels         InnerLevel[]

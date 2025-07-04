@@ -3993,7 +3993,7 @@ export namespace Prisma {
   export type UserCountOutputType = {
     championships: number
     championshipRecords: number
-    redemeedCodes: number
+    redeemedCodes: number
     gempos: number
     gempoRecords: number
     innerLevels: number
@@ -4008,7 +4008,7 @@ export namespace Prisma {
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     championships?: boolean | UserCountOutputTypeCountChampionshipsArgs
     championshipRecords?: boolean | UserCountOutputTypeCountChampionshipRecordsArgs
-    redemeedCodes?: boolean | UserCountOutputTypeCountRedemeedCodesArgs
+    redeemedCodes?: boolean | UserCountOutputTypeCountRedeemedCodesArgs
     gempos?: boolean | UserCountOutputTypeCountGemposArgs
     gempoRecords?: boolean | UserCountOutputTypeCountGempoRecordsArgs
     innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
@@ -4048,7 +4048,7 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountRedemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountRedeemedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CodeRedeemerWhereInput
   }
 
@@ -10095,7 +10095,7 @@ export namespace Prisma {
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     championships?: boolean | User$championshipsArgs<ExtArgs>
     championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
-    redemeedCodes?: boolean | User$redemeedCodesArgs<ExtArgs>
+    redeemedCodes?: boolean | User$redeemedCodesArgs<ExtArgs>
     gempos?: boolean | User$gemposArgs<ExtArgs>
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -10218,7 +10218,7 @@ export namespace Prisma {
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     championships?: boolean | User$championshipsArgs<ExtArgs>
     championshipRecords?: boolean | User$championshipRecordsArgs<ExtArgs>
-    redemeedCodes?: boolean | User$redemeedCodesArgs<ExtArgs>
+    redeemedCodes?: boolean | User$redeemedCodesArgs<ExtArgs>
     gempos?: boolean | User$gemposArgs<ExtArgs>
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
@@ -10256,7 +10256,7 @@ export namespace Prisma {
       bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs> | null
       championships: Prisma.$ChampionshipPayload<ExtArgs>[]
       championshipRecords: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
-      redemeedCodes: Prisma.$CodeRedeemerPayload<ExtArgs>[]
+      redeemedCodes: Prisma.$CodeRedeemerPayload<ExtArgs>[]
       gempos: Prisma.$GempoPayload<ExtArgs>[]
       gempoRecords: Prisma.$GempoRecordPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
@@ -10697,7 +10697,7 @@ export namespace Prisma {
     bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma__BannerVisitorClient<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     championships<T extends User$championshipsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     championshipRecords<T extends User$championshipRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    redemeedCodes<T extends User$redemeedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redemeedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    redeemedCodes<T extends User$redeemedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redeemedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gempos<T extends User$gemposArgs<ExtArgs> = {}>(args?: Subset<T, User$gemposArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gempoRecords<T extends User$gempoRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$gempoRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11231,9 +11231,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.redemeedCodes
+   * User.redeemedCodes
    */
-  export type User$redemeedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$redeemedCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the CodeRedeemer
      */
@@ -42998,7 +42998,7 @@ export namespace Prisma {
     bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
-    redemeedCodes?: CodeRedeemerListRelationFilter
+    redeemedCodes?: CodeRedeemerListRelationFilter
     gempos?: GempoListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -43046,7 +43046,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorOrderByWithRelationInput
     championships?: ChampionshipOrderByRelationAggregateInput
     championshipRecords?: ChampionshipRecordOrderByRelationAggregateInput
-    redemeedCodes?: CodeRedeemerOrderByRelationAggregateInput
+    redeemedCodes?: CodeRedeemerOrderByRelationAggregateInput
     gempos?: GempoOrderByRelationAggregateInput
     gempoRecords?: GempoRecordOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
@@ -43097,7 +43097,7 @@ export namespace Prisma {
     bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
-    redemeedCodes?: CodeRedeemerListRelationFilter
+    redeemedCodes?: CodeRedeemerListRelationFilter
     gempos?: GempoListRelationFilter
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
@@ -45781,7 +45781,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -45829,7 +45829,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -45867,7 +45867,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -45915,7 +45915,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -48108,7 +48108,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     code: RedeemCodeCreateNestedOneWithoutRedeemersInput
-    user: UserCreateNestedOneWithoutRedemeedCodesInput
+    user: UserCreateNestedOneWithoutRedeemedCodesInput
   }
 
   export type CodeRedeemerUncheckedCreateInput = {
@@ -48126,7 +48126,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code?: RedeemCodeUpdateOneRequiredWithoutRedeemersNestedInput
-    user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
+    user?: UserUpdateOneRequiredWithoutRedeemedCodesNestedInput
   }
 
   export type CodeRedeemerUncheckedUpdateInput = {
@@ -53598,9 +53598,9 @@ export namespace Prisma {
     connect?: RedeemCodeWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutRedemeedCodesInput = {
-    create?: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutRedemeedCodesInput
+  export type UserCreateNestedOneWithoutRedeemedCodesInput = {
+    create?: XOR<UserCreateWithoutRedeemedCodesInput, UserUncheckedCreateWithoutRedeemedCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRedeemedCodesInput
     connect?: UserWhereUniqueInput
   }
 
@@ -53612,12 +53612,12 @@ export namespace Prisma {
     update?: XOR<XOR<RedeemCodeUpdateToOneWithWhereWithoutRedeemersInput, RedeemCodeUpdateWithoutRedeemersInput>, RedeemCodeUncheckedUpdateWithoutRedeemersInput>
   }
 
-  export type UserUpdateOneRequiredWithoutRedemeedCodesNestedInput = {
-    create?: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutRedemeedCodesInput
-    upsert?: UserUpsertWithoutRedemeedCodesInput
+  export type UserUpdateOneRequiredWithoutRedeemedCodesNestedInput = {
+    create?: XOR<UserCreateWithoutRedeemedCodesInput, UserUncheckedCreateWithoutRedeemedCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRedeemedCodesInput
+    upsert?: UserUpsertWithoutRedeemedCodesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRedemeedCodesInput, UserUpdateWithoutRedemeedCodesInput>, UserUncheckedUpdateWithoutRedemeedCodesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRedeemedCodesInput, UserUpdateWithoutRedeemedCodesInput>, UserUncheckedUpdateWithoutRedeemedCodesInput>
   }
 
   export type MultiPlayerMemberCreateNestedManyWithoutRoomInput = {
@@ -54288,7 +54288,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -54334,7 +54334,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -54840,7 +54840,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -54886,7 +54886,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55231,7 +55231,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55277,7 +55277,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -55772,7 +55772,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -55818,7 +55818,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57361,7 +57361,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57408,7 +57408,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57461,7 +57461,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57508,7 +57508,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57545,7 +57545,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57592,7 +57592,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57645,7 +57645,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57692,7 +57692,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57729,7 +57729,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -57776,7 +57776,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -57829,7 +57829,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -57876,7 +57876,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -57913,7 +57913,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -57960,7 +57960,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58013,7 +58013,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58060,7 +58060,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58097,7 +58097,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -58144,7 +58144,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58197,7 +58197,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58244,7 +58244,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58280,7 +58280,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58327,7 +58327,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58380,7 +58380,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58427,7 +58427,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58465,7 +58465,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
@@ -58512,7 +58512,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
@@ -58565,7 +58565,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
@@ -58612,7 +58612,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58648,7 +58648,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58695,7 +58695,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58748,7 +58748,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58795,7 +58795,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -58833,7 +58833,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -58880,7 +58880,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -58933,7 +58933,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -58980,7 +58980,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -59495,7 +59495,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -59541,7 +59541,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -60014,7 +60014,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -60060,7 +60060,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61329,7 +61329,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -61376,7 +61376,7 @@ export namespace Prisma {
     lastIdZonePosition?: string
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -61464,7 +61464,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -61511,7 +61511,7 @@ export namespace Prisma {
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -61764,7 +61764,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -61811,7 +61811,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -61947,7 +61947,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -61994,7 +61994,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -62412,7 +62412,7 @@ export namespace Prisma {
     banned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutRedemeedCodesInput
+    user: UserCreateNestedOneWithoutRedeemedCodesInput
   }
 
   export type CodeRedeemerUncheckedCreateWithoutCodeInput = {
@@ -62702,7 +62702,7 @@ export namespace Prisma {
     create: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
   }
 
-  export type UserCreateWithoutRedemeedCodesInput = {
+  export type UserCreateWithoutRedeemedCodesInput = {
     id?: string
     authId: string
     email: string
@@ -62744,7 +62744,7 @@ export namespace Prisma {
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutRedemeedCodesInput = {
+  export type UserUncheckedCreateWithoutRedeemedCodesInput = {
     id?: string
     authId: string
     email: string
@@ -62786,9 +62786,9 @@ export namespace Prisma {
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutRedemeedCodesInput = {
+  export type UserCreateOrConnectWithoutRedeemedCodesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
+    create: XOR<UserCreateWithoutRedeemedCodesInput, UserUncheckedCreateWithoutRedeemedCodesInput>
   }
 
   export type RedeemCodeUpsertWithoutRedeemersInput = {
@@ -62830,18 +62830,18 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type UserUpsertWithoutRedemeedCodesInput = {
-    update: XOR<UserUpdateWithoutRedemeedCodesInput, UserUncheckedUpdateWithoutRedemeedCodesInput>
-    create: XOR<UserCreateWithoutRedemeedCodesInput, UserUncheckedCreateWithoutRedemeedCodesInput>
+  export type UserUpsertWithoutRedeemedCodesInput = {
+    update: XOR<UserUpdateWithoutRedeemedCodesInput, UserUncheckedUpdateWithoutRedeemedCodesInput>
+    create: XOR<UserCreateWithoutRedeemedCodesInput, UserUncheckedCreateWithoutRedeemedCodesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutRedemeedCodesInput = {
+  export type UserUpdateToOneWithWhereWithoutRedeemedCodesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutRedemeedCodesInput, UserUncheckedUpdateWithoutRedemeedCodesInput>
+    data: XOR<UserUpdateWithoutRedeemedCodesInput, UserUncheckedUpdateWithoutRedeemedCodesInput>
   }
 
-  export type UserUpdateWithoutRedemeedCodesInput = {
+  export type UserUpdateWithoutRedeemedCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -62883,7 +62883,7 @@ export namespace Prisma {
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutRedemeedCodesInput = {
+  export type UserUncheckedUpdateWithoutRedeemedCodesInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63038,7 +63038,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
@@ -63085,7 +63085,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
-    redemeedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
@@ -63179,7 +63179,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63226,7 +63226,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63555,7 +63555,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63601,7 +63601,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -63940,7 +63940,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -63986,7 +63986,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64202,7 +64202,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64248,7 +64248,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -64548,7 +64548,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
@@ -64594,7 +64594,7 @@ export namespace Prisma {
     bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
-    redemeedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
@@ -66075,7 +66075,7 @@ export namespace Prisma {
     banned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutRedemeedCodesNestedInput
+    user?: UserUpdateOneRequiredWithoutRedeemedCodesNestedInput
   }
 
   export type CodeRedeemerUncheckedUpdateWithoutCodeInput = {
