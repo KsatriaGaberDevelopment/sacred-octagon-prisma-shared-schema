@@ -3991,6 +3991,7 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    bannerVisitor: number
     championships: number
     championshipRecords: number
     redeemedCodes: number
@@ -4006,6 +4007,7 @@ export namespace Prisma {
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bannerVisitor?: boolean | UserCountOutputTypeCountBannerVisitorArgs
     championships?: boolean | UserCountOutputTypeCountChampionshipsArgs
     championshipRecords?: boolean | UserCountOutputTypeCountChampionshipRecordsArgs
     redeemedCodes?: boolean | UserCountOutputTypeCountRedeemedCodesArgs
@@ -4029,6 +4031,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBannerVisitorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerVisitorWhereInput
   }
 
   /**
@@ -10253,7 +10262,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs> | null
+      bannerVisitor: Prisma.$BannerVisitorPayload<ExtArgs>[]
       championships: Prisma.$ChampionshipPayload<ExtArgs>[]
       championshipRecords: Prisma.$ChampionshipRecordPayload<ExtArgs>[]
       redeemedCodes: Prisma.$CodeRedeemerPayload<ExtArgs>[]
@@ -10694,7 +10703,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma__BannerVisitorClient<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    bannerVisitor<T extends User$bannerVisitorArgs<ExtArgs> = {}>(args?: Subset<T, User$bannerVisitorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     championships<T extends User$championshipsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     championshipRecords<T extends User$championshipRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$championshipRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     redeemedCodes<T extends User$redeemedCodesArgs<ExtArgs> = {}>(args?: Subset<T, User$redeemedCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeRedeemerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11180,6 +11189,11 @@ export namespace Prisma {
      */
     include?: BannerVisitorInclude<ExtArgs> | null
     where?: BannerVisitorWhereInput
+    orderBy?: BannerVisitorOrderByWithRelationInput | BannerVisitorOrderByWithRelationInput[]
+    cursor?: BannerVisitorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerVisitorScalarFieldEnum | BannerVisitorScalarFieldEnum[]
   }
 
   /**
@@ -42995,7 +43009,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
+    bannerVisitor?: BannerVisitorListRelationFilter
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
     redeemedCodes?: CodeRedeemerListRelationFilter
@@ -43043,7 +43057,7 @@ export namespace Prisma {
     username?: SortOrder
     lastIdZoneUnlocked?: SortOrder
     lastIdZonePosition?: SortOrder
-    bannerVisitor?: BannerVisitorOrderByWithRelationInput
+    bannerVisitor?: BannerVisitorOrderByRelationAggregateInput
     championships?: ChampionshipOrderByRelationAggregateInput
     championshipRecords?: ChampionshipRecordOrderByRelationAggregateInput
     redeemedCodes?: CodeRedeemerOrderByRelationAggregateInput
@@ -43094,7 +43108,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     lastIdZoneUnlocked?: StringFilter<"User"> | string
     lastIdZonePosition?: StringFilter<"User"> | string
-    bannerVisitor?: XOR<BannerVisitorNullableScalarRelationFilter, BannerVisitorWhereInput> | null
+    bannerVisitor?: BannerVisitorListRelationFilter
     championships?: ChampionshipListRelationFilter
     championshipRecords?: ChampionshipRecordListRelationFilter
     redeemedCodes?: CodeRedeemerListRelationFilter
@@ -44462,17 +44476,18 @@ export namespace Prisma {
 
   export type BannerVisitorWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    bannerId?: string
-    userId?: string
+    bannerId_userId?: BannerVisitorBannerIdUserIdCompoundUniqueInput
     AND?: BannerVisitorWhereInput | BannerVisitorWhereInput[]
     OR?: BannerVisitorWhereInput[]
     NOT?: BannerVisitorWhereInput | BannerVisitorWhereInput[]
+    bannerId?: StringFilter<"BannerVisitor"> | string
+    userId?: StringFilter<"BannerVisitor"> | string
     createdAt?: DateTimeFilter<"BannerVisitor"> | Date | string
     updatedAt?: DateTimeFilter<"BannerVisitor"> | Date | string
     traffic?: IntFilter<"BannerVisitor"> | number
     banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "bannerId" | "userId">
+  }, "id" | "bannerId_userId">
 
   export type BannerVisitorOrderByWithAggregationInput = {
     id?: SortOrder
@@ -45778,7 +45793,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -45826,7 +45841,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -45864,7 +45879,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -45912,7 +45927,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -48833,9 +48848,10 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type BannerVisitorNullableScalarRelationFilter = {
-    is?: BannerVisitorWhereInput | null
-    isNot?: BannerVisitorWhereInput | null
+  export type BannerVisitorListRelationFilter = {
+    every?: BannerVisitorWhereInput
+    some?: BannerVisitorWhereInput
+    none?: BannerVisitorWhereInput
   }
 
   export type ChampionshipListRelationFilter = {
@@ -48918,6 +48934,10 @@ export namespace Prisma {
     every?: ZoneWhereInput
     some?: ZoneWhereInput
     none?: ZoneWhereInput
+  }
+
+  export type BannerVisitorOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ChampionshipOrderByRelationAggregateInput = {
@@ -49906,16 +49926,6 @@ export namespace Prisma {
     grades?: SortOrder
   }
 
-  export type BannerVisitorListRelationFilter = {
-    every?: BannerVisitorWhereInput
-    some?: BannerVisitorWhereInput
-    none?: BannerVisitorWhereInput
-  }
-
-  export type BannerVisitorOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type BannerCountOrderByAggregateInput = {
     id?: SortOrder
     thumbnail?: SortOrder
@@ -49970,6 +49980,11 @@ export namespace Prisma {
     id?: SortOrder
     bannerId?: SortOrder
     provinceId?: SortOrder
+  }
+
+  export type BannerVisitorBannerIdUserIdCompoundUniqueInput = {
+    bannerId: string
+    userId: string
   }
 
   export type BannerVisitorCountOrderByAggregateInput = {
@@ -51614,10 +51629,11 @@ export namespace Prisma {
     set: number[]
   }
 
-  export type BannerVisitorCreateNestedOneWithoutUserInput = {
-    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput
-    connect?: BannerVisitorWhereUniqueInput
+  export type BannerVisitorCreateNestedManyWithoutUserInput = {
+    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
+    createMany?: BannerVisitorCreateManyUserInputEnvelope
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
   export type ChampionshipCreateNestedManyWithoutUserInput = {
@@ -51734,10 +51750,11 @@ export namespace Prisma {
     connect?: ZoneWhereUniqueInput | ZoneWhereUniqueInput[]
   }
 
-  export type BannerVisitorUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput
-    connect?: BannerVisitorWhereUniqueInput
+  export type BannerVisitorUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
+    createMany?: BannerVisitorCreateManyUserInputEnvelope
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
   export type ChampionshipUncheckedCreateNestedManyWithoutUserInput = {
@@ -51853,14 +51870,18 @@ export namespace Prisma {
     push?: number | number[]
   }
 
-  export type BannerVisitorUpdateOneWithoutUserNestedInput = {
-    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput
-    upsert?: BannerVisitorUpsertWithoutUserInput
-    disconnect?: BannerVisitorWhereInput | boolean
-    delete?: BannerVisitorWhereInput | boolean
-    connect?: BannerVisitorWhereUniqueInput
-    update?: XOR<XOR<BannerVisitorUpdateToOneWithWhereWithoutUserInput, BannerVisitorUpdateWithoutUserInput>, BannerVisitorUncheckedUpdateWithoutUserInput>
+  export type BannerVisitorUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
+    upsert?: BannerVisitorUpsertWithWhereUniqueWithoutUserInput | BannerVisitorUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BannerVisitorCreateManyUserInputEnvelope
+    set?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    disconnect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    delete?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    update?: BannerVisitorUpdateWithWhereUniqueWithoutUserInput | BannerVisitorUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BannerVisitorUpdateManyWithWhereWithoutUserInput | BannerVisitorUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
   }
 
   export type ChampionshipUpdateManyWithoutUserNestedInput = {
@@ -52081,14 +52102,18 @@ export namespace Prisma {
     deleteMany?: ZoneScalarWhereInput | ZoneScalarWhereInput[]
   }
 
-  export type BannerVisitorUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
-    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput
-    upsert?: BannerVisitorUpsertWithoutUserInput
-    disconnect?: BannerVisitorWhereInput | boolean
-    delete?: BannerVisitorWhereInput | boolean
-    connect?: BannerVisitorWhereUniqueInput
-    update?: XOR<XOR<BannerVisitorUpdateToOneWithWhereWithoutUserInput, BannerVisitorUpdateWithoutUserInput>, BannerVisitorUncheckedUpdateWithoutUserInput>
+  export type BannerVisitorUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
+    upsert?: BannerVisitorUpsertWithWhereUniqueWithoutUserInput | BannerVisitorUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BannerVisitorCreateManyUserInputEnvelope
+    set?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    disconnect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    delete?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
+    update?: BannerVisitorUpdateWithWhereUniqueWithoutUserInput | BannerVisitorUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BannerVisitorUpdateManyWithWhereWithoutUserInput | BannerVisitorUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
   }
 
   export type ChampionshipUncheckedUpdateManyWithoutUserNestedInput = {
@@ -54285,7 +54310,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -54331,7 +54356,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -54837,7 +54862,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -54883,7 +54908,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -55228,7 +55253,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -55274,7 +55299,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -55769,7 +55794,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -55815,7 +55840,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -56059,6 +56084,11 @@ export namespace Prisma {
   export type BannerVisitorCreateOrConnectWithoutUserInput = {
     where: BannerVisitorWhereUniqueInput
     create: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
+  }
+
+  export type BannerVisitorCreateManyUserInputEnvelope = {
+    data: BannerVisitorCreateManyUserInput | BannerVisitorCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChampionshipCreateWithoutUserInput = {
@@ -56684,31 +56714,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BannerVisitorUpsertWithoutUserInput = {
+  export type BannerVisitorUpsertWithWhereUniqueWithoutUserInput = {
+    where: BannerVisitorWhereUniqueInput
     update: XOR<BannerVisitorUpdateWithoutUserInput, BannerVisitorUncheckedUpdateWithoutUserInput>
     create: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput>
-    where?: BannerVisitorWhereInput
   }
 
-  export type BannerVisitorUpdateToOneWithWhereWithoutUserInput = {
-    where?: BannerVisitorWhereInput
+  export type BannerVisitorUpdateWithWhereUniqueWithoutUserInput = {
+    where: BannerVisitorWhereUniqueInput
     data: XOR<BannerVisitorUpdateWithoutUserInput, BannerVisitorUncheckedUpdateWithoutUserInput>
   }
 
-  export type BannerVisitorUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    traffic?: IntFieldUpdateOperationsInput | number
-    banner?: BannerUpdateOneRequiredWithoutVisitorsNestedInput
+  export type BannerVisitorUpdateManyWithWhereWithoutUserInput = {
+    where: BannerVisitorScalarWhereInput
+    data: XOR<BannerVisitorUpdateManyMutationInput, BannerVisitorUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type BannerVisitorUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    traffic?: IntFieldUpdateOperationsInput | number
+  export type BannerVisitorScalarWhereInput = {
+    AND?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
+    OR?: BannerVisitorScalarWhereInput[]
+    NOT?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
+    id?: StringFilter<"BannerVisitor"> | string
+    bannerId?: StringFilter<"BannerVisitor"> | string
+    userId?: StringFilter<"BannerVisitor"> | string
+    createdAt?: DateTimeFilter<"BannerVisitor"> | Date | string
+    updatedAt?: DateTimeFilter<"BannerVisitor"> | Date | string
+    traffic?: IntFilter<"BannerVisitor"> | number
   }
 
   export type ChampionshipUpsertWithWhereUniqueWithoutUserInput = {
@@ -57358,7 +57389,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -57405,7 +57436,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -57458,7 +57489,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -57505,7 +57536,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -57542,7 +57573,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -57589,7 +57620,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -57642,7 +57673,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -57689,7 +57720,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -57726,7 +57757,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -57773,7 +57804,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -57826,7 +57857,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -57873,7 +57904,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -57910,7 +57941,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -57957,7 +57988,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -58010,7 +58041,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -58057,7 +58088,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -58094,7 +58125,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -58141,7 +58172,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -58194,7 +58225,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -58241,7 +58272,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -58278,7 +58309,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -58325,7 +58356,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -58378,7 +58409,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -58425,7 +58456,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -58462,7 +58493,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -58509,7 +58540,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -58562,7 +58593,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -58609,7 +58640,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -58646,7 +58677,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -58693,7 +58724,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -58746,7 +58777,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -58793,7 +58824,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -58830,7 +58861,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -58877,7 +58908,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -58930,7 +58961,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -58977,7 +59008,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -59492,7 +59523,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -59538,7 +59569,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -60011,7 +60042,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -60057,7 +60088,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -61013,18 +61044,6 @@ export namespace Prisma {
     data: XOR<BannerVisitorUpdateManyMutationInput, BannerVisitorUncheckedUpdateManyWithoutBannerInput>
   }
 
-  export type BannerVisitorScalarWhereInput = {
-    AND?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
-    OR?: BannerVisitorScalarWhereInput[]
-    NOT?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
-    id?: StringFilter<"BannerVisitor"> | string
-    bannerId?: StringFilter<"BannerVisitor"> | string
-    userId?: StringFilter<"BannerVisitor"> | string
-    createdAt?: DateTimeFilter<"BannerVisitor"> | Date | string
-    updatedAt?: DateTimeFilter<"BannerVisitor"> | Date | string
-    traffic?: IntFilter<"BannerVisitor"> | number
-  }
-
   export type BannerCreateWithoutBannerLocationInput = {
     id?: string
     thumbnail: string
@@ -61761,7 +61780,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -61808,7 +61827,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -61944,7 +61963,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -61991,7 +62010,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -62725,7 +62744,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     gempos?: GempoCreateNestedManyWithoutUserInput
@@ -62772,7 +62791,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
@@ -62864,7 +62883,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     gempos?: GempoUpdateManyWithoutUserNestedInput
@@ -62911,7 +62930,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
@@ -63035,7 +63054,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
     championships?: ChampionshipCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
@@ -63082,7 +63101,7 @@ export namespace Prisma {
     username: string
     lastIdZoneUnlocked?: string
     lastIdZonePosition?: string
-    bannerVisitor?: BannerVisitorUncheckedCreateNestedOneWithoutUserInput
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
     championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
     championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
     redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
@@ -63176,7 +63195,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -63223,7 +63242,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -63552,7 +63571,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -63598,7 +63617,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -63937,7 +63956,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -63983,7 +64002,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -64199,7 +64218,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -64245,7 +64264,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -64545,7 +64564,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
@@ -64591,7 +64610,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
     lastIdZonePosition?: StringFieldUpdateOperationsInput | string
-    bannerVisitor?: BannerVisitorUncheckedUpdateOneWithoutUserNestedInput
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
     championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
     championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
     redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
@@ -64658,6 +64677,14 @@ export namespace Prisma {
     adminId?: StringFieldUpdateOperationsInput | string
     provinceId?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
+  }
+
+  export type BannerVisitorCreateManyUserInput = {
+    id?: string
+    bannerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traffic?: number
   }
 
   export type ChampionshipCreateManyUserInput = {
@@ -64805,6 +64832,30 @@ export namespace Prisma {
     posttestTryCount?: number
     pretest?: number
     pretestTryCount?: number
+  }
+
+  export type BannerVisitorUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
+    banner?: BannerUpdateOneRequiredWithoutVisitorsNestedInput
+  }
+
+  export type BannerVisitorUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BannerVisitorUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bannerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traffic?: IntFieldUpdateOperationsInput | number
   }
 
   export type ChampionshipUpdateWithoutUserInput = {

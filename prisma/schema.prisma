@@ -124,7 +124,7 @@ model User {
   username            String               @unique
   lastIdZoneUnlocked  String               @default("")
   lastIdZonePosition  String               @default("")
-  bannerVisitor       BannerVisitor?
+  bannerVisitor       BannerVisitor[]
   championships       Championship[]
   championshipRecords ChampionshipRecord[]
   redeemedCodes       CodeRedeemer[]
@@ -439,23 +439,24 @@ model BannerLocation {
   cities        City[]        @relation("BannerLocationToCity")
   subdisctricts Subdistrict[]
 
-  @@index([bannerId])   // For joining with Banner (implicit when `some` is used)
+  @@index([bannerId]) // For joining with Banner (implicit when `some` is used)
   @@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
   @@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
 }
 
 model BannerVisitor {
   id        String   @id @default(cuid())
-  bannerId  String   @unique
-  userId    String   @unique
+  bannerId  String
+  userId    String
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)
   traffic   Int      @default(0)
   banner    Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([bannerId])   // For joining with Banner (implicit when `some` is used)
-  @@index([userId])  // For joining with User
+  @@unique([bannerId, userId])
+  @@index([bannerId])
+  @@index([userId])
 }
 
 model Test {
