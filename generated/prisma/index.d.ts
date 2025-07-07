@@ -47887,11 +47887,11 @@ export namespace Prisma {
 
   export type ChampionshipMatchWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    gameplayId?: string
     AND?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
     OR?: ChampionshipMatchWhereInput[]
     NOT?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
     max?: IntFilter<"ChampionshipMatch"> | number
+    gameplayId?: StringFilter<"ChampionshipMatch"> | string
     botOwner?: StringFilter<"ChampionshipMatch"> | string
     startedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
@@ -47902,7 +47902,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ChampionshipMatch"> | Date | string
     currentMember?: IntFilter<"ChampionshipMatch"> | number
     members?: MatchMemberListRelationFilter
-  }, "id" | "gameplayId">
+  }, "id">
 
   export type ChampionshipMatchOrderByWithAggregationInput = {
     id?: SortOrder
@@ -47979,11 +47979,11 @@ export namespace Prisma {
 
   export type ChampionshipHistoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    gameplayId?: string
     AND?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
     OR?: ChampionshipHistoryWhereInput[]
     NOT?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
     max?: IntFilter<"ChampionshipHistory"> | number
+    gameplayId?: StringFilter<"ChampionshipHistory"> | string
     botOwner?: StringFilter<"ChampionshipHistory"> | string
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -47994,7 +47994,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ChampionshipHistory"> | Date | string
     currentMember?: IntFilter<"ChampionshipHistory"> | number
     members?: MatchHistoryMemberListRelationFilter
-  }, "id" | "gameplayId">
+  }, "id">
 
   export type ChampionshipHistoryOrderByWithAggregationInput = {
     id?: SortOrder
