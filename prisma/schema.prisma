@@ -610,7 +610,7 @@ model ChampionshipMatch {
   id            String        @id @default(cuid())
   max           Int           @default(2)
   gameplayId    String
-  botOwner      String
+  botOwner      String?
   startedAt     DateTime?     @db.Timestamptz(3)
   endedAt       DateTime?     @db.Timestamptz(3)
   expiredAt     DateTime?     @db.Timestamptz(3)
@@ -625,6 +625,24 @@ model ChampionshipMatch {
   @@index([max])
   @@index([max, startedAt])
   @@index([max, startedAt, currentMember])
+}
+
+model MatchMember {
+  id           String            @id @default(cuid())
+  roomId       String
+  userId       String
+  answerPoint  Int               @default(0) // ini point ketika menjawab contoh benar 100/salah -100
+  point        Int               @default(0) // ini jumlah point yang didapat
+  bonusPoint   Int               @default(0) // ini bonus point berdasarkan ketentuan
+  teamType     TeamType          @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat lebih banyak enum
+  isReady      Boolean           @default(false)
+  isComplete   Boolean           @default(false)
+  isBot        Boolean           @default(false)
+  joinedAt     DateTime          @default(now()) @db.Timestamptz(3)
+  finishedAt   DateTime?         @db.Timestamptz(3)
+  isDisconnect Boolean           @default(false)
+  room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id])
 }
 
 model ChampionshipHistory {
@@ -648,28 +666,13 @@ model ChampionshipHistory {
   @@index([max, startedAt, currentMember])
 }
 
-model MatchMember {
-  id           String            @id @default(cuid())
-  roomId       String
-  userId       String
-  point        Int               @default(0)
-  bonusPoint   Int               @default(0)
-  isReady      Boolean           @default(false)
-  isComplete   Boolean           @default(false)
-  isBot        Boolean           @default(false)
-  joinedAt     DateTime          @default(now()) @db.Timestamptz(3)
-  finishedAt   DateTime?         @db.Timestamptz(3)
-  isDisconnect Boolean           @default(false)
-  room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  user         User              @relation(fields: [userId], references: [id])
-}
-
 model MatchHistoryMember {
   id           String              @id @default(cuid())
   roomId       String
   userId       String
-  point        Int                 @default(0)
-  bonusPoint   Int                 @default(0)
+  point        Int                 @default(0) // ini jumlah point yang didapat
+  bonusPoint   Int                 @default(0) // ini bonus point berdasarkan ketentuan
+  teamType     TeamType            @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat
   isReady      Boolean             @default(false)
   isComplete   Boolean             @default(false)
   isBot        Boolean             @default(false)
@@ -732,4 +735,10 @@ enum EducationLevel {
   SD
   SMP
   SMA
+}
+
+enum TeamType {
+  None
+  Blue
+  Red
 }

@@ -509,6 +509,22 @@ exports.Prisma.ChampionshipMatchScalarFieldEnum = {
   currentMember: 'currentMember'
 };
 
+exports.Prisma.MatchMemberScalarFieldEnum = {
+  id: 'id',
+  roomId: 'roomId',
+  userId: 'userId',
+  answerPoint: 'answerPoint',
+  point: 'point',
+  bonusPoint: 'bonusPoint',
+  teamType: 'teamType',
+  isReady: 'isReady',
+  isComplete: 'isComplete',
+  isBot: 'isBot',
+  joinedAt: 'joinedAt',
+  finishedAt: 'finishedAt',
+  isDisconnect: 'isDisconnect'
+};
+
 exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
   id: 'id',
   max: 'max',
@@ -524,26 +540,13 @@ exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
   currentMember: 'currentMember'
 };
 
-exports.Prisma.MatchMemberScalarFieldEnum = {
-  id: 'id',
-  roomId: 'roomId',
-  userId: 'userId',
-  point: 'point',
-  bonusPoint: 'bonusPoint',
-  isReady: 'isReady',
-  isComplete: 'isComplete',
-  isBot: 'isBot',
-  joinedAt: 'joinedAt',
-  finishedAt: 'finishedAt',
-  isDisconnect: 'isDisconnect'
-};
-
 exports.Prisma.MatchHistoryMemberScalarFieldEnum = {
   id: 'id',
   roomId: 'roomId',
   userId: 'userId',
   point: 'point',
   bonusPoint: 'bonusPoint',
+  teamType: 'teamType',
   isReady: 'isReady',
   isComplete: 'isComplete',
   isBot: 'isBot',
@@ -630,6 +633,12 @@ exports.Transaction = exports.$Enums.Transaction = {
   Settlement: 'Settlement'
 };
 
+exports.TeamType = exports.$Enums.TeamType = {
+  None: 'None',
+  Blue: 'Blue',
+  Red: 'Red'
+};
+
 exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',
@@ -661,8 +670,8 @@ exports.Prisma.ModelName = {
   RedeemCode: 'RedeemCode',
   CodeRedeemer: 'CodeRedeemer',
   ChampionshipMatch: 'ChampionshipMatch',
-  ChampionshipHistory: 'ChampionshipHistory',
   MatchMember: 'MatchMember',
+  ChampionshipHistory: 'ChampionshipHistory',
   MatchHistoryMember: 'MatchHistoryMember'
 };
 
