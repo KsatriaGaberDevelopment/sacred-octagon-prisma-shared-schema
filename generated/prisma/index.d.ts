@@ -159,15 +159,25 @@ export type RedeemCode = $Result.DefaultSelection<Prisma.$RedeemCodePayload>
  */
 export type CodeRedeemer = $Result.DefaultSelection<Prisma.$CodeRedeemerPayload>
 /**
- * Model MultiplayerRoom
+ * Model ChampionshipMatch
  * 
  */
-export type MultiplayerRoom = $Result.DefaultSelection<Prisma.$MultiplayerRoomPayload>
+export type ChampionshipMatch = $Result.DefaultSelection<Prisma.$ChampionshipMatchPayload>
 /**
- * Model MultiPlayerMember
+ * Model ChampionshipHistory
  * 
  */
-export type MultiPlayerMember = $Result.DefaultSelection<Prisma.$MultiPlayerMemberPayload>
+export type ChampionshipHistory = $Result.DefaultSelection<Prisma.$ChampionshipHistoryPayload>
+/**
+ * Model MatchMember
+ * 
+ */
+export type MatchMember = $Result.DefaultSelection<Prisma.$MatchMemberPayload>
+/**
+ * Model MatchHistoryMember
+ * 
+ */
+export type MatchHistoryMember = $Result.DefaultSelection<Prisma.$MatchHistoryMemberPayload>
 
 /**
  * Enums
@@ -700,24 +710,44 @@ export class PrismaClient<
   get codeRedeemer(): Prisma.CodeRedeemerDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.multiplayerRoom`: Exposes CRUD operations for the **MultiplayerRoom** model.
+   * `prisma.championshipMatch`: Exposes CRUD operations for the **ChampionshipMatch** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more MultiplayerRooms
-    * const multiplayerRooms = await prisma.multiplayerRoom.findMany()
+    * // Fetch zero or more ChampionshipMatches
+    * const championshipMatches = await prisma.championshipMatch.findMany()
     * ```
     */
-  get multiplayerRoom(): Prisma.MultiplayerRoomDelegate<ExtArgs, ClientOptions>;
+  get championshipMatch(): Prisma.ChampionshipMatchDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.multiPlayerMember`: Exposes CRUD operations for the **MultiPlayerMember** model.
+   * `prisma.championshipHistory`: Exposes CRUD operations for the **ChampionshipHistory** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more MultiPlayerMembers
-    * const multiPlayerMembers = await prisma.multiPlayerMember.findMany()
+    * // Fetch zero or more ChampionshipHistories
+    * const championshipHistories = await prisma.championshipHistory.findMany()
     * ```
     */
-  get multiPlayerMember(): Prisma.MultiPlayerMemberDelegate<ExtArgs, ClientOptions>;
+  get championshipHistory(): Prisma.ChampionshipHistoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.matchMember`: Exposes CRUD operations for the **MatchMember** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MatchMembers
+    * const matchMembers = await prisma.matchMember.findMany()
+    * ```
+    */
+  get matchMember(): Prisma.MatchMemberDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.matchHistoryMember`: Exposes CRUD operations for the **MatchHistoryMember** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MatchHistoryMembers
+    * const matchHistoryMembers = await prisma.matchHistoryMember.findMany()
+    * ```
+    */
+  get matchHistoryMember(): Prisma.MatchHistoryMemberDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1187,8 +1217,10 @@ export namespace Prisma {
     AdminTransaction: 'AdminTransaction',
     RedeemCode: 'RedeemCode',
     CodeRedeemer: 'CodeRedeemer',
-    MultiplayerRoom: 'MultiplayerRoom',
-    MultiPlayerMember: 'MultiPlayerMember'
+    ChampionshipMatch: 'ChampionshipMatch',
+    ChampionshipHistory: 'ChampionshipHistory',
+    MatchMember: 'MatchMember',
+    MatchHistoryMember: 'MatchHistoryMember'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1207,7 +1239,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "multiplayerRoom" | "multiPlayerMember"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "championshipMatch" | "championshipHistory" | "matchMember" | "matchHistoryMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3357,151 +3389,299 @@ export namespace Prisma {
           }
         }
       }
-      MultiplayerRoom: {
-        payload: Prisma.$MultiplayerRoomPayload<ExtArgs>
-        fields: Prisma.MultiplayerRoomFieldRefs
+      ChampionshipMatch: {
+        payload: Prisma.$ChampionshipMatchPayload<ExtArgs>
+        fields: Prisma.ChampionshipMatchFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.MultiplayerRoomFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload> | null
+            args: Prisma.ChampionshipMatchFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.MultiplayerRoomFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           findFirst: {
-            args: Prisma.MultiplayerRoomFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload> | null
+            args: Prisma.ChampionshipMatchFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.MultiplayerRoomFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           findMany: {
-            args: Prisma.MultiplayerRoomFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>[]
+            args: Prisma.ChampionshipMatchFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>[]
           }
           create: {
-            args: Prisma.MultiplayerRoomCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           createMany: {
-            args: Prisma.MultiplayerRoomCreateManyArgs<ExtArgs>
+            args: Prisma.ChampionshipMatchCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.MultiplayerRoomCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>[]
+            args: Prisma.ChampionshipMatchCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>[]
           }
           delete: {
-            args: Prisma.MultiplayerRoomDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           update: {
-            args: Prisma.MultiplayerRoomUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           deleteMany: {
-            args: Prisma.MultiplayerRoomDeleteManyArgs<ExtArgs>
+            args: Prisma.ChampionshipMatchDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.MultiplayerRoomUpdateManyArgs<ExtArgs>
+            args: Prisma.ChampionshipMatchUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.MultiplayerRoomUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>[]
+            args: Prisma.ChampionshipMatchUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>[]
           }
           upsert: {
-            args: Prisma.MultiplayerRoomUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiplayerRoomPayload>
+            args: Prisma.ChampionshipMatchUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipMatchPayload>
           }
           aggregate: {
-            args: Prisma.MultiplayerRoomAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMultiplayerRoom>
+            args: Prisma.ChampionshipMatchAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChampionshipMatch>
           }
           groupBy: {
-            args: Prisma.MultiplayerRoomGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MultiplayerRoomGroupByOutputType>[]
+            args: Prisma.ChampionshipMatchGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChampionshipMatchGroupByOutputType>[]
           }
           count: {
-            args: Prisma.MultiplayerRoomCountArgs<ExtArgs>
-            result: $Utils.Optional<MultiplayerRoomCountAggregateOutputType> | number
+            args: Prisma.ChampionshipMatchCountArgs<ExtArgs>
+            result: $Utils.Optional<ChampionshipMatchCountAggregateOutputType> | number
           }
         }
       }
-      MultiPlayerMember: {
-        payload: Prisma.$MultiPlayerMemberPayload<ExtArgs>
-        fields: Prisma.MultiPlayerMemberFieldRefs
+      ChampionshipHistory: {
+        payload: Prisma.$ChampionshipHistoryPayload<ExtArgs>
+        fields: Prisma.ChampionshipHistoryFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.MultiPlayerMemberFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload> | null
+            args: Prisma.ChampionshipHistoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.MultiPlayerMemberFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           findFirst: {
-            args: Prisma.MultiPlayerMemberFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload> | null
+            args: Prisma.ChampionshipHistoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.MultiPlayerMemberFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           findMany: {
-            args: Prisma.MultiPlayerMemberFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>[]
+            args: Prisma.ChampionshipHistoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>[]
           }
           create: {
-            args: Prisma.MultiPlayerMemberCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           createMany: {
-            args: Prisma.MultiPlayerMemberCreateManyArgs<ExtArgs>
+            args: Prisma.ChampionshipHistoryCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.MultiPlayerMemberCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>[]
+            args: Prisma.ChampionshipHistoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>[]
           }
           delete: {
-            args: Prisma.MultiPlayerMemberDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           update: {
-            args: Prisma.MultiPlayerMemberUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           deleteMany: {
-            args: Prisma.MultiPlayerMemberDeleteManyArgs<ExtArgs>
+            args: Prisma.ChampionshipHistoryDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.MultiPlayerMemberUpdateManyArgs<ExtArgs>
+            args: Prisma.ChampionshipHistoryUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.MultiPlayerMemberUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>[]
+            args: Prisma.ChampionshipHistoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>[]
           }
           upsert: {
-            args: Prisma.MultiPlayerMemberUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MultiPlayerMemberPayload>
+            args: Prisma.ChampionshipHistoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChampionshipHistoryPayload>
           }
           aggregate: {
-            args: Prisma.MultiPlayerMemberAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMultiPlayerMember>
+            args: Prisma.ChampionshipHistoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChampionshipHistory>
           }
           groupBy: {
-            args: Prisma.MultiPlayerMemberGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MultiPlayerMemberGroupByOutputType>[]
+            args: Prisma.ChampionshipHistoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChampionshipHistoryGroupByOutputType>[]
           }
           count: {
-            args: Prisma.MultiPlayerMemberCountArgs<ExtArgs>
-            result: $Utils.Optional<MultiPlayerMemberCountAggregateOutputType> | number
+            args: Prisma.ChampionshipHistoryCountArgs<ExtArgs>
+            result: $Utils.Optional<ChampionshipHistoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      MatchMember: {
+        payload: Prisma.$MatchMemberPayload<ExtArgs>
+        fields: Prisma.MatchMemberFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MatchMemberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MatchMemberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          findFirst: {
+            args: Prisma.MatchMemberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MatchMemberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          findMany: {
+            args: Prisma.MatchMemberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>[]
+          }
+          create: {
+            args: Prisma.MatchMemberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          createMany: {
+            args: Prisma.MatchMemberCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MatchMemberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>[]
+          }
+          delete: {
+            args: Prisma.MatchMemberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          update: {
+            args: Prisma.MatchMemberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          deleteMany: {
+            args: Prisma.MatchMemberDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MatchMemberUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MatchMemberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>[]
+          }
+          upsert: {
+            args: Prisma.MatchMemberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchMemberPayload>
+          }
+          aggregate: {
+            args: Prisma.MatchMemberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMatchMember>
+          }
+          groupBy: {
+            args: Prisma.MatchMemberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MatchMemberGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MatchMemberCountArgs<ExtArgs>
+            result: $Utils.Optional<MatchMemberCountAggregateOutputType> | number
+          }
+        }
+      }
+      MatchHistoryMember: {
+        payload: Prisma.$MatchHistoryMemberPayload<ExtArgs>
+        fields: Prisma.MatchHistoryMemberFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MatchHistoryMemberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MatchHistoryMemberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          findFirst: {
+            args: Prisma.MatchHistoryMemberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MatchHistoryMemberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          findMany: {
+            args: Prisma.MatchHistoryMemberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>[]
+          }
+          create: {
+            args: Prisma.MatchHistoryMemberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          createMany: {
+            args: Prisma.MatchHistoryMemberCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MatchHistoryMemberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>[]
+          }
+          delete: {
+            args: Prisma.MatchHistoryMemberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          update: {
+            args: Prisma.MatchHistoryMemberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          deleteMany: {
+            args: Prisma.MatchHistoryMemberDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MatchHistoryMemberUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MatchHistoryMemberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>[]
+          }
+          upsert: {
+            args: Prisma.MatchHistoryMemberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MatchHistoryMemberPayload>
+          }
+          aggregate: {
+            args: Prisma.MatchHistoryMemberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMatchHistoryMember>
+          }
+          groupBy: {
+            args: Prisma.MatchHistoryMemberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MatchHistoryMemberGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MatchHistoryMemberCountArgs<ExtArgs>
+            result: $Utils.Optional<MatchHistoryMemberCountAggregateOutputType> | number
           }
         }
       }
@@ -3618,8 +3798,10 @@ export namespace Prisma {
     adminTransaction?: AdminTransactionOmit
     redeemCode?: RedeemCodeOmit
     codeRedeemer?: CodeRedeemerOmit
-    multiplayerRoom?: MultiplayerRoomOmit
-    multiPlayerMember?: MultiPlayerMemberOmit
+    championshipMatch?: ChampionshipMatchOmit
+    championshipHistory?: ChampionshipHistoryOmit
+    matchMember?: MatchMemberOmit
+    matchHistoryMember?: MatchHistoryMemberOmit
   }
 
   /* Types for Logging */
@@ -3999,7 +4181,8 @@ export namespace Prisma {
     gempoRecords: number
     innerLevels: number
     levels: number
-    multiPlayerMember: number
+    matchMembers: number
+    historyMatchMembers: number
     subLevels: number
     testParticipant: number
     userLogin: number
@@ -4015,7 +4198,8 @@ export namespace Prisma {
     gempoRecords?: boolean | UserCountOutputTypeCountGempoRecordsArgs
     innerLevels?: boolean | UserCountOutputTypeCountInnerLevelsArgs
     levels?: boolean | UserCountOutputTypeCountLevelsArgs
-    multiPlayerMember?: boolean | UserCountOutputTypeCountMultiPlayerMemberArgs
+    matchMembers?: boolean | UserCountOutputTypeCountMatchMembersArgs
+    historyMatchMembers?: boolean | UserCountOutputTypeCountHistoryMatchMembersArgs
     subLevels?: boolean | UserCountOutputTypeCountSubLevelsArgs
     testParticipant?: boolean | UserCountOutputTypeCountTestParticipantArgs
     userLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
@@ -4092,8 +4276,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountMultiPlayerMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MultiPlayerMemberWhereInput
+  export type UserCountOutputTypeCountMatchMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchMemberWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHistoryMatchMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchHistoryMemberWhereInput
   }
 
   /**
@@ -4451,33 +4642,64 @@ export namespace Prisma {
 
 
   /**
-   * Count Type MultiplayerRoomCountOutputType
+   * Count Type ChampionshipMatchCountOutputType
    */
 
-  export type MultiplayerRoomCountOutputType = {
+  export type ChampionshipMatchCountOutputType = {
     members: number
   }
 
-  export type MultiplayerRoomCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    members?: boolean | MultiplayerRoomCountOutputTypeCountMembersArgs
+  export type ChampionshipMatchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | ChampionshipMatchCountOutputTypeCountMembersArgs
   }
 
   // Custom InputTypes
   /**
-   * MultiplayerRoomCountOutputType without action
+   * ChampionshipMatchCountOutputType without action
    */
-  export type MultiplayerRoomCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoomCountOutputType
+     * Select specific fields to fetch from the ChampionshipMatchCountOutputType
      */
-    select?: MultiplayerRoomCountOutputTypeSelect<ExtArgs> | null
+    select?: ChampionshipMatchCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * MultiplayerRoomCountOutputType without action
+   * ChampionshipMatchCountOutputType without action
    */
-  export type MultiplayerRoomCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MultiPlayerMemberWhereInput
+  export type ChampionshipMatchCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchMemberWhereInput
+  }
+
+
+  /**
+   * Count Type ChampionshipHistoryCountOutputType
+   */
+
+  export type ChampionshipHistoryCountOutputType = {
+    members: number
+  }
+
+  export type ChampionshipHistoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | ChampionshipHistoryCountOutputTypeCountMembersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ChampionshipHistoryCountOutputType without action
+   */
+  export type ChampionshipHistoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistoryCountOutputType
+     */
+    select?: ChampionshipHistoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ChampionshipHistoryCountOutputType without action
+   */
+  export type ChampionshipHistoryCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchHistoryMemberWhereInput
   }
 
 
@@ -10109,7 +10331,8 @@ export namespace Prisma {
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
     levels?: boolean | User$levelsArgs<ExtArgs>
-    multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
+    matchMembers?: boolean | User$matchMembersArgs<ExtArgs>
+    historyMatchMembers?: boolean | User$historyMatchMembersArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     admin?: boolean | User$adminArgs<ExtArgs>
@@ -10232,7 +10455,8 @@ export namespace Prisma {
     gempoRecords?: boolean | User$gempoRecordsArgs<ExtArgs>
     innerLevels?: boolean | User$innerLevelsArgs<ExtArgs>
     levels?: boolean | User$levelsArgs<ExtArgs>
-    multiPlayerMember?: boolean | User$multiPlayerMemberArgs<ExtArgs>
+    matchMembers?: boolean | User$matchMembersArgs<ExtArgs>
+    historyMatchMembers?: boolean | User$historyMatchMembersArgs<ExtArgs>
     subLevels?: boolean | User$subLevelsArgs<ExtArgs>
     testParticipant?: boolean | User$testParticipantArgs<ExtArgs>
     admin?: boolean | User$adminArgs<ExtArgs>
@@ -10270,7 +10494,8 @@ export namespace Prisma {
       gempoRecords: Prisma.$GempoRecordPayload<ExtArgs>[]
       innerLevels: Prisma.$InnerLevelPayload<ExtArgs>[]
       levels: Prisma.$LevelPayload<ExtArgs>[]
-      multiPlayerMember: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
+      matchMembers: Prisma.$MatchMemberPayload<ExtArgs>[]
+      historyMatchMembers: Prisma.$MatchHistoryMemberPayload<ExtArgs>[]
       subLevels: Prisma.$SubLevelPayload<ExtArgs>[]
       testParticipant: Prisma.$TestParticipantPayload<ExtArgs>[]
       admin: Prisma.$AdminPayload<ExtArgs> | null
@@ -10711,7 +10936,8 @@ export namespace Prisma {
     gempoRecords<T extends User$gempoRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$gempoRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GempoRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     innerLevels<T extends User$innerLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$innerLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InnerLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     levels<T extends User$levelsArgs<ExtArgs> = {}>(args?: Subset<T, User$levelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    multiPlayerMember<T extends User$multiPlayerMemberArgs<ExtArgs> = {}>(args?: Subset<T, User$multiPlayerMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    matchMembers<T extends User$matchMembersArgs<ExtArgs> = {}>(args?: Subset<T, User$matchMembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    historyMatchMembers<T extends User$historyMatchMembersArgs<ExtArgs> = {}>(args?: Subset<T, User$historyMatchMembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subLevels<T extends User$subLevelsArgs<ExtArgs> = {}>(args?: Subset<T, User$subLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testParticipant<T extends User$testParticipantArgs<ExtArgs> = {}>(args?: Subset<T, User$testParticipantArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     admin<T extends User$adminArgs<ExtArgs> = {}>(args?: Subset<T, User$adminArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -11365,27 +11591,51 @@ export namespace Prisma {
   }
 
   /**
-   * User.multiPlayerMember
+   * User.matchMembers
    */
-  export type User$multiPlayerMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$matchMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
-    where?: MultiPlayerMemberWhereInput
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    include?: MatchMemberInclude<ExtArgs> | null
+    where?: MatchMemberWhereInput
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
+    cursor?: MatchMemberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
+    distinct?: MatchMemberScalarFieldEnum | MatchMemberScalarFieldEnum[]
+  }
+
+  /**
+   * User.historyMatchMembers
+   */
+  export type User$historyMatchMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    where?: MatchHistoryMemberWhereInput
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MatchHistoryMemberScalarFieldEnum | MatchHistoryMemberScalarFieldEnum[]
   }
 
   /**
@@ -39482,28 +39732,28 @@ export namespace Prisma {
 
 
   /**
-   * Model MultiplayerRoom
+   * Model ChampionshipMatch
    */
 
-  export type AggregateMultiplayerRoom = {
-    _count: MultiplayerRoomCountAggregateOutputType | null
-    _avg: MultiplayerRoomAvgAggregateOutputType | null
-    _sum: MultiplayerRoomSumAggregateOutputType | null
-    _min: MultiplayerRoomMinAggregateOutputType | null
-    _max: MultiplayerRoomMaxAggregateOutputType | null
+  export type AggregateChampionshipMatch = {
+    _count: ChampionshipMatchCountAggregateOutputType | null
+    _avg: ChampionshipMatchAvgAggregateOutputType | null
+    _sum: ChampionshipMatchSumAggregateOutputType | null
+    _min: ChampionshipMatchMinAggregateOutputType | null
+    _max: ChampionshipMatchMaxAggregateOutputType | null
   }
 
-  export type MultiplayerRoomAvgAggregateOutputType = {
+  export type ChampionshipMatchAvgAggregateOutputType = {
     max: number | null
     currentMember: number | null
   }
 
-  export type MultiplayerRoomSumAggregateOutputType = {
+  export type ChampionshipMatchSumAggregateOutputType = {
     max: number | null
     currentMember: number | null
   }
 
-  export type MultiplayerRoomMinAggregateOutputType = {
+  export type ChampionshipMatchMinAggregateOutputType = {
     id: string | null
     max: number | null
     gameplayId: string | null
@@ -39518,7 +39768,7 @@ export namespace Prisma {
     currentMember: number | null
   }
 
-  export type MultiplayerRoomMaxAggregateOutputType = {
+  export type ChampionshipMatchMaxAggregateOutputType = {
     id: string | null
     max: number | null
     gameplayId: string | null
@@ -39533,7 +39783,7 @@ export namespace Prisma {
     currentMember: number | null
   }
 
-  export type MultiplayerRoomCountAggregateOutputType = {
+  export type ChampionshipMatchCountAggregateOutputType = {
     id: number
     max: number
     gameplayId: number
@@ -39550,17 +39800,17 @@ export namespace Prisma {
   }
 
 
-  export type MultiplayerRoomAvgAggregateInputType = {
+  export type ChampionshipMatchAvgAggregateInputType = {
     max?: true
     currentMember?: true
   }
 
-  export type MultiplayerRoomSumAggregateInputType = {
+  export type ChampionshipMatchSumAggregateInputType = {
     max?: true
     currentMember?: true
   }
 
-  export type MultiplayerRoomMinAggregateInputType = {
+  export type ChampionshipMatchMinAggregateInputType = {
     id?: true
     max?: true
     gameplayId?: true
@@ -39575,7 +39825,7 @@ export namespace Prisma {
     currentMember?: true
   }
 
-  export type MultiplayerRoomMaxAggregateInputType = {
+  export type ChampionshipMatchMaxAggregateInputType = {
     id?: true
     max?: true
     gameplayId?: true
@@ -39590,7 +39840,7 @@ export namespace Prisma {
     currentMember?: true
   }
 
-  export type MultiplayerRoomCountAggregateInputType = {
+  export type ChampionshipMatchCountAggregateInputType = {
     id?: true
     max?: true
     gameplayId?: true
@@ -39606,93 +39856,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type MultiplayerRoomAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MultiplayerRoom to aggregate.
+     * Filter which ChampionshipMatch to aggregate.
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiplayerRooms to fetch.
+     * Determine the order of ChampionshipMatches to fetch.
      */
-    orderBy?: MultiplayerRoomOrderByWithRelationInput | MultiplayerRoomOrderByWithRelationInput[]
+    orderBy?: ChampionshipMatchOrderByWithRelationInput | ChampionshipMatchOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: MultiplayerRoomWhereUniqueInput
+    cursor?: ChampionshipMatchWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiplayerRooms from the position of the cursor.
+     * Take `±n` ChampionshipMatches from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiplayerRooms.
+     * Skip the first `n` ChampionshipMatches.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned MultiplayerRooms
+     * Count returned ChampionshipMatches
     **/
-    _count?: true | MultiplayerRoomCountAggregateInputType
+    _count?: true | ChampionshipMatchCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: MultiplayerRoomAvgAggregateInputType
+    _avg?: ChampionshipMatchAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: MultiplayerRoomSumAggregateInputType
+    _sum?: ChampionshipMatchSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: MultiplayerRoomMinAggregateInputType
+    _min?: ChampionshipMatchMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: MultiplayerRoomMaxAggregateInputType
+    _max?: ChampionshipMatchMaxAggregateInputType
   }
 
-  export type GetMultiplayerRoomAggregateType<T extends MultiplayerRoomAggregateArgs> = {
-        [P in keyof T & keyof AggregateMultiplayerRoom]: P extends '_count' | 'count'
+  export type GetChampionshipMatchAggregateType<T extends ChampionshipMatchAggregateArgs> = {
+        [P in keyof T & keyof AggregateChampionshipMatch]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateMultiplayerRoom[P]>
-      : GetScalarType<T[P], AggregateMultiplayerRoom[P]>
+        : GetScalarType<T[P], AggregateChampionshipMatch[P]>
+      : GetScalarType<T[P], AggregateChampionshipMatch[P]>
   }
 
 
 
 
-  export type MultiplayerRoomGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MultiplayerRoomWhereInput
-    orderBy?: MultiplayerRoomOrderByWithAggregationInput | MultiplayerRoomOrderByWithAggregationInput[]
-    by: MultiplayerRoomScalarFieldEnum[] | MultiplayerRoomScalarFieldEnum
-    having?: MultiplayerRoomScalarWhereWithAggregatesInput
+  export type ChampionshipMatchGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChampionshipMatchWhereInput
+    orderBy?: ChampionshipMatchOrderByWithAggregationInput | ChampionshipMatchOrderByWithAggregationInput[]
+    by: ChampionshipMatchScalarFieldEnum[] | ChampionshipMatchScalarFieldEnum
+    having?: ChampionshipMatchScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: MultiplayerRoomCountAggregateInputType | true
-    _avg?: MultiplayerRoomAvgAggregateInputType
-    _sum?: MultiplayerRoomSumAggregateInputType
-    _min?: MultiplayerRoomMinAggregateInputType
-    _max?: MultiplayerRoomMaxAggregateInputType
+    _count?: ChampionshipMatchCountAggregateInputType | true
+    _avg?: ChampionshipMatchAvgAggregateInputType
+    _sum?: ChampionshipMatchSumAggregateInputType
+    _min?: ChampionshipMatchMinAggregateInputType
+    _max?: ChampionshipMatchMaxAggregateInputType
   }
 
-  export type MultiplayerRoomGroupByOutputType = {
+  export type ChampionshipMatchGroupByOutputType = {
     id: string
     max: number
     gameplayId: string
@@ -39705,28 +39955,28 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     currentMember: number
-    _count: MultiplayerRoomCountAggregateOutputType | null
-    _avg: MultiplayerRoomAvgAggregateOutputType | null
-    _sum: MultiplayerRoomSumAggregateOutputType | null
-    _min: MultiplayerRoomMinAggregateOutputType | null
-    _max: MultiplayerRoomMaxAggregateOutputType | null
+    _count: ChampionshipMatchCountAggregateOutputType | null
+    _avg: ChampionshipMatchAvgAggregateOutputType | null
+    _sum: ChampionshipMatchSumAggregateOutputType | null
+    _min: ChampionshipMatchMinAggregateOutputType | null
+    _max: ChampionshipMatchMaxAggregateOutputType | null
   }
 
-  type GetMultiplayerRoomGroupByPayload<T extends MultiplayerRoomGroupByArgs> = Prisma.PrismaPromise<
+  type GetChampionshipMatchGroupByPayload<T extends ChampionshipMatchGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<MultiplayerRoomGroupByOutputType, T['by']> &
+      PickEnumerable<ChampionshipMatchGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof MultiplayerRoomGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ChampionshipMatchGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], MultiplayerRoomGroupByOutputType[P]>
-            : GetScalarType<T[P], MultiplayerRoomGroupByOutputType[P]>
+              : GetScalarType<T[P], ChampionshipMatchGroupByOutputType[P]>
+            : GetScalarType<T[P], ChampionshipMatchGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type MultiplayerRoomSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipMatchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     max?: boolean
     gameplayId?: boolean
@@ -39739,11 +39989,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     currentMember?: boolean
-    members?: boolean | MultiplayerRoom$membersArgs<ExtArgs>
-    _count?: boolean | MultiplayerRoomCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["multiplayerRoom"]>
+    members?: boolean | ChampionshipMatch$membersArgs<ExtArgs>
+    _count?: boolean | ChampionshipMatchCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["championshipMatch"]>
 
-  export type MultiplayerRoomSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipMatchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     max?: boolean
     gameplayId?: boolean
@@ -39756,9 +40006,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     currentMember?: boolean
-  }, ExtArgs["result"]["multiplayerRoom"]>
+  }, ExtArgs["result"]["championshipMatch"]>
 
-  export type MultiplayerRoomSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipMatchSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     max?: boolean
     gameplayId?: boolean
@@ -39771,9 +40021,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     currentMember?: boolean
-  }, ExtArgs["result"]["multiplayerRoom"]>
+  }, ExtArgs["result"]["championshipMatch"]>
 
-  export type MultiplayerRoomSelectScalar = {
+  export type ChampionshipMatchSelectScalar = {
     id?: boolean
     max?: boolean
     gameplayId?: boolean
@@ -39788,18 +40038,18 @@ export namespace Prisma {
     currentMember?: boolean
   }
 
-  export type MultiplayerRoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["multiplayerRoom"]>
-  export type MultiplayerRoomInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    members?: boolean | MultiplayerRoom$membersArgs<ExtArgs>
-    _count?: boolean | MultiplayerRoomCountOutputTypeDefaultArgs<ExtArgs>
+  export type ChampionshipMatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipMatch"]>
+  export type ChampionshipMatchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | ChampionshipMatch$membersArgs<ExtArgs>
+    _count?: boolean | ChampionshipMatchCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type MultiplayerRoomIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type MultiplayerRoomIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ChampionshipMatchIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ChampionshipMatchIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $MultiplayerRoomPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "MultiplayerRoom"
+  export type $ChampionshipMatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChampionshipMatch"
     objects: {
-      members: Prisma.$MultiPlayerMemberPayload<ExtArgs>[]
+      members: Prisma.$MatchMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -39814,136 +40064,136 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       currentMember: number
-    }, ExtArgs["result"]["multiplayerRoom"]>
+    }, ExtArgs["result"]["championshipMatch"]>
     composites: {}
   }
 
-  type MultiplayerRoomGetPayload<S extends boolean | null | undefined | MultiplayerRoomDefaultArgs> = $Result.GetResult<Prisma.$MultiplayerRoomPayload, S>
+  type ChampionshipMatchGetPayload<S extends boolean | null | undefined | ChampionshipMatchDefaultArgs> = $Result.GetResult<Prisma.$ChampionshipMatchPayload, S>
 
-  type MultiplayerRoomCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MultiplayerRoomFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MultiplayerRoomCountAggregateInputType | true
+  type ChampionshipMatchCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChampionshipMatchFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChampionshipMatchCountAggregateInputType | true
     }
 
-  export interface MultiplayerRoomDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MultiplayerRoom'], meta: { name: 'MultiplayerRoom' } }
+  export interface ChampionshipMatchDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChampionshipMatch'], meta: { name: 'ChampionshipMatch' } }
     /**
-     * Find zero or one MultiplayerRoom that matches the filter.
-     * @param {MultiplayerRoomFindUniqueArgs} args - Arguments to find a MultiplayerRoom
+     * Find zero or one ChampionshipMatch that matches the filter.
+     * @param {ChampionshipMatchFindUniqueArgs} args - Arguments to find a ChampionshipMatch
      * @example
-     * // Get one MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.findUnique({
+     * // Get one ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends MultiplayerRoomFindUniqueArgs>(args: SelectSubset<T, MultiplayerRoomFindUniqueArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ChampionshipMatchFindUniqueArgs>(args: SelectSubset<T, ChampionshipMatchFindUniqueArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one MultiplayerRoom that matches the filter or throw an error with `error.code='P2025'`
+     * Find one ChampionshipMatch that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {MultiplayerRoomFindUniqueOrThrowArgs} args - Arguments to find a MultiplayerRoom
+     * @param {ChampionshipMatchFindUniqueOrThrowArgs} args - Arguments to find a ChampionshipMatch
      * @example
-     * // Get one MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.findUniqueOrThrow({
+     * // Get one ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends MultiplayerRoomFindUniqueOrThrowArgs>(args: SelectSubset<T, MultiplayerRoomFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ChampionshipMatchFindUniqueOrThrowArgs>(args: SelectSubset<T, ChampionshipMatchFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MultiplayerRoom that matches the filter.
+     * Find the first ChampionshipMatch that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomFindFirstArgs} args - Arguments to find a MultiplayerRoom
+     * @param {ChampionshipMatchFindFirstArgs} args - Arguments to find a ChampionshipMatch
      * @example
-     * // Get one MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.findFirst({
+     * // Get one ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends MultiplayerRoomFindFirstArgs>(args?: SelectSubset<T, MultiplayerRoomFindFirstArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ChampionshipMatchFindFirstArgs>(args?: SelectSubset<T, ChampionshipMatchFindFirstArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MultiplayerRoom that matches the filter or
+     * Find the first ChampionshipMatch that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomFindFirstOrThrowArgs} args - Arguments to find a MultiplayerRoom
+     * @param {ChampionshipMatchFindFirstOrThrowArgs} args - Arguments to find a ChampionshipMatch
      * @example
-     * // Get one MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.findFirstOrThrow({
+     * // Get one ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends MultiplayerRoomFindFirstOrThrowArgs>(args?: SelectSubset<T, MultiplayerRoomFindFirstOrThrowArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ChampionshipMatchFindFirstOrThrowArgs>(args?: SelectSubset<T, ChampionshipMatchFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more MultiplayerRooms that matches the filter.
+     * Find zero or more ChampionshipMatches that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ChampionshipMatchFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all MultiplayerRooms
-     * const multiplayerRooms = await prisma.multiplayerRoom.findMany()
+     * // Get all ChampionshipMatches
+     * const championshipMatches = await prisma.championshipMatch.findMany()
      * 
-     * // Get first 10 MultiplayerRooms
-     * const multiplayerRooms = await prisma.multiplayerRoom.findMany({ take: 10 })
+     * // Get first 10 ChampionshipMatches
+     * const championshipMatches = await prisma.championshipMatch.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const multiplayerRoomWithIdOnly = await prisma.multiplayerRoom.findMany({ select: { id: true } })
+     * const championshipMatchWithIdOnly = await prisma.championshipMatch.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends MultiplayerRoomFindManyArgs>(args?: SelectSubset<T, MultiplayerRoomFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ChampionshipMatchFindManyArgs>(args?: SelectSubset<T, ChampionshipMatchFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a MultiplayerRoom.
-     * @param {MultiplayerRoomCreateArgs} args - Arguments to create a MultiplayerRoom.
+     * Create a ChampionshipMatch.
+     * @param {ChampionshipMatchCreateArgs} args - Arguments to create a ChampionshipMatch.
      * @example
-     * // Create one MultiplayerRoom
-     * const MultiplayerRoom = await prisma.multiplayerRoom.create({
+     * // Create one ChampionshipMatch
+     * const ChampionshipMatch = await prisma.championshipMatch.create({
      *   data: {
-     *     // ... data to create a MultiplayerRoom
+     *     // ... data to create a ChampionshipMatch
      *   }
      * })
      * 
      */
-    create<T extends MultiplayerRoomCreateArgs>(args: SelectSubset<T, MultiplayerRoomCreateArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ChampionshipMatchCreateArgs>(args: SelectSubset<T, ChampionshipMatchCreateArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many MultiplayerRooms.
-     * @param {MultiplayerRoomCreateManyArgs} args - Arguments to create many MultiplayerRooms.
+     * Create many ChampionshipMatches.
+     * @param {ChampionshipMatchCreateManyArgs} args - Arguments to create many ChampionshipMatches.
      * @example
-     * // Create many MultiplayerRooms
-     * const multiplayerRoom = await prisma.multiplayerRoom.createMany({
+     * // Create many ChampionshipMatches
+     * const championshipMatch = await prisma.championshipMatch.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends MultiplayerRoomCreateManyArgs>(args?: SelectSubset<T, MultiplayerRoomCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ChampionshipMatchCreateManyArgs>(args?: SelectSubset<T, ChampionshipMatchCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many MultiplayerRooms and returns the data saved in the database.
-     * @param {MultiplayerRoomCreateManyAndReturnArgs} args - Arguments to create many MultiplayerRooms.
+     * Create many ChampionshipMatches and returns the data saved in the database.
+     * @param {ChampionshipMatchCreateManyAndReturnArgs} args - Arguments to create many ChampionshipMatches.
      * @example
-     * // Create many MultiplayerRooms
-     * const multiplayerRoom = await prisma.multiplayerRoom.createManyAndReturn({
+     * // Create many ChampionshipMatches
+     * const championshipMatch = await prisma.championshipMatch.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many MultiplayerRooms and only return the `id`
-     * const multiplayerRoomWithIdOnly = await prisma.multiplayerRoom.createManyAndReturn({
+     * // Create many ChampionshipMatches and only return the `id`
+     * const championshipMatchWithIdOnly = await prisma.championshipMatch.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -39953,28 +40203,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends MultiplayerRoomCreateManyAndReturnArgs>(args?: SelectSubset<T, MultiplayerRoomCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ChampionshipMatchCreateManyAndReturnArgs>(args?: SelectSubset<T, ChampionshipMatchCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a MultiplayerRoom.
-     * @param {MultiplayerRoomDeleteArgs} args - Arguments to delete one MultiplayerRoom.
+     * Delete a ChampionshipMatch.
+     * @param {ChampionshipMatchDeleteArgs} args - Arguments to delete one ChampionshipMatch.
      * @example
-     * // Delete one MultiplayerRoom
-     * const MultiplayerRoom = await prisma.multiplayerRoom.delete({
+     * // Delete one ChampionshipMatch
+     * const ChampionshipMatch = await prisma.championshipMatch.delete({
      *   where: {
-     *     // ... filter to delete one MultiplayerRoom
+     *     // ... filter to delete one ChampionshipMatch
      *   }
      * })
      * 
      */
-    delete<T extends MultiplayerRoomDeleteArgs>(args: SelectSubset<T, MultiplayerRoomDeleteArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ChampionshipMatchDeleteArgs>(args: SelectSubset<T, ChampionshipMatchDeleteArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one MultiplayerRoom.
-     * @param {MultiplayerRoomUpdateArgs} args - Arguments to update one MultiplayerRoom.
+     * Update one ChampionshipMatch.
+     * @param {ChampionshipMatchUpdateArgs} args - Arguments to update one ChampionshipMatch.
      * @example
-     * // Update one MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.update({
+     * // Update one ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -39984,30 +40234,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends MultiplayerRoomUpdateArgs>(args: SelectSubset<T, MultiplayerRoomUpdateArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ChampionshipMatchUpdateArgs>(args: SelectSubset<T, ChampionshipMatchUpdateArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more MultiplayerRooms.
-     * @param {MultiplayerRoomDeleteManyArgs} args - Arguments to filter MultiplayerRooms to delete.
+     * Delete zero or more ChampionshipMatches.
+     * @param {ChampionshipMatchDeleteManyArgs} args - Arguments to filter ChampionshipMatches to delete.
      * @example
-     * // Delete a few MultiplayerRooms
-     * const { count } = await prisma.multiplayerRoom.deleteMany({
+     * // Delete a few ChampionshipMatches
+     * const { count } = await prisma.championshipMatch.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends MultiplayerRoomDeleteManyArgs>(args?: SelectSubset<T, MultiplayerRoomDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ChampionshipMatchDeleteManyArgs>(args?: SelectSubset<T, ChampionshipMatchDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MultiplayerRooms.
+     * Update zero or more ChampionshipMatches.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ChampionshipMatchUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many MultiplayerRooms
-     * const multiplayerRoom = await prisma.multiplayerRoom.updateMany({
+     * // Update many ChampionshipMatches
+     * const championshipMatch = await prisma.championshipMatch.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -40017,14 +40267,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends MultiplayerRoomUpdateManyArgs>(args: SelectSubset<T, MultiplayerRoomUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ChampionshipMatchUpdateManyArgs>(args: SelectSubset<T, ChampionshipMatchUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MultiplayerRooms and returns the data updated in the database.
-     * @param {MultiplayerRoomUpdateManyAndReturnArgs} args - Arguments to update many MultiplayerRooms.
+     * Update zero or more ChampionshipMatches and returns the data updated in the database.
+     * @param {ChampionshipMatchUpdateManyAndReturnArgs} args - Arguments to update many ChampionshipMatches.
      * @example
-     * // Update many MultiplayerRooms
-     * const multiplayerRoom = await prisma.multiplayerRoom.updateManyAndReturn({
+     * // Update many ChampionshipMatches
+     * const championshipMatch = await prisma.championshipMatch.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -40033,8 +40283,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more MultiplayerRooms and only return the `id`
-     * const multiplayerRoomWithIdOnly = await prisma.multiplayerRoom.updateManyAndReturn({
+     * // Update zero or more ChampionshipMatches and only return the `id`
+     * const championshipMatchWithIdOnly = await prisma.championshipMatch.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -40047,56 +40297,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends MultiplayerRoomUpdateManyAndReturnArgs>(args: SelectSubset<T, MultiplayerRoomUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ChampionshipMatchUpdateManyAndReturnArgs>(args: SelectSubset<T, ChampionshipMatchUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one MultiplayerRoom.
-     * @param {MultiplayerRoomUpsertArgs} args - Arguments to update or create a MultiplayerRoom.
+     * Create or update one ChampionshipMatch.
+     * @param {ChampionshipMatchUpsertArgs} args - Arguments to update or create a ChampionshipMatch.
      * @example
-     * // Update or create a MultiplayerRoom
-     * const multiplayerRoom = await prisma.multiplayerRoom.upsert({
+     * // Update or create a ChampionshipMatch
+     * const championshipMatch = await prisma.championshipMatch.upsert({
      *   create: {
-     *     // ... data to create a MultiplayerRoom
+     *     // ... data to create a ChampionshipMatch
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the MultiplayerRoom we want to update
+     *     // ... the filter for the ChampionshipMatch we want to update
      *   }
      * })
      */
-    upsert<T extends MultiplayerRoomUpsertArgs>(args: SelectSubset<T, MultiplayerRoomUpsertArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ChampionshipMatchUpsertArgs>(args: SelectSubset<T, ChampionshipMatchUpsertArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of MultiplayerRooms.
+     * Count the number of ChampionshipMatches.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomCountArgs} args - Arguments to filter MultiplayerRooms to count.
+     * @param {ChampionshipMatchCountArgs} args - Arguments to filter ChampionshipMatches to count.
      * @example
-     * // Count the number of MultiplayerRooms
-     * const count = await prisma.multiplayerRoom.count({
+     * // Count the number of ChampionshipMatches
+     * const count = await prisma.championshipMatch.count({
      *   where: {
-     *     // ... the filter for the MultiplayerRooms we want to count
+     *     // ... the filter for the ChampionshipMatches we want to count
      *   }
      * })
     **/
-    count<T extends MultiplayerRoomCountArgs>(
-      args?: Subset<T, MultiplayerRoomCountArgs>,
+    count<T extends ChampionshipMatchCountArgs>(
+      args?: Subset<T, ChampionshipMatchCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], MultiplayerRoomCountAggregateOutputType>
+          : GetScalarType<T['select'], ChampionshipMatchCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a MultiplayerRoom.
+     * Allows you to perform aggregations operations on a ChampionshipMatch.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ChampionshipMatchAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -40116,13 +40366,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends MultiplayerRoomAggregateArgs>(args: Subset<T, MultiplayerRoomAggregateArgs>): Prisma.PrismaPromise<GetMultiplayerRoomAggregateType<T>>
+    aggregate<T extends ChampionshipMatchAggregateArgs>(args: Subset<T, ChampionshipMatchAggregateArgs>): Prisma.PrismaPromise<GetChampionshipMatchAggregateType<T>>
 
     /**
-     * Group by MultiplayerRoom.
+     * Group by ChampionshipMatch.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiplayerRoomGroupByArgs} args - Group by arguments.
+     * @param {ChampionshipMatchGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -40137,14 +40387,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends MultiplayerRoomGroupByArgs,
+      T extends ChampionshipMatchGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MultiplayerRoomGroupByArgs['orderBy'] }
-        : { orderBy?: MultiplayerRoomGroupByArgs['orderBy'] },
+        ? { orderBy: ChampionshipMatchGroupByArgs['orderBy'] }
+        : { orderBy?: ChampionshipMatchGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -40193,22 +40443,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, MultiplayerRoomGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMultiplayerRoomGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ChampionshipMatchGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChampionshipMatchGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the MultiplayerRoom model
+   * Fields of the ChampionshipMatch model
    */
-  readonly fields: MultiplayerRoomFieldRefs;
+  readonly fields: ChampionshipMatchFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for MultiplayerRoom.
+   * The delegate class that acts as a "Promise-like" for ChampionshipMatch.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__MultiplayerRoomClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ChampionshipMatchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    members<T extends MultiplayerRoom$membersArgs<ExtArgs> = {}>(args?: Subset<T, MultiplayerRoom$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    members<T extends ChampionshipMatch$membersArgs<ExtArgs> = {}>(args?: Subset<T, ChampionshipMatch$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -40235,913 +40485,914 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the MultiplayerRoom model
+   * Fields of the ChampionshipMatch model
    */
-  interface MultiplayerRoomFieldRefs {
-    readonly id: FieldRef<"MultiplayerRoom", 'String'>
-    readonly max: FieldRef<"MultiplayerRoom", 'Int'>
-    readonly gameplayId: FieldRef<"MultiplayerRoom", 'String'>
-    readonly botOwner: FieldRef<"MultiplayerRoom", 'String'>
-    readonly startedAt: FieldRef<"MultiplayerRoom", 'DateTime'>
-    readonly endedAt: FieldRef<"MultiplayerRoom", 'DateTime'>
-    readonly expiredAt: FieldRef<"MultiplayerRoom", 'DateTime'>
-    readonly isStarted: FieldRef<"MultiplayerRoom", 'Boolean'>
-    readonly isEnded: FieldRef<"MultiplayerRoom", 'Boolean'>
-    readonly createdAt: FieldRef<"MultiplayerRoom", 'DateTime'>
-    readonly updatedAt: FieldRef<"MultiplayerRoom", 'DateTime'>
-    readonly currentMember: FieldRef<"MultiplayerRoom", 'Int'>
+  interface ChampionshipMatchFieldRefs {
+    readonly id: FieldRef<"ChampionshipMatch", 'String'>
+    readonly max: FieldRef<"ChampionshipMatch", 'Int'>
+    readonly gameplayId: FieldRef<"ChampionshipMatch", 'String'>
+    readonly botOwner: FieldRef<"ChampionshipMatch", 'String'>
+    readonly startedAt: FieldRef<"ChampionshipMatch", 'DateTime'>
+    readonly endedAt: FieldRef<"ChampionshipMatch", 'DateTime'>
+    readonly expiredAt: FieldRef<"ChampionshipMatch", 'DateTime'>
+    readonly isStarted: FieldRef<"ChampionshipMatch", 'Boolean'>
+    readonly isEnded: FieldRef<"ChampionshipMatch", 'Boolean'>
+    readonly createdAt: FieldRef<"ChampionshipMatch", 'DateTime'>
+    readonly updatedAt: FieldRef<"ChampionshipMatch", 'DateTime'>
+    readonly currentMember: FieldRef<"ChampionshipMatch", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * MultiplayerRoom findUnique
+   * ChampionshipMatch findUnique
    */
-  export type MultiplayerRoomFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter, which MultiplayerRoom to fetch.
+     * Filter, which ChampionshipMatch to fetch.
      */
-    where: MultiplayerRoomWhereUniqueInput
+    where: ChampionshipMatchWhereUniqueInput
   }
 
   /**
-   * MultiplayerRoom findUniqueOrThrow
+   * ChampionshipMatch findUniqueOrThrow
    */
-  export type MultiplayerRoomFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter, which MultiplayerRoom to fetch.
+     * Filter, which ChampionshipMatch to fetch.
      */
-    where: MultiplayerRoomWhereUniqueInput
+    where: ChampionshipMatchWhereUniqueInput
   }
 
   /**
-   * MultiplayerRoom findFirst
+   * ChampionshipMatch findFirst
    */
-  export type MultiplayerRoomFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter, which MultiplayerRoom to fetch.
+     * Filter, which ChampionshipMatch to fetch.
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiplayerRooms to fetch.
+     * Determine the order of ChampionshipMatches to fetch.
      */
-    orderBy?: MultiplayerRoomOrderByWithRelationInput | MultiplayerRoomOrderByWithRelationInput[]
+    orderBy?: ChampionshipMatchOrderByWithRelationInput | ChampionshipMatchOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MultiplayerRooms.
+     * Sets the position for searching for ChampionshipMatches.
      */
-    cursor?: MultiplayerRoomWhereUniqueInput
+    cursor?: ChampionshipMatchWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiplayerRooms from the position of the cursor.
+     * Take `±n` ChampionshipMatches from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiplayerRooms.
+     * Skip the first `n` ChampionshipMatches.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MultiplayerRooms.
+     * Filter by unique combinations of ChampionshipMatches.
      */
-    distinct?: MultiplayerRoomScalarFieldEnum | MultiplayerRoomScalarFieldEnum[]
+    distinct?: ChampionshipMatchScalarFieldEnum | ChampionshipMatchScalarFieldEnum[]
   }
 
   /**
-   * MultiplayerRoom findFirstOrThrow
+   * ChampionshipMatch findFirstOrThrow
    */
-  export type MultiplayerRoomFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter, which MultiplayerRoom to fetch.
+     * Filter, which ChampionshipMatch to fetch.
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiplayerRooms to fetch.
+     * Determine the order of ChampionshipMatches to fetch.
      */
-    orderBy?: MultiplayerRoomOrderByWithRelationInput | MultiplayerRoomOrderByWithRelationInput[]
+    orderBy?: ChampionshipMatchOrderByWithRelationInput | ChampionshipMatchOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MultiplayerRooms.
+     * Sets the position for searching for ChampionshipMatches.
      */
-    cursor?: MultiplayerRoomWhereUniqueInput
+    cursor?: ChampionshipMatchWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiplayerRooms from the position of the cursor.
+     * Take `±n` ChampionshipMatches from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiplayerRooms.
+     * Skip the first `n` ChampionshipMatches.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MultiplayerRooms.
+     * Filter by unique combinations of ChampionshipMatches.
      */
-    distinct?: MultiplayerRoomScalarFieldEnum | MultiplayerRoomScalarFieldEnum[]
+    distinct?: ChampionshipMatchScalarFieldEnum | ChampionshipMatchScalarFieldEnum[]
   }
 
   /**
-   * MultiplayerRoom findMany
+   * ChampionshipMatch findMany
    */
-  export type MultiplayerRoomFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter, which MultiplayerRooms to fetch.
+     * Filter, which ChampionshipMatches to fetch.
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiplayerRooms to fetch.
+     * Determine the order of ChampionshipMatches to fetch.
      */
-    orderBy?: MultiplayerRoomOrderByWithRelationInput | MultiplayerRoomOrderByWithRelationInput[]
+    orderBy?: ChampionshipMatchOrderByWithRelationInput | ChampionshipMatchOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing MultiplayerRooms.
+     * Sets the position for listing ChampionshipMatches.
      */
-    cursor?: MultiplayerRoomWhereUniqueInput
+    cursor?: ChampionshipMatchWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiplayerRooms from the position of the cursor.
+     * Take `±n` ChampionshipMatches from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiplayerRooms.
+     * Skip the first `n` ChampionshipMatches.
      */
     skip?: number
-    distinct?: MultiplayerRoomScalarFieldEnum | MultiplayerRoomScalarFieldEnum[]
+    distinct?: ChampionshipMatchScalarFieldEnum | ChampionshipMatchScalarFieldEnum[]
   }
 
   /**
-   * MultiplayerRoom create
+   * ChampionshipMatch create
    */
-  export type MultiplayerRoomCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * The data needed to create a MultiplayerRoom.
+     * The data needed to create a ChampionshipMatch.
      */
-    data: XOR<MultiplayerRoomCreateInput, MultiplayerRoomUncheckedCreateInput>
+    data: XOR<ChampionshipMatchCreateInput, ChampionshipMatchUncheckedCreateInput>
   }
 
   /**
-   * MultiplayerRoom createMany
+   * ChampionshipMatch createMany
    */
-  export type MultiplayerRoomCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many MultiplayerRooms.
+     * The data used to create many ChampionshipMatches.
      */
-    data: MultiplayerRoomCreateManyInput | MultiplayerRoomCreateManyInput[]
+    data: ChampionshipMatchCreateManyInput | ChampionshipMatchCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * MultiplayerRoom createManyAndReturn
+   * ChampionshipMatch createManyAndReturn
    */
-  export type MultiplayerRoomCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ChampionshipMatchSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
-     * The data used to create many MultiplayerRooms.
+     * The data used to create many ChampionshipMatches.
      */
-    data: MultiplayerRoomCreateManyInput | MultiplayerRoomCreateManyInput[]
+    data: ChampionshipMatchCreateManyInput | ChampionshipMatchCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * MultiplayerRoom update
+   * ChampionshipMatch update
    */
-  export type MultiplayerRoomUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * The data needed to update a MultiplayerRoom.
+     * The data needed to update a ChampionshipMatch.
      */
-    data: XOR<MultiplayerRoomUpdateInput, MultiplayerRoomUncheckedUpdateInput>
+    data: XOR<ChampionshipMatchUpdateInput, ChampionshipMatchUncheckedUpdateInput>
     /**
-     * Choose, which MultiplayerRoom to update.
+     * Choose, which ChampionshipMatch to update.
      */
-    where: MultiplayerRoomWhereUniqueInput
+    where: ChampionshipMatchWhereUniqueInput
   }
 
   /**
-   * MultiplayerRoom updateMany
+   * ChampionshipMatch updateMany
    */
-  export type MultiplayerRoomUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update MultiplayerRooms.
+     * The data used to update ChampionshipMatches.
      */
-    data: XOR<MultiplayerRoomUpdateManyMutationInput, MultiplayerRoomUncheckedUpdateManyInput>
+    data: XOR<ChampionshipMatchUpdateManyMutationInput, ChampionshipMatchUncheckedUpdateManyInput>
     /**
-     * Filter which MultiplayerRooms to update
+     * Filter which ChampionshipMatches to update
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
-     * Limit how many MultiplayerRooms to update.
+     * Limit how many ChampionshipMatches to update.
      */
     limit?: number
   }
 
   /**
-   * MultiplayerRoom updateManyAndReturn
+   * ChampionshipMatch updateManyAndReturn
    */
-  export type MultiplayerRoomUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ChampionshipMatchSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
-     * The data used to update MultiplayerRooms.
+     * The data used to update ChampionshipMatches.
      */
-    data: XOR<MultiplayerRoomUpdateManyMutationInput, MultiplayerRoomUncheckedUpdateManyInput>
+    data: XOR<ChampionshipMatchUpdateManyMutationInput, ChampionshipMatchUncheckedUpdateManyInput>
     /**
-     * Filter which MultiplayerRooms to update
+     * Filter which ChampionshipMatches to update
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
-     * Limit how many MultiplayerRooms to update.
+     * Limit how many ChampionshipMatches to update.
      */
     limit?: number
   }
 
   /**
-   * MultiplayerRoom upsert
+   * ChampionshipMatch upsert
    */
-  export type MultiplayerRoomUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * The filter to search for the MultiplayerRoom to update in case it exists.
+     * The filter to search for the ChampionshipMatch to update in case it exists.
      */
-    where: MultiplayerRoomWhereUniqueInput
+    where: ChampionshipMatchWhereUniqueInput
     /**
-     * In case the MultiplayerRoom found by the `where` argument doesn't exist, create a new MultiplayerRoom with this data.
+     * In case the ChampionshipMatch found by the `where` argument doesn't exist, create a new ChampionshipMatch with this data.
      */
-    create: XOR<MultiplayerRoomCreateInput, MultiplayerRoomUncheckedCreateInput>
+    create: XOR<ChampionshipMatchCreateInput, ChampionshipMatchUncheckedCreateInput>
     /**
-     * In case the MultiplayerRoom was found with the provided `where` argument, update it with this data.
+     * In case the ChampionshipMatch was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<MultiplayerRoomUpdateInput, MultiplayerRoomUncheckedUpdateInput>
+    update: XOR<ChampionshipMatchUpdateInput, ChampionshipMatchUncheckedUpdateInput>
   }
 
   /**
-   * MultiplayerRoom delete
+   * ChampionshipMatch delete
    */
-  export type MultiplayerRoomDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
     /**
-     * Filter which MultiplayerRoom to delete.
+     * Filter which ChampionshipMatch to delete.
      */
-    where: MultiplayerRoomWhereUniqueInput
+    where: ChampionshipMatchWhereUniqueInput
   }
 
   /**
-   * MultiplayerRoom deleteMany
+   * ChampionshipMatch deleteMany
    */
-  export type MultiplayerRoomDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MultiplayerRooms to delete
+     * Filter which ChampionshipMatches to delete
      */
-    where?: MultiplayerRoomWhereInput
+    where?: ChampionshipMatchWhereInput
     /**
-     * Limit how many MultiplayerRooms to delete.
+     * Limit how many ChampionshipMatches to delete.
      */
     limit?: number
   }
 
   /**
-   * MultiplayerRoom.members
+   * ChampionshipMatch.members
    */
-  export type MultiplayerRoom$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatch$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
-    where?: MultiPlayerMemberWhereInput
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    include?: MatchMemberInclude<ExtArgs> | null
+    where?: MatchMemberWhereInput
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
+    cursor?: MatchMemberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
+    distinct?: MatchMemberScalarFieldEnum | MatchMemberScalarFieldEnum[]
   }
 
   /**
-   * MultiplayerRoom without action
+   * ChampionshipMatch without action
    */
-  export type MultiplayerRoomDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipMatchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiplayerRoom
+     * Select specific fields to fetch from the ChampionshipMatch
      */
-    select?: MultiplayerRoomSelect<ExtArgs> | null
+    select?: ChampionshipMatchSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiplayerRoom
+     * Omit specific fields from the ChampionshipMatch
      */
-    omit?: MultiplayerRoomOmit<ExtArgs> | null
+    omit?: ChampionshipMatchOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiplayerRoomInclude<ExtArgs> | null
+    include?: ChampionshipMatchInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model MultiPlayerMember
+   * Model ChampionshipHistory
    */
 
-  export type AggregateMultiPlayerMember = {
-    _count: MultiPlayerMemberCountAggregateOutputType | null
-    _avg: MultiPlayerMemberAvgAggregateOutputType | null
-    _sum: MultiPlayerMemberSumAggregateOutputType | null
-    _min: MultiPlayerMemberMinAggregateOutputType | null
-    _max: MultiPlayerMemberMaxAggregateOutputType | null
+  export type AggregateChampionshipHistory = {
+    _count: ChampionshipHistoryCountAggregateOutputType | null
+    _avg: ChampionshipHistoryAvgAggregateOutputType | null
+    _sum: ChampionshipHistorySumAggregateOutputType | null
+    _min: ChampionshipHistoryMinAggregateOutputType | null
+    _max: ChampionshipHistoryMaxAggregateOutputType | null
   }
 
-  export type MultiPlayerMemberAvgAggregateOutputType = {
-    point: number | null
-    bonusPoint: number | null
+  export type ChampionshipHistoryAvgAggregateOutputType = {
+    max: number | null
+    currentMember: number | null
   }
 
-  export type MultiPlayerMemberSumAggregateOutputType = {
-    point: number | null
-    bonusPoint: number | null
+  export type ChampionshipHistorySumAggregateOutputType = {
+    max: number | null
+    currentMember: number | null
   }
 
-  export type MultiPlayerMemberMinAggregateOutputType = {
+  export type ChampionshipHistoryMinAggregateOutputType = {
     id: string | null
-    roomId: string | null
-    userId: string | null
-    point: number | null
-    bonusPoint: number | null
-    isReady: boolean | null
-    isComplete: boolean | null
-    isBot: boolean | null
-    joinedAt: Date | null
-    finishedAt: Date | null
-    isDisconnect: boolean | null
+    max: number | null
+    gameplayId: string | null
+    botOwner: string | null
+    startedAt: Date | null
+    endedAt: Date | null
+    expiredAt: Date | null
+    isStarted: boolean | null
+    isEnded: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    currentMember: number | null
   }
 
-  export type MultiPlayerMemberMaxAggregateOutputType = {
+  export type ChampionshipHistoryMaxAggregateOutputType = {
     id: string | null
-    roomId: string | null
-    userId: string | null
-    point: number | null
-    bonusPoint: number | null
-    isReady: boolean | null
-    isComplete: boolean | null
-    isBot: boolean | null
-    joinedAt: Date | null
-    finishedAt: Date | null
-    isDisconnect: boolean | null
+    max: number | null
+    gameplayId: string | null
+    botOwner: string | null
+    startedAt: Date | null
+    endedAt: Date | null
+    expiredAt: Date | null
+    isStarted: boolean | null
+    isEnded: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    currentMember: number | null
   }
 
-  export type MultiPlayerMemberCountAggregateOutputType = {
+  export type ChampionshipHistoryCountAggregateOutputType = {
     id: number
-    roomId: number
-    userId: number
-    point: number
-    bonusPoint: number
-    isReady: number
-    isComplete: number
-    isBot: number
-    joinedAt: number
-    finishedAt: number
-    isDisconnect: number
+    max: number
+    gameplayId: number
+    botOwner: number
+    startedAt: number
+    endedAt: number
+    expiredAt: number
+    isStarted: number
+    isEnded: number
+    createdAt: number
+    updatedAt: number
+    currentMember: number
     _all: number
   }
 
 
-  export type MultiPlayerMemberAvgAggregateInputType = {
-    point?: true
-    bonusPoint?: true
+  export type ChampionshipHistoryAvgAggregateInputType = {
+    max?: true
+    currentMember?: true
   }
 
-  export type MultiPlayerMemberSumAggregateInputType = {
-    point?: true
-    bonusPoint?: true
+  export type ChampionshipHistorySumAggregateInputType = {
+    max?: true
+    currentMember?: true
   }
 
-  export type MultiPlayerMemberMinAggregateInputType = {
+  export type ChampionshipHistoryMinAggregateInputType = {
     id?: true
-    roomId?: true
-    userId?: true
-    point?: true
-    bonusPoint?: true
-    isReady?: true
-    isComplete?: true
-    isBot?: true
-    joinedAt?: true
-    finishedAt?: true
-    isDisconnect?: true
+    max?: true
+    gameplayId?: true
+    botOwner?: true
+    startedAt?: true
+    endedAt?: true
+    expiredAt?: true
+    isStarted?: true
+    isEnded?: true
+    createdAt?: true
+    updatedAt?: true
+    currentMember?: true
   }
 
-  export type MultiPlayerMemberMaxAggregateInputType = {
+  export type ChampionshipHistoryMaxAggregateInputType = {
     id?: true
-    roomId?: true
-    userId?: true
-    point?: true
-    bonusPoint?: true
-    isReady?: true
-    isComplete?: true
-    isBot?: true
-    joinedAt?: true
-    finishedAt?: true
-    isDisconnect?: true
+    max?: true
+    gameplayId?: true
+    botOwner?: true
+    startedAt?: true
+    endedAt?: true
+    expiredAt?: true
+    isStarted?: true
+    isEnded?: true
+    createdAt?: true
+    updatedAt?: true
+    currentMember?: true
   }
 
-  export type MultiPlayerMemberCountAggregateInputType = {
+  export type ChampionshipHistoryCountAggregateInputType = {
     id?: true
-    roomId?: true
-    userId?: true
-    point?: true
-    bonusPoint?: true
-    isReady?: true
-    isComplete?: true
-    isBot?: true
-    joinedAt?: true
-    finishedAt?: true
-    isDisconnect?: true
+    max?: true
+    gameplayId?: true
+    botOwner?: true
+    startedAt?: true
+    endedAt?: true
+    expiredAt?: true
+    isStarted?: true
+    isEnded?: true
+    createdAt?: true
+    updatedAt?: true
+    currentMember?: true
     _all?: true
   }
 
-  export type MultiPlayerMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChampionshipHistoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MultiPlayerMember to aggregate.
+     * Filter which ChampionshipHistory to aggregate.
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: ChampionshipHistoryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiPlayerMembers to fetch.
+     * Determine the order of ChampionshipHistories to fetch.
      */
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
+    orderBy?: ChampionshipHistoryOrderByWithRelationInput | ChampionshipHistoryOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    cursor?: ChampionshipHistoryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiPlayerMembers from the position of the cursor.
+     * Take `±n` ChampionshipHistories from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiPlayerMembers.
+     * Skip the first `n` ChampionshipHistories.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned MultiPlayerMembers
+     * Count returned ChampionshipHistories
     **/
-    _count?: true | MultiPlayerMemberCountAggregateInputType
+    _count?: true | ChampionshipHistoryCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: MultiPlayerMemberAvgAggregateInputType
+    _avg?: ChampionshipHistoryAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: MultiPlayerMemberSumAggregateInputType
+    _sum?: ChampionshipHistorySumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: MultiPlayerMemberMinAggregateInputType
+    _min?: ChampionshipHistoryMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: MultiPlayerMemberMaxAggregateInputType
+    _max?: ChampionshipHistoryMaxAggregateInputType
   }
 
-  export type GetMultiPlayerMemberAggregateType<T extends MultiPlayerMemberAggregateArgs> = {
-        [P in keyof T & keyof AggregateMultiPlayerMember]: P extends '_count' | 'count'
+  export type GetChampionshipHistoryAggregateType<T extends ChampionshipHistoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateChampionshipHistory]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateMultiPlayerMember[P]>
-      : GetScalarType<T[P], AggregateMultiPlayerMember[P]>
+        : GetScalarType<T[P], AggregateChampionshipHistory[P]>
+      : GetScalarType<T[P], AggregateChampionshipHistory[P]>
   }
 
 
 
 
-  export type MultiPlayerMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MultiPlayerMemberWhereInput
-    orderBy?: MultiPlayerMemberOrderByWithAggregationInput | MultiPlayerMemberOrderByWithAggregationInput[]
-    by: MultiPlayerMemberScalarFieldEnum[] | MultiPlayerMemberScalarFieldEnum
-    having?: MultiPlayerMemberScalarWhereWithAggregatesInput
+  export type ChampionshipHistoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChampionshipHistoryWhereInput
+    orderBy?: ChampionshipHistoryOrderByWithAggregationInput | ChampionshipHistoryOrderByWithAggregationInput[]
+    by: ChampionshipHistoryScalarFieldEnum[] | ChampionshipHistoryScalarFieldEnum
+    having?: ChampionshipHistoryScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: MultiPlayerMemberCountAggregateInputType | true
-    _avg?: MultiPlayerMemberAvgAggregateInputType
-    _sum?: MultiPlayerMemberSumAggregateInputType
-    _min?: MultiPlayerMemberMinAggregateInputType
-    _max?: MultiPlayerMemberMaxAggregateInputType
+    _count?: ChampionshipHistoryCountAggregateInputType | true
+    _avg?: ChampionshipHistoryAvgAggregateInputType
+    _sum?: ChampionshipHistorySumAggregateInputType
+    _min?: ChampionshipHistoryMinAggregateInputType
+    _max?: ChampionshipHistoryMaxAggregateInputType
   }
 
-  export type MultiPlayerMemberGroupByOutputType = {
+  export type ChampionshipHistoryGroupByOutputType = {
     id: string
-    roomId: string
-    userId: string
-    point: number
-    bonusPoint: number
-    isReady: boolean
-    isComplete: boolean
-    isBot: boolean
-    joinedAt: Date
-    finishedAt: Date | null
-    isDisconnect: boolean
-    _count: MultiPlayerMemberCountAggregateOutputType | null
-    _avg: MultiPlayerMemberAvgAggregateOutputType | null
-    _sum: MultiPlayerMemberSumAggregateOutputType | null
-    _min: MultiPlayerMemberMinAggregateOutputType | null
-    _max: MultiPlayerMemberMaxAggregateOutputType | null
+    max: number
+    gameplayId: string
+    botOwner: string
+    startedAt: Date | null
+    endedAt: Date | null
+    expiredAt: Date | null
+    isStarted: boolean
+    isEnded: boolean
+    createdAt: Date
+    updatedAt: Date
+    currentMember: number
+    _count: ChampionshipHistoryCountAggregateOutputType | null
+    _avg: ChampionshipHistoryAvgAggregateOutputType | null
+    _sum: ChampionshipHistorySumAggregateOutputType | null
+    _min: ChampionshipHistoryMinAggregateOutputType | null
+    _max: ChampionshipHistoryMaxAggregateOutputType | null
   }
 
-  type GetMultiPlayerMemberGroupByPayload<T extends MultiPlayerMemberGroupByArgs> = Prisma.PrismaPromise<
+  type GetChampionshipHistoryGroupByPayload<T extends ChampionshipHistoryGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<MultiPlayerMemberGroupByOutputType, T['by']> &
+      PickEnumerable<ChampionshipHistoryGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof MultiPlayerMemberGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ChampionshipHistoryGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], MultiPlayerMemberGroupByOutputType[P]>
-            : GetScalarType<T[P], MultiPlayerMemberGroupByOutputType[P]>
+              : GetScalarType<T[P], ChampionshipHistoryGroupByOutputType[P]>
+            : GetScalarType<T[P], ChampionshipHistoryGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type MultiPlayerMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    roomId?: boolean
-    userId?: boolean
-    point?: boolean
-    bonusPoint?: boolean
-    isReady?: boolean
-    isComplete?: boolean
-    isBot?: boolean
-    joinedAt?: boolean
-    finishedAt?: boolean
-    isDisconnect?: boolean
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["multiPlayerMember"]>
+    max?: boolean
+    gameplayId?: boolean
+    botOwner?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    expiredAt?: boolean
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    currentMember?: boolean
+    members?: boolean | ChampionshipHistory$membersArgs<ExtArgs>
+    _count?: boolean | ChampionshipHistoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["championshipHistory"]>
 
-  export type MultiPlayerMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    roomId?: boolean
-    userId?: boolean
-    point?: boolean
-    bonusPoint?: boolean
-    isReady?: boolean
-    isComplete?: boolean
-    isBot?: boolean
-    joinedAt?: boolean
-    finishedAt?: boolean
-    isDisconnect?: boolean
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["multiPlayerMember"]>
+    max?: boolean
+    gameplayId?: boolean
+    botOwner?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    expiredAt?: boolean
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    currentMember?: boolean
+  }, ExtArgs["result"]["championshipHistory"]>
 
-  export type MultiPlayerMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChampionshipHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    roomId?: boolean
-    userId?: boolean
-    point?: boolean
-    bonusPoint?: boolean
-    isReady?: boolean
-    isComplete?: boolean
-    isBot?: boolean
-    joinedAt?: boolean
-    finishedAt?: boolean
-    isDisconnect?: boolean
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["multiPlayerMember"]>
+    max?: boolean
+    gameplayId?: boolean
+    botOwner?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    expiredAt?: boolean
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    currentMember?: boolean
+  }, ExtArgs["result"]["championshipHistory"]>
 
-  export type MultiPlayerMemberSelectScalar = {
+  export type ChampionshipHistorySelectScalar = {
     id?: boolean
-    roomId?: boolean
-    userId?: boolean
-    point?: boolean
-    bonusPoint?: boolean
-    isReady?: boolean
-    isComplete?: boolean
-    isBot?: boolean
-    joinedAt?: boolean
-    finishedAt?: boolean
-    isDisconnect?: boolean
+    max?: boolean
+    gameplayId?: boolean
+    botOwner?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    expiredAt?: boolean
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    currentMember?: boolean
   }
 
-  export type MultiPlayerMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "point" | "bonusPoint" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["multiPlayerMember"]>
-  export type MultiPlayerMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type ChampionshipHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipHistory"]>
+  export type ChampionshipHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | ChampionshipHistory$membersArgs<ExtArgs>
+    _count?: boolean | ChampionshipHistoryCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type MultiPlayerMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type MultiPlayerMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    room?: boolean | MultiplayerRoomDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
+  export type ChampionshipHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ChampionshipHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $MultiPlayerMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "MultiPlayerMember"
+  export type $ChampionshipHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChampionshipHistory"
     objects: {
-      room: Prisma.$MultiplayerRoomPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
+      members: Prisma.$MatchHistoryMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      roomId: string
-      userId: string
-      point: number
-      bonusPoint: number
-      isReady: boolean
-      isComplete: boolean
-      isBot: boolean
-      joinedAt: Date
-      finishedAt: Date | null
-      isDisconnect: boolean
-    }, ExtArgs["result"]["multiPlayerMember"]>
+      max: number
+      gameplayId: string
+      botOwner: string
+      startedAt: Date | null
+      endedAt: Date | null
+      expiredAt: Date | null
+      isStarted: boolean
+      isEnded: boolean
+      createdAt: Date
+      updatedAt: Date
+      currentMember: number
+    }, ExtArgs["result"]["championshipHistory"]>
     composites: {}
   }
 
-  type MultiPlayerMemberGetPayload<S extends boolean | null | undefined | MultiPlayerMemberDefaultArgs> = $Result.GetResult<Prisma.$MultiPlayerMemberPayload, S>
+  type ChampionshipHistoryGetPayload<S extends boolean | null | undefined | ChampionshipHistoryDefaultArgs> = $Result.GetResult<Prisma.$ChampionshipHistoryPayload, S>
 
-  type MultiPlayerMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MultiPlayerMemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MultiPlayerMemberCountAggregateInputType | true
+  type ChampionshipHistoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChampionshipHistoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChampionshipHistoryCountAggregateInputType | true
     }
 
-  export interface MultiPlayerMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MultiPlayerMember'], meta: { name: 'MultiPlayerMember' } }
+  export interface ChampionshipHistoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChampionshipHistory'], meta: { name: 'ChampionshipHistory' } }
     /**
-     * Find zero or one MultiPlayerMember that matches the filter.
-     * @param {MultiPlayerMemberFindUniqueArgs} args - Arguments to find a MultiPlayerMember
+     * Find zero or one ChampionshipHistory that matches the filter.
+     * @param {ChampionshipHistoryFindUniqueArgs} args - Arguments to find a ChampionshipHistory
      * @example
-     * // Get one MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.findUnique({
+     * // Get one ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends MultiPlayerMemberFindUniqueArgs>(args: SelectSubset<T, MultiPlayerMemberFindUniqueArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ChampionshipHistoryFindUniqueArgs>(args: SelectSubset<T, ChampionshipHistoryFindUniqueArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one MultiPlayerMember that matches the filter or throw an error with `error.code='P2025'`
+     * Find one ChampionshipHistory that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {MultiPlayerMemberFindUniqueOrThrowArgs} args - Arguments to find a MultiPlayerMember
+     * @param {ChampionshipHistoryFindUniqueOrThrowArgs} args - Arguments to find a ChampionshipHistory
      * @example
-     * // Get one MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.findUniqueOrThrow({
+     * // Get one ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends MultiPlayerMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, MultiPlayerMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ChampionshipHistoryFindUniqueOrThrowArgs>(args: SelectSubset<T, ChampionshipHistoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MultiPlayerMember that matches the filter.
+     * Find the first ChampionshipHistory that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberFindFirstArgs} args - Arguments to find a MultiPlayerMember
+     * @param {ChampionshipHistoryFindFirstArgs} args - Arguments to find a ChampionshipHistory
      * @example
-     * // Get one MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.findFirst({
+     * // Get one ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends MultiPlayerMemberFindFirstArgs>(args?: SelectSubset<T, MultiPlayerMemberFindFirstArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ChampionshipHistoryFindFirstArgs>(args?: SelectSubset<T, ChampionshipHistoryFindFirstArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MultiPlayerMember that matches the filter or
+     * Find the first ChampionshipHistory that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberFindFirstOrThrowArgs} args - Arguments to find a MultiPlayerMember
+     * @param {ChampionshipHistoryFindFirstOrThrowArgs} args - Arguments to find a ChampionshipHistory
      * @example
-     * // Get one MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.findFirstOrThrow({
+     * // Get one ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends MultiPlayerMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, MultiPlayerMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ChampionshipHistoryFindFirstOrThrowArgs>(args?: SelectSubset<T, ChampionshipHistoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more MultiPlayerMembers that matches the filter.
+     * Find zero or more ChampionshipHistories that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ChampionshipHistoryFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all MultiPlayerMembers
-     * const multiPlayerMembers = await prisma.multiPlayerMember.findMany()
+     * // Get all ChampionshipHistories
+     * const championshipHistories = await prisma.championshipHistory.findMany()
      * 
-     * // Get first 10 MultiPlayerMembers
-     * const multiPlayerMembers = await prisma.multiPlayerMember.findMany({ take: 10 })
+     * // Get first 10 ChampionshipHistories
+     * const championshipHistories = await prisma.championshipHistory.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const multiPlayerMemberWithIdOnly = await prisma.multiPlayerMember.findMany({ select: { id: true } })
+     * const championshipHistoryWithIdOnly = await prisma.championshipHistory.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends MultiPlayerMemberFindManyArgs>(args?: SelectSubset<T, MultiPlayerMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ChampionshipHistoryFindManyArgs>(args?: SelectSubset<T, ChampionshipHistoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a MultiPlayerMember.
-     * @param {MultiPlayerMemberCreateArgs} args - Arguments to create a MultiPlayerMember.
+     * Create a ChampionshipHistory.
+     * @param {ChampionshipHistoryCreateArgs} args - Arguments to create a ChampionshipHistory.
      * @example
-     * // Create one MultiPlayerMember
-     * const MultiPlayerMember = await prisma.multiPlayerMember.create({
+     * // Create one ChampionshipHistory
+     * const ChampionshipHistory = await prisma.championshipHistory.create({
      *   data: {
-     *     // ... data to create a MultiPlayerMember
+     *     // ... data to create a ChampionshipHistory
      *   }
      * })
      * 
      */
-    create<T extends MultiPlayerMemberCreateArgs>(args: SelectSubset<T, MultiPlayerMemberCreateArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ChampionshipHistoryCreateArgs>(args: SelectSubset<T, ChampionshipHistoryCreateArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many MultiPlayerMembers.
-     * @param {MultiPlayerMemberCreateManyArgs} args - Arguments to create many MultiPlayerMembers.
+     * Create many ChampionshipHistories.
+     * @param {ChampionshipHistoryCreateManyArgs} args - Arguments to create many ChampionshipHistories.
      * @example
-     * // Create many MultiPlayerMembers
-     * const multiPlayerMember = await prisma.multiPlayerMember.createMany({
+     * // Create many ChampionshipHistories
+     * const championshipHistory = await prisma.championshipHistory.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends MultiPlayerMemberCreateManyArgs>(args?: SelectSubset<T, MultiPlayerMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ChampionshipHistoryCreateManyArgs>(args?: SelectSubset<T, ChampionshipHistoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many MultiPlayerMembers and returns the data saved in the database.
-     * @param {MultiPlayerMemberCreateManyAndReturnArgs} args - Arguments to create many MultiPlayerMembers.
+     * Create many ChampionshipHistories and returns the data saved in the database.
+     * @param {ChampionshipHistoryCreateManyAndReturnArgs} args - Arguments to create many ChampionshipHistories.
      * @example
-     * // Create many MultiPlayerMembers
-     * const multiPlayerMember = await prisma.multiPlayerMember.createManyAndReturn({
+     * // Create many ChampionshipHistories
+     * const championshipHistory = await prisma.championshipHistory.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many MultiPlayerMembers and only return the `id`
-     * const multiPlayerMemberWithIdOnly = await prisma.multiPlayerMember.createManyAndReturn({
+     * // Create many ChampionshipHistories and only return the `id`
+     * const championshipHistoryWithIdOnly = await prisma.championshipHistory.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -41151,28 +41402,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends MultiPlayerMemberCreateManyAndReturnArgs>(args?: SelectSubset<T, MultiPlayerMemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ChampionshipHistoryCreateManyAndReturnArgs>(args?: SelectSubset<T, ChampionshipHistoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a MultiPlayerMember.
-     * @param {MultiPlayerMemberDeleteArgs} args - Arguments to delete one MultiPlayerMember.
+     * Delete a ChampionshipHistory.
+     * @param {ChampionshipHistoryDeleteArgs} args - Arguments to delete one ChampionshipHistory.
      * @example
-     * // Delete one MultiPlayerMember
-     * const MultiPlayerMember = await prisma.multiPlayerMember.delete({
+     * // Delete one ChampionshipHistory
+     * const ChampionshipHistory = await prisma.championshipHistory.delete({
      *   where: {
-     *     // ... filter to delete one MultiPlayerMember
+     *     // ... filter to delete one ChampionshipHistory
      *   }
      * })
      * 
      */
-    delete<T extends MultiPlayerMemberDeleteArgs>(args: SelectSubset<T, MultiPlayerMemberDeleteArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ChampionshipHistoryDeleteArgs>(args: SelectSubset<T, ChampionshipHistoryDeleteArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one MultiPlayerMember.
-     * @param {MultiPlayerMemberUpdateArgs} args - Arguments to update one MultiPlayerMember.
+     * Update one ChampionshipHistory.
+     * @param {ChampionshipHistoryUpdateArgs} args - Arguments to update one ChampionshipHistory.
      * @example
-     * // Update one MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.update({
+     * // Update one ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -41182,30 +41433,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends MultiPlayerMemberUpdateArgs>(args: SelectSubset<T, MultiPlayerMemberUpdateArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ChampionshipHistoryUpdateArgs>(args: SelectSubset<T, ChampionshipHistoryUpdateArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more MultiPlayerMembers.
-     * @param {MultiPlayerMemberDeleteManyArgs} args - Arguments to filter MultiPlayerMembers to delete.
+     * Delete zero or more ChampionshipHistories.
+     * @param {ChampionshipHistoryDeleteManyArgs} args - Arguments to filter ChampionshipHistories to delete.
      * @example
-     * // Delete a few MultiPlayerMembers
-     * const { count } = await prisma.multiPlayerMember.deleteMany({
+     * // Delete a few ChampionshipHistories
+     * const { count } = await prisma.championshipHistory.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends MultiPlayerMemberDeleteManyArgs>(args?: SelectSubset<T, MultiPlayerMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ChampionshipHistoryDeleteManyArgs>(args?: SelectSubset<T, ChampionshipHistoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MultiPlayerMembers.
+     * Update zero or more ChampionshipHistories.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ChampionshipHistoryUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many MultiPlayerMembers
-     * const multiPlayerMember = await prisma.multiPlayerMember.updateMany({
+     * // Update many ChampionshipHistories
+     * const championshipHistory = await prisma.championshipHistory.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -41215,14 +41466,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends MultiPlayerMemberUpdateManyArgs>(args: SelectSubset<T, MultiPlayerMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ChampionshipHistoryUpdateManyArgs>(args: SelectSubset<T, ChampionshipHistoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MultiPlayerMembers and returns the data updated in the database.
-     * @param {MultiPlayerMemberUpdateManyAndReturnArgs} args - Arguments to update many MultiPlayerMembers.
+     * Update zero or more ChampionshipHistories and returns the data updated in the database.
+     * @param {ChampionshipHistoryUpdateManyAndReturnArgs} args - Arguments to update many ChampionshipHistories.
      * @example
-     * // Update many MultiPlayerMembers
-     * const multiPlayerMember = await prisma.multiPlayerMember.updateManyAndReturn({
+     * // Update many ChampionshipHistories
+     * const championshipHistory = await prisma.championshipHistory.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -41231,8 +41482,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more MultiPlayerMembers and only return the `id`
-     * const multiPlayerMemberWithIdOnly = await prisma.multiPlayerMember.updateManyAndReturn({
+     * // Update zero or more ChampionshipHistories and only return the `id`
+     * const championshipHistoryWithIdOnly = await prisma.championshipHistory.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -41245,56 +41496,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends MultiPlayerMemberUpdateManyAndReturnArgs>(args: SelectSubset<T, MultiPlayerMemberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ChampionshipHistoryUpdateManyAndReturnArgs>(args: SelectSubset<T, ChampionshipHistoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one MultiPlayerMember.
-     * @param {MultiPlayerMemberUpsertArgs} args - Arguments to update or create a MultiPlayerMember.
+     * Create or update one ChampionshipHistory.
+     * @param {ChampionshipHistoryUpsertArgs} args - Arguments to update or create a ChampionshipHistory.
      * @example
-     * // Update or create a MultiPlayerMember
-     * const multiPlayerMember = await prisma.multiPlayerMember.upsert({
+     * // Update or create a ChampionshipHistory
+     * const championshipHistory = await prisma.championshipHistory.upsert({
      *   create: {
-     *     // ... data to create a MultiPlayerMember
+     *     // ... data to create a ChampionshipHistory
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the MultiPlayerMember we want to update
+     *     // ... the filter for the ChampionshipHistory we want to update
      *   }
      * })
      */
-    upsert<T extends MultiPlayerMemberUpsertArgs>(args: SelectSubset<T, MultiPlayerMemberUpsertArgs<ExtArgs>>): Prisma__MultiPlayerMemberClient<$Result.GetResult<Prisma.$MultiPlayerMemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ChampionshipHistoryUpsertArgs>(args: SelectSubset<T, ChampionshipHistoryUpsertArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of MultiPlayerMembers.
+     * Count the number of ChampionshipHistories.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberCountArgs} args - Arguments to filter MultiPlayerMembers to count.
+     * @param {ChampionshipHistoryCountArgs} args - Arguments to filter ChampionshipHistories to count.
      * @example
-     * // Count the number of MultiPlayerMembers
-     * const count = await prisma.multiPlayerMember.count({
+     * // Count the number of ChampionshipHistories
+     * const count = await prisma.championshipHistory.count({
      *   where: {
-     *     // ... the filter for the MultiPlayerMembers we want to count
+     *     // ... the filter for the ChampionshipHistories we want to count
      *   }
      * })
     **/
-    count<T extends MultiPlayerMemberCountArgs>(
-      args?: Subset<T, MultiPlayerMemberCountArgs>,
+    count<T extends ChampionshipHistoryCountArgs>(
+      args?: Subset<T, ChampionshipHistoryCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], MultiPlayerMemberCountAggregateOutputType>
+          : GetScalarType<T['select'], ChampionshipHistoryCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a MultiPlayerMember.
+     * Allows you to perform aggregations operations on a ChampionshipHistory.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ChampionshipHistoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -41314,13 +41565,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends MultiPlayerMemberAggregateArgs>(args: Subset<T, MultiPlayerMemberAggregateArgs>): Prisma.PrismaPromise<GetMultiPlayerMemberAggregateType<T>>
+    aggregate<T extends ChampionshipHistoryAggregateArgs>(args: Subset<T, ChampionshipHistoryAggregateArgs>): Prisma.PrismaPromise<GetChampionshipHistoryAggregateType<T>>
 
     /**
-     * Group by MultiPlayerMember.
+     * Group by ChampionshipHistory.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MultiPlayerMemberGroupByArgs} args - Group by arguments.
+     * @param {ChampionshipHistoryGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -41335,14 +41586,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends MultiPlayerMemberGroupByArgs,
+      T extends ChampionshipHistoryGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MultiPlayerMemberGroupByArgs['orderBy'] }
-        : { orderBy?: MultiPlayerMemberGroupByArgs['orderBy'] },
+        ? { orderBy: ChampionshipHistoryGroupByArgs['orderBy'] }
+        : { orderBy?: ChampionshipHistoryGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -41391,22 +41642,1220 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, MultiPlayerMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMultiPlayerMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ChampionshipHistoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChampionshipHistoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the MultiPlayerMember model
+   * Fields of the ChampionshipHistory model
    */
-  readonly fields: MultiPlayerMemberFieldRefs;
+  readonly fields: ChampionshipHistoryFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for MultiPlayerMember.
+   * The delegate class that acts as a "Promise-like" for ChampionshipHistory.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__MultiPlayerMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ChampionshipHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    room<T extends MultiplayerRoomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MultiplayerRoomDefaultArgs<ExtArgs>>): Prisma__MultiplayerRoomClient<$Result.GetResult<Prisma.$MultiplayerRoomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    members<T extends ChampionshipHistory$membersArgs<ExtArgs> = {}>(args?: Subset<T, ChampionshipHistory$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ChampionshipHistory model
+   */
+  interface ChampionshipHistoryFieldRefs {
+    readonly id: FieldRef<"ChampionshipHistory", 'String'>
+    readonly max: FieldRef<"ChampionshipHistory", 'Int'>
+    readonly gameplayId: FieldRef<"ChampionshipHistory", 'String'>
+    readonly botOwner: FieldRef<"ChampionshipHistory", 'String'>
+    readonly startedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
+    readonly endedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
+    readonly expiredAt: FieldRef<"ChampionshipHistory", 'DateTime'>
+    readonly isStarted: FieldRef<"ChampionshipHistory", 'Boolean'>
+    readonly isEnded: FieldRef<"ChampionshipHistory", 'Boolean'>
+    readonly createdAt: FieldRef<"ChampionshipHistory", 'DateTime'>
+    readonly updatedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
+    readonly currentMember: FieldRef<"ChampionshipHistory", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ChampionshipHistory findUnique
+   */
+  export type ChampionshipHistoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ChampionshipHistory to fetch.
+     */
+    where: ChampionshipHistoryWhereUniqueInput
+  }
+
+  /**
+   * ChampionshipHistory findUniqueOrThrow
+   */
+  export type ChampionshipHistoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ChampionshipHistory to fetch.
+     */
+    where: ChampionshipHistoryWhereUniqueInput
+  }
+
+  /**
+   * ChampionshipHistory findFirst
+   */
+  export type ChampionshipHistoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ChampionshipHistory to fetch.
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChampionshipHistories to fetch.
+     */
+    orderBy?: ChampionshipHistoryOrderByWithRelationInput | ChampionshipHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChampionshipHistories.
+     */
+    cursor?: ChampionshipHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChampionshipHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChampionshipHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChampionshipHistories.
+     */
+    distinct?: ChampionshipHistoryScalarFieldEnum | ChampionshipHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * ChampionshipHistory findFirstOrThrow
+   */
+  export type ChampionshipHistoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ChampionshipHistory to fetch.
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChampionshipHistories to fetch.
+     */
+    orderBy?: ChampionshipHistoryOrderByWithRelationInput | ChampionshipHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChampionshipHistories.
+     */
+    cursor?: ChampionshipHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChampionshipHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChampionshipHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChampionshipHistories.
+     */
+    distinct?: ChampionshipHistoryScalarFieldEnum | ChampionshipHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * ChampionshipHistory findMany
+   */
+  export type ChampionshipHistoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ChampionshipHistories to fetch.
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChampionshipHistories to fetch.
+     */
+    orderBy?: ChampionshipHistoryOrderByWithRelationInput | ChampionshipHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ChampionshipHistories.
+     */
+    cursor?: ChampionshipHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChampionshipHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChampionshipHistories.
+     */
+    skip?: number
+    distinct?: ChampionshipHistoryScalarFieldEnum | ChampionshipHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * ChampionshipHistory create
+   */
+  export type ChampionshipHistoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ChampionshipHistory.
+     */
+    data: XOR<ChampionshipHistoryCreateInput, ChampionshipHistoryUncheckedCreateInput>
+  }
+
+  /**
+   * ChampionshipHistory createMany
+   */
+  export type ChampionshipHistoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ChampionshipHistories.
+     */
+    data: ChampionshipHistoryCreateManyInput | ChampionshipHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ChampionshipHistory createManyAndReturn
+   */
+  export type ChampionshipHistoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many ChampionshipHistories.
+     */
+    data: ChampionshipHistoryCreateManyInput | ChampionshipHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ChampionshipHistory update
+   */
+  export type ChampionshipHistoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ChampionshipHistory.
+     */
+    data: XOR<ChampionshipHistoryUpdateInput, ChampionshipHistoryUncheckedUpdateInput>
+    /**
+     * Choose, which ChampionshipHistory to update.
+     */
+    where: ChampionshipHistoryWhereUniqueInput
+  }
+
+  /**
+   * ChampionshipHistory updateMany
+   */
+  export type ChampionshipHistoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ChampionshipHistories.
+     */
+    data: XOR<ChampionshipHistoryUpdateManyMutationInput, ChampionshipHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ChampionshipHistories to update
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * Limit how many ChampionshipHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChampionshipHistory updateManyAndReturn
+   */
+  export type ChampionshipHistoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to update ChampionshipHistories.
+     */
+    data: XOR<ChampionshipHistoryUpdateManyMutationInput, ChampionshipHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ChampionshipHistories to update
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * Limit how many ChampionshipHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChampionshipHistory upsert
+   */
+  export type ChampionshipHistoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ChampionshipHistory to update in case it exists.
+     */
+    where: ChampionshipHistoryWhereUniqueInput
+    /**
+     * In case the ChampionshipHistory found by the `where` argument doesn't exist, create a new ChampionshipHistory with this data.
+     */
+    create: XOR<ChampionshipHistoryCreateInput, ChampionshipHistoryUncheckedCreateInput>
+    /**
+     * In case the ChampionshipHistory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ChampionshipHistoryUpdateInput, ChampionshipHistoryUncheckedUpdateInput>
+  }
+
+  /**
+   * ChampionshipHistory delete
+   */
+  export type ChampionshipHistoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+    /**
+     * Filter which ChampionshipHistory to delete.
+     */
+    where: ChampionshipHistoryWhereUniqueInput
+  }
+
+  /**
+   * ChampionshipHistory deleteMany
+   */
+  export type ChampionshipHistoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChampionshipHistories to delete
+     */
+    where?: ChampionshipHistoryWhereInput
+    /**
+     * Limit how many ChampionshipHistories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChampionshipHistory.members
+   */
+  export type ChampionshipHistory$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    where?: MatchHistoryMemberWhereInput
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MatchHistoryMemberScalarFieldEnum | MatchHistoryMemberScalarFieldEnum[]
+  }
+
+  /**
+   * ChampionshipHistory without action
+   */
+  export type ChampionshipHistoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChampionshipHistory
+     */
+    select?: ChampionshipHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChampionshipHistory
+     */
+    omit?: ChampionshipHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChampionshipHistoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MatchMember
+   */
+
+  export type AggregateMatchMember = {
+    _count: MatchMemberCountAggregateOutputType | null
+    _avg: MatchMemberAvgAggregateOutputType | null
+    _sum: MatchMemberSumAggregateOutputType | null
+    _min: MatchMemberMinAggregateOutputType | null
+    _max: MatchMemberMaxAggregateOutputType | null
+  }
+
+  export type MatchMemberAvgAggregateOutputType = {
+    point: number | null
+    bonusPoint: number | null
+  }
+
+  export type MatchMemberSumAggregateOutputType = {
+    point: number | null
+    bonusPoint: number | null
+  }
+
+  export type MatchMemberMinAggregateOutputType = {
+    id: string | null
+    roomId: string | null
+    userId: string | null
+    point: number | null
+    bonusPoint: number | null
+    isReady: boolean | null
+    isComplete: boolean | null
+    isBot: boolean | null
+    joinedAt: Date | null
+    finishedAt: Date | null
+    isDisconnect: boolean | null
+  }
+
+  export type MatchMemberMaxAggregateOutputType = {
+    id: string | null
+    roomId: string | null
+    userId: string | null
+    point: number | null
+    bonusPoint: number | null
+    isReady: boolean | null
+    isComplete: boolean | null
+    isBot: boolean | null
+    joinedAt: Date | null
+    finishedAt: Date | null
+    isDisconnect: boolean | null
+  }
+
+  export type MatchMemberCountAggregateOutputType = {
+    id: number
+    roomId: number
+    userId: number
+    point: number
+    bonusPoint: number
+    isReady: number
+    isComplete: number
+    isBot: number
+    joinedAt: number
+    finishedAt: number
+    isDisconnect: number
+    _all: number
+  }
+
+
+  export type MatchMemberAvgAggregateInputType = {
+    point?: true
+    bonusPoint?: true
+  }
+
+  export type MatchMemberSumAggregateInputType = {
+    point?: true
+    bonusPoint?: true
+  }
+
+  export type MatchMemberMinAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+  }
+
+  export type MatchMemberMaxAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+  }
+
+  export type MatchMemberCountAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+    _all?: true
+  }
+
+  export type MatchMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchMember to aggregate.
+     */
+    where?: MatchMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchMembers to fetch.
+     */
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MatchMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MatchMembers
+    **/
+    _count?: true | MatchMemberCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MatchMemberAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MatchMemberSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MatchMemberMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MatchMemberMaxAggregateInputType
+  }
+
+  export type GetMatchMemberAggregateType<T extends MatchMemberAggregateArgs> = {
+        [P in keyof T & keyof AggregateMatchMember]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMatchMember[P]>
+      : GetScalarType<T[P], AggregateMatchMember[P]>
+  }
+
+
+
+
+  export type MatchMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchMemberWhereInput
+    orderBy?: MatchMemberOrderByWithAggregationInput | MatchMemberOrderByWithAggregationInput[]
+    by: MatchMemberScalarFieldEnum[] | MatchMemberScalarFieldEnum
+    having?: MatchMemberScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MatchMemberCountAggregateInputType | true
+    _avg?: MatchMemberAvgAggregateInputType
+    _sum?: MatchMemberSumAggregateInputType
+    _min?: MatchMemberMinAggregateInputType
+    _max?: MatchMemberMaxAggregateInputType
+  }
+
+  export type MatchMemberGroupByOutputType = {
+    id: string
+    roomId: string
+    userId: string
+    point: number
+    bonusPoint: number
+    isReady: boolean
+    isComplete: boolean
+    isBot: boolean
+    joinedAt: Date
+    finishedAt: Date | null
+    isDisconnect: boolean
+    _count: MatchMemberCountAggregateOutputType | null
+    _avg: MatchMemberAvgAggregateOutputType | null
+    _sum: MatchMemberSumAggregateOutputType | null
+    _min: MatchMemberMinAggregateOutputType | null
+    _max: MatchMemberMaxAggregateOutputType | null
+  }
+
+  type GetMatchMemberGroupByPayload<T extends MatchMemberGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MatchMemberGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MatchMemberGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MatchMemberGroupByOutputType[P]>
+            : GetScalarType<T[P], MatchMemberGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MatchMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchMember"]>
+
+  export type MatchMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchMember"]>
+
+  export type MatchMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchMember"]>
+
+  export type MatchMemberSelectScalar = {
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+  }
+
+  export type MatchMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "point" | "bonusPoint" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchMember"]>
+  export type MatchMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MatchMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MatchMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MatchMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MatchMember"
+    objects: {
+      room: Prisma.$ChampionshipMatchPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      roomId: string
+      userId: string
+      point: number
+      bonusPoint: number
+      isReady: boolean
+      isComplete: boolean
+      isBot: boolean
+      joinedAt: Date
+      finishedAt: Date | null
+      isDisconnect: boolean
+    }, ExtArgs["result"]["matchMember"]>
+    composites: {}
+  }
+
+  type MatchMemberGetPayload<S extends boolean | null | undefined | MatchMemberDefaultArgs> = $Result.GetResult<Prisma.$MatchMemberPayload, S>
+
+  type MatchMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MatchMemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MatchMemberCountAggregateInputType | true
+    }
+
+  export interface MatchMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MatchMember'], meta: { name: 'MatchMember' } }
+    /**
+     * Find zero or one MatchMember that matches the filter.
+     * @param {MatchMemberFindUniqueArgs} args - Arguments to find a MatchMember
+     * @example
+     * // Get one MatchMember
+     * const matchMember = await prisma.matchMember.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MatchMemberFindUniqueArgs>(args: SelectSubset<T, MatchMemberFindUniqueArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MatchMember that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MatchMemberFindUniqueOrThrowArgs} args - Arguments to find a MatchMember
+     * @example
+     * // Get one MatchMember
+     * const matchMember = await prisma.matchMember.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MatchMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, MatchMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchMember that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberFindFirstArgs} args - Arguments to find a MatchMember
+     * @example
+     * // Get one MatchMember
+     * const matchMember = await prisma.matchMember.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MatchMemberFindFirstArgs>(args?: SelectSubset<T, MatchMemberFindFirstArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchMember that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberFindFirstOrThrowArgs} args - Arguments to find a MatchMember
+     * @example
+     * // Get one MatchMember
+     * const matchMember = await prisma.matchMember.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MatchMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, MatchMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MatchMembers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MatchMembers
+     * const matchMembers = await prisma.matchMember.findMany()
+     * 
+     * // Get first 10 MatchMembers
+     * const matchMembers = await prisma.matchMember.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const matchMemberWithIdOnly = await prisma.matchMember.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MatchMemberFindManyArgs>(args?: SelectSubset<T, MatchMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MatchMember.
+     * @param {MatchMemberCreateArgs} args - Arguments to create a MatchMember.
+     * @example
+     * // Create one MatchMember
+     * const MatchMember = await prisma.matchMember.create({
+     *   data: {
+     *     // ... data to create a MatchMember
+     *   }
+     * })
+     * 
+     */
+    create<T extends MatchMemberCreateArgs>(args: SelectSubset<T, MatchMemberCreateArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MatchMembers.
+     * @param {MatchMemberCreateManyArgs} args - Arguments to create many MatchMembers.
+     * @example
+     * // Create many MatchMembers
+     * const matchMember = await prisma.matchMember.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MatchMemberCreateManyArgs>(args?: SelectSubset<T, MatchMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MatchMembers and returns the data saved in the database.
+     * @param {MatchMemberCreateManyAndReturnArgs} args - Arguments to create many MatchMembers.
+     * @example
+     * // Create many MatchMembers
+     * const matchMember = await prisma.matchMember.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MatchMembers and only return the `id`
+     * const matchMemberWithIdOnly = await prisma.matchMember.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MatchMemberCreateManyAndReturnArgs>(args?: SelectSubset<T, MatchMemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MatchMember.
+     * @param {MatchMemberDeleteArgs} args - Arguments to delete one MatchMember.
+     * @example
+     * // Delete one MatchMember
+     * const MatchMember = await prisma.matchMember.delete({
+     *   where: {
+     *     // ... filter to delete one MatchMember
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MatchMemberDeleteArgs>(args: SelectSubset<T, MatchMemberDeleteArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MatchMember.
+     * @param {MatchMemberUpdateArgs} args - Arguments to update one MatchMember.
+     * @example
+     * // Update one MatchMember
+     * const matchMember = await prisma.matchMember.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MatchMemberUpdateArgs>(args: SelectSubset<T, MatchMemberUpdateArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MatchMembers.
+     * @param {MatchMemberDeleteManyArgs} args - Arguments to filter MatchMembers to delete.
+     * @example
+     * // Delete a few MatchMembers
+     * const { count } = await prisma.matchMember.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MatchMemberDeleteManyArgs>(args?: SelectSubset<T, MatchMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MatchMembers
+     * const matchMember = await prisma.matchMember.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MatchMemberUpdateManyArgs>(args: SelectSubset<T, MatchMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchMembers and returns the data updated in the database.
+     * @param {MatchMemberUpdateManyAndReturnArgs} args - Arguments to update many MatchMembers.
+     * @example
+     * // Update many MatchMembers
+     * const matchMember = await prisma.matchMember.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MatchMembers and only return the `id`
+     * const matchMemberWithIdOnly = await prisma.matchMember.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MatchMemberUpdateManyAndReturnArgs>(args: SelectSubset<T, MatchMemberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MatchMember.
+     * @param {MatchMemberUpsertArgs} args - Arguments to update or create a MatchMember.
+     * @example
+     * // Update or create a MatchMember
+     * const matchMember = await prisma.matchMember.upsert({
+     *   create: {
+     *     // ... data to create a MatchMember
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MatchMember we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MatchMemberUpsertArgs>(args: SelectSubset<T, MatchMemberUpsertArgs<ExtArgs>>): Prisma__MatchMemberClient<$Result.GetResult<Prisma.$MatchMemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MatchMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberCountArgs} args - Arguments to filter MatchMembers to count.
+     * @example
+     * // Count the number of MatchMembers
+     * const count = await prisma.matchMember.count({
+     *   where: {
+     *     // ... the filter for the MatchMembers we want to count
+     *   }
+     * })
+    **/
+    count<T extends MatchMemberCountArgs>(
+      args?: Subset<T, MatchMemberCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MatchMemberCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MatchMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MatchMemberAggregateArgs>(args: Subset<T, MatchMemberAggregateArgs>): Prisma.PrismaPromise<GetMatchMemberAggregateType<T>>
+
+    /**
+     * Group by MatchMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchMemberGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MatchMemberGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MatchMemberGroupByArgs['orderBy'] }
+        : { orderBy?: MatchMemberGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MatchMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMatchMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MatchMember model
+   */
+  readonly fields: MatchMemberFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MatchMember.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MatchMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    room<T extends ChampionshipMatchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChampionshipMatchDefaultArgs<ExtArgs>>): Prisma__ChampionshipMatchClient<$Result.GetResult<Prisma.$ChampionshipMatchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -41434,431 +42883,1613 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the MultiPlayerMember model
+   * Fields of the MatchMember model
    */
-  interface MultiPlayerMemberFieldRefs {
-    readonly id: FieldRef<"MultiPlayerMember", 'String'>
-    readonly roomId: FieldRef<"MultiPlayerMember", 'String'>
-    readonly userId: FieldRef<"MultiPlayerMember", 'String'>
-    readonly point: FieldRef<"MultiPlayerMember", 'Int'>
-    readonly bonusPoint: FieldRef<"MultiPlayerMember", 'Int'>
-    readonly isReady: FieldRef<"MultiPlayerMember", 'Boolean'>
-    readonly isComplete: FieldRef<"MultiPlayerMember", 'Boolean'>
-    readonly isBot: FieldRef<"MultiPlayerMember", 'Boolean'>
-    readonly joinedAt: FieldRef<"MultiPlayerMember", 'DateTime'>
-    readonly finishedAt: FieldRef<"MultiPlayerMember", 'DateTime'>
-    readonly isDisconnect: FieldRef<"MultiPlayerMember", 'Boolean'>
+  interface MatchMemberFieldRefs {
+    readonly id: FieldRef<"MatchMember", 'String'>
+    readonly roomId: FieldRef<"MatchMember", 'String'>
+    readonly userId: FieldRef<"MatchMember", 'String'>
+    readonly point: FieldRef<"MatchMember", 'Int'>
+    readonly bonusPoint: FieldRef<"MatchMember", 'Int'>
+    readonly isReady: FieldRef<"MatchMember", 'Boolean'>
+    readonly isComplete: FieldRef<"MatchMember", 'Boolean'>
+    readonly isBot: FieldRef<"MatchMember", 'Boolean'>
+    readonly joinedAt: FieldRef<"MatchMember", 'DateTime'>
+    readonly finishedAt: FieldRef<"MatchMember", 'DateTime'>
+    readonly isDisconnect: FieldRef<"MatchMember", 'Boolean'>
   }
     
 
   // Custom InputTypes
   /**
-   * MultiPlayerMember findUnique
+   * MatchMember findUnique
    */
-  export type MultiPlayerMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter, which MultiPlayerMember to fetch.
+     * Filter, which MatchMember to fetch.
      */
-    where: MultiPlayerMemberWhereUniqueInput
+    where: MatchMemberWhereUniqueInput
   }
 
   /**
-   * MultiPlayerMember findUniqueOrThrow
+   * MatchMember findUniqueOrThrow
    */
-  export type MultiPlayerMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter, which MultiPlayerMember to fetch.
+     * Filter, which MatchMember to fetch.
      */
-    where: MultiPlayerMemberWhereUniqueInput
+    where: MatchMemberWhereUniqueInput
   }
 
   /**
-   * MultiPlayerMember findFirst
+   * MatchMember findFirst
    */
-  export type MultiPlayerMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter, which MultiPlayerMember to fetch.
+     * Filter, which MatchMember to fetch.
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiPlayerMembers to fetch.
+     * Determine the order of MatchMembers to fetch.
      */
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MultiPlayerMembers.
+     * Sets the position for searching for MatchMembers.
      */
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    cursor?: MatchMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiPlayerMembers from the position of the cursor.
+     * Take `±n` MatchMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiPlayerMembers.
+     * Skip the first `n` MatchMembers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MultiPlayerMembers.
+     * Filter by unique combinations of MatchMembers.
      */
-    distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
+    distinct?: MatchMemberScalarFieldEnum | MatchMemberScalarFieldEnum[]
   }
 
   /**
-   * MultiPlayerMember findFirstOrThrow
+   * MatchMember findFirstOrThrow
    */
-  export type MultiPlayerMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter, which MultiPlayerMember to fetch.
+     * Filter, which MatchMember to fetch.
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiPlayerMembers to fetch.
+     * Determine the order of MatchMembers to fetch.
      */
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MultiPlayerMembers.
+     * Sets the position for searching for MatchMembers.
      */
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    cursor?: MatchMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiPlayerMembers from the position of the cursor.
+     * Take `±n` MatchMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiPlayerMembers.
+     * Skip the first `n` MatchMembers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MultiPlayerMembers.
+     * Filter by unique combinations of MatchMembers.
      */
-    distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
+    distinct?: MatchMemberScalarFieldEnum | MatchMemberScalarFieldEnum[]
   }
 
   /**
-   * MultiPlayerMember findMany
+   * MatchMember findMany
    */
-  export type MultiPlayerMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter, which MultiPlayerMembers to fetch.
+     * Filter, which MatchMembers to fetch.
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MultiPlayerMembers to fetch.
+     * Determine the order of MatchMembers to fetch.
      */
-    orderBy?: MultiPlayerMemberOrderByWithRelationInput | MultiPlayerMemberOrderByWithRelationInput[]
+    orderBy?: MatchMemberOrderByWithRelationInput | MatchMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing MultiPlayerMembers.
+     * Sets the position for listing MatchMembers.
      */
-    cursor?: MultiPlayerMemberWhereUniqueInput
+    cursor?: MatchMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MultiPlayerMembers from the position of the cursor.
+     * Take `±n` MatchMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MultiPlayerMembers.
+     * Skip the first `n` MatchMembers.
      */
     skip?: number
-    distinct?: MultiPlayerMemberScalarFieldEnum | MultiPlayerMemberScalarFieldEnum[]
+    distinct?: MatchMemberScalarFieldEnum | MatchMemberScalarFieldEnum[]
   }
 
   /**
-   * MultiPlayerMember create
+   * MatchMember create
    */
-  export type MultiPlayerMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * The data needed to create a MultiPlayerMember.
+     * The data needed to create a MatchMember.
      */
-    data: XOR<MultiPlayerMemberCreateInput, MultiPlayerMemberUncheckedCreateInput>
+    data: XOR<MatchMemberCreateInput, MatchMemberUncheckedCreateInput>
   }
 
   /**
-   * MultiPlayerMember createMany
+   * MatchMember createMany
    */
-  export type MultiPlayerMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many MultiPlayerMembers.
+     * The data used to create many MatchMembers.
      */
-    data: MultiPlayerMemberCreateManyInput | MultiPlayerMemberCreateManyInput[]
+    data: MatchMemberCreateManyInput | MatchMemberCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * MultiPlayerMember createManyAndReturn
+   * MatchMember createManyAndReturn
    */
-  export type MultiPlayerMemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelectCreateManyAndReturn<ExtArgs> | null
+    select?: MatchMemberSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
-     * The data used to create many MultiPlayerMembers.
+     * The data used to create many MatchMembers.
      */
-    data: MultiPlayerMemberCreateManyInput | MultiPlayerMemberCreateManyInput[]
+    data: MatchMemberCreateManyInput | MatchMemberCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: MatchMemberIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * MultiPlayerMember update
+   * MatchMember update
    */
-  export type MultiPlayerMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * The data needed to update a MultiPlayerMember.
+     * The data needed to update a MatchMember.
      */
-    data: XOR<MultiPlayerMemberUpdateInput, MultiPlayerMemberUncheckedUpdateInput>
+    data: XOR<MatchMemberUpdateInput, MatchMemberUncheckedUpdateInput>
     /**
-     * Choose, which MultiPlayerMember to update.
+     * Choose, which MatchMember to update.
      */
-    where: MultiPlayerMemberWhereUniqueInput
+    where: MatchMemberWhereUniqueInput
   }
 
   /**
-   * MultiPlayerMember updateMany
+   * MatchMember updateMany
    */
-  export type MultiPlayerMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update MultiPlayerMembers.
+     * The data used to update MatchMembers.
      */
-    data: XOR<MultiPlayerMemberUpdateManyMutationInput, MultiPlayerMemberUncheckedUpdateManyInput>
+    data: XOR<MatchMemberUpdateManyMutationInput, MatchMemberUncheckedUpdateManyInput>
     /**
-     * Filter which MultiPlayerMembers to update
+     * Filter which MatchMembers to update
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
-     * Limit how many MultiPlayerMembers to update.
+     * Limit how many MatchMembers to update.
      */
     limit?: number
   }
 
   /**
-   * MultiPlayerMember updateManyAndReturn
+   * MatchMember updateManyAndReturn
    */
-  export type MultiPlayerMemberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: MatchMemberSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
-     * The data used to update MultiPlayerMembers.
+     * The data used to update MatchMembers.
      */
-    data: XOR<MultiPlayerMemberUpdateManyMutationInput, MultiPlayerMemberUncheckedUpdateManyInput>
+    data: XOR<MatchMemberUpdateManyMutationInput, MatchMemberUncheckedUpdateManyInput>
     /**
-     * Filter which MultiPlayerMembers to update
+     * Filter which MatchMembers to update
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
-     * Limit how many MultiPlayerMembers to update.
+     * Limit how many MatchMembers to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: MatchMemberIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * MultiPlayerMember upsert
+   * MatchMember upsert
    */
-  export type MultiPlayerMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * The filter to search for the MultiPlayerMember to update in case it exists.
+     * The filter to search for the MatchMember to update in case it exists.
      */
-    where: MultiPlayerMemberWhereUniqueInput
+    where: MatchMemberWhereUniqueInput
     /**
-     * In case the MultiPlayerMember found by the `where` argument doesn't exist, create a new MultiPlayerMember with this data.
+     * In case the MatchMember found by the `where` argument doesn't exist, create a new MatchMember with this data.
      */
-    create: XOR<MultiPlayerMemberCreateInput, MultiPlayerMemberUncheckedCreateInput>
+    create: XOR<MatchMemberCreateInput, MatchMemberUncheckedCreateInput>
     /**
-     * In case the MultiPlayerMember was found with the provided `where` argument, update it with this data.
+     * In case the MatchMember was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<MultiPlayerMemberUpdateInput, MultiPlayerMemberUncheckedUpdateInput>
+    update: XOR<MatchMemberUpdateInput, MatchMemberUncheckedUpdateInput>
   }
 
   /**
-   * MultiPlayerMember delete
+   * MatchMember delete
    */
-  export type MultiPlayerMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
     /**
-     * Filter which MultiPlayerMember to delete.
+     * Filter which MatchMember to delete.
      */
-    where: MultiPlayerMemberWhereUniqueInput
+    where: MatchMemberWhereUniqueInput
   }
 
   /**
-   * MultiPlayerMember deleteMany
+   * MatchMember deleteMany
    */
-  export type MultiPlayerMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MultiPlayerMembers to delete
+     * Filter which MatchMembers to delete
      */
-    where?: MultiPlayerMemberWhereInput
+    where?: MatchMemberWhereInput
     /**
-     * Limit how many MultiPlayerMembers to delete.
+     * Limit how many MatchMembers to delete.
      */
     limit?: number
   }
 
   /**
-   * MultiPlayerMember without action
+   * MatchMember without action
    */
-  export type MultiPlayerMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MatchMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MultiPlayerMember
+     * Select specific fields to fetch from the MatchMember
      */
-    select?: MultiPlayerMemberSelect<ExtArgs> | null
+    select?: MatchMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MultiPlayerMember
+     * Omit specific fields from the MatchMember
      */
-    omit?: MultiPlayerMemberOmit<ExtArgs> | null
+    omit?: MatchMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MultiPlayerMemberInclude<ExtArgs> | null
+    include?: MatchMemberInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MatchHistoryMember
+   */
+
+  export type AggregateMatchHistoryMember = {
+    _count: MatchHistoryMemberCountAggregateOutputType | null
+    _avg: MatchHistoryMemberAvgAggregateOutputType | null
+    _sum: MatchHistoryMemberSumAggregateOutputType | null
+    _min: MatchHistoryMemberMinAggregateOutputType | null
+    _max: MatchHistoryMemberMaxAggregateOutputType | null
+  }
+
+  export type MatchHistoryMemberAvgAggregateOutputType = {
+    point: number | null
+    bonusPoint: number | null
+  }
+
+  export type MatchHistoryMemberSumAggregateOutputType = {
+    point: number | null
+    bonusPoint: number | null
+  }
+
+  export type MatchHistoryMemberMinAggregateOutputType = {
+    id: string | null
+    roomId: string | null
+    userId: string | null
+    point: number | null
+    bonusPoint: number | null
+    isReady: boolean | null
+    isComplete: boolean | null
+    isBot: boolean | null
+    joinedAt: Date | null
+    finishedAt: Date | null
+    isDisconnect: boolean | null
+  }
+
+  export type MatchHistoryMemberMaxAggregateOutputType = {
+    id: string | null
+    roomId: string | null
+    userId: string | null
+    point: number | null
+    bonusPoint: number | null
+    isReady: boolean | null
+    isComplete: boolean | null
+    isBot: boolean | null
+    joinedAt: Date | null
+    finishedAt: Date | null
+    isDisconnect: boolean | null
+  }
+
+  export type MatchHistoryMemberCountAggregateOutputType = {
+    id: number
+    roomId: number
+    userId: number
+    point: number
+    bonusPoint: number
+    isReady: number
+    isComplete: number
+    isBot: number
+    joinedAt: number
+    finishedAt: number
+    isDisconnect: number
+    _all: number
+  }
+
+
+  export type MatchHistoryMemberAvgAggregateInputType = {
+    point?: true
+    bonusPoint?: true
+  }
+
+  export type MatchHistoryMemberSumAggregateInputType = {
+    point?: true
+    bonusPoint?: true
+  }
+
+  export type MatchHistoryMemberMinAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+  }
+
+  export type MatchHistoryMemberMaxAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+  }
+
+  export type MatchHistoryMemberCountAggregateInputType = {
+    id?: true
+    roomId?: true
+    userId?: true
+    point?: true
+    bonusPoint?: true
+    isReady?: true
+    isComplete?: true
+    isBot?: true
+    joinedAt?: true
+    finishedAt?: true
+    isDisconnect?: true
+    _all?: true
+  }
+
+  export type MatchHistoryMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchHistoryMember to aggregate.
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchHistoryMembers to fetch.
+     */
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchHistoryMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchHistoryMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MatchHistoryMembers
+    **/
+    _count?: true | MatchHistoryMemberCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MatchHistoryMemberAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MatchHistoryMemberSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MatchHistoryMemberMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MatchHistoryMemberMaxAggregateInputType
+  }
+
+  export type GetMatchHistoryMemberAggregateType<T extends MatchHistoryMemberAggregateArgs> = {
+        [P in keyof T & keyof AggregateMatchHistoryMember]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMatchHistoryMember[P]>
+      : GetScalarType<T[P], AggregateMatchHistoryMember[P]>
+  }
+
+
+
+
+  export type MatchHistoryMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MatchHistoryMemberWhereInput
+    orderBy?: MatchHistoryMemberOrderByWithAggregationInput | MatchHistoryMemberOrderByWithAggregationInput[]
+    by: MatchHistoryMemberScalarFieldEnum[] | MatchHistoryMemberScalarFieldEnum
+    having?: MatchHistoryMemberScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MatchHistoryMemberCountAggregateInputType | true
+    _avg?: MatchHistoryMemberAvgAggregateInputType
+    _sum?: MatchHistoryMemberSumAggregateInputType
+    _min?: MatchHistoryMemberMinAggregateInputType
+    _max?: MatchHistoryMemberMaxAggregateInputType
+  }
+
+  export type MatchHistoryMemberGroupByOutputType = {
+    id: string
+    roomId: string
+    userId: string
+    point: number
+    bonusPoint: number
+    isReady: boolean
+    isComplete: boolean
+    isBot: boolean
+    joinedAt: Date
+    finishedAt: Date | null
+    isDisconnect: boolean
+    _count: MatchHistoryMemberCountAggregateOutputType | null
+    _avg: MatchHistoryMemberAvgAggregateOutputType | null
+    _sum: MatchHistoryMemberSumAggregateOutputType | null
+    _min: MatchHistoryMemberMinAggregateOutputType | null
+    _max: MatchHistoryMemberMaxAggregateOutputType | null
+  }
+
+  type GetMatchHistoryMemberGroupByPayload<T extends MatchHistoryMemberGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MatchHistoryMemberGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MatchHistoryMemberGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MatchHistoryMemberGroupByOutputType[P]>
+            : GetScalarType<T[P], MatchHistoryMemberGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MatchHistoryMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchHistoryMember"]>
+
+  export type MatchHistoryMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchHistoryMember"]>
+
+  export type MatchHistoryMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["matchHistoryMember"]>
+
+  export type MatchHistoryMemberSelectScalar = {
+    id?: boolean
+    roomId?: boolean
+    userId?: boolean
+    point?: boolean
+    bonusPoint?: boolean
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: boolean
+    finishedAt?: boolean
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "point" | "bonusPoint" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchHistoryMember"]>
+  export type MatchHistoryMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MatchHistoryMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MatchHistoryMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MatchHistoryMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MatchHistoryMember"
+    objects: {
+      room: Prisma.$ChampionshipHistoryPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      roomId: string
+      userId: string
+      point: number
+      bonusPoint: number
+      isReady: boolean
+      isComplete: boolean
+      isBot: boolean
+      joinedAt: Date
+      finishedAt: Date | null
+      isDisconnect: boolean
+    }, ExtArgs["result"]["matchHistoryMember"]>
+    composites: {}
+  }
+
+  type MatchHistoryMemberGetPayload<S extends boolean | null | undefined | MatchHistoryMemberDefaultArgs> = $Result.GetResult<Prisma.$MatchHistoryMemberPayload, S>
+
+  type MatchHistoryMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MatchHistoryMemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MatchHistoryMemberCountAggregateInputType | true
+    }
+
+  export interface MatchHistoryMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MatchHistoryMember'], meta: { name: 'MatchHistoryMember' } }
+    /**
+     * Find zero or one MatchHistoryMember that matches the filter.
+     * @param {MatchHistoryMemberFindUniqueArgs} args - Arguments to find a MatchHistoryMember
+     * @example
+     * // Get one MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MatchHistoryMemberFindUniqueArgs>(args: SelectSubset<T, MatchHistoryMemberFindUniqueArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MatchHistoryMember that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MatchHistoryMemberFindUniqueOrThrowArgs} args - Arguments to find a MatchHistoryMember
+     * @example
+     * // Get one MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MatchHistoryMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, MatchHistoryMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchHistoryMember that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberFindFirstArgs} args - Arguments to find a MatchHistoryMember
+     * @example
+     * // Get one MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MatchHistoryMemberFindFirstArgs>(args?: SelectSubset<T, MatchHistoryMemberFindFirstArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MatchHistoryMember that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberFindFirstOrThrowArgs} args - Arguments to find a MatchHistoryMember
+     * @example
+     * // Get one MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MatchHistoryMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, MatchHistoryMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MatchHistoryMembers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MatchHistoryMembers
+     * const matchHistoryMembers = await prisma.matchHistoryMember.findMany()
+     * 
+     * // Get first 10 MatchHistoryMembers
+     * const matchHistoryMembers = await prisma.matchHistoryMember.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const matchHistoryMemberWithIdOnly = await prisma.matchHistoryMember.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MatchHistoryMemberFindManyArgs>(args?: SelectSubset<T, MatchHistoryMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MatchHistoryMember.
+     * @param {MatchHistoryMemberCreateArgs} args - Arguments to create a MatchHistoryMember.
+     * @example
+     * // Create one MatchHistoryMember
+     * const MatchHistoryMember = await prisma.matchHistoryMember.create({
+     *   data: {
+     *     // ... data to create a MatchHistoryMember
+     *   }
+     * })
+     * 
+     */
+    create<T extends MatchHistoryMemberCreateArgs>(args: SelectSubset<T, MatchHistoryMemberCreateArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MatchHistoryMembers.
+     * @param {MatchHistoryMemberCreateManyArgs} args - Arguments to create many MatchHistoryMembers.
+     * @example
+     * // Create many MatchHistoryMembers
+     * const matchHistoryMember = await prisma.matchHistoryMember.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MatchHistoryMemberCreateManyArgs>(args?: SelectSubset<T, MatchHistoryMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MatchHistoryMembers and returns the data saved in the database.
+     * @param {MatchHistoryMemberCreateManyAndReturnArgs} args - Arguments to create many MatchHistoryMembers.
+     * @example
+     * // Create many MatchHistoryMembers
+     * const matchHistoryMember = await prisma.matchHistoryMember.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MatchHistoryMembers and only return the `id`
+     * const matchHistoryMemberWithIdOnly = await prisma.matchHistoryMember.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MatchHistoryMemberCreateManyAndReturnArgs>(args?: SelectSubset<T, MatchHistoryMemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MatchHistoryMember.
+     * @param {MatchHistoryMemberDeleteArgs} args - Arguments to delete one MatchHistoryMember.
+     * @example
+     * // Delete one MatchHistoryMember
+     * const MatchHistoryMember = await prisma.matchHistoryMember.delete({
+     *   where: {
+     *     // ... filter to delete one MatchHistoryMember
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MatchHistoryMemberDeleteArgs>(args: SelectSubset<T, MatchHistoryMemberDeleteArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MatchHistoryMember.
+     * @param {MatchHistoryMemberUpdateArgs} args - Arguments to update one MatchHistoryMember.
+     * @example
+     * // Update one MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MatchHistoryMemberUpdateArgs>(args: SelectSubset<T, MatchHistoryMemberUpdateArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MatchHistoryMembers.
+     * @param {MatchHistoryMemberDeleteManyArgs} args - Arguments to filter MatchHistoryMembers to delete.
+     * @example
+     * // Delete a few MatchHistoryMembers
+     * const { count } = await prisma.matchHistoryMember.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MatchHistoryMemberDeleteManyArgs>(args?: SelectSubset<T, MatchHistoryMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchHistoryMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MatchHistoryMembers
+     * const matchHistoryMember = await prisma.matchHistoryMember.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MatchHistoryMemberUpdateManyArgs>(args: SelectSubset<T, MatchHistoryMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MatchHistoryMembers and returns the data updated in the database.
+     * @param {MatchHistoryMemberUpdateManyAndReturnArgs} args - Arguments to update many MatchHistoryMembers.
+     * @example
+     * // Update many MatchHistoryMembers
+     * const matchHistoryMember = await prisma.matchHistoryMember.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MatchHistoryMembers and only return the `id`
+     * const matchHistoryMemberWithIdOnly = await prisma.matchHistoryMember.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MatchHistoryMemberUpdateManyAndReturnArgs>(args: SelectSubset<T, MatchHistoryMemberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MatchHistoryMember.
+     * @param {MatchHistoryMemberUpsertArgs} args - Arguments to update or create a MatchHistoryMember.
+     * @example
+     * // Update or create a MatchHistoryMember
+     * const matchHistoryMember = await prisma.matchHistoryMember.upsert({
+     *   create: {
+     *     // ... data to create a MatchHistoryMember
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MatchHistoryMember we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MatchHistoryMemberUpsertArgs>(args: SelectSubset<T, MatchHistoryMemberUpsertArgs<ExtArgs>>): Prisma__MatchHistoryMemberClient<$Result.GetResult<Prisma.$MatchHistoryMemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MatchHistoryMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberCountArgs} args - Arguments to filter MatchHistoryMembers to count.
+     * @example
+     * // Count the number of MatchHistoryMembers
+     * const count = await prisma.matchHistoryMember.count({
+     *   where: {
+     *     // ... the filter for the MatchHistoryMembers we want to count
+     *   }
+     * })
+    **/
+    count<T extends MatchHistoryMemberCountArgs>(
+      args?: Subset<T, MatchHistoryMemberCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MatchHistoryMemberCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MatchHistoryMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MatchHistoryMemberAggregateArgs>(args: Subset<T, MatchHistoryMemberAggregateArgs>): Prisma.PrismaPromise<GetMatchHistoryMemberAggregateType<T>>
+
+    /**
+     * Group by MatchHistoryMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MatchHistoryMemberGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MatchHistoryMemberGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MatchHistoryMemberGroupByArgs['orderBy'] }
+        : { orderBy?: MatchHistoryMemberGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MatchHistoryMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMatchHistoryMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MatchHistoryMember model
+   */
+  readonly fields: MatchHistoryMemberFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MatchHistoryMember.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MatchHistoryMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    room<T extends ChampionshipHistoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChampionshipHistoryDefaultArgs<ExtArgs>>): Prisma__ChampionshipHistoryClient<$Result.GetResult<Prisma.$ChampionshipHistoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MatchHistoryMember model
+   */
+  interface MatchHistoryMemberFieldRefs {
+    readonly id: FieldRef<"MatchHistoryMember", 'String'>
+    readonly roomId: FieldRef<"MatchHistoryMember", 'String'>
+    readonly userId: FieldRef<"MatchHistoryMember", 'String'>
+    readonly point: FieldRef<"MatchHistoryMember", 'Int'>
+    readonly bonusPoint: FieldRef<"MatchHistoryMember", 'Int'>
+    readonly isReady: FieldRef<"MatchHistoryMember", 'Boolean'>
+    readonly isComplete: FieldRef<"MatchHistoryMember", 'Boolean'>
+    readonly isBot: FieldRef<"MatchHistoryMember", 'Boolean'>
+    readonly joinedAt: FieldRef<"MatchHistoryMember", 'DateTime'>
+    readonly finishedAt: FieldRef<"MatchHistoryMember", 'DateTime'>
+    readonly isDisconnect: FieldRef<"MatchHistoryMember", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MatchHistoryMember findUnique
+   */
+  export type MatchHistoryMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchHistoryMember to fetch.
+     */
+    where: MatchHistoryMemberWhereUniqueInput
+  }
+
+  /**
+   * MatchHistoryMember findUniqueOrThrow
+   */
+  export type MatchHistoryMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchHistoryMember to fetch.
+     */
+    where: MatchHistoryMemberWhereUniqueInput
+  }
+
+  /**
+   * MatchHistoryMember findFirst
+   */
+  export type MatchHistoryMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchHistoryMember to fetch.
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchHistoryMembers to fetch.
+     */
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchHistoryMembers.
+     */
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchHistoryMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchHistoryMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchHistoryMembers.
+     */
+    distinct?: MatchHistoryMemberScalarFieldEnum | MatchHistoryMemberScalarFieldEnum[]
+  }
+
+  /**
+   * MatchHistoryMember findFirstOrThrow
+   */
+  export type MatchHistoryMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchHistoryMember to fetch.
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchHistoryMembers to fetch.
+     */
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MatchHistoryMembers.
+     */
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchHistoryMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchHistoryMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MatchHistoryMembers.
+     */
+    distinct?: MatchHistoryMemberScalarFieldEnum | MatchHistoryMemberScalarFieldEnum[]
+  }
+
+  /**
+   * MatchHistoryMember findMany
+   */
+  export type MatchHistoryMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which MatchHistoryMembers to fetch.
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MatchHistoryMembers to fetch.
+     */
+    orderBy?: MatchHistoryMemberOrderByWithRelationInput | MatchHistoryMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MatchHistoryMembers.
+     */
+    cursor?: MatchHistoryMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MatchHistoryMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MatchHistoryMembers.
+     */
+    skip?: number
+    distinct?: MatchHistoryMemberScalarFieldEnum | MatchHistoryMemberScalarFieldEnum[]
+  }
+
+  /**
+   * MatchHistoryMember create
+   */
+  export type MatchHistoryMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MatchHistoryMember.
+     */
+    data: XOR<MatchHistoryMemberCreateInput, MatchHistoryMemberUncheckedCreateInput>
+  }
+
+  /**
+   * MatchHistoryMember createMany
+   */
+  export type MatchHistoryMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MatchHistoryMembers.
+     */
+    data: MatchHistoryMemberCreateManyInput | MatchHistoryMemberCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MatchHistoryMember createManyAndReturn
+   */
+  export type MatchHistoryMemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * The data used to create many MatchHistoryMembers.
+     */
+    data: MatchHistoryMemberCreateManyInput | MatchHistoryMemberCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchHistoryMember update
+   */
+  export type MatchHistoryMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MatchHistoryMember.
+     */
+    data: XOR<MatchHistoryMemberUpdateInput, MatchHistoryMemberUncheckedUpdateInput>
+    /**
+     * Choose, which MatchHistoryMember to update.
+     */
+    where: MatchHistoryMemberWhereUniqueInput
+  }
+
+  /**
+   * MatchHistoryMember updateMany
+   */
+  export type MatchHistoryMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MatchHistoryMembers.
+     */
+    data: XOR<MatchHistoryMemberUpdateManyMutationInput, MatchHistoryMemberUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchHistoryMembers to update
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * Limit how many MatchHistoryMembers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchHistoryMember updateManyAndReturn
+   */
+  export type MatchHistoryMemberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * The data used to update MatchHistoryMembers.
+     */
+    data: XOR<MatchHistoryMemberUpdateManyMutationInput, MatchHistoryMemberUncheckedUpdateManyInput>
+    /**
+     * Filter which MatchHistoryMembers to update
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * Limit how many MatchHistoryMembers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MatchHistoryMember upsert
+   */
+  export type MatchHistoryMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MatchHistoryMember to update in case it exists.
+     */
+    where: MatchHistoryMemberWhereUniqueInput
+    /**
+     * In case the MatchHistoryMember found by the `where` argument doesn't exist, create a new MatchHistoryMember with this data.
+     */
+    create: XOR<MatchHistoryMemberCreateInput, MatchHistoryMemberUncheckedCreateInput>
+    /**
+     * In case the MatchHistoryMember was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MatchHistoryMemberUpdateInput, MatchHistoryMemberUncheckedUpdateInput>
+  }
+
+  /**
+   * MatchHistoryMember delete
+   */
+  export type MatchHistoryMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
+    /**
+     * Filter which MatchHistoryMember to delete.
+     */
+    where: MatchHistoryMemberWhereUniqueInput
+  }
+
+  /**
+   * MatchHistoryMember deleteMany
+   */
+  export type MatchHistoryMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MatchHistoryMembers to delete
+     */
+    where?: MatchHistoryMemberWhereInput
+    /**
+     * Limit how many MatchHistoryMembers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MatchHistoryMember without action
+   */
+  export type MatchHistoryMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MatchHistoryMember
+     */
+    select?: MatchHistoryMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MatchHistoryMember
+     */
+    omit?: MatchHistoryMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MatchHistoryMemberInclude<ExtArgs> | null
   }
 
 
@@ -42340,7 +44971,7 @@ export namespace Prisma {
   export type CodeRedeemerScalarFieldEnum = (typeof CodeRedeemerScalarFieldEnum)[keyof typeof CodeRedeemerScalarFieldEnum]
 
 
-  export const MultiplayerRoomScalarFieldEnum: {
+  export const ChampionshipMatchScalarFieldEnum: {
     id: 'id',
     max: 'max',
     gameplayId: 'gameplayId',
@@ -42355,10 +44986,28 @@ export namespace Prisma {
     currentMember: 'currentMember'
   };
 
-  export type MultiplayerRoomScalarFieldEnum = (typeof MultiplayerRoomScalarFieldEnum)[keyof typeof MultiplayerRoomScalarFieldEnum]
+  export type ChampionshipMatchScalarFieldEnum = (typeof ChampionshipMatchScalarFieldEnum)[keyof typeof ChampionshipMatchScalarFieldEnum]
 
 
-  export const MultiPlayerMemberScalarFieldEnum: {
+  export const ChampionshipHistoryScalarFieldEnum: {
+    id: 'id',
+    max: 'max',
+    gameplayId: 'gameplayId',
+    botOwner: 'botOwner',
+    startedAt: 'startedAt',
+    endedAt: 'endedAt',
+    expiredAt: 'expiredAt',
+    isStarted: 'isStarted',
+    isEnded: 'isEnded',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    currentMember: 'currentMember'
+  };
+
+  export type ChampionshipHistoryScalarFieldEnum = (typeof ChampionshipHistoryScalarFieldEnum)[keyof typeof ChampionshipHistoryScalarFieldEnum]
+
+
+  export const MatchMemberScalarFieldEnum: {
     id: 'id',
     roomId: 'roomId',
     userId: 'userId',
@@ -42372,7 +45021,24 @@ export namespace Prisma {
     isDisconnect: 'isDisconnect'
   };
 
-  export type MultiPlayerMemberScalarFieldEnum = (typeof MultiPlayerMemberScalarFieldEnum)[keyof typeof MultiPlayerMemberScalarFieldEnum]
+  export type MatchMemberScalarFieldEnum = (typeof MatchMemberScalarFieldEnum)[keyof typeof MatchMemberScalarFieldEnum]
+
+
+  export const MatchHistoryMemberScalarFieldEnum: {
+    id: 'id',
+    roomId: 'roomId',
+    userId: 'userId',
+    point: 'point',
+    bonusPoint: 'bonusPoint',
+    isReady: 'isReady',
+    isComplete: 'isComplete',
+    isBot: 'isBot',
+    joinedAt: 'joinedAt',
+    finishedAt: 'finishedAt',
+    isDisconnect: 'isDisconnect'
+  };
+
+  export type MatchHistoryMemberScalarFieldEnum = (typeof MatchHistoryMemberScalarFieldEnum)[keyof typeof MatchHistoryMemberScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -43017,7 +45683,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
     levels?: LevelListRelationFilter
-    multiPlayerMember?: MultiPlayerMemberListRelationFilter
+    matchMembers?: MatchMemberListRelationFilter
+    historyMatchMembers?: MatchHistoryMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
@@ -43065,7 +45732,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordOrderByRelationAggregateInput
     innerLevels?: InnerLevelOrderByRelationAggregateInput
     levels?: LevelOrderByRelationAggregateInput
-    multiPlayerMember?: MultiPlayerMemberOrderByRelationAggregateInput
+    matchMembers?: MatchMemberOrderByRelationAggregateInput
+    historyMatchMembers?: MatchHistoryMemberOrderByRelationAggregateInput
     subLevels?: SubLevelOrderByRelationAggregateInput
     testParticipant?: TestParticipantOrderByRelationAggregateInput
     admin?: AdminOrderByWithRelationInput
@@ -43116,7 +45784,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordListRelationFilter
     innerLevels?: InnerLevelListRelationFilter
     levels?: LevelListRelationFilter
-    multiPlayerMember?: MultiPlayerMemberListRelationFilter
+    matchMembers?: MatchMemberListRelationFilter
+    historyMatchMembers?: MatchHistoryMemberListRelationFilter
     subLevels?: SubLevelListRelationFilter
     testParticipant?: TestParticipantListRelationFilter
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
@@ -45181,26 +47850,26 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"CodeRedeemer"> | Date | string
   }
 
-  export type MultiplayerRoomWhereInput = {
-    AND?: MultiplayerRoomWhereInput | MultiplayerRoomWhereInput[]
-    OR?: MultiplayerRoomWhereInput[]
-    NOT?: MultiplayerRoomWhereInput | MultiplayerRoomWhereInput[]
-    id?: StringFilter<"MultiplayerRoom"> | string
-    max?: IntFilter<"MultiplayerRoom"> | number
-    gameplayId?: StringFilter<"MultiplayerRoom"> | string
-    botOwner?: StringFilter<"MultiplayerRoom"> | string
-    startedAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    endedAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    expiredAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    isStarted?: BoolFilter<"MultiplayerRoom"> | boolean
-    isEnded?: BoolFilter<"MultiplayerRoom"> | boolean
-    createdAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
-    updatedAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
-    currentMember?: IntFilter<"MultiplayerRoom"> | number
-    members?: MultiPlayerMemberListRelationFilter
+  export type ChampionshipMatchWhereInput = {
+    AND?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
+    OR?: ChampionshipMatchWhereInput[]
+    NOT?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
+    id?: StringFilter<"ChampionshipMatch"> | string
+    max?: IntFilter<"ChampionshipMatch"> | number
+    gameplayId?: StringFilter<"ChampionshipMatch"> | string
+    botOwner?: StringFilter<"ChampionshipMatch"> | string
+    startedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    expiredAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    isStarted?: BoolFilter<"ChampionshipMatch"> | boolean
+    isEnded?: BoolFilter<"ChampionshipMatch"> | boolean
+    createdAt?: DateTimeFilter<"ChampionshipMatch"> | Date | string
+    updatedAt?: DateTimeFilter<"ChampionshipMatch"> | Date | string
+    currentMember?: IntFilter<"ChampionshipMatch"> | number
+    members?: MatchMemberListRelationFilter
   }
 
-  export type MultiplayerRoomOrderByWithRelationInput = {
+  export type ChampionshipMatchOrderByWithRelationInput = {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
@@ -45213,29 +47882,29 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     currentMember?: SortOrder
-    members?: MultiPlayerMemberOrderByRelationAggregateInput
+    members?: MatchMemberOrderByRelationAggregateInput
   }
 
-  export type MultiplayerRoomWhereUniqueInput = Prisma.AtLeast<{
+  export type ChampionshipMatchWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     gameplayId?: string
-    AND?: MultiplayerRoomWhereInput | MultiplayerRoomWhereInput[]
-    OR?: MultiplayerRoomWhereInput[]
-    NOT?: MultiplayerRoomWhereInput | MultiplayerRoomWhereInput[]
-    max?: IntFilter<"MultiplayerRoom"> | number
-    botOwner?: StringFilter<"MultiplayerRoom"> | string
-    startedAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    endedAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    expiredAt?: DateTimeNullableFilter<"MultiplayerRoom"> | Date | string | null
-    isStarted?: BoolFilter<"MultiplayerRoom"> | boolean
-    isEnded?: BoolFilter<"MultiplayerRoom"> | boolean
-    createdAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
-    updatedAt?: DateTimeFilter<"MultiplayerRoom"> | Date | string
-    currentMember?: IntFilter<"MultiplayerRoom"> | number
-    members?: MultiPlayerMemberListRelationFilter
+    AND?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
+    OR?: ChampionshipMatchWhereInput[]
+    NOT?: ChampionshipMatchWhereInput | ChampionshipMatchWhereInput[]
+    max?: IntFilter<"ChampionshipMatch"> | number
+    botOwner?: StringFilter<"ChampionshipMatch"> | string
+    startedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    expiredAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
+    isStarted?: BoolFilter<"ChampionshipMatch"> | boolean
+    isEnded?: BoolFilter<"ChampionshipMatch"> | boolean
+    createdAt?: DateTimeFilter<"ChampionshipMatch"> | Date | string
+    updatedAt?: DateTimeFilter<"ChampionshipMatch"> | Date | string
+    currentMember?: IntFilter<"ChampionshipMatch"> | number
+    members?: MatchMemberListRelationFilter
   }, "id" | "gameplayId">
 
-  export type MultiplayerRoomOrderByWithAggregationInput = {
+  export type ChampionshipMatchOrderByWithAggregationInput = {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
@@ -45248,51 +47917,143 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     currentMember?: SortOrder
-    _count?: MultiplayerRoomCountOrderByAggregateInput
-    _avg?: MultiplayerRoomAvgOrderByAggregateInput
-    _max?: MultiplayerRoomMaxOrderByAggregateInput
-    _min?: MultiplayerRoomMinOrderByAggregateInput
-    _sum?: MultiplayerRoomSumOrderByAggregateInput
+    _count?: ChampionshipMatchCountOrderByAggregateInput
+    _avg?: ChampionshipMatchAvgOrderByAggregateInput
+    _max?: ChampionshipMatchMaxOrderByAggregateInput
+    _min?: ChampionshipMatchMinOrderByAggregateInput
+    _sum?: ChampionshipMatchSumOrderByAggregateInput
   }
 
-  export type MultiplayerRoomScalarWhereWithAggregatesInput = {
-    AND?: MultiplayerRoomScalarWhereWithAggregatesInput | MultiplayerRoomScalarWhereWithAggregatesInput[]
-    OR?: MultiplayerRoomScalarWhereWithAggregatesInput[]
-    NOT?: MultiplayerRoomScalarWhereWithAggregatesInput | MultiplayerRoomScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"MultiplayerRoom"> | string
-    max?: IntWithAggregatesFilter<"MultiplayerRoom"> | number
-    gameplayId?: StringWithAggregatesFilter<"MultiplayerRoom"> | string
-    botOwner?: StringWithAggregatesFilter<"MultiplayerRoom"> | string
-    startedAt?: DateTimeNullableWithAggregatesFilter<"MultiplayerRoom"> | Date | string | null
-    endedAt?: DateTimeNullableWithAggregatesFilter<"MultiplayerRoom"> | Date | string | null
-    expiredAt?: DateTimeNullableWithAggregatesFilter<"MultiplayerRoom"> | Date | string | null
-    isStarted?: BoolWithAggregatesFilter<"MultiplayerRoom"> | boolean
-    isEnded?: BoolWithAggregatesFilter<"MultiplayerRoom"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"MultiplayerRoom"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"MultiplayerRoom"> | Date | string
-    currentMember?: IntWithAggregatesFilter<"MultiplayerRoom"> | number
+  export type ChampionshipMatchScalarWhereWithAggregatesInput = {
+    AND?: ChampionshipMatchScalarWhereWithAggregatesInput | ChampionshipMatchScalarWhereWithAggregatesInput[]
+    OR?: ChampionshipMatchScalarWhereWithAggregatesInput[]
+    NOT?: ChampionshipMatchScalarWhereWithAggregatesInput | ChampionshipMatchScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ChampionshipMatch"> | string
+    max?: IntWithAggregatesFilter<"ChampionshipMatch"> | number
+    gameplayId?: StringWithAggregatesFilter<"ChampionshipMatch"> | string
+    botOwner?: StringWithAggregatesFilter<"ChampionshipMatch"> | string
+    startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
+    endedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
+    expiredAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
+    isStarted?: BoolWithAggregatesFilter<"ChampionshipMatch"> | boolean
+    isEnded?: BoolWithAggregatesFilter<"ChampionshipMatch"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ChampionshipMatch"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ChampionshipMatch"> | Date | string
+    currentMember?: IntWithAggregatesFilter<"ChampionshipMatch"> | number
   }
 
-  export type MultiPlayerMemberWhereInput = {
-    AND?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
-    OR?: MultiPlayerMemberWhereInput[]
-    NOT?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
-    id?: StringFilter<"MultiPlayerMember"> | string
-    roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringFilter<"MultiPlayerMember"> | string
-    point?: IntFilter<"MultiPlayerMember"> | number
-    bonusPoint?: IntFilter<"MultiPlayerMember"> | number
-    isReady?: BoolFilter<"MultiPlayerMember"> | boolean
-    isComplete?: BoolFilter<"MultiPlayerMember"> | boolean
-    isBot?: BoolFilter<"MultiPlayerMember"> | boolean
-    joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
-    finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
-    isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
-    room?: XOR<MultiplayerRoomScalarRelationFilter, MultiplayerRoomWhereInput>
+  export type ChampionshipHistoryWhereInput = {
+    AND?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
+    OR?: ChampionshipHistoryWhereInput[]
+    NOT?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
+    id?: StringFilter<"ChampionshipHistory"> | string
+    max?: IntFilter<"ChampionshipHistory"> | number
+    gameplayId?: StringFilter<"ChampionshipHistory"> | string
+    botOwner?: StringFilter<"ChampionshipHistory"> | string
+    startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    expiredAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    isStarted?: BoolFilter<"ChampionshipHistory"> | boolean
+    isEnded?: BoolFilter<"ChampionshipHistory"> | boolean
+    createdAt?: DateTimeFilter<"ChampionshipHistory"> | Date | string
+    updatedAt?: DateTimeFilter<"ChampionshipHistory"> | Date | string
+    currentMember?: IntFilter<"ChampionshipHistory"> | number
+    members?: MatchHistoryMemberListRelationFilter
+  }
+
+  export type ChampionshipHistoryOrderByWithRelationInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrderInput | SortOrder
+    endedAt?: SortOrderInput | SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
+    members?: MatchHistoryMemberOrderByRelationAggregateInput
+  }
+
+  export type ChampionshipHistoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    gameplayId?: string
+    AND?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
+    OR?: ChampionshipHistoryWhereInput[]
+    NOT?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
+    max?: IntFilter<"ChampionshipHistory"> | number
+    botOwner?: StringFilter<"ChampionshipHistory"> | string
+    startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    expiredAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
+    isStarted?: BoolFilter<"ChampionshipHistory"> | boolean
+    isEnded?: BoolFilter<"ChampionshipHistory"> | boolean
+    createdAt?: DateTimeFilter<"ChampionshipHistory"> | Date | string
+    updatedAt?: DateTimeFilter<"ChampionshipHistory"> | Date | string
+    currentMember?: IntFilter<"ChampionshipHistory"> | number
+    members?: MatchHistoryMemberListRelationFilter
+  }, "id" | "gameplayId">
+
+  export type ChampionshipHistoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrderInput | SortOrder
+    endedAt?: SortOrderInput | SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
+    _count?: ChampionshipHistoryCountOrderByAggregateInput
+    _avg?: ChampionshipHistoryAvgOrderByAggregateInput
+    _max?: ChampionshipHistoryMaxOrderByAggregateInput
+    _min?: ChampionshipHistoryMinOrderByAggregateInput
+    _sum?: ChampionshipHistorySumOrderByAggregateInput
+  }
+
+  export type ChampionshipHistoryScalarWhereWithAggregatesInput = {
+    AND?: ChampionshipHistoryScalarWhereWithAggregatesInput | ChampionshipHistoryScalarWhereWithAggregatesInput[]
+    OR?: ChampionshipHistoryScalarWhereWithAggregatesInput[]
+    NOT?: ChampionshipHistoryScalarWhereWithAggregatesInput | ChampionshipHistoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
+    max?: IntWithAggregatesFilter<"ChampionshipHistory"> | number
+    gameplayId?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
+    botOwner?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
+    startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
+    endedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
+    expiredAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
+    isStarted?: BoolWithAggregatesFilter<"ChampionshipHistory"> | boolean
+    isEnded?: BoolWithAggregatesFilter<"ChampionshipHistory"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ChampionshipHistory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ChampionshipHistory"> | Date | string
+    currentMember?: IntWithAggregatesFilter<"ChampionshipHistory"> | number
+  }
+
+  export type MatchMemberWhereInput = {
+    AND?: MatchMemberWhereInput | MatchMemberWhereInput[]
+    OR?: MatchMemberWhereInput[]
+    NOT?: MatchMemberWhereInput | MatchMemberWhereInput[]
+    id?: StringFilter<"MatchMember"> | string
+    roomId?: StringFilter<"MatchMember"> | string
+    userId?: StringFilter<"MatchMember"> | string
+    point?: IntFilter<"MatchMember"> | number
+    bonusPoint?: IntFilter<"MatchMember"> | number
+    isReady?: BoolFilter<"MatchMember"> | boolean
+    isComplete?: BoolFilter<"MatchMember"> | boolean
+    isBot?: BoolFilter<"MatchMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchMember"> | boolean
+    room?: XOR<ChampionshipMatchScalarRelationFilter, ChampionshipMatchWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type MultiPlayerMemberOrderByWithRelationInput = {
+  export type MatchMemberOrderByWithRelationInput = {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
@@ -45304,30 +48065,30 @@ export namespace Prisma {
     joinedAt?: SortOrder
     finishedAt?: SortOrderInput | SortOrder
     isDisconnect?: SortOrder
-    room?: MultiplayerRoomOrderByWithRelationInput
+    room?: ChampionshipMatchOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
 
-  export type MultiPlayerMemberWhereUniqueInput = Prisma.AtLeast<{
+  export type MatchMemberWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
-    OR?: MultiPlayerMemberWhereInput[]
-    NOT?: MultiPlayerMemberWhereInput | MultiPlayerMemberWhereInput[]
-    roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringFilter<"MultiPlayerMember"> | string
-    point?: IntFilter<"MultiPlayerMember"> | number
-    bonusPoint?: IntFilter<"MultiPlayerMember"> | number
-    isReady?: BoolFilter<"MultiPlayerMember"> | boolean
-    isComplete?: BoolFilter<"MultiPlayerMember"> | boolean
-    isBot?: BoolFilter<"MultiPlayerMember"> | boolean
-    joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
-    finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
-    isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
-    room?: XOR<MultiplayerRoomScalarRelationFilter, MultiplayerRoomWhereInput>
+    AND?: MatchMemberWhereInput | MatchMemberWhereInput[]
+    OR?: MatchMemberWhereInput[]
+    NOT?: MatchMemberWhereInput | MatchMemberWhereInput[]
+    roomId?: StringFilter<"MatchMember"> | string
+    userId?: StringFilter<"MatchMember"> | string
+    point?: IntFilter<"MatchMember"> | number
+    bonusPoint?: IntFilter<"MatchMember"> | number
+    isReady?: BoolFilter<"MatchMember"> | boolean
+    isComplete?: BoolFilter<"MatchMember"> | boolean
+    isBot?: BoolFilter<"MatchMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchMember"> | boolean
+    room?: XOR<ChampionshipMatchScalarRelationFilter, ChampionshipMatchWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type MultiPlayerMemberOrderByWithAggregationInput = {
+  export type MatchMemberOrderByWithAggregationInput = {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
@@ -45339,28 +48100,118 @@ export namespace Prisma {
     joinedAt?: SortOrder
     finishedAt?: SortOrderInput | SortOrder
     isDisconnect?: SortOrder
-    _count?: MultiPlayerMemberCountOrderByAggregateInput
-    _avg?: MultiPlayerMemberAvgOrderByAggregateInput
-    _max?: MultiPlayerMemberMaxOrderByAggregateInput
-    _min?: MultiPlayerMemberMinOrderByAggregateInput
-    _sum?: MultiPlayerMemberSumOrderByAggregateInput
+    _count?: MatchMemberCountOrderByAggregateInput
+    _avg?: MatchMemberAvgOrderByAggregateInput
+    _max?: MatchMemberMaxOrderByAggregateInput
+    _min?: MatchMemberMinOrderByAggregateInput
+    _sum?: MatchMemberSumOrderByAggregateInput
   }
 
-  export type MultiPlayerMemberScalarWhereWithAggregatesInput = {
-    AND?: MultiPlayerMemberScalarWhereWithAggregatesInput | MultiPlayerMemberScalarWhereWithAggregatesInput[]
-    OR?: MultiPlayerMemberScalarWhereWithAggregatesInput[]
-    NOT?: MultiPlayerMemberScalarWhereWithAggregatesInput | MultiPlayerMemberScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
-    roomId?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
-    userId?: StringWithAggregatesFilter<"MultiPlayerMember"> | string
-    point?: IntWithAggregatesFilter<"MultiPlayerMember"> | number
-    bonusPoint?: IntWithAggregatesFilter<"MultiPlayerMember"> | number
-    isReady?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
-    isComplete?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
-    isBot?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
-    joinedAt?: DateTimeWithAggregatesFilter<"MultiPlayerMember"> | Date | string
-    finishedAt?: DateTimeNullableWithAggregatesFilter<"MultiPlayerMember"> | Date | string | null
-    isDisconnect?: BoolWithAggregatesFilter<"MultiPlayerMember"> | boolean
+  export type MatchMemberScalarWhereWithAggregatesInput = {
+    AND?: MatchMemberScalarWhereWithAggregatesInput | MatchMemberScalarWhereWithAggregatesInput[]
+    OR?: MatchMemberScalarWhereWithAggregatesInput[]
+    NOT?: MatchMemberScalarWhereWithAggregatesInput | MatchMemberScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MatchMember"> | string
+    roomId?: StringWithAggregatesFilter<"MatchMember"> | string
+    userId?: StringWithAggregatesFilter<"MatchMember"> | string
+    point?: IntWithAggregatesFilter<"MatchMember"> | number
+    bonusPoint?: IntWithAggregatesFilter<"MatchMember"> | number
+    isReady?: BoolWithAggregatesFilter<"MatchMember"> | boolean
+    isComplete?: BoolWithAggregatesFilter<"MatchMember"> | boolean
+    isBot?: BoolWithAggregatesFilter<"MatchMember"> | boolean
+    joinedAt?: DateTimeWithAggregatesFilter<"MatchMember"> | Date | string
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"MatchMember"> | Date | string | null
+    isDisconnect?: BoolWithAggregatesFilter<"MatchMember"> | boolean
+  }
+
+  export type MatchHistoryMemberWhereInput = {
+    AND?: MatchHistoryMemberWhereInput | MatchHistoryMemberWhereInput[]
+    OR?: MatchHistoryMemberWhereInput[]
+    NOT?: MatchHistoryMemberWhereInput | MatchHistoryMemberWhereInput[]
+    id?: StringFilter<"MatchHistoryMember"> | string
+    roomId?: StringFilter<"MatchHistoryMember"> | string
+    userId?: StringFilter<"MatchHistoryMember"> | string
+    point?: IntFilter<"MatchHistoryMember"> | number
+    bonusPoint?: IntFilter<"MatchHistoryMember"> | number
+    isReady?: BoolFilter<"MatchHistoryMember"> | boolean
+    isComplete?: BoolFilter<"MatchHistoryMember"> | boolean
+    isBot?: BoolFilter<"MatchHistoryMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchHistoryMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchHistoryMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchHistoryMember"> | boolean
+    room?: XOR<ChampionshipHistoryScalarRelationFilter, ChampionshipHistoryWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type MatchHistoryMemberOrderByWithRelationInput = {
+    id?: SortOrder
+    roomId?: SortOrder
+    userId?: SortOrder
+    point?: SortOrder
+    bonusPoint?: SortOrder
+    isReady?: SortOrder
+    isComplete?: SortOrder
+    isBot?: SortOrder
+    joinedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    isDisconnect?: SortOrder
+    room?: ChampionshipHistoryOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type MatchHistoryMemberWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MatchHistoryMemberWhereInput | MatchHistoryMemberWhereInput[]
+    OR?: MatchHistoryMemberWhereInput[]
+    NOT?: MatchHistoryMemberWhereInput | MatchHistoryMemberWhereInput[]
+    roomId?: StringFilter<"MatchHistoryMember"> | string
+    userId?: StringFilter<"MatchHistoryMember"> | string
+    point?: IntFilter<"MatchHistoryMember"> | number
+    bonusPoint?: IntFilter<"MatchHistoryMember"> | number
+    isReady?: BoolFilter<"MatchHistoryMember"> | boolean
+    isComplete?: BoolFilter<"MatchHistoryMember"> | boolean
+    isBot?: BoolFilter<"MatchHistoryMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchHistoryMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchHistoryMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchHistoryMember"> | boolean
+    room?: XOR<ChampionshipHistoryScalarRelationFilter, ChampionshipHistoryWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type MatchHistoryMemberOrderByWithAggregationInput = {
+    id?: SortOrder
+    roomId?: SortOrder
+    userId?: SortOrder
+    point?: SortOrder
+    bonusPoint?: SortOrder
+    isReady?: SortOrder
+    isComplete?: SortOrder
+    isBot?: SortOrder
+    joinedAt?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    isDisconnect?: SortOrder
+    _count?: MatchHistoryMemberCountOrderByAggregateInput
+    _avg?: MatchHistoryMemberAvgOrderByAggregateInput
+    _max?: MatchHistoryMemberMaxOrderByAggregateInput
+    _min?: MatchHistoryMemberMinOrderByAggregateInput
+    _sum?: MatchHistoryMemberSumOrderByAggregateInput
+  }
+
+  export type MatchHistoryMemberScalarWhereWithAggregatesInput = {
+    AND?: MatchHistoryMemberScalarWhereWithAggregatesInput | MatchHistoryMemberScalarWhereWithAggregatesInput[]
+    OR?: MatchHistoryMemberScalarWhereWithAggregatesInput[]
+    NOT?: MatchHistoryMemberScalarWhereWithAggregatesInput | MatchHistoryMemberScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
+    roomId?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
+    userId?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
+    point?: IntWithAggregatesFilter<"MatchHistoryMember"> | number
+    bonusPoint?: IntWithAggregatesFilter<"MatchHistoryMember"> | number
+    isReady?: BoolWithAggregatesFilter<"MatchHistoryMember"> | boolean
+    isComplete?: BoolWithAggregatesFilter<"MatchHistoryMember"> | boolean
+    isBot?: BoolWithAggregatesFilter<"MatchHistoryMember"> | boolean
+    joinedAt?: DateTimeWithAggregatesFilter<"MatchHistoryMember"> | Date | string
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"MatchHistoryMember"> | Date | string | null
+    isDisconnect?: BoolWithAggregatesFilter<"MatchHistoryMember"> | boolean
   }
 
   export type ProvinceCreateInput = {
@@ -45801,7 +48652,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -45849,7 +48701,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -45887,7 +48740,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -45935,7 +48789,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -48178,7 +51033,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MultiplayerRoomCreateInput = {
+  export type ChampionshipMatchCreateInput = {
     id?: string
     max?: number
     gameplayId: string
@@ -48191,10 +51046,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     currentMember?: number
-    members?: MultiPlayerMemberCreateNestedManyWithoutRoomInput
+    members?: MatchMemberCreateNestedManyWithoutRoomInput
   }
 
-  export type MultiplayerRoomUncheckedCreateInput = {
+  export type ChampionshipMatchUncheckedCreateInput = {
     id?: string
     max?: number
     gameplayId: string
@@ -48207,10 +51062,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     currentMember?: number
-    members?: MultiPlayerMemberUncheckedCreateNestedManyWithoutRoomInput
+    members?: MatchMemberUncheckedCreateNestedManyWithoutRoomInput
   }
 
-  export type MultiplayerRoomUpdateInput = {
+  export type ChampionshipMatchUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -48223,10 +51078,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     currentMember?: IntFieldUpdateOperationsInput | number
-    members?: MultiPlayerMemberUpdateManyWithoutRoomNestedInput
+    members?: MatchMemberUpdateManyWithoutRoomNestedInput
   }
 
-  export type MultiplayerRoomUncheckedUpdateInput = {
+  export type ChampionshipMatchUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -48239,10 +51094,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     currentMember?: IntFieldUpdateOperationsInput | number
-    members?: MultiPlayerMemberUncheckedUpdateManyWithoutRoomNestedInput
+    members?: MatchMemberUncheckedUpdateManyWithoutRoomNestedInput
   }
 
-  export type MultiplayerRoomCreateManyInput = {
+  export type ChampionshipMatchCreateManyInput = {
     id?: string
     max?: number
     gameplayId: string
@@ -48257,7 +51112,7 @@ export namespace Prisma {
     currentMember?: number
   }
 
-  export type MultiplayerRoomUpdateManyMutationInput = {
+  export type ChampionshipMatchUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -48272,7 +51127,7 @@ export namespace Prisma {
     currentMember?: IntFieldUpdateOperationsInput | number
   }
 
-  export type MultiplayerRoomUncheckedUpdateManyInput = {
+  export type ChampionshipMatchUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -48287,7 +51142,116 @@ export namespace Prisma {
     currentMember?: IntFieldUpdateOperationsInput | number
   }
 
-  export type MultiPlayerMemberCreateInput = {
+  export type ChampionshipHistoryCreateInput = {
+    id?: string
+    max?: number
+    gameplayId: string
+    botOwner: string
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    expiredAt?: Date | string | null
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    currentMember?: number
+    members?: MatchHistoryMemberCreateNestedManyWithoutRoomInput
+  }
+
+  export type ChampionshipHistoryUncheckedCreateInput = {
+    id?: string
+    max?: number
+    gameplayId: string
+    botOwner: string
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    expiredAt?: Date | string | null
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    currentMember?: number
+    members?: MatchHistoryMemberUncheckedCreateNestedManyWithoutRoomInput
+  }
+
+  export type ChampionshipHistoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+    members?: MatchHistoryMemberUpdateManyWithoutRoomNestedInput
+  }
+
+  export type ChampionshipHistoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+    members?: MatchHistoryMemberUncheckedUpdateManyWithoutRoomNestedInput
+  }
+
+  export type ChampionshipHistoryCreateManyInput = {
+    id?: string
+    max?: number
+    gameplayId: string
+    botOwner: string
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    expiredAt?: Date | string | null
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    currentMember?: number
+  }
+
+  export type ChampionshipHistoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChampionshipHistoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MatchMemberCreateInput = {
     id?: string
     point?: number
     bonusPoint?: number
@@ -48297,11 +51261,11 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-    room: MultiplayerRoomCreateNestedOneWithoutMembersInput
-    user: UserCreateNestedOneWithoutMultiPlayerMemberInput
+    room: ChampionshipMatchCreateNestedOneWithoutMembersInput
+    user: UserCreateNestedOneWithoutMatchMembersInput
   }
 
-  export type MultiPlayerMemberUncheckedCreateInput = {
+  export type MatchMemberUncheckedCreateInput = {
     id?: string
     roomId: string
     userId: string
@@ -48315,7 +51279,7 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MultiPlayerMemberUpdateInput = {
+  export type MatchMemberUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -48325,11 +51289,11 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-    room?: MultiplayerRoomUpdateOneRequiredWithoutMembersNestedInput
-    user?: UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput
+    room?: ChampionshipMatchUpdateOneRequiredWithoutMembersNestedInput
+    user?: UserUpdateOneRequiredWithoutMatchMembersNestedInput
   }
 
-  export type MultiPlayerMemberUncheckedUpdateInput = {
+  export type MatchMemberUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -48343,7 +51307,7 @@ export namespace Prisma {
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type MultiPlayerMemberCreateManyInput = {
+  export type MatchMemberCreateManyInput = {
     id?: string
     roomId: string
     userId: string
@@ -48357,7 +51321,7 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MultiPlayerMemberUpdateManyMutationInput = {
+  export type MatchMemberUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -48369,7 +51333,103 @@ export namespace Prisma {
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type MultiPlayerMemberUncheckedUpdateManyInput = {
+  export type MatchMemberUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberCreateInput = {
+    id?: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+    room: ChampionshipHistoryCreateNestedOneWithoutMembersInput
+    user: UserCreateNestedOneWithoutHistoryMatchMembersInput
+  }
+
+  export type MatchHistoryMemberUncheckedCreateInput = {
+    id?: string
+    roomId: string
+    userId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+    room?: ChampionshipHistoryUpdateOneRequiredWithoutMembersNestedInput
+    user?: UserUpdateOneRequiredWithoutHistoryMatchMembersNestedInput
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberCreateManyInput = {
+    id?: string
+    roomId: string
+    userId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -48896,10 +51956,16 @@ export namespace Prisma {
     none?: LevelWhereInput
   }
 
-  export type MultiPlayerMemberListRelationFilter = {
-    every?: MultiPlayerMemberWhereInput
-    some?: MultiPlayerMemberWhereInput
-    none?: MultiPlayerMemberWhereInput
+  export type MatchMemberListRelationFilter = {
+    every?: MatchMemberWhereInput
+    some?: MatchMemberWhereInput
+    none?: MatchMemberWhereInput
+  }
+
+  export type MatchHistoryMemberListRelationFilter = {
+    every?: MatchHistoryMemberWhereInput
+    some?: MatchHistoryMemberWhereInput
+    none?: MatchHistoryMemberWhereInput
   }
 
   export type SubLevelListRelationFilter = {
@@ -48968,7 +52034,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type MultiPlayerMemberOrderByRelationAggregateInput = {
+  export type MatchMemberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MatchHistoryMemberOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50537,7 +53607,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type MultiplayerRoomCountOrderByAggregateInput = {
+  export type ChampionshipMatchCountOrderByAggregateInput = {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
@@ -50552,27 +53622,12 @@ export namespace Prisma {
     currentMember?: SortOrder
   }
 
-  export type MultiplayerRoomAvgOrderByAggregateInput = {
+  export type ChampionshipMatchAvgOrderByAggregateInput = {
     max?: SortOrder
     currentMember?: SortOrder
   }
 
-  export type MultiplayerRoomMaxOrderByAggregateInput = {
-    id?: SortOrder
-    max?: SortOrder
-    gameplayId?: SortOrder
-    botOwner?: SortOrder
-    startedAt?: SortOrder
-    endedAt?: SortOrder
-    expiredAt?: SortOrder
-    isStarted?: SortOrder
-    isEnded?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    currentMember?: SortOrder
-  }
-
-  export type MultiplayerRoomMinOrderByAggregateInput = {
+  export type ChampionshipMatchMaxOrderByAggregateInput = {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
@@ -50587,17 +53642,87 @@ export namespace Prisma {
     currentMember?: SortOrder
   }
 
-  export type MultiplayerRoomSumOrderByAggregateInput = {
+  export type ChampionshipMatchMinOrderByAggregateInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+    expiredAt?: SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
+  }
+
+  export type ChampionshipMatchSumOrderByAggregateInput = {
     max?: SortOrder
     currentMember?: SortOrder
   }
 
-  export type MultiplayerRoomScalarRelationFilter = {
-    is?: MultiplayerRoomWhereInput
-    isNot?: MultiplayerRoomWhereInput
+  export type ChampionshipHistoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+    expiredAt?: SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
   }
 
-  export type MultiPlayerMemberCountOrderByAggregateInput = {
+  export type ChampionshipHistoryAvgOrderByAggregateInput = {
+    max?: SortOrder
+    currentMember?: SortOrder
+  }
+
+  export type ChampionshipHistoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+    expiredAt?: SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
+  }
+
+  export type ChampionshipHistoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    max?: SortOrder
+    gameplayId?: SortOrder
+    botOwner?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+    expiredAt?: SortOrder
+    isStarted?: SortOrder
+    isEnded?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    currentMember?: SortOrder
+  }
+
+  export type ChampionshipHistorySumOrderByAggregateInput = {
+    max?: SortOrder
+    currentMember?: SortOrder
+  }
+
+  export type ChampionshipMatchScalarRelationFilter = {
+    is?: ChampionshipMatchWhereInput
+    isNot?: ChampionshipMatchWhereInput
+  }
+
+  export type MatchMemberCountOrderByAggregateInput = {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
@@ -50611,12 +53736,12 @@ export namespace Prisma {
     isDisconnect?: SortOrder
   }
 
-  export type MultiPlayerMemberAvgOrderByAggregateInput = {
+  export type MatchMemberAvgOrderByAggregateInput = {
     point?: SortOrder
     bonusPoint?: SortOrder
   }
 
-  export type MultiPlayerMemberMaxOrderByAggregateInput = {
+  export type MatchMemberMaxOrderByAggregateInput = {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
@@ -50630,7 +53755,7 @@ export namespace Prisma {
     isDisconnect?: SortOrder
   }
 
-  export type MultiPlayerMemberMinOrderByAggregateInput = {
+  export type MatchMemberMinOrderByAggregateInput = {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
@@ -50644,7 +53769,64 @@ export namespace Prisma {
     isDisconnect?: SortOrder
   }
 
-  export type MultiPlayerMemberSumOrderByAggregateInput = {
+  export type MatchMemberSumOrderByAggregateInput = {
+    point?: SortOrder
+    bonusPoint?: SortOrder
+  }
+
+  export type ChampionshipHistoryScalarRelationFilter = {
+    is?: ChampionshipHistoryWhereInput
+    isNot?: ChampionshipHistoryWhereInput
+  }
+
+  export type MatchHistoryMemberCountOrderByAggregateInput = {
+    id?: SortOrder
+    roomId?: SortOrder
+    userId?: SortOrder
+    point?: SortOrder
+    bonusPoint?: SortOrder
+    isReady?: SortOrder
+    isComplete?: SortOrder
+    isBot?: SortOrder
+    joinedAt?: SortOrder
+    finishedAt?: SortOrder
+    isDisconnect?: SortOrder
+  }
+
+  export type MatchHistoryMemberAvgOrderByAggregateInput = {
+    point?: SortOrder
+    bonusPoint?: SortOrder
+  }
+
+  export type MatchHistoryMemberMaxOrderByAggregateInput = {
+    id?: SortOrder
+    roomId?: SortOrder
+    userId?: SortOrder
+    point?: SortOrder
+    bonusPoint?: SortOrder
+    isReady?: SortOrder
+    isComplete?: SortOrder
+    isBot?: SortOrder
+    joinedAt?: SortOrder
+    finishedAt?: SortOrder
+    isDisconnect?: SortOrder
+  }
+
+  export type MatchHistoryMemberMinOrderByAggregateInput = {
+    id?: SortOrder
+    roomId?: SortOrder
+    userId?: SortOrder
+    point?: SortOrder
+    bonusPoint?: SortOrder
+    isReady?: SortOrder
+    isComplete?: SortOrder
+    isBot?: SortOrder
+    joinedAt?: SortOrder
+    finishedAt?: SortOrder
+    isDisconnect?: SortOrder
+  }
+
+  export type MatchHistoryMemberSumOrderByAggregateInput = {
     point?: SortOrder
     bonusPoint?: SortOrder
   }
@@ -51685,11 +54867,18 @@ export namespace Prisma {
     connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
   }
 
-  export type MultiPlayerMemberCreateNestedManyWithoutUserInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
-    createMany?: MultiPlayerMemberCreateManyUserInputEnvelope
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
+  export type MatchMemberCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput> | MatchMemberCreateWithoutUserInput[] | MatchMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutUserInput | MatchMemberCreateOrConnectWithoutUserInput[]
+    createMany?: MatchMemberCreateManyUserInputEnvelope
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+  }
+
+  export type MatchHistoryMemberCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput> | MatchHistoryMemberCreateWithoutUserInput[] | MatchHistoryMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutUserInput | MatchHistoryMemberCreateOrConnectWithoutUserInput[]
+    createMany?: MatchHistoryMemberCreateManyUserInputEnvelope
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
   }
 
   export type SubLevelCreateNestedManyWithoutUserInput = {
@@ -51806,11 +54995,18 @@ export namespace Prisma {
     connect?: LevelWhereUniqueInput | LevelWhereUniqueInput[]
   }
 
-  export type MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
-    createMany?: MultiPlayerMemberCreateManyUserInputEnvelope
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
+  export type MatchMemberUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput> | MatchMemberCreateWithoutUserInput[] | MatchMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutUserInput | MatchMemberCreateOrConnectWithoutUserInput[]
+    createMany?: MatchMemberCreateManyUserInputEnvelope
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+  }
+
+  export type MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput> | MatchHistoryMemberCreateWithoutUserInput[] | MatchHistoryMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutUserInput | MatchHistoryMemberCreateOrConnectWithoutUserInput[]
+    createMany?: MatchHistoryMemberCreateManyUserInputEnvelope
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
   }
 
   export type SubLevelUncheckedCreateNestedManyWithoutUserInput = {
@@ -51982,18 +55178,32 @@ export namespace Prisma {
     deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
   }
 
-  export type MultiPlayerMemberUpdateManyWithoutUserNestedInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
-    upsert?: MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput | MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: MultiPlayerMemberCreateManyUserInputEnvelope
-    set?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    disconnect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    delete?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    update?: MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput | MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: MultiPlayerMemberUpdateManyWithWhereWithoutUserInput | MultiPlayerMemberUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
+  export type MatchMemberUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput> | MatchMemberCreateWithoutUserInput[] | MatchMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutUserInput | MatchMemberCreateOrConnectWithoutUserInput[]
+    upsert?: MatchMemberUpsertWithWhereUniqueWithoutUserInput | MatchMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchMemberCreateManyUserInputEnvelope
+    set?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    disconnect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    delete?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    update?: MatchMemberUpdateWithWhereUniqueWithoutUserInput | MatchMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchMemberUpdateManyWithWhereWithoutUserInput | MatchMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
+  }
+
+  export type MatchHistoryMemberUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput> | MatchHistoryMemberCreateWithoutUserInput[] | MatchHistoryMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutUserInput | MatchHistoryMemberCreateOrConnectWithoutUserInput[]
+    upsert?: MatchHistoryMemberUpsertWithWhereUniqueWithoutUserInput | MatchHistoryMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchHistoryMemberCreateManyUserInputEnvelope
+    set?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    disconnect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    delete?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    update?: MatchHistoryMemberUpdateWithWhereUniqueWithoutUserInput | MatchHistoryMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchHistoryMemberUpdateManyWithWhereWithoutUserInput | MatchHistoryMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
   }
 
   export type SubLevelUpdateManyWithoutUserNestedInput = {
@@ -52214,18 +55424,32 @@ export namespace Prisma {
     deleteMany?: LevelScalarWhereInput | LevelScalarWhereInput[]
   }
 
-  export type MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput> | MultiPlayerMemberCreateWithoutUserInput[] | MultiPlayerMemberUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutUserInput | MultiPlayerMemberCreateOrConnectWithoutUserInput[]
-    upsert?: MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput | MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: MultiPlayerMemberCreateManyUserInputEnvelope
-    set?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    disconnect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    delete?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    update?: MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput | MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: MultiPlayerMemberUpdateManyWithWhereWithoutUserInput | MultiPlayerMemberUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
+  export type MatchMemberUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput> | MatchMemberCreateWithoutUserInput[] | MatchMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutUserInput | MatchMemberCreateOrConnectWithoutUserInput[]
+    upsert?: MatchMemberUpsertWithWhereUniqueWithoutUserInput | MatchMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchMemberCreateManyUserInputEnvelope
+    set?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    disconnect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    delete?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    update?: MatchMemberUpdateWithWhereUniqueWithoutUserInput | MatchMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchMemberUpdateManyWithWhereWithoutUserInput | MatchMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput> | MatchHistoryMemberCreateWithoutUserInput[] | MatchHistoryMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutUserInput | MatchHistoryMemberCreateOrConnectWithoutUserInput[]
+    upsert?: MatchHistoryMemberUpsertWithWhereUniqueWithoutUserInput | MatchHistoryMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MatchHistoryMemberCreateManyUserInputEnvelope
+    set?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    disconnect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    delete?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    update?: MatchHistoryMemberUpdateWithWhereUniqueWithoutUserInput | MatchHistoryMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MatchHistoryMemberUpdateManyWithWhereWithoutUserInput | MatchHistoryMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
   }
 
   export type SubLevelUncheckedUpdateManyWithoutUserNestedInput = {
@@ -53645,74 +56869,144 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRedeemedCodesInput, UserUpdateWithoutRedeemedCodesInput>, UserUncheckedUpdateWithoutRedeemedCodesInput>
   }
 
-  export type MultiPlayerMemberCreateNestedManyWithoutRoomInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput> | MultiPlayerMemberCreateWithoutRoomInput[] | MultiPlayerMemberUncheckedCreateWithoutRoomInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutRoomInput | MultiPlayerMemberCreateOrConnectWithoutRoomInput[]
-    createMany?: MultiPlayerMemberCreateManyRoomInputEnvelope
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
+  export type MatchMemberCreateNestedManyWithoutRoomInput = {
+    create?: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput> | MatchMemberCreateWithoutRoomInput[] | MatchMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutRoomInput | MatchMemberCreateOrConnectWithoutRoomInput[]
+    createMany?: MatchMemberCreateManyRoomInputEnvelope
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
   }
 
-  export type MultiPlayerMemberUncheckedCreateNestedManyWithoutRoomInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput> | MultiPlayerMemberCreateWithoutRoomInput[] | MultiPlayerMemberUncheckedCreateWithoutRoomInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutRoomInput | MultiPlayerMemberCreateOrConnectWithoutRoomInput[]
-    createMany?: MultiPlayerMemberCreateManyRoomInputEnvelope
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
+  export type MatchMemberUncheckedCreateNestedManyWithoutRoomInput = {
+    create?: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput> | MatchMemberCreateWithoutRoomInput[] | MatchMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutRoomInput | MatchMemberCreateOrConnectWithoutRoomInput[]
+    createMany?: MatchMemberCreateManyRoomInputEnvelope
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
   }
 
-  export type MultiPlayerMemberUpdateManyWithoutRoomNestedInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput> | MultiPlayerMemberCreateWithoutRoomInput[] | MultiPlayerMemberUncheckedCreateWithoutRoomInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutRoomInput | MultiPlayerMemberCreateOrConnectWithoutRoomInput[]
-    upsert?: MultiPlayerMemberUpsertWithWhereUniqueWithoutRoomInput | MultiPlayerMemberUpsertWithWhereUniqueWithoutRoomInput[]
-    createMany?: MultiPlayerMemberCreateManyRoomInputEnvelope
-    set?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    disconnect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    delete?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    update?: MultiPlayerMemberUpdateWithWhereUniqueWithoutRoomInput | MultiPlayerMemberUpdateWithWhereUniqueWithoutRoomInput[]
-    updateMany?: MultiPlayerMemberUpdateManyWithWhereWithoutRoomInput | MultiPlayerMemberUpdateManyWithWhereWithoutRoomInput[]
-    deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
+  export type MatchMemberUpdateManyWithoutRoomNestedInput = {
+    create?: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput> | MatchMemberCreateWithoutRoomInput[] | MatchMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutRoomInput | MatchMemberCreateOrConnectWithoutRoomInput[]
+    upsert?: MatchMemberUpsertWithWhereUniqueWithoutRoomInput | MatchMemberUpsertWithWhereUniqueWithoutRoomInput[]
+    createMany?: MatchMemberCreateManyRoomInputEnvelope
+    set?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    disconnect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    delete?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    update?: MatchMemberUpdateWithWhereUniqueWithoutRoomInput | MatchMemberUpdateWithWhereUniqueWithoutRoomInput[]
+    updateMany?: MatchMemberUpdateManyWithWhereWithoutRoomInput | MatchMemberUpdateManyWithWhereWithoutRoomInput[]
+    deleteMany?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
   }
 
-  export type MultiPlayerMemberUncheckedUpdateManyWithoutRoomNestedInput = {
-    create?: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput> | MultiPlayerMemberCreateWithoutRoomInput[] | MultiPlayerMemberUncheckedCreateWithoutRoomInput[]
-    connectOrCreate?: MultiPlayerMemberCreateOrConnectWithoutRoomInput | MultiPlayerMemberCreateOrConnectWithoutRoomInput[]
-    upsert?: MultiPlayerMemberUpsertWithWhereUniqueWithoutRoomInput | MultiPlayerMemberUpsertWithWhereUniqueWithoutRoomInput[]
-    createMany?: MultiPlayerMemberCreateManyRoomInputEnvelope
-    set?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    disconnect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    delete?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    connect?: MultiPlayerMemberWhereUniqueInput | MultiPlayerMemberWhereUniqueInput[]
-    update?: MultiPlayerMemberUpdateWithWhereUniqueWithoutRoomInput | MultiPlayerMemberUpdateWithWhereUniqueWithoutRoomInput[]
-    updateMany?: MultiPlayerMemberUpdateManyWithWhereWithoutRoomInput | MultiPlayerMemberUpdateManyWithWhereWithoutRoomInput[]
-    deleteMany?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
+  export type MatchMemberUncheckedUpdateManyWithoutRoomNestedInput = {
+    create?: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput> | MatchMemberCreateWithoutRoomInput[] | MatchMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchMemberCreateOrConnectWithoutRoomInput | MatchMemberCreateOrConnectWithoutRoomInput[]
+    upsert?: MatchMemberUpsertWithWhereUniqueWithoutRoomInput | MatchMemberUpsertWithWhereUniqueWithoutRoomInput[]
+    createMany?: MatchMemberCreateManyRoomInputEnvelope
+    set?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    disconnect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    delete?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
+    update?: MatchMemberUpdateWithWhereUniqueWithoutRoomInput | MatchMemberUpdateWithWhereUniqueWithoutRoomInput[]
+    updateMany?: MatchMemberUpdateManyWithWhereWithoutRoomInput | MatchMemberUpdateManyWithWhereWithoutRoomInput[]
+    deleteMany?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
   }
 
-  export type MultiplayerRoomCreateNestedOneWithoutMembersInput = {
-    create?: XOR<MultiplayerRoomCreateWithoutMembersInput, MultiplayerRoomUncheckedCreateWithoutMembersInput>
-    connectOrCreate?: MultiplayerRoomCreateOrConnectWithoutMembersInput
-    connect?: MultiplayerRoomWhereUniqueInput
+  export type MatchHistoryMemberCreateNestedManyWithoutRoomInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput> | MatchHistoryMemberCreateWithoutRoomInput[] | MatchHistoryMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
+    createMany?: MatchHistoryMemberCreateManyRoomInputEnvelope
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
   }
 
-  export type UserCreateNestedOneWithoutMultiPlayerMemberInput = {
-    create?: XOR<UserCreateWithoutMultiPlayerMemberInput, UserUncheckedCreateWithoutMultiPlayerMemberInput>
-    connectOrCreate?: UserCreateOrConnectWithoutMultiPlayerMemberInput
+  export type MatchHistoryMemberUncheckedCreateNestedManyWithoutRoomInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput> | MatchHistoryMemberCreateWithoutRoomInput[] | MatchHistoryMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
+    createMany?: MatchHistoryMemberCreateManyRoomInputEnvelope
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+  }
+
+  export type MatchHistoryMemberUpdateManyWithoutRoomNestedInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput> | MatchHistoryMemberCreateWithoutRoomInput[] | MatchHistoryMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
+    upsert?: MatchHistoryMemberUpsertWithWhereUniqueWithoutRoomInput | MatchHistoryMemberUpsertWithWhereUniqueWithoutRoomInput[]
+    createMany?: MatchHistoryMemberCreateManyRoomInputEnvelope
+    set?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    disconnect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    delete?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    update?: MatchHistoryMemberUpdateWithWhereUniqueWithoutRoomInput | MatchHistoryMemberUpdateWithWhereUniqueWithoutRoomInput[]
+    updateMany?: MatchHistoryMemberUpdateManyWithWhereWithoutRoomInput | MatchHistoryMemberUpdateManyWithWhereWithoutRoomInput[]
+    deleteMany?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateManyWithoutRoomNestedInput = {
+    create?: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput> | MatchHistoryMemberCreateWithoutRoomInput[] | MatchHistoryMemberUncheckedCreateWithoutRoomInput[]
+    connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
+    upsert?: MatchHistoryMemberUpsertWithWhereUniqueWithoutRoomInput | MatchHistoryMemberUpsertWithWhereUniqueWithoutRoomInput[]
+    createMany?: MatchHistoryMemberCreateManyRoomInputEnvelope
+    set?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    disconnect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    delete?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+    update?: MatchHistoryMemberUpdateWithWhereUniqueWithoutRoomInput | MatchHistoryMemberUpdateWithWhereUniqueWithoutRoomInput[]
+    updateMany?: MatchHistoryMemberUpdateManyWithWhereWithoutRoomInput | MatchHistoryMemberUpdateManyWithWhereWithoutRoomInput[]
+    deleteMany?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
+  }
+
+  export type ChampionshipMatchCreateNestedOneWithoutMembersInput = {
+    create?: XOR<ChampionshipMatchCreateWithoutMembersInput, ChampionshipMatchUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: ChampionshipMatchCreateOrConnectWithoutMembersInput
+    connect?: ChampionshipMatchWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutMatchMembersInput = {
+    create?: XOR<UserCreateWithoutMatchMembersInput, UserUncheckedCreateWithoutMatchMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMatchMembersInput
     connect?: UserWhereUniqueInput
   }
 
-  export type MultiplayerRoomUpdateOneRequiredWithoutMembersNestedInput = {
-    create?: XOR<MultiplayerRoomCreateWithoutMembersInput, MultiplayerRoomUncheckedCreateWithoutMembersInput>
-    connectOrCreate?: MultiplayerRoomCreateOrConnectWithoutMembersInput
-    upsert?: MultiplayerRoomUpsertWithoutMembersInput
-    connect?: MultiplayerRoomWhereUniqueInput
-    update?: XOR<XOR<MultiplayerRoomUpdateToOneWithWhereWithoutMembersInput, MultiplayerRoomUpdateWithoutMembersInput>, MultiplayerRoomUncheckedUpdateWithoutMembersInput>
+  export type ChampionshipMatchUpdateOneRequiredWithoutMembersNestedInput = {
+    create?: XOR<ChampionshipMatchCreateWithoutMembersInput, ChampionshipMatchUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: ChampionshipMatchCreateOrConnectWithoutMembersInput
+    upsert?: ChampionshipMatchUpsertWithoutMembersInput
+    connect?: ChampionshipMatchWhereUniqueInput
+    update?: XOR<XOR<ChampionshipMatchUpdateToOneWithWhereWithoutMembersInput, ChampionshipMatchUpdateWithoutMembersInput>, ChampionshipMatchUncheckedUpdateWithoutMembersInput>
   }
 
-  export type UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput = {
-    create?: XOR<UserCreateWithoutMultiPlayerMemberInput, UserUncheckedCreateWithoutMultiPlayerMemberInput>
-    connectOrCreate?: UserCreateOrConnectWithoutMultiPlayerMemberInput
-    upsert?: UserUpsertWithoutMultiPlayerMemberInput
+  export type UserUpdateOneRequiredWithoutMatchMembersNestedInput = {
+    create?: XOR<UserCreateWithoutMatchMembersInput, UserUncheckedCreateWithoutMatchMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMatchMembersInput
+    upsert?: UserUpsertWithoutMatchMembersInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMultiPlayerMemberInput, UserUpdateWithoutMultiPlayerMemberInput>, UserUncheckedUpdateWithoutMultiPlayerMemberInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMatchMembersInput, UserUpdateWithoutMatchMembersInput>, UserUncheckedUpdateWithoutMatchMembersInput>
+  }
+
+  export type ChampionshipHistoryCreateNestedOneWithoutMembersInput = {
+    create?: XOR<ChampionshipHistoryCreateWithoutMembersInput, ChampionshipHistoryUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: ChampionshipHistoryCreateOrConnectWithoutMembersInput
+    connect?: ChampionshipHistoryWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutHistoryMatchMembersInput = {
+    create?: XOR<UserCreateWithoutHistoryMatchMembersInput, UserUncheckedCreateWithoutHistoryMatchMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHistoryMatchMembersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ChampionshipHistoryUpdateOneRequiredWithoutMembersNestedInput = {
+    create?: XOR<ChampionshipHistoryCreateWithoutMembersInput, ChampionshipHistoryUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: ChampionshipHistoryCreateOrConnectWithoutMembersInput
+    upsert?: ChampionshipHistoryUpsertWithoutMembersInput
+    connect?: ChampionshipHistoryWhereUniqueInput
+    update?: XOR<XOR<ChampionshipHistoryUpdateToOneWithWhereWithoutMembersInput, ChampionshipHistoryUpdateWithoutMembersInput>, ChampionshipHistoryUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutHistoryMatchMembersNestedInput = {
+    create?: XOR<UserCreateWithoutHistoryMatchMembersInput, UserUncheckedCreateWithoutHistoryMatchMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHistoryMatchMembersInput
+    upsert?: UserUpsertWithoutHistoryMatchMembersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHistoryMatchMembersInput, UserUpdateWithoutHistoryMatchMembersInput>, UserUncheckedUpdateWithoutHistoryMatchMembersInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -54318,7 +57612,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -54364,7 +57659,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -54870,7 +58166,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -54916,7 +58213,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -55261,7 +58559,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -55307,7 +58606,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -55802,7 +59102,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -55848,7 +59149,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -56341,7 +59643,7 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type MultiPlayerMemberCreateWithoutUserInput = {
+  export type MatchMemberCreateWithoutUserInput = {
     id?: string
     point?: number
     bonusPoint?: number
@@ -56351,10 +59653,10 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-    room: MultiplayerRoomCreateNestedOneWithoutMembersInput
+    room: ChampionshipMatchCreateNestedOneWithoutMembersInput
   }
 
-  export type MultiPlayerMemberUncheckedCreateWithoutUserInput = {
+  export type MatchMemberUncheckedCreateWithoutUserInput = {
     id?: string
     roomId: string
     point?: number
@@ -56367,13 +59669,49 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MultiPlayerMemberCreateOrConnectWithoutUserInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    create: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput>
+  export type MatchMemberCreateOrConnectWithoutUserInput = {
+    where: MatchMemberWhereUniqueInput
+    create: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput>
   }
 
-  export type MultiPlayerMemberCreateManyUserInputEnvelope = {
-    data: MultiPlayerMemberCreateManyUserInput | MultiPlayerMemberCreateManyUserInput[]
+  export type MatchMemberCreateManyUserInputEnvelope = {
+    data: MatchMemberCreateManyUserInput | MatchMemberCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MatchHistoryMemberCreateWithoutUserInput = {
+    id?: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+    room: ChampionshipHistoryCreateNestedOneWithoutMembersInput
+  }
+
+  export type MatchHistoryMemberUncheckedCreateWithoutUserInput = {
+    id?: string
+    roomId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberCreateOrConnectWithoutUserInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    create: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput>
+  }
+
+  export type MatchHistoryMemberCreateManyUserInputEnvelope = {
+    data: MatchHistoryMemberCreateManyUserInput | MatchHistoryMemberCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -56972,37 +60310,70 @@ export namespace Prisma {
     zoneInGameId?: StringFilter<"Level"> | string
   }
 
-  export type MultiPlayerMemberUpsertWithWhereUniqueWithoutUserInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    update: XOR<MultiPlayerMemberUpdateWithoutUserInput, MultiPlayerMemberUncheckedUpdateWithoutUserInput>
-    create: XOR<MultiPlayerMemberCreateWithoutUserInput, MultiPlayerMemberUncheckedCreateWithoutUserInput>
+  export type MatchMemberUpsertWithWhereUniqueWithoutUserInput = {
+    where: MatchMemberWhereUniqueInput
+    update: XOR<MatchMemberUpdateWithoutUserInput, MatchMemberUncheckedUpdateWithoutUserInput>
+    create: XOR<MatchMemberCreateWithoutUserInput, MatchMemberUncheckedCreateWithoutUserInput>
   }
 
-  export type MultiPlayerMemberUpdateWithWhereUniqueWithoutUserInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    data: XOR<MultiPlayerMemberUpdateWithoutUserInput, MultiPlayerMemberUncheckedUpdateWithoutUserInput>
+  export type MatchMemberUpdateWithWhereUniqueWithoutUserInput = {
+    where: MatchMemberWhereUniqueInput
+    data: XOR<MatchMemberUpdateWithoutUserInput, MatchMemberUncheckedUpdateWithoutUserInput>
   }
 
-  export type MultiPlayerMemberUpdateManyWithWhereWithoutUserInput = {
-    where: MultiPlayerMemberScalarWhereInput
-    data: XOR<MultiPlayerMemberUpdateManyMutationInput, MultiPlayerMemberUncheckedUpdateManyWithoutUserInput>
+  export type MatchMemberUpdateManyWithWhereWithoutUserInput = {
+    where: MatchMemberScalarWhereInput
+    data: XOR<MatchMemberUpdateManyMutationInput, MatchMemberUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type MultiPlayerMemberScalarWhereInput = {
-    AND?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
-    OR?: MultiPlayerMemberScalarWhereInput[]
-    NOT?: MultiPlayerMemberScalarWhereInput | MultiPlayerMemberScalarWhereInput[]
-    id?: StringFilter<"MultiPlayerMember"> | string
-    roomId?: StringFilter<"MultiPlayerMember"> | string
-    userId?: StringFilter<"MultiPlayerMember"> | string
-    point?: IntFilter<"MultiPlayerMember"> | number
-    bonusPoint?: IntFilter<"MultiPlayerMember"> | number
-    isReady?: BoolFilter<"MultiPlayerMember"> | boolean
-    isComplete?: BoolFilter<"MultiPlayerMember"> | boolean
-    isBot?: BoolFilter<"MultiPlayerMember"> | boolean
-    joinedAt?: DateTimeFilter<"MultiPlayerMember"> | Date | string
-    finishedAt?: DateTimeNullableFilter<"MultiPlayerMember"> | Date | string | null
-    isDisconnect?: BoolFilter<"MultiPlayerMember"> | boolean
+  export type MatchMemberScalarWhereInput = {
+    AND?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
+    OR?: MatchMemberScalarWhereInput[]
+    NOT?: MatchMemberScalarWhereInput | MatchMemberScalarWhereInput[]
+    id?: StringFilter<"MatchMember"> | string
+    roomId?: StringFilter<"MatchMember"> | string
+    userId?: StringFilter<"MatchMember"> | string
+    point?: IntFilter<"MatchMember"> | number
+    bonusPoint?: IntFilter<"MatchMember"> | number
+    isReady?: BoolFilter<"MatchMember"> | boolean
+    isComplete?: BoolFilter<"MatchMember"> | boolean
+    isBot?: BoolFilter<"MatchMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchMember"> | boolean
+  }
+
+  export type MatchHistoryMemberUpsertWithWhereUniqueWithoutUserInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    update: XOR<MatchHistoryMemberUpdateWithoutUserInput, MatchHistoryMemberUncheckedUpdateWithoutUserInput>
+    create: XOR<MatchHistoryMemberCreateWithoutUserInput, MatchHistoryMemberUncheckedCreateWithoutUserInput>
+  }
+
+  export type MatchHistoryMemberUpdateWithWhereUniqueWithoutUserInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    data: XOR<MatchHistoryMemberUpdateWithoutUserInput, MatchHistoryMemberUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MatchHistoryMemberUpdateManyWithWhereWithoutUserInput = {
+    where: MatchHistoryMemberScalarWhereInput
+    data: XOR<MatchHistoryMemberUpdateManyMutationInput, MatchHistoryMemberUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MatchHistoryMemberScalarWhereInput = {
+    AND?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
+    OR?: MatchHistoryMemberScalarWhereInput[]
+    NOT?: MatchHistoryMemberScalarWhereInput | MatchHistoryMemberScalarWhereInput[]
+    id?: StringFilter<"MatchHistoryMember"> | string
+    roomId?: StringFilter<"MatchHistoryMember"> | string
+    userId?: StringFilter<"MatchHistoryMember"> | string
+    point?: IntFilter<"MatchHistoryMember"> | number
+    bonusPoint?: IntFilter<"MatchHistoryMember"> | number
+    isReady?: BoolFilter<"MatchHistoryMember"> | boolean
+    isComplete?: BoolFilter<"MatchHistoryMember"> | boolean
+    isBot?: BoolFilter<"MatchHistoryMember"> | boolean
+    joinedAt?: DateTimeFilter<"MatchHistoryMember"> | Date | string
+    finishedAt?: DateTimeNullableFilter<"MatchHistoryMember"> | Date | string | null
+    isDisconnect?: BoolFilter<"MatchHistoryMember"> | boolean
   }
 
   export type SubLevelUpsertWithWhereUniqueWithoutUserInput = {
@@ -57397,7 +60768,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -57444,7 +60816,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -57497,7 +60870,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -57544,7 +60918,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -57580,7 +60955,8 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -57627,7 +61003,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -57680,7 +61057,8 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -57727,7 +61105,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -57765,7 +61144,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
@@ -57812,7 +61192,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -57865,7 +61246,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
@@ -57912,7 +61294,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -57948,7 +61331,8 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -57995,7 +61379,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -58048,7 +61433,8 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -58095,7 +61481,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -58132,7 +61519,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -58179,7 +61567,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -58232,7 +61621,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -58279,7 +61669,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -58316,7 +61707,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -58363,7 +61755,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -58416,7 +61809,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -58463,7 +61857,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -58500,7 +61895,8 @@ export namespace Prisma {
     gempos?: GempoCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -58547,7 +61943,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -58600,7 +61997,8 @@ export namespace Prisma {
     gempos?: GempoUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -58647,7 +62045,8 @@ export namespace Prisma {
     gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -58684,7 +62083,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -58731,7 +62131,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -58784,7 +62185,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -58831,7 +62233,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -58869,7 +62272,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -58916,7 +62320,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -58969,7 +62374,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -59016,7 +62422,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -59531,7 +62938,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
@@ -59577,7 +62985,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -60050,7 +63459,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
@@ -60096,7 +63506,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -61353,7 +64764,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -61400,7 +64812,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -61488,7 +64901,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -61535,7 +64949,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -61788,7 +65203,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
     city?: CityCreateNestedOneWithoutUsersInput
@@ -61835,7 +65251,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
@@ -61971,7 +65388,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
     city?: CityUpdateOneWithoutUsersNestedInput
@@ -62018,7 +65436,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
@@ -62751,7 +66170,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -62798,7 +66218,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
@@ -62890,7 +66311,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -62937,14 +66359,15 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type MultiPlayerMemberCreateWithoutRoomInput = {
+  export type MatchMemberCreateWithoutRoomInput = {
     id?: string
     point?: number
     bonusPoint?: number
@@ -62954,10 +66377,10 @@ export namespace Prisma {
     joinedAt?: Date | string
     finishedAt?: Date | string | null
     isDisconnect?: boolean
-    user: UserCreateNestedOneWithoutMultiPlayerMemberInput
+    user: UserCreateNestedOneWithoutMatchMembersInput
   }
 
-  export type MultiPlayerMemberUncheckedCreateWithoutRoomInput = {
+  export type MatchMemberUncheckedCreateWithoutRoomInput = {
     id?: string
     userId: string
     point?: number
@@ -62970,33 +66393,85 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MultiPlayerMemberCreateOrConnectWithoutRoomInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    create: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput>
+  export type MatchMemberCreateOrConnectWithoutRoomInput = {
+    where: MatchMemberWhereUniqueInput
+    create: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput>
   }
 
-  export type MultiPlayerMemberCreateManyRoomInputEnvelope = {
-    data: MultiPlayerMemberCreateManyRoomInput | MultiPlayerMemberCreateManyRoomInput[]
+  export type MatchMemberCreateManyRoomInputEnvelope = {
+    data: MatchMemberCreateManyRoomInput | MatchMemberCreateManyRoomInput[]
     skipDuplicates?: boolean
   }
 
-  export type MultiPlayerMemberUpsertWithWhereUniqueWithoutRoomInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    update: XOR<MultiPlayerMemberUpdateWithoutRoomInput, MultiPlayerMemberUncheckedUpdateWithoutRoomInput>
-    create: XOR<MultiPlayerMemberCreateWithoutRoomInput, MultiPlayerMemberUncheckedCreateWithoutRoomInput>
+  export type MatchMemberUpsertWithWhereUniqueWithoutRoomInput = {
+    where: MatchMemberWhereUniqueInput
+    update: XOR<MatchMemberUpdateWithoutRoomInput, MatchMemberUncheckedUpdateWithoutRoomInput>
+    create: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput>
   }
 
-  export type MultiPlayerMemberUpdateWithWhereUniqueWithoutRoomInput = {
-    where: MultiPlayerMemberWhereUniqueInput
-    data: XOR<MultiPlayerMemberUpdateWithoutRoomInput, MultiPlayerMemberUncheckedUpdateWithoutRoomInput>
+  export type MatchMemberUpdateWithWhereUniqueWithoutRoomInput = {
+    where: MatchMemberWhereUniqueInput
+    data: XOR<MatchMemberUpdateWithoutRoomInput, MatchMemberUncheckedUpdateWithoutRoomInput>
   }
 
-  export type MultiPlayerMemberUpdateManyWithWhereWithoutRoomInput = {
-    where: MultiPlayerMemberScalarWhereInput
-    data: XOR<MultiPlayerMemberUpdateManyMutationInput, MultiPlayerMemberUncheckedUpdateManyWithoutRoomInput>
+  export type MatchMemberUpdateManyWithWhereWithoutRoomInput = {
+    where: MatchMemberScalarWhereInput
+    data: XOR<MatchMemberUpdateManyMutationInput, MatchMemberUncheckedUpdateManyWithoutRoomInput>
   }
 
-  export type MultiplayerRoomCreateWithoutMembersInput = {
+  export type MatchHistoryMemberCreateWithoutRoomInput = {
+    id?: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+    user: UserCreateNestedOneWithoutHistoryMatchMembersInput
+  }
+
+  export type MatchHistoryMemberUncheckedCreateWithoutRoomInput = {
+    id?: string
+    userId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberCreateOrConnectWithoutRoomInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    create: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput>
+  }
+
+  export type MatchHistoryMemberCreateManyRoomInputEnvelope = {
+    data: MatchHistoryMemberCreateManyRoomInput | MatchHistoryMemberCreateManyRoomInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MatchHistoryMemberUpsertWithWhereUniqueWithoutRoomInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    update: XOR<MatchHistoryMemberUpdateWithoutRoomInput, MatchHistoryMemberUncheckedUpdateWithoutRoomInput>
+    create: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput>
+  }
+
+  export type MatchHistoryMemberUpdateWithWhereUniqueWithoutRoomInput = {
+    where: MatchHistoryMemberWhereUniqueInput
+    data: XOR<MatchHistoryMemberUpdateWithoutRoomInput, MatchHistoryMemberUncheckedUpdateWithoutRoomInput>
+  }
+
+  export type MatchHistoryMemberUpdateManyWithWhereWithoutRoomInput = {
+    where: MatchHistoryMemberScalarWhereInput
+    data: XOR<MatchHistoryMemberUpdateManyMutationInput, MatchHistoryMemberUncheckedUpdateManyWithoutRoomInput>
+  }
+
+  export type ChampionshipMatchCreateWithoutMembersInput = {
     id?: string
     max?: number
     gameplayId: string
@@ -63011,7 +66486,7 @@ export namespace Prisma {
     currentMember?: number
   }
 
-  export type MultiplayerRoomUncheckedCreateWithoutMembersInput = {
+  export type ChampionshipMatchUncheckedCreateWithoutMembersInput = {
     id?: string
     max?: number
     gameplayId: string
@@ -63026,12 +66501,12 @@ export namespace Prisma {
     currentMember?: number
   }
 
-  export type MultiplayerRoomCreateOrConnectWithoutMembersInput = {
-    where: MultiplayerRoomWhereUniqueInput
-    create: XOR<MultiplayerRoomCreateWithoutMembersInput, MultiplayerRoomUncheckedCreateWithoutMembersInput>
+  export type ChampionshipMatchCreateOrConnectWithoutMembersInput = {
+    where: ChampionshipMatchWhereUniqueInput
+    create: XOR<ChampionshipMatchCreateWithoutMembersInput, ChampionshipMatchUncheckedCreateWithoutMembersInput>
   }
 
-  export type UserCreateWithoutMultiPlayerMemberInput = {
+  export type UserCreateWithoutMatchMembersInput = {
     id?: string
     authId: string
     email: string
@@ -63062,6 +66537,7 @@ export namespace Prisma {
     gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
     levels?: LevelCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
     subLevels?: SubLevelCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -63073,7 +66549,7 @@ export namespace Prisma {
     zones?: ZoneCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutMultiPlayerMemberInput = {
+  export type UserUncheckedCreateWithoutMatchMembersInput = {
     id?: string
     authId: string
     email: string
@@ -63109,29 +66585,30 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
     innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
     levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
     subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutMultiPlayerMemberInput = {
+  export type UserCreateOrConnectWithoutMatchMembersInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutMultiPlayerMemberInput, UserUncheckedCreateWithoutMultiPlayerMemberInput>
+    create: XOR<UserCreateWithoutMatchMembersInput, UserUncheckedCreateWithoutMatchMembersInput>
   }
 
-  export type MultiplayerRoomUpsertWithoutMembersInput = {
-    update: XOR<MultiplayerRoomUpdateWithoutMembersInput, MultiplayerRoomUncheckedUpdateWithoutMembersInput>
-    create: XOR<MultiplayerRoomCreateWithoutMembersInput, MultiplayerRoomUncheckedCreateWithoutMembersInput>
-    where?: MultiplayerRoomWhereInput
+  export type ChampionshipMatchUpsertWithoutMembersInput = {
+    update: XOR<ChampionshipMatchUpdateWithoutMembersInput, ChampionshipMatchUncheckedUpdateWithoutMembersInput>
+    create: XOR<ChampionshipMatchCreateWithoutMembersInput, ChampionshipMatchUncheckedCreateWithoutMembersInput>
+    where?: ChampionshipMatchWhereInput
   }
 
-  export type MultiplayerRoomUpdateToOneWithWhereWithoutMembersInput = {
-    where?: MultiplayerRoomWhereInput
-    data: XOR<MultiplayerRoomUpdateWithoutMembersInput, MultiplayerRoomUncheckedUpdateWithoutMembersInput>
+  export type ChampionshipMatchUpdateToOneWithWhereWithoutMembersInput = {
+    where?: ChampionshipMatchWhereInput
+    data: XOR<ChampionshipMatchUpdateWithoutMembersInput, ChampionshipMatchUncheckedUpdateWithoutMembersInput>
   }
 
-  export type MultiplayerRoomUpdateWithoutMembersInput = {
+  export type ChampionshipMatchUpdateWithoutMembersInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -63146,7 +66623,7 @@ export namespace Prisma {
     currentMember?: IntFieldUpdateOperationsInput | number
   }
 
-  export type MultiplayerRoomUncheckedUpdateWithoutMembersInput = {
+  export type ChampionshipMatchUncheckedUpdateWithoutMembersInput = {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
@@ -63161,18 +66638,18 @@ export namespace Prisma {
     currentMember?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserUpsertWithoutMultiPlayerMemberInput = {
-    update: XOR<UserUpdateWithoutMultiPlayerMemberInput, UserUncheckedUpdateWithoutMultiPlayerMemberInput>
-    create: XOR<UserCreateWithoutMultiPlayerMemberInput, UserUncheckedCreateWithoutMultiPlayerMemberInput>
+  export type UserUpsertWithoutMatchMembersInput = {
+    update: XOR<UserUpdateWithoutMatchMembersInput, UserUncheckedUpdateWithoutMatchMembersInput>
+    create: XOR<UserCreateWithoutMatchMembersInput, UserUncheckedCreateWithoutMatchMembersInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutMultiPlayerMemberInput = {
+  export type UserUpdateToOneWithWhereWithoutMatchMembersInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutMultiPlayerMemberInput, UserUncheckedUpdateWithoutMultiPlayerMemberInput>
+    data: XOR<UserUpdateWithoutMatchMembersInput, UserUncheckedUpdateWithoutMatchMembersInput>
   }
 
-  export type UserUpdateWithoutMultiPlayerMemberInput = {
+  export type UserUpdateWithoutMatchMembersInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63203,6 +66680,7 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -63214,7 +66692,7 @@ export namespace Prisma {
     zones?: ZoneUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutMultiPlayerMemberInput = {
+  export type UserUncheckedUpdateWithoutMatchMembersInput = {
     id?: StringFieldUpdateOperationsInput | string
     authId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -63250,6 +66728,271 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ChampionshipHistoryCreateWithoutMembersInput = {
+    id?: string
+    max?: number
+    gameplayId: string
+    botOwner: string
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    expiredAt?: Date | string | null
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    currentMember?: number
+  }
+
+  export type ChampionshipHistoryUncheckedCreateWithoutMembersInput = {
+    id?: string
+    max?: number
+    gameplayId: string
+    botOwner: string
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    expiredAt?: Date | string | null
+    isStarted?: boolean
+    isEnded?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    currentMember?: number
+  }
+
+  export type ChampionshipHistoryCreateOrConnectWithoutMembersInput = {
+    where: ChampionshipHistoryWhereUniqueInput
+    create: XOR<ChampionshipHistoryCreateWithoutMembersInput, ChampionshipHistoryUncheckedCreateWithoutMembersInput>
+  }
+
+  export type UserCreateWithoutHistoryMatchMembersInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutUsersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutHistoryMatchMembersInput = {
+    id?: string
+    authId: string
+    email: string
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutHistoryMatchMembersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutHistoryMatchMembersInput, UserUncheckedCreateWithoutHistoryMatchMembersInput>
+  }
+
+  export type ChampionshipHistoryUpsertWithoutMembersInput = {
+    update: XOR<ChampionshipHistoryUpdateWithoutMembersInput, ChampionshipHistoryUncheckedUpdateWithoutMembersInput>
+    create: XOR<ChampionshipHistoryCreateWithoutMembersInput, ChampionshipHistoryUncheckedCreateWithoutMembersInput>
+    where?: ChampionshipHistoryWhereInput
+  }
+
+  export type ChampionshipHistoryUpdateToOneWithWhereWithoutMembersInput = {
+    where?: ChampionshipHistoryWhereInput
+    data: XOR<ChampionshipHistoryUpdateWithoutMembersInput, ChampionshipHistoryUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type ChampionshipHistoryUpdateWithoutMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChampionshipHistoryUncheckedUpdateWithoutMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    max?: IntFieldUpdateOperationsInput | number
+    gameplayId?: StringFieldUpdateOperationsInput | string
+    botOwner?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isStarted?: BoolFieldUpdateOperationsInput | boolean
+    isEnded?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentMember?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserUpsertWithoutHistoryMatchMembersInput = {
+    update: XOR<UserUpdateWithoutHistoryMatchMembersInput, UserUncheckedUpdateWithoutHistoryMatchMembersInput>
+    create: XOR<UserCreateWithoutHistoryMatchMembersInput, UserUncheckedCreateWithoutHistoryMatchMembersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutHistoryMatchMembersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutHistoryMatchMembersInput, UserUncheckedUpdateWithoutHistoryMatchMembersInput>
+  }
+
+  export type UserUpdateWithoutHistoryMatchMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutUsersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutHistoryMatchMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -63579,7 +67322,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -63625,7 +67369,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -63964,7 +67709,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -64010,7 +67756,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -64226,7 +67973,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -64272,7 +68020,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -64572,7 +68321,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
     levels?: LevelUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -64618,7 +68368,8 @@ export namespace Prisma {
     gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
     innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
     levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
-    multiPlayerMember?: MultiPlayerMemberUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
     subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
@@ -64777,7 +68528,20 @@ export namespace Prisma {
     zoneInGameId: string
   }
 
-  export type MultiPlayerMemberCreateManyUserInput = {
+  export type MatchMemberCreateManyUserInput = {
+    id?: string
+    roomId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberCreateManyUserInput = {
     id?: string
     roomId: string
     point?: number
@@ -65128,7 +68892,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type MultiPlayerMemberUpdateWithoutUserInput = {
+  export type MatchMemberUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -65138,10 +68902,10 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-    room?: MultiplayerRoomUpdateOneRequiredWithoutMembersNestedInput
+    room?: ChampionshipMatchUpdateOneRequiredWithoutMembersNestedInput
   }
 
-  export type MultiPlayerMemberUncheckedUpdateWithoutUserInput = {
+  export type MatchMemberUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
@@ -65154,7 +68918,46 @@ export namespace Prisma {
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type MultiPlayerMemberUncheckedUpdateManyWithoutUserInput = {
+  export type MatchMemberUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+    room?: ChampionshipHistoryUpdateOneRequiredWithoutMembersNestedInput
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
@@ -66145,7 +69948,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MultiPlayerMemberCreateManyRoomInput = {
+  export type MatchMemberCreateManyRoomInput = {
     id?: string
     userId: string
     point?: number
@@ -66158,7 +69961,7 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MultiPlayerMemberUpdateWithoutRoomInput = {
+  export type MatchMemberUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -66168,10 +69971,10 @@ export namespace Prisma {
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutMultiPlayerMemberNestedInput
+    user?: UserUpdateOneRequiredWithoutMatchMembersNestedInput
   }
 
-  export type MultiPlayerMemberUncheckedUpdateWithoutRoomInput = {
+  export type MatchMemberUncheckedUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number
@@ -66184,7 +69987,59 @@ export namespace Prisma {
     isDisconnect?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type MultiPlayerMemberUncheckedUpdateManyWithoutRoomInput = {
+  export type MatchMemberUncheckedUpdateManyWithoutRoomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberCreateManyRoomInput = {
+    id?: string
+    userId: string
+    point?: number
+    bonusPoint?: number
+    isReady?: boolean
+    isComplete?: boolean
+    isBot?: boolean
+    joinedAt?: Date | string
+    finishedAt?: Date | string | null
+    isDisconnect?: boolean
+  }
+
+  export type MatchHistoryMemberUpdateWithoutRoomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneRequiredWithoutHistoryMatchMembersNestedInput
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateWithoutRoomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    point?: IntFieldUpdateOperationsInput | number
+    bonusPoint?: IntFieldUpdateOperationsInput | number
+    isReady?: BoolFieldUpdateOperationsInput | boolean
+    isComplete?: BoolFieldUpdateOperationsInput | boolean
+    isBot?: BoolFieldUpdateOperationsInput | boolean
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isDisconnect?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MatchHistoryMemberUncheckedUpdateManyWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     point?: IntFieldUpdateOperationsInput | number

@@ -132,7 +132,8 @@ model User {
   gempoRecords        GempoRecord[]
   innerLevels         InnerLevel[]
   levels              Level[]
-  multiPlayerMember   MultiPlayerMember[]
+  matchMembers        MatchMember[]
+  historyMatchMembers MatchHistoryMember[]
   subLevels           SubLevel[]
   testParticipant     TestParticipant[]
   admin               Admin?               @relation(fields: [adminId], references: [id], onDelete: Cascade)
@@ -605,40 +606,76 @@ model CodeRedeemer {
   @@index([codeId, banned])
 }
 
-model MultiplayerRoom {
-  id            String              @id @default(cuid())
-  max           Int                 @default(2)
-  gameplayId    String              @unique
+model ChampionshipMatch {
+  id            String        @id @default(cuid())
+  max           Int           @default(2)
+  gameplayId    String        @unique
   botOwner      String
-  startedAt     DateTime?           @db.Timestamptz(3)
-  endedAt       DateTime?           @db.Timestamptz(3)
-  expiredAt     DateTime?           @db.Timestamptz(3)
-  isStarted     Boolean             @default(false)
-  isEnded       Boolean             @default(false)
-  createdAt     DateTime            @default(now()) @db.Timestamptz(3)
-  updatedAt     DateTime            @updatedAt @db.Timestamptz(3)
-  currentMember Int                 @default(0)
-  members       MultiPlayerMember[]
+  startedAt     DateTime?     @db.Timestamptz(3)
+  endedAt       DateTime?     @db.Timestamptz(3)
+  expiredAt     DateTime?     @db.Timestamptz(3)
+  isStarted     Boolean       @default(false)
+  isEnded       Boolean       @default(false)
+  createdAt     DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime      @updatedAt @db.Timestamptz(3)
+  currentMember Int           @default(0)
+  members       MatchMember[]
 
   @@index([max])
   @@index([max, startedAt])
   @@index([max, startedAt, currentMember])
 }
 
-model MultiPlayerMember {
-  id           String          @id @default(cuid())
+model ChampionshipHistory {
+  id            String               @id @default(cuid())
+  max           Int                  @default(2)
+  gameplayId    String               @unique
+  botOwner      String
+  startedAt     DateTime?            @db.Timestamptz(3)
+  endedAt       DateTime?            @db.Timestamptz(3)
+  expiredAt     DateTime?            @db.Timestamptz(3)
+  isStarted     Boolean              @default(false)
+  isEnded       Boolean              @default(false)
+  createdAt     DateTime             @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime             @updatedAt @db.Timestamptz(3)
+  currentMember Int                  @default(0)
+  members       MatchHistoryMember[]
+
+  @@index([max])
+  @@index([max, startedAt])
+  @@index([max, startedAt, currentMember])
+}
+
+model MatchMember {
+  id           String            @id @default(cuid())
   roomId       String
   userId       String
-  point        Int             @default(0)
-  bonusPoint   Int             @default(0)
-  isReady      Boolean         @default(false)
-  isComplete   Boolean         @default(false)
-  isBot        Boolean         @default(false)
-  joinedAt     DateTime        @default(now()) @db.Timestamptz(3)
-  finishedAt   DateTime?       @db.Timestamptz(3)
-  isDisconnect Boolean         @default(false)
-  room         MultiplayerRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  user         User            @relation(fields: [userId], references: [id])
+  point        Int               @default(0)
+  bonusPoint   Int               @default(0)
+  isReady      Boolean           @default(false)
+  isComplete   Boolean           @default(false)
+  isBot        Boolean           @default(false)
+  joinedAt     DateTime          @default(now()) @db.Timestamptz(3)
+  finishedAt   DateTime?         @db.Timestamptz(3)
+  isDisconnect Boolean           @default(false)
+  room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id])
+}
+
+model MatchHistoryMember {
+  id           String              @id @default(cuid())
+  roomId       String
+  userId       String
+  point        Int                 @default(0)
+  bonusPoint   Int                 @default(0)
+  isReady      Boolean             @default(false)
+  isComplete   Boolean             @default(false)
+  isBot        Boolean             @default(false)
+  joinedAt     DateTime            @default(now()) @db.Timestamptz(3)
+  finishedAt   DateTime?           @db.Timestamptz(3)
+  isDisconnect Boolean             @default(false)
+  room         ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id])
 }
 
 enum Role {

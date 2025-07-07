@@ -494,7 +494,7 @@ exports.Prisma.CodeRedeemerScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.MultiplayerRoomScalarFieldEnum = {
+exports.Prisma.ChampionshipMatchScalarFieldEnum = {
   id: 'id',
   max: 'max',
   gameplayId: 'gameplayId',
@@ -509,7 +509,36 @@ exports.Prisma.MultiplayerRoomScalarFieldEnum = {
   currentMember: 'currentMember'
 };
 
-exports.Prisma.MultiPlayerMemberScalarFieldEnum = {
+exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
+  id: 'id',
+  max: 'max',
+  gameplayId: 'gameplayId',
+  botOwner: 'botOwner',
+  startedAt: 'startedAt',
+  endedAt: 'endedAt',
+  expiredAt: 'expiredAt',
+  isStarted: 'isStarted',
+  isEnded: 'isEnded',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  currentMember: 'currentMember'
+};
+
+exports.Prisma.MatchMemberScalarFieldEnum = {
+  id: 'id',
+  roomId: 'roomId',
+  userId: 'userId',
+  point: 'point',
+  bonusPoint: 'bonusPoint',
+  isReady: 'isReady',
+  isComplete: 'isComplete',
+  isBot: 'isBot',
+  joinedAt: 'joinedAt',
+  finishedAt: 'finishedAt',
+  isDisconnect: 'isDisconnect'
+};
+
+exports.Prisma.MatchHistoryMemberScalarFieldEnum = {
   id: 'id',
   roomId: 'roomId',
   userId: 'userId',
@@ -631,8 +660,10 @@ exports.Prisma.ModelName = {
   AdminTransaction: 'AdminTransaction',
   RedeemCode: 'RedeemCode',
   CodeRedeemer: 'CodeRedeemer',
-  MultiplayerRoom: 'MultiplayerRoom',
-  MultiPlayerMember: 'MultiPlayerMember'
+  ChampionshipMatch: 'ChampionshipMatch',
+  ChampionshipHistory: 'ChampionshipHistory',
+  MatchMember: 'MatchMember',
+  MatchHistoryMember: 'MatchHistoryMember'
 };
 
 /**
