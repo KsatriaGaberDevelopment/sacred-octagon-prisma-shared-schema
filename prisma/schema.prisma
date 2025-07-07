@@ -422,6 +422,12 @@ model Banner {
   admin          Admin            @relation(fields: [adminId], references: [id])
   bannerLocation BannerLocation[]
   visitors       BannerVisitor[]
+
+  @@index([isHide]) // For `where: { isHide: false }`
+  @@index([startedAt]) // For `where: { startedAt: { lte: now } }`
+  @@index([endedAt]) // For `where: { endedAt: { gte: now } }`
+  @@index([adminId]) // For the relation `admin` if you ever query by admin
+  @@index([startedAt, endedAt, isHide]) // Composite index for common filtering
 }
 
 model BannerLocation {
@@ -432,6 +438,10 @@ model BannerLocation {
   province      Province      @relation(fields: [provinceId], references: [id])
   cities        City[]        @relation("BannerLocationToCity")
   subdisctricts Subdistrict[]
+
+  @@index([bannerId])   // For joining with Banner (implicit when `some` is used)
+  @@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
+  @@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
 }
 
 model BannerVisitor {
@@ -443,6 +453,9 @@ model BannerVisitor {
   traffic   Int      @default(0)
   banner    Banner   @relation(fields: [bannerId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([bannerId])   // For joining with Banner (implicit when `some` is used)
+  @@index([userId])  // For joining with User
 }
 
 model Test {
