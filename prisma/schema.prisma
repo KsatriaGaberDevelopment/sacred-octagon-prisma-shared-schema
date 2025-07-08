@@ -609,6 +609,7 @@ model CodeRedeemer {
 model ChampionshipMatch {
   id            String        @id @default(cuid())
   max           Int           @default(2)
+  zoneInGameId  String
   gameplayId    String
   botOwner      String?
   mode          MatchMode
@@ -650,6 +651,7 @@ model MatchMember {
 model ChampionshipHistory {
   id            String               @id @default(cuid())
   max           Int                  @default(2)
+  zoneInGameId  String
   gameplayId    String
   botOwner      String?
   mode          MatchMode

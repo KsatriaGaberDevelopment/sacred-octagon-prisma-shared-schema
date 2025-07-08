@@ -497,6 +497,7 @@ exports.Prisma.CodeRedeemerScalarFieldEnum = {
 exports.Prisma.ChampionshipMatchScalarFieldEnum = {
   id: 'id',
   max: 'max',
+  zoneInGameId: 'zoneInGameId',
   gameplayId: 'gameplayId',
   botOwner: 'botOwner',
   mode: 'mode',
@@ -530,6 +531,7 @@ exports.Prisma.MatchMemberScalarFieldEnum = {
 exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
   id: 'id',
   max: 'max',
+  zoneInGameId: 'zoneInGameId',
   gameplayId: 'gameplayId',
   botOwner: 'botOwner',
   mode: 'mode',
