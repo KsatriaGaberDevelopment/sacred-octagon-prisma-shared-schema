@@ -499,6 +499,7 @@ exports.Prisma.ChampionshipMatchScalarFieldEnum = {
   max: 'max',
   gameplayId: 'gameplayId',
   botOwner: 'botOwner',
+  mode: 'mode',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
   expiredAt: 'expiredAt',
@@ -530,6 +531,7 @@ exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
   max: 'max',
   gameplayId: 'gameplayId',
   botOwner: 'botOwner',
+  mode: 'mode',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
   expiredAt: 'expiredAt',
@@ -631,6 +633,11 @@ exports.Transaction = exports.$Enums.Transaction = {
   Pending: 'Pending',
   Cancelled: 'Cancelled',
   Settlement: 'Settlement'
+};
+
+exports.MatchMode = exports.$Enums.MatchMode = {
+  Solo: 'Solo',
+  Team: 'Team'
 };
 
 exports.TeamType = exports.$Enums.TeamType = {

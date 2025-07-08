@@ -269,6 +269,14 @@ export const TeamType: {
 
 export type TeamType = (typeof TeamType)[keyof typeof TeamType]
 
+
+export const MatchMode: {
+  Solo: 'Solo',
+  Team: 'Team'
+};
+
+export type MatchMode = (typeof MatchMode)[keyof typeof MatchMode]
+
 }
 
 export type Role = $Enums.Role
@@ -306,6 +314,10 @@ export const EducationLevel: typeof $Enums.EducationLevel
 export type TeamType = $Enums.TeamType
 
 export const TeamType: typeof $Enums.TeamType
+
+export type MatchMode = $Enums.MatchMode
+
+export const MatchMode: typeof $Enums.MatchMode
 
 /**
  * ##  Prisma Client ʲˢ
@@ -39771,6 +39783,7 @@ export namespace Prisma {
     max: number | null
     gameplayId: string | null
     botOwner: string | null
+    mode: $Enums.MatchMode | null
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -39786,6 +39799,7 @@ export namespace Prisma {
     max: number | null
     gameplayId: string | null
     botOwner: string | null
+    mode: $Enums.MatchMode | null
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -39801,6 +39815,7 @@ export namespace Prisma {
     max: number
     gameplayId: number
     botOwner: number
+    mode: number
     startedAt: number
     endedAt: number
     expiredAt: number
@@ -39828,6 +39843,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -39843,6 +39859,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -39858,6 +39875,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -39960,6 +39978,7 @@ export namespace Prisma {
     max: number
     gameplayId: string
     botOwner: string | null
+    mode: $Enums.MatchMode
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -39994,6 +40013,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -40011,6 +40031,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -40026,6 +40047,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -40041,6 +40063,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -40051,7 +40074,7 @@ export namespace Prisma {
     currentMember?: boolean
   }
 
-  export type ChampionshipMatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipMatch"]>
+  export type ChampionshipMatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "mode" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipMatch"]>
   export type ChampionshipMatchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     members?: boolean | ChampionshipMatch$membersArgs<ExtArgs>
     _count?: boolean | ChampionshipMatchCountOutputTypeDefaultArgs<ExtArgs>
@@ -40069,6 +40092,7 @@ export namespace Prisma {
       max: number
       gameplayId: string
       botOwner: string | null
+      mode: $Enums.MatchMode
       startedAt: Date | null
       endedAt: Date | null
       expiredAt: Date | null
@@ -40505,6 +40529,7 @@ export namespace Prisma {
     readonly max: FieldRef<"ChampionshipMatch", 'Int'>
     readonly gameplayId: FieldRef<"ChampionshipMatch", 'String'>
     readonly botOwner: FieldRef<"ChampionshipMatch", 'String'>
+    readonly mode: FieldRef<"ChampionshipMatch", 'MatchMode'>
     readonly startedAt: FieldRef<"ChampionshipMatch", 'DateTime'>
     readonly endedAt: FieldRef<"ChampionshipMatch", 'DateTime'>
     readonly expiredAt: FieldRef<"ChampionshipMatch", 'DateTime'>
@@ -42182,6 +42207,7 @@ export namespace Prisma {
     max: number | null
     gameplayId: string | null
     botOwner: string | null
+    mode: $Enums.MatchMode | null
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -42197,6 +42223,7 @@ export namespace Prisma {
     max: number | null
     gameplayId: string | null
     botOwner: string | null
+    mode: $Enums.MatchMode | null
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -42212,6 +42239,7 @@ export namespace Prisma {
     max: number
     gameplayId: number
     botOwner: number
+    mode: number
     startedAt: number
     endedAt: number
     expiredAt: number
@@ -42239,6 +42267,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -42254,6 +42283,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -42269,6 +42299,7 @@ export namespace Prisma {
     max?: true
     gameplayId?: true
     botOwner?: true
+    mode?: true
     startedAt?: true
     endedAt?: true
     expiredAt?: true
@@ -42371,6 +42402,7 @@ export namespace Prisma {
     max: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt: Date | null
     endedAt: Date | null
     expiredAt: Date | null
@@ -42405,6 +42437,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -42422,6 +42455,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -42437,6 +42471,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -42452,6 +42487,7 @@ export namespace Prisma {
     max?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    mode?: boolean
     startedAt?: boolean
     endedAt?: boolean
     expiredAt?: boolean
@@ -42462,7 +42498,7 @@ export namespace Prisma {
     currentMember?: boolean
   }
 
-  export type ChampionshipHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipHistory"]>
+  export type ChampionshipHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "gameplayId" | "botOwner" | "mode" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipHistory"]>
   export type ChampionshipHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     members?: boolean | ChampionshipHistory$membersArgs<ExtArgs>
     _count?: boolean | ChampionshipHistoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -42480,6 +42516,7 @@ export namespace Prisma {
       max: number
       gameplayId: string
       botOwner: string
+      mode: $Enums.MatchMode
       startedAt: Date | null
       endedAt: Date | null
       expiredAt: Date | null
@@ -42916,6 +42953,7 @@ export namespace Prisma {
     readonly max: FieldRef<"ChampionshipHistory", 'Int'>
     readonly gameplayId: FieldRef<"ChampionshipHistory", 'String'>
     readonly botOwner: FieldRef<"ChampionshipHistory", 'String'>
+    readonly mode: FieldRef<"ChampionshipHistory", 'MatchMode'>
     readonly startedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
     readonly endedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
     readonly expiredAt: FieldRef<"ChampionshipHistory", 'DateTime'>
@@ -45032,6 +45070,7 @@ export namespace Prisma {
     max: 'max',
     gameplayId: 'gameplayId',
     botOwner: 'botOwner',
+    mode: 'mode',
     startedAt: 'startedAt',
     endedAt: 'endedAt',
     expiredAt: 'expiredAt',
@@ -45069,6 +45108,7 @@ export namespace Prisma {
     max: 'max',
     gameplayId: 'gameplayId',
     botOwner: 'botOwner',
+    mode: 'mode',
     startedAt: 'startedAt',
     endedAt: 'endedAt',
     expiredAt: 'expiredAt',
@@ -45325,6 +45365,20 @@ export namespace Prisma {
    * Reference to a field of type 'Transaction[]'
    */
   export type ListEnumTransactionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Transaction[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchMode'
+   */
+  export type EnumMatchModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchMode[]'
+   */
+  export type ListEnumMatchModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchMode[]'>
     
 
 
@@ -47931,6 +47985,7 @@ export namespace Prisma {
     max?: IntFilter<"ChampionshipMatch"> | number
     gameplayId?: StringFilter<"ChampionshipMatch"> | string
     botOwner?: StringNullableFilter<"ChampionshipMatch"> | string | null
+    mode?: EnumMatchModeFilter<"ChampionshipMatch"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
     expiredAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
@@ -47947,6 +48002,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrderInput | SortOrder
+    mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -47966,6 +48022,7 @@ export namespace Prisma {
     max?: IntFilter<"ChampionshipMatch"> | number
     gameplayId?: StringFilter<"ChampionshipMatch"> | string
     botOwner?: StringNullableFilter<"ChampionshipMatch"> | string | null
+    mode?: EnumMatchModeFilter<"ChampionshipMatch"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
     expiredAt?: DateTimeNullableFilter<"ChampionshipMatch"> | Date | string | null
@@ -47982,6 +48039,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrderInput | SortOrder
+    mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -48005,6 +48063,7 @@ export namespace Prisma {
     max?: IntWithAggregatesFilter<"ChampionshipMatch"> | number
     gameplayId?: StringWithAggregatesFilter<"ChampionshipMatch"> | string
     botOwner?: StringNullableWithAggregatesFilter<"ChampionshipMatch"> | string | null
+    mode?: EnumMatchModeWithAggregatesFilter<"ChampionshipMatch"> | $Enums.MatchMode
     startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
     expiredAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipMatch"> | Date | string | null
@@ -48123,6 +48182,7 @@ export namespace Prisma {
     max?: IntFilter<"ChampionshipHistory"> | number
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
     botOwner?: StringFilter<"ChampionshipHistory"> | string
+    mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     expiredAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48139,6 +48199,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -48158,6 +48219,7 @@ export namespace Prisma {
     max?: IntFilter<"ChampionshipHistory"> | number
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
     botOwner?: StringFilter<"ChampionshipHistory"> | string
+    mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     expiredAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48174,6 +48236,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     expiredAt?: SortOrderInput | SortOrder
@@ -48197,6 +48260,7 @@ export namespace Prisma {
     max?: IntWithAggregatesFilter<"ChampionshipHistory"> | number
     gameplayId?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
     botOwner?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
+    mode?: EnumMatchModeWithAggregatesFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
     expiredAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
@@ -51126,6 +51190,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner?: string | null
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51142,6 +51207,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner?: string | null
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51158,6 +51224,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51174,6 +51241,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51190,6 +51258,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner?: string | null
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51205,6 +51274,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51220,6 +51290,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51345,6 +51416,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51361,6 +51433,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51377,6 +51450,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51393,6 +51467,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51409,6 +51484,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -51424,6 +51500,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51439,6 +51516,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -53716,11 +53794,19 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumMatchModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMode | EnumMatchModeFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchModeFilter<$PrismaModel> | $Enums.MatchMode
+  }
+
   export type ChampionshipMatchCountOrderByAggregateInput = {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -53741,6 +53827,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -53756,6 +53843,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -53769,6 +53857,16 @@ export namespace Prisma {
   export type ChampionshipMatchSumOrderByAggregateInput = {
     max?: SortOrder
     currentMember?: SortOrder
+  }
+
+  export type EnumMatchModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMode | EnumMatchModeFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchModeWithAggregatesFilter<$PrismaModel> | $Enums.MatchMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchModeFilter<$PrismaModel>
+    _max?: NestedEnumMatchModeFilter<$PrismaModel>
   }
 
   export type EnumTeamTypeFilter<$PrismaModel = never> = {
@@ -53858,6 +53956,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -53878,6 +53977,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -53893,6 +53993,7 @@ export namespace Prisma {
     max?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    mode?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     expiredAt?: SortOrder
@@ -57020,6 +57121,10 @@ export namespace Prisma {
     connect?: MatchMemberWhereUniqueInput | MatchMemberWhereUniqueInput[]
   }
 
+  export type EnumMatchModeFieldUpdateOperationsInput = {
+    set?: $Enums.MatchMode
+  }
+
   export type MatchMemberUpdateManyWithoutRoomNestedInput = {
     create?: XOR<MatchMemberCreateWithoutRoomInput, MatchMemberUncheckedCreateWithoutRoomInput> | MatchMemberCreateWithoutRoomInput[] | MatchMemberUncheckedCreateWithoutRoomInput[]
     connectOrCreate?: MatchMemberCreateOrConnectWithoutRoomInput | MatchMemberCreateOrConnectWithoutRoomInput[]
@@ -57520,6 +57625,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionFilter<$PrismaModel>
     _max?: NestedEnumTransactionFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMatchModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMode | EnumMatchModeFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchModeFilter<$PrismaModel> | $Enums.MatchMode
+  }
+
+  export type NestedEnumMatchModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMode | EnumMatchModeFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMode[] | ListEnumMatchModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchModeWithAggregatesFilter<$PrismaModel> | $Enums.MatchMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchModeFilter<$PrismaModel>
+    _max?: NestedEnumMatchModeFilter<$PrismaModel>
   }
 
   export type NestedEnumTeamTypeFilter<$PrismaModel = never> = {
@@ -66595,6 +66717,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner?: string | null
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -66610,6 +66733,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner?: string | null
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -66732,6 +66856,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66747,6 +66872,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66913,6 +67039,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -66928,6 +67055,7 @@ export namespace Prisma {
     max?: number
     gameplayId: string
     botOwner: string
+    mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     expiredAt?: Date | string | null
@@ -67050,6 +67178,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67065,6 +67194,7 @@ export namespace Prisma {
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: StringFieldUpdateOperationsInput | string
+    mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

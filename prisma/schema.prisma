@@ -611,6 +611,7 @@ model ChampionshipMatch {
   max           Int           @default(2)
   gameplayId    String
   botOwner      String?
+  mode          MatchMode
   startedAt     DateTime?     @db.Timestamptz(3)
   endedAt       DateTime?     @db.Timestamptz(3)
   expiredAt     DateTime?     @db.Timestamptz(3)
@@ -650,6 +651,7 @@ model ChampionshipHistory {
   max           Int                  @default(2)
   gameplayId    String
   botOwner      String
+  mode          MatchMode
   startedAt     DateTime?            @db.Timestamptz(3)
   endedAt       DateTime?            @db.Timestamptz(3)
   expiredAt     DateTime?            @db.Timestamptz(3)
@@ -741,4 +743,9 @@ enum TeamType {
   None
   Blue
   Red
+}
+
+enum MatchMode {
+  Solo
+  Team
 }
