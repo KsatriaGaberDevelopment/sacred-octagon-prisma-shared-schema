@@ -632,6 +632,7 @@ model MatchMember {
   id           String            @id @default(cuid())
   roomId       String
   userId       String
+  status       MatchStatus       @default(None)
   answerPoint  Int               @default(0) // ini point ketika menjawab contoh benar 100/salah -100
   point        Int               @default(0) // ini jumlah point yang didapat
   bonusPoint   Int               @default(0) // ini bonus point berdasarkan ketentuan
@@ -650,7 +651,7 @@ model ChampionshipHistory {
   id            String               @id @default(cuid())
   max           Int                  @default(2)
   gameplayId    String
-  botOwner      String
+  botOwner      String?
   mode          MatchMode
   startedAt     DateTime?            @db.Timestamptz(3)
   endedAt       DateTime?            @db.Timestamptz(3)
@@ -672,6 +673,7 @@ model MatchHistoryMember {
   id           String              @id @default(cuid())
   roomId       String
   userId       String
+  status       MatchStatus         @default(None)
   point        Int                 @default(0) // ini jumlah point yang didapat
   bonusPoint   Int                 @default(0) // ini bonus point berdasarkan ketentuan
   teamType     TeamType            @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat
@@ -748,4 +750,11 @@ enum TeamType {
 enum MatchMode {
   Solo
   Team
+}
+
+enum MatchStatus {
+  None
+  Win
+  Lose
+  Draw
 }

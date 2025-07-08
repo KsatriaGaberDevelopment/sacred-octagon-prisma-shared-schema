@@ -514,6 +514,7 @@ exports.Prisma.MatchMemberScalarFieldEnum = {
   id: 'id',
   roomId: 'roomId',
   userId: 'userId',
+  status: 'status',
   answerPoint: 'answerPoint',
   point: 'point',
   bonusPoint: 'bonusPoint',
@@ -546,6 +547,7 @@ exports.Prisma.MatchHistoryMemberScalarFieldEnum = {
   id: 'id',
   roomId: 'roomId',
   userId: 'userId',
+  status: 'status',
   point: 'point',
   bonusPoint: 'bonusPoint',
   teamType: 'teamType',
@@ -638,6 +640,13 @@ exports.Transaction = exports.$Enums.Transaction = {
 exports.MatchMode = exports.$Enums.MatchMode = {
   Solo: 'Solo',
   Team: 'Team'
+};
+
+exports.MatchStatus = exports.$Enums.MatchStatus = {
+  None: 'None',
+  Win: 'Win',
+  Lose: 'Lose',
+  Draw: 'Draw'
 };
 
 exports.TeamType = exports.$Enums.TeamType = {

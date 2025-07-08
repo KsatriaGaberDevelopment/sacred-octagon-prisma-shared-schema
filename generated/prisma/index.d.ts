@@ -277,6 +277,16 @@ export const MatchMode: {
 
 export type MatchMode = (typeof MatchMode)[keyof typeof MatchMode]
 
+
+export const MatchStatus: {
+  None: 'None',
+  Win: 'Win',
+  Lose: 'Lose',
+  Draw: 'Draw'
+};
+
+export type MatchStatus = (typeof MatchStatus)[keyof typeof MatchStatus]
+
 }
 
 export type Role = $Enums.Role
@@ -318,6 +328,10 @@ export const TeamType: typeof $Enums.TeamType
 export type MatchMode = $Enums.MatchMode
 
 export const MatchMode: typeof $Enums.MatchMode
+
+export type MatchStatus = $Enums.MatchStatus
+
+export const MatchStatus: typeof $Enums.MatchStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -40996,6 +41010,7 @@ export namespace Prisma {
     id: string | null
     roomId: string | null
     userId: string | null
+    status: $Enums.MatchStatus | null
     answerPoint: number | null
     point: number | null
     bonusPoint: number | null
@@ -41012,6 +41027,7 @@ export namespace Prisma {
     id: string | null
     roomId: string | null
     userId: string | null
+    status: $Enums.MatchStatus | null
     answerPoint: number | null
     point: number | null
     bonusPoint: number | null
@@ -41028,6 +41044,7 @@ export namespace Prisma {
     id: number
     roomId: number
     userId: number
+    status: number
     answerPoint: number
     point: number
     bonusPoint: number
@@ -41058,6 +41075,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     answerPoint?: true
     point?: true
     bonusPoint?: true
@@ -41074,6 +41092,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     answerPoint?: true
     point?: true
     bonusPoint?: true
@@ -41090,6 +41109,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     answerPoint?: true
     point?: true
     bonusPoint?: true
@@ -41193,6 +41213,7 @@ export namespace Prisma {
     id: string
     roomId: string
     userId: string
+    status: $Enums.MatchStatus
     answerPoint: number
     point: number
     bonusPoint: number
@@ -41228,6 +41249,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     answerPoint?: boolean
     point?: boolean
     bonusPoint?: boolean
@@ -41246,6 +41268,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     answerPoint?: boolean
     point?: boolean
     bonusPoint?: boolean
@@ -41264,6 +41287,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     answerPoint?: boolean
     point?: boolean
     bonusPoint?: boolean
@@ -41282,6 +41306,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     answerPoint?: boolean
     point?: boolean
     bonusPoint?: boolean
@@ -41294,7 +41319,7 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MatchMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "answerPoint" | "point" | "bonusPoint" | "teamType" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchMember"]>
+  export type MatchMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "status" | "answerPoint" | "point" | "bonusPoint" | "teamType" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchMember"]>
   export type MatchMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     room?: boolean | ChampionshipMatchDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -41318,6 +41343,7 @@ export namespace Prisma {
       id: string
       roomId: string
       userId: string
+      status: $Enums.MatchStatus
       answerPoint: number
       point: number
       bonusPoint: number
@@ -41756,6 +41782,7 @@ export namespace Prisma {
     readonly id: FieldRef<"MatchMember", 'String'>
     readonly roomId: FieldRef<"MatchMember", 'String'>
     readonly userId: FieldRef<"MatchMember", 'String'>
+    readonly status: FieldRef<"MatchMember", 'MatchStatus'>
     readonly answerPoint: FieldRef<"MatchMember", 'Int'>
     readonly point: FieldRef<"MatchMember", 'Int'>
     readonly bonusPoint: FieldRef<"MatchMember", 'Int'>
@@ -42401,7 +42428,7 @@ export namespace Prisma {
     id: string
     max: number
     gameplayId: string
-    botOwner: string
+    botOwner: string | null
     mode: $Enums.MatchMode
     startedAt: Date | null
     endedAt: Date | null
@@ -42515,7 +42542,7 @@ export namespace Prisma {
       id: string
       max: number
       gameplayId: string
-      botOwner: string
+      botOwner: string | null
       mode: $Enums.MatchMode
       startedAt: Date | null
       endedAt: Date | null
@@ -43418,6 +43445,7 @@ export namespace Prisma {
     id: string | null
     roomId: string | null
     userId: string | null
+    status: $Enums.MatchStatus | null
     point: number | null
     bonusPoint: number | null
     teamType: $Enums.TeamType | null
@@ -43433,6 +43461,7 @@ export namespace Prisma {
     id: string | null
     roomId: string | null
     userId: string | null
+    status: $Enums.MatchStatus | null
     point: number | null
     bonusPoint: number | null
     teamType: $Enums.TeamType | null
@@ -43448,6 +43477,7 @@ export namespace Prisma {
     id: number
     roomId: number
     userId: number
+    status: number
     point: number
     bonusPoint: number
     teamType: number
@@ -43475,6 +43505,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     point?: true
     bonusPoint?: true
     teamType?: true
@@ -43490,6 +43521,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     point?: true
     bonusPoint?: true
     teamType?: true
@@ -43505,6 +43537,7 @@ export namespace Prisma {
     id?: true
     roomId?: true
     userId?: true
+    status?: true
     point?: true
     bonusPoint?: true
     teamType?: true
@@ -43607,6 +43640,7 @@ export namespace Prisma {
     id: string
     roomId: string
     userId: string
+    status: $Enums.MatchStatus
     point: number
     bonusPoint: number
     teamType: $Enums.TeamType
@@ -43641,6 +43675,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     point?: boolean
     bonusPoint?: boolean
     teamType?: boolean
@@ -43658,6 +43693,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     point?: boolean
     bonusPoint?: boolean
     teamType?: boolean
@@ -43675,6 +43711,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     point?: boolean
     bonusPoint?: boolean
     teamType?: boolean
@@ -43692,6 +43729,7 @@ export namespace Prisma {
     id?: boolean
     roomId?: boolean
     userId?: boolean
+    status?: boolean
     point?: boolean
     bonusPoint?: boolean
     teamType?: boolean
@@ -43703,7 +43741,7 @@ export namespace Prisma {
     isDisconnect?: boolean
   }
 
-  export type MatchHistoryMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "point" | "bonusPoint" | "teamType" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchHistoryMember"]>
+  export type MatchHistoryMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "roomId" | "userId" | "status" | "point" | "bonusPoint" | "teamType" | "isReady" | "isComplete" | "isBot" | "joinedAt" | "finishedAt" | "isDisconnect", ExtArgs["result"]["matchHistoryMember"]>
   export type MatchHistoryMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     room?: boolean | ChampionshipHistoryDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -43727,6 +43765,7 @@ export namespace Prisma {
       id: string
       roomId: string
       userId: string
+      status: $Enums.MatchStatus
       point: number
       bonusPoint: number
       teamType: $Enums.TeamType
@@ -44164,6 +44203,7 @@ export namespace Prisma {
     readonly id: FieldRef<"MatchHistoryMember", 'String'>
     readonly roomId: FieldRef<"MatchHistoryMember", 'String'>
     readonly userId: FieldRef<"MatchHistoryMember", 'String'>
+    readonly status: FieldRef<"MatchHistoryMember", 'MatchStatus'>
     readonly point: FieldRef<"MatchHistoryMember", 'Int'>
     readonly bonusPoint: FieldRef<"MatchHistoryMember", 'Int'>
     readonly teamType: FieldRef<"MatchHistoryMember", 'TeamType'>
@@ -45088,6 +45128,7 @@ export namespace Prisma {
     id: 'id',
     roomId: 'roomId',
     userId: 'userId',
+    status: 'status',
     answerPoint: 'answerPoint',
     point: 'point',
     bonusPoint: 'bonusPoint',
@@ -45126,6 +45167,7 @@ export namespace Prisma {
     id: 'id',
     roomId: 'roomId',
     userId: 'userId',
+    status: 'status',
     point: 'point',
     bonusPoint: 'bonusPoint',
     teamType: 'teamType',
@@ -45379,6 +45421,20 @@ export namespace Prisma {
    * Reference to a field of type 'MatchMode[]'
    */
   export type ListEnumMatchModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchMode[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchStatus'
+   */
+  export type EnumMatchStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchStatus[]'
+   */
+  export type ListEnumMatchStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchStatus[]'>
     
 
 
@@ -48081,6 +48137,7 @@ export namespace Prisma {
     id?: StringFilter<"MatchMember"> | string
     roomId?: StringFilter<"MatchMember"> | string
     userId?: StringFilter<"MatchMember"> | string
+    status?: EnumMatchStatusFilter<"MatchMember"> | $Enums.MatchStatus
     answerPoint?: IntFilter<"MatchMember"> | number
     point?: IntFilter<"MatchMember"> | number
     bonusPoint?: IntFilter<"MatchMember"> | number
@@ -48099,6 +48156,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
@@ -48120,6 +48178,7 @@ export namespace Prisma {
     NOT?: MatchMemberWhereInput | MatchMemberWhereInput[]
     roomId?: StringFilter<"MatchMember"> | string
     userId?: StringFilter<"MatchMember"> | string
+    status?: EnumMatchStatusFilter<"MatchMember"> | $Enums.MatchStatus
     answerPoint?: IntFilter<"MatchMember"> | number
     point?: IntFilter<"MatchMember"> | number
     bonusPoint?: IntFilter<"MatchMember"> | number
@@ -48138,6 +48197,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
@@ -48162,6 +48222,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"MatchMember"> | string
     roomId?: StringWithAggregatesFilter<"MatchMember"> | string
     userId?: StringWithAggregatesFilter<"MatchMember"> | string
+    status?: EnumMatchStatusWithAggregatesFilter<"MatchMember"> | $Enums.MatchStatus
     answerPoint?: IntWithAggregatesFilter<"MatchMember"> | number
     point?: IntWithAggregatesFilter<"MatchMember"> | number
     bonusPoint?: IntWithAggregatesFilter<"MatchMember"> | number
@@ -48181,7 +48242,7 @@ export namespace Prisma {
     id?: StringFilter<"ChampionshipHistory"> | string
     max?: IntFilter<"ChampionshipHistory"> | number
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
-    botOwner?: StringFilter<"ChampionshipHistory"> | string
+    botOwner?: StringNullableFilter<"ChampionshipHistory"> | string | null
     mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48198,7 +48259,7 @@ export namespace Prisma {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
-    botOwner?: SortOrder
+    botOwner?: SortOrderInput | SortOrder
     mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
@@ -48218,7 +48279,7 @@ export namespace Prisma {
     NOT?: ChampionshipHistoryWhereInput | ChampionshipHistoryWhereInput[]
     max?: IntFilter<"ChampionshipHistory"> | number
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
-    botOwner?: StringFilter<"ChampionshipHistory"> | string
+    botOwner?: StringNullableFilter<"ChampionshipHistory"> | string | null
     mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48235,7 +48296,7 @@ export namespace Prisma {
     id?: SortOrder
     max?: SortOrder
     gameplayId?: SortOrder
-    botOwner?: SortOrder
+    botOwner?: SortOrderInput | SortOrder
     mode?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
@@ -48259,7 +48320,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
     max?: IntWithAggregatesFilter<"ChampionshipHistory"> | number
     gameplayId?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
-    botOwner?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
+    botOwner?: StringNullableWithAggregatesFilter<"ChampionshipHistory"> | string | null
     mode?: EnumMatchModeWithAggregatesFilter<"ChampionshipHistory"> | $Enums.MatchMode
     startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
@@ -48278,6 +48339,7 @@ export namespace Prisma {
     id?: StringFilter<"MatchHistoryMember"> | string
     roomId?: StringFilter<"MatchHistoryMember"> | string
     userId?: StringFilter<"MatchHistoryMember"> | string
+    status?: EnumMatchStatusFilter<"MatchHistoryMember"> | $Enums.MatchStatus
     point?: IntFilter<"MatchHistoryMember"> | number
     bonusPoint?: IntFilter<"MatchHistoryMember"> | number
     teamType?: EnumTeamTypeFilter<"MatchHistoryMember"> | $Enums.TeamType
@@ -48295,6 +48357,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     teamType?: SortOrder
@@ -48315,6 +48378,7 @@ export namespace Prisma {
     NOT?: MatchHistoryMemberWhereInput | MatchHistoryMemberWhereInput[]
     roomId?: StringFilter<"MatchHistoryMember"> | string
     userId?: StringFilter<"MatchHistoryMember"> | string
+    status?: EnumMatchStatusFilter<"MatchHistoryMember"> | $Enums.MatchStatus
     point?: IntFilter<"MatchHistoryMember"> | number
     bonusPoint?: IntFilter<"MatchHistoryMember"> | number
     teamType?: EnumTeamTypeFilter<"MatchHistoryMember"> | $Enums.TeamType
@@ -48332,6 +48396,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     teamType?: SortOrder
@@ -48355,6 +48420,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
     roomId?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
     userId?: StringWithAggregatesFilter<"MatchHistoryMember"> | string
+    status?: EnumMatchStatusWithAggregatesFilter<"MatchHistoryMember"> | $Enums.MatchStatus
     point?: IntWithAggregatesFilter<"MatchHistoryMember"> | number
     bonusPoint?: IntWithAggregatesFilter<"MatchHistoryMember"> | number
     teamType?: EnumTeamTypeWithAggregatesFilter<"MatchHistoryMember"> | $Enums.TeamType
@@ -51303,6 +51369,7 @@ export namespace Prisma {
 
   export type MatchMemberCreateInput = {
     id?: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -51321,6 +51388,7 @@ export namespace Prisma {
     id?: string
     roomId: string
     userId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -51335,6 +51403,7 @@ export namespace Prisma {
 
   export type MatchMemberUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -51353,6 +51422,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -51369,6 +51439,7 @@ export namespace Prisma {
     id?: string
     roomId: string
     userId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -51383,6 +51454,7 @@ export namespace Prisma {
 
   export type MatchMemberUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -51399,6 +51471,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -51415,7 +51488,7 @@ export namespace Prisma {
     id?: string
     max?: number
     gameplayId: string
-    botOwner: string
+    botOwner?: string | null
     mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -51432,7 +51505,7 @@ export namespace Prisma {
     id?: string
     max?: number
     gameplayId: string
-    botOwner: string
+    botOwner?: string | null
     mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -51449,7 +51522,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51466,7 +51539,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51483,7 +51556,7 @@ export namespace Prisma {
     id?: string
     max?: number
     gameplayId: string
-    botOwner: string
+    botOwner?: string | null
     mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -51499,7 +51572,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51515,7 +51588,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51529,6 +51602,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberCreateInput = {
     id?: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -51546,6 +51620,7 @@ export namespace Prisma {
     id?: string
     roomId: string
     userId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -51559,6 +51634,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -51576,6 +51652,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -51591,6 +51668,7 @@ export namespace Prisma {
     id?: string
     roomId: string
     userId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -51604,6 +51682,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -51619,6 +51698,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -53869,6 +53949,13 @@ export namespace Prisma {
     _max?: NestedEnumMatchModeFilter<$PrismaModel>
   }
 
+  export type EnumMatchStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchStatus | EnumMatchStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchStatusFilter<$PrismaModel> | $Enums.MatchStatus
+  }
+
   export type EnumTeamTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TeamType[] | ListEnumTeamTypeFieldRefInput<$PrismaModel>
@@ -53885,6 +53972,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
@@ -53907,6 +53995,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
@@ -53923,6 +54012,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
@@ -53939,6 +54029,16 @@ export namespace Prisma {
     answerPoint?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
+  }
+
+  export type EnumMatchStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchStatus | EnumMatchStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchStatusWithAggregatesFilter<$PrismaModel> | $Enums.MatchStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchStatusFilter<$PrismaModel>
+    _max?: NestedEnumMatchStatusFilter<$PrismaModel>
   }
 
   export type EnumTeamTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -54018,6 +54118,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     teamType?: SortOrder
@@ -54038,6 +54139,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     teamType?: SortOrder
@@ -54053,6 +54155,7 @@ export namespace Prisma {
     id?: SortOrder
     roomId?: SortOrder
     userId?: SortOrder
+    status?: SortOrder
     point?: SortOrder
     bonusPoint?: SortOrder
     teamType?: SortOrder
@@ -57165,6 +57268,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type EnumMatchStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MatchStatus
+  }
+
   export type EnumTeamTypeFieldUpdateOperationsInput = {
     set?: $Enums.TeamType
   }
@@ -57644,11 +57751,28 @@ export namespace Prisma {
     _max?: NestedEnumMatchModeFilter<$PrismaModel>
   }
 
+  export type NestedEnumMatchStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchStatus | EnumMatchStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchStatusFilter<$PrismaModel> | $Enums.MatchStatus
+  }
+
   export type NestedEnumTeamTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TeamType[] | ListEnumTeamTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.TeamType[] | ListEnumTeamTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumTeamTypeFilter<$PrismaModel> | $Enums.TeamType
+  }
+
+  export type NestedEnumMatchStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchStatus | EnumMatchStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchStatus[] | ListEnumMatchStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchStatusWithAggregatesFilter<$PrismaModel> | $Enums.MatchStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchStatusFilter<$PrismaModel>
+    _max?: NestedEnumMatchStatusFilter<$PrismaModel>
   }
 
   export type NestedEnumTeamTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -59925,6 +60049,7 @@ export namespace Prisma {
 
   export type MatchMemberCreateWithoutUserInput = {
     id?: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -59941,6 +60066,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedCreateWithoutUserInput = {
     id?: string
     roomId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -59965,6 +60091,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberCreateWithoutUserInput = {
     id?: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -59980,6 +60107,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedCreateWithoutUserInput = {
     id?: string
     roomId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -60619,6 +60747,7 @@ export namespace Prisma {
     id?: StringFilter<"MatchMember"> | string
     roomId?: StringFilter<"MatchMember"> | string
     userId?: StringFilter<"MatchMember"> | string
+    status?: EnumMatchStatusFilter<"MatchMember"> | $Enums.MatchStatus
     answerPoint?: IntFilter<"MatchMember"> | number
     point?: IntFilter<"MatchMember"> | number
     bonusPoint?: IntFilter<"MatchMember"> | number
@@ -60654,6 +60783,7 @@ export namespace Prisma {
     id?: StringFilter<"MatchHistoryMember"> | string
     roomId?: StringFilter<"MatchHistoryMember"> | string
     userId?: StringFilter<"MatchHistoryMember"> | string
+    status?: EnumMatchStatusFilter<"MatchHistoryMember"> | $Enums.MatchStatus
     point?: IntFilter<"MatchHistoryMember"> | number
     bonusPoint?: IntFilter<"MatchHistoryMember"> | number
     teamType?: EnumTeamTypeFilter<"MatchHistoryMember"> | $Enums.TeamType
@@ -66658,6 +66788,7 @@ export namespace Prisma {
 
   export type MatchMemberCreateWithoutRoomInput = {
     id?: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -66674,6 +66805,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedCreateWithoutRoomInput = {
     id?: string
     userId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -66982,6 +67114,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberCreateWithoutRoomInput = {
     id?: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -66997,6 +67130,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedCreateWithoutRoomInput = {
     id?: string
     userId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -67038,7 +67172,7 @@ export namespace Prisma {
     id?: string
     max?: number
     gameplayId: string
-    botOwner: string
+    botOwner?: string | null
     mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -67054,7 +67188,7 @@ export namespace Prisma {
     id?: string
     max?: number
     gameplayId: string
-    botOwner: string
+    botOwner?: string | null
     mode: $Enums.MatchMode
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -67177,7 +67311,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67193,7 +67327,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     max?: IntFieldUpdateOperationsInput | number
     gameplayId?: StringFieldUpdateOperationsInput | string
-    botOwner?: StringFieldUpdateOperationsInput | string
+    botOwner?: NullableStringFieldUpdateOperationsInput | string | null
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68834,6 +68968,7 @@ export namespace Prisma {
   export type MatchMemberCreateManyUserInput = {
     id?: string
     roomId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -68849,6 +68984,7 @@ export namespace Prisma {
   export type MatchHistoryMemberCreateManyUserInput = {
     id?: string
     roomId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -69200,6 +69336,7 @@ export namespace Prisma {
 
   export type MatchMemberUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -69216,6 +69353,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -69231,6 +69369,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -69245,6 +69384,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -69260,6 +69400,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -69274,6 +69415,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -70266,6 +70408,7 @@ export namespace Prisma {
   export type MatchMemberCreateManyRoomInput = {
     id?: string
     userId: string
+    status?: $Enums.MatchStatus
     answerPoint?: number
     point?: number
     bonusPoint?: number
@@ -70280,6 +70423,7 @@ export namespace Prisma {
 
   export type MatchMemberUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -70296,6 +70440,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -70311,6 +70456,7 @@ export namespace Prisma {
   export type MatchMemberUncheckedUpdateManyWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     answerPoint?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
@@ -70326,6 +70472,7 @@ export namespace Prisma {
   export type MatchHistoryMemberCreateManyRoomInput = {
     id?: string
     userId: string
+    status?: $Enums.MatchStatus
     point?: number
     bonusPoint?: number
     teamType?: $Enums.TeamType
@@ -70339,6 +70486,7 @@ export namespace Prisma {
 
   export type MatchHistoryMemberUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -70354,6 +70502,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedUpdateWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
@@ -70368,6 +70517,7 @@ export namespace Prisma {
   export type MatchHistoryMemberUncheckedUpdateManyWithoutRoomInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    status?: EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
     point?: IntFieldUpdateOperationsInput | number
     bonusPoint?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
