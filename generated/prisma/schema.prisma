@@ -626,8 +626,10 @@ model ChampionshipMatch {
 
   @@index([gameplayId])
   @@index([max])
+  @@index([expiredAt])
   @@index([max, startedAt])
   @@index([max, startedAt, currentMember])
+  @@index([isStarted, expiredAt, gameplayId, max, currentMember])
 }
 
 model MatchMember {
