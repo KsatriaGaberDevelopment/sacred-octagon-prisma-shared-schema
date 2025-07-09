@@ -634,7 +634,7 @@ model MatchMember {
   id           String            @id @default(cuid())
   roomId       String
   userId       String
-  //slot         Int                           //Ini untuk cegah user pindah2 slot after leave saat masih di room (@@JAYA nunggu confirm)
+  slot         Int               @default(0) //Ini untuk cegah user pindah2 slot after leave saat masih di room (@@JAYA nunggu confirm)
   status       MatchStatus       @default(None)
   answerPoint  Int               @default(0) // ini point ketika menjawab contoh benar 100/salah -100
   point        Int               @default(0) // ini jumlah point yang didapat
@@ -649,8 +649,8 @@ model MatchMember {
   room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
   user         User              @relation(fields: [userId], references: [id])
 
-  //@@unique([roomId, slot])  // Ensures each slot in a room is unique (@@JAYA nunggu confirm)
-  //@@unique([roomId, userId]) // Ensures a user can only be in one slot per room (@@JAYA nunggu confirm)
+  @@unique([roomId, slot]) // Ensures each slot in a room is unique (@@JAYA nunggu confirm)
+  @@unique([roomId, userId]) // Ensures a user can only be in one slot per room (@@JAYA nunggu confirm)
 }
 
 model ChampionshipHistory {
@@ -681,6 +681,7 @@ model MatchHistoryMember {
   id           String              @id @default(cuid())
   roomId       String
   userId       String
+  slot         Int                 @default(0)
   status       MatchStatus         @default(None)
   point        Int                 @default(0) // ini jumlah point yang didapat
   bonusPoint   Int                 @default(0) // ini bonus point berdasarkan ketentuan
@@ -693,7 +694,6 @@ model MatchHistoryMember {
   isDisconnect Boolean             @default(false)
   room         ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
   user         User                @relation(fields: [userId], references: [id])
-  //@@TODO - JAYA: Kayanya bakal butuh slot? biar pas DC ga pindah2 slot
 }
 
 enum Role {
