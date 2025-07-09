@@ -661,6 +661,7 @@ model ChampionshipHistory {
   zoneInGameId  String
   gameplayId    String
   botOwner      String?
+  currentPoint  Int[]                @default([0, 0])
   mode          MatchMode
   endTime       Int                  @default(0) //Game duration
   startedAt     DateTime?            @db.Timestamptz(3)

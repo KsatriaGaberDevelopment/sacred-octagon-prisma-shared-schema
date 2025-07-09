@@ -42268,12 +42268,14 @@ export namespace Prisma {
 
   export type ChampionshipHistoryAvgAggregateOutputType = {
     max: number | null
+    currentPoint: number | null
     endTime: number | null
     currentMember: number | null
   }
 
   export type ChampionshipHistorySumAggregateOutputType = {
     max: number | null
+    currentPoint: number[]
     endTime: number | null
     currentMember: number | null
   }
@@ -42320,6 +42322,7 @@ export namespace Prisma {
     zoneInGameId: number
     gameplayId: number
     botOwner: number
+    currentPoint: number
     mode: number
     endTime: number
     startedAt: number
@@ -42336,12 +42339,14 @@ export namespace Prisma {
 
   export type ChampionshipHistoryAvgAggregateInputType = {
     max?: true
+    currentPoint?: true
     endTime?: true
     currentMember?: true
   }
 
   export type ChampionshipHistorySumAggregateInputType = {
     max?: true
+    currentPoint?: true
     endTime?: true
     currentMember?: true
   }
@@ -42388,6 +42393,7 @@ export namespace Prisma {
     zoneInGameId?: true
     gameplayId?: true
     botOwner?: true
+    currentPoint?: true
     mode?: true
     endTime?: true
     startedAt?: true
@@ -42493,6 +42499,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner: string | null
+    currentPoint: number[]
     mode: $Enums.MatchMode
     endTime: number
     startedAt: Date | null
@@ -42530,6 +42537,7 @@ export namespace Prisma {
     zoneInGameId?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    currentPoint?: boolean
     mode?: boolean
     endTime?: boolean
     startedAt?: boolean
@@ -42550,6 +42558,7 @@ export namespace Prisma {
     zoneInGameId?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    currentPoint?: boolean
     mode?: boolean
     endTime?: boolean
     startedAt?: boolean
@@ -42568,6 +42577,7 @@ export namespace Prisma {
     zoneInGameId?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    currentPoint?: boolean
     mode?: boolean
     endTime?: boolean
     startedAt?: boolean
@@ -42586,6 +42596,7 @@ export namespace Prisma {
     zoneInGameId?: boolean
     gameplayId?: boolean
     botOwner?: boolean
+    currentPoint?: boolean
     mode?: boolean
     endTime?: boolean
     startedAt?: boolean
@@ -42598,7 +42609,7 @@ export namespace Prisma {
     currentMember?: boolean
   }
 
-  export type ChampionshipHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "zoneInGameId" | "gameplayId" | "botOwner" | "mode" | "endTime" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipHistory"]>
+  export type ChampionshipHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "max" | "zoneInGameId" | "gameplayId" | "botOwner" | "currentPoint" | "mode" | "endTime" | "startedAt" | "endedAt" | "expiredAt" | "isStarted" | "isEnded" | "createdAt" | "updatedAt" | "currentMember", ExtArgs["result"]["championshipHistory"]>
   export type ChampionshipHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     members?: boolean | ChampionshipHistory$membersArgs<ExtArgs>
     _count?: boolean | ChampionshipHistoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -42617,6 +42628,7 @@ export namespace Prisma {
       zoneInGameId: string
       gameplayId: string
       botOwner: string | null
+      currentPoint: number[]
       mode: $Enums.MatchMode
       endTime: number
       startedAt: Date | null
@@ -43056,6 +43068,7 @@ export namespace Prisma {
     readonly zoneInGameId: FieldRef<"ChampionshipHistory", 'String'>
     readonly gameplayId: FieldRef<"ChampionshipHistory", 'String'>
     readonly botOwner: FieldRef<"ChampionshipHistory", 'String'>
+    readonly currentPoint: FieldRef<"ChampionshipHistory", 'Int[]'>
     readonly mode: FieldRef<"ChampionshipHistory", 'MatchMode'>
     readonly endTime: FieldRef<"ChampionshipHistory", 'Int'>
     readonly startedAt: FieldRef<"ChampionshipHistory", 'DateTime'>
@@ -45247,6 +45260,7 @@ export namespace Prisma {
     zoneInGameId: 'zoneInGameId',
     gameplayId: 'gameplayId',
     botOwner: 'botOwner',
+    currentPoint: 'currentPoint',
     mode: 'mode',
     endTime: 'endTime',
     startedAt: 'startedAt',
@@ -48361,6 +48375,7 @@ export namespace Prisma {
     zoneInGameId?: StringFilter<"ChampionshipHistory"> | string
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
     botOwner?: StringNullableFilter<"ChampionshipHistory"> | string | null
+    currentPoint?: IntNullableListFilter<"ChampionshipHistory">
     mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     endTime?: IntFilter<"ChampionshipHistory"> | number
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48380,6 +48395,7 @@ export namespace Prisma {
     zoneInGameId?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrderInput | SortOrder
+    currentPoint?: SortOrder
     mode?: SortOrder
     endTime?: SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -48402,6 +48418,7 @@ export namespace Prisma {
     zoneInGameId?: StringFilter<"ChampionshipHistory"> | string
     gameplayId?: StringFilter<"ChampionshipHistory"> | string
     botOwner?: StringNullableFilter<"ChampionshipHistory"> | string | null
+    currentPoint?: IntNullableListFilter<"ChampionshipHistory">
     mode?: EnumMatchModeFilter<"ChampionshipHistory"> | $Enums.MatchMode
     endTime?: IntFilter<"ChampionshipHistory"> | number
     startedAt?: DateTimeNullableFilter<"ChampionshipHistory"> | Date | string | null
@@ -48421,6 +48438,7 @@ export namespace Prisma {
     zoneInGameId?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrderInput | SortOrder
+    currentPoint?: SortOrder
     mode?: SortOrder
     endTime?: SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -48447,6 +48465,7 @@ export namespace Prisma {
     zoneInGameId?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
     gameplayId?: StringWithAggregatesFilter<"ChampionshipHistory"> | string
     botOwner?: StringNullableWithAggregatesFilter<"ChampionshipHistory"> | string | null
+    currentPoint?: IntNullableListFilter<"ChampionshipHistory">
     mode?: EnumMatchModeWithAggregatesFilter<"ChampionshipHistory"> | $Enums.MatchMode
     endTime?: IntWithAggregatesFilter<"ChampionshipHistory"> | number
     startedAt?: DateTimeNullableWithAggregatesFilter<"ChampionshipHistory"> | Date | string | null
@@ -51643,6 +51662,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner?: string | null
+    currentPoint?: ChampionshipHistoryCreatecurrentPointInput | number[]
     mode: $Enums.MatchMode
     endTime?: number
     startedAt?: Date | string | null
@@ -51662,6 +51682,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner?: string | null
+    currentPoint?: ChampionshipHistoryCreatecurrentPointInput | number[]
     mode: $Enums.MatchMode
     endTime?: number
     startedAt?: Date | string | null
@@ -51681,6 +51702,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51700,6 +51722,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51719,6 +51742,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner?: string | null
+    currentPoint?: ChampionshipHistoryCreatecurrentPointInput | number[]
     mode: $Enums.MatchMode
     endTime?: number
     startedAt?: Date | string | null
@@ -51737,6 +51761,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51755,6 +51780,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -54254,6 +54280,7 @@ export namespace Prisma {
     zoneInGameId?: SortOrder
     gameplayId?: SortOrder
     botOwner?: SortOrder
+    currentPoint?: SortOrder
     mode?: SortOrder
     endTime?: SortOrder
     startedAt?: SortOrder
@@ -54268,6 +54295,7 @@ export namespace Prisma {
 
   export type ChampionshipHistoryAvgOrderByAggregateInput = {
     max?: SortOrder
+    currentPoint?: SortOrder
     endTime?: SortOrder
     currentMember?: SortOrder
   }
@@ -54310,6 +54338,7 @@ export namespace Prisma {
 
   export type ChampionshipHistorySumOrderByAggregateInput = {
     max?: SortOrder
+    currentPoint?: SortOrder
     endTime?: SortOrder
     currentMember?: SortOrder
   }
@@ -57502,6 +57531,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMatchMembersInput, UserUpdateWithoutMatchMembersInput>, UserUncheckedUpdateWithoutMatchMembersInput>
   }
 
+  export type ChampionshipHistoryCreatecurrentPointInput = {
+    set: number[]
+  }
+
   export type MatchHistoryMemberCreateNestedManyWithoutRoomInput = {
     create?: XOR<MatchHistoryMemberCreateWithoutRoomInput, MatchHistoryMemberUncheckedCreateWithoutRoomInput> | MatchHistoryMemberCreateWithoutRoomInput[] | MatchHistoryMemberUncheckedCreateWithoutRoomInput[]
     connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
@@ -57514,6 +57547,11 @@ export namespace Prisma {
     connectOrCreate?: MatchHistoryMemberCreateOrConnectWithoutRoomInput | MatchHistoryMemberCreateOrConnectWithoutRoomInput[]
     createMany?: MatchHistoryMemberCreateManyRoomInputEnvelope
     connect?: MatchHistoryMemberWhereUniqueInput | MatchHistoryMemberWhereUniqueInput[]
+  }
+
+  export type ChampionshipHistoryUpdatecurrentPointInput = {
+    set?: number[]
+    push?: number | number[]
   }
 
   export type MatchHistoryMemberUpdateManyWithoutRoomNestedInput = {
@@ -67402,6 +67440,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner?: string | null
+    currentPoint?: ChampionshipHistoryCreatecurrentPointInput | number[]
     mode: $Enums.MatchMode
     endTime?: number
     startedAt?: Date | string | null
@@ -67420,6 +67459,7 @@ export namespace Prisma {
     zoneInGameId: string
     gameplayId: string
     botOwner?: string | null
+    currentPoint?: ChampionshipHistoryCreatecurrentPointInput | number[]
     mode: $Enums.MatchMode
     endTime?: number
     startedAt?: Date | string | null
@@ -67545,6 +67585,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67563,6 +67604,7 @@ export namespace Prisma {
     zoneInGameId?: StringFieldUpdateOperationsInput | string
     gameplayId?: StringFieldUpdateOperationsInput | string
     botOwner?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPoint?: ChampionshipHistoryUpdatecurrentPointInput | number[]
     mode?: EnumMatchModeFieldUpdateOperationsInput | $Enums.MatchMode
     endTime?: IntFieldUpdateOperationsInput | number
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

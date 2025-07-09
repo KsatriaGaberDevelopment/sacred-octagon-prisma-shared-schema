@@ -536,6 +536,7 @@ exports.Prisma.ChampionshipHistoryScalarFieldEnum = {
   zoneInGameId: 'zoneInGameId',
   gameplayId: 'gameplayId',
   botOwner: 'botOwner',
+  currentPoint: 'currentPoint',
   mode: 'mode',
   endTime: 'endTime',
   startedAt: 'startedAt',
