@@ -281,6 +281,7 @@ model GempoRecord {
   id             String    @id @default(cuid())
   played         Int       @default(0)
   point          Int       @default(0)
+  highestPoint   Int       @default(0)
   lastPlayedAt   DateTime? @db.Timestamptz(3)
   createdAt      DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime  @updatedAt @db.Timestamptz(3)

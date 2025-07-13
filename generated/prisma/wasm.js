@@ -284,6 +284,7 @@ exports.Prisma.GempoRecordScalarFieldEnum = {
   id: 'id',
   played: 'played',
   point: 'point',
+  highestPoint: 'highestPoint',
   lastPlayedAt: 'lastPlayedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',

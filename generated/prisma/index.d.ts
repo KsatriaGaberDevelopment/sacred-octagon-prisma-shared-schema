@@ -18836,12 +18836,14 @@ export namespace Prisma {
   export type GempoRecordAvgAggregateOutputType = {
     played: number | null
     point: number | null
+    highestPoint: number | null
     correctAttempt: number | null
   }
 
   export type GempoRecordSumAggregateOutputType = {
     played: number | null
     point: number | null
+    highestPoint: number | null
     correctAttempt: number | null
   }
 
@@ -18849,6 +18851,7 @@ export namespace Prisma {
     id: string | null
     played: number | null
     point: number | null
+    highestPoint: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -18863,6 +18866,7 @@ export namespace Prisma {
     id: string | null
     played: number | null
     point: number | null
+    highestPoint: number | null
     lastPlayedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -18877,6 +18881,7 @@ export namespace Prisma {
     id: number
     played: number
     point: number
+    highestPoint: number
     lastPlayedAt: number
     createdAt: number
     updatedAt: number
@@ -18892,12 +18897,14 @@ export namespace Prisma {
   export type GempoRecordAvgAggregateInputType = {
     played?: true
     point?: true
+    highestPoint?: true
     correctAttempt?: true
   }
 
   export type GempoRecordSumAggregateInputType = {
     played?: true
     point?: true
+    highestPoint?: true
     correctAttempt?: true
   }
 
@@ -18905,6 +18912,7 @@ export namespace Prisma {
     id?: true
     played?: true
     point?: true
+    highestPoint?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -18919,6 +18927,7 @@ export namespace Prisma {
     id?: true
     played?: true
     point?: true
+    highestPoint?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -18933,6 +18942,7 @@ export namespace Prisma {
     id?: true
     played?: true
     point?: true
+    highestPoint?: true
     lastPlayedAt?: true
     createdAt?: true
     updatedAt?: true
@@ -19034,6 +19044,7 @@ export namespace Prisma {
     id: string
     played: number
     point: number
+    highestPoint: number
     lastPlayedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -19067,6 +19078,7 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
+    highestPoint?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19082,6 +19094,7 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
+    highestPoint?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19097,6 +19110,7 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
+    highestPoint?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19112,6 +19126,7 @@ export namespace Prisma {
     id?: boolean
     played?: boolean
     point?: boolean
+    highestPoint?: boolean
     lastPlayedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19122,7 +19137,7 @@ export namespace Prisma {
     correctAttempt?: boolean
   }
 
-  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "played" | "point" | "lastPlayedAt" | "createdAt" | "updatedAt" | "gempoInGameId" | "inGameId" | "userId" | "zoneInGameId" | "correctAttempt", ExtArgs["result"]["gempoRecord"]>
+  export type GempoRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "played" | "point" | "highestPoint" | "lastPlayedAt" | "createdAt" | "updatedAt" | "gempoInGameId" | "inGameId" | "userId" | "zoneInGameId" | "correctAttempt", ExtArgs["result"]["gempoRecord"]>
   export type GempoRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -19142,6 +19157,7 @@ export namespace Prisma {
       id: string
       played: number
       point: number
+      highestPoint: number
       lastPlayedAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -19577,6 +19593,7 @@ export namespace Prisma {
     readonly id: FieldRef<"GempoRecord", 'String'>
     readonly played: FieldRef<"GempoRecord", 'Int'>
     readonly point: FieldRef<"GempoRecord", 'Int'>
+    readonly highestPoint: FieldRef<"GempoRecord", 'Int'>
     readonly lastPlayedAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly createdAt: FieldRef<"GempoRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"GempoRecord", 'DateTime'>
@@ -44948,6 +44965,7 @@ export namespace Prisma {
     id: 'id',
     played: 'played',
     point: 'point',
+    highestPoint: 'highestPoint',
     lastPlayedAt: 'lastPlayedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -46699,6 +46717,7 @@ export namespace Prisma {
     id?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
+    highestPoint?: IntFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -46714,6 +46733,7 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46733,6 +46753,7 @@ export namespace Prisma {
     NOT?: GempoRecordWhereInput | GempoRecordWhereInput[]
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
+    highestPoint?: IntFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -46748,6 +46769,7 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     lastPlayedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -46770,6 +46792,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"GempoRecord"> | string
     played?: IntWithAggregatesFilter<"GempoRecord"> | number
     point?: IntWithAggregatesFilter<"GempoRecord"> | number
+    highestPoint?: IntWithAggregatesFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableWithAggregatesFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GempoRecord"> | Date | string
@@ -49851,6 +49874,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49865,6 +49889,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49879,6 +49904,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49893,6 +49919,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49907,6 +49934,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49921,6 +49949,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49934,6 +49963,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53013,6 +53043,7 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53026,6 +53057,7 @@ export namespace Prisma {
   export type GempoRecordAvgOrderByAggregateInput = {
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     correctAttempt?: SortOrder
   }
 
@@ -53033,6 +53065,7 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53047,6 +53080,7 @@ export namespace Prisma {
     id?: SortOrder
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     lastPlayedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -53060,6 +53094,7 @@ export namespace Prisma {
   export type GempoRecordSumOrderByAggregateInput = {
     played?: SortOrder
     point?: SortOrder
+    highestPoint?: SortOrder
     correctAttempt?: SortOrder
   }
 
@@ -60183,6 +60218,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60196,6 +60232,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60896,6 +60933,7 @@ export namespace Prisma {
     id?: StringFilter<"GempoRecord"> | string
     played?: IntFilter<"GempoRecord"> | number
     point?: IntFilter<"GempoRecord"> | number
+    highestPoint?: IntFilter<"GempoRecord"> | number
     lastPlayedAt?: DateTimeNullableFilter<"GempoRecord"> | Date | string | null
     createdAt?: DateTimeFilter<"GempoRecord"> | Date | string
     updatedAt?: DateTimeFilter<"GempoRecord"> | Date | string
@@ -69204,6 +69242,7 @@ export namespace Prisma {
     id?: string
     played?: number
     point?: number
+    highestPoint?: number
     lastPlayedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -69489,6 +69528,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69502,6 +69542,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69515,6 +69556,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     played?: IntFieldUpdateOperationsInput | number
     point?: IntFieldUpdateOperationsInput | number
+    highestPoint?: IntFieldUpdateOperationsInput | number
     lastPlayedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
