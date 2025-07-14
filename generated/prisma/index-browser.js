@@ -379,8 +379,7 @@ exports.Prisma.BannerScalarFieldEnum = {
 
 exports.Prisma.BannerLocationScalarFieldEnum = {
   id: 'id',
-  bannerId: 'bannerId',
-  provinceId: 'provinceId'
+  bannerId: 'bannerId'
 };
 
 exports.Prisma.BannerVisitorScalarFieldEnum = {

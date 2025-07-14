@@ -45,7 +45,7 @@ model City {
   subdistricts   Subdistrict[]
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToCity")
-  bannerLocation BannerLocation[] @relation("BannerLocationToCity")
+  bannerLocation BannerLocation[]
 
   @@index([provinceId])
 }
@@ -435,15 +435,14 @@ model Banner {
 model BannerLocation {
   id            String        @id @default(cuid())
   bannerId      String
-  provinceId    String
   banner        Banner        @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  province      Province      @relation(fields: [provinceId], references: [id])
-  cities        City[]        @relation("BannerLocationToCity")
+  provincies    Province[]
+  cities        City[]
   subdisctricts Subdistrict[]
+  //@@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
+  //@@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
 
   @@index([bannerId]) // For joining with Banner (implicit when `some` is used)
-  @@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
-  @@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
 }
 
 model BannerVisitor {
