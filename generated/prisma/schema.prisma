@@ -414,6 +414,7 @@ model AdminAuthority {
 
 model Banner {
   id                String          @id @default(cuid())
+  title             String?
   thumbnail         String
   link              String?
   startedAt         DateTime?       @db.Timestamptz(3)

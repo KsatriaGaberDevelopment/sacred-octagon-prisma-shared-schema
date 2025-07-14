@@ -368,6 +368,7 @@ exports.Prisma.AdminAuthorityScalarFieldEnum = {
 
 exports.Prisma.BannerScalarFieldEnum = {
   id: 'id',
+  title: 'title',
   thumbnail: 'thumbnail',
   link: 'link',
   startedAt: 'startedAt',

@@ -27125,6 +27125,7 @@ export namespace Prisma {
 
   export type BannerMinAggregateOutputType = {
     id: string | null
+    title: string | null
     thumbnail: string | null
     link: string | null
     startedAt: Date | null
@@ -27137,6 +27138,7 @@ export namespace Prisma {
 
   export type BannerMaxAggregateOutputType = {
     id: string | null
+    title: string | null
     thumbnail: string | null
     link: string | null
     startedAt: Date | null
@@ -27149,6 +27151,7 @@ export namespace Prisma {
 
   export type BannerCountAggregateOutputType = {
     id: number
+    title: number
     thumbnail: number
     link: number
     startedAt: number
@@ -27163,6 +27166,7 @@ export namespace Prisma {
 
   export type BannerMinAggregateInputType = {
     id?: true
+    title?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -27175,6 +27179,7 @@ export namespace Prisma {
 
   export type BannerMaxAggregateInputType = {
     id?: true
+    title?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -27187,6 +27192,7 @@ export namespace Prisma {
 
   export type BannerCountAggregateInputType = {
     id?: true
+    title?: true
     thumbnail?: true
     link?: true
     startedAt?: true
@@ -27272,6 +27278,7 @@ export namespace Prisma {
 
   export type BannerGroupByOutputType = {
     id: string
+    title: string | null
     thumbnail: string
     link: string | null
     startedAt: Date | null
@@ -27301,6 +27308,7 @@ export namespace Prisma {
 
   export type BannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -27319,6 +27327,7 @@ export namespace Prisma {
 
   export type BannerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -27332,6 +27341,7 @@ export namespace Prisma {
 
   export type BannerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -27345,6 +27355,7 @@ export namespace Prisma {
 
   export type BannerSelectScalar = {
     id?: boolean
+    title?: boolean
     thumbnail?: boolean
     link?: boolean
     startedAt?: boolean
@@ -27355,7 +27366,7 @@ export namespace Prisma {
     thumbnailId?: boolean
   }
 
-  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "adminId" | "thumbnailId", ExtArgs["result"]["banner"]>
+  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "adminId" | "thumbnailId", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     provincies?: boolean | Banner$provinciesArgs<ExtArgs>
@@ -27382,6 +27393,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      title: string | null
       thumbnail: string
       link: string | null
       startedAt: Date | null
@@ -27819,6 +27831,7 @@ export namespace Prisma {
    */
   interface BannerFieldRefs {
     readonly id: FieldRef<"Banner", 'String'>
+    readonly title: FieldRef<"Banner", 'String'>
     readonly thumbnail: FieldRef<"Banner", 'String'>
     readonly link: FieldRef<"Banner", 'String'>
     readonly startedAt: FieldRef<"Banner", 'DateTime'>
@@ -43928,6 +43941,7 @@ export namespace Prisma {
 
   export const BannerScalarFieldEnum: {
     id: 'id',
+    title: 'title',
     thumbnail: 'thumbnail',
     link: 'link',
     startedAt: 'startedAt',
@@ -46163,6 +46177,7 @@ export namespace Prisma {
     OR?: BannerWhereInput[]
     NOT?: BannerWhereInput | BannerWhereInput[]
     id?: StringFilter<"Banner"> | string
+    title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -46180,6 +46195,7 @@ export namespace Prisma {
 
   export type BannerOrderByWithRelationInput = {
     id?: SortOrder
+    title?: SortOrderInput | SortOrder
     thumbnail?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -46200,6 +46216,7 @@ export namespace Prisma {
     AND?: BannerWhereInput | BannerWhereInput[]
     OR?: BannerWhereInput[]
     NOT?: BannerWhereInput | BannerWhereInput[]
+    title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -46217,6 +46234,7 @@ export namespace Prisma {
 
   export type BannerOrderByWithAggregationInput = {
     id?: SortOrder
+    title?: SortOrderInput | SortOrder
     thumbnail?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
@@ -46235,6 +46253,7 @@ export namespace Prisma {
     OR?: BannerScalarWhereWithAggregatesInput[]
     NOT?: BannerScalarWhereWithAggregatesInput | BannerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Banner"> | string
+    title?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     thumbnail?: StringWithAggregatesFilter<"Banner"> | string
     link?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
@@ -49321,6 +49340,7 @@ export namespace Prisma {
 
   export type BannerCreateInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49337,6 +49357,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49353,6 +49374,7 @@ export namespace Prisma {
 
   export type BannerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49369,6 +49391,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49385,6 +49408,7 @@ export namespace Prisma {
 
   export type BannerCreateManyInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -49397,6 +49421,7 @@ export namespace Prisma {
 
   export type BannerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -49408,6 +49433,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52274,6 +52300,7 @@ export namespace Prisma {
 
   export type BannerCountOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -52286,6 +52313,7 @@ export namespace Prisma {
 
   export type BannerMaxOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -52298,6 +52326,7 @@ export namespace Prisma {
 
   export type BannerMinOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     thumbnail?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
@@ -57107,6 +57136,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutProvinciesInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -57122,6 +57152,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutProvinciesInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -57367,6 +57398,7 @@ export namespace Prisma {
     OR?: BannerScalarWhereInput[]
     NOT?: BannerScalarWhereInput | BannerScalarWhereInput[]
     id?: StringFilter<"Banner"> | string
+    title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
@@ -57683,6 +57715,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutCitiesInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -57698,6 +57731,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutCitiesInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -58156,6 +58190,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutSubdistrictsInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -58171,6 +58206,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutSubdistrictsInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62268,6 +62304,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutAdminInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -62283,6 +62320,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutAdminInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -64064,6 +64102,7 @@ export namespace Prisma {
 
   export type BannerCreateWithoutVisitorsInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -64079,6 +64118,7 @@ export namespace Prisma {
 
   export type BannerUncheckedCreateWithoutVisitorsInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -64201,6 +64241,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutVisitorsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64216,6 +64257,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutVisitorsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66838,6 +66880,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutProvinciesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66853,6 +66896,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutProvinciesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66868,6 +66912,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyWithoutProvinciesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67249,6 +67294,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67264,6 +67310,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67279,6 +67326,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67606,6 +67654,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutSubdistrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67621,6 +67670,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutSubdistrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67636,6 +67686,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyWithoutSubdistrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68679,6 +68730,7 @@ export namespace Prisma {
 
   export type BannerCreateManyAdminInput = {
     id?: string
+    title?: string | null
     thumbnail: string
     link?: string | null
     startedAt?: Date | string | null
@@ -68937,6 +68989,7 @@ export namespace Prisma {
 
   export type BannerUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68952,6 +69005,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68967,6 +69021,7 @@ export namespace Prisma {
 
   export type BannerUncheckedUpdateManyWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
