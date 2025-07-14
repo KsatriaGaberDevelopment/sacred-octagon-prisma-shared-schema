@@ -27127,13 +27127,14 @@ export namespace Prisma {
     id: string | null
     title: string | null
     thumbnail: string | null
+    thumbnailId: string | null
     link: string | null
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean | null
     lastBroadcastedAt: Date | null
+    notificationDescription: string | null
     adminId: string | null
-    thumbnailId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -27142,13 +27143,14 @@ export namespace Prisma {
     id: string | null
     title: string | null
     thumbnail: string | null
+    thumbnailId: string | null
     link: string | null
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean | null
     lastBroadcastedAt: Date | null
+    notificationDescription: string | null
     adminId: string | null
-    thumbnailId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -27157,13 +27159,14 @@ export namespace Prisma {
     id: number
     title: number
     thumbnail: number
+    thumbnailId: number
     link: number
     startedAt: number
     endedAt: number
     isHide: number
     lastBroadcastedAt: number
+    notificationDescription: number
     adminId: number
-    thumbnailId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -27174,13 +27177,14 @@ export namespace Prisma {
     id?: true
     title?: true
     thumbnail?: true
+    thumbnailId?: true
     link?: true
     startedAt?: true
     endedAt?: true
     isHide?: true
     lastBroadcastedAt?: true
+    notificationDescription?: true
     adminId?: true
-    thumbnailId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -27189,13 +27193,14 @@ export namespace Prisma {
     id?: true
     title?: true
     thumbnail?: true
+    thumbnailId?: true
     link?: true
     startedAt?: true
     endedAt?: true
     isHide?: true
     lastBroadcastedAt?: true
+    notificationDescription?: true
     adminId?: true
-    thumbnailId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -27204,13 +27209,14 @@ export namespace Prisma {
     id?: true
     title?: true
     thumbnail?: true
+    thumbnailId?: true
     link?: true
     startedAt?: true
     endedAt?: true
     isHide?: true
     lastBroadcastedAt?: true
+    notificationDescription?: true
     adminId?: true
-    thumbnailId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -27292,13 +27298,14 @@ export namespace Prisma {
     id: string
     title: string | null
     thumbnail: string
+    thumbnailId: string
     link: string | null
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean
     lastBroadcastedAt: Date | null
+    notificationDescription: string | null
     adminId: string
-    thumbnailId: string
     createdAt: Date
     updatedAt: Date
     _count: BannerCountAggregateOutputType | null
@@ -27324,13 +27331,14 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     thumbnail?: boolean
+    thumbnailId?: boolean
     link?: boolean
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
     lastBroadcastedAt?: boolean
+    notificationDescription?: boolean
     adminId?: boolean
-    thumbnailId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -27345,13 +27353,14 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     thumbnail?: boolean
+    thumbnailId?: boolean
     link?: boolean
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
     lastBroadcastedAt?: boolean
+    notificationDescription?: boolean
     adminId?: boolean
-    thumbnailId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -27361,13 +27370,14 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     thumbnail?: boolean
+    thumbnailId?: boolean
     link?: boolean
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
     lastBroadcastedAt?: boolean
+    notificationDescription?: boolean
     adminId?: boolean
-    thumbnailId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -27377,18 +27387,19 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     thumbnail?: boolean
+    thumbnailId?: boolean
     link?: boolean
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
     lastBroadcastedAt?: boolean
+    notificationDescription?: boolean
     adminId?: boolean
-    thumbnailId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "adminId" | "thumbnailId" | "createdAt" | "updatedAt", ExtArgs["result"]["banner"]>
+  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "thumbnailId" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "notificationDescription" | "adminId" | "createdAt" | "updatedAt", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     provincies?: boolean | Banner$provinciesArgs<ExtArgs>
@@ -27417,13 +27428,14 @@ export namespace Prisma {
       id: string
       title: string | null
       thumbnail: string
+      thumbnailId: string
       link: string | null
       startedAt: Date | null
       endedAt: Date | null
       isHide: boolean
       lastBroadcastedAt: Date | null
+      notificationDescription: string | null
       adminId: string
-      thumbnailId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["banner"]>
@@ -27857,13 +27869,14 @@ export namespace Prisma {
     readonly id: FieldRef<"Banner", 'String'>
     readonly title: FieldRef<"Banner", 'String'>
     readonly thumbnail: FieldRef<"Banner", 'String'>
+    readonly thumbnailId: FieldRef<"Banner", 'String'>
     readonly link: FieldRef<"Banner", 'String'>
     readonly startedAt: FieldRef<"Banner", 'DateTime'>
     readonly endedAt: FieldRef<"Banner", 'DateTime'>
     readonly isHide: FieldRef<"Banner", 'Boolean'>
     readonly lastBroadcastedAt: FieldRef<"Banner", 'DateTime'>
+    readonly notificationDescription: FieldRef<"Banner", 'String'>
     readonly adminId: FieldRef<"Banner", 'String'>
-    readonly thumbnailId: FieldRef<"Banner", 'String'>
     readonly createdAt: FieldRef<"Banner", 'DateTime'>
     readonly updatedAt: FieldRef<"Banner", 'DateTime'>
   }
@@ -43969,13 +43982,14 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     thumbnail: 'thumbnail',
+    thumbnailId: 'thumbnailId',
     link: 'link',
     startedAt: 'startedAt',
     endedAt: 'endedAt',
     isHide: 'isHide',
     lastBroadcastedAt: 'lastBroadcastedAt',
+    notificationDescription: 'notificationDescription',
     adminId: 'adminId',
-    thumbnailId: 'thumbnailId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -46207,13 +46221,14 @@ export namespace Prisma {
     id?: StringFilter<"Banner"> | string
     title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
-    thumbnailId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
     updatedAt?: DateTimeFilter<"Banner"> | Date | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
@@ -46227,13 +46242,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrderInput | SortOrder
     thumbnail?: SortOrder
+    thumbnailId?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     isHide?: SortOrder
     lastBroadcastedAt?: SortOrderInput | SortOrder
+    notificationDescription?: SortOrderInput | SortOrder
     adminId?: SortOrder
-    thumbnailId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     admin?: AdminOrderByWithRelationInput
@@ -46250,13 +46266,14 @@ export namespace Prisma {
     NOT?: BannerWhereInput | BannerWhereInput[]
     title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
-    thumbnailId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
     updatedAt?: DateTimeFilter<"Banner"> | Date | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
@@ -46270,13 +46287,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrderInput | SortOrder
     thumbnail?: SortOrder
+    thumbnailId?: SortOrder
     link?: SortOrderInput | SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     isHide?: SortOrder
     lastBroadcastedAt?: SortOrderInput | SortOrder
+    notificationDescription?: SortOrderInput | SortOrder
     adminId?: SortOrder
-    thumbnailId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BannerCountOrderByAggregateInput
@@ -46291,13 +46309,14 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Banner"> | string
     title?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     thumbnail?: StringWithAggregatesFilter<"Banner"> | string
+    thumbnailId?: StringWithAggregatesFilter<"Banner"> | string
     link?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     isHide?: BoolWithAggregatesFilter<"Banner"> | boolean
     lastBroadcastedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
+    notificationDescription?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     adminId?: StringWithAggregatesFilter<"Banner"> | string
-    thumbnailId?: StringWithAggregatesFilter<"Banner"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
   }
@@ -49380,12 +49399,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
@@ -49399,13 +49419,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
@@ -49418,12 +49439,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
@@ -49437,13 +49459,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
@@ -49456,13 +49479,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -49471,12 +49495,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -49485,13 +49510,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52354,13 +52380,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     thumbnail?: SortOrder
+    thumbnailId?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
     lastBroadcastedAt?: SortOrder
+    notificationDescription?: SortOrder
     adminId?: SortOrder
-    thumbnailId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -52369,13 +52396,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     thumbnail?: SortOrder
+    thumbnailId?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
     lastBroadcastedAt?: SortOrder
+    notificationDescription?: SortOrder
     adminId?: SortOrder
-    thumbnailId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -52384,13 +52412,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     thumbnail?: SortOrder
+    thumbnailId?: SortOrder
     link?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
     lastBroadcastedAt?: SortOrder
+    notificationDescription?: SortOrder
     adminId?: SortOrder
-    thumbnailId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -57196,12 +57225,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
@@ -57214,13 +57244,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
@@ -57462,13 +57493,14 @@ export namespace Prisma {
     id?: StringFilter<"Banner"> | string
     title?: StringNullableFilter<"Banner"> | string | null
     thumbnail?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
     link?: StringNullableFilter<"Banner"> | string | null
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
-    thumbnailId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
     updatedAt?: DateTimeFilter<"Banner"> | Date | string
   }
@@ -57781,12 +57813,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
@@ -57799,13 +57832,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
@@ -58260,12 +58294,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
@@ -58278,13 +58313,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
@@ -62378,12 +62414,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
@@ -62396,12 +62433,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
@@ -64180,12 +64218,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
@@ -64198,13 +64237,14 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
+    notificationDescription?: string | null
     adminId: string
-    thumbnailId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
@@ -64323,12 +64363,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
@@ -64341,13 +64382,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
@@ -66966,12 +67008,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
@@ -66984,13 +67027,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
@@ -67002,13 +67046,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -67386,12 +67431,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
@@ -67404,13 +67450,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
@@ -67422,13 +67469,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -67752,12 +67800,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
@@ -67770,13 +67819,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
@@ -67788,13 +67838,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -68834,12 +68885,13 @@ export namespace Prisma {
     id?: string
     title?: string | null
     thumbnail: string
+    thumbnailId: string
     link?: string | null
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
-    thumbnailId: string
+    notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -69095,12 +69147,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
@@ -69113,12 +69166,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
@@ -69131,12 +69185,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
     link?: NullableStringFieldUpdateOperationsInput | string | null
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    thumbnailId?: StringFieldUpdateOperationsInput | string
+    notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

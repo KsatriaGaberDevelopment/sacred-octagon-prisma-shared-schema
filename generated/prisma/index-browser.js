@@ -370,13 +370,14 @@ exports.Prisma.BannerScalarFieldEnum = {
   id: 'id',
   title: 'title',
   thumbnail: 'thumbnail',
+  thumbnailId: 'thumbnailId',
   link: 'link',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
   isHide: 'isHide',
   lastBroadcastedAt: 'lastBroadcastedAt',
+  notificationDescription: 'notificationDescription',
   adminId: 'adminId',
-  thumbnailId: 'thumbnailId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

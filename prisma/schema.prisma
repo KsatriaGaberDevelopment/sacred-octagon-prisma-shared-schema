@@ -413,23 +413,24 @@ model AdminAuthority {
 }
 
 model Banner {
-  id                String          @id @default(cuid())
-  title             String?
-  thumbnail         String
-  link              String?
-  startedAt         DateTime?       @db.Timestamptz(3)
-  endedAt           DateTime?       @db.Timestamptz(3)
-  isHide            Boolean         @default(false)
-  lastBroadcastedAt DateTime?
-  adminId           String
-  thumbnailId       String
-  admin             Admin           @relation(fields: [adminId], references: [id])
-  provincies        Province[]
-  cities            City[]
-  subdistricts      Subdistrict[]
-  visitors          BannerVisitor[]
-  createdAt         DateTime        @default(now())
-  updatedAt         DateTime        @updatedAt
+  id                      String          @id @default(cuid())
+  title                   String?
+  thumbnail               String
+  thumbnailId             String
+  link                    String?
+  startedAt               DateTime?       @db.Timestamptz(3)
+  endedAt                 DateTime?       @db.Timestamptz(3)
+  isHide                  Boolean         @default(false)
+  lastBroadcastedAt       DateTime?
+  notificationDescription String?
+  adminId                 String
+  admin                   Admin           @relation(fields: [adminId], references: [id])
+  provincies              Province[]
+  cities                  City[]
+  subdistricts            Subdistrict[]
+  visitors                BannerVisitor[]
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
 
   @@index([isHide]) // For `where: { isHide: false }`
   @@index([startedAt]) // For `where: { startedAt: { lte: now } }`
