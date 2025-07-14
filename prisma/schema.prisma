@@ -421,7 +421,7 @@ model Banner {
   startedAt               DateTime?       @db.Timestamptz(3)
   endedAt                 DateTime?       @db.Timestamptz(3)
   isHide                  Boolean         @default(false)
-  lastBroadcastedAt       DateTime?
+  nextBroadcastedAt       DateTime?
   notificationDescription String?
   adminId                 String
   admin                   Admin           @relation(fields: [adminId], references: [id])

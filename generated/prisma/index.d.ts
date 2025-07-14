@@ -27132,7 +27132,7 @@ export namespace Prisma {
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean | null
-    lastBroadcastedAt: Date | null
+    nextBroadcastedAt: Date | null
     notificationDescription: string | null
     adminId: string | null
     createdAt: Date | null
@@ -27148,7 +27148,7 @@ export namespace Prisma {
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean | null
-    lastBroadcastedAt: Date | null
+    nextBroadcastedAt: Date | null
     notificationDescription: string | null
     adminId: string | null
     createdAt: Date | null
@@ -27164,7 +27164,7 @@ export namespace Prisma {
     startedAt: number
     endedAt: number
     isHide: number
-    lastBroadcastedAt: number
+    nextBroadcastedAt: number
     notificationDescription: number
     adminId: number
     createdAt: number
@@ -27182,7 +27182,7 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     isHide?: true
-    lastBroadcastedAt?: true
+    nextBroadcastedAt?: true
     notificationDescription?: true
     adminId?: true
     createdAt?: true
@@ -27198,7 +27198,7 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     isHide?: true
-    lastBroadcastedAt?: true
+    nextBroadcastedAt?: true
     notificationDescription?: true
     adminId?: true
     createdAt?: true
@@ -27214,7 +27214,7 @@ export namespace Prisma {
     startedAt?: true
     endedAt?: true
     isHide?: true
-    lastBroadcastedAt?: true
+    nextBroadcastedAt?: true
     notificationDescription?: true
     adminId?: true
     createdAt?: true
@@ -27303,7 +27303,7 @@ export namespace Prisma {
     startedAt: Date | null
     endedAt: Date | null
     isHide: boolean
-    lastBroadcastedAt: Date | null
+    nextBroadcastedAt: Date | null
     notificationDescription: string | null
     adminId: string
     createdAt: Date
@@ -27336,7 +27336,7 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
-    lastBroadcastedAt?: boolean
+    nextBroadcastedAt?: boolean
     notificationDescription?: boolean
     adminId?: boolean
     createdAt?: boolean
@@ -27358,7 +27358,7 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
-    lastBroadcastedAt?: boolean
+    nextBroadcastedAt?: boolean
     notificationDescription?: boolean
     adminId?: boolean
     createdAt?: boolean
@@ -27375,7 +27375,7 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
-    lastBroadcastedAt?: boolean
+    nextBroadcastedAt?: boolean
     notificationDescription?: boolean
     adminId?: boolean
     createdAt?: boolean
@@ -27392,14 +27392,14 @@ export namespace Prisma {
     startedAt?: boolean
     endedAt?: boolean
     isHide?: boolean
-    lastBroadcastedAt?: boolean
+    nextBroadcastedAt?: boolean
     notificationDescription?: boolean
     adminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "thumbnailId" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "notificationDescription" | "adminId" | "createdAt" | "updatedAt", ExtArgs["result"]["banner"]>
+  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "thumbnailId" | "link" | "startedAt" | "endedAt" | "isHide" | "nextBroadcastedAt" | "notificationDescription" | "adminId" | "createdAt" | "updatedAt", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     provincies?: boolean | Banner$provinciesArgs<ExtArgs>
@@ -27433,7 +27433,7 @@ export namespace Prisma {
       startedAt: Date | null
       endedAt: Date | null
       isHide: boolean
-      lastBroadcastedAt: Date | null
+      nextBroadcastedAt: Date | null
       notificationDescription: string | null
       adminId: string
       createdAt: Date
@@ -27874,7 +27874,7 @@ export namespace Prisma {
     readonly startedAt: FieldRef<"Banner", 'DateTime'>
     readonly endedAt: FieldRef<"Banner", 'DateTime'>
     readonly isHide: FieldRef<"Banner", 'Boolean'>
-    readonly lastBroadcastedAt: FieldRef<"Banner", 'DateTime'>
+    readonly nextBroadcastedAt: FieldRef<"Banner", 'DateTime'>
     readonly notificationDescription: FieldRef<"Banner", 'String'>
     readonly adminId: FieldRef<"Banner", 'String'>
     readonly createdAt: FieldRef<"Banner", 'DateTime'>
@@ -43987,7 +43987,7 @@ export namespace Prisma {
     startedAt: 'startedAt',
     endedAt: 'endedAt',
     isHide: 'isHide',
-    lastBroadcastedAt: 'lastBroadcastedAt',
+    nextBroadcastedAt: 'nextBroadcastedAt',
     notificationDescription: 'notificationDescription',
     adminId: 'adminId',
     createdAt: 'createdAt',
@@ -46226,7 +46226,7 @@ export namespace Prisma {
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
-    lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    nextBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
@@ -46247,7 +46247,7 @@ export namespace Prisma {
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     isHide?: SortOrder
-    lastBroadcastedAt?: SortOrderInput | SortOrder
+    nextBroadcastedAt?: SortOrderInput | SortOrder
     notificationDescription?: SortOrderInput | SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
@@ -46271,7 +46271,7 @@ export namespace Prisma {
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
-    lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    nextBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
@@ -46292,7 +46292,7 @@ export namespace Prisma {
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
     isHide?: SortOrder
-    lastBroadcastedAt?: SortOrderInput | SortOrder
+    nextBroadcastedAt?: SortOrderInput | SortOrder
     notificationDescription?: SortOrderInput | SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
@@ -46314,7 +46314,7 @@ export namespace Prisma {
     startedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     isHide?: BoolWithAggregatesFilter<"Banner"> | boolean
-    lastBroadcastedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
+    nextBroadcastedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     notificationDescription?: StringNullableWithAggregatesFilter<"Banner"> | string | null
     adminId?: StringWithAggregatesFilter<"Banner"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
@@ -49404,7 +49404,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -49424,7 +49424,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -49444,7 +49444,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49464,7 +49464,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49484,7 +49484,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -49500,7 +49500,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49515,7 +49515,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52385,7 +52385,7 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
-    lastBroadcastedAt?: SortOrder
+    nextBroadcastedAt?: SortOrder
     notificationDescription?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
@@ -52401,7 +52401,7 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
-    lastBroadcastedAt?: SortOrder
+    nextBroadcastedAt?: SortOrder
     notificationDescription?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
@@ -52417,7 +52417,7 @@ export namespace Prisma {
     startedAt?: SortOrder
     endedAt?: SortOrder
     isHide?: SortOrder
-    lastBroadcastedAt?: SortOrder
+    nextBroadcastedAt?: SortOrder
     notificationDescription?: SortOrder
     adminId?: SortOrder
     createdAt?: SortOrder
@@ -57230,7 +57230,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57249,7 +57249,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -57498,7 +57498,7 @@ export namespace Prisma {
     startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     isHide?: BoolFilter<"Banner"> | boolean
-    lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    nextBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     notificationDescription?: StringNullableFilter<"Banner"> | string | null
     adminId?: StringFilter<"Banner"> | string
     createdAt?: DateTimeFilter<"Banner"> | Date | string
@@ -57818,7 +57818,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57837,7 +57837,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -58299,7 +58299,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58318,7 +58318,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -62419,7 +62419,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -62438,7 +62438,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -64223,7 +64223,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -64242,7 +64242,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     adminId: string
     createdAt?: Date | string
@@ -64368,7 +64368,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -64387,7 +64387,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67013,7 +67013,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67032,7 +67032,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67051,7 +67051,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67436,7 +67436,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67455,7 +67455,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67474,7 +67474,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67805,7 +67805,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67824,7 +67824,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -67843,7 +67843,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68890,7 +68890,7 @@ export namespace Prisma {
     startedAt?: Date | string | null
     endedAt?: Date | string | null
     isHide?: boolean
-    lastBroadcastedAt?: Date | string | null
+    nextBroadcastedAt?: Date | string | null
     notificationDescription?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -69152,7 +69152,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69171,7 +69171,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69190,7 +69190,7 @@ export namespace Prisma {
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
-    lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nextBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     notificationDescription?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
