@@ -376,7 +376,9 @@ exports.Prisma.BannerScalarFieldEnum = {
   isHide: 'isHide',
   lastBroadcastedAt: 'lastBroadcastedAt',
   adminId: 'adminId',
-  thumbnailId: 'thumbnailId'
+  thumbnailId: 'thumbnailId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.BannerVisitorScalarFieldEnum = {

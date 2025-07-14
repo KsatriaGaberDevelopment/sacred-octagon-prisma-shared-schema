@@ -27134,6 +27134,8 @@ export namespace Prisma {
     lastBroadcastedAt: Date | null
     adminId: string | null
     thumbnailId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BannerMaxAggregateOutputType = {
@@ -27147,6 +27149,8 @@ export namespace Prisma {
     lastBroadcastedAt: Date | null
     adminId: string | null
     thumbnailId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BannerCountAggregateOutputType = {
@@ -27160,6 +27164,8 @@ export namespace Prisma {
     lastBroadcastedAt: number
     adminId: number
     thumbnailId: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -27175,6 +27181,8 @@ export namespace Prisma {
     lastBroadcastedAt?: true
     adminId?: true
     thumbnailId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type BannerMaxAggregateInputType = {
@@ -27188,6 +27196,8 @@ export namespace Prisma {
     lastBroadcastedAt?: true
     adminId?: true
     thumbnailId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type BannerCountAggregateInputType = {
@@ -27201,6 +27211,8 @@ export namespace Prisma {
     lastBroadcastedAt?: true
     adminId?: true
     thumbnailId?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -27287,6 +27299,8 @@ export namespace Prisma {
     lastBroadcastedAt: Date | null
     adminId: string
     thumbnailId: string
+    createdAt: Date
+    updatedAt: Date
     _count: BannerCountAggregateOutputType | null
     _min: BannerMinAggregateOutputType | null
     _max: BannerMaxAggregateOutputType | null
@@ -27317,6 +27331,8 @@ export namespace Prisma {
     lastBroadcastedAt?: boolean
     adminId?: boolean
     thumbnailId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     provincies?: boolean | Banner$provinciesArgs<ExtArgs>
     cities?: boolean | Banner$citiesArgs<ExtArgs>
@@ -27336,6 +27352,8 @@ export namespace Prisma {
     lastBroadcastedAt?: boolean
     adminId?: boolean
     thumbnailId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["banner"]>
 
@@ -27350,6 +27368,8 @@ export namespace Prisma {
     lastBroadcastedAt?: boolean
     adminId?: boolean
     thumbnailId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["banner"]>
 
@@ -27364,9 +27384,11 @@ export namespace Prisma {
     lastBroadcastedAt?: boolean
     adminId?: boolean
     thumbnailId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "adminId" | "thumbnailId", ExtArgs["result"]["banner"]>
+  export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "lastBroadcastedAt" | "adminId" | "thumbnailId" | "createdAt" | "updatedAt", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
     provincies?: boolean | Banner$provinciesArgs<ExtArgs>
@@ -27402,6 +27424,8 @@ export namespace Prisma {
       lastBroadcastedAt: Date | null
       adminId: string
       thumbnailId: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["banner"]>
     composites: {}
   }
@@ -27840,6 +27864,8 @@ export namespace Prisma {
     readonly lastBroadcastedAt: FieldRef<"Banner", 'DateTime'>
     readonly adminId: FieldRef<"Banner", 'String'>
     readonly thumbnailId: FieldRef<"Banner", 'String'>
+    readonly createdAt: FieldRef<"Banner", 'DateTime'>
+    readonly updatedAt: FieldRef<"Banner", 'DateTime'>
   }
     
 
@@ -43949,7 +43975,9 @@ export namespace Prisma {
     isHide: 'isHide',
     lastBroadcastedAt: 'lastBroadcastedAt',
     adminId: 'adminId',
-    thumbnailId: 'thumbnailId'
+    thumbnailId: 'thumbnailId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type BannerScalarFieldEnum = (typeof BannerScalarFieldEnum)[keyof typeof BannerScalarFieldEnum]
@@ -46186,6 +46214,8 @@ export namespace Prisma {
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     adminId?: StringFilter<"Banner"> | string
     thumbnailId?: StringFilter<"Banner"> | string
+    createdAt?: DateTimeFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeFilter<"Banner"> | Date | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     provincies?: ProvinceListRelationFilter
     cities?: CityListRelationFilter
@@ -46204,6 +46234,8 @@ export namespace Prisma {
     lastBroadcastedAt?: SortOrderInput | SortOrder
     adminId?: SortOrder
     thumbnailId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     admin?: AdminOrderByWithRelationInput
     provincies?: ProvinceOrderByRelationAggregateInput
     cities?: CityOrderByRelationAggregateInput
@@ -46225,6 +46257,8 @@ export namespace Prisma {
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     adminId?: StringFilter<"Banner"> | string
     thumbnailId?: StringFilter<"Banner"> | string
+    createdAt?: DateTimeFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeFilter<"Banner"> | Date | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     provincies?: ProvinceListRelationFilter
     cities?: CityListRelationFilter
@@ -46243,6 +46277,8 @@ export namespace Prisma {
     lastBroadcastedAt?: SortOrderInput | SortOrder
     adminId?: SortOrder
     thumbnailId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: BannerCountOrderByAggregateInput
     _max?: BannerMaxOrderByAggregateInput
     _min?: BannerMinOrderByAggregateInput
@@ -46262,6 +46298,8 @@ export namespace Prisma {
     lastBroadcastedAt?: DateTimeNullableWithAggregatesFilter<"Banner"> | Date | string | null
     adminId?: StringWithAggregatesFilter<"Banner"> | string
     thumbnailId?: StringWithAggregatesFilter<"Banner"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
   }
 
   export type BannerVisitorWhereInput = {
@@ -49348,6 +49386,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
     cities?: CityCreateNestedManyWithoutBannersInput
@@ -49366,6 +49406,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
@@ -49382,6 +49424,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
     cities?: CityUpdateManyWithoutBannersNestedInput
@@ -49400,6 +49444,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
@@ -49417,6 +49463,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type BannerUpdateManyMutationInput = {
@@ -49429,6 +49477,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BannerUncheckedUpdateManyInput = {
@@ -49442,6 +49492,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BannerVisitorCreateInput = {
@@ -52309,6 +52361,8 @@ export namespace Prisma {
     lastBroadcastedAt?: SortOrder
     adminId?: SortOrder
     thumbnailId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BannerMaxOrderByAggregateInput = {
@@ -52322,6 +52376,8 @@ export namespace Prisma {
     lastBroadcastedAt?: SortOrder
     adminId?: SortOrder
     thumbnailId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BannerMinOrderByAggregateInput = {
@@ -52335,6 +52391,8 @@ export namespace Prisma {
     lastBroadcastedAt?: SortOrder
     adminId?: SortOrder
     thumbnailId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BannerScalarRelationFilter = {
@@ -57144,6 +57202,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
     cities?: CityCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictCreateNestedManyWithoutBannersInput
@@ -57161,6 +57221,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
@@ -57407,6 +57469,8 @@ export namespace Prisma {
     lastBroadcastedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
     adminId?: StringFilter<"Banner"> | string
     thumbnailId?: StringFilter<"Banner"> | string
+    createdAt?: DateTimeFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeFilter<"Banner"> | Date | string
   }
 
   export type AdminCreateWithoutCityInput = {
@@ -57723,6 +57787,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictCreateNestedManyWithoutBannersInput
@@ -57740,6 +57806,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
@@ -58198,6 +58266,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
     cities?: CityCreateNestedManyWithoutBannersInput
@@ -58215,6 +58285,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
@@ -62312,6 +62384,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
     cities?: CityCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictCreateNestedManyWithoutBannersInput
@@ -62328,6 +62402,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
@@ -64110,6 +64186,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     admin: AdminCreateNestedOneWithoutBannerInput
     provincies?: ProvinceCreateNestedManyWithoutBannersInput
     cities?: CityCreateNestedManyWithoutBannersInput
@@ -64127,6 +64205,8 @@ export namespace Prisma {
     lastBroadcastedAt?: Date | string | null
     adminId: string
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
     cities?: CityUncheckedCreateNestedManyWithoutBannersInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
@@ -64249,6 +64329,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
     cities?: CityUpdateManyWithoutBannersNestedInput
@@ -64266,6 +64348,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
@@ -66888,6 +66972,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     cities?: CityUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutBannersNestedInput
@@ -66905,6 +66991,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
@@ -66921,6 +67009,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminCreateManyCityInput = {
@@ -67302,6 +67392,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutBannersNestedInput
@@ -67319,6 +67411,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
@@ -67335,6 +67429,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SchoolCreateManySubdistrictInput = {
@@ -67662,6 +67758,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
     cities?: CityUpdateManyWithoutBannersNestedInput
@@ -67679,6 +67777,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
@@ -67695,6 +67795,8 @@ export namespace Prisma {
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminCreateManySchoolInput = {
@@ -68738,6 +68840,8 @@ export namespace Prisma {
     isHide?: boolean
     lastBroadcastedAt?: Date | string | null
     thumbnailId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type RedeemCodeCreateManyAdminInput = {
@@ -68997,6 +69101,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUpdateManyWithoutBannersNestedInput
     cities?: CityUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutBannersNestedInput
@@ -69013,6 +69119,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
     cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
@@ -69029,6 +69137,8 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     lastBroadcastedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     thumbnailId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RedeemCodeUpdateWithoutAdminInput = {

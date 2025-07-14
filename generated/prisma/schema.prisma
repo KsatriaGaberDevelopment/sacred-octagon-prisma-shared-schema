@@ -428,6 +428,8 @@ model Banner {
   cities            City[]
   subdistricts      Subdistrict[]
   visitors          BannerVisitor[]
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   @@index([isHide]) // For `where: { isHide: false }`
   @@index([startedAt]) // For `where: { startedAt: { lte: now } }`
