@@ -425,7 +425,7 @@ model Banner {
   admin             Admin           @relation(fields: [adminId], references: [id])
   provincies        Province[]
   cities            City[]
-  subdisctricts     Subdistrict[]
+  subdistricts      Subdistrict[]
   visitors          BannerVisitor[]
 
   @@index([isHide]) // For `where: { isHide: false }`
