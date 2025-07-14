@@ -377,11 +377,6 @@ exports.Prisma.BannerScalarFieldEnum = {
   thumbnailId: 'thumbnailId'
 };
 
-exports.Prisma.BannerLocationScalarFieldEnum = {
-  id: 'id',
-  bannerId: 'bannerId'
-};
-
 exports.Prisma.BannerVisitorScalarFieldEnum = {
   id: 'id',
   bannerId: 'bannerId',
@@ -682,7 +677,6 @@ exports.Prisma.ModelName = {
   AdminOperationHistory: 'AdminOperationHistory',
   AdminAuthority: 'AdminAuthority',
   Banner: 'Banner',
-  BannerLocation: 'BannerLocation',
   BannerVisitor: 'BannerVisitor',
   Test: 'Test',
   TestParticipant: 'TestParticipant',

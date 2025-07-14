@@ -19,11 +19,11 @@ model Province {
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   admin          Admin[]
   adminAuthority AdminAuthority[]
-  bannerLocation BannerLocation[]
   cities         City[]
   schools        School[]
   users          User[]
   subdistricts   Subdistrict[]
+  banners        Banner[]
 
   @@index([id])
   @@index([name])
@@ -45,7 +45,7 @@ model City {
   subdistricts   Subdistrict[]
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToCity")
-  bannerLocation BannerLocation[]
+  banners        Banner[]
 
   @@index([provinceId])
 }
@@ -66,7 +66,7 @@ model Subdistrict {
   users          User[]
   admins         Admin[]
   adminAuthority AdminAuthority[]
-  bannerLocation BannerLocation[]
+  banners        Banner[]
 
   @@index([provinceId])
   @@index([cityId])
@@ -413,17 +413,19 @@ model AdminAuthority {
 }
 
 model Banner {
-  id             String           @id @default(cuid())
-  thumbnail      String
-  link           String?
-  startedAt      DateTime?        @db.Timestamptz(3)
-  endedAt        DateTime?        @db.Timestamptz(3)
-  isHide         Boolean          @default(false)
-  adminId        String
-  thumbnailId    String
-  admin          Admin            @relation(fields: [adminId], references: [id])
-  bannerLocation BannerLocation[]
-  visitors       BannerVisitor[]
+  id            String          @id @default(cuid())
+  thumbnail     String
+  link          String?
+  startedAt     DateTime?       @db.Timestamptz(3)
+  endedAt       DateTime?       @db.Timestamptz(3)
+  isHide        Boolean         @default(false)
+  adminId       String
+  thumbnailId   String
+  admin         Admin           @relation(fields: [adminId], references: [id])
+  provincies    Province[]
+  cities        City[]
+  subdisctricts Subdistrict[]
+  visitors      BannerVisitor[]
 
   @@index([isHide]) // For `where: { isHide: false }`
   @@index([startedAt]) // For `where: { startedAt: { lte: now } }`
@@ -432,18 +434,19 @@ model Banner {
   @@index([startedAt, endedAt, isHide]) // Composite index for common filtering
 }
 
-model BannerLocation {
-  id            String        @id @default(cuid())
-  bannerId      String
-  banner        Banner        @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  provincies    Province[]
-  cities        City[]
-  subdisctricts Subdistrict[]
-  //@@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
-  //@@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
-
-  @@index([bannerId]) // For joining with Banner (implicit when `some` is used)
-}
+/**
+ * model BannerLocation {
+ * id            String        @id @default(cuid())
+ * bannerId      String?
+ * banner        Banner?       @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+ * provincies    Province[]
+ * cities        City[]
+ * subdisctricts Subdistrict[]
+ * //@@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
+ * //@@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
+ * @@index([bannerId]) // For joining with Banner (implicit when `some` is used)
+ * }
+ */
 
 model BannerVisitor {
   id        String   @id @default(cuid())

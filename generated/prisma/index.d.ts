@@ -109,11 +109,6 @@ export type AdminAuthority = $Result.DefaultSelection<Prisma.$AdminAuthorityPayl
  */
 export type Banner = $Result.DefaultSelection<Prisma.$BannerPayload>
 /**
- * Model BannerLocation
- * 
- */
-export type BannerLocation = $Result.DefaultSelection<Prisma.$BannerLocationPayload>
-/**
  * Model BannerVisitor
  * 
  */
@@ -647,16 +642,6 @@ export class PrismaClient<
     * ```
     */
   get banner(): Prisma.BannerDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.bannerLocation`: Exposes CRUD operations for the **BannerLocation** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more BannerLocations
-    * const bannerLocations = await prisma.bannerLocation.findMany()
-    * ```
-    */
-  get bannerLocation(): Prisma.BannerLocationDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.bannerVisitor`: Exposes CRUD operations for the **BannerVisitor** model.
@@ -1246,7 +1231,6 @@ export namespace Prisma {
     AdminOperationHistory: 'AdminOperationHistory',
     AdminAuthority: 'AdminAuthority',
     Banner: 'Banner',
-    BannerLocation: 'BannerLocation',
     BannerVisitor: 'BannerVisitor',
     Test: 'Test',
     TestParticipant: 'TestParticipant',
@@ -1278,7 +1262,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerLocation" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2688,80 +2672,6 @@ export namespace Prisma {
           }
         }
       }
-      BannerLocation: {
-        payload: Prisma.$BannerLocationPayload<ExtArgs>
-        fields: Prisma.BannerLocationFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BannerLocationFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BannerLocationFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          findFirst: {
-            args: Prisma.BannerLocationFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BannerLocationFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          findMany: {
-            args: Prisma.BannerLocationFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
-          }
-          create: {
-            args: Prisma.BannerLocationCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          createMany: {
-            args: Prisma.BannerLocationCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.BannerLocationCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
-          }
-          delete: {
-            args: Prisma.BannerLocationDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          update: {
-            args: Prisma.BannerLocationUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          deleteMany: {
-            args: Prisma.BannerLocationDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BannerLocationUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.BannerLocationUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>[]
-          }
-          upsert: {
-            args: Prisma.BannerLocationUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BannerLocationPayload>
-          }
-          aggregate: {
-            args: Prisma.BannerLocationAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBannerLocation>
-          }
-          groupBy: {
-            args: Prisma.BannerLocationGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BannerLocationGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BannerLocationCountArgs<ExtArgs>
-            result: $Utils.Optional<BannerLocationCountAggregateOutputType> | number
-          }
-        }
-      }
       BannerVisitor: {
         payload: Prisma.$BannerVisitorPayload<ExtArgs>
         fields: Prisma.BannerVisitorFieldRefs
@@ -3827,7 +3737,6 @@ export namespace Prisma {
     adminOperationHistory?: AdminOperationHistoryOmit
     adminAuthority?: AdminAuthorityOmit
     banner?: BannerOmit
-    bannerLocation?: BannerLocationOmit
     bannerVisitor?: BannerVisitorOmit
     test?: TestOmit
     testParticipant?: TestParticipantOmit
@@ -3937,21 +3846,21 @@ export namespace Prisma {
   export type ProvinceCountOutputType = {
     admin: number
     adminAuthority: number
-    bannerLocation: number
     cities: number
     schools: number
     users: number
     subdistricts: number
+    banners: number
   }
 
   export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | ProvinceCountOutputTypeCountAdminArgs
     adminAuthority?: boolean | ProvinceCountOutputTypeCountAdminAuthorityArgs
-    bannerLocation?: boolean | ProvinceCountOutputTypeCountBannerLocationArgs
     cities?: boolean | ProvinceCountOutputTypeCountCitiesArgs
     schools?: boolean | ProvinceCountOutputTypeCountSchoolsArgs
     users?: boolean | ProvinceCountOutputTypeCountUsersArgs
     subdistricts?: boolean | ProvinceCountOutputTypeCountSubdistrictsArgs
+    banners?: boolean | ProvinceCountOutputTypeCountBannersArgs
   }
 
   // Custom InputTypes
@@ -3982,13 +3891,6 @@ export namespace Prisma {
   /**
    * ProvinceCountOutputType without action
    */
-  export type ProvinceCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerLocationWhereInput
-  }
-
-  /**
-   * ProvinceCountOutputType without action
-   */
   export type ProvinceCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CityWhereInput
   }
@@ -4014,6 +3916,13 @@ export namespace Prisma {
     where?: SubdistrictWhereInput
   }
 
+  /**
+   * ProvinceCountOutputType without action
+   */
+  export type ProvinceCountOutputTypeCountBannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerWhereInput
+  }
+
 
   /**
    * Count Type CityCountOutputType
@@ -4025,7 +3934,7 @@ export namespace Prisma {
     subdistricts: number
     users: number
     adminAuthority: number
-    bannerLocation: number
+    banners: number
   }
 
   export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4034,7 +3943,7 @@ export namespace Prisma {
     subdistricts?: boolean | CityCountOutputTypeCountSubdistrictsArgs
     users?: boolean | CityCountOutputTypeCountUsersArgs
     adminAuthority?: boolean | CityCountOutputTypeCountAdminAuthorityArgs
-    bannerLocation?: boolean | CityCountOutputTypeCountBannerLocationArgs
+    banners?: boolean | CityCountOutputTypeCountBannersArgs
   }
 
   // Custom InputTypes
@@ -4086,8 +3995,8 @@ export namespace Prisma {
   /**
    * CityCountOutputType without action
    */
-  export type CityCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerLocationWhereInput
+  export type CityCountOutputTypeCountBannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerWhereInput
   }
 
 
@@ -4100,7 +4009,7 @@ export namespace Prisma {
     users: number
     admins: number
     adminAuthority: number
-    bannerLocation: number
+    banners: number
   }
 
   export type SubdistrictCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4108,7 +4017,7 @@ export namespace Prisma {
     users?: boolean | SubdistrictCountOutputTypeCountUsersArgs
     admins?: boolean | SubdistrictCountOutputTypeCountAdminsArgs
     adminAuthority?: boolean | SubdistrictCountOutputTypeCountAdminAuthorityArgs
-    bannerLocation?: boolean | SubdistrictCountOutputTypeCountBannerLocationArgs
+    banners?: boolean | SubdistrictCountOutputTypeCountBannersArgs
   }
 
   // Custom InputTypes
@@ -4153,8 +4062,8 @@ export namespace Prisma {
   /**
    * SubdistrictCountOutputType without action
    */
-  export type SubdistrictCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerLocationWhereInput
+  export type SubdistrictCountOutputTypeCountBannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerWhereInput
   }
 
 
@@ -4512,12 +4421,16 @@ export namespace Prisma {
    */
 
   export type BannerCountOutputType = {
-    bannerLocation: number
+    provincies: number
+    cities: number
+    subdisctricts: number
     visitors: number
   }
 
   export type BannerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bannerLocation?: boolean | BannerCountOutputTypeCountBannerLocationArgs
+    provincies?: boolean | BannerCountOutputTypeCountProvinciesArgs
+    cities?: boolean | BannerCountOutputTypeCountCitiesArgs
+    subdisctricts?: boolean | BannerCountOutputTypeCountSubdisctrictsArgs
     visitors?: boolean | BannerCountOutputTypeCountVisitorsArgs
   }
 
@@ -4535,8 +4448,22 @@ export namespace Prisma {
   /**
    * BannerCountOutputType without action
    */
-  export type BannerCountOutputTypeCountBannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerLocationWhereInput
+  export type BannerCountOutputTypeCountProvinciesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProvinceWhereInput
+  }
+
+  /**
+   * BannerCountOutputType without action
+   */
+  export type BannerCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CityWhereInput
+  }
+
+  /**
+   * BannerCountOutputType without action
+   */
+  export type BannerCountOutputTypeCountSubdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubdistrictWhereInput
   }
 
   /**
@@ -4544,55 +4471,6 @@ export namespace Prisma {
    */
   export type BannerCountOutputTypeCountVisitorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BannerVisitorWhereInput
-  }
-
-
-  /**
-   * Count Type BannerLocationCountOutputType
-   */
-
-  export type BannerLocationCountOutputType = {
-    provincies: number
-    cities: number
-    subdisctricts: number
-  }
-
-  export type BannerLocationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provincies?: boolean | BannerLocationCountOutputTypeCountProvinciesArgs
-    cities?: boolean | BannerLocationCountOutputTypeCountCitiesArgs
-    subdisctricts?: boolean | BannerLocationCountOutputTypeCountSubdisctrictsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * BannerLocationCountOutputType without action
-   */
-  export type BannerLocationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocationCountOutputType
-     */
-    select?: BannerLocationCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * BannerLocationCountOutputType without action
-   */
-  export type BannerLocationCountOutputTypeCountProvinciesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProvinceWhereInput
-  }
-
-  /**
-   * BannerLocationCountOutputType without action
-   */
-  export type BannerLocationCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CityWhereInput
-  }
-
-  /**
-   * BannerLocationCountOutputType without action
-   */
-  export type BannerLocationCountOutputTypeCountSubdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SubdistrictWhereInput
   }
 
 
@@ -4975,11 +4853,11 @@ export namespace Prisma {
     updatedAt?: boolean
     admin?: boolean | Province$adminArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
     subdistricts?: boolean | Province$subdistrictsArgs<ExtArgs>
+    banners?: boolean | Province$bannersArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["province"]>
 
@@ -5017,11 +4895,11 @@ export namespace Prisma {
   export type ProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | Province$adminArgs<ExtArgs>
     adminAuthority?: boolean | Province$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | Province$bannerLocationArgs<ExtArgs>
     cities?: boolean | Province$citiesArgs<ExtArgs>
     schools?: boolean | Province$schoolsArgs<ExtArgs>
     users?: boolean | Province$usersArgs<ExtArgs>
     subdistricts?: boolean | Province$subdistrictsArgs<ExtArgs>
+    banners?: boolean | Province$bannersArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5032,11 +4910,11 @@ export namespace Prisma {
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
-      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
       cities: Prisma.$CityPayload<ExtArgs>[]
       schools: Prisma.$SchoolPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
       subdistricts: Prisma.$SubdistrictPayload<ExtArgs>[]
+      banners: Prisma.$BannerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5442,11 +5320,11 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends Province$adminArgs<ExtArgs> = {}>(args?: Subset<T, Province$adminArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends Province$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, Province$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerLocation<T extends Province$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Province$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cities<T extends Province$citiesArgs<ExtArgs> = {}>(args?: Subset<T, Province$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schools<T extends Province$schoolsArgs<ExtArgs> = {}>(args?: Subset<T, Province$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Province$usersArgs<ExtArgs> = {}>(args?: Subset<T, Province$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subdistricts<T extends Province$subdistrictsArgs<ExtArgs> = {}>(args?: Subset<T, Province$subdistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    banners<T extends Province$bannersArgs<ExtArgs> = {}>(args?: Subset<T, Province$bannersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5919,30 +5797,6 @@ export namespace Prisma {
   }
 
   /**
-   * Province.bannerLocation
-   */
-  export type Province$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    where?: BannerLocationWhereInput
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    cursor?: BannerLocationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
-  }
-
-  /**
    * Province.cities
    */
   export type Province$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6036,6 +5890,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
+  }
+
+  /**
+   * Province.banners
+   */
+  export type Province$bannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banner
+     */
+    omit?: BannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BannerInclude<ExtArgs> | null
+    where?: BannerWhereInput
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    cursor?: BannerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
   }
 
   /**
@@ -6289,7 +6167,7 @@ export namespace Prisma {
     subdistricts?: boolean | City$subdistrictsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
+    banners?: boolean | City$bannersArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["city"]>
 
@@ -6336,7 +6214,7 @@ export namespace Prisma {
     subdistricts?: boolean | City$subdistrictsArgs<ExtArgs>
     users?: boolean | City$usersArgs<ExtArgs>
     adminAuthority?: boolean | City$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | City$bannerLocationArgs<ExtArgs>
+    banners?: boolean | City$bannersArgs<ExtArgs>
     _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6355,7 +6233,7 @@ export namespace Prisma {
       subdistricts: Prisma.$SubdistrictPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
-      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+      banners: Prisma.$BannerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6766,7 +6644,7 @@ export namespace Prisma {
     subdistricts<T extends City$subdistrictsArgs<ExtArgs> = {}>(args?: Subset<T, City$subdistrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends City$usersArgs<ExtArgs> = {}>(args?: Subset<T, City$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends City$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, City$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerLocation<T extends City$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, City$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    banners<T extends City$bannersArgs<ExtArgs> = {}>(args?: Subset<T, City$bannersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7320,27 +7198,27 @@ export namespace Prisma {
   }
 
   /**
-   * City.bannerLocation
+   * City.banners
    */
-  export type City$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type City$bannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BannerLocation
+     * Select specific fields to fetch from the Banner
      */
-    select?: BannerLocationSelect<ExtArgs> | null
+    select?: BannerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the BannerLocation
+     * Omit specific fields from the Banner
      */
-    omit?: BannerLocationOmit<ExtArgs> | null
+    omit?: BannerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BannerLocationInclude<ExtArgs> | null
-    where?: BannerLocationWhereInput
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    cursor?: BannerLocationWhereUniqueInput
+    include?: BannerInclude<ExtArgs> | null
+    where?: BannerWhereInput
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    cursor?: BannerWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
   }
 
   /**
@@ -7602,7 +7480,7 @@ export namespace Prisma {
     users?: boolean | Subdistrict$usersArgs<ExtArgs>
     admins?: boolean | Subdistrict$adminsArgs<ExtArgs>
     adminAuthority?: boolean | Subdistrict$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | Subdistrict$bannerLocationArgs<ExtArgs>
+    banners?: boolean | Subdistrict$bannersArgs<ExtArgs>
     _count?: boolean | SubdistrictCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subdistrict"]>
 
@@ -7654,7 +7532,7 @@ export namespace Prisma {
     users?: boolean | Subdistrict$usersArgs<ExtArgs>
     admins?: boolean | Subdistrict$adminsArgs<ExtArgs>
     adminAuthority?: boolean | Subdistrict$adminAuthorityArgs<ExtArgs>
-    bannerLocation?: boolean | Subdistrict$bannerLocationArgs<ExtArgs>
+    banners?: boolean | Subdistrict$bannersArgs<ExtArgs>
     _count?: boolean | SubdistrictCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubdistrictIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7675,7 +7553,7 @@ export namespace Prisma {
       users: Prisma.$UserPayload<ExtArgs>[]
       admins: Prisma.$AdminPayload<ExtArgs>[]
       adminAuthority: Prisma.$AdminAuthorityPayload<ExtArgs>[]
-      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+      banners: Prisma.$BannerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8087,7 +7965,7 @@ export namespace Prisma {
     users<T extends Subdistrict$usersArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     admins<T extends Subdistrict$adminsArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$adminsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminAuthority<T extends Subdistrict$adminAuthorityArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$adminAuthorityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuthorityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    bannerLocation<T extends Subdistrict$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    banners<T extends Subdistrict$bannersArgs<ExtArgs> = {}>(args?: Subset<T, Subdistrict$bannersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8618,27 +8496,27 @@ export namespace Prisma {
   }
 
   /**
-   * Subdistrict.bannerLocation
+   * Subdistrict.banners
    */
-  export type Subdistrict$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Subdistrict$bannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BannerLocation
+     * Select specific fields to fetch from the Banner
      */
-    select?: BannerLocationSelect<ExtArgs> | null
+    select?: BannerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the BannerLocation
+     * Omit specific fields from the Banner
      */
-    omit?: BannerLocationOmit<ExtArgs> | null
+    omit?: BannerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BannerLocationInclude<ExtArgs> | null
-    where?: BannerLocationWhereInput
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    cursor?: BannerLocationWhereUniqueInput
+    include?: BannerInclude<ExtArgs> | null
+    where?: BannerWhereInput
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    cursor?: BannerWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
   }
 
   /**
@@ -27424,7 +27302,9 @@ export namespace Prisma {
     adminId?: boolean
     thumbnailId?: boolean
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    bannerLocation?: boolean | Banner$bannerLocationArgs<ExtArgs>
+    provincies?: boolean | Banner$provinciesArgs<ExtArgs>
+    cities?: boolean | Banner$citiesArgs<ExtArgs>
+    subdisctricts?: boolean | Banner$subdisctrictsArgs<ExtArgs>
     visitors?: boolean | Banner$visitorsArgs<ExtArgs>
     _count?: boolean | BannerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["banner"]>
@@ -27467,7 +27347,9 @@ export namespace Prisma {
   export type BannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnail" | "link" | "startedAt" | "endedAt" | "isHide" | "adminId" | "thumbnailId", ExtArgs["result"]["banner"]>
   export type BannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
-    bannerLocation?: boolean | Banner$bannerLocationArgs<ExtArgs>
+    provincies?: boolean | Banner$provinciesArgs<ExtArgs>
+    cities?: boolean | Banner$citiesArgs<ExtArgs>
+    subdisctricts?: boolean | Banner$subdisctrictsArgs<ExtArgs>
     visitors?: boolean | Banner$visitorsArgs<ExtArgs>
     _count?: boolean | BannerCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -27482,7 +27364,9 @@ export namespace Prisma {
     name: "Banner"
     objects: {
       admin: Prisma.$AdminPayload<ExtArgs>
-      bannerLocation: Prisma.$BannerLocationPayload<ExtArgs>[]
+      provincies: Prisma.$ProvincePayload<ExtArgs>[]
+      cities: Prisma.$CityPayload<ExtArgs>[]
+      subdisctricts: Prisma.$SubdistrictPayload<ExtArgs>[]
       visitors: Prisma.$BannerVisitorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -27889,7 +27773,9 @@ export namespace Prisma {
   export interface Prisma__BannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    bannerLocation<T extends Banner$bannerLocationArgs<ExtArgs> = {}>(args?: Subset<T, Banner$bannerLocationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    provincies<T extends Banner$provinciesArgs<ExtArgs> = {}>(args?: Subset<T, Banner$provinciesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cities<T extends Banner$citiesArgs<ExtArgs> = {}>(args?: Subset<T, Banner$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subdisctricts<T extends Banner$subdisctrictsArgs<ExtArgs> = {}>(args?: Subset<T, Banner$subdisctrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     visitors<T extends Banner$visitorsArgs<ExtArgs> = {}>(args?: Subset<T, Banner$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerVisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -28324,27 +28210,75 @@ export namespace Prisma {
   }
 
   /**
-   * Banner.bannerLocation
+   * Banner.provincies
    */
-  export type Banner$bannerLocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Banner$provinciesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BannerLocation
+     * Select specific fields to fetch from the Province
      */
-    select?: BannerLocationSelect<ExtArgs> | null
+    select?: ProvinceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the BannerLocation
+     * Omit specific fields from the Province
      */
-    omit?: BannerLocationOmit<ExtArgs> | null
+    omit?: ProvinceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BannerLocationInclude<ExtArgs> | null
-    where?: BannerLocationWhereInput
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    cursor?: BannerLocationWhereUniqueInput
+    include?: ProvinceInclude<ExtArgs> | null
+    where?: ProvinceWhereInput
+    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
+    cursor?: ProvinceWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
+    distinct?: ProvinceScalarFieldEnum | ProvinceScalarFieldEnum[]
+  }
+
+  /**
+   * Banner.cities
+   */
+  export type Banner$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the City
+     */
+    omit?: CityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    cursor?: CityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * Banner.subdisctricts
+   */
+  export type Banner$subdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subdistrict
+     */
+    select?: SubdistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subdistrict
+     */
+    omit?: SubdistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubdistrictInclude<ExtArgs> | null
+    where?: SubdistrictWhereInput
+    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
+    cursor?: SubdistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
   }
 
   /**
@@ -28387,1111 +28321,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: BannerInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model BannerLocation
-   */
-
-  export type AggregateBannerLocation = {
-    _count: BannerLocationCountAggregateOutputType | null
-    _min: BannerLocationMinAggregateOutputType | null
-    _max: BannerLocationMaxAggregateOutputType | null
-  }
-
-  export type BannerLocationMinAggregateOutputType = {
-    id: string | null
-    bannerId: string | null
-  }
-
-  export type BannerLocationMaxAggregateOutputType = {
-    id: string | null
-    bannerId: string | null
-  }
-
-  export type BannerLocationCountAggregateOutputType = {
-    id: number
-    bannerId: number
-    _all: number
-  }
-
-
-  export type BannerLocationMinAggregateInputType = {
-    id?: true
-    bannerId?: true
-  }
-
-  export type BannerLocationMaxAggregateInputType = {
-    id?: true
-    bannerId?: true
-  }
-
-  export type BannerLocationCountAggregateInputType = {
-    id?: true
-    bannerId?: true
-    _all?: true
-  }
-
-  export type BannerLocationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerLocation to aggregate.
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerLocations to fetch.
-     */
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BannerLocationWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerLocations from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerLocations.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned BannerLocations
-    **/
-    _count?: true | BannerLocationCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BannerLocationMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BannerLocationMaxAggregateInputType
-  }
-
-  export type GetBannerLocationAggregateType<T extends BannerLocationAggregateArgs> = {
-        [P in keyof T & keyof AggregateBannerLocation]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBannerLocation[P]>
-      : GetScalarType<T[P], AggregateBannerLocation[P]>
-  }
-
-
-
-
-  export type BannerLocationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BannerLocationWhereInput
-    orderBy?: BannerLocationOrderByWithAggregationInput | BannerLocationOrderByWithAggregationInput[]
-    by: BannerLocationScalarFieldEnum[] | BannerLocationScalarFieldEnum
-    having?: BannerLocationScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BannerLocationCountAggregateInputType | true
-    _min?: BannerLocationMinAggregateInputType
-    _max?: BannerLocationMaxAggregateInputType
-  }
-
-  export type BannerLocationGroupByOutputType = {
-    id: string
-    bannerId: string
-    _count: BannerLocationCountAggregateOutputType | null
-    _min: BannerLocationMinAggregateOutputType | null
-    _max: BannerLocationMaxAggregateOutputType | null
-  }
-
-  type GetBannerLocationGroupByPayload<T extends BannerLocationGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BannerLocationGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BannerLocationGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BannerLocationGroupByOutputType[P]>
-            : GetScalarType<T[P], BannerLocationGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BannerLocationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bannerId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    provincies?: boolean | BannerLocation$provinciesArgs<ExtArgs>
-    cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
-    subdisctricts?: boolean | BannerLocation$subdisctrictsArgs<ExtArgs>
-    _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerLocation"]>
-
-  export type BannerLocationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bannerId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerLocation"]>
-
-  export type BannerLocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bannerId?: boolean
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bannerLocation"]>
-
-  export type BannerLocationSelectScalar = {
-    id?: boolean
-    bannerId?: boolean
-  }
-
-  export type BannerLocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bannerId", ExtArgs["result"]["bannerLocation"]>
-  export type BannerLocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-    provincies?: boolean | BannerLocation$provinciesArgs<ExtArgs>
-    cities?: boolean | BannerLocation$citiesArgs<ExtArgs>
-    subdisctricts?: boolean | BannerLocation$subdisctrictsArgs<ExtArgs>
-    _count?: boolean | BannerLocationCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type BannerLocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-  }
-  export type BannerLocationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    banner?: boolean | BannerDefaultArgs<ExtArgs>
-  }
-
-  export type $BannerLocationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "BannerLocation"
-    objects: {
-      banner: Prisma.$BannerPayload<ExtArgs>
-      provincies: Prisma.$ProvincePayload<ExtArgs>[]
-      cities: Prisma.$CityPayload<ExtArgs>[]
-      subdisctricts: Prisma.$SubdistrictPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      bannerId: string
-    }, ExtArgs["result"]["bannerLocation"]>
-    composites: {}
-  }
-
-  type BannerLocationGetPayload<S extends boolean | null | undefined | BannerLocationDefaultArgs> = $Result.GetResult<Prisma.$BannerLocationPayload, S>
-
-  type BannerLocationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BannerLocationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BannerLocationCountAggregateInputType | true
-    }
-
-  export interface BannerLocationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BannerLocation'], meta: { name: 'BannerLocation' } }
-    /**
-     * Find zero or one BannerLocation that matches the filter.
-     * @param {BannerLocationFindUniqueArgs} args - Arguments to find a BannerLocation
-     * @example
-     * // Get one BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BannerLocationFindUniqueArgs>(args: SelectSubset<T, BannerLocationFindUniqueArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one BannerLocation that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BannerLocationFindUniqueOrThrowArgs} args - Arguments to find a BannerLocation
-     * @example
-     * // Get one BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BannerLocationFindUniqueOrThrowArgs>(args: SelectSubset<T, BannerLocationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerLocation that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationFindFirstArgs} args - Arguments to find a BannerLocation
-     * @example
-     * // Get one BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BannerLocationFindFirstArgs>(args?: SelectSubset<T, BannerLocationFindFirstArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first BannerLocation that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationFindFirstOrThrowArgs} args - Arguments to find a BannerLocation
-     * @example
-     * // Get one BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BannerLocationFindFirstOrThrowArgs>(args?: SelectSubset<T, BannerLocationFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more BannerLocations that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all BannerLocations
-     * const bannerLocations = await prisma.bannerLocation.findMany()
-     * 
-     * // Get first 10 BannerLocations
-     * const bannerLocations = await prisma.bannerLocation.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const bannerLocationWithIdOnly = await prisma.bannerLocation.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends BannerLocationFindManyArgs>(args?: SelectSubset<T, BannerLocationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a BannerLocation.
-     * @param {BannerLocationCreateArgs} args - Arguments to create a BannerLocation.
-     * @example
-     * // Create one BannerLocation
-     * const BannerLocation = await prisma.bannerLocation.create({
-     *   data: {
-     *     // ... data to create a BannerLocation
-     *   }
-     * })
-     * 
-     */
-    create<T extends BannerLocationCreateArgs>(args: SelectSubset<T, BannerLocationCreateArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many BannerLocations.
-     * @param {BannerLocationCreateManyArgs} args - Arguments to create many BannerLocations.
-     * @example
-     * // Create many BannerLocations
-     * const bannerLocation = await prisma.bannerLocation.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BannerLocationCreateManyArgs>(args?: SelectSubset<T, BannerLocationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many BannerLocations and returns the data saved in the database.
-     * @param {BannerLocationCreateManyAndReturnArgs} args - Arguments to create many BannerLocations.
-     * @example
-     * // Create many BannerLocations
-     * const bannerLocation = await prisma.bannerLocation.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many BannerLocations and only return the `id`
-     * const bannerLocationWithIdOnly = await prisma.bannerLocation.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BannerLocationCreateManyAndReturnArgs>(args?: SelectSubset<T, BannerLocationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a BannerLocation.
-     * @param {BannerLocationDeleteArgs} args - Arguments to delete one BannerLocation.
-     * @example
-     * // Delete one BannerLocation
-     * const BannerLocation = await prisma.bannerLocation.delete({
-     *   where: {
-     *     // ... filter to delete one BannerLocation
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BannerLocationDeleteArgs>(args: SelectSubset<T, BannerLocationDeleteArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one BannerLocation.
-     * @param {BannerLocationUpdateArgs} args - Arguments to update one BannerLocation.
-     * @example
-     * // Update one BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BannerLocationUpdateArgs>(args: SelectSubset<T, BannerLocationUpdateArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more BannerLocations.
-     * @param {BannerLocationDeleteManyArgs} args - Arguments to filter BannerLocations to delete.
-     * @example
-     * // Delete a few BannerLocations
-     * const { count } = await prisma.bannerLocation.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BannerLocationDeleteManyArgs>(args?: SelectSubset<T, BannerLocationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerLocations.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many BannerLocations
-     * const bannerLocation = await prisma.bannerLocation.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BannerLocationUpdateManyArgs>(args: SelectSubset<T, BannerLocationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more BannerLocations and returns the data updated in the database.
-     * @param {BannerLocationUpdateManyAndReturnArgs} args - Arguments to update many BannerLocations.
-     * @example
-     * // Update many BannerLocations
-     * const bannerLocation = await prisma.bannerLocation.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more BannerLocations and only return the `id`
-     * const bannerLocationWithIdOnly = await prisma.bannerLocation.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BannerLocationUpdateManyAndReturnArgs>(args: SelectSubset<T, BannerLocationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one BannerLocation.
-     * @param {BannerLocationUpsertArgs} args - Arguments to update or create a BannerLocation.
-     * @example
-     * // Update or create a BannerLocation
-     * const bannerLocation = await prisma.bannerLocation.upsert({
-     *   create: {
-     *     // ... data to create a BannerLocation
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the BannerLocation we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BannerLocationUpsertArgs>(args: SelectSubset<T, BannerLocationUpsertArgs<ExtArgs>>): Prisma__BannerLocationClient<$Result.GetResult<Prisma.$BannerLocationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of BannerLocations.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationCountArgs} args - Arguments to filter BannerLocations to count.
-     * @example
-     * // Count the number of BannerLocations
-     * const count = await prisma.bannerLocation.count({
-     *   where: {
-     *     // ... the filter for the BannerLocations we want to count
-     *   }
-     * })
-    **/
-    count<T extends BannerLocationCountArgs>(
-      args?: Subset<T, BannerLocationCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BannerLocationCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a BannerLocation.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BannerLocationAggregateArgs>(args: Subset<T, BannerLocationAggregateArgs>): Prisma.PrismaPromise<GetBannerLocationAggregateType<T>>
-
-    /**
-     * Group by BannerLocation.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BannerLocationGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BannerLocationGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BannerLocationGroupByArgs['orderBy'] }
-        : { orderBy?: BannerLocationGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BannerLocationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannerLocationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the BannerLocation model
-   */
-  readonly fields: BannerLocationFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for BannerLocation.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BannerLocationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    banner<T extends BannerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BannerDefaultArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    provincies<T extends BannerLocation$provinciesArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$provinciesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    cities<T extends BannerLocation$citiesArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    subdisctricts<T extends BannerLocation$subdisctrictsArgs<ExtArgs> = {}>(args?: Subset<T, BannerLocation$subdisctrictsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubdistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the BannerLocation model
-   */
-  interface BannerLocationFieldRefs {
-    readonly id: FieldRef<"BannerLocation", 'String'>
-    readonly bannerId: FieldRef<"BannerLocation", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * BannerLocation findUnique
-   */
-  export type BannerLocationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerLocation to fetch.
-     */
-    where: BannerLocationWhereUniqueInput
-  }
-
-  /**
-   * BannerLocation findUniqueOrThrow
-   */
-  export type BannerLocationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerLocation to fetch.
-     */
-    where: BannerLocationWhereUniqueInput
-  }
-
-  /**
-   * BannerLocation findFirst
-   */
-  export type BannerLocationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerLocation to fetch.
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerLocations to fetch.
-     */
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerLocations.
-     */
-    cursor?: BannerLocationWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerLocations from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerLocations.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerLocations.
-     */
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation findFirstOrThrow
-   */
-  export type BannerLocationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerLocation to fetch.
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerLocations to fetch.
-     */
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for BannerLocations.
-     */
-    cursor?: BannerLocationWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerLocations from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerLocations.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of BannerLocations.
-     */
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation findMany
-   */
-  export type BannerLocationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter, which BannerLocations to fetch.
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of BannerLocations to fetch.
-     */
-    orderBy?: BannerLocationOrderByWithRelationInput | BannerLocationOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing BannerLocations.
-     */
-    cursor?: BannerLocationWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` BannerLocations from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` BannerLocations.
-     */
-    skip?: number
-    distinct?: BannerLocationScalarFieldEnum | BannerLocationScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation create
-   */
-  export type BannerLocationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * The data needed to create a BannerLocation.
-     */
-    data: XOR<BannerLocationCreateInput, BannerLocationUncheckedCreateInput>
-  }
-
-  /**
-   * BannerLocation createMany
-   */
-  export type BannerLocationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many BannerLocations.
-     */
-    data: BannerLocationCreateManyInput | BannerLocationCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * BannerLocation createManyAndReturn
-   */
-  export type BannerLocationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * The data used to create many BannerLocations.
-     */
-    data: BannerLocationCreateManyInput | BannerLocationCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerLocation update
-   */
-  export type BannerLocationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * The data needed to update a BannerLocation.
-     */
-    data: XOR<BannerLocationUpdateInput, BannerLocationUncheckedUpdateInput>
-    /**
-     * Choose, which BannerLocation to update.
-     */
-    where: BannerLocationWhereUniqueInput
-  }
-
-  /**
-   * BannerLocation updateMany
-   */
-  export type BannerLocationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update BannerLocations.
-     */
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerLocations to update
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * Limit how many BannerLocations to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerLocation updateManyAndReturn
-   */
-  export type BannerLocationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * The data used to update BannerLocations.
-     */
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyInput>
-    /**
-     * Filter which BannerLocations to update
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * Limit how many BannerLocations to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * BannerLocation upsert
-   */
-  export type BannerLocationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * The filter to search for the BannerLocation to update in case it exists.
-     */
-    where: BannerLocationWhereUniqueInput
-    /**
-     * In case the BannerLocation found by the `where` argument doesn't exist, create a new BannerLocation with this data.
-     */
-    create: XOR<BannerLocationCreateInput, BannerLocationUncheckedCreateInput>
-    /**
-     * In case the BannerLocation was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BannerLocationUpdateInput, BannerLocationUncheckedUpdateInput>
-  }
-
-  /**
-   * BannerLocation delete
-   */
-  export type BannerLocationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
-    /**
-     * Filter which BannerLocation to delete.
-     */
-    where: BannerLocationWhereUniqueInput
-  }
-
-  /**
-   * BannerLocation deleteMany
-   */
-  export type BannerLocationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which BannerLocations to delete
-     */
-    where?: BannerLocationWhereInput
-    /**
-     * Limit how many BannerLocations to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * BannerLocation.provincies
-   */
-  export type BannerLocation$provinciesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Province
-     */
-    select?: ProvinceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Province
-     */
-    omit?: ProvinceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProvinceInclude<ExtArgs> | null
-    where?: ProvinceWhereInput
-    orderBy?: ProvinceOrderByWithRelationInput | ProvinceOrderByWithRelationInput[]
-    cursor?: ProvinceWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProvinceScalarFieldEnum | ProvinceScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation.cities
-   */
-  export type BannerLocation$citiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the City
-     */
-    select?: CitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the City
-     */
-    omit?: CityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CityInclude<ExtArgs> | null
-    where?: CityWhereInput
-    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
-    cursor?: CityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation.subdisctricts
-   */
-  export type BannerLocation$subdisctrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Subdistrict
-     */
-    select?: SubdistrictSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subdistrict
-     */
-    omit?: SubdistrictOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SubdistrictInclude<ExtArgs> | null
-    where?: SubdistrictWhereInput
-    orderBy?: SubdistrictOrderByWithRelationInput | SubdistrictOrderByWithRelationInput[]
-    cursor?: SubdistrictWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SubdistrictScalarFieldEnum | SubdistrictScalarFieldEnum[]
-  }
-
-  /**
-   * BannerLocation without action
-   */
-  export type BannerLocationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BannerLocation
-     */
-    select?: BannerLocationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the BannerLocation
-     */
-    omit?: BannerLocationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BannerLocationInclude<ExtArgs> | null
   }
 
 
@@ -45098,14 +43927,6 @@ export namespace Prisma {
   export type BannerScalarFieldEnum = (typeof BannerScalarFieldEnum)[keyof typeof BannerScalarFieldEnum]
 
 
-  export const BannerLocationScalarFieldEnum: {
-    id: 'id',
-    bannerId: 'bannerId'
-  };
-
-  export type BannerLocationScalarFieldEnum = (typeof BannerLocationScalarFieldEnum)[keyof typeof BannerLocationScalarFieldEnum]
-
-
   export const BannerVisitorScalarFieldEnum: {
     id: 'id',
     bannerId: 'bannerId',
@@ -45615,11 +44436,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Province"> | Date | string
     admin?: AdminListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
     subdistricts?: SubdistrictListRelationFilter
+    banners?: BannerListRelationFilter
   }
 
   export type ProvinceOrderByWithRelationInput = {
@@ -45632,11 +44453,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     admin?: AdminOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
-    bannerLocation?: BannerLocationOrderByRelationAggregateInput
     cities?: CityOrderByRelationAggregateInput
     schools?: SchoolOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
     subdistricts?: SubdistrictOrderByRelationAggregateInput
+    banners?: BannerOrderByRelationAggregateInput
   }
 
   export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
@@ -45652,11 +44473,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Province"> | Date | string
     admin?: AdminListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
     cities?: CityListRelationFilter
     schools?: SchoolListRelationFilter
     users?: UserListRelationFilter
     subdistricts?: SubdistrictListRelationFilter
+    banners?: BannerListRelationFilter
   }, "id">
 
   export type ProvinceOrderByWithAggregationInput = {
@@ -45705,7 +44526,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictListRelationFilter
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
+    banners?: BannerListRelationFilter
   }
 
   export type CityOrderByWithRelationInput = {
@@ -45723,7 +44544,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
-    bannerLocation?: BannerLocationOrderByRelationAggregateInput
+    banners?: BannerOrderByRelationAggregateInput
   }
 
   export type CityWhereUniqueInput = Prisma.AtLeast<{
@@ -45744,7 +44565,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictListRelationFilter
     users?: UserListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
+    banners?: BannerListRelationFilter
   }, "id">
 
   export type CityOrderByWithAggregationInput = {
@@ -45796,7 +44617,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     admins?: AdminListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
+    banners?: BannerListRelationFilter
   }
 
   export type SubdistrictOrderByWithRelationInput = {
@@ -45815,7 +44636,7 @@ export namespace Prisma {
     users?: UserOrderByRelationAggregateInput
     admins?: AdminOrderByRelationAggregateInput
     adminAuthority?: AdminAuthorityOrderByRelationAggregateInput
-    bannerLocation?: BannerLocationOrderByRelationAggregateInput
+    banners?: BannerOrderByRelationAggregateInput
   }
 
   export type SubdistrictWhereUniqueInput = Prisma.AtLeast<{
@@ -45837,7 +44658,7 @@ export namespace Prisma {
     users?: UserListRelationFilter
     admins?: AdminListRelationFilter
     adminAuthority?: AdminAuthorityListRelationFilter
-    bannerLocation?: BannerLocationListRelationFilter
+    banners?: BannerListRelationFilter
   }, "id">
 
   export type SubdistrictOrderByWithAggregationInput = {
@@ -47336,7 +46157,9 @@ export namespace Prisma {
     adminId?: StringFilter<"Banner"> | string
     thumbnailId?: StringFilter<"Banner"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    bannerLocation?: BannerLocationListRelationFilter
+    provincies?: ProvinceListRelationFilter
+    cities?: CityListRelationFilter
+    subdisctricts?: SubdistrictListRelationFilter
     visitors?: BannerVisitorListRelationFilter
   }
 
@@ -47350,7 +46173,9 @@ export namespace Prisma {
     adminId?: SortOrder
     thumbnailId?: SortOrder
     admin?: AdminOrderByWithRelationInput
-    bannerLocation?: BannerLocationOrderByRelationAggregateInput
+    provincies?: ProvinceOrderByRelationAggregateInput
+    cities?: CityOrderByRelationAggregateInput
+    subdisctricts?: SubdistrictOrderByRelationAggregateInput
     visitors?: BannerVisitorOrderByRelationAggregateInput
   }
 
@@ -47367,7 +46192,9 @@ export namespace Prisma {
     adminId?: StringFilter<"Banner"> | string
     thumbnailId?: StringFilter<"Banner"> | string
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
-    bannerLocation?: BannerLocationListRelationFilter
+    provincies?: ProvinceListRelationFilter
+    cities?: CityListRelationFilter
+    subdisctricts?: SubdistrictListRelationFilter
     visitors?: BannerVisitorListRelationFilter
   }, "id">
 
@@ -47397,55 +46224,6 @@ export namespace Prisma {
     isHide?: BoolWithAggregatesFilter<"Banner"> | boolean
     adminId?: StringWithAggregatesFilter<"Banner"> | string
     thumbnailId?: StringWithAggregatesFilter<"Banner"> | string
-  }
-
-  export type BannerLocationWhereInput = {
-    AND?: BannerLocationWhereInput | BannerLocationWhereInput[]
-    OR?: BannerLocationWhereInput[]
-    NOT?: BannerLocationWhereInput | BannerLocationWhereInput[]
-    id?: StringFilter<"BannerLocation"> | string
-    bannerId?: StringFilter<"BannerLocation"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    provincies?: ProvinceListRelationFilter
-    cities?: CityListRelationFilter
-    subdisctricts?: SubdistrictListRelationFilter
-  }
-
-  export type BannerLocationOrderByWithRelationInput = {
-    id?: SortOrder
-    bannerId?: SortOrder
-    banner?: BannerOrderByWithRelationInput
-    provincies?: ProvinceOrderByRelationAggregateInput
-    cities?: CityOrderByRelationAggregateInput
-    subdisctricts?: SubdistrictOrderByRelationAggregateInput
-  }
-
-  export type BannerLocationWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: BannerLocationWhereInput | BannerLocationWhereInput[]
-    OR?: BannerLocationWhereInput[]
-    NOT?: BannerLocationWhereInput | BannerLocationWhereInput[]
-    bannerId?: StringFilter<"BannerLocation"> | string
-    banner?: XOR<BannerScalarRelationFilter, BannerWhereInput>
-    provincies?: ProvinceListRelationFilter
-    cities?: CityListRelationFilter
-    subdisctricts?: SubdistrictListRelationFilter
-  }, "id">
-
-  export type BannerLocationOrderByWithAggregationInput = {
-    id?: SortOrder
-    bannerId?: SortOrder
-    _count?: BannerLocationCountOrderByAggregateInput
-    _max?: BannerLocationMaxOrderByAggregateInput
-    _min?: BannerLocationMinOrderByAggregateInput
-  }
-
-  export type BannerLocationScalarWhereWithAggregatesInput = {
-    AND?: BannerLocationScalarWhereWithAggregatesInput | BannerLocationScalarWhereWithAggregatesInput[]
-    OR?: BannerLocationScalarWhereWithAggregatesInput[]
-    NOT?: BannerLocationScalarWhereWithAggregatesInput | BannerLocationScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"BannerLocation"> | string
-    bannerId?: StringWithAggregatesFilter<"BannerLocation"> | string
   }
 
   export type BannerVisitorWhereInput = {
@@ -48626,11 +47404,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateInput = {
@@ -48643,11 +47421,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUpdateInput = {
@@ -48660,11 +47438,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateInput = {
@@ -48677,11 +47455,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceCreateManyInput = {
@@ -48728,7 +47506,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateInput = {
@@ -48745,7 +47523,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUpdateInput = {
@@ -48762,7 +47540,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateInput = {
@@ -48779,7 +47557,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityCreateManyInput = {
@@ -48828,7 +47606,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateInput = {
@@ -48845,7 +47623,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUpdateInput = {
@@ -48862,7 +47640,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateInput = {
@@ -48879,7 +47657,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictCreateManyInput = {
@@ -50531,7 +49309,9 @@ export namespace Prisma {
     isHide?: boolean
     thumbnailId: string
     admin: AdminCreateNestedOneWithoutBannerInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceCreateNestedManyWithoutBannersInput
+    cities?: CityCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
@@ -50544,7 +49324,9 @@ export namespace Prisma {
     isHide?: boolean
     adminId: string
     thumbnailId: string
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
+    cities?: CityUncheckedCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
@@ -50557,7 +49339,9 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUpdateManyWithoutBannersNestedInput
+    cities?: CityUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
@@ -50570,7 +49354,9 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
+    cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
@@ -50604,52 +49390,6 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerLocationCreateInput = {
-    id?: string
-    banner: BannerCreateNestedOneWithoutBannerLocationInput
-    provincies?: ProvinceCreateNestedManyWithoutBannerLocationInput
-    cities?: CityCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
-  }
-
-  export type BannerLocationUncheckedCreateInput = {
-    id?: string
-    bannerId: string
-    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannerLocationInput
-    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
-  }
-
-  export type BannerLocationUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
-    provincies?: ProvinceUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
-  }
-
-  export type BannerLocationUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-    provincies?: ProvinceUncheckedUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
-  }
-
-  export type BannerLocationCreateManyInput = {
-    id?: string
-    bannerId: string
-  }
-
-  export type BannerLocationUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BannerLocationUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type BannerVisitorCreateInput = {
@@ -51997,12 +50737,6 @@ export namespace Prisma {
     none?: AdminAuthorityWhereInput
   }
 
-  export type BannerLocationListRelationFilter = {
-    every?: BannerLocationWhereInput
-    some?: BannerLocationWhereInput
-    none?: BannerLocationWhereInput
-  }
-
   export type CityListRelationFilter = {
     every?: CityWhereInput
     some?: CityWhereInput
@@ -52027,15 +50761,17 @@ export namespace Prisma {
     none?: SubdistrictWhereInput
   }
 
+  export type BannerListRelationFilter = {
+    every?: BannerWhereInput
+    some?: BannerWhereInput
+    none?: BannerWhereInput
+  }
+
   export type AdminOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type AdminAuthorityOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BannerLocationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -52052,6 +50788,10 @@ export namespace Prisma {
   }
 
   export type SubdistrictOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BannerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -53239,12 +51979,6 @@ export namespace Prisma {
     none?: AdminTransactionWhereInput
   }
 
-  export type BannerListRelationFilter = {
-    every?: BannerWhereInput
-    some?: BannerWhereInput
-    none?: BannerWhereInput
-  }
-
   export type RedeemCodeListRelationFilter = {
     every?: RedeemCodeWhereInput
     some?: RedeemCodeWhereInput
@@ -53271,10 +52005,6 @@ export namespace Prisma {
   }
 
   export type AdminTransactionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BannerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -53506,6 +52236,16 @@ export namespace Prisma {
     grades?: SortOrder
   }
 
+  export type ProvinceListRelationFilter = {
+    every?: ProvinceWhereInput
+    some?: ProvinceWhereInput
+    none?: ProvinceWhereInput
+  }
+
+  export type ProvinceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type BannerCountOrderByAggregateInput = {
     id?: SortOrder
     thumbnail?: SortOrder
@@ -53542,31 +52282,6 @@ export namespace Prisma {
   export type BannerScalarRelationFilter = {
     is?: BannerWhereInput
     isNot?: BannerWhereInput
-  }
-
-  export type ProvinceListRelationFilter = {
-    every?: ProvinceWhereInput
-    some?: ProvinceWhereInput
-    none?: ProvinceWhereInput
-  }
-
-  export type ProvinceOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BannerLocationCountOrderByAggregateInput = {
-    id?: SortOrder
-    bannerId?: SortOrder
-  }
-
-  export type BannerLocationMaxOrderByAggregateInput = {
-    id?: SortOrder
-    bannerId?: SortOrder
-  }
-
-  export type BannerLocationMinOrderByAggregateInput = {
-    id?: SortOrder
-    bannerId?: SortOrder
   }
 
   export type BannerVisitorBannerIdUserIdCompoundUniqueInput = {
@@ -54475,12 +53190,6 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerLocationCreateNestedManyWithoutProvinciesInput = {
-    create?: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput> | BannerLocationCreateWithoutProvinciesInput[] | BannerLocationUncheckedCreateWithoutProvinciesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinciesInput | BannerLocationCreateOrConnectWithoutProvinciesInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-  }
-
   export type CityCreateNestedManyWithoutProvinceInput = {
     create?: XOR<CityCreateWithoutProvinceInput, CityUncheckedCreateWithoutProvinceInput> | CityCreateWithoutProvinceInput[] | CityUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: CityCreateOrConnectWithoutProvinceInput | CityCreateOrConnectWithoutProvinceInput[]
@@ -54509,6 +53218,12 @@ export namespace Prisma {
     connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
+  export type BannerCreateNestedManyWithoutProvinciesInput = {
+    create?: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput> | BannerCreateWithoutProvinciesInput[] | BannerUncheckedCreateWithoutProvinciesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutProvinciesInput | BannerCreateOrConnectWithoutProvinciesInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+  }
+
   export type AdminUncheckedCreateNestedManyWithoutProvinceInput = {
     create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
@@ -54521,12 +53236,6 @@ export namespace Prisma {
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutProvinceInput | AdminAuthorityCreateOrConnectWithoutProvinceInput[]
     createMany?: AdminAuthorityCreateManyProvinceInputEnvelope
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
-  }
-
-  export type BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput = {
-    create?: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput> | BannerLocationCreateWithoutProvinciesInput[] | BannerLocationUncheckedCreateWithoutProvinciesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinciesInput | BannerLocationCreateOrConnectWithoutProvinciesInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
   }
 
   export type CityUncheckedCreateNestedManyWithoutProvinceInput = {
@@ -54555,6 +53264,12 @@ export namespace Prisma {
     connectOrCreate?: SubdistrictCreateOrConnectWithoutProvinceInput | SubdistrictCreateOrConnectWithoutProvinceInput[]
     createMany?: SubdistrictCreateManyProvinceInputEnvelope
     connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+  }
+
+  export type BannerUncheckedCreateNestedManyWithoutProvinciesInput = {
+    create?: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput> | BannerCreateWithoutProvinciesInput[] | BannerUncheckedCreateWithoutProvinciesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutProvinciesInput | BannerCreateOrConnectWithoutProvinciesInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -54599,19 +53314,6 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput | AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutProvinceInput | AdminAuthorityUpdateManyWithWhereWithoutProvinceInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
-  }
-
-  export type BannerLocationUpdateManyWithoutProvinciesNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput> | BannerLocationCreateWithoutProvinciesInput[] | BannerLocationUncheckedCreateWithoutProvinciesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinciesInput | BannerLocationCreateOrConnectWithoutProvinciesInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutProvinciesInput | BannerLocationUpsertWithWhereUniqueWithoutProvinciesInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutProvinciesInput | BannerLocationUpdateWithWhereUniqueWithoutProvinciesInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutProvinciesInput | BannerLocationUpdateManyWithWhereWithoutProvinciesInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type CityUpdateManyWithoutProvinceNestedInput = {
@@ -54670,6 +53372,19 @@ export namespace Prisma {
     deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
+  export type BannerUpdateManyWithoutProvinciesNestedInput = {
+    create?: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput> | BannerCreateWithoutProvinciesInput[] | BannerUncheckedCreateWithoutProvinciesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutProvinciesInput | BannerCreateOrConnectWithoutProvinciesInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutProvinciesInput | BannerUpsertWithWhereUniqueWithoutProvinciesInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutProvinciesInput | BannerUpdateWithWhereUniqueWithoutProvinciesInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutProvinciesInput | BannerUpdateManyWithWhereWithoutProvinciesInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
+  }
+
   export type AdminUncheckedUpdateManyWithoutProvinceNestedInput = {
     create?: XOR<AdminCreateWithoutProvinceInput, AdminUncheckedCreateWithoutProvinceInput> | AdminCreateWithoutProvinceInput[] | AdminUncheckedCreateWithoutProvinceInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutProvinceInput | AdminCreateOrConnectWithoutProvinceInput[]
@@ -54696,19 +53411,6 @@ export namespace Prisma {
     update?: AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput | AdminAuthorityUpdateWithWhereUniqueWithoutProvinceInput[]
     updateMany?: AdminAuthorityUpdateManyWithWhereWithoutProvinceInput | AdminAuthorityUpdateManyWithWhereWithoutProvinceInput[]
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
-  }
-
-  export type BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput> | BannerLocationCreateWithoutProvinciesInput[] | BannerLocationUncheckedCreateWithoutProvinciesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutProvinciesInput | BannerLocationCreateOrConnectWithoutProvinciesInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutProvinciesInput | BannerLocationUpsertWithWhereUniqueWithoutProvinciesInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutProvinciesInput | BannerLocationUpdateWithWhereUniqueWithoutProvinciesInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutProvinciesInput | BannerLocationUpdateManyWithWhereWithoutProvinciesInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
   }
 
   export type CityUncheckedUpdateManyWithoutProvinceNestedInput = {
@@ -54767,6 +53469,19 @@ export namespace Prisma {
     deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
+  export type BannerUncheckedUpdateManyWithoutProvinciesNestedInput = {
+    create?: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput> | BannerCreateWithoutProvinciesInput[] | BannerUncheckedCreateWithoutProvinciesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutProvinciesInput | BannerCreateOrConnectWithoutProvinciesInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutProvinciesInput | BannerUpsertWithWhereUniqueWithoutProvinciesInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutProvinciesInput | BannerUpdateWithWhereUniqueWithoutProvinciesInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutProvinciesInput | BannerUpdateManyWithWhereWithoutProvinciesInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
+  }
+
   export type AdminCreateNestedManyWithoutCityInput = {
     create?: XOR<AdminCreateWithoutCityInput, AdminUncheckedCreateWithoutCityInput> | AdminCreateWithoutCityInput[] | AdminUncheckedCreateWithoutCityInput[]
     connectOrCreate?: AdminCreateOrConnectWithoutCityInput | AdminCreateOrConnectWithoutCityInput[]
@@ -54807,10 +53522,10 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerLocationCreateNestedManyWithoutCitiesInput = {
-    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type BannerCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput> | BannerCreateWithoutCitiesInput[] | BannerUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutCitiesInput | BannerCreateOrConnectWithoutCitiesInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
   export type AdminUncheckedCreateNestedManyWithoutCityInput = {
@@ -54847,10 +53562,10 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerLocationUncheckedCreateNestedManyWithoutCitiesInput = {
-    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type BannerUncheckedCreateNestedManyWithoutCitiesInput = {
+    create?: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput> | BannerCreateWithoutCitiesInput[] | BannerUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutCitiesInput | BannerCreateOrConnectWithoutCitiesInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
   export type AdminUpdateManyWithoutCityNestedInput = {
@@ -54930,17 +53645,17 @@ export namespace Prisma {
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerLocationUpdateManyWithoutCitiesNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutCitiesInput | BannerLocationUpsertWithWhereUniqueWithoutCitiesInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutCitiesInput | BannerLocationUpdateWithWhereUniqueWithoutCitiesInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutCitiesInput | BannerLocationUpdateManyWithWhereWithoutCitiesInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type BannerUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput> | BannerCreateWithoutCitiesInput[] | BannerUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutCitiesInput | BannerCreateOrConnectWithoutCitiesInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutCitiesInput | BannerUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutCitiesInput | BannerUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutCitiesInput | BannerUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
   export type AdminUncheckedUpdateManyWithoutCityNestedInput = {
@@ -55012,17 +53727,17 @@ export namespace Prisma {
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput> | BannerLocationCreateWithoutCitiesInput[] | BannerLocationUncheckedCreateWithoutCitiesInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutCitiesInput | BannerLocationCreateOrConnectWithoutCitiesInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutCitiesInput | BannerLocationUpsertWithWhereUniqueWithoutCitiesInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutCitiesInput | BannerLocationUpdateWithWhereUniqueWithoutCitiesInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutCitiesInput | BannerLocationUpdateManyWithWhereWithoutCitiesInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type BannerUncheckedUpdateManyWithoutCitiesNestedInput = {
+    create?: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput> | BannerCreateWithoutCitiesInput[] | BannerUncheckedCreateWithoutCitiesInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutCitiesInput | BannerCreateOrConnectWithoutCitiesInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutCitiesInput | BannerUpsertWithWhereUniqueWithoutCitiesInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutCitiesInput | BannerUpdateWithWhereUniqueWithoutCitiesInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutCitiesInput | BannerUpdateManyWithWhereWithoutCitiesInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
   export type ProvinceCreateNestedOneWithoutSubdistrictsInput = {
@@ -55064,10 +53779,10 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerLocationCreateNestedManyWithoutSubdisctrictsInput = {
-    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type BannerCreateNestedManyWithoutSubdisctrictsInput = {
+    create?: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput> | BannerCreateWithoutSubdisctrictsInput[] | BannerUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutSubdisctrictsInput | BannerCreateOrConnectWithoutSubdisctrictsInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
   export type SchoolUncheckedCreateNestedManyWithoutSubdistrictInput = {
@@ -55097,10 +53812,10 @@ export namespace Prisma {
     connect?: AdminAuthorityWhereUniqueInput | AdminAuthorityWhereUniqueInput[]
   }
 
-  export type BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput = {
-    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput = {
+    create?: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput> | BannerCreateWithoutSubdisctrictsInput[] | BannerUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutSubdisctrictsInput | BannerCreateOrConnectWithoutSubdisctrictsInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
   }
 
   export type ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput = {
@@ -55174,17 +53889,17 @@ export namespace Prisma {
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerLocationUpdateManyWithoutSubdisctrictsNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput | BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type BannerUpdateManyWithoutSubdisctrictsNestedInput = {
+    create?: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput> | BannerCreateWithoutSubdisctrictsInput[] | BannerUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutSubdisctrictsInput | BannerCreateOrConnectWithoutSubdisctrictsInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutSubdisctrictsInput | BannerUpdateManyWithWhereWithoutSubdisctrictsInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
   export type SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput = {
@@ -55242,17 +53957,17 @@ export namespace Prisma {
     deleteMany?: AdminAuthorityScalarWhereInput | AdminAuthorityScalarWhereInput[]
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput> | BannerLocationCreateWithoutSubdisctrictsInput[] | BannerLocationUncheckedCreateWithoutSubdisctrictsInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutSubdisctrictsInput | BannerLocationCreateOrConnectWithoutSubdisctrictsInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput | BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput = {
+    create?: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput> | BannerCreateWithoutSubdisctrictsInput[] | BannerUncheckedCreateWithoutSubdisctrictsInput[]
+    connectOrCreate?: BannerCreateOrConnectWithoutSubdisctrictsInput | BannerCreateOrConnectWithoutSubdisctrictsInput[]
+    upsert?: BannerUpsertWithWhereUniqueWithoutSubdisctrictsInput | BannerUpsertWithWhereUniqueWithoutSubdisctrictsInput[]
+    set?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    disconnect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    delete?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    connect?: BannerWhereUniqueInput | BannerWhereUniqueInput[]
+    update?: BannerUpdateWithWhereUniqueWithoutSubdisctrictsInput | BannerUpdateWithWhereUniqueWithoutSubdisctrictsInput[]
+    updateMany?: BannerUpdateManyWithWhereWithoutSubdisctrictsInput | BannerUpdateManyWithWhereWithoutSubdisctrictsInput[]
+    deleteMany?: BannerScalarWhereInput | BannerScalarWhereInput[]
   }
 
   export type AdminCreateNestedManyWithoutSchoolInput = {
@@ -56941,11 +55656,22 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type BannerLocationCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerLocationCreateManyBannerInputEnvelope
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type ProvinceCreateNestedManyWithoutBannersInput = {
+    create?: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput> | ProvinceCreateWithoutBannersInput[] | ProvinceUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannersInput | ProvinceCreateOrConnectWithoutBannersInput[]
+    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+  }
+
+  export type CityCreateNestedManyWithoutBannersInput = {
+    create?: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput> | CityCreateWithoutBannersInput[] | CityUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannersInput | CityCreateOrConnectWithoutBannersInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type SubdistrictCreateNestedManyWithoutBannersInput = {
+    create?: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput> | SubdistrictCreateWithoutBannersInput[] | SubdistrictUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannersInput | SubdistrictCreateOrConnectWithoutBannersInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type BannerVisitorCreateNestedManyWithoutBannerInput = {
@@ -56955,11 +55681,22 @@ export namespace Prisma {
     connect?: BannerVisitorWhereUniqueInput | BannerVisitorWhereUniqueInput[]
   }
 
-  export type BannerLocationUncheckedCreateNestedManyWithoutBannerInput = {
-    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
-    createMany?: BannerLocationCreateManyBannerInputEnvelope
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
+  export type ProvinceUncheckedCreateNestedManyWithoutBannersInput = {
+    create?: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput> | ProvinceCreateWithoutBannersInput[] | ProvinceUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannersInput | ProvinceCreateOrConnectWithoutBannersInput[]
+    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+  }
+
+  export type CityUncheckedCreateNestedManyWithoutBannersInput = {
+    create?: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput> | CityCreateWithoutBannersInput[] | CityUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannersInput | CityCreateOrConnectWithoutBannersInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type SubdistrictUncheckedCreateNestedManyWithoutBannersInput = {
+    create?: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput> | SubdistrictCreateWithoutBannersInput[] | SubdistrictUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannersInput | SubdistrictCreateOrConnectWithoutBannersInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
   }
 
   export type BannerVisitorUncheckedCreateNestedManyWithoutBannerInput = {
@@ -56977,18 +55714,43 @@ export namespace Prisma {
     update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutBannerInput, AdminUpdateWithoutBannerInput>, AdminUncheckedUpdateWithoutBannerInput>
   }
 
-  export type BannerLocationUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutBannerInput | BannerLocationUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerLocationCreateManyBannerInputEnvelope
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutBannerInput | BannerLocationUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutBannerInput | BannerLocationUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type ProvinceUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput> | ProvinceCreateWithoutBannersInput[] | ProvinceUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannersInput | ProvinceCreateOrConnectWithoutBannersInput[]
+    upsert?: ProvinceUpsertWithWhereUniqueWithoutBannersInput | ProvinceUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    disconnect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    delete?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    update?: ProvinceUpdateWithWhereUniqueWithoutBannersInput | ProvinceUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: ProvinceUpdateManyWithWhereWithoutBannersInput | ProvinceUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
+  }
+
+  export type CityUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput> | CityCreateWithoutBannersInput[] | CityUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannersInput | CityCreateOrConnectWithoutBannersInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutBannersInput | CityUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutBannersInput | CityUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutBannersInput | CityUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
+  }
+
+  export type SubdistrictUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput> | SubdistrictCreateWithoutBannersInput[] | SubdistrictUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannersInput | SubdistrictCreateOrConnectWithoutBannersInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannersInput | SubdistrictUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutBannersInput | SubdistrictUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannersInput | SubdistrictUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type BannerVisitorUpdateManyWithoutBannerNestedInput = {
@@ -57005,18 +55767,43 @@ export namespace Prisma {
     deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutBannerNestedInput = {
-    create?: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput> | BannerLocationCreateWithoutBannerInput[] | BannerLocationUncheckedCreateWithoutBannerInput[]
-    connectOrCreate?: BannerLocationCreateOrConnectWithoutBannerInput | BannerLocationCreateOrConnectWithoutBannerInput[]
-    upsert?: BannerLocationUpsertWithWhereUniqueWithoutBannerInput | BannerLocationUpsertWithWhereUniqueWithoutBannerInput[]
-    createMany?: BannerLocationCreateManyBannerInputEnvelope
-    set?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    disconnect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    delete?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    connect?: BannerLocationWhereUniqueInput | BannerLocationWhereUniqueInput[]
-    update?: BannerLocationUpdateWithWhereUniqueWithoutBannerInput | BannerLocationUpdateWithWhereUniqueWithoutBannerInput[]
-    updateMany?: BannerLocationUpdateManyWithWhereWithoutBannerInput | BannerLocationUpdateManyWithWhereWithoutBannerInput[]
-    deleteMany?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
+  export type ProvinceUncheckedUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput> | ProvinceCreateWithoutBannersInput[] | ProvinceUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: ProvinceCreateOrConnectWithoutBannersInput | ProvinceCreateOrConnectWithoutBannersInput[]
+    upsert?: ProvinceUpsertWithWhereUniqueWithoutBannersInput | ProvinceUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    disconnect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    delete?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
+    update?: ProvinceUpdateWithWhereUniqueWithoutBannersInput | ProvinceUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: ProvinceUpdateManyWithWhereWithoutBannersInput | ProvinceUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
+  }
+
+  export type CityUncheckedUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput> | CityCreateWithoutBannersInput[] | CityUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: CityCreateOrConnectWithoutBannersInput | CityCreateOrConnectWithoutBannersInput[]
+    upsert?: CityUpsertWithWhereUniqueWithoutBannersInput | CityUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+    update?: CityUpdateWithWhereUniqueWithoutBannersInput | CityUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: CityUpdateManyWithWhereWithoutBannersInput | CityUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutBannersNestedInput = {
+    create?: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput> | SubdistrictCreateWithoutBannersInput[] | SubdistrictUncheckedCreateWithoutBannersInput[]
+    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannersInput | SubdistrictCreateOrConnectWithoutBannersInput[]
+    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannersInput | SubdistrictUpsertWithWhereUniqueWithoutBannersInput[]
+    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
+    update?: SubdistrictUpdateWithWhereUniqueWithoutBannersInput | SubdistrictUpdateWithWhereUniqueWithoutBannersInput[]
+    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannersInput | SubdistrictUpdateManyWithWhereWithoutBannersInput[]
+    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput = {
@@ -57031,134 +55818,6 @@ export namespace Prisma {
     update?: BannerVisitorUpdateWithWhereUniqueWithoutBannerInput | BannerVisitorUpdateWithWhereUniqueWithoutBannerInput[]
     updateMany?: BannerVisitorUpdateManyWithWhereWithoutBannerInput | BannerVisitorUpdateManyWithWhereWithoutBannerInput[]
     deleteMany?: BannerVisitorScalarWhereInput | BannerVisitorScalarWhereInput[]
-  }
-
-  export type BannerCreateNestedOneWithoutBannerLocationInput = {
-    create?: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerLocationInput
-    connect?: BannerWhereUniqueInput
-  }
-
-  export type ProvinceCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput> | ProvinceCreateWithoutBannerLocationInput[] | ProvinceUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput | ProvinceCreateOrConnectWithoutBannerLocationInput[]
-    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-  }
-
-  export type CityCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
-    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-  }
-
-  export type SubdistrictCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
-    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-  }
-
-  export type ProvinceUncheckedCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput> | ProvinceCreateWithoutBannerLocationInput[] | ProvinceUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput | ProvinceCreateOrConnectWithoutBannerLocationInput[]
-    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-  }
-
-  export type CityUncheckedCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
-    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-  }
-
-  export type SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput = {
-    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
-    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-  }
-
-  export type BannerUpdateOneRequiredWithoutBannerLocationNestedInput = {
-    create?: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
-    connectOrCreate?: BannerCreateOrConnectWithoutBannerLocationInput
-    upsert?: BannerUpsertWithoutBannerLocationInput
-    connect?: BannerWhereUniqueInput
-    update?: XOR<XOR<BannerUpdateToOneWithWhereWithoutBannerLocationInput, BannerUpdateWithoutBannerLocationInput>, BannerUncheckedUpdateWithoutBannerLocationInput>
-  }
-
-  export type ProvinceUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput> | ProvinceCreateWithoutBannerLocationInput[] | ProvinceUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput | ProvinceCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: ProvinceUpsertWithWhereUniqueWithoutBannerLocationInput | ProvinceUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    disconnect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    delete?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    update?: ProvinceUpdateWithWhereUniqueWithoutBannerLocationInput | ProvinceUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: ProvinceUpdateManyWithWhereWithoutBannerLocationInput | ProvinceUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
-  }
-
-  export type CityUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: CityUpsertWithWhereUniqueWithoutBannerLocationInput | CityUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    update?: CityUpdateWithWhereUniqueWithoutBannerLocationInput | CityUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: CityUpdateManyWithWhereWithoutBannerLocationInput | CityUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
-  }
-
-  export type SubdistrictUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    update?: SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannerLocationInput | SubdistrictUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
-  }
-
-  export type ProvinceUncheckedUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput> | ProvinceCreateWithoutBannerLocationInput[] | ProvinceUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: ProvinceCreateOrConnectWithoutBannerLocationInput | ProvinceCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: ProvinceUpsertWithWhereUniqueWithoutBannerLocationInput | ProvinceUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    disconnect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    delete?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    connect?: ProvinceWhereUniqueInput | ProvinceWhereUniqueInput[]
-    update?: ProvinceUpdateWithWhereUniqueWithoutBannerLocationInput | ProvinceUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: ProvinceUpdateManyWithWhereWithoutBannerLocationInput | ProvinceUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
-  }
-
-  export type CityUncheckedUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput> | CityCreateWithoutBannerLocationInput[] | CityUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: CityCreateOrConnectWithoutBannerLocationInput | CityCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: CityUpsertWithWhereUniqueWithoutBannerLocationInput | CityUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    disconnect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    delete?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
-    update?: CityUpdateWithWhereUniqueWithoutBannerLocationInput | CityUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: CityUpdateManyWithWhereWithoutBannerLocationInput | CityUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
-  }
-
-  export type SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput = {
-    create?: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput> | SubdistrictCreateWithoutBannerLocationInput[] | SubdistrictUncheckedCreateWithoutBannerLocationInput[]
-    connectOrCreate?: SubdistrictCreateOrConnectWithoutBannerLocationInput | SubdistrictCreateOrConnectWithoutBannerLocationInput[]
-    upsert?: SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput[]
-    set?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    disconnect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    delete?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    connect?: SubdistrictWhereUniqueInput | SubdistrictWhereUniqueInput[]
-    update?: SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput | SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput[]
-    updateMany?: SubdistrictUpdateManyWithWhereWithoutBannerLocationInput | SubdistrictUpdateManyWithWhereWithoutBannerLocationInput[]
-    deleteMany?: SubdistrictScalarWhereInput | SubdistrictScalarWhereInput[]
   }
 
   export type BannerCreateNestedOneWithoutVisitorsInput = {
@@ -58195,25 +56854,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BannerLocationCreateWithoutProvinciesInput = {
-    id?: string
-    banner: BannerCreateNestedOneWithoutBannerLocationInput
-    cities?: CityCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
-  }
-
-  export type BannerLocationUncheckedCreateWithoutProvinciesInput = {
-    id?: string
-    bannerId: string
-    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
-  }
-
-  export type BannerLocationCreateOrConnectWithoutProvinciesInput = {
-    where: BannerLocationWhereUniqueInput
-    create: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput>
-  }
-
   export type CityCreateWithoutProvinceInput = {
     id?: string
     name: string
@@ -58227,7 +56867,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutProvinceInput = {
@@ -58243,7 +56883,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutProvinceInput = {
@@ -58407,7 +57047,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutProvinceInput = {
@@ -58423,7 +57063,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutProvinceInput = {
@@ -58434,6 +57074,39 @@ export namespace Prisma {
   export type SubdistrictCreateManyProvinceInputEnvelope = {
     data: SubdistrictCreateManyProvinceInput | SubdistrictCreateManyProvinceInput[]
     skipDuplicates?: boolean
+  }
+
+  export type BannerCreateWithoutProvinciesInput = {
+    id?: string
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    thumbnailId: string
+    admin: AdminCreateNestedOneWithoutBannerInput
+    cities?: CityCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
+  }
+
+  export type BannerUncheckedCreateWithoutProvinciesInput = {
+    id?: string
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    adminId: string
+    thumbnailId: string
+    cities?: CityUncheckedCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
+  }
+
+  export type BannerCreateOrConnectWithoutProvinciesInput = {
+    where: BannerWhereUniqueInput
+    create: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput>
   }
 
   export type AdminUpsertWithWhereUniqueWithoutProvinceInput = {
@@ -58497,30 +57170,6 @@ export namespace Prisma {
     adminId?: StringFilter<"AdminAuthority"> | string
     provinceId?: StringFilter<"AdminAuthority"> | string
     grades?: IntNullableListFilter<"AdminAuthority">
-  }
-
-  export type BannerLocationUpsertWithWhereUniqueWithoutProvinciesInput = {
-    where: BannerLocationWhereUniqueInput
-    update: XOR<BannerLocationUpdateWithoutProvinciesInput, BannerLocationUncheckedUpdateWithoutProvinciesInput>
-    create: XOR<BannerLocationCreateWithoutProvinciesInput, BannerLocationUncheckedCreateWithoutProvinciesInput>
-  }
-
-  export type BannerLocationUpdateWithWhereUniqueWithoutProvinciesInput = {
-    where: BannerLocationWhereUniqueInput
-    data: XOR<BannerLocationUpdateWithoutProvinciesInput, BannerLocationUncheckedUpdateWithoutProvinciesInput>
-  }
-
-  export type BannerLocationUpdateManyWithWhereWithoutProvinciesInput = {
-    where: BannerLocationScalarWhereInput
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutProvinciesInput>
-  }
-
-  export type BannerLocationScalarWhereInput = {
-    AND?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
-    OR?: BannerLocationScalarWhereInput[]
-    NOT?: BannerLocationScalarWhereInput | BannerLocationScalarWhereInput[]
-    id?: StringFilter<"BannerLocation"> | string
-    bannerId?: StringFilter<"BannerLocation"> | string
   }
 
   export type CityUpsertWithWhereUniqueWithoutProvinceInput = {
@@ -58666,6 +57315,36 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Subdistrict"> | Date | string
   }
 
+  export type BannerUpsertWithWhereUniqueWithoutProvinciesInput = {
+    where: BannerWhereUniqueInput
+    update: XOR<BannerUpdateWithoutProvinciesInput, BannerUncheckedUpdateWithoutProvinciesInput>
+    create: XOR<BannerCreateWithoutProvinciesInput, BannerUncheckedCreateWithoutProvinciesInput>
+  }
+
+  export type BannerUpdateWithWhereUniqueWithoutProvinciesInput = {
+    where: BannerWhereUniqueInput
+    data: XOR<BannerUpdateWithoutProvinciesInput, BannerUncheckedUpdateWithoutProvinciesInput>
+  }
+
+  export type BannerUpdateManyWithWhereWithoutProvinciesInput = {
+    where: BannerScalarWhereInput
+    data: XOR<BannerUpdateManyMutationInput, BannerUncheckedUpdateManyWithoutProvinciesInput>
+  }
+
+  export type BannerScalarWhereInput = {
+    AND?: BannerScalarWhereInput | BannerScalarWhereInput[]
+    OR?: BannerScalarWhereInput[]
+    NOT?: BannerScalarWhereInput | BannerScalarWhereInput[]
+    id?: StringFilter<"Banner"> | string
+    thumbnail?: StringFilter<"Banner"> | string
+    link?: StringNullableFilter<"Banner"> | string | null
+    startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
+    isHide?: BoolFilter<"Banner"> | boolean
+    adminId?: StringFilter<"Banner"> | string
+    thumbnailId?: StringFilter<"Banner"> | string
+  }
+
   export type AdminCreateWithoutCityInput = {
     id?: string
     authId: string
@@ -58740,10 +57419,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutCitiesInput = {
@@ -58756,10 +57435,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutCitiesInput = {
@@ -58822,7 +57501,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutCityInput = {
@@ -58838,7 +57517,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutCityInput = {
@@ -58970,23 +57649,37 @@ export namespace Prisma {
     create: XOR<AdminAuthorityCreateWithoutCitiesInput, AdminAuthorityUncheckedCreateWithoutCitiesInput>
   }
 
-  export type BannerLocationCreateWithoutCitiesInput = {
+  export type BannerCreateWithoutCitiesInput = {
     id?: string
-    banner: BannerCreateNestedOneWithoutBannerLocationInput
-    provincies?: ProvinceCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    thumbnailId: string
+    admin: AdminCreateNestedOneWithoutBannerInput
+    provincies?: ProvinceCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
-  export type BannerLocationUncheckedCreateWithoutCitiesInput = {
+  export type BannerUncheckedCreateWithoutCitiesInput = {
     id?: string
-    bannerId: string
-    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    adminId: string
+    thumbnailId: string
+    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
-  export type BannerLocationCreateOrConnectWithoutCitiesInput = {
-    where: BannerLocationWhereUniqueInput
-    create: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput>
+  export type BannerCreateOrConnectWithoutCitiesInput = {
+    where: BannerWhereUniqueInput
+    create: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput>
   }
 
   export type AdminUpsertWithWhereUniqueWithoutCityInput = {
@@ -59026,10 +57719,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutCitiesInput = {
@@ -59042,10 +57735,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutCityInput = {
@@ -59112,20 +57805,20 @@ export namespace Prisma {
     data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutCitiesInput>
   }
 
-  export type BannerLocationUpsertWithWhereUniqueWithoutCitiesInput = {
-    where: BannerLocationWhereUniqueInput
-    update: XOR<BannerLocationUpdateWithoutCitiesInput, BannerLocationUncheckedUpdateWithoutCitiesInput>
-    create: XOR<BannerLocationCreateWithoutCitiesInput, BannerLocationUncheckedCreateWithoutCitiesInput>
+  export type BannerUpsertWithWhereUniqueWithoutCitiesInput = {
+    where: BannerWhereUniqueInput
+    update: XOR<BannerUpdateWithoutCitiesInput, BannerUncheckedUpdateWithoutCitiesInput>
+    create: XOR<BannerCreateWithoutCitiesInput, BannerUncheckedCreateWithoutCitiesInput>
   }
 
-  export type BannerLocationUpdateWithWhereUniqueWithoutCitiesInput = {
-    where: BannerLocationWhereUniqueInput
-    data: XOR<BannerLocationUpdateWithoutCitiesInput, BannerLocationUncheckedUpdateWithoutCitiesInput>
+  export type BannerUpdateWithWhereUniqueWithoutCitiesInput = {
+    where: BannerWhereUniqueInput
+    data: XOR<BannerUpdateWithoutCitiesInput, BannerUncheckedUpdateWithoutCitiesInput>
   }
 
-  export type BannerLocationUpdateManyWithWhereWithoutCitiesInput = {
-    where: BannerLocationScalarWhereInput
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutCitiesInput>
+  export type BannerUpdateManyWithWhereWithoutCitiesInput = {
+    where: BannerScalarWhereInput
+    data: XOR<BannerUpdateManyMutationInput, BannerUncheckedUpdateManyWithoutCitiesInput>
   }
 
   export type ProvinceCreateWithoutSubdistrictsInput = {
@@ -59138,10 +57831,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutSubdistrictsInput = {
@@ -59154,10 +57847,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutSubdistrictsInput = {
@@ -59178,7 +57871,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutSubdistrictsInput = {
@@ -59194,7 +57887,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutSubdistrictsInput = {
@@ -59427,23 +58120,37 @@ export namespace Prisma {
     create: XOR<AdminAuthorityCreateWithoutSubdistrictsInput, AdminAuthorityUncheckedCreateWithoutSubdistrictsInput>
   }
 
-  export type BannerLocationCreateWithoutSubdisctrictsInput = {
+  export type BannerCreateWithoutSubdisctrictsInput = {
     id?: string
-    banner: BannerCreateNestedOneWithoutBannerLocationInput
-    provincies?: ProvinceCreateNestedManyWithoutBannerLocationInput
-    cities?: CityCreateNestedManyWithoutBannerLocationInput
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    thumbnailId: string
+    admin: AdminCreateNestedOneWithoutBannerInput
+    provincies?: ProvinceCreateNestedManyWithoutBannersInput
+    cities?: CityCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
-  export type BannerLocationUncheckedCreateWithoutSubdisctrictsInput = {
+  export type BannerUncheckedCreateWithoutSubdisctrictsInput = {
     id?: string
-    bannerId: string
-    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannerLocationInput
-    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
+    thumbnail: string
+    link?: string | null
+    startedAt?: Date | string | null
+    endedAt?: Date | string | null
+    isHide?: boolean
+    adminId: string
+    thumbnailId: string
+    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
+    cities?: CityUncheckedCreateNestedManyWithoutBannersInput
+    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
-  export type BannerLocationCreateOrConnectWithoutSubdisctrictsInput = {
-    where: BannerLocationWhereUniqueInput
-    create: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput>
+  export type BannerCreateOrConnectWithoutSubdisctrictsInput = {
+    where: BannerWhereUniqueInput
+    create: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput>
   }
 
   export type ProvinceUpsertWithoutSubdistrictsInput = {
@@ -59467,10 +58174,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutSubdistrictsInput = {
@@ -59483,10 +58190,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type CityUpsertWithoutSubdistrictsInput = {
@@ -59513,7 +58220,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutSubdistrictsInput = {
@@ -59529,7 +58236,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type SchoolUpsertWithWhereUniqueWithoutSubdistrictInput = {
@@ -59596,20 +58303,20 @@ export namespace Prisma {
     data: XOR<AdminAuthorityUpdateManyMutationInput, AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsInput>
   }
 
-  export type BannerLocationUpsertWithWhereUniqueWithoutSubdisctrictsInput = {
-    where: BannerLocationWhereUniqueInput
-    update: XOR<BannerLocationUpdateWithoutSubdisctrictsInput, BannerLocationUncheckedUpdateWithoutSubdisctrictsInput>
-    create: XOR<BannerLocationCreateWithoutSubdisctrictsInput, BannerLocationUncheckedCreateWithoutSubdisctrictsInput>
+  export type BannerUpsertWithWhereUniqueWithoutSubdisctrictsInput = {
+    where: BannerWhereUniqueInput
+    update: XOR<BannerUpdateWithoutSubdisctrictsInput, BannerUncheckedUpdateWithoutSubdisctrictsInput>
+    create: XOR<BannerCreateWithoutSubdisctrictsInput, BannerUncheckedCreateWithoutSubdisctrictsInput>
   }
 
-  export type BannerLocationUpdateWithWhereUniqueWithoutSubdisctrictsInput = {
-    where: BannerLocationWhereUniqueInput
-    data: XOR<BannerLocationUpdateWithoutSubdisctrictsInput, BannerLocationUncheckedUpdateWithoutSubdisctrictsInput>
+  export type BannerUpdateWithWhereUniqueWithoutSubdisctrictsInput = {
+    where: BannerWhereUniqueInput
+    data: XOR<BannerUpdateWithoutSubdisctrictsInput, BannerUncheckedUpdateWithoutSubdisctrictsInput>
   }
 
-  export type BannerLocationUpdateManyWithWhereWithoutSubdisctrictsInput = {
-    where: BannerLocationScalarWhereInput
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutSubdisctrictsInput>
+  export type BannerUpdateManyWithWhereWithoutSubdisctrictsInput = {
+    where: BannerScalarWhereInput
+    data: XOR<BannerUpdateManyMutationInput, BannerUncheckedUpdateManyWithoutSubdisctrictsInput>
   }
 
   export type AdminCreateWithoutSchoolInput = {
@@ -59689,7 +58396,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutSchoolsInput = {
@@ -59705,7 +58412,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutSchoolsInput = {
@@ -59723,10 +58430,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutSchoolsInput = {
@@ -59739,10 +58446,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutSchoolsInput = {
@@ -59763,7 +58470,7 @@ export namespace Prisma {
     users?: UserCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutSchoolsInput = {
@@ -59779,7 +58486,7 @@ export namespace Prisma {
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutSchoolsInput = {
@@ -59946,7 +58653,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutSchoolsInput = {
@@ -59962,7 +58669,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type ProvinceUpsertWithoutSchoolsInput = {
@@ -59986,10 +58693,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutSchoolsInput = {
@@ -60002,10 +58709,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type SubdistrictUpsertWithoutSchoolsInput = {
@@ -60032,7 +58739,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutSchoolsInput = {
@@ -60048,7 +58755,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutSchoolInput = {
@@ -60583,7 +59290,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutUsersInput = {
@@ -60599,7 +59306,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutUsersInput = {
@@ -60617,10 +59324,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutUsersInput = {
@@ -60633,10 +59340,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutUsersInput = {
@@ -60694,7 +59401,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutUsersInput = {
@@ -60710,7 +59417,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutUsersInput = {
@@ -61266,7 +59973,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutUsersInput = {
@@ -61282,7 +59989,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type ProvinceUpsertWithoutUsersInput = {
@@ -61306,10 +60013,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutUsersInput = {
@@ -61322,10 +60029,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type SchoolUpsertWithoutUsersInput = {
@@ -61395,7 +60102,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutUsersInput = {
@@ -61411,7 +60118,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type UserLoginUpsertWithWhereUniqueWithoutUserInput = {
@@ -63178,11 +61885,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutAdminInput = {
@@ -63194,11 +61901,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutAdminInput = {
@@ -63219,7 +61926,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutAdminInput = {
@@ -63235,7 +61942,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutAdminInput = {
@@ -63256,7 +61963,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutSubdistrictInput
     users?: UserCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutAdminsInput = {
@@ -63272,7 +61979,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutAdminsInput = {
@@ -63531,7 +62238,9 @@ export namespace Prisma {
     endedAt?: Date | string | null
     isHide?: boolean
     thumbnailId: string
-    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceCreateNestedManyWithoutBannersInput
+    cities?: CityCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
   }
 
@@ -63543,7 +62252,9 @@ export namespace Prisma {
     endedAt?: Date | string | null
     isHide?: boolean
     thumbnailId: string
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
+    cities?: CityUncheckedCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
     visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
   }
 
@@ -63758,11 +62469,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminInput = {
@@ -63774,11 +62485,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type CityUpsertWithoutAdminInput = {
@@ -63805,7 +62516,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutAdminInput = {
@@ -63821,7 +62532,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type SubdistrictUpsertWithoutAdminsInput = {
@@ -63848,7 +62559,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutAdminsInput = {
@@ -63864,7 +62575,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SchoolUpsertWithoutAdminInput = {
@@ -64068,20 +62779,6 @@ export namespace Prisma {
   export type BannerUpdateManyWithWhereWithoutAdminInput = {
     where: BannerScalarWhereInput
     data: XOR<BannerUpdateManyMutationInput, BannerUncheckedUpdateManyWithoutAdminInput>
-  }
-
-  export type BannerScalarWhereInput = {
-    AND?: BannerScalarWhereInput | BannerScalarWhereInput[]
-    OR?: BannerScalarWhereInput[]
-    NOT?: BannerScalarWhereInput | BannerScalarWhereInput[]
-    id?: StringFilter<"Banner"> | string
-    thumbnail?: StringFilter<"Banner"> | string
-    link?: StringNullableFilter<"Banner"> | string | null
-    startedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
-    endedAt?: DateTimeNullableFilter<"Banner"> | Date | string | null
-    isHide?: BoolFilter<"Banner"> | boolean
-    adminId?: StringFilter<"Banner"> | string
-    thumbnailId?: StringFilter<"Banner"> | string
   }
 
   export type RedeemCodeUpsertWithWhereUniqueWithoutAdminInput = {
@@ -64694,11 +63391,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutProvinciesInput
     cities?: CityCreateNestedManyWithoutProvinceInput
     schools?: SchoolCreateNestedManyWithoutProvinceInput
     users?: UserCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
+    banners?: BannerCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceUncheckedCreateWithoutAdminAuthorityInput = {
@@ -64710,11 +63407,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutProvinciesInput
     cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
     schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
     users?: UserUncheckedCreateNestedManyWithoutProvinceInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
+    banners?: BannerUncheckedCreateNestedManyWithoutProvinciesInput
   }
 
   export type ProvinceCreateOrConnectWithoutAdminAuthorityInput = {
@@ -64735,7 +63432,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutCityInput
     subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
     users?: UserCreateNestedManyWithoutCityInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutCitiesInput
+    banners?: BannerCreateNestedManyWithoutCitiesInput
   }
 
   export type CityUncheckedCreateWithoutAdminAuthorityInput = {
@@ -64751,7 +63448,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
     subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
     users?: UserUncheckedCreateNestedManyWithoutCityInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutCitiesInput
+    banners?: BannerUncheckedCreateNestedManyWithoutCitiesInput
   }
 
   export type CityCreateOrConnectWithoutAdminAuthorityInput = {
@@ -64772,7 +63469,7 @@ export namespace Prisma {
     schools?: SchoolCreateNestedManyWithoutSubdistrictInput
     users?: UserCreateNestedManyWithoutSubdistrictInput
     admins?: AdminCreateNestedManyWithoutSubdistrictInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictUncheckedCreateWithoutAdminAuthorityInput = {
@@ -64788,7 +63485,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
     users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
     admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutSubdisctrictsInput
+    banners?: BannerUncheckedCreateNestedManyWithoutSubdisctrictsInput
   }
 
   export type SubdistrictCreateOrConnectWithoutAdminAuthorityInput = {
@@ -64918,11 +63615,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutProvinciesNestedInput
     cities?: CityUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUpdateManyWithoutProvinceNestedInput
     users?: UserUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUpdateManyWithoutProvinciesNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -64934,11 +63631,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutProvinciesNestedInput
     cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
     schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
     users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutProvinciesNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutAdminAuthorityInput = {
@@ -65048,28 +63745,115 @@ export namespace Prisma {
     create: XOR<AdminCreateWithoutBannerInput, AdminUncheckedCreateWithoutBannerInput>
   }
 
-  export type BannerLocationCreateWithoutBannerInput = {
+  export type ProvinceCreateWithoutBannersInput = {
     id?: string
-    provincies?: ProvinceCreateNestedManyWithoutBannerLocationInput
-    cities?: CityCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictCreateNestedManyWithoutBannerLocationInput
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
+    cities?: CityCreateNestedManyWithoutProvinceInput
+    schools?: SchoolCreateNestedManyWithoutProvinceInput
+    users?: UserCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
   }
 
-  export type BannerLocationUncheckedCreateWithoutBannerInput = {
+  export type ProvinceUncheckedCreateWithoutBannersInput = {
     id?: string
-    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannerLocationInput
-    cities?: CityUncheckedCreateNestedManyWithoutBannerLocationInput
-    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannerLocationInput
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
+    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
+    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
   }
 
-  export type BannerLocationCreateOrConnectWithoutBannerInput = {
-    where: BannerLocationWhereUniqueInput
-    create: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput>
+  export type ProvinceCreateOrConnectWithoutBannersInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput>
   }
 
-  export type BannerLocationCreateManyBannerInputEnvelope = {
-    data: BannerLocationCreateManyBannerInput | BannerLocationCreateManyBannerInput[]
-    skipDuplicates?: boolean
+  export type CityCreateWithoutBannersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminCreateNestedManyWithoutCityInput
+    province: ProvinceCreateNestedOneWithoutCitiesInput
+    schools?: SchoolCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
+    users?: UserCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityUncheckedCreateWithoutBannersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
+    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
+    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
+    users?: UserUncheckedCreateNestedManyWithoutCityInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
+  }
+
+  export type CityCreateOrConnectWithoutBannersInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput>
+  }
+
+  export type SubdistrictCreateWithoutBannersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
+    city: CityCreateNestedOneWithoutSubdistrictsInput
+    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
+    users?: UserCreateNestedManyWithoutSubdistrictInput
+    admins?: AdminCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
+  }
+
+  export type SubdistrictUncheckedCreateWithoutBannersInput = {
+    id?: string
+    name: string
+    longitude: number
+    latitude: number
+    geoId?: string
+    provinceId: string
+    cityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
+    users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
+    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
+    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
+  }
+
+  export type SubdistrictCreateOrConnectWithoutBannersInput = {
+    where: SubdistrictWhereUniqueInput
+    create: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput>
   }
 
   export type BannerVisitorCreateWithoutBannerInput = {
@@ -65163,20 +63947,65 @@ export namespace Prisma {
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
   }
 
-  export type BannerLocationUpsertWithWhereUniqueWithoutBannerInput = {
-    where: BannerLocationWhereUniqueInput
-    update: XOR<BannerLocationUpdateWithoutBannerInput, BannerLocationUncheckedUpdateWithoutBannerInput>
-    create: XOR<BannerLocationCreateWithoutBannerInput, BannerLocationUncheckedCreateWithoutBannerInput>
+  export type ProvinceUpsertWithWhereUniqueWithoutBannersInput = {
+    where: ProvinceWhereUniqueInput
+    update: XOR<ProvinceUpdateWithoutBannersInput, ProvinceUncheckedUpdateWithoutBannersInput>
+    create: XOR<ProvinceCreateWithoutBannersInput, ProvinceUncheckedCreateWithoutBannersInput>
   }
 
-  export type BannerLocationUpdateWithWhereUniqueWithoutBannerInput = {
-    where: BannerLocationWhereUniqueInput
-    data: XOR<BannerLocationUpdateWithoutBannerInput, BannerLocationUncheckedUpdateWithoutBannerInput>
+  export type ProvinceUpdateWithWhereUniqueWithoutBannersInput = {
+    where: ProvinceWhereUniqueInput
+    data: XOR<ProvinceUpdateWithoutBannersInput, ProvinceUncheckedUpdateWithoutBannersInput>
   }
 
-  export type BannerLocationUpdateManyWithWhereWithoutBannerInput = {
-    where: BannerLocationScalarWhereInput
-    data: XOR<BannerLocationUpdateManyMutationInput, BannerLocationUncheckedUpdateManyWithoutBannerInput>
+  export type ProvinceUpdateManyWithWhereWithoutBannersInput = {
+    where: ProvinceScalarWhereInput
+    data: XOR<ProvinceUpdateManyMutationInput, ProvinceUncheckedUpdateManyWithoutBannersInput>
+  }
+
+  export type ProvinceScalarWhereInput = {
+    AND?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
+    OR?: ProvinceScalarWhereInput[]
+    NOT?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
+    id?: StringFilter<"Province"> | string
+    name?: StringFilter<"Province"> | string
+    longitude?: FloatFilter<"Province"> | number
+    latitude?: FloatFilter<"Province"> | number
+    geoId?: StringFilter<"Province"> | string
+    createdAt?: DateTimeFilter<"Province"> | Date | string
+    updatedAt?: DateTimeFilter<"Province"> | Date | string
+  }
+
+  export type CityUpsertWithWhereUniqueWithoutBannersInput = {
+    where: CityWhereUniqueInput
+    update: XOR<CityUpdateWithoutBannersInput, CityUncheckedUpdateWithoutBannersInput>
+    create: XOR<CityCreateWithoutBannersInput, CityUncheckedCreateWithoutBannersInput>
+  }
+
+  export type CityUpdateWithWhereUniqueWithoutBannersInput = {
+    where: CityWhereUniqueInput
+    data: XOR<CityUpdateWithoutBannersInput, CityUncheckedUpdateWithoutBannersInput>
+  }
+
+  export type CityUpdateManyWithWhereWithoutBannersInput = {
+    where: CityScalarWhereInput
+    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutBannersInput>
+  }
+
+  export type SubdistrictUpsertWithWhereUniqueWithoutBannersInput = {
+    where: SubdistrictWhereUniqueInput
+    update: XOR<SubdistrictUpdateWithoutBannersInput, SubdistrictUncheckedUpdateWithoutBannersInput>
+    create: XOR<SubdistrictCreateWithoutBannersInput, SubdistrictUncheckedCreateWithoutBannersInput>
+  }
+
+  export type SubdistrictUpdateWithWhereUniqueWithoutBannersInput = {
+    where: SubdistrictWhereUniqueInput
+    data: XOR<SubdistrictUpdateWithoutBannersInput, SubdistrictUncheckedUpdateWithoutBannersInput>
+  }
+
+  export type SubdistrictUpdateManyWithWhereWithoutBannersInput = {
+    where: SubdistrictScalarWhereInput
+    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutBannersInput>
   }
 
   export type BannerVisitorUpsertWithWhereUniqueWithoutBannerInput = {
@@ -65195,242 +64024,6 @@ export namespace Prisma {
     data: XOR<BannerVisitorUpdateManyMutationInput, BannerVisitorUncheckedUpdateManyWithoutBannerInput>
   }
 
-  export type BannerCreateWithoutBannerLocationInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    thumbnailId: string
-    admin: AdminCreateNestedOneWithoutBannerInput
-    visitors?: BannerVisitorCreateNestedManyWithoutBannerInput
-  }
-
-  export type BannerUncheckedCreateWithoutBannerLocationInput = {
-    id?: string
-    thumbnail: string
-    link?: string | null
-    startedAt?: Date | string | null
-    endedAt?: Date | string | null
-    isHide?: boolean
-    adminId: string
-    thumbnailId: string
-    visitors?: BannerVisitorUncheckedCreateNestedManyWithoutBannerInput
-  }
-
-  export type BannerCreateOrConnectWithoutBannerLocationInput = {
-    where: BannerWhereUniqueInput
-    create: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type ProvinceCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    admin?: AdminCreateNestedManyWithoutProvinceInput
-    adminAuthority?: AdminAuthorityCreateNestedManyWithoutProvinceInput
-    cities?: CityCreateNestedManyWithoutProvinceInput
-    schools?: SchoolCreateNestedManyWithoutProvinceInput
-    users?: UserCreateNestedManyWithoutProvinceInput
-    subdistricts?: SubdistrictCreateNestedManyWithoutProvinceInput
-  }
-
-  export type ProvinceUncheckedCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    admin?: AdminUncheckedCreateNestedManyWithoutProvinceInput
-    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutProvinceInput
-    cities?: CityUncheckedCreateNestedManyWithoutProvinceInput
-    schools?: SchoolUncheckedCreateNestedManyWithoutProvinceInput
-    users?: UserUncheckedCreateNestedManyWithoutProvinceInput
-    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutProvinceInput
-  }
-
-  export type ProvinceCreateOrConnectWithoutBannerLocationInput = {
-    where: ProvinceWhereUniqueInput
-    create: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type CityCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    admin?: AdminCreateNestedManyWithoutCityInput
-    province: ProvinceCreateNestedOneWithoutCitiesInput
-    schools?: SchoolCreateNestedManyWithoutCityInput
-    subdistricts?: SubdistrictCreateNestedManyWithoutCityInput
-    users?: UserCreateNestedManyWithoutCityInput
-    adminAuthority?: AdminAuthorityCreateNestedManyWithoutCitiesInput
-  }
-
-  export type CityUncheckedCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    provinceId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    admin?: AdminUncheckedCreateNestedManyWithoutCityInput
-    schools?: SchoolUncheckedCreateNestedManyWithoutCityInput
-    subdistricts?: SubdistrictUncheckedCreateNestedManyWithoutCityInput
-    users?: UserUncheckedCreateNestedManyWithoutCityInput
-    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutCitiesInput
-  }
-
-  export type CityCreateOrConnectWithoutBannerLocationInput = {
-    where: CityWhereUniqueInput
-    create: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type SubdistrictCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    province: ProvinceCreateNestedOneWithoutSubdistrictsInput
-    city: CityCreateNestedOneWithoutSubdistrictsInput
-    schools?: SchoolCreateNestedManyWithoutSubdistrictInput
-    users?: UserCreateNestedManyWithoutSubdistrictInput
-    admins?: AdminCreateNestedManyWithoutSubdistrictInput
-    adminAuthority?: AdminAuthorityCreateNestedManyWithoutSubdistrictsInput
-  }
-
-  export type SubdistrictUncheckedCreateWithoutBannerLocationInput = {
-    id?: string
-    name: string
-    longitude: number
-    latitude: number
-    geoId?: string
-    provinceId: string
-    cityId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    schools?: SchoolUncheckedCreateNestedManyWithoutSubdistrictInput
-    users?: UserUncheckedCreateNestedManyWithoutSubdistrictInput
-    admins?: AdminUncheckedCreateNestedManyWithoutSubdistrictInput
-    adminAuthority?: AdminAuthorityUncheckedCreateNestedManyWithoutSubdistrictsInput
-  }
-
-  export type SubdistrictCreateOrConnectWithoutBannerLocationInput = {
-    where: SubdistrictWhereUniqueInput
-    create: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type BannerUpsertWithoutBannerLocationInput = {
-    update: XOR<BannerUpdateWithoutBannerLocationInput, BannerUncheckedUpdateWithoutBannerLocationInput>
-    create: XOR<BannerCreateWithoutBannerLocationInput, BannerUncheckedCreateWithoutBannerLocationInput>
-    where?: BannerWhereInput
-  }
-
-  export type BannerUpdateToOneWithWhereWithoutBannerLocationInput = {
-    where?: BannerWhereInput
-    data: XOR<BannerUpdateWithoutBannerLocationInput, BannerUncheckedUpdateWithoutBannerLocationInput>
-  }
-
-  export type BannerUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    thumbnailId?: StringFieldUpdateOperationsInput | string
-    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
-  }
-
-  export type BannerUncheckedUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    thumbnail?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
-    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isHide?: BoolFieldUpdateOperationsInput | boolean
-    adminId?: StringFieldUpdateOperationsInput | string
-    thumbnailId?: StringFieldUpdateOperationsInput | string
-    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
-  }
-
-  export type ProvinceUpsertWithWhereUniqueWithoutBannerLocationInput = {
-    where: ProvinceWhereUniqueInput
-    update: XOR<ProvinceUpdateWithoutBannerLocationInput, ProvinceUncheckedUpdateWithoutBannerLocationInput>
-    create: XOR<ProvinceCreateWithoutBannerLocationInput, ProvinceUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type ProvinceUpdateWithWhereUniqueWithoutBannerLocationInput = {
-    where: ProvinceWhereUniqueInput
-    data: XOR<ProvinceUpdateWithoutBannerLocationInput, ProvinceUncheckedUpdateWithoutBannerLocationInput>
-  }
-
-  export type ProvinceUpdateManyWithWhereWithoutBannerLocationInput = {
-    where: ProvinceScalarWhereInput
-    data: XOR<ProvinceUpdateManyMutationInput, ProvinceUncheckedUpdateManyWithoutBannerLocationInput>
-  }
-
-  export type ProvinceScalarWhereInput = {
-    AND?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
-    OR?: ProvinceScalarWhereInput[]
-    NOT?: ProvinceScalarWhereInput | ProvinceScalarWhereInput[]
-    id?: StringFilter<"Province"> | string
-    name?: StringFilter<"Province"> | string
-    longitude?: FloatFilter<"Province"> | number
-    latitude?: FloatFilter<"Province"> | number
-    geoId?: StringFilter<"Province"> | string
-    createdAt?: DateTimeFilter<"Province"> | Date | string
-    updatedAt?: DateTimeFilter<"Province"> | Date | string
-  }
-
-  export type CityUpsertWithWhereUniqueWithoutBannerLocationInput = {
-    where: CityWhereUniqueInput
-    update: XOR<CityUpdateWithoutBannerLocationInput, CityUncheckedUpdateWithoutBannerLocationInput>
-    create: XOR<CityCreateWithoutBannerLocationInput, CityUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type CityUpdateWithWhereUniqueWithoutBannerLocationInput = {
-    where: CityWhereUniqueInput
-    data: XOR<CityUpdateWithoutBannerLocationInput, CityUncheckedUpdateWithoutBannerLocationInput>
-  }
-
-  export type CityUpdateManyWithWhereWithoutBannerLocationInput = {
-    where: CityScalarWhereInput
-    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutBannerLocationInput>
-  }
-
-  export type SubdistrictUpsertWithWhereUniqueWithoutBannerLocationInput = {
-    where: SubdistrictWhereUniqueInput
-    update: XOR<SubdistrictUpdateWithoutBannerLocationInput, SubdistrictUncheckedUpdateWithoutBannerLocationInput>
-    create: XOR<SubdistrictCreateWithoutBannerLocationInput, SubdistrictUncheckedCreateWithoutBannerLocationInput>
-  }
-
-  export type SubdistrictUpdateWithWhereUniqueWithoutBannerLocationInput = {
-    where: SubdistrictWhereUniqueInput
-    data: XOR<SubdistrictUpdateWithoutBannerLocationInput, SubdistrictUncheckedUpdateWithoutBannerLocationInput>
-  }
-
-  export type SubdistrictUpdateManyWithWhereWithoutBannerLocationInput = {
-    where: SubdistrictScalarWhereInput
-    data: XOR<SubdistrictUpdateManyMutationInput, SubdistrictUncheckedUpdateManyWithoutBannerLocationInput>
-  }
-
   export type BannerCreateWithoutVisitorsInput = {
     id?: string
     thumbnail: string
@@ -65440,7 +64033,9 @@ export namespace Prisma {
     isHide?: boolean
     thumbnailId: string
     admin: AdminCreateNestedOneWithoutBannerInput
-    bannerLocation?: BannerLocationCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceCreateNestedManyWithoutBannersInput
+    cities?: CityCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictCreateNestedManyWithoutBannersInput
   }
 
   export type BannerUncheckedCreateWithoutVisitorsInput = {
@@ -65452,7 +64047,9 @@ export namespace Prisma {
     isHide?: boolean
     adminId: string
     thumbnailId: string
-    bannerLocation?: BannerLocationUncheckedCreateNestedManyWithoutBannerInput
+    provincies?: ProvinceUncheckedCreateNestedManyWithoutBannersInput
+    cities?: CityUncheckedCreateNestedManyWithoutBannersInput
+    subdisctricts?: SubdistrictUncheckedCreateNestedManyWithoutBannersInput
   }
 
   export type BannerCreateOrConnectWithoutVisitorsInput = {
@@ -65571,7 +64168,9 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
     admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUpdateManyWithoutBannersNestedInput
+    cities?: CityUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannersNestedInput
   }
 
   export type BannerUncheckedUpdateWithoutVisitorsInput = {
@@ -65583,7 +64182,9 @@ export namespace Prisma {
     isHide?: BoolFieldUpdateOperationsInput | boolean
     adminId?: StringFieldUpdateOperationsInput | string
     thumbnailId?: StringFieldUpdateOperationsInput | string
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
+    cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
   }
 
   export type UserUpsertWithoutBannerVisitorInput = {
@@ -67948,25 +66549,6 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
-  export type BannerLocationUpdateWithoutProvinciesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
-    cities?: CityUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
-  }
-
-  export type BannerLocationUncheckedUpdateWithoutProvinciesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
-  }
-
-  export type BannerLocationUncheckedUpdateManyWithoutProvinciesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type CityUpdateWithoutProvinceInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -67980,7 +66562,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutProvinceInput = {
@@ -67996,7 +66578,7 @@ export namespace Prisma {
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutProvinceInput = {
@@ -68182,7 +66764,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutProvinceInput = {
@@ -68198,7 +66780,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateManyWithoutProvinceInput = {
@@ -68210,6 +66792,45 @@ export namespace Prisma {
     cityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannerUpdateWithoutProvinciesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+    cities?: CityUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
+  }
+
+  export type BannerUncheckedUpdateWithoutProvinciesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
+  }
+
+  export type BannerUncheckedUpdateManyWithoutProvinciesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminCreateManyCityInput = {
@@ -68411,7 +67032,7 @@ export namespace Prisma {
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutCityInput = {
@@ -68427,7 +67048,7 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
     adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateManyWithoutCityInput = {
@@ -68581,23 +67202,43 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
-  export type BannerLocationUpdateWithoutCitiesInput = {
+  export type BannerUpdateWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
-    provincies?: ProvinceUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+    provincies?: ProvinceUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateWithoutCitiesInput = {
+  export type BannerUncheckedUpdateWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-    provincies?: ProvinceUncheckedUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutCitiesInput = {
+  export type BannerUncheckedUpdateManyWithoutCitiesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SchoolCreateManySubdistrictInput = {
@@ -68915,23 +67556,43 @@ export namespace Prisma {
     grades?: AdminAuthorityUpdategradesInput | number[]
   }
 
-  export type BannerLocationUpdateWithoutSubdisctrictsInput = {
+  export type BannerUpdateWithoutSubdisctrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    banner?: BannerUpdateOneRequiredWithoutBannerLocationNestedInput
-    provincies?: ProvinceUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUpdateManyWithoutBannerLocationNestedInput
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    admin?: AdminUpdateOneRequiredWithoutBannerNestedInput
+    provincies?: ProvinceUpdateManyWithoutBannersNestedInput
+    cities?: CityUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateWithoutSubdisctrictsInput = {
+  export type BannerUncheckedUpdateWithoutSubdisctrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
-    provincies?: ProvinceUncheckedUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
+    provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
+    cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
+    visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutSubdisctrictsInput = {
+  export type BannerUncheckedUpdateManyWithoutSubdisctrictsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    bannerId?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isHide?: BoolFieldUpdateOperationsInput | boolean
+    adminId?: StringFieldUpdateOperationsInput | string
+    thumbnailId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminCreateManySchoolInput = {
@@ -70230,7 +68891,9 @@ export namespace Prisma {
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
-    bannerLocation?: BannerLocationUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUpdateManyWithoutBannersNestedInput
+    cities?: CityUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUpdateManyWithoutBannerNestedInput
   }
 
@@ -70242,7 +68905,9 @@ export namespace Prisma {
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isHide?: BoolFieldUpdateOperationsInput | boolean
     thumbnailId?: StringFieldUpdateOperationsInput | string
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutBannerNestedInput
+    provincies?: ProvinceUncheckedUpdateManyWithoutBannersNestedInput
+    cities?: CityUncheckedUpdateManyWithoutBannersNestedInput
+    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannersNestedInput
     visitors?: BannerVisitorUncheckedUpdateManyWithoutBannerNestedInput
   }
 
@@ -70372,7 +69037,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutCityNestedInput
     subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
     users?: UserUpdateManyWithoutCityNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -70388,7 +69053,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
     subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
     users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutCitiesNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutCitiesNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutAdminAuthorityInput = {
@@ -70415,7 +69080,7 @@ export namespace Prisma {
     schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
     users?: UserUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUpdateManyWithoutSubdistrictNestedInput
-    bannerLocation?: BannerLocationUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateWithoutAdminAuthorityInput = {
@@ -70431,7 +69096,7 @@ export namespace Prisma {
     schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
     users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
     admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
-    bannerLocation?: BannerLocationUncheckedUpdateManyWithoutSubdisctrictsNestedInput
+    banners?: BannerUncheckedUpdateManyWithoutSubdisctrictsNestedInput
   }
 
   export type SubdistrictUncheckedUpdateManyWithoutAdminAuthorityInput = {
@@ -70492,10 +69157,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BannerLocationCreateManyBannerInput = {
-    id?: string
-  }
-
   export type BannerVisitorCreateManyBannerInput = {
     id?: string
     userId: string
@@ -70504,22 +69165,133 @@ export namespace Prisma {
     traffic?: number
   }
 
-  export type BannerLocationUpdateWithoutBannerInput = {
+  export type ProvinceUpdateWithoutBannersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    provincies?: ProvinceUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUpdateManyWithoutBannerLocationNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
+    cities?: CityUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUpdateManyWithoutProvinceNestedInput
+    users?: UserUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateWithoutBannerInput = {
+  export type ProvinceUncheckedUpdateWithoutBannersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    provincies?: ProvinceUncheckedUpdateManyWithoutBannerLocationNestedInput
-    cities?: CityUncheckedUpdateManyWithoutBannerLocationNestedInput
-    subdisctricts?: SubdistrictUncheckedUpdateManyWithoutBannerLocationNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
+    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
+    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
   }
 
-  export type BannerLocationUncheckedUpdateManyWithoutBannerInput = {
+  export type ProvinceUncheckedUpdateManyWithoutBannersInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CityUpdateWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUpdateManyWithoutCityNestedInput
+    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+    schools?: SchoolUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
+    users?: UserUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
+    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
+    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
+    users?: UserUncheckedUpdateManyWithoutCityNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateManyWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubdistrictUpdateWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
+    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
+    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUpdateManyWithoutSubdistrictNestedInput
+    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
+    users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
+    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
+    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
+  }
+
+  export type SubdistrictUncheckedUpdateManyWithoutBannersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: FloatFieldUpdateOperationsInput | number
+    geoId?: StringFieldUpdateOperationsInput | string
+    provinceId?: StringFieldUpdateOperationsInput | string
+    cityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BannerVisitorUpdateWithoutBannerInput = {
@@ -70544,135 +69316,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     traffic?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type ProvinceUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    admin?: AdminUpdateManyWithoutProvinceNestedInput
-    adminAuthority?: AdminAuthorityUpdateManyWithoutProvinceNestedInput
-    cities?: CityUpdateManyWithoutProvinceNestedInput
-    schools?: SchoolUpdateManyWithoutProvinceNestedInput
-    users?: UserUpdateManyWithoutProvinceNestedInput
-    subdistricts?: SubdistrictUpdateManyWithoutProvinceNestedInput
-  }
-
-  export type ProvinceUncheckedUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    admin?: AdminUncheckedUpdateManyWithoutProvinceNestedInput
-    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutProvinceNestedInput
-    cities?: CityUncheckedUpdateManyWithoutProvinceNestedInput
-    schools?: SchoolUncheckedUpdateManyWithoutProvinceNestedInput
-    users?: UserUncheckedUpdateManyWithoutProvinceNestedInput
-    subdistricts?: SubdistrictUncheckedUpdateManyWithoutProvinceNestedInput
-  }
-
-  export type ProvinceUncheckedUpdateManyWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CityUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    admin?: AdminUpdateManyWithoutCityNestedInput
-    province?: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
-    schools?: SchoolUpdateManyWithoutCityNestedInput
-    subdistricts?: SubdistrictUpdateManyWithoutCityNestedInput
-    users?: UserUpdateManyWithoutCityNestedInput
-    adminAuthority?: AdminAuthorityUpdateManyWithoutCitiesNestedInput
-  }
-
-  export type CityUncheckedUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    admin?: AdminUncheckedUpdateManyWithoutCityNestedInput
-    schools?: SchoolUncheckedUpdateManyWithoutCityNestedInput
-    subdistricts?: SubdistrictUncheckedUpdateManyWithoutCityNestedInput
-    users?: UserUncheckedUpdateManyWithoutCityNestedInput
-    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutCitiesNestedInput
-  }
-
-  export type CityUncheckedUpdateManyWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubdistrictUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    province?: ProvinceUpdateOneRequiredWithoutSubdistrictsNestedInput
-    city?: CityUpdateOneRequiredWithoutSubdistrictsNestedInput
-    schools?: SchoolUpdateManyWithoutSubdistrictNestedInput
-    users?: UserUpdateManyWithoutSubdistrictNestedInput
-    admins?: AdminUpdateManyWithoutSubdistrictNestedInput
-    adminAuthority?: AdminAuthorityUpdateManyWithoutSubdistrictsNestedInput
-  }
-
-  export type SubdistrictUncheckedUpdateWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schools?: SchoolUncheckedUpdateManyWithoutSubdistrictNestedInput
-    users?: UserUncheckedUpdateManyWithoutSubdistrictNestedInput
-    admins?: AdminUncheckedUpdateManyWithoutSubdistrictNestedInput
-    adminAuthority?: AdminAuthorityUncheckedUpdateManyWithoutSubdistrictsNestedInput
-  }
-
-  export type SubdistrictUncheckedUpdateManyWithoutBannerLocationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: FloatFieldUpdateOperationsInput | number
-    geoId?: StringFieldUpdateOperationsInput | string
-    provinceId?: StringFieldUpdateOperationsInput | string
-    cityId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestParticipantCreateManyTestInput = {
