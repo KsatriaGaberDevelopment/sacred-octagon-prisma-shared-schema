@@ -737,7 +737,6 @@ enum QuestionType {
 enum TestType {
   PreTest
   PostTest
-  FirstPreTest
   Contest
 }
 

@@ -634,7 +634,6 @@ exports.QuestionType = exports.$Enums.QuestionType = {
 exports.TestType = exports.$Enums.TestType = {
   PreTest: 'PreTest',
   PostTest: 'PostTest',
-  FirstPreTest: 'FirstPreTest',
   Contest: 'Contest'
 };
 

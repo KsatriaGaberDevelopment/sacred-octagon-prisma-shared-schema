@@ -220,7 +220,6 @@ export type QuestionType = (typeof QuestionType)[keyof typeof QuestionType]
 export const TestType: {
   PreTest: 'PreTest',
   PostTest: 'PostTest',
-  FirstPreTest: 'FirstPreTest',
   Contest: 'Contest'
 };
 
