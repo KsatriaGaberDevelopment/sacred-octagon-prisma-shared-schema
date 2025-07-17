@@ -100,6 +100,8 @@ model User {
   id                  String               @id @default(cuid())
   authId              String               @unique
   email               String               @unique
+  phoneNumber         String?
+  gender              Gender               @default(None)
   role                Role                 @default(User)
   suspend             Boolean              @default(false)
   accountType         AccountType          @default(Self)
@@ -143,6 +145,7 @@ model User {
   subdistrict         Subdistrict?         @relation(fields: [subdistrictId], references: [id])
   userLogin           UserLogin[]
   zones               Zone[]
+  transactions        UserTransaction[]
 
   @@index([provinceId])
   @@index([cityId])
@@ -707,6 +710,45 @@ model MatchHistoryMember {
   user         User                @relation(fields: [userId], references: [id])
 }
 
+model Product {
+  id           String            @id @default(cuid())
+  name         String
+  data         String[]
+  price        Int
+  createdAt    DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime          @updatedAt
+  transactions UserTransaction[]
+}
+
+model Voucher {
+  id           String            @id @default(cuid())
+  name         String
+  voucher      String            @unique
+  voucherType  VoucherType
+  amount       Int
+  quota        Int
+  currentQuota Int
+  conditions   String[] // ini list zona yang diperbolehkan menggunakan voucher ini, [] == universal
+  createdAt    DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime          @updatedAt
+  transactions UserTransaction[]
+}
+
+model UserTransaction {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime    @updatedAt
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  finalPrice    Int
+  trasactionRef String
+  voucherId     String?
+  voucher       Voucher?    @relation(fields: [voucherId], references: [id])
+  productId     String
+  product       Product     @relation(fields: [productId], references: [id])
+  status        Transaction @default(Pending)
+}
+
 enum Role {
   Developer
   SuperAdmin
@@ -776,4 +818,10 @@ enum MatchStatus {
   Win
   Lose
   Draw
+}
+
+enum Gender {
+  None
+  Male
+  Female
 }

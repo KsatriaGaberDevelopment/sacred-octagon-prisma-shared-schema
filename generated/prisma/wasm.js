@@ -168,6 +168,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   authId: 'authId',
   email: 'email',
+  phoneNumber: 'phoneNumber',
+  gender: 'gender',
   role: 'role',
   suspend: 'suspend',
   accountType: 'accountType',
@@ -566,6 +568,40 @@ exports.Prisma.MatchHistoryMemberScalarFieldEnum = {
   isDisconnect: 'isDisconnect'
 };
 
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  data: 'data',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VoucherScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  voucher: 'voucher',
+  voucherType: 'voucherType',
+  amount: 'amount',
+  quota: 'quota',
+  currentQuota: 'currentQuota',
+  conditions: 'conditions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserTransactionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  finalPrice: 'finalPrice',
+  trasactionRef: 'trasactionRef',
+  voucherId: 'voucherId',
+  productId: 'productId',
+  status: 'status'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -600,6 +636,12 @@ exports.EducationLevel = exports.$Enums.EducationLevel = {
   SD: 'SD',
   SMP: 'SMP',
   SMA: 'SMA'
+};
+
+exports.Gender = exports.$Enums.Gender = {
+  None: 'None',
+  Male: 'Male',
+  Female: 'Female'
 };
 
 exports.Role = exports.$Enums.Role = {
@@ -661,6 +703,11 @@ exports.TeamType = exports.$Enums.TeamType = {
   Red: 'Red'
 };
 
+exports.VoucherType = exports.$Enums.VoucherType = {
+  Discount: 'Discount',
+  FixedPrice: 'FixedPrice'
+};
+
 exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',
@@ -693,7 +740,10 @@ exports.Prisma.ModelName = {
   ChampionshipMatch: 'ChampionshipMatch',
   MatchMember: 'MatchMember',
   ChampionshipHistory: 'ChampionshipHistory',
-  MatchHistoryMember: 'MatchHistoryMember'
+  MatchHistoryMember: 'MatchHistoryMember',
+  Product: 'Product',
+  Voucher: 'Voucher',
+  UserTransaction: 'UserTransaction'
 };
 
 /**
