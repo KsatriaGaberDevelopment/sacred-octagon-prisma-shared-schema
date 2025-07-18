@@ -259,7 +259,13 @@ export type Operation = (typeof Operation)[keyof typeof Operation]
 export const Transaction: {
   Pending: 'Pending',
   Cancelled: 'Cancelled',
-  Settlement: 'Settlement'
+  Settlement: 'Settlement',
+  Deny: 'Deny',
+  Expire: 'Expire',
+  Failure: 'Failure',
+  Refund: 'Refund',
+  PartialRefund: 'PartialRefund',
+  Authorize: 'Authorize'
 };
 
 export type Transaction = (typeof Transaction)[keyof typeof Transaction]

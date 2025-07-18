@@ -696,7 +696,13 @@ exports.TestType = exports.$Enums.TestType = {
 exports.Transaction = exports.$Enums.Transaction = {
   Pending: 'Pending',
   Cancelled: 'Cancelled',
-  Settlement: 'Settlement'
+  Settlement: 'Settlement',
+  Deny: 'Deny',
+  Expire: 'Expire',
+  Failure: 'Failure',
+  Refund: 'Refund',
+  PartialRefund: 'PartialRefund',
+  Authorize: 'Authorize'
 };
 
 exports.MatchMode = exports.$Enums.MatchMode = {

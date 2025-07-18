@@ -812,6 +812,12 @@ enum Transaction {
   Pending
   Cancelled
   Settlement
+  Deny
+  Expire
+  Failure
+  Refund
+  PartialRefund
+  Authorize
 }
 
 enum EducationLevel {
