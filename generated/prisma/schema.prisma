@@ -611,7 +611,7 @@ model UserRedeemCode {
   suspend   Boolean   @default(false)
 
   transactionId String          @unique
-  transaction   UserTransaction @relation(fields: [transactionId], references: [id])
+  transaction   UserTransaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
 }
 
 model CodeRedeemer {
