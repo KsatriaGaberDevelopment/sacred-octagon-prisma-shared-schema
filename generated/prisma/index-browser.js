@@ -598,6 +598,7 @@ exports.Prisma.VoucherScalarFieldEnum = {
   amount: 'amount',
   quota: 'quota',
   currentQuota: 'currentQuota',
+  expiredAt: 'expiredAt',
   conditions: 'conditions',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

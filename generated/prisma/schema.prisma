@@ -745,6 +745,7 @@ model Voucher {
   amount       Int
   quota        Int
   currentQuota Int
+  expiredAt    DateTime?
   conditions   String[] // ini list zona yang diperbolehkan menggunakan voucher ini, [] == universal
   createdAt    DateTime          @default(now()) @db.Timestamptz(3)
   updatedAt    DateTime          @updatedAt
