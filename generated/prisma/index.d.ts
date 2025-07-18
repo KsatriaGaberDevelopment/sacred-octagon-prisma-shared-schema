@@ -47686,6 +47686,7 @@ export namespace Prisma {
     userId: number
     finalPrice: number
     transactionRef: number
+    transactionActionRef: number
     voucherId: number
     productId: number
     status: number
@@ -47732,6 +47733,7 @@ export namespace Prisma {
     userId?: true
     finalPrice?: true
     transactionRef?: true
+    transactionActionRef?: true
     voucherId?: true
     productId?: true
     status?: true
@@ -47831,6 +47833,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonValue
     voucherId: string | null
     productId: string
     status: $Enums.Transaction
@@ -47862,6 +47865,7 @@ export namespace Prisma {
     userId?: boolean
     finalPrice?: boolean
     transactionRef?: boolean
+    transactionActionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
@@ -47878,6 +47882,7 @@ export namespace Prisma {
     userId?: boolean
     finalPrice?: boolean
     transactionRef?: boolean
+    transactionActionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
@@ -47893,6 +47898,7 @@ export namespace Prisma {
     userId?: boolean
     finalPrice?: boolean
     transactionRef?: boolean
+    transactionActionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
@@ -47908,12 +47914,13 @@ export namespace Prisma {
     userId?: boolean
     finalPrice?: boolean
     transactionRef?: boolean
+    transactionActionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
   }
 
-  export type UserTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "finalPrice" | "transactionRef" | "voucherId" | "productId" | "status", ExtArgs["result"]["userTransaction"]>
+  export type UserTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "finalPrice" | "transactionRef" | "transactionActionRef" | "voucherId" | "productId" | "status", ExtArgs["result"]["userTransaction"]>
   export type UserTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     voucher?: boolean | UserTransaction$voucherArgs<ExtArgs>
@@ -47946,6 +47953,7 @@ export namespace Prisma {
       userId: string
       finalPrice: number
       transactionRef: string
+      transactionActionRef: Prisma.JsonValue
       voucherId: string | null
       productId: string
       status: $Enums.Transaction
@@ -48382,6 +48390,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"UserTransaction", 'String'>
     readonly finalPrice: FieldRef<"UserTransaction", 'Int'>
     readonly transactionRef: FieldRef<"UserTransaction", 'String'>
+    readonly transactionActionRef: FieldRef<"UserTransaction", 'Json'>
     readonly voucherId: FieldRef<"UserTransaction", 'String'>
     readonly productId: FieldRef<"UserTransaction", 'String'>
     readonly status: FieldRef<"UserTransaction", 'Transaction'>
@@ -49450,6 +49459,7 @@ export namespace Prisma {
     userId: 'userId',
     finalPrice: 'finalPrice',
     transactionRef: 'transactionRef',
+    transactionActionRef: 'transactionActionRef',
     voucherId: 'voucherId',
     productId: 'productId',
     status: 'status'
@@ -53013,6 +53023,7 @@ export namespace Prisma {
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
     transactionRef?: StringFilter<"UserTransaction"> | string
+    transactionActionRef?: JsonFilter<"UserTransaction">
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
@@ -53029,6 +53040,7 @@ export namespace Prisma {
     userId?: SortOrder
     finalPrice?: SortOrder
     transactionRef?: SortOrder
+    transactionActionRef?: SortOrder
     voucherId?: SortOrderInput | SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -53048,6 +53060,7 @@ export namespace Prisma {
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
     transactionRef?: StringFilter<"UserTransaction"> | string
+    transactionActionRef?: JsonFilter<"UserTransaction">
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
@@ -53064,6 +53077,7 @@ export namespace Prisma {
     userId?: SortOrder
     finalPrice?: SortOrder
     transactionRef?: SortOrder
+    transactionActionRef?: SortOrder
     voucherId?: SortOrderInput | SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -53084,6 +53098,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"UserTransaction"> | string
     finalPrice?: IntWithAggregatesFilter<"UserTransaction"> | number
     transactionRef?: StringWithAggregatesFilter<"UserTransaction"> | string
+    transactionActionRef?: JsonWithAggregatesFilter<"UserTransaction">
     voucherId?: StringNullableWithAggregatesFilter<"UserTransaction"> | string | null
     productId?: StringWithAggregatesFilter<"UserTransaction"> | string
     status?: EnumTransactionWithAggregatesFilter<"UserTransaction"> | $Enums.Transaction
@@ -56704,6 +56719,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
@@ -56718,6 +56734,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -56730,6 +56747,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
@@ -56744,6 +56762,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -56757,6 +56776,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -56768,6 +56788,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }
 
@@ -56778,6 +56799,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -59497,6 +59519,7 @@ export namespace Prisma {
     userId?: SortOrder
     finalPrice?: SortOrder
     transactionRef?: SortOrder
+    transactionActionRef?: SortOrder
     voucherId?: SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -66274,6 +66297,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     status?: $Enums.Transaction
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
     product: ProductCreateNestedOneWithoutTransactionsInput
@@ -66286,6 +66310,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -67051,6 +67076,7 @@ export namespace Prisma {
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
     transactionRef?: StringFilter<"UserTransaction"> | string
+    transactionActionRef?: JsonFilter<"UserTransaction">
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
@@ -72713,6 +72739,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
@@ -72726,6 +72753,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -72860,6 +72888,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
@@ -72873,6 +72902,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -73878,6 +73908,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
@@ -73891,6 +73922,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     status?: $Enums.Transaction
     code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
@@ -73928,6 +73960,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     product: ProductCreateNestedOneWithoutTransactionsInput
@@ -73941,6 +73974,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     productId: string
     status?: $Enums.Transaction
     code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
@@ -76139,6 +76173,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -76690,6 +76725,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
     product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
@@ -76702,6 +76738,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -76714,6 +76751,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -77774,6 +77812,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     voucherId?: string | null
     status?: $Enums.Transaction
   }
@@ -77784,6 +77823,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
@@ -77797,6 +77837,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
@@ -77809,6 +77850,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }
@@ -77820,6 +77862,7 @@ export namespace Prisma {
     userId: string
     finalPrice: number
     transactionRef: string
+    transactionActionRef: JsonNullValueInput | InputJsonValue
     productId: string
     status?: $Enums.Transaction
   }
@@ -77830,6 +77873,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
@@ -77843,6 +77887,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
@@ -77855,6 +77900,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
     transactionRef?: StringFieldUpdateOperationsInput | string
+    transactionActionRef?: JsonNullValueInput | InputJsonValue
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }

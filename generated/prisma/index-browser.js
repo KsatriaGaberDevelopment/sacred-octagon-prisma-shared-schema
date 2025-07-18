@@ -611,6 +611,7 @@ exports.Prisma.UserTransactionScalarFieldEnum = {
   userId: 'userId',
   finalPrice: 'finalPrice',
   transactionRef: 'transactionRef',
+  transactionActionRef: 'transactionActionRef',
   voucherId: 'voucherId',
   productId: 'productId',
   status: 'status'
