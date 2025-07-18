@@ -53052,6 +53052,7 @@ export namespace Prisma {
 
   export type UserTransactionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    transactionRef?: string
     AND?: UserTransactionWhereInput | UserTransactionWhereInput[]
     OR?: UserTransactionWhereInput[]
     NOT?: UserTransactionWhereInput | UserTransactionWhereInput[]
@@ -53059,7 +53060,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
-    transactionRef?: StringFilter<"UserTransaction"> | string
     transactionActionRef?: JsonFilter<"UserTransaction">
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
@@ -53068,7 +53068,7 @@ export namespace Prisma {
     voucher?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
     code?: XOR<UserRedeemCodeNullableScalarRelationFilter, UserRedeemCodeWhereInput> | null
-  }, "id">
+  }, "id" | "transactionRef">
 
   export type UserTransactionOrderByWithAggregationInput = {
     id?: SortOrder

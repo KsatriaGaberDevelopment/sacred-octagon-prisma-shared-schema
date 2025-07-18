@@ -759,7 +759,7 @@ model UserTransaction {
   userId               String
   user                 User            @relation(fields: [userId], references: [id])
   finalPrice           Int
-  transactionRef       String // midtrans order id
+  transactionRef       String          @unique // midtrans order id
   transactionActionRef Json
   voucherId            String?
   voucher              Voucher?        @relation(fields: [voucherId], references: [id])
