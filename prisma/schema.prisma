@@ -116,6 +116,7 @@ model User {
   playTime            Int                  @default(0)
   characterUsed       String               @default("")
   inventory           Int[]                @default([0, 0, 0])
+  currentTransaction  String?
   schoolId            String?
   cityId              String?
   provinceId          String?
@@ -146,6 +147,7 @@ model User {
   userLogin           UserLogin[]
   zones               Zone[]
   transactions        UserTransaction[]
+  codes               UserRedeemCode[]
 
   @@index([provinceId])
   @@index([cityId])
@@ -557,7 +559,7 @@ model AdminTransaction {
   quantity            Int         @default(0) // quota
   zones               String[]
   adminId             String
-  amount              Int //harga
+  amount              Int // harga
   archived            Boolean     @default(false)
   description         String?
   name                String
@@ -598,6 +600,20 @@ model RedeemCode {
   @@index([adminId])
 }
 
+model UserRedeemCode {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  expiredAt DateTime? @db.Timestamptz(3)
+  data      String[]
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  suspend   Boolean   @default(false)
+
+  transactionId String          @unique
+  transaction   UserTransaction @relation(fields: [transactionId], references: [id])
+}
+
 model CodeRedeemer {
   id        String     @id @default(cuid())
   banned    Boolean    @default(false)
@@ -624,7 +640,7 @@ model ChampionshipMatch {
   gameplayId    String
   botOwner      String?
   mode          MatchMode
-  endTime       Int           @default(0) //Game duration
+  endTime       Int           @default(0) // Game duration
   startedAt     DateTime?     @db.Timestamptz(3)
   endedAt       DateTime?     @db.Timestamptz(3)
   expiredAt     DateTime?     @db.Timestamptz(3)
@@ -647,7 +663,7 @@ model MatchMember {
   id           String            @id @default(cuid())
   roomId       String
   userId       String
-  slot         Int               @default(0) //Ini untuk cegah user pindah2 slot after leave saat masih di room
+  slot         Int               @default(0) // Ini untuk cegah user pindah2 slot after leave saat masih di room
   status       MatchStatus       @default(None)
   answerPoint  Int               @default(0) // ini point ketika menjawab contoh benar 100/salah -100
   point        Int               @default(0) // ini jumlah point yang didapat
@@ -674,7 +690,7 @@ model ChampionshipHistory {
   botOwner      String?
   currentPoint  Int[]                @default([0, 0]) //@@TODO - JAYA: kemungkinan ga dipakai lagi
   mode          MatchMode
-  endTime       Int                  @default(0) //Game duration
+  endTime       Int                  @default(0) // Game duration
   startedAt     DateTime?            @db.Timestamptz(3)
   endedAt       DateTime?            @db.Timestamptz(3)
   expiredAt     DateTime?            @db.Timestamptz(3)
@@ -711,13 +727,14 @@ model MatchHistoryMember {
 }
 
 model Product {
-  id           String            @id @default(cuid())
-  name         String
-  data         String[]
-  price        Int
-  createdAt    DateTime          @default(now()) @db.Timestamptz(3)
-  updatedAt    DateTime          @updatedAt
-  transactions UserTransaction[]
+  id               String            @id @default(cuid())
+  name             String
+  data             String[]
+  price            Int
+  createdAt        DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime          @updatedAt
+  subscriptionTime Int
+  transactions     UserTransaction[]
 }
 
 model Voucher {
@@ -735,18 +752,19 @@ model Voucher {
 }
 
 model UserTransaction {
-  id            String      @id @default(cuid())
-  createdAt     DateTime    @default(now()) @db.Timestamptz(3)
-  updatedAt     DateTime    @updatedAt
-  userId        String
-  user          User        @relation(fields: [userId], references: [id])
-  finalPrice    Int
-  trasactionRef String
-  voucherId     String?
-  voucher       Voucher?    @relation(fields: [voucherId], references: [id])
-  productId     String
-  product       Product     @relation(fields: [productId], references: [id])
-  status        Transaction @default(Pending)
+  id             String          @id @default(cuid())
+  createdAt      DateTime        @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime        @updatedAt
+  userId         String
+  user           User            @relation(fields: [userId], references: [id])
+  finalPrice     Int
+  transactionRef String // midtrans order id
+  voucherId      String?
+  voucher        Voucher?        @relation(fields: [voucherId], references: [id])
+  productId      String
+  product        Product         @relation(fields: [productId], references: [id])
+  status         Transaction     @default(Pending)
+  code           UserRedeemCode?
 }
 
 enum Role {

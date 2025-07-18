@@ -149,6 +149,11 @@ export type AdminTransaction = $Result.DefaultSelection<Prisma.$AdminTransaction
  */
 export type RedeemCode = $Result.DefaultSelection<Prisma.$RedeemCodePayload>
 /**
+ * Model UserRedeemCode
+ * 
+ */
+export type UserRedeemCode = $Result.DefaultSelection<Prisma.$UserRedeemCodePayload>
+/**
  * Model CodeRedeemer
  * 
  */
@@ -751,6 +756,16 @@ export class PrismaClient<
   get redeemCode(): Prisma.RedeemCodeDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.userRedeemCode`: Exposes CRUD operations for the **UserRedeemCode** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserRedeemCodes
+    * const userRedeemCodes = await prisma.userRedeemCode.findMany()
+    * ```
+    */
+  get userRedeemCode(): Prisma.UserRedeemCodeDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.codeRedeemer`: Exposes CRUD operations for the **CodeRedeemer** model.
     * Example usage:
     * ```ts
@@ -1296,6 +1311,7 @@ export namespace Prisma {
     Setting: 'Setting',
     AdminTransaction: 'AdminTransaction',
     RedeemCode: 'RedeemCode',
+    UserRedeemCode: 'UserRedeemCode',
     CodeRedeemer: 'CodeRedeemer',
     ChampionshipMatch: 'ChampionshipMatch',
     MatchMember: 'MatchMember',
@@ -1322,7 +1338,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember" | "product" | "voucher" | "userTransaction"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "userRedeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember" | "product" | "voucher" | "userTransaction"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3324,6 +3340,80 @@ export namespace Prisma {
           }
         }
       }
+      UserRedeemCode: {
+        payload: Prisma.$UserRedeemCodePayload<ExtArgs>
+        fields: Prisma.UserRedeemCodeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserRedeemCodeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserRedeemCodeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          findFirst: {
+            args: Prisma.UserRedeemCodeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserRedeemCodeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          findMany: {
+            args: Prisma.UserRedeemCodeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>[]
+          }
+          create: {
+            args: Prisma.UserRedeemCodeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          createMany: {
+            args: Prisma.UserRedeemCodeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserRedeemCodeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>[]
+          }
+          delete: {
+            args: Prisma.UserRedeemCodeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          update: {
+            args: Prisma.UserRedeemCodeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserRedeemCodeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserRedeemCodeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserRedeemCodeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserRedeemCodeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserRedeemCodePayload>
+          }
+          aggregate: {
+            args: Prisma.UserRedeemCodeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserRedeemCode>
+          }
+          groupBy: {
+            args: Prisma.UserRedeemCodeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserRedeemCodeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserRedeemCodeCountArgs<ExtArgs>
+            result: $Utils.Optional<UserRedeemCodeCountAggregateOutputType> | number
+          }
+        }
+      }
       CodeRedeemer: {
         payload: Prisma.$CodeRedeemerPayload<ExtArgs>
         fields: Prisma.CodeRedeemerFieldRefs
@@ -4027,6 +4117,7 @@ export namespace Prisma {
     setting?: SettingOmit
     adminTransaction?: AdminTransactionOmit
     redeemCode?: RedeemCodeOmit
+    userRedeemCode?: UserRedeemCodeOmit
     codeRedeemer?: CodeRedeemerOmit
     championshipMatch?: ChampionshipMatchOmit
     matchMember?: MatchMemberOmit
@@ -4421,6 +4512,7 @@ export namespace Prisma {
     userLogin: number
     zones: number
     transactions: number
+    codes: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4439,6 +4531,7 @@ export namespace Prisma {
     userLogin?: boolean | UserCountOutputTypeCountUserLoginArgs
     zones?: boolean | UserCountOutputTypeCountZonesArgs
     transactions?: boolean | UserCountOutputTypeCountTransactionsArgs
+    codes?: boolean | UserCountOutputTypeCountCodesArgs
   }
 
   // Custom InputTypes
@@ -4555,6 +4648,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserTransactionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCodesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserRedeemCodeWhereInput
   }
 
 
@@ -10270,6 +10370,7 @@ export namespace Prisma {
     logoutAt: Date | null
     playTime: number | null
     characterUsed: string | null
+    currentTransaction: string | null
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
@@ -10301,6 +10402,7 @@ export namespace Prisma {
     logoutAt: Date | null
     playTime: number | null
     characterUsed: string | null
+    currentTransaction: string | null
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
@@ -10333,6 +10435,7 @@ export namespace Prisma {
     playTime: number
     characterUsed: number
     inventory: number
+    currentTransaction: number
     schoolId: number
     cityId: number
     provinceId: number
@@ -10378,6 +10481,7 @@ export namespace Prisma {
     logoutAt?: true
     playTime?: true
     characterUsed?: true
+    currentTransaction?: true
     schoolId?: true
     cityId?: true
     provinceId?: true
@@ -10409,6 +10513,7 @@ export namespace Prisma {
     logoutAt?: true
     playTime?: true
     characterUsed?: true
+    currentTransaction?: true
     schoolId?: true
     cityId?: true
     provinceId?: true
@@ -10441,6 +10546,7 @@ export namespace Prisma {
     playTime?: true
     characterUsed?: true
     inventory?: true
+    currentTransaction?: true
     schoolId?: true
     cityId?: true
     provinceId?: true
@@ -10560,6 +10666,7 @@ export namespace Prisma {
     playTime: number
     characterUsed: string
     inventory: number[]
+    currentTransaction: string | null
     schoolId: string | null
     cityId: string | null
     provinceId: string | null
@@ -10611,6 +10718,7 @@ export namespace Prisma {
     playTime?: boolean
     characterUsed?: boolean
     inventory?: boolean
+    currentTransaction?: boolean
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
@@ -10641,6 +10749,7 @@ export namespace Prisma {
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     transactions?: boolean | User$transactionsArgs<ExtArgs>
+    codes?: boolean | User$codesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -10664,6 +10773,7 @@ export namespace Prisma {
     playTime?: boolean
     characterUsed?: boolean
     inventory?: boolean
+    currentTransaction?: boolean
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
@@ -10701,6 +10811,7 @@ export namespace Prisma {
     playTime?: boolean
     characterUsed?: boolean
     inventory?: boolean
+    currentTransaction?: boolean
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
@@ -10738,6 +10849,7 @@ export namespace Prisma {
     playTime?: boolean
     characterUsed?: boolean
     inventory?: boolean
+    currentTransaction?: boolean
     schoolId?: boolean
     cityId?: boolean
     provinceId?: boolean
@@ -10750,7 +10862,7 @@ export namespace Prisma {
     lastIdZonePosition?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "phoneNumber" | "gender" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "schoolId" | "cityId" | "provinceId" | "subdistrictId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "email" | "phoneNumber" | "gender" | "role" | "suspend" | "accountType" | "firstTest" | "fullname" | "birthDate" | "grade" | "lastGradeUpdateAt" | "schoolIdentity" | "loginAt" | "logoutAt" | "playTime" | "characterUsed" | "inventory" | "currentTransaction" | "schoolId" | "cityId" | "provinceId" | "subdistrictId" | "adminId" | "createdAt" | "updatedAt" | "username" | "lastIdZoneUnlocked" | "lastIdZonePosition", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bannerVisitor?: boolean | User$bannerVisitorArgs<ExtArgs>
     championships?: boolean | User$championshipsArgs<ExtArgs>
@@ -10772,6 +10884,7 @@ export namespace Prisma {
     userLogin?: boolean | User$userLoginArgs<ExtArgs>
     zones?: boolean | User$zonesArgs<ExtArgs>
     transactions?: boolean | User$transactionsArgs<ExtArgs>
+    codes?: boolean | User$codesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10812,6 +10925,7 @@ export namespace Prisma {
       userLogin: Prisma.$UserLoginPayload<ExtArgs>[]
       zones: Prisma.$ZonePayload<ExtArgs>[]
       transactions: Prisma.$UserTransactionPayload<ExtArgs>[]
+      codes: Prisma.$UserRedeemCodePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10833,6 +10947,7 @@ export namespace Prisma {
       playTime: number
       characterUsed: string
       inventory: number[]
+      currentTransaction: string | null
       schoolId: string | null
       cityId: string | null
       provinceId: string | null
@@ -11257,6 +11372,7 @@ export namespace Prisma {
     userLogin<T extends User$userLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$userLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserLoginPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     zones<T extends User$zonesArgs<ExtArgs> = {}>(args?: Subset<T, User$zonesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transactions<T extends User$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    codes<T extends User$codesArgs<ExtArgs> = {}>(args?: Subset<T, User$codesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11305,6 +11421,7 @@ export namespace Prisma {
     readonly playTime: FieldRef<"User", 'Int'>
     readonly characterUsed: FieldRef<"User", 'String'>
     readonly inventory: FieldRef<"User", 'Int[]'>
+    readonly currentTransaction: FieldRef<"User", 'String'>
     readonly schoolId: FieldRef<"User", 'String'>
     readonly cityId: FieldRef<"User", 'String'>
     readonly provinceId: FieldRef<"User", 'String'>
@@ -12163,6 +12280,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserTransactionScalarFieldEnum | UserTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * User.codes
+   */
+  export type User$codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    where?: UserRedeemCodeWhereInput
+    orderBy?: UserRedeemCodeOrderByWithRelationInput | UserRedeemCodeOrderByWithRelationInput[]
+    cursor?: UserRedeemCodeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserRedeemCodeScalarFieldEnum | UserRedeemCodeScalarFieldEnum[]
   }
 
   /**
@@ -38029,6 +38170,1107 @@ export namespace Prisma {
 
 
   /**
+   * Model UserRedeemCode
+   */
+
+  export type AggregateUserRedeemCode = {
+    _count: UserRedeemCodeCountAggregateOutputType | null
+    _min: UserRedeemCodeMinAggregateOutputType | null
+    _max: UserRedeemCodeMaxAggregateOutputType | null
+  }
+
+  export type UserRedeemCodeMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    expiredAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    suspend: boolean | null
+    transactionId: string | null
+  }
+
+  export type UserRedeemCodeMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    expiredAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    suspend: boolean | null
+    transactionId: string | null
+  }
+
+  export type UserRedeemCodeCountAggregateOutputType = {
+    id: number
+    userId: number
+    expiredAt: number
+    data: number
+    createdAt: number
+    updatedAt: number
+    suspend: number
+    transactionId: number
+    _all: number
+  }
+
+
+  export type UserRedeemCodeMinAggregateInputType = {
+    id?: true
+    userId?: true
+    expiredAt?: true
+    createdAt?: true
+    updatedAt?: true
+    suspend?: true
+    transactionId?: true
+  }
+
+  export type UserRedeemCodeMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    expiredAt?: true
+    createdAt?: true
+    updatedAt?: true
+    suspend?: true
+    transactionId?: true
+  }
+
+  export type UserRedeemCodeCountAggregateInputType = {
+    id?: true
+    userId?: true
+    expiredAt?: true
+    data?: true
+    createdAt?: true
+    updatedAt?: true
+    suspend?: true
+    transactionId?: true
+    _all?: true
+  }
+
+  export type UserRedeemCodeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserRedeemCode to aggregate.
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRedeemCodes to fetch.
+     */
+    orderBy?: UserRedeemCodeOrderByWithRelationInput | UserRedeemCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserRedeemCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRedeemCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRedeemCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserRedeemCodes
+    **/
+    _count?: true | UserRedeemCodeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserRedeemCodeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserRedeemCodeMaxAggregateInputType
+  }
+
+  export type GetUserRedeemCodeAggregateType<T extends UserRedeemCodeAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserRedeemCode]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserRedeemCode[P]>
+      : GetScalarType<T[P], AggregateUserRedeemCode[P]>
+  }
+
+
+
+
+  export type UserRedeemCodeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserRedeemCodeWhereInput
+    orderBy?: UserRedeemCodeOrderByWithAggregationInput | UserRedeemCodeOrderByWithAggregationInput[]
+    by: UserRedeemCodeScalarFieldEnum[] | UserRedeemCodeScalarFieldEnum
+    having?: UserRedeemCodeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserRedeemCodeCountAggregateInputType | true
+    _min?: UserRedeemCodeMinAggregateInputType
+    _max?: UserRedeemCodeMaxAggregateInputType
+  }
+
+  export type UserRedeemCodeGroupByOutputType = {
+    id: string
+    userId: string
+    expiredAt: Date | null
+    data: string[]
+    createdAt: Date
+    updatedAt: Date
+    suspend: boolean
+    transactionId: string
+    _count: UserRedeemCodeCountAggregateOutputType | null
+    _min: UserRedeemCodeMinAggregateOutputType | null
+    _max: UserRedeemCodeMaxAggregateOutputType | null
+  }
+
+  type GetUserRedeemCodeGroupByPayload<T extends UserRedeemCodeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserRedeemCodeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserRedeemCodeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserRedeemCodeGroupByOutputType[P]>
+            : GetScalarType<T[P], UserRedeemCodeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserRedeemCodeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    expiredAt?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userRedeemCode"]>
+
+  export type UserRedeemCodeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    expiredAt?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userRedeemCode"]>
+
+  export type UserRedeemCodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    expiredAt?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userRedeemCode"]>
+
+  export type UserRedeemCodeSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    expiredAt?: boolean
+    data?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    suspend?: boolean
+    transactionId?: boolean
+  }
+
+  export type UserRedeemCodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "expiredAt" | "data" | "createdAt" | "updatedAt" | "suspend" | "transactionId", ExtArgs["result"]["userRedeemCode"]>
+  export type UserRedeemCodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }
+  export type UserRedeemCodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }
+  export type UserRedeemCodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transaction?: boolean | UserTransactionDefaultArgs<ExtArgs>
+  }
+
+  export type $UserRedeemCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserRedeemCode"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      transaction: Prisma.$UserTransactionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      expiredAt: Date | null
+      data: string[]
+      createdAt: Date
+      updatedAt: Date
+      suspend: boolean
+      transactionId: string
+    }, ExtArgs["result"]["userRedeemCode"]>
+    composites: {}
+  }
+
+  type UserRedeemCodeGetPayload<S extends boolean | null | undefined | UserRedeemCodeDefaultArgs> = $Result.GetResult<Prisma.$UserRedeemCodePayload, S>
+
+  type UserRedeemCodeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserRedeemCodeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserRedeemCodeCountAggregateInputType | true
+    }
+
+  export interface UserRedeemCodeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserRedeemCode'], meta: { name: 'UserRedeemCode' } }
+    /**
+     * Find zero or one UserRedeemCode that matches the filter.
+     * @param {UserRedeemCodeFindUniqueArgs} args - Arguments to find a UserRedeemCode
+     * @example
+     * // Get one UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserRedeemCodeFindUniqueArgs>(args: SelectSubset<T, UserRedeemCodeFindUniqueArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserRedeemCode that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserRedeemCodeFindUniqueOrThrowArgs} args - Arguments to find a UserRedeemCode
+     * @example
+     * // Get one UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserRedeemCodeFindUniqueOrThrowArgs>(args: SelectSubset<T, UserRedeemCodeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserRedeemCode that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeFindFirstArgs} args - Arguments to find a UserRedeemCode
+     * @example
+     * // Get one UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserRedeemCodeFindFirstArgs>(args?: SelectSubset<T, UserRedeemCodeFindFirstArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserRedeemCode that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeFindFirstOrThrowArgs} args - Arguments to find a UserRedeemCode
+     * @example
+     * // Get one UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserRedeemCodeFindFirstOrThrowArgs>(args?: SelectSubset<T, UserRedeemCodeFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserRedeemCodes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserRedeemCodes
+     * const userRedeemCodes = await prisma.userRedeemCode.findMany()
+     * 
+     * // Get first 10 UserRedeemCodes
+     * const userRedeemCodes = await prisma.userRedeemCode.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userRedeemCodeWithIdOnly = await prisma.userRedeemCode.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserRedeemCodeFindManyArgs>(args?: SelectSubset<T, UserRedeemCodeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserRedeemCode.
+     * @param {UserRedeemCodeCreateArgs} args - Arguments to create a UserRedeemCode.
+     * @example
+     * // Create one UserRedeemCode
+     * const UserRedeemCode = await prisma.userRedeemCode.create({
+     *   data: {
+     *     // ... data to create a UserRedeemCode
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserRedeemCodeCreateArgs>(args: SelectSubset<T, UserRedeemCodeCreateArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserRedeemCodes.
+     * @param {UserRedeemCodeCreateManyArgs} args - Arguments to create many UserRedeemCodes.
+     * @example
+     * // Create many UserRedeemCodes
+     * const userRedeemCode = await prisma.userRedeemCode.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserRedeemCodeCreateManyArgs>(args?: SelectSubset<T, UserRedeemCodeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserRedeemCodes and returns the data saved in the database.
+     * @param {UserRedeemCodeCreateManyAndReturnArgs} args - Arguments to create many UserRedeemCodes.
+     * @example
+     * // Create many UserRedeemCodes
+     * const userRedeemCode = await prisma.userRedeemCode.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserRedeemCodes and only return the `id`
+     * const userRedeemCodeWithIdOnly = await prisma.userRedeemCode.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserRedeemCodeCreateManyAndReturnArgs>(args?: SelectSubset<T, UserRedeemCodeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserRedeemCode.
+     * @param {UserRedeemCodeDeleteArgs} args - Arguments to delete one UserRedeemCode.
+     * @example
+     * // Delete one UserRedeemCode
+     * const UserRedeemCode = await prisma.userRedeemCode.delete({
+     *   where: {
+     *     // ... filter to delete one UserRedeemCode
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserRedeemCodeDeleteArgs>(args: SelectSubset<T, UserRedeemCodeDeleteArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserRedeemCode.
+     * @param {UserRedeemCodeUpdateArgs} args - Arguments to update one UserRedeemCode.
+     * @example
+     * // Update one UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserRedeemCodeUpdateArgs>(args: SelectSubset<T, UserRedeemCodeUpdateArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserRedeemCodes.
+     * @param {UserRedeemCodeDeleteManyArgs} args - Arguments to filter UserRedeemCodes to delete.
+     * @example
+     * // Delete a few UserRedeemCodes
+     * const { count } = await prisma.userRedeemCode.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserRedeemCodeDeleteManyArgs>(args?: SelectSubset<T, UserRedeemCodeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserRedeemCodes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserRedeemCodes
+     * const userRedeemCode = await prisma.userRedeemCode.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserRedeemCodeUpdateManyArgs>(args: SelectSubset<T, UserRedeemCodeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserRedeemCodes and returns the data updated in the database.
+     * @param {UserRedeemCodeUpdateManyAndReturnArgs} args - Arguments to update many UserRedeemCodes.
+     * @example
+     * // Update many UserRedeemCodes
+     * const userRedeemCode = await prisma.userRedeemCode.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserRedeemCodes and only return the `id`
+     * const userRedeemCodeWithIdOnly = await prisma.userRedeemCode.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserRedeemCodeUpdateManyAndReturnArgs>(args: SelectSubset<T, UserRedeemCodeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserRedeemCode.
+     * @param {UserRedeemCodeUpsertArgs} args - Arguments to update or create a UserRedeemCode.
+     * @example
+     * // Update or create a UserRedeemCode
+     * const userRedeemCode = await prisma.userRedeemCode.upsert({
+     *   create: {
+     *     // ... data to create a UserRedeemCode
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserRedeemCode we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserRedeemCodeUpsertArgs>(args: SelectSubset<T, UserRedeemCodeUpsertArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserRedeemCodes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeCountArgs} args - Arguments to filter UserRedeemCodes to count.
+     * @example
+     * // Count the number of UserRedeemCodes
+     * const count = await prisma.userRedeemCode.count({
+     *   where: {
+     *     // ... the filter for the UserRedeemCodes we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserRedeemCodeCountArgs>(
+      args?: Subset<T, UserRedeemCodeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserRedeemCodeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserRedeemCode.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserRedeemCodeAggregateArgs>(args: Subset<T, UserRedeemCodeAggregateArgs>): Prisma.PrismaPromise<GetUserRedeemCodeAggregateType<T>>
+
+    /**
+     * Group by UserRedeemCode.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserRedeemCodeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserRedeemCodeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserRedeemCodeGroupByArgs['orderBy'] }
+        : { orderBy?: UserRedeemCodeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserRedeemCodeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserRedeemCodeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserRedeemCode model
+   */
+  readonly fields: UserRedeemCodeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserRedeemCode.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserRedeemCodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transaction<T extends UserTransactionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserTransactionDefaultArgs<ExtArgs>>): Prisma__UserTransactionClient<$Result.GetResult<Prisma.$UserTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserRedeemCode model
+   */
+  interface UserRedeemCodeFieldRefs {
+    readonly id: FieldRef<"UserRedeemCode", 'String'>
+    readonly userId: FieldRef<"UserRedeemCode", 'String'>
+    readonly expiredAt: FieldRef<"UserRedeemCode", 'DateTime'>
+    readonly data: FieldRef<"UserRedeemCode", 'String[]'>
+    readonly createdAt: FieldRef<"UserRedeemCode", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserRedeemCode", 'DateTime'>
+    readonly suspend: FieldRef<"UserRedeemCode", 'Boolean'>
+    readonly transactionId: FieldRef<"UserRedeemCode", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserRedeemCode findUnique
+   */
+  export type UserRedeemCodeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRedeemCode to fetch.
+     */
+    where: UserRedeemCodeWhereUniqueInput
+  }
+
+  /**
+   * UserRedeemCode findUniqueOrThrow
+   */
+  export type UserRedeemCodeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRedeemCode to fetch.
+     */
+    where: UserRedeemCodeWhereUniqueInput
+  }
+
+  /**
+   * UserRedeemCode findFirst
+   */
+  export type UserRedeemCodeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRedeemCode to fetch.
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRedeemCodes to fetch.
+     */
+    orderBy?: UserRedeemCodeOrderByWithRelationInput | UserRedeemCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserRedeemCodes.
+     */
+    cursor?: UserRedeemCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRedeemCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRedeemCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserRedeemCodes.
+     */
+    distinct?: UserRedeemCodeScalarFieldEnum | UserRedeemCodeScalarFieldEnum[]
+  }
+
+  /**
+   * UserRedeemCode findFirstOrThrow
+   */
+  export type UserRedeemCodeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRedeemCode to fetch.
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRedeemCodes to fetch.
+     */
+    orderBy?: UserRedeemCodeOrderByWithRelationInput | UserRedeemCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserRedeemCodes.
+     */
+    cursor?: UserRedeemCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRedeemCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRedeemCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserRedeemCodes.
+     */
+    distinct?: UserRedeemCodeScalarFieldEnum | UserRedeemCodeScalarFieldEnum[]
+  }
+
+  /**
+   * UserRedeemCode findMany
+   */
+  export type UserRedeemCodeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter, which UserRedeemCodes to fetch.
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserRedeemCodes to fetch.
+     */
+    orderBy?: UserRedeemCodeOrderByWithRelationInput | UserRedeemCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserRedeemCodes.
+     */
+    cursor?: UserRedeemCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserRedeemCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserRedeemCodes.
+     */
+    skip?: number
+    distinct?: UserRedeemCodeScalarFieldEnum | UserRedeemCodeScalarFieldEnum[]
+  }
+
+  /**
+   * UserRedeemCode create
+   */
+  export type UserRedeemCodeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserRedeemCode.
+     */
+    data: XOR<UserRedeemCodeCreateInput, UserRedeemCodeUncheckedCreateInput>
+  }
+
+  /**
+   * UserRedeemCode createMany
+   */
+  export type UserRedeemCodeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserRedeemCodes.
+     */
+    data: UserRedeemCodeCreateManyInput | UserRedeemCodeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserRedeemCode createManyAndReturn
+   */
+  export type UserRedeemCodeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserRedeemCodes.
+     */
+    data: UserRedeemCodeCreateManyInput | UserRedeemCodeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserRedeemCode update
+   */
+  export type UserRedeemCodeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserRedeemCode.
+     */
+    data: XOR<UserRedeemCodeUpdateInput, UserRedeemCodeUncheckedUpdateInput>
+    /**
+     * Choose, which UserRedeemCode to update.
+     */
+    where: UserRedeemCodeWhereUniqueInput
+  }
+
+  /**
+   * UserRedeemCode updateMany
+   */
+  export type UserRedeemCodeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserRedeemCodes.
+     */
+    data: XOR<UserRedeemCodeUpdateManyMutationInput, UserRedeemCodeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserRedeemCodes to update
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * Limit how many UserRedeemCodes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserRedeemCode updateManyAndReturn
+   */
+  export type UserRedeemCodeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * The data used to update UserRedeemCodes.
+     */
+    data: XOR<UserRedeemCodeUpdateManyMutationInput, UserRedeemCodeUncheckedUpdateManyInput>
+    /**
+     * Filter which UserRedeemCodes to update
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * Limit how many UserRedeemCodes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserRedeemCode upsert
+   */
+  export type UserRedeemCodeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserRedeemCode to update in case it exists.
+     */
+    where: UserRedeemCodeWhereUniqueInput
+    /**
+     * In case the UserRedeemCode found by the `where` argument doesn't exist, create a new UserRedeemCode with this data.
+     */
+    create: XOR<UserRedeemCodeCreateInput, UserRedeemCodeUncheckedCreateInput>
+    /**
+     * In case the UserRedeemCode was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserRedeemCodeUpdateInput, UserRedeemCodeUncheckedUpdateInput>
+  }
+
+  /**
+   * UserRedeemCode delete
+   */
+  export type UserRedeemCodeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    /**
+     * Filter which UserRedeemCode to delete.
+     */
+    where: UserRedeemCodeWhereUniqueInput
+  }
+
+  /**
+   * UserRedeemCode deleteMany
+   */
+  export type UserRedeemCodeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserRedeemCodes to delete
+     */
+    where?: UserRedeemCodeWhereInput
+    /**
+     * Limit how many UserRedeemCodes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserRedeemCode without action
+   */
+  export type UserRedeemCodeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CodeRedeemer
    */
 
@@ -44085,10 +45327,12 @@ export namespace Prisma {
 
   export type ProductAvgAggregateOutputType = {
     price: number | null
+    subscriptionTime: number | null
   }
 
   export type ProductSumAggregateOutputType = {
     price: number | null
+    subscriptionTime: number | null
   }
 
   export type ProductMinAggregateOutputType = {
@@ -44097,6 +45341,7 @@ export namespace Prisma {
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    subscriptionTime: number | null
   }
 
   export type ProductMaxAggregateOutputType = {
@@ -44105,6 +45350,7 @@ export namespace Prisma {
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    subscriptionTime: number | null
   }
 
   export type ProductCountAggregateOutputType = {
@@ -44114,16 +45360,19 @@ export namespace Prisma {
     price: number
     createdAt: number
     updatedAt: number
+    subscriptionTime: number
     _all: number
   }
 
 
   export type ProductAvgAggregateInputType = {
     price?: true
+    subscriptionTime?: true
   }
 
   export type ProductSumAggregateInputType = {
     price?: true
+    subscriptionTime?: true
   }
 
   export type ProductMinAggregateInputType = {
@@ -44132,6 +45381,7 @@ export namespace Prisma {
     price?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionTime?: true
   }
 
   export type ProductMaxAggregateInputType = {
@@ -44140,6 +45390,7 @@ export namespace Prisma {
     price?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionTime?: true
   }
 
   export type ProductCountAggregateInputType = {
@@ -44149,6 +45400,7 @@ export namespace Prisma {
     price?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionTime?: true
     _all?: true
   }
 
@@ -44245,6 +45497,7 @@ export namespace Prisma {
     price: number
     createdAt: Date
     updatedAt: Date
+    subscriptionTime: number
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -44273,6 +45526,7 @@ export namespace Prisma {
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionTime?: boolean
     transactions?: boolean | Product$transactionsArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
@@ -44284,6 +45538,7 @@ export namespace Prisma {
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionTime?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -44293,6 +45548,7 @@ export namespace Prisma {
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionTime?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
@@ -44302,9 +45558,10 @@ export namespace Prisma {
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionTime?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "data" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "data" | "price" | "createdAt" | "updatedAt" | "subscriptionTime", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     transactions?: boolean | Product$transactionsArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -44324,6 +45581,7 @@ export namespace Prisma {
       price: number
       createdAt: Date
       updatedAt: Date
+      subscriptionTime: number
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -44754,6 +46012,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Product", 'Int'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
+    readonly subscriptionTime: FieldRef<"Product", 'Int'>
   }
     
 
@@ -46383,7 +47642,7 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     finalPrice: number | null
-    trasactionRef: string | null
+    transactionRef: string | null
     voucherId: string | null
     productId: string | null
     status: $Enums.Transaction | null
@@ -46395,7 +47654,7 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     finalPrice: number | null
-    trasactionRef: string | null
+    transactionRef: string | null
     voucherId: string | null
     productId: string | null
     status: $Enums.Transaction | null
@@ -46407,7 +47666,7 @@ export namespace Prisma {
     updatedAt: number
     userId: number
     finalPrice: number
-    trasactionRef: number
+    transactionRef: number
     voucherId: number
     productId: number
     status: number
@@ -46429,7 +47688,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     finalPrice?: true
-    trasactionRef?: true
+    transactionRef?: true
     voucherId?: true
     productId?: true
     status?: true
@@ -46441,7 +47700,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     finalPrice?: true
-    trasactionRef?: true
+    transactionRef?: true
     voucherId?: true
     productId?: true
     status?: true
@@ -46453,7 +47712,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     finalPrice?: true
-    trasactionRef?: true
+    transactionRef?: true
     voucherId?: true
     productId?: true
     status?: true
@@ -46552,7 +47811,7 @@ export namespace Prisma {
     updatedAt: Date
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId: string | null
     productId: string
     status: $Enums.Transaction
@@ -46583,13 +47842,14 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     finalPrice?: boolean
-    trasactionRef?: boolean
+    transactionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     voucher?: boolean | UserTransaction$voucherArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
+    code?: boolean | UserTransaction$codeArgs<ExtArgs>
   }, ExtArgs["result"]["userTransaction"]>
 
   export type UserTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -46598,7 +47858,7 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     finalPrice?: boolean
-    trasactionRef?: boolean
+    transactionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
@@ -46613,7 +47873,7 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     finalPrice?: boolean
-    trasactionRef?: boolean
+    transactionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
@@ -46628,17 +47888,18 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     finalPrice?: boolean
-    trasactionRef?: boolean
+    transactionRef?: boolean
     voucherId?: boolean
     productId?: boolean
     status?: boolean
   }
 
-  export type UserTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "finalPrice" | "trasactionRef" | "voucherId" | "productId" | "status", ExtArgs["result"]["userTransaction"]>
+  export type UserTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "finalPrice" | "transactionRef" | "voucherId" | "productId" | "status", ExtArgs["result"]["userTransaction"]>
   export type UserTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     voucher?: boolean | UserTransaction$voucherArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
+    code?: boolean | UserTransaction$codeArgs<ExtArgs>
   }
   export type UserTransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -46657,6 +47918,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       voucher: Prisma.$VoucherPayload<ExtArgs> | null
       product: Prisma.$ProductPayload<ExtArgs>
+      code: Prisma.$UserRedeemCodePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -46664,7 +47926,7 @@ export namespace Prisma {
       updatedAt: Date
       userId: string
       finalPrice: number
-      trasactionRef: string
+      transactionRef: string
       voucherId: string | null
       productId: string
       status: $Enums.Transaction
@@ -47065,6 +48327,7 @@ export namespace Prisma {
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     voucher<T extends UserTransaction$voucherArgs<ExtArgs> = {}>(args?: Subset<T, UserTransaction$voucherArgs<ExtArgs>>): Prisma__VoucherClient<$Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    code<T extends UserTransaction$codeArgs<ExtArgs> = {}>(args?: Subset<T, UserTransaction$codeArgs<ExtArgs>>): Prisma__UserRedeemCodeClient<$Result.GetResult<Prisma.$UserRedeemCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -47099,7 +48362,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"UserTransaction", 'DateTime'>
     readonly userId: FieldRef<"UserTransaction", 'String'>
     readonly finalPrice: FieldRef<"UserTransaction", 'Int'>
-    readonly trasactionRef: FieldRef<"UserTransaction", 'String'>
+    readonly transactionRef: FieldRef<"UserTransaction", 'String'>
     readonly voucherId: FieldRef<"UserTransaction", 'String'>
     readonly productId: FieldRef<"UserTransaction", 'String'>
     readonly status: FieldRef<"UserTransaction", 'Transaction'>
@@ -47518,6 +48781,25 @@ export namespace Prisma {
   }
 
   /**
+   * UserTransaction.code
+   */
+  export type UserTransaction$codeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRedeemCode
+     */
+    select?: UserRedeemCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserRedeemCode
+     */
+    omit?: UserRedeemCodeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserRedeemCodeInclude<ExtArgs> | null
+    where?: UserRedeemCodeWhereInput
+  }
+
+  /**
    * UserTransaction without action
    */
   export type UserTransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -47629,6 +48911,7 @@ export namespace Prisma {
     playTime: 'playTime',
     characterUsed: 'characterUsed',
     inventory: 'inventory',
+    currentTransaction: 'currentTransaction',
     schoolId: 'schoolId',
     cityId: 'cityId',
     provinceId: 'provinceId',
@@ -48001,6 +49284,20 @@ export namespace Prisma {
   export type RedeemCodeScalarFieldEnum = (typeof RedeemCodeScalarFieldEnum)[keyof typeof RedeemCodeScalarFieldEnum]
 
 
+  export const UserRedeemCodeScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    expiredAt: 'expiredAt',
+    data: 'data',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    suspend: 'suspend',
+    transactionId: 'transactionId'
+  };
+
+  export type UserRedeemCodeScalarFieldEnum = (typeof UserRedeemCodeScalarFieldEnum)[keyof typeof UserRedeemCodeScalarFieldEnum]
+
+
   export const CodeRedeemerScalarFieldEnum: {
     id: 'id',
     banned: 'banned',
@@ -48103,7 +49400,8 @@ export namespace Prisma {
     data: 'data',
     price: 'price',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    subscriptionTime: 'subscriptionTime'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -48131,7 +49429,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     userId: 'userId',
     finalPrice: 'finalPrice',
-    trasactionRef: 'trasactionRef',
+    transactionRef: 'transactionRef',
     voucherId: 'voucherId',
     productId: 'productId',
     status: 'status'
@@ -48836,6 +50134,7 @@ export namespace Prisma {
     playTime?: IntFilter<"User"> | number
     characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
+    currentTransaction?: StringNullableFilter<"User"> | string | null
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
@@ -48866,6 +50165,7 @@ export namespace Prisma {
     userLogin?: UserLoginListRelationFilter
     zones?: ZoneListRelationFilter
     transactions?: UserTransactionListRelationFilter
+    codes?: UserRedeemCodeListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -48888,6 +50188,7 @@ export namespace Prisma {
     playTime?: SortOrder
     characterUsed?: SortOrder
     inventory?: SortOrder
+    currentTransaction?: SortOrderInput | SortOrder
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
@@ -48918,6 +50219,7 @@ export namespace Prisma {
     userLogin?: UserLoginOrderByRelationAggregateInput
     zones?: ZoneOrderByRelationAggregateInput
     transactions?: UserTransactionOrderByRelationAggregateInput
+    codes?: UserRedeemCodeOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -48945,6 +50247,7 @@ export namespace Prisma {
     playTime?: IntFilter<"User"> | number
     characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
+    currentTransaction?: StringNullableFilter<"User"> | string | null
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
@@ -48973,6 +50276,7 @@ export namespace Prisma {
     userLogin?: UserLoginListRelationFilter
     zones?: ZoneListRelationFilter
     transactions?: UserTransactionListRelationFilter
+    codes?: UserRedeemCodeListRelationFilter
   }, "id" | "authId" | "email" | "schoolIdentity" | "adminId" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -48995,6 +50299,7 @@ export namespace Prisma {
     playTime?: SortOrder
     characterUsed?: SortOrder
     inventory?: SortOrder
+    currentTransaction?: SortOrderInput | SortOrder
     schoolId?: SortOrderInput | SortOrder
     cityId?: SortOrderInput | SortOrder
     provinceId?: SortOrderInput | SortOrder
@@ -49035,6 +50340,7 @@ export namespace Prisma {
     playTime?: IntWithAggregatesFilter<"User"> | number
     characterUsed?: StringWithAggregatesFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
+    currentTransaction?: StringNullableWithAggregatesFilter<"User"> | string | null
     schoolId?: StringNullableWithAggregatesFilter<"User"> | string | null
     cityId?: StringNullableWithAggregatesFilter<"User"> | string | null
     provinceId?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -50949,6 +52255,79 @@ export namespace Prisma {
     suspend?: BoolWithAggregatesFilter<"RedeemCode"> | boolean
   }
 
+  export type UserRedeemCodeWhereInput = {
+    AND?: UserRedeemCodeWhereInput | UserRedeemCodeWhereInput[]
+    OR?: UserRedeemCodeWhereInput[]
+    NOT?: UserRedeemCodeWhereInput | UserRedeemCodeWhereInput[]
+    id?: StringFilter<"UserRedeemCode"> | string
+    userId?: StringFilter<"UserRedeemCode"> | string
+    expiredAt?: DateTimeNullableFilter<"UserRedeemCode"> | Date | string | null
+    data?: StringNullableListFilter<"UserRedeemCode">
+    createdAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    suspend?: BoolFilter<"UserRedeemCode"> | boolean
+    transactionId?: StringFilter<"UserRedeemCode"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transaction?: XOR<UserTransactionScalarRelationFilter, UserTransactionWhereInput>
+  }
+
+  export type UserRedeemCodeOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    transaction?: UserTransactionOrderByWithRelationInput
+  }
+
+  export type UserRedeemCodeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    transactionId?: string
+    AND?: UserRedeemCodeWhereInput | UserRedeemCodeWhereInput[]
+    OR?: UserRedeemCodeWhereInput[]
+    NOT?: UserRedeemCodeWhereInput | UserRedeemCodeWhereInput[]
+    userId?: StringFilter<"UserRedeemCode"> | string
+    expiredAt?: DateTimeNullableFilter<"UserRedeemCode"> | Date | string | null
+    data?: StringNullableListFilter<"UserRedeemCode">
+    createdAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    suspend?: BoolFilter<"UserRedeemCode"> | boolean
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transaction?: XOR<UserTransactionScalarRelationFilter, UserTransactionWhereInput>
+  }, "id" | "transactionId">
+
+  export type UserRedeemCodeOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+    _count?: UserRedeemCodeCountOrderByAggregateInput
+    _max?: UserRedeemCodeMaxOrderByAggregateInput
+    _min?: UserRedeemCodeMinOrderByAggregateInput
+  }
+
+  export type UserRedeemCodeScalarWhereWithAggregatesInput = {
+    AND?: UserRedeemCodeScalarWhereWithAggregatesInput | UserRedeemCodeScalarWhereWithAggregatesInput[]
+    OR?: UserRedeemCodeScalarWhereWithAggregatesInput[]
+    NOT?: UserRedeemCodeScalarWhereWithAggregatesInput | UserRedeemCodeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserRedeemCode"> | string
+    userId?: StringWithAggregatesFilter<"UserRedeemCode"> | string
+    expiredAt?: DateTimeNullableWithAggregatesFilter<"UserRedeemCode"> | Date | string | null
+    data?: StringNullableListFilter<"UserRedeemCode">
+    createdAt?: DateTimeWithAggregatesFilter<"UserRedeemCode"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserRedeemCode"> | Date | string
+    suspend?: BoolWithAggregatesFilter<"UserRedeemCode"> | boolean
+    transactionId?: StringWithAggregatesFilter<"UserRedeemCode"> | string
+  }
+
   export type CodeRedeemerWhereInput = {
     AND?: CodeRedeemerWhereInput | CodeRedeemerWhereInput[]
     OR?: CodeRedeemerWhereInput[]
@@ -51460,6 +52839,7 @@ export namespace Prisma {
     price?: IntFilter<"Product"> | number
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+    subscriptionTime?: IntFilter<"Product"> | number
     transactions?: UserTransactionListRelationFilter
   }
 
@@ -51470,6 +52850,7 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionTime?: SortOrder
     transactions?: UserTransactionOrderByRelationAggregateInput
   }
 
@@ -51483,6 +52864,7 @@ export namespace Prisma {
     price?: IntFilter<"Product"> | number
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
+    subscriptionTime?: IntFilter<"Product"> | number
     transactions?: UserTransactionListRelationFilter
   }, "id">
 
@@ -51493,6 +52875,7 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionTime?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
@@ -51510,6 +52893,7 @@ export namespace Prisma {
     price?: IntWithAggregatesFilter<"Product"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
+    subscriptionTime?: IntWithAggregatesFilter<"Product"> | number
   }
 
   export type VoucherWhereInput = {
@@ -51603,13 +52987,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
-    trasactionRef?: StringFilter<"UserTransaction"> | string
+    transactionRef?: StringFilter<"UserTransaction"> | string
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     voucher?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    code?: XOR<UserRedeemCodeNullableScalarRelationFilter, UserRedeemCodeWhereInput> | null
   }
 
   export type UserTransactionOrderByWithRelationInput = {
@@ -51618,13 +53003,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     finalPrice?: SortOrder
-    trasactionRef?: SortOrder
+    transactionRef?: SortOrder
     voucherId?: SortOrderInput | SortOrder
     productId?: SortOrder
     status?: SortOrder
     user?: UserOrderByWithRelationInput
     voucher?: VoucherOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
+    code?: UserRedeemCodeOrderByWithRelationInput
   }
 
   export type UserTransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -51636,13 +53022,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
-    trasactionRef?: StringFilter<"UserTransaction"> | string
+    transactionRef?: StringFilter<"UserTransaction"> | string
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     voucher?: XOR<VoucherNullableScalarRelationFilter, VoucherWhereInput> | null
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    code?: XOR<UserRedeemCodeNullableScalarRelationFilter, UserRedeemCodeWhereInput> | null
   }, "id">
 
   export type UserTransactionOrderByWithAggregationInput = {
@@ -51651,7 +53038,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     finalPrice?: SortOrder
-    trasactionRef?: SortOrder
+    transactionRef?: SortOrder
     voucherId?: SortOrderInput | SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -51671,7 +53058,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"UserTransaction"> | Date | string
     userId?: StringWithAggregatesFilter<"UserTransaction"> | string
     finalPrice?: IntWithAggregatesFilter<"UserTransaction"> | number
-    trasactionRef?: StringWithAggregatesFilter<"UserTransaction"> | string
+    transactionRef?: StringWithAggregatesFilter<"UserTransaction"> | string
     voucherId?: StringNullableWithAggregatesFilter<"UserTransaction"> | string | null
     productId?: StringWithAggregatesFilter<"UserTransaction"> | string
     status?: EnumTransactionWithAggregatesFilter<"UserTransaction"> | $Enums.Transaction
@@ -52104,6 +53491,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -52129,6 +53517,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -52151,6 +53540,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -52176,6 +53566,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -52198,6 +53589,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -52223,6 +53615,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -52245,6 +53638,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52270,6 +53664,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -52292,6 +53687,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -52324,6 +53720,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -52351,6 +53748,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54455,6 +55853,81 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type UserRedeemCodeCreateInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    user: UserCreateNestedOneWithoutCodesInput
+    transaction: UserTransactionCreateNestedOneWithoutCodeInput
+  }
+
+  export type UserRedeemCodeUncheckedCreateInput = {
+    id?: string
+    userId: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+  }
+
+  export type UserRedeemCodeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneRequiredWithoutCodesNestedInput
+    transaction?: UserTransactionUpdateOneRequiredWithoutCodeNestedInput
+  }
+
+  export type UserRedeemCodeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserRedeemCodeCreateManyInput = {
+    id?: string
+    userId: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+  }
+
+  export type UserRedeemCodeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UserRedeemCodeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type CodeRedeemerCreateInput = {
     id?: string
     banned?: boolean
@@ -55031,6 +56504,7 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionTime: number
     transactions?: UserTransactionCreateNestedManyWithoutProductInput
   }
 
@@ -55041,6 +56515,7 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionTime: number
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -55051,6 +56526,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     transactions?: UserTransactionUpdateManyWithoutProductNestedInput
   }
 
@@ -55061,6 +56537,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
     transactions?: UserTransactionUncheckedUpdateManyWithoutProductNestedInput
   }
 
@@ -55071,6 +56548,7 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionTime: number
   }
 
   export type ProductUpdateManyMutationInput = {
@@ -55080,6 +56558,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductUncheckedUpdateManyInput = {
@@ -55089,6 +56568,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
   }
 
   export type VoucherCreateInput = {
@@ -55191,11 +56671,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
     product: ProductCreateNestedOneWithoutTransactionsInput
+    code?: UserRedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionUncheckedCreateInput = {
@@ -55204,10 +56685,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
+    code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionUpdateInput = {
@@ -55215,11 +56697,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
     product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
+    code?: UserRedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateInput = {
@@ -55228,10 +56711,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionCreateManyInput = {
@@ -55240,7 +56724,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
@@ -55251,7 +56735,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }
 
@@ -55261,7 +56745,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
@@ -55839,6 +57323,12 @@ export namespace Prisma {
     none?: UserTransactionWhereInput
   }
 
+  export type UserRedeemCodeListRelationFilter = {
+    every?: UserRedeemCodeWhereInput
+    some?: UserRedeemCodeWhereInput
+    none?: UserRedeemCodeWhereInput
+  }
+
   export type BannerVisitorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -55899,6 +57389,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type UserRedeemCodeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     authId?: SortOrder
@@ -55919,6 +57413,7 @@ export namespace Prisma {
     playTime?: SortOrder
     characterUsed?: SortOrder
     inventory?: SortOrder
+    currentTransaction?: SortOrder
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
@@ -55956,6 +57451,7 @@ export namespace Prisma {
     logoutAt?: SortOrder
     playTime?: SortOrder
     characterUsed?: SortOrder
+    currentTransaction?: SortOrder
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
@@ -55987,6 +57483,7 @@ export namespace Prisma {
     logoutAt?: SortOrder
     playTime?: SortOrder
     characterUsed?: SortOrder
+    currentTransaction?: SortOrder
     schoolId?: SortOrder
     cityId?: SortOrder
     provinceId?: SortOrder
@@ -57424,6 +58921,42 @@ export namespace Prisma {
     maxAmount?: SortOrder
   }
 
+  export type UserTransactionScalarRelationFilter = {
+    is?: UserTransactionWhereInput
+    isNot?: UserTransactionWhereInput
+  }
+
+  export type UserRedeemCodeCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    expiredAt?: SortOrder
+    data?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+  }
+
+  export type UserRedeemCodeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    expiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+  }
+
+  export type UserRedeemCodeMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    expiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    suspend?: SortOrder
+    transactionId?: SortOrder
+  }
+
   export type RedeemCodeScalarRelationFilter = {
     is?: RedeemCodeWhereInput
     isNot?: RedeemCodeWhereInput
@@ -57810,10 +59343,12 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionTime?: SortOrder
   }
 
   export type ProductAvgOrderByAggregateInput = {
     price?: SortOrder
+    subscriptionTime?: SortOrder
   }
 
   export type ProductMaxOrderByAggregateInput = {
@@ -57822,6 +59357,7 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionTime?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
@@ -57830,10 +59366,12 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionTime?: SortOrder
   }
 
   export type ProductSumOrderByAggregateInput = {
     price?: SortOrder
+    subscriptionTime?: SortOrder
   }
 
   export type EnumVoucherTypeFilter<$PrismaModel = never> = {
@@ -57912,13 +59450,18 @@ export namespace Prisma {
     isNot?: ProductWhereInput
   }
 
+  export type UserRedeemCodeNullableScalarRelationFilter = {
+    is?: UserRedeemCodeWhereInput | null
+    isNot?: UserRedeemCodeWhereInput | null
+  }
+
   export type UserTransactionCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
     finalPrice?: SortOrder
-    trasactionRef?: SortOrder
+    transactionRef?: SortOrder
     voucherId?: SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -57934,7 +59477,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     finalPrice?: SortOrder
-    trasactionRef?: SortOrder
+    transactionRef?: SortOrder
     voucherId?: SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -57946,7 +59489,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     finalPrice?: SortOrder
-    trasactionRef?: SortOrder
+    transactionRef?: SortOrder
     voucherId?: SortOrder
     productId?: SortOrder
     status?: SortOrder
@@ -59067,6 +60610,13 @@ export namespace Prisma {
     connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
   }
 
+  export type UserRedeemCodeCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput> | UserRedeemCodeCreateWithoutUserInput[] | UserRedeemCodeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutUserInput | UserRedeemCodeCreateOrConnectWithoutUserInput[]
+    createMany?: UserRedeemCodeCreateManyUserInputEnvelope
+    connect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+  }
+
   export type BannerVisitorUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
@@ -59170,6 +60720,13 @@ export namespace Prisma {
     connectOrCreate?: UserTransactionCreateOrConnectWithoutUserInput | UserTransactionCreateOrConnectWithoutUserInput[]
     createMany?: UserTransactionCreateManyUserInputEnvelope
     connect?: UserTransactionWhereUniqueInput | UserTransactionWhereUniqueInput[]
+  }
+
+  export type UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput> | UserRedeemCodeCreateWithoutUserInput[] | UserRedeemCodeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutUserInput | UserRedeemCodeCreateOrConnectWithoutUserInput[]
+    createMany?: UserRedeemCodeCreateManyUserInputEnvelope
+    connect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
   }
 
   export type EnumGenderFieldUpdateOperationsInput = {
@@ -59465,6 +61022,20 @@ export namespace Prisma {
     deleteMany?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
   }
 
+  export type UserRedeemCodeUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput> | UserRedeemCodeCreateWithoutUserInput[] | UserRedeemCodeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutUserInput | UserRedeemCodeCreateOrConnectWithoutUserInput[]
+    upsert?: UserRedeemCodeUpsertWithWhereUniqueWithoutUserInput | UserRedeemCodeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserRedeemCodeCreateManyUserInputEnvelope
+    set?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    disconnect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    delete?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    connect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    update?: UserRedeemCodeUpdateWithWhereUniqueWithoutUserInput | UserRedeemCodeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserRedeemCodeUpdateManyWithWhereWithoutUserInput | UserRedeemCodeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserRedeemCodeScalarWhereInput | UserRedeemCodeScalarWhereInput[]
+  }
+
   export type BannerVisitorUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<BannerVisitorCreateWithoutUserInput, BannerVisitorUncheckedCreateWithoutUserInput> | BannerVisitorCreateWithoutUserInput[] | BannerVisitorUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BannerVisitorCreateOrConnectWithoutUserInput | BannerVisitorCreateOrConnectWithoutUserInput[]
@@ -59673,6 +61244,20 @@ export namespace Prisma {
     update?: UserTransactionUpdateWithWhereUniqueWithoutUserInput | UserTransactionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: UserTransactionUpdateManyWithWhereWithoutUserInput | UserTransactionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: UserTransactionScalarWhereInput | UserTransactionScalarWhereInput[]
+  }
+
+  export type UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput> | UserRedeemCodeCreateWithoutUserInput[] | UserRedeemCodeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutUserInput | UserRedeemCodeCreateOrConnectWithoutUserInput[]
+    upsert?: UserRedeemCodeUpsertWithWhereUniqueWithoutUserInput | UserRedeemCodeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserRedeemCodeCreateManyUserInputEnvelope
+    set?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    disconnect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    delete?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    connect?: UserRedeemCodeWhereUniqueInput | UserRedeemCodeWhereUniqueInput[]
+    update?: UserRedeemCodeUpdateWithWhereUniqueWithoutUserInput | UserRedeemCodeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserRedeemCodeUpdateManyWithWhereWithoutUserInput | UserRedeemCodeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserRedeemCodeScalarWhereInput | UserRedeemCodeScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutZonesInput = {
@@ -60976,6 +62561,43 @@ export namespace Prisma {
     deleteMany?: CodeRedeemerScalarWhereInput | CodeRedeemerScalarWhereInput[]
   }
 
+  export type UserRedeemCodeCreatedataInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutCodesInput = {
+    create?: XOR<UserCreateWithoutCodesInput, UserUncheckedCreateWithoutCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserTransactionCreateNestedOneWithoutCodeInput = {
+    create?: XOR<UserTransactionCreateWithoutCodeInput, UserTransactionUncheckedCreateWithoutCodeInput>
+    connectOrCreate?: UserTransactionCreateOrConnectWithoutCodeInput
+    connect?: UserTransactionWhereUniqueInput
+  }
+
+  export type UserRedeemCodeUpdatedataInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCodesNestedInput = {
+    create?: XOR<UserCreateWithoutCodesInput, UserUncheckedCreateWithoutCodesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCodesInput
+    upsert?: UserUpsertWithoutCodesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCodesInput, UserUpdateWithoutCodesInput>, UserUncheckedUpdateWithoutCodesInput>
+  }
+
+  export type UserTransactionUpdateOneRequiredWithoutCodeNestedInput = {
+    create?: XOR<UserTransactionCreateWithoutCodeInput, UserTransactionUncheckedCreateWithoutCodeInput>
+    connectOrCreate?: UserTransactionCreateOrConnectWithoutCodeInput
+    upsert?: UserTransactionUpsertWithoutCodeInput
+    connect?: UserTransactionWhereUniqueInput
+    update?: XOR<XOR<UserTransactionUpdateToOneWithWhereWithoutCodeInput, UserTransactionUpdateWithoutCodeInput>, UserTransactionUncheckedUpdateWithoutCodeInput>
+  }
+
   export type RedeemCodeCreateNestedOneWithoutRedeemersInput = {
     create?: XOR<RedeemCodeCreateWithoutRedeemersInput, RedeemCodeUncheckedCreateWithoutRedeemersInput>
     connectOrCreate?: RedeemCodeCreateOrConnectWithoutRedeemersInput
@@ -61289,6 +62911,18 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput
   }
 
+  export type UserRedeemCodeCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutTransactionInput
+    connect?: UserRedeemCodeWhereUniqueInput
+  }
+
+  export type UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutTransactionInput
+    connect?: UserRedeemCodeWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutTransactionsNestedInput = {
     create?: XOR<UserCreateWithoutTransactionsInput, UserUncheckedCreateWithoutTransactionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutTransactionsInput
@@ -61313,6 +62947,26 @@ export namespace Prisma {
     upsert?: ProductUpsertWithoutTransactionsInput
     connect?: ProductWhereUniqueInput
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutTransactionsInput, ProductUpdateWithoutTransactionsInput>, ProductUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type UserRedeemCodeUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutTransactionInput
+    upsert?: UserRedeemCodeUpsertWithoutTransactionInput
+    disconnect?: UserRedeemCodeWhereInput | boolean
+    delete?: UserRedeemCodeWhereInput | boolean
+    connect?: UserRedeemCodeWhereUniqueInput
+    update?: XOR<XOR<UserRedeemCodeUpdateToOneWithWhereWithoutTransactionInput, UserRedeemCodeUpdateWithoutTransactionInput>, UserRedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: UserRedeemCodeCreateOrConnectWithoutTransactionInput
+    upsert?: UserRedeemCodeUpsertWithoutTransactionInput
+    disconnect?: UserRedeemCodeWhereInput | boolean
+    delete?: UserRedeemCodeWhereInput | boolean
+    connect?: UserRedeemCodeWhereUniqueInput
+    update?: XOR<XOR<UserRedeemCodeUpdateToOneWithWhereWithoutTransactionInput, UserRedeemCodeUpdateWithoutTransactionInput>, UserRedeemCodeUncheckedUpdateWithoutTransactionInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -61968,6 +63622,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -61992,6 +63647,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProvinceInput = {
@@ -62014,6 +63670,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     subdistrictId?: string | null
@@ -62038,6 +63695,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProvinceInput = {
@@ -62300,6 +63958,7 @@ export namespace Prisma {
     playTime?: IntFilter<"User"> | number
     characterUsed?: StringFilter<"User"> | string
     inventory?: IntNullableListFilter<"User">
+    currentTransaction?: StringNullableFilter<"User"> | string | null
     schoolId?: StringNullableFilter<"User"> | string | null
     cityId?: StringNullableFilter<"User"> | string | null
     provinceId?: StringNullableFilter<"User"> | string | null
@@ -62583,6 +64242,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -62607,6 +64267,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCityInput = {
@@ -62629,6 +64290,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     provinceId?: string | null
     subdistrictId?: string | null
@@ -62653,6 +64315,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCityInput = {
@@ -63006,6 +64669,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -63030,6 +64694,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubdistrictInput = {
@@ -63052,6 +64717,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -63076,6 +64742,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubdistrictInput = {
@@ -63579,6 +65246,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -63603,6 +65271,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSchoolInput = {
@@ -63625,6 +65294,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     cityId?: string | null
     provinceId?: string | null
     subdistrictId?: string | null
@@ -63649,6 +65319,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSchoolInput = {
@@ -64567,10 +66238,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     status?: $Enums.Transaction
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
     product: ProductCreateNestedOneWithoutTransactionsInput
+    code?: UserRedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionUncheckedCreateWithoutUserInput = {
@@ -64578,10 +66250,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
+    code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionCreateOrConnectWithoutUserInput = {
@@ -64591,6 +66264,36 @@ export namespace Prisma {
 
   export type UserTransactionCreateManyUserInputEnvelope = {
     data: UserTransactionCreateManyUserInput | UserTransactionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserRedeemCodeCreateWithoutUserInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    transaction: UserTransactionCreateNestedOneWithoutCodeInput
+  }
+
+  export type UserRedeemCodeUncheckedCreateWithoutUserInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    transactionId: string
+  }
+
+  export type UserRedeemCodeCreateOrConnectWithoutUserInput = {
+    where: UserRedeemCodeWhereUniqueInput
+    create: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserRedeemCodeCreateManyUserInputEnvelope = {
+    data: UserRedeemCodeCreateManyUserInput | UserRedeemCodeCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -65312,10 +67015,40 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"UserTransaction"> | Date | string
     userId?: StringFilter<"UserTransaction"> | string
     finalPrice?: IntFilter<"UserTransaction"> | number
-    trasactionRef?: StringFilter<"UserTransaction"> | string
+    transactionRef?: StringFilter<"UserTransaction"> | string
     voucherId?: StringNullableFilter<"UserTransaction"> | string | null
     productId?: StringFilter<"UserTransaction"> | string
     status?: EnumTransactionFilter<"UserTransaction"> | $Enums.Transaction
+  }
+
+  export type UserRedeemCodeUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserRedeemCodeWhereUniqueInput
+    update: XOR<UserRedeemCodeUpdateWithoutUserInput, UserRedeemCodeUncheckedUpdateWithoutUserInput>
+    create: XOR<UserRedeemCodeCreateWithoutUserInput, UserRedeemCodeUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserRedeemCodeUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserRedeemCodeWhereUniqueInput
+    data: XOR<UserRedeemCodeUpdateWithoutUserInput, UserRedeemCodeUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserRedeemCodeUpdateManyWithWhereWithoutUserInput = {
+    where: UserRedeemCodeScalarWhereInput
+    data: XOR<UserRedeemCodeUpdateManyMutationInput, UserRedeemCodeUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserRedeemCodeScalarWhereInput = {
+    AND?: UserRedeemCodeScalarWhereInput | UserRedeemCodeScalarWhereInput[]
+    OR?: UserRedeemCodeScalarWhereInput[]
+    NOT?: UserRedeemCodeScalarWhereInput | UserRedeemCodeScalarWhereInput[]
+    id?: StringFilter<"UserRedeemCode"> | string
+    userId?: StringFilter<"UserRedeemCode"> | string
+    expiredAt?: DateTimeNullableFilter<"UserRedeemCode"> | Date | string | null
+    data?: StringNullableListFilter<"UserRedeemCode">
+    createdAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    updatedAt?: DateTimeFilter<"UserRedeemCode"> | Date | string
+    suspend?: BoolFilter<"UserRedeemCode"> | boolean
+    transactionId?: StringFilter<"UserRedeemCode"> | string
   }
 
   export type UserCreateWithoutZonesInput = {
@@ -65338,6 +67071,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -65362,6 +67096,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutZonesInput = {
@@ -65384,6 +67119,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -65408,6 +67144,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutZonesInput = {
@@ -65446,6 +67183,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -65470,6 +67208,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutZonesInput = {
@@ -65492,6 +67231,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65516,6 +67256,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutLevelsInput = {
@@ -65538,6 +67279,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -65562,6 +67304,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLevelsInput = {
@@ -65584,6 +67327,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -65608,6 +67352,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLevelsInput = {
@@ -65646,6 +67391,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -65670,6 +67416,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLevelsInput = {
@@ -65692,6 +67439,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65716,6 +67464,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSubLevelsInput = {
@@ -65738,6 +67487,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -65762,6 +67512,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubLevelsInput = {
@@ -65784,6 +67535,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -65808,6 +67560,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubLevelsInput = {
@@ -65846,6 +67599,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -65870,6 +67624,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubLevelsInput = {
@@ -65892,6 +67647,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65916,6 +67672,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutInnerLevelsInput = {
@@ -65938,6 +67695,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -65962,6 +67720,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInnerLevelsInput = {
@@ -65984,6 +67743,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -66008,6 +67768,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInnerLevelsInput = {
@@ -66046,6 +67807,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -66070,6 +67832,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInnerLevelsInput = {
@@ -66092,6 +67855,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66116,6 +67880,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutGemposInput = {
@@ -66138,6 +67903,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -66162,6 +67928,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGemposInput = {
@@ -66184,6 +67951,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -66208,6 +67976,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGemposInput = {
@@ -66246,6 +68015,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -66270,6 +68040,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGemposInput = {
@@ -66292,6 +68063,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66316,6 +68088,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutChampionshipsInput = {
@@ -66338,6 +68111,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -66362,6 +68136,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChampionshipsInput = {
@@ -66384,6 +68159,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -66408,6 +68184,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChampionshipsInput = {
@@ -66446,6 +68223,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -66470,6 +68248,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChampionshipsInput = {
@@ -66492,6 +68271,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66516,6 +68296,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutGempoRecordsInput = {
@@ -66538,6 +68319,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -66562,6 +68344,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGempoRecordsInput = {
@@ -66584,6 +68367,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -66608,6 +68392,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGempoRecordsInput = {
@@ -66646,6 +68431,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -66670,6 +68456,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGempoRecordsInput = {
@@ -66692,6 +68479,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66716,6 +68504,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutChampionshipRecordsInput = {
@@ -66738,6 +68527,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -66762,6 +68552,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChampionshipRecordsInput = {
@@ -66784,6 +68575,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -66808,6 +68600,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChampionshipRecordsInput = {
@@ -66846,6 +68639,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -66870,6 +68664,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChampionshipRecordsInput = {
@@ -66892,6 +68687,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66916,6 +68712,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutUserLoginInput = {
@@ -66938,6 +68735,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -66962,6 +68760,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictCreateNestedOneWithoutUsersInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserLoginInput = {
@@ -66984,6 +68783,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -67008,6 +68808,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserLoginInput = {
@@ -67046,6 +68847,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -67070,6 +68872,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserLoginInput = {
@@ -67092,6 +68895,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67116,6 +68920,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProvinceCreateWithoutAdminInput = {
@@ -67630,6 +69435,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -67654,6 +69460,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAdminInput = {
@@ -67676,6 +69483,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -67700,6 +69508,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAdminInput = {
@@ -68143,6 +69952,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -68167,6 +69977,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAdminInput = {
@@ -68189,6 +70000,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68213,6 +70025,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AdminCreateWithoutLogsInput = {
@@ -69351,6 +71164,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -69375,6 +71189,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBannerVisitorInput = {
@@ -69397,6 +71212,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -69421,6 +71237,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBannerVisitorInput = {
@@ -69508,6 +71325,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -69532,6 +71350,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBannerVisitorInput = {
@@ -69554,6 +71373,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69578,6 +71398,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AdminCreateWithoutTestsInput = {
@@ -69815,6 +71636,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -69839,6 +71661,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestParticipantInput = {
@@ -69861,6 +71684,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -69885,6 +71709,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestParticipantInput = {
@@ -70006,6 +71831,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -70030,6 +71856,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestParticipantInput = {
@@ -70052,6 +71879,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70076,6 +71904,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TestParticipantRecordUpsertWithWhereUniqueWithoutParticipantInput = {
@@ -70742,6 +72571,278 @@ export namespace Prisma {
     processedById?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type UserCreateWithoutCodesInput = {
+    id?: string
+    authId: string
+    email: string
+    phoneNumber?: string | null
+    gender?: $Enums.Gender
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorCreateNestedManyWithoutUserInput
+    championships?: ChampionshipCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerCreateNestedManyWithoutUserInput
+    gempos?: GempoCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelCreateNestedManyWithoutUserInput
+    levels?: LevelCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantCreateNestedManyWithoutUserInput
+    admin?: AdminCreateNestedOneWithoutUserInput
+    city?: CityCreateNestedOneWithoutUsersInput
+    province?: ProvinceCreateNestedOneWithoutUsersInput
+    school?: SchoolCreateNestedOneWithoutUsersInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutUsersInput
+    userLogin?: UserLoginCreateNestedManyWithoutUserInput
+    zones?: ZoneCreateNestedManyWithoutUserInput
+    transactions?: UserTransactionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCodesInput = {
+    id?: string
+    authId: string
+    email: string
+    phoneNumber?: string | null
+    gender?: $Enums.Gender
+    role?: $Enums.Role
+    suspend?: boolean
+    accountType?: $Enums.AccountType
+    firstTest?: boolean
+    fullname?: string
+    birthDate?: Date | string | null
+    grade?: number
+    lastGradeUpdateAt?: Date | string | null
+    schoolIdentity: string
+    loginAt?: Date | string | null
+    logoutAt?: Date | string | null
+    playTime?: number
+    characterUsed?: string
+    inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
+    schoolId?: string | null
+    cityId?: string | null
+    provinceId?: string | null
+    subdistrictId?: string | null
+    adminId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username: string
+    lastIdZoneUnlocked?: string
+    lastIdZonePosition?: string
+    bannerVisitor?: BannerVisitorUncheckedCreateNestedManyWithoutUserInput
+    championships?: ChampionshipUncheckedCreateNestedManyWithoutUserInput
+    championshipRecords?: ChampionshipRecordUncheckedCreateNestedManyWithoutUserInput
+    redeemedCodes?: CodeRedeemerUncheckedCreateNestedManyWithoutUserInput
+    gempos?: GempoUncheckedCreateNestedManyWithoutUserInput
+    gempoRecords?: GempoRecordUncheckedCreateNestedManyWithoutUserInput
+    innerLevels?: InnerLevelUncheckedCreateNestedManyWithoutUserInput
+    levels?: LevelUncheckedCreateNestedManyWithoutUserInput
+    matchMembers?: MatchMemberUncheckedCreateNestedManyWithoutUserInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedCreateNestedManyWithoutUserInput
+    subLevels?: SubLevelUncheckedCreateNestedManyWithoutUserInput
+    testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
+    userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
+    zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCodesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCodesInput, UserUncheckedCreateWithoutCodesInput>
+  }
+
+  export type UserTransactionCreateWithoutCodeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    finalPrice: number
+    transactionRef: string
+    status?: $Enums.Transaction
+    user: UserCreateNestedOneWithoutTransactionsInput
+    voucher?: VoucherCreateNestedOneWithoutTransactionsInput
+    product: ProductCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type UserTransactionUncheckedCreateWithoutCodeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    finalPrice: number
+    transactionRef: string
+    voucherId?: string | null
+    productId: string
+    status?: $Enums.Transaction
+  }
+
+  export type UserTransactionCreateOrConnectWithoutCodeInput = {
+    where: UserTransactionWhereUniqueInput
+    create: XOR<UserTransactionCreateWithoutCodeInput, UserTransactionUncheckedCreateWithoutCodeInput>
+  }
+
+  export type UserUpsertWithoutCodesInput = {
+    update: XOR<UserUpdateWithoutCodesInput, UserUncheckedUpdateWithoutCodesInput>
+    create: XOR<UserCreateWithoutCodesInput, UserUncheckedCreateWithoutCodesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCodesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCodesInput, UserUncheckedUpdateWithoutCodesInput>
+  }
+
+  export type UserUpdateWithoutCodesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUpdateManyWithoutUserNestedInput
+    gempos?: GempoUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUpdateManyWithoutUserNestedInput
+    levels?: LevelUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUpdateManyWithoutUserNestedInput
+    admin?: AdminUpdateOneWithoutUserNestedInput
+    city?: CityUpdateOneWithoutUsersNestedInput
+    province?: ProvinceUpdateOneWithoutUsersNestedInput
+    school?: SchoolUpdateOneWithoutUsersNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutUsersNestedInput
+    userLogin?: UserLoginUpdateManyWithoutUserNestedInput
+    zones?: ZoneUpdateManyWithoutUserNestedInput
+    transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCodesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    accountType?: EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+    firstTest?: BoolFieldUpdateOperationsInput | boolean
+    fullname?: StringFieldUpdateOperationsInput | string
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    grade?: IntFieldUpdateOperationsInput | number
+    lastGradeUpdateAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    schoolIdentity?: StringFieldUpdateOperationsInput | string
+    loginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    playTime?: IntFieldUpdateOperationsInput | number
+    characterUsed?: StringFieldUpdateOperationsInput | string
+    inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    adminId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: StringFieldUpdateOperationsInput | string
+    lastIdZoneUnlocked?: StringFieldUpdateOperationsInput | string
+    lastIdZonePosition?: StringFieldUpdateOperationsInput | string
+    bannerVisitor?: BannerVisitorUncheckedUpdateManyWithoutUserNestedInput
+    championships?: ChampionshipUncheckedUpdateManyWithoutUserNestedInput
+    championshipRecords?: ChampionshipRecordUncheckedUpdateManyWithoutUserNestedInput
+    redeemedCodes?: CodeRedeemerUncheckedUpdateManyWithoutUserNestedInput
+    gempos?: GempoUncheckedUpdateManyWithoutUserNestedInput
+    gempoRecords?: GempoRecordUncheckedUpdateManyWithoutUserNestedInput
+    innerLevels?: InnerLevelUncheckedUpdateManyWithoutUserNestedInput
+    levels?: LevelUncheckedUpdateManyWithoutUserNestedInput
+    matchMembers?: MatchMemberUncheckedUpdateManyWithoutUserNestedInput
+    historyMatchMembers?: MatchHistoryMemberUncheckedUpdateManyWithoutUserNestedInput
+    subLevels?: SubLevelUncheckedUpdateManyWithoutUserNestedInput
+    testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
+    userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
+    zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserTransactionUpsertWithoutCodeInput = {
+    update: XOR<UserTransactionUpdateWithoutCodeInput, UserTransactionUncheckedUpdateWithoutCodeInput>
+    create: XOR<UserTransactionCreateWithoutCodeInput, UserTransactionUncheckedCreateWithoutCodeInput>
+    where?: UserTransactionWhereInput
+  }
+
+  export type UserTransactionUpdateToOneWithWhereWithoutCodeInput = {
+    where?: UserTransactionWhereInput
+    data: XOR<UserTransactionUpdateWithoutCodeInput, UserTransactionUncheckedUpdateWithoutCodeInput>
+  }
+
+  export type UserTransactionUpdateWithoutCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    finalPrice?: IntFieldUpdateOperationsInput | number
+    transactionRef?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
+    voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
+    product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
+  }
+
+  export type UserTransactionUncheckedUpdateWithoutCodeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finalPrice?: IntFieldUpdateOperationsInput | number
+    transactionRef?: StringFieldUpdateOperationsInput | string
+    voucherId?: NullableStringFieldUpdateOperationsInput | string | null
+    productId?: StringFieldUpdateOperationsInput | string
+    status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+  }
+
   export type RedeemCodeCreateWithoutRedeemersInput = {
     id?: string
     code?: string
@@ -70795,6 +72896,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -70819,6 +72921,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRedeemedCodesInput = {
@@ -70841,6 +72944,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -70865,6 +72969,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRedeemedCodesInput = {
@@ -70942,6 +73047,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -70966,6 +73072,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRedeemedCodesInput = {
@@ -70988,6 +73095,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71012,6 +73120,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MatchMemberCreateWithoutRoomInput = {
@@ -71135,6 +73244,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -71159,6 +73269,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMatchMembersInput = {
@@ -71181,6 +73292,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -71205,6 +73317,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMatchMembersInput = {
@@ -71290,6 +73403,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -71314,6 +73428,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMatchMembersInput = {
@@ -71336,6 +73451,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71360,6 +73476,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MatchHistoryMemberCreateWithoutRoomInput = {
@@ -71483,6 +73600,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -71507,6 +73625,7 @@ export namespace Prisma {
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
     transactions?: UserTransactionCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutHistoryMatchMembersInput = {
@@ -71529,6 +73648,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -71553,6 +73673,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
     transactions?: UserTransactionUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutHistoryMatchMembersInput = {
@@ -71640,6 +73761,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -71664,6 +73786,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutHistoryMatchMembersInput = {
@@ -71686,6 +73809,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71710,6 +73834,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserTransactionCreateWithoutProductInput = {
@@ -71717,10 +73842,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     voucher?: VoucherCreateNestedOneWithoutTransactionsInput
+    code?: UserRedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionUncheckedCreateWithoutProductInput = {
@@ -71729,9 +73855,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     status?: $Enums.Transaction
+    code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionCreateOrConnectWithoutProductInput = {
@@ -71765,10 +73892,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     status?: $Enums.Transaction
     user: UserCreateNestedOneWithoutTransactionsInput
     product: ProductCreateNestedOneWithoutTransactionsInput
+    code?: UserRedeemCodeCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionUncheckedCreateWithoutVoucherInput = {
@@ -71777,9 +73905,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     productId: string
     status?: $Enums.Transaction
+    code?: UserRedeemCodeUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type UserTransactionCreateOrConnectWithoutVoucherInput = {
@@ -71828,6 +73957,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     username: string
@@ -71852,6 +73982,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictCreateNestedOneWithoutUsersInput
     userLogin?: UserLoginCreateNestedManyWithoutUserInput
     zones?: ZoneCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTransactionsInput = {
@@ -71874,6 +74005,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -71898,6 +74030,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedCreateNestedManyWithoutUserInput
     userLogin?: UserLoginUncheckedCreateNestedManyWithoutUserInput
     zones?: ZoneUncheckedCreateNestedManyWithoutUserInput
+    codes?: UserRedeemCodeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTransactionsInput = {
@@ -71943,6 +74076,7 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionTime: number
   }
 
   export type ProductUncheckedCreateWithoutTransactionsInput = {
@@ -71952,11 +74086,37 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionTime: number
   }
 
   export type ProductCreateOrConnectWithoutTransactionsInput = {
     where: ProductWhereUniqueInput
     create: XOR<ProductCreateWithoutTransactionsInput, ProductUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type UserRedeemCodeCreateWithoutTransactionInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    user: UserCreateNestedOneWithoutCodesInput
+  }
+
+  export type UserRedeemCodeUncheckedCreateWithoutTransactionInput = {
+    id?: string
+    userId: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+  }
+
+  export type UserRedeemCodeCreateOrConnectWithoutTransactionInput = {
+    where: UserRedeemCodeWhereUniqueInput
+    create: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
   }
 
   export type UserUpsertWithoutTransactionsInput = {
@@ -71990,6 +74150,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -72014,6 +74175,7 @@ export namespace Prisma {
     subdistrict?: SubdistrictUpdateOneWithoutUsersNestedInput
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTransactionsInput = {
@@ -72036,6 +74198,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72060,6 +74223,7 @@ export namespace Prisma {
     testParticipant?: TestParticipantUncheckedUpdateManyWithoutUserNestedInput
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type VoucherUpsertWithoutTransactionsInput = {
@@ -72117,6 +74281,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductUncheckedUpdateWithoutTransactionsInput = {
@@ -72126,6 +74291,38 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionTime?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserRedeemCodeUpsertWithoutTransactionInput = {
+    update: XOR<UserRedeemCodeUpdateWithoutTransactionInput, UserRedeemCodeUncheckedUpdateWithoutTransactionInput>
+    create: XOR<UserRedeemCodeCreateWithoutTransactionInput, UserRedeemCodeUncheckedCreateWithoutTransactionInput>
+    where?: UserRedeemCodeWhereInput
+  }
+
+  export type UserRedeemCodeUpdateToOneWithWhereWithoutTransactionInput = {
+    where?: UserRedeemCodeWhereInput
+    data: XOR<UserRedeemCodeUpdateWithoutTransactionInput, UserRedeemCodeUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type UserRedeemCodeUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneRequiredWithoutCodesNestedInput
+  }
+
+  export type UserRedeemCodeUncheckedUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type AdminCreateManyProvinceInput = {
@@ -72194,6 +74391,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     subdistrictId?: string | null
@@ -72418,6 +74616,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -72442,6 +74641,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProvinceInput = {
@@ -72464,6 +74664,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72488,6 +74689,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutProvinceInput = {
@@ -72510,6 +74712,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72679,6 +74882,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     provinceId?: string | null
     subdistrictId?: string | null
@@ -72869,6 +75073,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -72893,6 +75098,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCityInput = {
@@ -72915,6 +75121,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72939,6 +75146,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutCityInput = {
@@ -72961,6 +75169,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73084,6 +75293,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     schoolId?: string | null
     cityId?: string | null
     provinceId?: string | null
@@ -73177,6 +75387,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -73201,6 +75412,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubdistrictInput = {
@@ -73223,6 +75435,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73247,6 +75460,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSubdistrictInput = {
@@ -73269,6 +75483,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73467,6 +75682,7 @@ export namespace Prisma {
     playTime?: number
     characterUsed?: string
     inventory?: UserCreateinventoryInput | number[]
+    currentTransaction?: string | null
     cityId?: string | null
     provinceId?: string | null
     subdistrictId?: string | null
@@ -73569,6 +75785,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     username?: StringFieldUpdateOperationsInput | string
@@ -73593,6 +75810,7 @@ export namespace Prisma {
     userLogin?: UserLoginUpdateManyWithoutUserNestedInput
     zones?: ZoneUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSchoolInput = {
@@ -73615,6 +75833,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73639,6 +75858,7 @@ export namespace Prisma {
     userLogin?: UserLoginUncheckedUpdateManyWithoutUserNestedInput
     zones?: ZoneUncheckedUpdateManyWithoutUserNestedInput
     transactions?: UserTransactionUncheckedUpdateManyWithoutUserNestedInput
+    codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSchoolInput = {
@@ -73661,6 +75881,7 @@ export namespace Prisma {
     playTime?: IntFieldUpdateOperationsInput | number
     characterUsed?: StringFieldUpdateOperationsInput | string
     inventory?: UserUpdateinventoryInput | number[]
+    currentTransaction?: NullableStringFieldUpdateOperationsInput | string | null
     cityId?: NullableStringFieldUpdateOperationsInput | string | null
     provinceId?: NullableStringFieldUpdateOperationsInput | string | null
     subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73878,10 +76099,20 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     productId: string
     status?: $Enums.Transaction
+  }
+
+  export type UserRedeemCodeCreateManyUserInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    data?: UserRedeemCodeCreatedataInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    suspend?: boolean
+    transactionId: string
   }
 
   export type BannerVisitorUpdateWithoutUserInput = {
@@ -74419,10 +76650,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
     product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
+    code?: UserRedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateWithoutUserInput = {
@@ -74430,10 +76662,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateManyWithoutUserInput = {
@@ -74441,10 +76674,40 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+  }
+
+  export type UserRedeemCodeUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transaction?: UserTransactionUpdateOneRequiredWithoutCodeNestedInput
+  }
+
+  export type UserRedeemCodeUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserRedeemCodeUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    data?: UserRedeemCodeUpdatedataInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    transactionId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminAuthorityCreateManyAdminInput = {
@@ -75471,7 +77734,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     voucherId?: string | null
     status?: $Enums.Transaction
   }
@@ -75481,10 +77744,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     voucher?: VoucherUpdateOneWithoutTransactionsNestedInput
+    code?: UserRedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateWithoutProductInput = {
@@ -75493,9 +77757,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateManyWithoutProductInput = {
@@ -75504,7 +77769,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     voucherId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }
@@ -75515,7 +77780,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     finalPrice: number
-    trasactionRef: string
+    transactionRef: string
     productId: string
     status?: $Enums.Transaction
   }
@@ -75525,10 +77790,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     product?: ProductUpdateOneRequiredWithoutTransactionsNestedInput
+    code?: UserRedeemCodeUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateWithoutVoucherInput = {
@@ -75537,9 +77803,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
+    code?: UserRedeemCodeUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type UserTransactionUncheckedUpdateManyWithoutVoucherInput = {
@@ -75548,7 +77815,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     finalPrice?: IntFieldUpdateOperationsInput | number
-    trasactionRef?: StringFieldUpdateOperationsInput | string
+    transactionRef?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }

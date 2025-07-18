@@ -184,6 +184,7 @@ exports.Prisma.UserScalarFieldEnum = {
   playTime: 'playTime',
   characterUsed: 'characterUsed',
   inventory: 'inventory',
+  currentTransaction: 'currentTransaction',
   schoolId: 'schoolId',
   cityId: 'cityId',
   provinceId: 'provinceId',
@@ -487,6 +488,17 @@ exports.Prisma.RedeemCodeScalarFieldEnum = {
   suspend: 'suspend'
 };
 
+exports.Prisma.UserRedeemCodeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  expiredAt: 'expiredAt',
+  data: 'data',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  suspend: 'suspend',
+  transactionId: 'transactionId'
+};
+
 exports.Prisma.CodeRedeemerScalarFieldEnum = {
   id: 'id',
   banned: 'banned',
@@ -574,7 +586,8 @@ exports.Prisma.ProductScalarFieldEnum = {
   data: 'data',
   price: 'price',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  subscriptionTime: 'subscriptionTime'
 };
 
 exports.Prisma.VoucherScalarFieldEnum = {
@@ -596,7 +609,7 @@ exports.Prisma.UserTransactionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   userId: 'userId',
   finalPrice: 'finalPrice',
-  trasactionRef: 'trasactionRef',
+  transactionRef: 'transactionRef',
   voucherId: 'voucherId',
   productId: 'productId',
   status: 'status'
@@ -736,6 +749,7 @@ exports.Prisma.ModelName = {
   Setting: 'Setting',
   AdminTransaction: 'AdminTransaction',
   RedeemCode: 'RedeemCode',
+  UserRedeemCode: 'UserRedeemCode',
   CodeRedeemer: 'CodeRedeemer',
   ChampionshipMatch: 'ChampionshipMatch',
   MatchMember: 'MatchMember',
