@@ -220,23 +220,25 @@ model SubLevel {
 }
 
 model InnerLevel {
-  id               String    @id @default(cuid())
-  isUnlock         Boolean   @default(false)
-  unlockedAt       DateTime? @db.Timestamptz(3)
-  isComplete       Boolean   @default(false)
-  completedAt      DateTime? @db.Timestamptz(3)
-  correctAttempt   Float     @default(0)
-  playTime         Int       @default(0)
-  point            Int       @default(0)
-  played           Int       @default(0)
-  createdAt        DateTime  @default(now()) @db.Timestamptz(3)
-  updatedAt        DateTime  @updatedAt @db.Timestamptz(3)
-  inGameId         String
-  levelInGameId    String
-  subLevelInGameId String
-  userId           String
-  zoneInGameId     String
-  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                  String    @id @default(cuid())
+  isUnlock            Boolean   @default(false)
+  unlockedAt          DateTime? @db.Timestamptz(3)
+  isComplete          Boolean   @default(false)
+  completedAt         DateTime? @db.Timestamptz(3)
+  correctAttempt      Float     @default(0)
+  correctAttemptCount Int       @default(0)
+  maxAttempt          Int       @default(0)
+  playTime            Int       @default(0)
+  point               Int       @default(0)
+  played              Int       @default(0)
+  createdAt           DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt           DateTime  @updatedAt @db.Timestamptz(3)
+  inGameId            String
+  levelInGameId       String
+  subLevelInGameId    String
+  userId              String
+  zoneInGameId        String
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, inGameId])
   @@index([zoneInGameId])
