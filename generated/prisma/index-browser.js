@@ -625,7 +625,9 @@ exports.Prisma.ImportExportScalarFieldEnum = {
   expiredAt: 'expiredAt',
   method: 'method',
   status: 'status',
-  fileUrl: 'fileUrl'
+  fileUrl: 'fileUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
