@@ -615,6 +615,8 @@ model UserRedeemCode {
 
   transactionId String          @unique
   transaction   UserTransaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+
+  @@index([expiredAt])
 }
 
 model CodeRedeemer {
