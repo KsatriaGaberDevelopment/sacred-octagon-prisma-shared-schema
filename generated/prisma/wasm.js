@@ -619,6 +619,15 @@ exports.Prisma.UserTransactionScalarFieldEnum = {
   status: 'status'
 };
 
+exports.Prisma.ImportExportScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  expiredAt: 'expiredAt',
+  method: 'method',
+  status: 'status',
+  fileUrl: 'fileUrl'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -731,6 +740,17 @@ exports.VoucherType = exports.$Enums.VoucherType = {
   FixedPrice: 'FixedPrice'
 };
 
+exports.ImportExportType = exports.$Enums.ImportExportType = {
+  Import: 'Import',
+  Export: 'Export'
+};
+
+exports.ImportExportProgress = exports.$Enums.ImportExportProgress = {
+  Progress: 'Progress',
+  Success: 'Success',
+  Fail: 'Fail'
+};
+
 exports.Prisma.ModelName = {
   Province: 'Province',
   City: 'City',
@@ -767,7 +787,8 @@ exports.Prisma.ModelName = {
   MatchHistoryMember: 'MatchHistoryMember',
   Product: 'Product',
   Voucher: 'Voucher',
-  UserTransaction: 'UserTransaction'
+  UserTransaction: 'UserTransaction',
+  ImportExport: 'ImportExport'
 };
 
 /**

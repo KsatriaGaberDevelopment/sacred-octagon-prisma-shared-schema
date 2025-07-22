@@ -193,6 +193,11 @@ export type Voucher = $Result.DefaultSelection<Prisma.$VoucherPayload>
  * 
  */
 export type UserTransaction = $Result.DefaultSelection<Prisma.$UserTransactionPayload>
+/**
+ * Model ImportExport
+ * 
+ */
+export type ImportExport = $Result.DefaultSelection<Prisma.$ImportExportPayload>
 
 /**
  * Enums
@@ -216,6 +221,23 @@ export const AccountType: {
 };
 
 export type AccountType = (typeof AccountType)[keyof typeof AccountType]
+
+
+export const ImportExportType: {
+  Import: 'Import',
+  Export: 'Export'
+};
+
+export type ImportExportType = (typeof ImportExportType)[keyof typeof ImportExportType]
+
+
+export const ImportExportProgress: {
+  Progress: 'Progress',
+  Success: 'Success',
+  Fail: 'Fail'
+};
+
+export type ImportExportProgress = (typeof ImportExportProgress)[keyof typeof ImportExportProgress]
 
 
 export const VoucherType: {
@@ -325,6 +347,14 @@ export const Role: typeof $Enums.Role
 export type AccountType = $Enums.AccountType
 
 export const AccountType: typeof $Enums.AccountType
+
+export type ImportExportType = $Enums.ImportExportType
+
+export const ImportExportType: typeof $Enums.ImportExportType
+
+export type ImportExportProgress = $Enums.ImportExportProgress
+
+export const ImportExportProgress: typeof $Enums.ImportExportProgress
 
 export type VoucherType = $Enums.VoucherType
 
@@ -850,6 +880,16 @@ export class PrismaClient<
     * ```
     */
   get userTransaction(): Prisma.UserTransactionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.importExport`: Exposes CRUD operations for the **ImportExport** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ImportExports
+    * const importExports = await prisma.importExport.findMany()
+    * ```
+    */
+  get importExport(): Prisma.ImportExportDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1325,7 +1365,8 @@ export namespace Prisma {
     MatchHistoryMember: 'MatchHistoryMember',
     Product: 'Product',
     Voucher: 'Voucher',
-    UserTransaction: 'UserTransaction'
+    UserTransaction: 'UserTransaction',
+    ImportExport: 'ImportExport'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1344,7 +1385,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "userRedeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember" | "product" | "voucher" | "userTransaction"
+      modelProps: "province" | "city" | "subdistrict" | "school" | "user" | "zone" | "level" | "subLevel" | "innerLevel" | "gempo" | "championship" | "gempoRecord" | "championshipRecord" | "userLogin" | "admin" | "adminLog" | "adminOperationHistory" | "adminAuthority" | "banner" | "bannerVisitor" | "test" | "testParticipant" | "testParticipantRecord" | "background" | "setting" | "adminTransaction" | "redeemCode" | "userRedeemCode" | "codeRedeemer" | "championshipMatch" | "matchMember" | "championshipHistory" | "matchHistoryMember" | "product" | "voucher" | "userTransaction" | "importExport"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4012,6 +4053,80 @@ export namespace Prisma {
           }
         }
       }
+      ImportExport: {
+        payload: Prisma.$ImportExportPayload<ExtArgs>
+        fields: Prisma.ImportExportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImportExportFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImportExportFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          findFirst: {
+            args: Prisma.ImportExportFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImportExportFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          findMany: {
+            args: Prisma.ImportExportFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>[]
+          }
+          create: {
+            args: Prisma.ImportExportCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          createMany: {
+            args: Prisma.ImportExportCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImportExportCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>[]
+          }
+          delete: {
+            args: Prisma.ImportExportDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          update: {
+            args: Prisma.ImportExportUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          deleteMany: {
+            args: Prisma.ImportExportDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImportExportUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImportExportUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>[]
+          }
+          upsert: {
+            args: Prisma.ImportExportUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImportExportPayload>
+          }
+          aggregate: {
+            args: Prisma.ImportExportAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImportExport>
+          }
+          groupBy: {
+            args: Prisma.ImportExportGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImportExportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImportExportCountArgs<ExtArgs>
+            result: $Utils.Optional<ImportExportCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -4132,6 +4247,7 @@ export namespace Prisma {
     product?: ProductOmit
     voucher?: VoucherOmit
     userTransaction?: UserTransactionOmit
+    importExport?: ImportExportOmit
   }
 
   /* Types for Logging */
@@ -4678,6 +4794,7 @@ export namespace Prisma {
     banner: number
     redeemCodes: number
     tests: number
+    importExports: number
   }
 
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4690,6 +4807,7 @@ export namespace Prisma {
     banner?: boolean | AdminCountOutputTypeCountBannerArgs
     redeemCodes?: boolean | AdminCountOutputTypeCountRedeemCodesArgs
     tests?: boolean | AdminCountOutputTypeCountTestsArgs
+    importExports?: boolean | AdminCountOutputTypeCountImportExportsArgs
   }
 
   // Custom InputTypes
@@ -4764,6 +4882,13 @@ export namespace Prisma {
    */
   export type AdminCountOutputTypeCountTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TestWhereInput
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountImportExportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImportExportWhereInput
   }
 
 
@@ -23073,6 +23198,7 @@ export namespace Prisma {
     redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
     tests?: boolean | Admin$testsArgs<ExtArgs>
     user?: boolean | Admin$userArgs<ExtArgs>
+    importExports?: boolean | Admin$importExportsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
@@ -23154,6 +23280,7 @@ export namespace Prisma {
     redeemCodes?: boolean | Admin$redeemCodesArgs<ExtArgs>
     tests?: boolean | Admin$testsArgs<ExtArgs>
     user?: boolean | Admin$userArgs<ExtArgs>
+    importExports?: boolean | Admin$importExportsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -23186,6 +23313,7 @@ export namespace Prisma {
       redeemCodes: Prisma.$RedeemCodePayload<ExtArgs>[]
       tests: Prisma.$TestPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs> | null
+      importExports: Prisma.$ImportExportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -23611,6 +23739,7 @@ export namespace Prisma {
     redeemCodes<T extends Admin$redeemCodesArgs<ExtArgs> = {}>(args?: Subset<T, Admin$redeemCodesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedeemCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tests<T extends Admin$testsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$testsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends Admin$userArgs<ExtArgs> = {}>(args?: Subset<T, Admin$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    importExports<T extends Admin$importExportsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$importExportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -24359,6 +24488,30 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+  /**
+   * Admin.importExports
+   */
+  export type Admin$importExportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    where?: ImportExportWhereInput
+    orderBy?: ImportExportOrderByWithRelationInput | ImportExportOrderByWithRelationInput[]
+    cursor?: ImportExportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImportExportScalarFieldEnum | ImportExportScalarFieldEnum[]
   }
 
   /**
@@ -48900,6 +49053,1077 @@ export namespace Prisma {
 
 
   /**
+   * Model ImportExport
+   */
+
+  export type AggregateImportExport = {
+    _count: ImportExportCountAggregateOutputType | null
+    _min: ImportExportMinAggregateOutputType | null
+    _max: ImportExportMaxAggregateOutputType | null
+  }
+
+  export type ImportExportMinAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    expiredAt: Date | null
+    method: $Enums.ImportExportType | null
+    status: $Enums.ImportExportProgress | null
+    fileUrl: string | null
+  }
+
+  export type ImportExportMaxAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    expiredAt: Date | null
+    method: $Enums.ImportExportType | null
+    status: $Enums.ImportExportProgress | null
+    fileUrl: string | null
+  }
+
+  export type ImportExportCountAggregateOutputType = {
+    id: number
+    adminId: number
+    expiredAt: number
+    method: number
+    status: number
+    fileUrl: number
+    _all: number
+  }
+
+
+  export type ImportExportMinAggregateInputType = {
+    id?: true
+    adminId?: true
+    expiredAt?: true
+    method?: true
+    status?: true
+    fileUrl?: true
+  }
+
+  export type ImportExportMaxAggregateInputType = {
+    id?: true
+    adminId?: true
+    expiredAt?: true
+    method?: true
+    status?: true
+    fileUrl?: true
+  }
+
+  export type ImportExportCountAggregateInputType = {
+    id?: true
+    adminId?: true
+    expiredAt?: true
+    method?: true
+    status?: true
+    fileUrl?: true
+    _all?: true
+  }
+
+  export type ImportExportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ImportExport to aggregate.
+     */
+    where?: ImportExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImportExports to fetch.
+     */
+    orderBy?: ImportExportOrderByWithRelationInput | ImportExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImportExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImportExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImportExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ImportExports
+    **/
+    _count?: true | ImportExportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImportExportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImportExportMaxAggregateInputType
+  }
+
+  export type GetImportExportAggregateType<T extends ImportExportAggregateArgs> = {
+        [P in keyof T & keyof AggregateImportExport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImportExport[P]>
+      : GetScalarType<T[P], AggregateImportExport[P]>
+  }
+
+
+
+
+  export type ImportExportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImportExportWhereInput
+    orderBy?: ImportExportOrderByWithAggregationInput | ImportExportOrderByWithAggregationInput[]
+    by: ImportExportScalarFieldEnum[] | ImportExportScalarFieldEnum
+    having?: ImportExportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImportExportCountAggregateInputType | true
+    _min?: ImportExportMinAggregateInputType
+    _max?: ImportExportMaxAggregateInputType
+  }
+
+  export type ImportExportGroupByOutputType = {
+    id: string
+    adminId: string
+    expiredAt: Date | null
+    method: $Enums.ImportExportType
+    status: $Enums.ImportExportProgress
+    fileUrl: string | null
+    _count: ImportExportCountAggregateOutputType | null
+    _min: ImportExportMinAggregateOutputType | null
+    _max: ImportExportMaxAggregateOutputType | null
+  }
+
+  type GetImportExportGroupByPayload<T extends ImportExportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImportExportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImportExportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImportExportGroupByOutputType[P]>
+            : GetScalarType<T[P], ImportExportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImportExportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    expiredAt?: boolean
+    method?: boolean
+    status?: boolean
+    fileUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["importExport"]>
+
+  export type ImportExportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    expiredAt?: boolean
+    method?: boolean
+    status?: boolean
+    fileUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["importExport"]>
+
+  export type ImportExportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    expiredAt?: boolean
+    method?: boolean
+    status?: boolean
+    fileUrl?: boolean
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["importExport"]>
+
+  export type ImportExportSelectScalar = {
+    id?: boolean
+    adminId?: boolean
+    expiredAt?: boolean
+    method?: boolean
+    status?: boolean
+    fileUrl?: boolean
+  }
+
+  export type ImportExportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "expiredAt" | "method" | "status" | "fileUrl", ExtArgs["result"]["importExport"]>
+  export type ImportExportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type ImportExportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type ImportExportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+
+  export type $ImportExportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ImportExport"
+    objects: {
+      admin: Prisma.$AdminPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      adminId: string
+      expiredAt: Date | null
+      method: $Enums.ImportExportType
+      status: $Enums.ImportExportProgress
+      fileUrl: string | null
+    }, ExtArgs["result"]["importExport"]>
+    composites: {}
+  }
+
+  type ImportExportGetPayload<S extends boolean | null | undefined | ImportExportDefaultArgs> = $Result.GetResult<Prisma.$ImportExportPayload, S>
+
+  type ImportExportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImportExportFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImportExportCountAggregateInputType | true
+    }
+
+  export interface ImportExportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ImportExport'], meta: { name: 'ImportExport' } }
+    /**
+     * Find zero or one ImportExport that matches the filter.
+     * @param {ImportExportFindUniqueArgs} args - Arguments to find a ImportExport
+     * @example
+     * // Get one ImportExport
+     * const importExport = await prisma.importExport.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImportExportFindUniqueArgs>(args: SelectSubset<T, ImportExportFindUniqueArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ImportExport that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImportExportFindUniqueOrThrowArgs} args - Arguments to find a ImportExport
+     * @example
+     * // Get one ImportExport
+     * const importExport = await prisma.importExport.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImportExportFindUniqueOrThrowArgs>(args: SelectSubset<T, ImportExportFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ImportExport that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportFindFirstArgs} args - Arguments to find a ImportExport
+     * @example
+     * // Get one ImportExport
+     * const importExport = await prisma.importExport.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImportExportFindFirstArgs>(args?: SelectSubset<T, ImportExportFindFirstArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ImportExport that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportFindFirstOrThrowArgs} args - Arguments to find a ImportExport
+     * @example
+     * // Get one ImportExport
+     * const importExport = await prisma.importExport.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImportExportFindFirstOrThrowArgs>(args?: SelectSubset<T, ImportExportFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ImportExports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ImportExports
+     * const importExports = await prisma.importExport.findMany()
+     * 
+     * // Get first 10 ImportExports
+     * const importExports = await prisma.importExport.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const importExportWithIdOnly = await prisma.importExport.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImportExportFindManyArgs>(args?: SelectSubset<T, ImportExportFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ImportExport.
+     * @param {ImportExportCreateArgs} args - Arguments to create a ImportExport.
+     * @example
+     * // Create one ImportExport
+     * const ImportExport = await prisma.importExport.create({
+     *   data: {
+     *     // ... data to create a ImportExport
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImportExportCreateArgs>(args: SelectSubset<T, ImportExportCreateArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ImportExports.
+     * @param {ImportExportCreateManyArgs} args - Arguments to create many ImportExports.
+     * @example
+     * // Create many ImportExports
+     * const importExport = await prisma.importExport.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImportExportCreateManyArgs>(args?: SelectSubset<T, ImportExportCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ImportExports and returns the data saved in the database.
+     * @param {ImportExportCreateManyAndReturnArgs} args - Arguments to create many ImportExports.
+     * @example
+     * // Create many ImportExports
+     * const importExport = await prisma.importExport.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ImportExports and only return the `id`
+     * const importExportWithIdOnly = await prisma.importExport.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImportExportCreateManyAndReturnArgs>(args?: SelectSubset<T, ImportExportCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ImportExport.
+     * @param {ImportExportDeleteArgs} args - Arguments to delete one ImportExport.
+     * @example
+     * // Delete one ImportExport
+     * const ImportExport = await prisma.importExport.delete({
+     *   where: {
+     *     // ... filter to delete one ImportExport
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImportExportDeleteArgs>(args: SelectSubset<T, ImportExportDeleteArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ImportExport.
+     * @param {ImportExportUpdateArgs} args - Arguments to update one ImportExport.
+     * @example
+     * // Update one ImportExport
+     * const importExport = await prisma.importExport.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImportExportUpdateArgs>(args: SelectSubset<T, ImportExportUpdateArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ImportExports.
+     * @param {ImportExportDeleteManyArgs} args - Arguments to filter ImportExports to delete.
+     * @example
+     * // Delete a few ImportExports
+     * const { count } = await prisma.importExport.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImportExportDeleteManyArgs>(args?: SelectSubset<T, ImportExportDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ImportExports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ImportExports
+     * const importExport = await prisma.importExport.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImportExportUpdateManyArgs>(args: SelectSubset<T, ImportExportUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ImportExports and returns the data updated in the database.
+     * @param {ImportExportUpdateManyAndReturnArgs} args - Arguments to update many ImportExports.
+     * @example
+     * // Update many ImportExports
+     * const importExport = await prisma.importExport.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ImportExports and only return the `id`
+     * const importExportWithIdOnly = await prisma.importExport.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImportExportUpdateManyAndReturnArgs>(args: SelectSubset<T, ImportExportUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ImportExport.
+     * @param {ImportExportUpsertArgs} args - Arguments to update or create a ImportExport.
+     * @example
+     * // Update or create a ImportExport
+     * const importExport = await prisma.importExport.upsert({
+     *   create: {
+     *     // ... data to create a ImportExport
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ImportExport we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImportExportUpsertArgs>(args: SelectSubset<T, ImportExportUpsertArgs<ExtArgs>>): Prisma__ImportExportClient<$Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ImportExports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportCountArgs} args - Arguments to filter ImportExports to count.
+     * @example
+     * // Count the number of ImportExports
+     * const count = await prisma.importExport.count({
+     *   where: {
+     *     // ... the filter for the ImportExports we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImportExportCountArgs>(
+      args?: Subset<T, ImportExportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImportExportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ImportExport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImportExportAggregateArgs>(args: Subset<T, ImportExportAggregateArgs>): Prisma.PrismaPromise<GetImportExportAggregateType<T>>
+
+    /**
+     * Group by ImportExport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImportExportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImportExportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImportExportGroupByArgs['orderBy'] }
+        : { orderBy?: ImportExportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImportExportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImportExportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ImportExport model
+   */
+  readonly fields: ImportExportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ImportExport.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImportExportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ImportExport model
+   */
+  interface ImportExportFieldRefs {
+    readonly id: FieldRef<"ImportExport", 'String'>
+    readonly adminId: FieldRef<"ImportExport", 'String'>
+    readonly expiredAt: FieldRef<"ImportExport", 'DateTime'>
+    readonly method: FieldRef<"ImportExport", 'ImportExportType'>
+    readonly status: FieldRef<"ImportExport", 'ImportExportProgress'>
+    readonly fileUrl: FieldRef<"ImportExport", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ImportExport findUnique
+   */
+  export type ImportExportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter, which ImportExport to fetch.
+     */
+    where: ImportExportWhereUniqueInput
+  }
+
+  /**
+   * ImportExport findUniqueOrThrow
+   */
+  export type ImportExportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter, which ImportExport to fetch.
+     */
+    where: ImportExportWhereUniqueInput
+  }
+
+  /**
+   * ImportExport findFirst
+   */
+  export type ImportExportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter, which ImportExport to fetch.
+     */
+    where?: ImportExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImportExports to fetch.
+     */
+    orderBy?: ImportExportOrderByWithRelationInput | ImportExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ImportExports.
+     */
+    cursor?: ImportExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImportExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImportExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ImportExports.
+     */
+    distinct?: ImportExportScalarFieldEnum | ImportExportScalarFieldEnum[]
+  }
+
+  /**
+   * ImportExport findFirstOrThrow
+   */
+  export type ImportExportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter, which ImportExport to fetch.
+     */
+    where?: ImportExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImportExports to fetch.
+     */
+    orderBy?: ImportExportOrderByWithRelationInput | ImportExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ImportExports.
+     */
+    cursor?: ImportExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImportExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImportExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ImportExports.
+     */
+    distinct?: ImportExportScalarFieldEnum | ImportExportScalarFieldEnum[]
+  }
+
+  /**
+   * ImportExport findMany
+   */
+  export type ImportExportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter, which ImportExports to fetch.
+     */
+    where?: ImportExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImportExports to fetch.
+     */
+    orderBy?: ImportExportOrderByWithRelationInput | ImportExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ImportExports.
+     */
+    cursor?: ImportExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImportExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImportExports.
+     */
+    skip?: number
+    distinct?: ImportExportScalarFieldEnum | ImportExportScalarFieldEnum[]
+  }
+
+  /**
+   * ImportExport create
+   */
+  export type ImportExportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ImportExport.
+     */
+    data: XOR<ImportExportCreateInput, ImportExportUncheckedCreateInput>
+  }
+
+  /**
+   * ImportExport createMany
+   */
+  export type ImportExportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ImportExports.
+     */
+    data: ImportExportCreateManyInput | ImportExportCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ImportExport createManyAndReturn
+   */
+  export type ImportExportCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * The data used to create many ImportExports.
+     */
+    data: ImportExportCreateManyInput | ImportExportCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ImportExport update
+   */
+  export type ImportExportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ImportExport.
+     */
+    data: XOR<ImportExportUpdateInput, ImportExportUncheckedUpdateInput>
+    /**
+     * Choose, which ImportExport to update.
+     */
+    where: ImportExportWhereUniqueInput
+  }
+
+  /**
+   * ImportExport updateMany
+   */
+  export type ImportExportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ImportExports.
+     */
+    data: XOR<ImportExportUpdateManyMutationInput, ImportExportUncheckedUpdateManyInput>
+    /**
+     * Filter which ImportExports to update
+     */
+    where?: ImportExportWhereInput
+    /**
+     * Limit how many ImportExports to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ImportExport updateManyAndReturn
+   */
+  export type ImportExportUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * The data used to update ImportExports.
+     */
+    data: XOR<ImportExportUpdateManyMutationInput, ImportExportUncheckedUpdateManyInput>
+    /**
+     * Filter which ImportExports to update
+     */
+    where?: ImportExportWhereInput
+    /**
+     * Limit how many ImportExports to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ImportExport upsert
+   */
+  export type ImportExportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ImportExport to update in case it exists.
+     */
+    where: ImportExportWhereUniqueInput
+    /**
+     * In case the ImportExport found by the `where` argument doesn't exist, create a new ImportExport with this data.
+     */
+    create: XOR<ImportExportCreateInput, ImportExportUncheckedCreateInput>
+    /**
+     * In case the ImportExport was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImportExportUpdateInput, ImportExportUncheckedUpdateInput>
+  }
+
+  /**
+   * ImportExport delete
+   */
+  export type ImportExportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+    /**
+     * Filter which ImportExport to delete.
+     */
+    where: ImportExportWhereUniqueInput
+  }
+
+  /**
+   * ImportExport deleteMany
+   */
+  export type ImportExportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ImportExports to delete
+     */
+    where?: ImportExportWhereInput
+    /**
+     * Limit how many ImportExports to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ImportExport without action
+   */
+  export type ImportExportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImportExport
+     */
+    select?: ImportExportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImportExport
+     */
+    omit?: ImportExportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImportExportInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -49523,6 +50747,18 @@ export namespace Prisma {
   export type UserTransactionScalarFieldEnum = (typeof UserTransactionScalarFieldEnum)[keyof typeof UserTransactionScalarFieldEnum]
 
 
+  export const ImportExportScalarFieldEnum: {
+    id: 'id',
+    adminId: 'adminId',
+    expiredAt: 'expiredAt',
+    method: 'method',
+    status: 'status',
+    fileUrl: 'fileUrl'
+  };
+
+  export type ImportExportScalarFieldEnum = (typeof ImportExportScalarFieldEnum)[keyof typeof ImportExportScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -49818,6 +51054,34 @@ export namespace Prisma {
    * Reference to a field of type 'VoucherType[]'
    */
   export type ListEnumVoucherTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VoucherType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ImportExportType'
+   */
+  export type EnumImportExportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ImportExportType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ImportExportType[]'
+   */
+  export type ListEnumImportExportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ImportExportType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ImportExportProgress'
+   */
+  export type EnumImportExportProgressFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ImportExportProgress'>
+    
+
+
+  /**
+   * Reference to a field of type 'ImportExportProgress[]'
+   */
+  export type ListEnumImportExportProgressFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ImportExportProgress[]'>
     
   /**
    * Deep Input Types
@@ -51272,6 +52536,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeListRelationFilter
     tests?: TestListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    importExports?: ImportExportListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -51304,6 +52569,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeOrderByRelationAggregateInput
     tests?: TestOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
+    importExports?: ImportExportOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -51339,6 +52605,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeListRelationFilter
     tests?: TestListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    importExports?: ImportExportListRelationFilter
   }, "id" | "authId" | "email">
 
   export type AdminOrderByWithAggregationInput = {
@@ -53169,6 +54436,66 @@ export namespace Prisma {
     status?: EnumTransactionWithAggregatesFilter<"UserTransaction"> | $Enums.Transaction
   }
 
+  export type ImportExportWhereInput = {
+    AND?: ImportExportWhereInput | ImportExportWhereInput[]
+    OR?: ImportExportWhereInput[]
+    NOT?: ImportExportWhereInput | ImportExportWhereInput[]
+    id?: StringFilter<"ImportExport"> | string
+    adminId?: StringFilter<"ImportExport"> | string
+    expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
+    method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
+    status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    fileUrl?: StringNullableFilter<"ImportExport"> | string | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+  }
+
+  export type ImportExportOrderByWithRelationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    fileUrl?: SortOrderInput | SortOrder
+    admin?: AdminOrderByWithRelationInput
+  }
+
+  export type ImportExportWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ImportExportWhereInput | ImportExportWhereInput[]
+    OR?: ImportExportWhereInput[]
+    NOT?: ImportExportWhereInput | ImportExportWhereInput[]
+    adminId?: StringFilter<"ImportExport"> | string
+    expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
+    method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
+    status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    fileUrl?: StringNullableFilter<"ImportExport"> | string | null
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+  }, "id">
+
+  export type ImportExportOrderByWithAggregationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    expiredAt?: SortOrderInput | SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    fileUrl?: SortOrderInput | SortOrder
+    _count?: ImportExportCountOrderByAggregateInput
+    _max?: ImportExportMaxOrderByAggregateInput
+    _min?: ImportExportMinOrderByAggregateInput
+  }
+
+  export type ImportExportScalarWhereWithAggregatesInput = {
+    AND?: ImportExportScalarWhereWithAggregatesInput | ImportExportScalarWhereWithAggregatesInput[]
+    OR?: ImportExportScalarWhereWithAggregatesInput[]
+    NOT?: ImportExportScalarWhereWithAggregatesInput | ImportExportScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ImportExport"> | string
+    adminId?: StringWithAggregatesFilter<"ImportExport"> | string
+    expiredAt?: DateTimeNullableWithAggregatesFilter<"ImportExport"> | Date | string | null
+    method?: EnumImportExportTypeWithAggregatesFilter<"ImportExport"> | $Enums.ImportExportType
+    status?: EnumImportExportProgressWithAggregatesFilter<"ImportExport"> | $Enums.ImportExportProgress
+    fileUrl?: StringNullableWithAggregatesFilter<"ImportExport"> | string | null
+  }
+
   export type ProvinceCreateInput = {
     id?: string
     name: string
@@ -54793,6 +56120,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -54821,6 +56149,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -54849,6 +56178,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -54877,6 +56207,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -56884,6 +58215,68 @@ export namespace Prisma {
     status?: EnumTransactionFieldUpdateOperationsInput | $Enums.Transaction
   }
 
+  export type ImportExportCreateInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+    admin: AdminCreateNestedOneWithoutImportExportsInput
+  }
+
+  export type ImportExportUncheckedCreateInput = {
+    id?: string
+    adminId: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+  }
+
+  export type ImportExportUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: AdminUpdateOneRequiredWithoutImportExportsNestedInput
+  }
+
+  export type ImportExportUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImportExportCreateManyInput = {
+    id?: string
+    adminId: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+  }
+
+  export type ImportExportUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImportExportUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -58248,6 +59641,12 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
+  export type ImportExportListRelationFilter = {
+    every?: ImportExportWhereInput
+    some?: ImportExportWhereInput
+    none?: ImportExportWhereInput
+  }
+
   export type AdminLogOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -58265,6 +59664,10 @@ export namespace Prisma {
   }
 
   export type TestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ImportExportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -59644,6 +61047,67 @@ export namespace Prisma {
 
   export type UserTransactionSumOrderByAggregateInput = {
     finalPrice?: SortOrder
+  }
+
+  export type EnumImportExportTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportType | EnumImportExportTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportTypeFilter<$PrismaModel> | $Enums.ImportExportType
+  }
+
+  export type EnumImportExportProgressFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportProgress | EnumImportExportProgressFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportProgressFilter<$PrismaModel> | $Enums.ImportExportProgress
+  }
+
+  export type ImportExportCountOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    expiredAt?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    fileUrl?: SortOrder
+  }
+
+  export type ImportExportMaxOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    expiredAt?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    fileUrl?: SortOrder
+  }
+
+  export type ImportExportMinOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    expiredAt?: SortOrder
+    method?: SortOrder
+    status?: SortOrder
+    fileUrl?: SortOrder
+  }
+
+  export type EnumImportExportTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportType | EnumImportExportTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportTypeWithAggregatesFilter<$PrismaModel> | $Enums.ImportExportType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumImportExportTypeFilter<$PrismaModel>
+    _max?: NestedEnumImportExportTypeFilter<$PrismaModel>
+  }
+
+  export type EnumImportExportProgressWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportProgress | EnumImportExportProgressFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportProgressWithAggregatesFilter<$PrismaModel> | $Enums.ImportExportProgress
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumImportExportProgressFilter<$PrismaModel>
+    _max?: NestedEnumImportExportProgressFilter<$PrismaModel>
   }
 
   export type AdminCreateNestedManyWithoutProvinceInput = {
@@ -61626,6 +63090,13 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type ImportExportCreateNestedManyWithoutAdminInput = {
+    create?: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput> | ImportExportCreateWithoutAdminInput[] | ImportExportUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ImportExportCreateOrConnectWithoutAdminInput | ImportExportCreateOrConnectWithoutAdminInput[]
+    createMany?: ImportExportCreateManyAdminInputEnvelope
+    connect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+  }
+
   export type AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput = {
     create?: XOR<AdminAuthorityCreateWithoutAdminInput, AdminAuthorityUncheckedCreateWithoutAdminInput> | AdminAuthorityCreateWithoutAdminInput[] | AdminAuthorityUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAdminInput | AdminAuthorityCreateOrConnectWithoutAdminInput[]
@@ -61693,6 +63164,13 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
     connectOrCreate?: UserCreateOrConnectWithoutAdminInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type ImportExportUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput> | ImportExportCreateWithoutAdminInput[] | ImportExportUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ImportExportCreateOrConnectWithoutAdminInput | ImportExportCreateOrConnectWithoutAdminInput[]
+    createMany?: ImportExportCreateManyAdminInputEnvelope
+    connect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
   }
 
   export type NullableEnumRoleFieldUpdateOperationsInput = {
@@ -61875,6 +63353,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAdminInput, UserUpdateWithoutAdminInput>, UserUncheckedUpdateWithoutAdminInput>
   }
 
+  export type ImportExportUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput> | ImportExportCreateWithoutAdminInput[] | ImportExportUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ImportExportCreateOrConnectWithoutAdminInput | ImportExportCreateOrConnectWithoutAdminInput[]
+    upsert?: ImportExportUpsertWithWhereUniqueWithoutAdminInput | ImportExportUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: ImportExportCreateManyAdminInputEnvelope
+    set?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    disconnect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    delete?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    connect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    update?: ImportExportUpdateWithWhereUniqueWithoutAdminInput | ImportExportUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: ImportExportUpdateManyWithWhereWithoutAdminInput | ImportExportUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: ImportExportScalarWhereInput | ImportExportScalarWhereInput[]
+  }
+
   export type AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput = {
     create?: XOR<AdminAuthorityCreateWithoutAdminInput, AdminAuthorityUncheckedCreateWithoutAdminInput> | AdminAuthorityCreateWithoutAdminInput[] | AdminAuthorityUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: AdminAuthorityCreateOrConnectWithoutAdminInput | AdminAuthorityCreateOrConnectWithoutAdminInput[]
@@ -62009,6 +63501,20 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAdminInput, UserUpdateWithoutAdminInput>, UserUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type ImportExportUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput> | ImportExportCreateWithoutAdminInput[] | ImportExportUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: ImportExportCreateOrConnectWithoutAdminInput | ImportExportCreateOrConnectWithoutAdminInput[]
+    upsert?: ImportExportUpsertWithWhereUniqueWithoutAdminInput | ImportExportUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: ImportExportCreateManyAdminInputEnvelope
+    set?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    disconnect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    delete?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    connect?: ImportExportWhereUniqueInput | ImportExportWhereUniqueInput[]
+    update?: ImportExportUpdateWithWhereUniqueWithoutAdminInput | ImportExportUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: ImportExportUpdateManyWithWhereWithoutAdminInput | ImportExportUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: ImportExportScalarWhereInput | ImportExportScalarWhereInput[]
   }
 
   export type AdminCreateNestedOneWithoutLogsInput = {
@@ -63118,6 +64624,28 @@ export namespace Prisma {
     update?: XOR<XOR<UserRedeemCodeUpdateToOneWithWhereWithoutTransactionInput, UserRedeemCodeUpdateWithoutTransactionInput>, UserRedeemCodeUncheckedUpdateWithoutTransactionInput>
   }
 
+  export type AdminCreateNestedOneWithoutImportExportsInput = {
+    create?: XOR<AdminCreateWithoutImportExportsInput, AdminUncheckedCreateWithoutImportExportsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutImportExportsInput
+    connect?: AdminWhereUniqueInput
+  }
+
+  export type EnumImportExportTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ImportExportType
+  }
+
+  export type EnumImportExportProgressFieldUpdateOperationsInput = {
+    set?: $Enums.ImportExportProgress
+  }
+
+  export type AdminUpdateOneRequiredWithoutImportExportsNestedInput = {
+    create?: XOR<AdminCreateWithoutImportExportsInput, AdminUncheckedCreateWithoutImportExportsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutImportExportsInput
+    upsert?: AdminUpsertWithoutImportExportsInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutImportExportsInput, AdminUpdateWithoutImportExportsInput>, AdminUncheckedUpdateWithoutImportExportsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -63575,6 +65103,40 @@ export namespace Prisma {
     _max?: NestedEnumVoucherTypeFilter<$PrismaModel>
   }
 
+  export type NestedEnumImportExportTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportType | EnumImportExportTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportTypeFilter<$PrismaModel> | $Enums.ImportExportType
+  }
+
+  export type NestedEnumImportExportProgressFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportProgress | EnumImportExportProgressFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportProgressFilter<$PrismaModel> | $Enums.ImportExportProgress
+  }
+
+  export type NestedEnumImportExportTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportType | EnumImportExportTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportType[] | ListEnumImportExportTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportTypeWithAggregatesFilter<$PrismaModel> | $Enums.ImportExportType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumImportExportTypeFilter<$PrismaModel>
+    _max?: NestedEnumImportExportTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumImportExportProgressWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ImportExportProgress | EnumImportExportProgressFieldRefInput<$PrismaModel>
+    in?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ImportExportProgress[] | ListEnumImportExportProgressFieldRefInput<$PrismaModel>
+    not?: NestedEnumImportExportProgressWithAggregatesFilter<$PrismaModel> | $Enums.ImportExportProgress
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumImportExportProgressFilter<$PrismaModel>
+    _max?: NestedEnumImportExportProgressFilter<$PrismaModel>
+  }
+
   export type AdminCreateWithoutProvinceInput = {
     id?: string
     authId: string
@@ -63600,6 +65162,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutProvinceInput = {
@@ -63627,6 +65190,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutProvinceInput = {
@@ -64211,6 +65775,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutCityInput = {
@@ -64238,6 +65803,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutCityInput = {
@@ -64929,6 +66495,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutSubdistrictInput = {
@@ -64956,6 +66523,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutSubdistrictInput = {
@@ -65225,6 +66793,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutSchoolInput = {
@@ -65252,6 +66821,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutSchoolInput = {
@@ -66138,6 +67708,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutUserInput = {
@@ -66165,6 +67736,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutUserInput = {
@@ -66883,6 +68455,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutUserInput = {
@@ -66910,6 +68483,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type CityUpsertWithoutUsersInput = {
@@ -69674,6 +71248,32 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutAdminInput, UserUncheckedCreateWithoutAdminInput>
   }
 
+  export type ImportExportCreateWithoutAdminInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+  }
+
+  export type ImportExportUncheckedCreateWithoutAdminInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+  }
+
+  export type ImportExportCreateOrConnectWithoutAdminInput = {
+    where: ImportExportWhereUniqueInput
+    create: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput>
+  }
+
+  export type ImportExportCreateManyAdminInputEnvelope = {
+    data: ImportExportCreateManyAdminInput | ImportExportCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProvinceUpsertWithoutAdminInput = {
     update: XOR<ProvinceUpdateWithoutAdminInput, ProvinceUncheckedUpdateWithoutAdminInput>
     create: XOR<ProvinceCreateWithoutAdminInput, ProvinceUncheckedCreateWithoutAdminInput>
@@ -70186,6 +71786,34 @@ export namespace Prisma {
     codes?: UserRedeemCodeUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type ImportExportUpsertWithWhereUniqueWithoutAdminInput = {
+    where: ImportExportWhereUniqueInput
+    update: XOR<ImportExportUpdateWithoutAdminInput, ImportExportUncheckedUpdateWithoutAdminInput>
+    create: XOR<ImportExportCreateWithoutAdminInput, ImportExportUncheckedCreateWithoutAdminInput>
+  }
+
+  export type ImportExportUpdateWithWhereUniqueWithoutAdminInput = {
+    where: ImportExportWhereUniqueInput
+    data: XOR<ImportExportUpdateWithoutAdminInput, ImportExportUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type ImportExportUpdateManyWithWhereWithoutAdminInput = {
+    where: ImportExportScalarWhereInput
+    data: XOR<ImportExportUpdateManyMutationInput, ImportExportUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type ImportExportScalarWhereInput = {
+    AND?: ImportExportScalarWhereInput | ImportExportScalarWhereInput[]
+    OR?: ImportExportScalarWhereInput[]
+    NOT?: ImportExportScalarWhereInput | ImportExportScalarWhereInput[]
+    id?: StringFilter<"ImportExport"> | string
+    adminId?: StringFilter<"ImportExport"> | string
+    expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
+    method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
+    status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    fileUrl?: StringNullableFilter<"ImportExport"> | string | null
+  }
+
   export type AdminCreateWithoutLogsInput = {
     id?: string
     authId: string
@@ -70211,6 +71839,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutLogsInput = {
@@ -70238,6 +71867,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutLogsInput = {
@@ -70281,6 +71911,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutLogsInput = {
@@ -70308,6 +71939,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateWithoutOperationHistoriesInput = {
@@ -70335,6 +71967,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationHistoriesInput = {
@@ -70362,6 +71995,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationHistoriesInput = {
@@ -70394,6 +72028,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutOperationsInput = {
@@ -70421,6 +72056,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutOperationsInput = {
@@ -70464,6 +72100,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationHistoriesInput = {
@@ -70491,6 +72128,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUpsertWithoutOperationsInput = {
@@ -70529,6 +72167,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutOperationsInput = {
@@ -70556,6 +72195,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateWithoutAuthorityInput = {
@@ -70583,6 +72223,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutAuthorityInput = {
@@ -70610,6 +72251,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutAuthorityInput = {
@@ -70801,6 +72443,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutAuthorityInput = {
@@ -70828,6 +72471,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ProvinceUpsertWithoutAdminAuthorityInput = {
@@ -70946,6 +72590,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutBannerInput = {
@@ -70973,6 +72618,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutBannerInput = {
@@ -71153,6 +72799,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutBannerInput = {
@@ -71180,6 +72827,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type ProvinceUpsertWithWhereUniqueWithoutBannersInput = {
@@ -71584,6 +73232,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTestsInput = {
@@ -71611,6 +73260,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTestsInput = {
@@ -71682,6 +73332,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTestsInput = {
@@ -71709,6 +73360,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type TestParticipantUpsertWithWhereUniqueWithoutTestInput = {
@@ -72172,6 +73824,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionsInput = {
@@ -72199,6 +73852,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionsInput = {
@@ -72231,6 +73885,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutTransactionProcessedInput = {
@@ -72258,6 +73913,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutTransactionProcessedInput = {
@@ -72334,6 +73990,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionsInput = {
@@ -72361,6 +74018,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUpsertWithoutTransactionProcessedInput = {
@@ -72399,6 +74057,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutTransactionProcessedInput = {
@@ -72426,6 +74085,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type RedeemCodeUpsertWithoutTransactionInput = {
@@ -72518,6 +74178,7 @@ export namespace Prisma {
     banner?: BannerCreateNestedManyWithoutAdminInput
     tests?: TestCreateNestedManyWithoutAdminInput
     user?: UserCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutRedeemCodesInput = {
@@ -72545,6 +74206,7 @@ export namespace Prisma {
     banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
     tests?: TestUncheckedCreateNestedManyWithoutAdminInput
     user?: UserUncheckedCreateNestedOneWithoutAdminInput
+    importExports?: ImportExportUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutRedeemCodesInput = {
@@ -72649,6 +74311,7 @@ export namespace Prisma {
     banner?: BannerUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutRedeemCodesInput = {
@@ -72676,6 +74339,7 @@ export namespace Prisma {
     banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminTransactionUpsertWithoutRedeemCodeInput = {
@@ -74495,6 +76159,134 @@ export namespace Prisma {
     suspend?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type AdminCreateWithoutImportExportsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    province?: ProvinceCreateNestedOneWithoutAdminInput
+    city?: CityCreateNestedOneWithoutAdminInput
+    subdistrict?: SubdistrictCreateNestedOneWithoutAdminsInput
+    school?: SchoolCreateNestedOneWithoutAdminInput
+    authority?: AdminAuthorityCreateNestedManyWithoutAdminInput
+    logs?: AdminLogCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionCreateNestedManyWithoutProcessedByInput
+    banner?: BannerCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeCreateNestedManyWithoutAdminInput
+    tests?: TestCreateNestedManyWithoutAdminInput
+    user?: UserCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminUncheckedCreateWithoutImportExportsInput = {
+    id?: string
+    authId: string
+    email: string
+    name: string
+    suspend?: boolean
+    role?: $Enums.Role | null
+    provinceId?: string | null
+    cityId?: string | null
+    subdistrictId?: string | null
+    schoolId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    authenticatorEnabled?: boolean
+    authenticatorQrUrl?: string | null
+    authenticatorSecret?: string | null
+    authority?: AdminAuthorityUncheckedCreateNestedManyWithoutAdminInput
+    logs?: AdminLogUncheckedCreateNestedManyWithoutAdminInput
+    operationHistories?: AdminOperationHistoryUncheckedCreateNestedManyWithoutAdminInput
+    operations?: AdminOperationHistoryUncheckedCreateNestedManyWithoutOpAdminInput
+    transactions?: AdminTransactionUncheckedCreateNestedManyWithoutAdminInput
+    transactionProcessed?: AdminTransactionUncheckedCreateNestedManyWithoutProcessedByInput
+    banner?: BannerUncheckedCreateNestedManyWithoutAdminInput
+    redeemCodes?: RedeemCodeUncheckedCreateNestedManyWithoutAdminInput
+    tests?: TestUncheckedCreateNestedManyWithoutAdminInput
+    user?: UserUncheckedCreateNestedOneWithoutAdminInput
+  }
+
+  export type AdminCreateOrConnectWithoutImportExportsInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutImportExportsInput, AdminUncheckedCreateWithoutImportExportsInput>
+  }
+
+  export type AdminUpsertWithoutImportExportsInput = {
+    update: XOR<AdminUpdateWithoutImportExportsInput, AdminUncheckedUpdateWithoutImportExportsInput>
+    create: XOR<AdminCreateWithoutImportExportsInput, AdminUncheckedCreateWithoutImportExportsInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutImportExportsInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutImportExportsInput, AdminUncheckedUpdateWithoutImportExportsInput>
+  }
+
+  export type AdminUpdateWithoutImportExportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: ProvinceUpdateOneWithoutAdminNestedInput
+    city?: CityUpdateOneWithoutAdminNestedInput
+    subdistrict?: SubdistrictUpdateOneWithoutAdminsNestedInput
+    school?: SchoolUpdateOneWithoutAdminNestedInput
+    authority?: AdminAuthorityUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
+    tests?: TestUpdateManyWithoutAdminNestedInput
+    user?: UserUpdateOneWithoutAdminNestedInput
+  }
+
+  export type AdminUncheckedUpdateWithoutImportExportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    suspend?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+    provinceId?: NullableStringFieldUpdateOperationsInput | string | null
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    subdistrictId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    authenticatorEnabled?: BoolFieldUpdateOperationsInput | boolean
+    authenticatorQrUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    authenticatorSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    authority?: AdminAuthorityUncheckedUpdateManyWithoutAdminNestedInput
+    logs?: AdminLogUncheckedUpdateManyWithoutAdminNestedInput
+    operationHistories?: AdminOperationHistoryUncheckedUpdateManyWithoutAdminNestedInput
+    operations?: AdminOperationHistoryUncheckedUpdateManyWithoutOpAdminNestedInput
+    transactions?: AdminTransactionUncheckedUpdateManyWithoutAdminNestedInput
+    transactionProcessed?: AdminTransactionUncheckedUpdateManyWithoutProcessedByNestedInput
+    banner?: BannerUncheckedUpdateManyWithoutAdminNestedInput
+    redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
+    tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
+    user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+  }
+
   export type AdminCreateManyProvinceInput = {
     id?: string
     authId: string
@@ -74609,6 +76401,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutProvinceInput = {
@@ -74636,6 +76429,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutProvinceInput = {
@@ -75089,6 +76883,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutCityInput = {
@@ -75116,6 +76911,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutCityInput = {
@@ -75690,6 +77486,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutSubdistrictInput = {
@@ -75717,6 +77514,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutSubdistrictInput = {
@@ -75889,6 +77687,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUpdateManyWithoutAdminNestedInput
     tests?: TestUpdateManyWithoutAdminNestedInput
     user?: UserUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutSchoolInput = {
@@ -75916,6 +77715,7 @@ export namespace Prisma {
     redeemCodes?: RedeemCodeUncheckedUpdateManyWithoutAdminNestedInput
     tests?: TestUncheckedUpdateManyWithoutAdminNestedInput
     user?: UserUncheckedUpdateOneWithoutAdminNestedInput
+    importExports?: ImportExportUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateManyWithoutSchoolInput = {
@@ -77008,6 +78808,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ImportExportCreateManyAdminInput = {
+    id?: string
+    expiredAt?: Date | string | null
+    method: $Enums.ImportExportType
+    status?: $Enums.ImportExportProgress
+    fileUrl?: string | null
+  }
+
   export type AdminAuthorityUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     grades?: AdminAuthorityUpdategradesInput | number[]
@@ -77376,6 +79184,30 @@ export namespace Prisma {
     category?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImportExportUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImportExportUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImportExportUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
+    status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CityUpdateWithoutAdminAuthorityInput = {

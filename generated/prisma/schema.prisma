@@ -377,6 +377,7 @@ model Admin {
   redeemCodes          RedeemCode[]
   tests                Test[]
   user                 User?
+  importExports        ImportExport[]
 }
 
 model AdminLog {
@@ -773,6 +774,16 @@ model UserTransaction {
   @@index([status])
 }
 
+model ImportExport {
+  id        String               @id @default(cuid())
+  adminId   String
+  admin     Admin                @relation(fields: [adminId], references: [id])
+  expiredAt DateTime?            @db.Timestamptz(3)
+  method    ImportExportType
+  status    ImportExportProgress @default(Progress)
+  fileUrl   String?
+}
+
 enum Role {
   Developer
   SuperAdmin
@@ -785,6 +796,17 @@ enum Role {
 enum AccountType {
   LMS
   Self
+}
+
+enum ImportExportType {
+  Import
+  Export
+}
+
+enum ImportExportProgress {
+  Progress
+  Success
+  Fail
 }
 
 enum VoucherType {
