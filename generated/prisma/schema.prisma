@@ -769,6 +769,8 @@ model UserTransaction {
   product              Product?        @relation(fields: [productId], references: [id])
   status               Transaction     @default(Pending)
   code                 UserRedeemCode?
+
+  @@index([status])
 }
 
 enum Role {
