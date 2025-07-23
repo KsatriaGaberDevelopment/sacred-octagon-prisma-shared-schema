@@ -783,6 +783,7 @@ model ImportExport {
   expiredAt DateTime?            @db.Timestamptz(3)
   method    ImportExportType
   status    ImportExportProgress @default(Progress)
+  fileId    String?
   fileUrl   String?
   createdAt DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt DateTime             @updatedAt @db.Timestamptz(3)
