@@ -625,6 +625,8 @@ exports.Prisma.ImportExportScalarFieldEnum = {
   expiredAt: 'expiredAt',
   method: 'method',
   status: 'status',
+  maxCount: 'maxCount',
+  errorCount: 'errorCount',
   fileId: 'fileId',
   fileUrl: 'fileUrl',
   createdAt: 'createdAt',

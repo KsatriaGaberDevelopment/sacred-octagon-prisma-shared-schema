@@ -49058,8 +49058,20 @@ export namespace Prisma {
 
   export type AggregateImportExport = {
     _count: ImportExportCountAggregateOutputType | null
+    _avg: ImportExportAvgAggregateOutputType | null
+    _sum: ImportExportSumAggregateOutputType | null
     _min: ImportExportMinAggregateOutputType | null
     _max: ImportExportMaxAggregateOutputType | null
+  }
+
+  export type ImportExportAvgAggregateOutputType = {
+    maxCount: number | null
+    errorCount: number | null
+  }
+
+  export type ImportExportSumAggregateOutputType = {
+    maxCount: number | null
+    errorCount: number | null
   }
 
   export type ImportExportMinAggregateOutputType = {
@@ -49068,6 +49080,8 @@ export namespace Prisma {
     expiredAt: Date | null
     method: $Enums.ImportExportType | null
     status: $Enums.ImportExportProgress | null
+    maxCount: number | null
+    errorCount: number | null
     fileId: string | null
     fileUrl: string | null
     createdAt: Date | null
@@ -49080,6 +49094,8 @@ export namespace Prisma {
     expiredAt: Date | null
     method: $Enums.ImportExportType | null
     status: $Enums.ImportExportProgress | null
+    maxCount: number | null
+    errorCount: number | null
     fileId: string | null
     fileUrl: string | null
     createdAt: Date | null
@@ -49092,6 +49108,8 @@ export namespace Prisma {
     expiredAt: number
     method: number
     status: number
+    maxCount: number
+    errorCount: number
     fileId: number
     fileUrl: number
     createdAt: number
@@ -49100,12 +49118,24 @@ export namespace Prisma {
   }
 
 
+  export type ImportExportAvgAggregateInputType = {
+    maxCount?: true
+    errorCount?: true
+  }
+
+  export type ImportExportSumAggregateInputType = {
+    maxCount?: true
+    errorCount?: true
+  }
+
   export type ImportExportMinAggregateInputType = {
     id?: true
     adminId?: true
     expiredAt?: true
     method?: true
     status?: true
+    maxCount?: true
+    errorCount?: true
     fileId?: true
     fileUrl?: true
     createdAt?: true
@@ -49118,6 +49148,8 @@ export namespace Prisma {
     expiredAt?: true
     method?: true
     status?: true
+    maxCount?: true
+    errorCount?: true
     fileId?: true
     fileUrl?: true
     createdAt?: true
@@ -49130,6 +49162,8 @@ export namespace Prisma {
     expiredAt?: true
     method?: true
     status?: true
+    maxCount?: true
+    errorCount?: true
     fileId?: true
     fileUrl?: true
     createdAt?: true
@@ -49175,6 +49209,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ImportExportAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ImportExportSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ImportExportMinAggregateInputType
@@ -49205,6 +49251,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ImportExportCountAggregateInputType | true
+    _avg?: ImportExportAvgAggregateInputType
+    _sum?: ImportExportSumAggregateInputType
     _min?: ImportExportMinAggregateInputType
     _max?: ImportExportMaxAggregateInputType
   }
@@ -49215,11 +49263,15 @@ export namespace Prisma {
     expiredAt: Date | null
     method: $Enums.ImportExportType
     status: $Enums.ImportExportProgress
+    maxCount: number
+    errorCount: number
     fileId: string | null
     fileUrl: string | null
     createdAt: Date
     updatedAt: Date
     _count: ImportExportCountAggregateOutputType | null
+    _avg: ImportExportAvgAggregateOutputType | null
+    _sum: ImportExportSumAggregateOutputType | null
     _min: ImportExportMinAggregateOutputType | null
     _max: ImportExportMaxAggregateOutputType | null
   }
@@ -49244,6 +49296,8 @@ export namespace Prisma {
     expiredAt?: boolean
     method?: boolean
     status?: boolean
+    maxCount?: boolean
+    errorCount?: boolean
     fileId?: boolean
     fileUrl?: boolean
     createdAt?: boolean
@@ -49257,6 +49311,8 @@ export namespace Prisma {
     expiredAt?: boolean
     method?: boolean
     status?: boolean
+    maxCount?: boolean
+    errorCount?: boolean
     fileId?: boolean
     fileUrl?: boolean
     createdAt?: boolean
@@ -49270,6 +49326,8 @@ export namespace Prisma {
     expiredAt?: boolean
     method?: boolean
     status?: boolean
+    maxCount?: boolean
+    errorCount?: boolean
     fileId?: boolean
     fileUrl?: boolean
     createdAt?: boolean
@@ -49283,13 +49341,15 @@ export namespace Prisma {
     expiredAt?: boolean
     method?: boolean
     status?: boolean
+    maxCount?: boolean
+    errorCount?: boolean
     fileId?: boolean
     fileUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ImportExportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "expiredAt" | "method" | "status" | "fileId" | "fileUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["importExport"]>
+  export type ImportExportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "expiredAt" | "method" | "status" | "maxCount" | "errorCount" | "fileId" | "fileUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["importExport"]>
   export type ImportExportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
@@ -49311,6 +49371,8 @@ export namespace Prisma {
       expiredAt: Date | null
       method: $Enums.ImportExportType
       status: $Enums.ImportExportProgress
+      maxCount: number
+      errorCount: number
       fileId: string | null
       fileUrl: string | null
       createdAt: Date
@@ -49744,6 +49806,8 @@ export namespace Prisma {
     readonly expiredAt: FieldRef<"ImportExport", 'DateTime'>
     readonly method: FieldRef<"ImportExport", 'ImportExportType'>
     readonly status: FieldRef<"ImportExport", 'ImportExportProgress'>
+    readonly maxCount: FieldRef<"ImportExport", 'Int'>
+    readonly errorCount: FieldRef<"ImportExport", 'Int'>
     readonly fileId: FieldRef<"ImportExport", 'String'>
     readonly fileUrl: FieldRef<"ImportExport", 'String'>
     readonly createdAt: FieldRef<"ImportExport", 'DateTime'>
@@ -50792,6 +50856,8 @@ export namespace Prisma {
     expiredAt: 'expiredAt',
     method: 'method',
     status: 'status',
+    maxCount: 'maxCount',
+    errorCount: 'errorCount',
     fileId: 'fileId',
     fileUrl: 'fileUrl',
     createdAt: 'createdAt',
@@ -54487,6 +54553,8 @@ export namespace Prisma {
     expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
     method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
     status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    maxCount?: IntFilter<"ImportExport"> | number
+    errorCount?: IntFilter<"ImportExport"> | number
     fileId?: StringNullableFilter<"ImportExport"> | string | null
     fileUrl?: StringNullableFilter<"ImportExport"> | string | null
     createdAt?: DateTimeFilter<"ImportExport"> | Date | string
@@ -54500,6 +54568,8 @@ export namespace Prisma {
     expiredAt?: SortOrderInput | SortOrder
     method?: SortOrder
     status?: SortOrder
+    maxCount?: SortOrder
+    errorCount?: SortOrder
     fileId?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -54516,6 +54586,8 @@ export namespace Prisma {
     expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
     method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
     status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    maxCount?: IntFilter<"ImportExport"> | number
+    errorCount?: IntFilter<"ImportExport"> | number
     fileId?: StringNullableFilter<"ImportExport"> | string | null
     fileUrl?: StringNullableFilter<"ImportExport"> | string | null
     createdAt?: DateTimeFilter<"ImportExport"> | Date | string
@@ -54529,13 +54601,17 @@ export namespace Prisma {
     expiredAt?: SortOrderInput | SortOrder
     method?: SortOrder
     status?: SortOrder
+    maxCount?: SortOrder
+    errorCount?: SortOrder
     fileId?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ImportExportCountOrderByAggregateInput
+    _avg?: ImportExportAvgOrderByAggregateInput
     _max?: ImportExportMaxOrderByAggregateInput
     _min?: ImportExportMinOrderByAggregateInput
+    _sum?: ImportExportSumOrderByAggregateInput
   }
 
   export type ImportExportScalarWhereWithAggregatesInput = {
@@ -54547,6 +54623,8 @@ export namespace Prisma {
     expiredAt?: DateTimeNullableWithAggregatesFilter<"ImportExport"> | Date | string | null
     method?: EnumImportExportTypeWithAggregatesFilter<"ImportExport"> | $Enums.ImportExportType
     status?: EnumImportExportProgressWithAggregatesFilter<"ImportExport"> | $Enums.ImportExportProgress
+    maxCount?: IntWithAggregatesFilter<"ImportExport"> | number
+    errorCount?: IntWithAggregatesFilter<"ImportExport"> | number
     fileId?: StringNullableWithAggregatesFilter<"ImportExport"> | string | null
     fileUrl?: StringNullableWithAggregatesFilter<"ImportExport"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ImportExport"> | Date | string
@@ -58277,6 +58355,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -58290,6 +58370,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -58301,6 +58383,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58314,6 +58398,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58326,6 +58412,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -58337,6 +58425,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58349,6 +58439,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -61147,10 +61239,17 @@ export namespace Prisma {
     expiredAt?: SortOrder
     method?: SortOrder
     status?: SortOrder
+    maxCount?: SortOrder
+    errorCount?: SortOrder
     fileId?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ImportExportAvgOrderByAggregateInput = {
+    maxCount?: SortOrder
+    errorCount?: SortOrder
   }
 
   export type ImportExportMaxOrderByAggregateInput = {
@@ -61159,6 +61258,8 @@ export namespace Prisma {
     expiredAt?: SortOrder
     method?: SortOrder
     status?: SortOrder
+    maxCount?: SortOrder
+    errorCount?: SortOrder
     fileId?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
@@ -61171,10 +61272,17 @@ export namespace Prisma {
     expiredAt?: SortOrder
     method?: SortOrder
     status?: SortOrder
+    maxCount?: SortOrder
+    errorCount?: SortOrder
     fileId?: SortOrder
     fileUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ImportExportSumOrderByAggregateInput = {
+    maxCount?: SortOrder
+    errorCount?: SortOrder
   }
 
   export type EnumImportExportTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -71340,6 +71448,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -71351,6 +71461,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -71904,6 +72016,8 @@ export namespace Prisma {
     expiredAt?: DateTimeNullableFilter<"ImportExport"> | Date | string | null
     method?: EnumImportExportTypeFilter<"ImportExport"> | $Enums.ImportExportType
     status?: EnumImportExportProgressFilter<"ImportExport"> | $Enums.ImportExportProgress
+    maxCount?: IntFilter<"ImportExport"> | number
+    errorCount?: IntFilter<"ImportExport"> | number
     fileId?: StringNullableFilter<"ImportExport"> | string | null
     fileUrl?: StringNullableFilter<"ImportExport"> | string | null
     createdAt?: DateTimeFilter<"ImportExport"> | Date | string
@@ -78909,6 +79023,8 @@ export namespace Prisma {
     expiredAt?: Date | string | null
     method: $Enums.ImportExportType
     status?: $Enums.ImportExportProgress
+    maxCount?: number
+    errorCount?: number
     fileId?: string | null
     fileUrl?: string | null
     createdAt?: Date | string
@@ -79290,6 +79406,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -79301,6 +79419,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -79312,6 +79432,8 @@ export namespace Prisma {
     expiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     method?: EnumImportExportTypeFieldUpdateOperationsInput | $Enums.ImportExportType
     status?: EnumImportExportProgressFieldUpdateOperationsInput | $Enums.ImportExportProgress
+    maxCount?: IntFieldUpdateOperationsInput | number
+    errorCount?: IntFieldUpdateOperationsInput | number
     fileId?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
