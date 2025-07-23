@@ -775,7 +775,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "G:\\WebProjects\\sacred-octagon-prisma-shared-schema\\generated\\prisma",
+      "value": "D:\\Works\\sacred-octagon-prisma-shared-schema\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -789,7 +789,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "G:\\WebProjects\\sacred-octagon-prisma-shared-schema\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\Works\\sacred-octagon-prisma-shared-schema\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -807,7 +807,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres.rpeidphljgfigvbsotep:d4Pn@Hj!sSc%b-W@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
+        "value": "postgresql://postgres.rpeidphljgfigvbsotep:d4Pn@Hj!sSc%b-W@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
       }
     }
   },

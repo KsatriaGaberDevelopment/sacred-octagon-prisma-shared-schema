@@ -1,6 +1,6 @@
 {
   "name": "@KsatriaGaberDevelopment/prisma-shared-schema",
-  "version": "1.0.67",
+  "version": "1.0.66",
   "description": "fix typescrip module",
   "scripts": {
     "build": "tsc",
