@@ -232,6 +232,7 @@ export type ImportExportType = (typeof ImportExportType)[keyof typeof ImportExpo
 
 
 export const ImportExportProgress: {
+  Waiting: 'Waiting',
   Progress: 'Progress',
   Success: 'Success',
   Fail: 'Fail'

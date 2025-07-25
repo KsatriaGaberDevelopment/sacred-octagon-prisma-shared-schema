@@ -751,6 +751,7 @@ exports.ImportExportType = exports.$Enums.ImportExportType = {
 };
 
 exports.ImportExportProgress = exports.$Enums.ImportExportProgress = {
+  Waiting: 'Waiting',
   Progress: 'Progress',
   Success: 'Success',
   Fail: 'Fail'
