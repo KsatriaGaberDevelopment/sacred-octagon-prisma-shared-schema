@@ -783,6 +783,7 @@ model ImportExport {
   expiredAt  DateTime?            @db.Timestamptz(3)
   method     ImportExportType
   status     ImportExportProgress @default(Waiting)
+  queueName  String               @default("")
   maxCount   Int                  @default(0)
   errorCount Int                  @default(0)
   fileId     String?
