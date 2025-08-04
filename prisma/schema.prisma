@@ -715,22 +715,25 @@ model ChampionshipHistory {
 }
 
 model MatchHistoryMember {
-  id           String              @id @default(cuid())
-  roomId       String
-  userId       String
-  slot         Int                 @default(0)
-  status       MatchStatus         @default(None)
-  point        Int                 @default(0) // ini jumlah point yang didapat
-  bonusPoint   Int                 @default(0) // ini bonus point berdasarkan ketentuan
-  teamType     TeamType            @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat
-  isReady      Boolean             @default(false)
-  isComplete   Boolean             @default(false)
-  isBot        Boolean             @default(false)
-  joinedAt     DateTime            @default(now()) @db.Timestamptz(3)
-  finishedAt   DateTime?           @db.Timestamptz(3)
-  isDisconnect Boolean             @default(false)
-  room         ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  user         User                @relation(fields: [userId], references: [id])
+  id                  String              @id @default(cuid())
+  roomId              String
+  userId              String
+  slot                Int                 @default(0)
+  status              MatchStatus         @default(None)
+  point               Int                 @default(0) // ini jumlah point yang didapat
+  bonusPoint          Int                 @default(0) // ini bonus point berdasarkan ketentuan
+  correctAttempt      Float               @default(0) // percentage benar
+  correctAttemptCount Int                 @default(0) // jumlah jawab benar
+  maxAttempt          Int                 @default(0) // jumlah soal
+  teamType            TeamType            @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat
+  isReady             Boolean             @default(false)
+  isComplete          Boolean             @default(false)
+  isBot               Boolean             @default(false)
+  joinedAt            DateTime            @default(now()) @db.Timestamptz(3)
+  finishedAt          DateTime?           @db.Timestamptz(3)
+  isDisconnect        Boolean             @default(false)
+  room                ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user                User                @relation(fields: [userId], references: [id])
 }
 
 model Product {
