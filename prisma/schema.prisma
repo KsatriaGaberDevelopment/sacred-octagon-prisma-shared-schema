@@ -21,9 +21,9 @@ model Province {
   adminAuthority AdminAuthority[]
   cities         City[]
   schools        School[]
-  users          User[]
   subdistricts   Subdistrict[]
-  banners        Banner[]
+  users          User[]
+  banners        Banner[]         @relation("BannerToProvince")
 
   @@index([id])
   @@index([name])
@@ -45,7 +45,7 @@ model City {
   subdistricts   Subdistrict[]
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToCity")
-  banners        Banner[]
+  banners        Banner[]         @relation("BannerToCity")
 
   @@index([provinceId])
 }
@@ -60,13 +60,13 @@ model Subdistrict {
   cityId         String
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
-  province       Province         @relation(fields: [provinceId], references: [id])
-  city           City             @relation(fields: [cityId], references: [id])
-  schools        School[]
-  users          User[]
   admins         Admin[]
-  adminAuthority AdminAuthority[]
-  banners        Banner[]
+  schools        School[]
+  city           City             @relation(fields: [cityId], references: [id])
+  province       Province         @relation(fields: [provinceId], references: [id])
+  users          User[]
+  adminAuthority AdminAuthority[] @relation("AdminAuthorityToSubdistrict")
+  banners        Banner[]         @relation("BannerToSubdistrict")
 
   @@index([provinceId])
   @@index([cityId])
@@ -75,15 +75,15 @@ model Subdistrict {
 model School {
   id             String           @id @default(cuid())
   identity       String           @unique
-  level          EducationLevel   @default(NONE)
   name           String
   longitude      Float
   latitude       Float
   cityId         String?
   provinceId     String?
-  subdistrictId  String?
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
+  level          EducationLevel   @default(NONE)
+  subdistrictId  String?
   admin          Admin[]
   city           City?            @relation(fields: [cityId], references: [id])
   province       Province?        @relation(fields: [provinceId], references: [id])
@@ -100,8 +100,6 @@ model User {
   id                  String               @id @default(cuid())
   authId              String               @unique
   email               String               @unique
-  phoneNumber         String?
-  gender              Gender               @default(None)
   role                Role                 @default(User)
   suspend             Boolean              @default(false)
   accountType         AccountType          @default(Self)
@@ -116,17 +114,19 @@ model User {
   playTime            Int                  @default(0)
   characterUsed       String               @default("")
   inventory           Int[]                @default([0, 0, 0])
-  currentTransaction  String?
   schoolId            String?
   cityId              String?
   provinceId          String?
-  subdistrictId       String?
   adminId             String?              @unique
   createdAt           DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime             @updatedAt @db.Timestamptz(3)
   username            String               @unique
   lastIdZoneUnlocked  String               @default("")
   lastIdZonePosition  String               @default("")
+  subdistrictId       String?
+  gender              Gender               @default(None)
+  phoneNumber         String?
+  currentTransaction  String?
   bannerVisitor       BannerVisitor[]
   championships       Championship[]
   championshipRecords ChampionshipRecord[]
@@ -135,8 +135,8 @@ model User {
   gempoRecords        GempoRecord[]
   innerLevels         InnerLevel[]
   levels              Level[]
-  matchMembers        MatchMember[]
   historyMatchMembers MatchHistoryMember[]
+  matchMembers        MatchMember[]
   subLevels           SubLevel[]
   testParticipant     TestParticipant[]
   admin               Admin?               @relation(fields: [adminId], references: [id], onDelete: Cascade)
@@ -145,9 +145,9 @@ model User {
   school              School?              @relation(fields: [schoolId], references: [id])
   subdistrict         Subdistrict?         @relation(fields: [subdistrictId], references: [id])
   userLogin           UserLogin[]
-  zones               Zone[]
-  transactions        UserTransaction[]
   codes               UserRedeemCode[]
+  transactions        UserTransaction[]
+  zones               Zone[]
 
   @@index([provinceId])
   @@index([cityId])
@@ -226,8 +226,6 @@ model InnerLevel {
   isComplete          Boolean   @default(false)
   completedAt         DateTime? @db.Timestamptz(3)
   correctAttempt      Float     @default(0)
-  correctAttemptCount Int       @default(0)
-  maxAttempt          Int       @default(0)
   playTime            Int       @default(0)
   point               Int       @default(0)
   played              Int       @default(0)
@@ -238,6 +236,8 @@ model InnerLevel {
   subLevelInGameId    String
   userId              String
   zoneInGameId        String
+  correctAttemptCount Int       @default(0)
+  maxAttempt          Int       @default(0)
   user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, inGameId])
@@ -288,7 +288,6 @@ model GempoRecord {
   id                  String    @id @default(cuid())
   played              Int       @default(0)
   point               Int       @default(0)
-  highestPoint        Int       @default(0)
   lastPlayedAt        DateTime? @db.Timestamptz(3)
   createdAt           DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime  @updatedAt @db.Timestamptz(3)
@@ -297,6 +296,7 @@ model GempoRecord {
   userId              String
   zoneInGameId        String
   correctAttempt      Float     @default(0)
+  highestPoint        Int       @default(0)
   correctAttemptCount Int       @default(0)
   maxAttempt          Int       @default(0)
   user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -358,17 +358,17 @@ model Admin {
   role                 Role?
   provinceId           String?
   cityId               String?
-  subdistrictId        String?
   schoolId             String?
   createdAt            DateTime                @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime                @updatedAt @db.Timestamptz(3)
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
-  province             Province?               @relation(fields: [provinceId], references: [id])
+  subdistrictId        String?
   city                 City?                   @relation(fields: [cityId], references: [id])
-  subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
+  province             Province?               @relation(fields: [provinceId], references: [id])
   school               School?                 @relation(fields: [schoolId], references: [id])
+  subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
   authority            AdminAuthority[]
   logs                 AdminLog[]
   operationHistories   AdminOperationHistory[] @relation("OperationHistory")
@@ -376,10 +376,10 @@ model Admin {
   transactions         AdminTransaction[]      @relation("transactions")
   transactionProcessed AdminTransaction[]      @relation("transactionProcessed")
   banner               Banner[]
+  importExports        ImportExport[]
   redeemCodes          RedeemCode[]
   tests                Test[]
   user                 User?
-  importExports        ImportExport[]
 }
 
 model AdminLog {
@@ -416,52 +416,38 @@ model AdminAuthority {
   admin        Admin         @relation(fields: [adminId], references: [id], onDelete: Cascade)
   province     Province      @relation(fields: [provinceId], references: [id])
   cities       City[]        @relation("AdminAuthorityToCity")
-  subdistricts Subdistrict[]
   schools      School[]      @relation("AdminAuthorityToSchool")
+  subdistricts Subdistrict[] @relation("AdminAuthorityToSubdistrict")
 
   @@index([provinceId])
 }
 
 model Banner {
   id                      String          @id @default(cuid())
-  title                   String?
   thumbnail               String
-  thumbnailId             String
   link                    String?
   startedAt               DateTime?       @db.Timestamptz(3)
   endedAt                 DateTime?       @db.Timestamptz(3)
   isHide                  Boolean         @default(false)
-  nextBroadcastedAt       DateTime?
-  notificationDescription String?
   adminId                 String
-  admin                   Admin           @relation(fields: [adminId], references: [id])
-  provincies              Province[]
-  cities                  City[]
-  subdistricts            Subdistrict[]
-  visitors                BannerVisitor[]
+  thumbnailId             String
+  title                   String?
   createdAt               DateTime        @default(now())
   updatedAt               DateTime        @updatedAt
+  notificationDescription String?
+  nextBroadcastedAt       DateTime?
+  admin                   Admin           @relation(fields: [adminId], references: [id])
+  visitors                BannerVisitor[]
+  cities                  City[]          @relation("BannerToCity")
+  provincies              Province[]      @relation("BannerToProvince")
+  subdistricts            Subdistrict[]   @relation("BannerToSubdistrict")
 
-  @@index([isHide]) // For `where: { isHide: false }`
-  @@index([startedAt]) // For `where: { startedAt: { lte: now } }`
-  @@index([endedAt]) // For `where: { endedAt: { gte: now } }`
-  @@index([adminId]) // For the relation `admin` if you ever query by admin
-  @@index([startedAt, endedAt, isHide]) // Composite index for common filtering
+  @@index([isHide])
+  @@index([startedAt])
+  @@index([endedAt])
+  @@index([adminId])
+  @@index([startedAt, endedAt, isHide])
 }
-
-/**
- * model BannerLocation {
- * id            String        @id @default(cuid())
- * bannerId      String?
- * banner        Banner?       @relation(fields: [bannerId], references: [id], onDelete: Cascade)
- * provincies    Province[]
- * cities        City[]
- * subdisctricts Subdistrict[]
- * //@@index([provinceId]) // For `bannerLocation: { some: { provinceId: UserProvince } }`
- * //@@index([bannerId, provinceId]) // Composite if you often filter banner locations by banner AND province
- * @@index([bannerId]) // For joining with Banner (implicit when `some` is used)
- * }
- */
 
 model BannerVisitor {
   id        String   @id @default(cuid())
@@ -561,10 +547,10 @@ model AdminTransaction {
   id                  String      @id @default(cuid())
   createdAt           DateTime    @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime    @updatedAt @db.Timestamptz(3)
-  quantity            Int         @default(0) // quota
+  quantity            Int         @default(0)
   zones               String[]
   adminId             String
-  amount              Int // harga
+  amount              Int
   archived            Boolean     @default(false)
   description         String?
   name                String
@@ -606,17 +592,16 @@ model RedeemCode {
 }
 
 model UserRedeemCode {
-  id        String    @id @default(cuid())
-  userId    String
-  user      User      @relation(fields: [userId], references: [id])
-  expiredAt DateTime? @db.Timestamptz(3)
-  data      String[]
-  createdAt DateTime  @default(now()) @db.Timestamptz(3)
-  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
-  suspend   Boolean   @default(false)
-
+  id            String          @id @default(cuid())
+  userId        String
+  expiredAt     DateTime?       @db.Timestamptz(3)
+  data          String[]
+  createdAt     DateTime        @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime        @updatedAt @db.Timestamptz(3)
+  suspend       Boolean         @default(false)
   transactionId String          @unique
   transaction   UserTransaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+  user          User            @relation(fields: [userId], references: [id])
 
   @@index([expiredAt])
 }
@@ -643,11 +628,8 @@ model CodeRedeemer {
 model ChampionshipMatch {
   id            String        @id @default(cuid())
   max           Int           @default(2)
-  zoneInGameId  String
   gameplayId    String
   botOwner      String?
-  mode          MatchMode
-  endTime       Int           @default(0) // Game duration
   startedAt     DateTime?     @db.Timestamptz(3)
   endedAt       DateTime?     @db.Timestamptz(3)
   expiredAt     DateTime?     @db.Timestamptz(3)
@@ -656,6 +638,9 @@ model ChampionshipMatch {
   createdAt     DateTime      @default(now()) @db.Timestamptz(3)
   updatedAt     DateTime      @updatedAt @db.Timestamptz(3)
   currentMember Int           @default(0)
+  mode          MatchMode
+  zoneInGameId  String
+  endTime       Int           @default(0)
   members       MatchMember[]
 
   @@index([gameplayId])
@@ -670,34 +655,30 @@ model MatchMember {
   id           String            @id @default(cuid())
   roomId       String
   userId       String
-  slot         Int               @default(0) // Ini untuk cegah user pindah2 slot after leave saat masih di room
-  status       MatchStatus       @default(None)
-  answerPoint  Int               @default(0) // ini point ketika menjawab contoh benar 100/salah -100
-  point        Int               @default(0) // ini jumlah point yang didapat
-  bonusPoint   Int               @default(0) // ini bonus point berdasarkan ketentuan
-  teamType     TeamType          @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat lebih banyak enum
+  point        Int               @default(0)
+  bonusPoint   Int               @default(0)
   isReady      Boolean           @default(false)
   isComplete   Boolean           @default(false)
   isBot        Boolean           @default(false)
   joinedAt     DateTime          @default(now()) @db.Timestamptz(3)
   finishedAt   DateTime?         @db.Timestamptz(3)
   isDisconnect Boolean           @default(false)
+  answerPoint  Int               @default(0)
+  teamType     TeamType          @default(None)
+  status       MatchStatus       @default(None)
+  slot         Int               @default(0)
   room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
   user         User              @relation(fields: [userId], references: [id])
 
-  @@unique([roomId, slot]) // Ensures each slot in a room is unique
-  @@unique([roomId, userId]) // Ensures a user can only be in one slot per room
+  @@unique([roomId, slot])
+  @@unique([roomId, userId])
 }
 
 model ChampionshipHistory {
   id            String               @id @default(cuid())
   max           Int                  @default(2)
-  zoneInGameId  String
   gameplayId    String
   botOwner      String?
-  currentPoint  Int[]                @default([0, 0]) //@@TODO - JAYA: kemungkinan ga dipakai lagi
-  mode          MatchMode
-  endTime       Int                  @default(0) // Game duration
   startedAt     DateTime?            @db.Timestamptz(3)
   endedAt       DateTime?            @db.Timestamptz(3)
   expiredAt     DateTime?            @db.Timestamptz(3)
@@ -706,6 +687,10 @@ model ChampionshipHistory {
   createdAt     DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt     DateTime             @updatedAt @db.Timestamptz(3)
   currentMember Int                  @default(0)
+  mode          MatchMode
+  zoneInGameId  String
+  endTime       Int                  @default(0)
+  currentPoint  Int[]                @default([0, 0])
   members       MatchHistoryMember[]
 
   @@index([gameplayId])
@@ -718,20 +703,20 @@ model MatchHistoryMember {
   id                  String              @id @default(cuid())
   roomId              String
   userId              String
-  slot                Int                 @default(0)
-  status              MatchStatus         @default(None)
-  point               Int                 @default(0) // ini jumlah point yang didapat
-  bonusPoint          Int                 @default(0) // ini bonus point berdasarkan ketentuan
-  correctAttempt      Float               @default(0) // percentage benar
-  correctAttemptCount Int                 @default(0) // jumlah jawab benar
-  maxAttempt          Int                 @default(0) // jumlah soal
-  teamType            TeamType            @default(None) // jika championship memiliki tipe gunakan ini, jika tidak none saja, jika ingin lebih buat
+  point               Int                 @default(0)
+  bonusPoint          Int                 @default(0)
   isReady             Boolean             @default(false)
   isComplete          Boolean             @default(false)
   isBot               Boolean             @default(false)
   joinedAt            DateTime            @default(now()) @db.Timestamptz(3)
   finishedAt          DateTime?           @db.Timestamptz(3)
   isDisconnect        Boolean             @default(false)
+  teamType            TeamType            @default(None)
+  status              MatchStatus         @default(None)
+  slot                Int                 @default(0)
+  correctAttempt      Float               @default(0)
+  correctAttemptCount Int                 @default(0)
+  maxAttempt          Int                 @default(0)
   room                ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
   user                User                @relation(fields: [userId], references: [id])
 }
@@ -755,10 +740,10 @@ model Voucher {
   amount       Int
   quota        Int
   currentQuota Int
-  expiredAt    DateTime?
-  conditions   String[] // ini list zona yang diperbolehkan menggunakan voucher ini, [] == universal
+  conditions   String[]
   createdAt    DateTime          @default(now()) @db.Timestamptz(3)
   updatedAt    DateTime          @updatedAt
+  expiredAt    DateTime?
   transactions UserTransaction[]
 }
 
@@ -767,16 +752,16 @@ model UserTransaction {
   createdAt            DateTime        @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime        @updatedAt
   userId               String
-  user                 User            @relation(fields: [userId], references: [id])
   finalPrice           Int
-  transactionRef       String          @unique // midtrans order id
-  transactionActionRef Json
   voucherId            String?
-  voucher              Voucher?        @relation(fields: [voucherId], references: [id])
   productId            String?
-  product              Product?        @relation(fields: [productId], references: [id])
   status               Transaction     @default(Pending)
+  transactionRef       String          @unique
+  transactionActionRef Json
   code                 UserRedeemCode?
+  product              Product?        @relation(fields: [productId], references: [id])
+  user                 User            @relation(fields: [userId], references: [id])
+  voucher              Voucher?        @relation(fields: [voucherId], references: [id])
 
   @@index([status])
 }
@@ -784,17 +769,26 @@ model UserTransaction {
 model ImportExport {
   id         String               @id @default(cuid())
   adminId    String
-  admin      Admin                @relation(fields: [adminId], references: [id])
   expiredAt  DateTime?            @db.Timestamptz(3)
   method     ImportExportType
   status     ImportExportProgress @default(Waiting)
-  queueName  String               @default("")
-  maxCount   Int                  @default(0)
-  errorCount Int                  @default(0)
-  fileId     String?
   fileUrl    String?
   createdAt  DateTime             @default(now()) @db.Timestamptz(3)
   updatedAt  DateTime             @updatedAt @db.Timestamptz(3)
+  fileId     String?
+  errorCount Int                  @default(0)
+  maxCount   Int                  @default(0)
+  queueName  String               @default("")
+  admin      Admin                @relation(fields: [adminId], references: [id])
+}
+
+model WebSetting {
+  id          String   @id @default(cuid())
+  title       String
+  content     Json     @db.JsonB
+  contentHtml String   @db.Text
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
 }
 
 enum Role {
@@ -817,10 +811,10 @@ enum ImportExportType {
 }
 
 enum ImportExportProgress {
-  Waiting
   Progress
   Success
   Fail
+  Waiting
 }
 
 enum VoucherType {
