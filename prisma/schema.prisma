@@ -784,8 +784,6 @@ model ImportExport {
 
 model WebSetting {
   id          String   @id @default(cuid())
-  title       String
-  content     Json     @db.JsonB
   contentHtml String   @db.Text
   createdAt   DateTime @default(now()) @db.Timestamptz(3)
   updatedAt   DateTime @updatedAt @db.Timestamptz(3)
