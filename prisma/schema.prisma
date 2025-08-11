@@ -148,6 +148,7 @@ model User {
   codes               UserRedeemCode[]
   transactions        UserTransaction[]
   zones               Zone[]
+  rank                Rank?
 
   @@index([provinceId])
   @@index([cityId])
@@ -554,7 +555,9 @@ model AdminTransaction {
   archived            Boolean     @default(false)
   description         String?
   name                String
-  subscriptionTime    Int
+  //subscriptionTime    Int
+  startedAt           DateTime    @default(now()) @db.Timestamptz(3)
+  expiredAt           DateTime?   @db.Timestamptz(3)
   transactionImageId  String?
   transactionImageUrl String?
   transactionRef      String?
@@ -577,6 +580,7 @@ model RedeemCode {
   transactionId String           @unique
   adminId       String
   code          String           @unique @default(cuid())
+  startedAt     DateTime         @default(now()) @db.Timestamptz(3)
   expiredAt     DateTime?        @db.Timestamptz(3)
   currentAmount Int
   maxAmount     Int
@@ -787,6 +791,43 @@ model WebSetting {
   contentHtml String   @db.Text
   createdAt   DateTime @default(now()) @db.Timestamptz(3)
   updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model Rank {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Total point (gabungan semua kategori point)
+  totalPoint Int @default(0)
+
+  // Per kategori point
+  learningPoint     Int @default(0)
+  championshipPoint Int @default(0)
+
+  // Peringkat berdasarkan totalPoint
+  totalRankNational    Int @default(0)
+  totalRankProvince    Int @default(0)
+  totalRankCity        Int @default(0)
+  totalRankSubdistrict Int @default(0)
+  totalRankSchool      Int @default(0)
+  totalRankGrade       Int @default(0)
+
+  // Peringkat berdasarkan learningPoint
+  learningRankNational    Int @default(0)
+  learningRankProvince    Int @default(0)
+  learningRankCity        Int @default(0)
+  learningRankSubdistrict Int @default(0)
+  learningRankSchool      Int @default(0)
+  learningRankGrade       Int @default(0)
+
+  // Peringkat berdasarkan championshipPoint
+  championshipRankNational    Int @default(0)
+  championshipRankProvince    Int @default(0)
+  championshipRankCity        Int @default(0)
+  championshipRankSubdistrict Int @default(0)
+  championshipRankSchool      Int @default(0)
+  championshipRankGrade       Int @default(0)
 }
 
 enum Role {
