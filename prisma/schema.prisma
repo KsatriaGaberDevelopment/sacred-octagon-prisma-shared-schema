@@ -555,7 +555,8 @@ model AdminTransaction {
   archived            Boolean     @default(false)
   description         String?
   name                String
-  //subscriptionTime    Int
+  subscriptionTime    Int         @default(1) // delete after, don't use
+  codeRequest         String?     @db.Char(32)
   startedAt           DateTime    @default(now()) @db.Timestamptz(3)
   expiredAt           DateTime?   @db.Timestamptz(3)
   transactionImageId  String?
