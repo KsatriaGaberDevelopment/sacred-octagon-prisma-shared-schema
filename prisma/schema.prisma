@@ -169,10 +169,10 @@ model Zone {
   createdAt        DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt        DateTime  @updatedAt @db.Timestamptz(3)
   inGameId         String
-  posttest         Int       @default(0)
-  posttestTryCount Int       @default(0)
-  pretest          Int       @default(0)
-  pretestTryCount  Int       @default(0)
+  //posttest         Int       @default(0) // hapus nanti
+  //posttestTryCount Int       @default(0) // hapus nanti
+  //pretest          Int       @default(0) // hapus nanti
+  //pretestTryCount  Int       @default(0) // hapus nanti
   user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, inGameId])
