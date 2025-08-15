@@ -345,7 +345,7 @@ model UserLogin {
   userId     String
   loginDate  DateTime  @db.Timestamptz(3)
   logoutDate DateTime? @db.Timestamptz(3)
-  user       User      @relation(fields: [userId], references: [id])
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
