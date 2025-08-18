@@ -17,7 +17,7 @@ model Province {
   geoId          String           @default("")
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
-  admin          Admin[]
+  //admin          Admin[]
   adminAuthority AdminAuthority[]
   cities         City[]
   schools        School[]
@@ -39,7 +39,7 @@ model City {
   provinceId     String
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
-  admin          Admin[]
+  //admin          Admin[]
   province       Province         @relation(fields: [provinceId], references: [id])
   schools        School[]
   subdistricts   Subdistrict[]
@@ -60,7 +60,7 @@ model Subdistrict {
   cityId         String
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
-  admins         Admin[]
+  //admins         Admin[]
   schools        School[]
   city           City             @relation(fields: [cityId], references: [id])
   province       Province         @relation(fields: [provinceId], references: [id])
@@ -84,12 +84,18 @@ model School {
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   level          EducationLevel   @default(NONE)
   subdistrictId  String?
-  admin          Admin[]
+  //admin          Admin[]
   city           City?            @relation(fields: [cityId], references: [id])
   province       Province?        @relation(fields: [provinceId], references: [id])
   subdistrict    Subdistrict?     @relation(fields: [subdistrictId], references: [id])
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToSchool")
+
+  createdById String? @unique
+  updatedById String? @unique
+
+  createdBy Admin? @relation("SchoolCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("SchoolUpdatedBy", fields: [updatedById], references: [id])
 
   @@index([cityId])
   @@index([provinceId])
@@ -357,19 +363,19 @@ model Admin {
   name                 String
   suspend              Boolean                 @default(false)
   role                 Role?
-  provinceId           String?
-  cityId               String?
-  schoolId             String?
+  //provinceId           String?
+  //cityId               String?
+  //schoolId             String?
+  //subdistrictId        String?
   createdAt            DateTime                @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime                @updatedAt @db.Timestamptz(3)
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
-  subdistrictId        String?
-  city                 City?                   @relation(fields: [cityId], references: [id])
-  province             Province?               @relation(fields: [provinceId], references: [id])
-  school               School?                 @relation(fields: [schoolId], references: [id])
-  subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
+  //city                 City?                   @relation(fields: [cityId], references: [id])
+  //province             Province?               @relation(fields: [provinceId], references: [id])
+  //school               School?                 @relation(fields: [schoolId], references: [id])
+  //subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
   authority            AdminAuthority[]
   logs                 AdminLog[]
   operationHistories   AdminOperationHistory[] @relation("OperationHistory")
@@ -381,6 +387,8 @@ model Admin {
   redeemCodes          RedeemCode[]
   tests                Test[]
   user                 User?
+  createdSchool        School?                 @relation("SchoolCreatedBy")
+  updatedSchool        School?                 @relation("SchoolUpdatedBy")
 }
 
 model AdminLog {
