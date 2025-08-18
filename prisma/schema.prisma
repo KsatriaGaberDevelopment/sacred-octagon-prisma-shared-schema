@@ -91,8 +91,8 @@ model School {
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToSchool")
 
-  createdById String? @unique
-  updatedById String? @unique
+  createdById String?
+  updatedById String?
 
   createdBy Admin? @relation("SchoolCreatedBy", fields: [createdById], references: [id])
   updatedBy Admin? @relation("SchoolUpdatedBy", fields: [updatedById], references: [id])
@@ -387,8 +387,8 @@ model Admin {
   redeemCodes          RedeemCode[]
   tests                Test[]
   user                 User?
-  createdSchool        School?                 @relation("SchoolCreatedBy")
-  updatedSchool        School?                 @relation("SchoolUpdatedBy")
+  createdSchools       School[]                @relation("SchoolCreatedBy")
+  updatedSchools       School[]                @relation("SchoolUpdatedBy")
 }
 
 model AdminLog {
