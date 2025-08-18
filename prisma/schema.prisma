@@ -25,6 +25,12 @@ model Province {
   users          User[]
   banners        Banner[]         @relation("BannerToProvince")
 
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("ProvinceCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("ProvinceUpdatedBy", fields: [updatedById], references: [id])
+
   @@index([id])
   @@index([name])
   @@index([id, name])
@@ -47,6 +53,12 @@ model City {
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToCity")
   banners        Banner[]         @relation("BannerToCity")
 
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("CityCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("CityUpdatedBy", fields: [updatedById], references: [id])
+
   @@index([provinceId])
 }
 
@@ -67,6 +79,12 @@ model Subdistrict {
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToSubdistrict")
   banners        Banner[]         @relation("BannerToSubdistrict")
+
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("SubdistrictCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("SubdistrictUpdatedBy", fields: [updatedById], references: [id])
 
   @@index([provinceId])
   @@index([cityId])
@@ -389,6 +407,12 @@ model Admin {
   user                 User?
   createdSchools       School[]                @relation("SchoolCreatedBy")
   updatedSchools       School[]                @relation("SchoolUpdatedBy")
+  createdProvincies    Province[]              @relation("ProvinceCreatedBy")
+  updatedProvincies    Province[]              @relation("ProvinceUpdatedBy")
+  createdCities        City[]                  @relation("CityCreatedBy")
+  updatedCities        City[]                  @relation("CityUpdatedBy")
+  createdSubdistricts  Subdistrict[]           @relation("SubdistrictCreatedBy")
+  updatedSubdistricts  Subdistrict[]           @relation("SubdistrictUpdatedBy")
 }
 
 model AdminLog {
