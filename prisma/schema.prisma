@@ -403,8 +403,9 @@ model Admin {
   banner               Banner[]
   importExports        ImportExport[]
   redeemCodes          RedeemCode[]
-  tests                Test[]
   user                 User?
+  createdTests         Test[]                  @relation("TestCreatedBy")
+  updatedTests         Test[]                  @relation("TestUpdatedBy")
   createdSchools       School[]                @relation("SchoolCreatedBy")
   updatedSchools       School[]                @relation("SchoolUpdatedBy")
   createdProvincies    Province[]              @relation("ProvinceCreatedBy")
@@ -515,9 +516,13 @@ model Test {
   category      Role
   createdAt     DateTime          @default(now()) @db.Timestamptz(3)
   updatedAt     DateTime          @updatedAt @db.Timestamptz(3)
-  adminId       String
-  admin         Admin             @relation(fields: [adminId], references: [id])
   participants  TestParticipant[]
+
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("TestCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("TestUpdatedBy", fields: [updatedById], references: [id])
 
   @@index([category])
   @@index([type])
