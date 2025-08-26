@@ -381,19 +381,11 @@ model Admin {
   name                 String
   suspend              Boolean                 @default(false)
   role                 Role?
-  //provinceId           String?
-  //cityId               String?
-  //schoolId             String?
-  //subdistrictId        String?
   createdAt            DateTime                @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime                @updatedAt @db.Timestamptz(3)
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
-  //city                 City?                   @relation(fields: [cityId], references: [id])
-  //province             Province?               @relation(fields: [provinceId], references: [id])
-  //school               School?                 @relation(fields: [schoolId], references: [id])
-  //subdistrict          Subdistrict?            @relation(fields: [subdistrictId], references: [id])
   authority            AdminAuthority[]
   logs                 AdminLog[]
   operationHistories   AdminOperationHistory[] @relation("OperationHistory")
@@ -416,6 +408,8 @@ model Admin {
   updatedSubdistricts  Subdistrict[]           @relation("SubdistrictUpdatedBy")
   createdProducts      Product[]               @relation("ProductCreatedBy")
   updatedProdusts      Product[]               @relation("ProductUpdatedBy")
+  createdVouchers      Voucher[]               @relation("VoucherCreatedBy")
+  updatedVouchers      Voucher[]               @relation("VoucherUpdatedBy")
 }
 
 model AdminLog {
@@ -795,6 +789,12 @@ model Voucher {
   updatedAt    DateTime          @updatedAt
   expiredAt    DateTime?
   transactions UserTransaction[]
+
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("VoucherCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("VoucherUpdatedBy", fields: [updatedById], references: [id])
 }
 
 model UserTransaction {
