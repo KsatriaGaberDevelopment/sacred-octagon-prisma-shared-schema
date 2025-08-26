@@ -414,6 +414,8 @@ model Admin {
   updatedCities        City[]                  @relation("CityUpdatedBy")
   createdSubdistricts  Subdistrict[]           @relation("SubdistrictCreatedBy")
   updatedSubdistricts  Subdistrict[]           @relation("SubdistrictUpdatedBy")
+  createdProducts      Product[]               @relation("ProductCreatedBy")
+  updatedProdusts      Product[]               @relation("ProductUpdatedBy")
 }
 
 model AdminLog {
@@ -772,6 +774,12 @@ model Product {
   updatedAt        DateTime          @updatedAt
   subscriptionTime Int
   transactions     UserTransaction[]
+
+  createdById String?
+  updatedById String?
+
+  createdBy Admin? @relation("ProductCreatedBy", fields: [createdById], references: [id])
+  updatedBy Admin? @relation("ProductUpdatedBy", fields: [updatedById], references: [id])
 }
 
 model Voucher {
