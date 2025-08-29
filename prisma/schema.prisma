@@ -652,7 +652,7 @@ model CodeRedeemer {
   createdAt DateTime   @default(now()) @db.Timestamptz(3)
   updatedAt DateTime   @updatedAt @db.Timestamptz(3)
   code      RedeemCode @relation(fields: [codeId], references: [id], onDelete: Cascade)
-  user      User       @relation(fields: [userId], references: [id])
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([id, userId])
   @@unique([codeId, userId])
