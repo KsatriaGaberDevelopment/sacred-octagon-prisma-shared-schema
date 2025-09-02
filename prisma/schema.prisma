@@ -42,11 +42,11 @@ model City {
   longitude      Float
   latitude       Float
   geoId          String           @default("")
-  provinceId     String
+  provinceId     String?
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   //admin          Admin[]
-  province       Province         @relation(fields: [provinceId], references: [id])
+  province       Province?        @relation(fields: [provinceId], references: [id])
   schools        School[]
   subdistricts   Subdistrict[]
   users          User[]
@@ -68,14 +68,13 @@ model Subdistrict {
   longitude      Float
   latitude       Float
   geoId          String           @default("")
-  provinceId     String
-  cityId         String
+  provinceId     String?
+  cityId         String?
   createdAt      DateTime         @default(now()) @db.Timestamptz(3)
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
-  //admins         Admin[]
   schools        School[]
-  city           City             @relation(fields: [cityId], references: [id])
-  province       Province         @relation(fields: [provinceId], references: [id])
+  city           City?            @relation(fields: [cityId], references: [id])
+  province       Province?        @relation(fields: [provinceId], references: [id])
   users          User[]
   adminAuthority AdminAuthority[] @relation("AdminAuthorityToSubdistrict")
   banners        Banner[]         @relation("BannerToSubdistrict")
@@ -102,7 +101,6 @@ model School {
   updatedAt      DateTime         @updatedAt @db.Timestamptz(3)
   level          EducationLevel   @default(NONE)
   subdistrictId  String?
-  //admin          Admin[]
   city           City?            @relation(fields: [cityId], references: [id])
   province       Province?        @relation(fields: [provinceId], references: [id])
   subdistrict    Subdistrict?     @relation(fields: [subdistrictId], references: [id])
