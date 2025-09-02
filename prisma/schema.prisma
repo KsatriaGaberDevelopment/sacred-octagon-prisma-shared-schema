@@ -690,7 +690,7 @@ model ChampionshipMatch {
 model MatchMember {
   id           String            @id @default(cuid())
   roomId       String
-  userId       String
+  userId       String?
   point        Int               @default(0)
   bonusPoint   Int               @default(0)
   isReady      Boolean           @default(false)
@@ -704,7 +704,7 @@ model MatchMember {
   status       MatchStatus       @default(None)
   slot         Int               @default(0)
   room         ChampionshipMatch @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  user         User              @relation(fields: [userId], references: [id])
+  user         User?             @relation(fields: [userId], references: [id])
 
   @@unique([roomId, slot])
   @@unique([roomId, userId])
@@ -738,7 +738,7 @@ model ChampionshipHistory {
 model MatchHistoryMember {
   id                  String              @id @default(cuid())
   roomId              String
-  userId              String
+  userId              String?
   point               Int                 @default(0)
   bonusPoint          Int                 @default(0)
   isReady             Boolean             @default(false)
@@ -754,7 +754,7 @@ model MatchHistoryMember {
   correctAttemptCount Int                 @default(0)
   maxAttempt          Int                 @default(0)
   room                ChampionshipHistory @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  user                User                @relation(fields: [userId], references: [id])
+  user                User?               @relation(fields: [userId], references: [id])
 }
 
 model Product {
