@@ -457,14 +457,14 @@ model Banner {
   startedAt               DateTime?       @db.Timestamptz(3)
   endedAt                 DateTime?       @db.Timestamptz(3)
   isHide                  Boolean         @default(false)
-  adminId                 String
+  adminId                 String?
   thumbnailId             String
   title                   String?
   createdAt               DateTime        @default(now())
   updatedAt               DateTime        @updatedAt
   notificationDescription String?
   nextBroadcastedAt       DateTime?
-  admin                   Admin           @relation(fields: [adminId], references: [id])
+  admin                   Admin?          @relation(fields: [adminId], references: [id])
   visitors                BannerVisitor[]
   cities                  City[]          @relation("BannerToCity")
   provincies              Province[]      @relation("BannerToProvince")
@@ -581,7 +581,7 @@ model AdminTransaction {
   updatedAt           DateTime    @updatedAt @db.Timestamptz(3)
   quantity            Int         @default(0)
   zones               String[]
-  adminId             String
+  adminId             String?
   amount              Int
   archived            Boolean     @default(false)
   description         String?
@@ -596,7 +596,7 @@ model AdminTransaction {
   status              Transaction @default(Pending)
   processedAt         DateTime?   @db.Timestamptz(3)
   processedById       String?
-  admin               Admin       @relation("transactions", fields: [adminId], references: [id])
+  admin               Admin?      @relation("transactions", fields: [adminId], references: [id])
   processedBy         Admin?      @relation("transactionProcessed", fields: [processedById], references: [id])
   redeemCode          RedeemCode?
 
@@ -610,7 +610,7 @@ model AdminTransaction {
 model RedeemCode {
   id            String           @id @default(cuid())
   transactionId String           @unique
-  adminId       String
+  adminId       String?
   code          String           @unique @default(cuid())
   startedAt     DateTime         @default(now()) @db.Timestamptz(3)
   expiredAt     DateTime?        @db.Timestamptz(3)
@@ -621,7 +621,7 @@ model RedeemCode {
   updatedAt     DateTime         @updatedAt @db.Timestamptz(3)
   suspend       Boolean          @default(false)
   redeemers     CodeRedeemer[]
-  admin         Admin            @relation(fields: [adminId], references: [id])
+  admin         Admin?           @relation(fields: [adminId], references: [id])
   transaction   AdminTransaction @relation(fields: [transactionId], references: [id])
 
   @@index([adminId])
@@ -827,7 +827,7 @@ model ImportExport {
   errorCount Int                  @default(0)
   maxCount   Int                  @default(0)
   queueName  String               @default("")
-  admin      Admin                @relation(fields: [adminId], references: [id])
+  admin      Admin                @relation(fields: [adminId], references: [id], onDelete: Cascade)
 }
 
 model WebSetting {
