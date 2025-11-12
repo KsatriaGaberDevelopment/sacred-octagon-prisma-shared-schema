@@ -170,6 +170,7 @@ model User {
   codes               UserRedeemCode[]
   transactions        UserTransaction[]
   zones               Zone[]
+  isBot               Boolean @default(false)
   //rank                Rank?
 
   @@index([provinceId])
