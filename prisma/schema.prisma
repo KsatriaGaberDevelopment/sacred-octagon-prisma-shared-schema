@@ -505,6 +505,7 @@ model Test {
   currentQuota  Int               @default(0)
   code          String?
   zoneId        String?
+  ZoneIdLMS     String?
   startedAt     DateTime          @db.Timestamptz(3)
   endedAt       DateTime?         @db.Timestamptz(3)
   description   String?
@@ -512,6 +513,7 @@ model Test {
   createdAt     DateTime          @default(now()) @db.Timestamptz(3)
   updatedAt     DateTime          @updatedAt @db.Timestamptz(3)
   participants  TestParticipant[]
+
 
   createdById String?
   updatedById String?
@@ -525,6 +527,7 @@ model Test {
   @@index([type, question, category])
   @@index([category, type, question, startedAt, endedAt])
   @@index([zoneId, type])
+  @@index([ZoneIdLMS])
 }
 
 model TestParticipant {
