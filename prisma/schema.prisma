@@ -130,7 +130,7 @@ model User {
   birthDate           DateTime?            @db.Timestamptz(3)
   grade               Int                  @default(0)
   lastGradeUpdateAt   DateTime?            @db.Timestamptz(3)
-  schoolIdentity      String               @unique
+  schoolIdentity      String               
   loginAt             DateTime?            @db.Timestamptz(3)
   logoutAt            DateTime?            @db.Timestamptz(3)
   playTime            Int                  @default(0)
