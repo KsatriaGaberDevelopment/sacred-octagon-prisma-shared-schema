@@ -884,6 +884,7 @@ enum Role {
 enum AccountType {
   LMS
   Self
+  SelfPublic
 }
 
 enum ImportExportType {
