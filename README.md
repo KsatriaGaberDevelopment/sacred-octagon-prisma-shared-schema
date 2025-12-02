@@ -19,7 +19,8 @@ How to update db structure using this Prisma git repo
 
 # Update on source
 - Pada aplikasi yang menggunakan shared schema ini buka `package.json` pada item `dependencies` cari `@ksatriagaberdevelopment/prisma-shared-schema` ubah valuenya ke: `git+ssh://git@github.com/KsatriaGaberDevelopment/sacred-octagon-prisma-shared-schema.git#[nomor-revisi]`
-- Jalankan command `npm install --force` (Jangan menjalankan `npm update` karena akan mengupdate package yang mungkin akan menyebabkan error karena **broken changes**)
+- Jalankan command `npm install --force` (Jangan menjalankan `npm update` karena akan mengupdate package yang mungkin akan menyebabkan error karena **broken changes**).
+- Kalau masih ga bisa, jalankan command `npm update @ksatriagaberdevelopment/prisma-shared-schema`
 - Untuk menjalankannya: `npx prisma migrate deploy`
 
 # Recomendation
