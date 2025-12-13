@@ -385,6 +385,7 @@ model Admin {
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
+  phoneNumber          String?
   authority            AdminAuthority[]
   logs                 AdminLog[]
   operationHistories   AdminOperationHistory[] @relation("OperationHistory")
@@ -839,6 +840,30 @@ model WebSetting {
   contentHtml String   @db.Text
   createdAt   DateTime @default(now()) @db.Timestamptz(3)
   updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model FirebaseAuth {
+  id            String   @id @default(cuid())
+  model         String   @default("User")
+  modelId       String   
+  firebaseUid   String   @unique
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([firebaseUid])
+  @@index([model, modelId])
+}
+
+model OneTimePassword {
+  id        String   @id @default(cuid())
+  model     String   @default("User")
+  modelId   String
+  code      String   @db.Char(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  expiresAt DateTime @db.Timestamptz(3)
+
+  @@index([model, modelId])
+  @@index([code])
 }
 
 /**
