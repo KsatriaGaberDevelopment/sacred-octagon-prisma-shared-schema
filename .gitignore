@@ -4,3 +4,7 @@ node_modules
 .idea
 src/debug.ts
 generated/*
+
+# Ignore IDE specific files
+.vscode/
+.DS_Store 
