@@ -385,6 +385,7 @@ model Admin {
   authenticatorEnabled Boolean                 @default(false)
   authenticatorQrUrl   String?
   authenticatorSecret  String?
+  phoneNumber          String?
   authority            AdminAuthority[]
   logs                 AdminLog[]
   operationHistories   AdminOperationHistory[] @relation("OperationHistory")
