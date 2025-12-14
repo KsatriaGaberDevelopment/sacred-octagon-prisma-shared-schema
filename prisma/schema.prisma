@@ -853,6 +853,16 @@ model FirebaseAuth {
   @@index([model, modelId])
 }
 
+model OneTimePassword {
+  id        String   @id @default(cuid())
+  model     String   @default("User")
+  modelId   String
+  code      String   @db.Char(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  expiresAt DateTime @db.Timestamptz(3)
+  @@index([model, modelId])
+  @@index([code])
+}
 
 /**
  * model Rank {
