@@ -842,6 +842,18 @@ model WebSetting {
   updatedAt   DateTime @updatedAt @db.Timestamptz(3)
 }
 
+model FirebaseAuth {
+  id            String   @id @default(cuid())
+  model         String   @default("User")
+  modelId       String   
+  firebaseUid   String   @unique
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+  @@index([firebaseUid])
+  @@index([model, modelId])
+}
+
+
 /**
  * model Rank {
  * id     String @id @default(cuid())
