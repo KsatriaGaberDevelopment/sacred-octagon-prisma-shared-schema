@@ -26,3 +26,6 @@ How to update db structure using this Prisma git repo
 # Recomendation
 - Better backup your DB before you run migration
 
+# How to get the version
+- Run command `git rev-parse --short HEAD` in the root folder of this repo
+- The output is the version you are looking for
